@@ -87,6 +87,13 @@
       "bytes": 17014217,
       "extractedSha256": "7292af60f3dd9113172068de10a950cf6a3030f06f1738300588c6f649d1a5a2",
       "pages": 142
+    },
+    {
+      "id": "chinatextbook:primary:math:9b65cbd0382c7175945b",
+      "sha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "bytes": 50154321,
+      "extractedSha256": "29771ad3802d19a4b2c016eda0c37c70b2aa7d60f769016543e5166c62b3ff3d",
+      "pages": 118
     }
   ],
   "scope": "Candidate evidence only. No candidate is a published textbook-to-atom mapping.",
@@ -94,7 +101,10 @@
     "textbookManifest": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
     "reviewedToc": "948f3fd8fb9afc4f0054d8d69a2882ea8cb0ccef1448b463090ca4086d80fc34",
     "atomCatalog": "02464cb314814076ec25c3bfcdc60449f8077a84862f01b94eb65bc19298fc70",
-    "registry": "87b6166f5fbbe29ae334d3194e6d95f7c0fb3723c982b0ec85914f9dba946118"
+    "registry": "c92940a15485ecda424f4bca99a2f6a93dda818411bbe527fc1b7a6a64dba3d9",
+    "originalRegistry": "6c8f84c733cef917356e5de164cadb32976211f9fb97e9fe152d3f5ca2ec4f83",
+    "editionConformities": "8b2984e861207d153ba2130f632c7f6a5466e2027c2c055ad2f19cdd0d7376cf",
+    "primaryManifest": "b24580485e03b29394690382762e218f61d2f802933b9ffe0985e9633a029aee"
   },
   "pageOffsets": {
     "public-book:b87e153f-a64c-451a-aa6c-6ed9ac7d6821": 9,
@@ -110,11 +120,11 @@
     "public-book:06422d77-21f1-45c3-b409-fa2947eee424": 5,
     "public-book:2e3dc199-9c42-486b-bbee-7731bd0ee227": 8
   },
-  "books": 12,
-  "lessons": 523,
-  "titleMatched": 316,
-  "lessonsWithCandidates": 233,
-  "candidateMappings": 587,
+  "books": 14,
+  "lessons": 525,
+  "titleMatched": 318,
+  "lessonsWithCandidates": 234,
+  "candidateMappings": 589,
   "atomsCovered": 55,
   "rows": [
     {
@@ -18522,6 +18532,42 @@
       "approvedAtomIds": [],
       "chapterName": "第一单元",
       "editionProofFingerprint": "66abd64ba947c86623073c68dade75e957d7a2cc3f24d2fdda32b4f0a56287de"
+    },
+    {
+      "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+      "bookVersion": "6a7e89f4efca78ea9dc38cdd",
+      "sourceBookId": "chinatextbook:primary:math:9b65cbd0382c7175945b",
+      "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "extractedSha256": "29771ad3802d19a4b2c016eda0c37c70b2aa7d60f769016543e5166c62b3ff3d",
+      "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+      "lessonName": "准备课",
+      "chapterName": "准备课",
+      "lessonFingerprint": "c20d28828a4789ea17ca742bb9d8c43c84f3e2bc0aee98c1e50c0ce01cb39287",
+      "editionProofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1",
+      "pdfStartPage": 7,
+      "pdfEndPage": 13,
+      "titleMatched": true,
+      "candidateAtomIds": [],
+      "rationale": "准确原件准备课物理7至13页逐张核对；单元层级含数一数、比多少与练习一。不是教师审核、已批准目标映射或其他修订版来源。",
+      "evidence": [
+        {
+          "page": 5,
+          "textSha256": "6749acdd28aab5d104ce3b45b33fe4120926c24257436f96b8c56ce5d69d2147",
+          "imageSha256": "dbab435c999a59b12024029747c16739e155f8aafb05749c7ff6da17d9709401"
+        },
+        {
+          "page": 7,
+          "textSha256": "8404c76873f6f29c5227e5ab73c3fbf6edd04b40feff04f8ec667d9dcf331e14",
+          "imageSha256": "3ed603e6779a07b79a1412a7ae7bdcab051c4cce5f59a717b06f41cb28cfe6d5"
+        },
+        {
+          "page": 11,
+          "textSha256": "6dab456a5dca8bd4aa01d951db582582b3234484e78b9b0d95ea13af142a1d91",
+          "imageSha256": "b5bea7be7da108d2ea8bdd0a8013127afda8e111cdecae5401d0ffaf38e8f482"
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": []
     }
   ]
 }

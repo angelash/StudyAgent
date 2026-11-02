@@ -16,21 +16,22 @@ class MappingCandidateTest(unittest.TestCase):
         self.assertEqual(document['format'], 'textbook-mapping-candidates-v1')
         self.assertEqual(document['mappingStatus'], 'candidates_not_approved')
         self.assertEqual(document['sourceIdentityVersion'], 'textbook-source-candidate-v1')
-        self.assertEqual(document['books'], 12)
-        self.assertEqual(document['lessons'], 523)
-        self.assertEqual(len(document['rows']), 523)
+        self.assertEqual(document['books'], 14)
+        self.assertEqual(document['lessons'], 525)
+        self.assertEqual(len(document['rows']), 525)
         self.assertTrue(all(not row['approvedAtomIds'] for row in document['rows']))
         self.assertTrue(all(row['reviewStatus'] in {'candidate', 'unreviewed'} for row in document['rows']))
+        registry = {b['id']: b for b in json.loads((ROOT / 'resources/curriculum/textbooks-v1.json').read_text('utf-8'))['books']}
         for row in document['rows']:
             self.assertLessEqual(row['pdfStartPage'], row['pdfEndPage'])
             for atom_id in row['candidateAtomIds']:
                 self.assertIn(atom_id, atoms)
-                self.assertEqual(atoms[atom_id]['subject'], 'chinese')
+                self.assertEqual(atoms[atom_id]['subject'], registry[row['bookId']]['subject'])
 
     def test_all_source_bindings_match_the_current_registry_and_manifest(self):
         document = json.loads((ROOT / 'resources/curriculum/textbook-mapping-candidates-v1.json').read_text('utf-8'))
         registry = {book['id']: book for book in json.loads((ROOT / 'resources/curriculum/textbooks-v1.json').read_text('utf-8'))['books']}
-        sources = {book['id']: book for book in json.loads((ROOT / 'resources/curriculum/chinatextbook-chinese-v1.json').read_text('utf-8'))['books']}
+        sources = {book['id']: book for name in ['chinatextbook-chinese-v1.json', 'chinatextbook-primary-v1.json'] for book in json.loads((ROOT / 'resources/curriculum' / name).read_text('utf-8'))['books']}
         for row in document['rows']:
             book, source = registry[row['bookId']], sources[row['sourceBookId']]
             chapter = next(chapter for chapter in book['chapters'] if any(lesson['id'] == row['lessonId'] for lesson in chapter['lessons']))
@@ -64,6 +65,28 @@ class ExactSourceBytesTest(unittest.TestCase):
 
     def test_preserves_complete_pages_empty_text_and_whitespace(self):
         self.assertEqual(self.read(), self.pages)
+
+    def test_both_primary_subject_formats_use_the_importer_path_identity(self):
+        relative = 'Original edition/book.pdf'
+        for subject in ['math', 'english']:
+            self.source.update(subject=subject, id='chinatextbook:primary:' + subject + ':' + hashlib.sha256(relative.encode()).hexdigest()[:20])
+            self.save(format='chinatextbook-primary-extraction-v1', subject=subject, sourceRelative=relative)
+            self.assertEqual(self.read(), self.pages)
+
+    def test_primary_subject_and_path_cannot_be_rebound_by_rehashing(self):
+        relative = 'Original edition/book.pdf'
+        self.source.update(subject='math', id='chinatextbook:primary:math:' + hashlib.sha256(relative.encode()).hexdigest()[:20])
+        for changes in [{'subject': 'english'}, {'sourceRelative': 'another/book.pdf'}, {'id': 'wrong-source'}]:
+            self.save(**({'format': 'chinatextbook-primary-extraction-v1', 'subject': 'math', 'sourceRelative': relative} | changes))
+            with self.assertRaisesRegex(ValueError, 'exact original'):
+                self.read()
+
+    def test_primary_identity_rejects_unsafe_relative_paths(self):
+        for relative in ['', '../book.pdf', '/book.pdf', 'C:/book.pdf', 'dir\\book.pdf']:
+            self.source.update(subject='math', id='chinatextbook:primary:math:' + hashlib.sha256(relative.encode()).hexdigest()[:20])
+            self.save(format='chinatextbook-primary-extraction-v1', subject='math', sourceRelative=relative)
+            with self.assertRaisesRegex(ValueError, 'exact original'):
+                self.read()
 
     def test_rejects_equal_length_changed_original(self):
         raw = self.original.read_bytes(); self.original.write_bytes(raw.replace(b'Original', b'Modified'))

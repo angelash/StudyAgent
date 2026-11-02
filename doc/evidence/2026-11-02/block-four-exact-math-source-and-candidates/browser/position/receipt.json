@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T15:15:11.882Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 3,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:math-g1-a8e88021-position-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "math-g1-a8e88021-position-v1-desktop.png",
+    "math-g1-a8e88021-position-v1-table.png",
+    "math-g1-a8e88021-position-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

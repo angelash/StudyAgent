@@ -134,10 +134,18 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
   });
 
   it('keeps math and English originals reference-only until complete edition conformity is independently reviewed', async () => {
+    const reviewedOriginalId = 'archive-book:math-g1-upper-a8e880217c456db6';
     for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower']) for (const subject of ['math', 'english']) {
       const books = await call('get', `/diagnostics/textbooks?subject=${subject}&grade=${grade}&term=${term}`);
-      expect(books.filter((book: any) => book.sourceDocument)).toEqual([]);
-      expect(books.filter((book: any) => book.source !== 'original').every((book: any) => book.sourceAvailability.status !== 'matched')).toBe(true);
+      const expected = subject === 'math' && grade === 1 && term === 'upper' ? [reviewedOriginalId] : [];
+      expect(books.filter((book: any) => book.sourceDocument).map((book: any) => book.id)).toEqual(expected);
+      expect(books.filter((book: any) => book.sourceAvailability.status === 'matched').map((book: any) => book.id)).toEqual(expected);
+      expect(books.filter((book: any) => book.id !== reviewedOriginalId && book.source !== 'original').every((book: any) => book.sourceAvailability.status !== 'matched')).toBe(true);
+      if (expected.length) {
+        const exact = books.find((book: any) => book.id === reviewedOriginalId);
+        expect(exact.sourceDocument.sha256).toBe('a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4');
+        expect(exact.sourceEdition).toMatchObject({ publicationYear: 2022, curriculumStandardYear: 2011 });
+      }
     }
     const gradeThreeMath = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');
     for (const edition of ['人教版', '人教版(2024)']) {

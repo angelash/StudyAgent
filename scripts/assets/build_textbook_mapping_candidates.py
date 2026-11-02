@@ -12,6 +12,7 @@ import hashlib
 import os
 from collections import Counter
 from pathlib import Path
+from reviewed_original_textbooks import apply_original_mappings
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / 'resources/curriculum/chinatextbook-chinese-v1.json'
@@ -119,7 +120,14 @@ def verified_source_pages(textbook: dict, asset_root: Path, repository_root: Pat
         raise ValueError('Extraction bytes do not match the source manifest')
     document = json.loads(raw.decode('utf-8'))
     pages = document.get('pages')
-    if document.get('format') != 'chinatextbook-extraction-v1' or document.get('id') != textbook['id'] or document.get('sourceSha256') != textbook['sha256']:
+    legacy_identity = document.get('format') == 'chinatextbook-extraction-v1' and document.get('id') == textbook['id']
+    primary_identity = False
+    if document.get('format') == 'chinatextbook-primary-extraction-v1' and textbook.get('subject') in {'math', 'english'} and document.get('subject') == textbook['subject']:
+        relative = document.get('sourceRelative')
+        if isinstance(relative, str) and not re.search(r'^[a-zA-Z]:|^[/\\]|[\\\x00-\x1f]', relative) and all(part not in {'', '.', '..'} for part in relative.split('/')):
+            identity = 'chinatextbook:primary:' + textbook['subject'] + ':' + hashlib.sha256(relative.encode('utf-8')).hexdigest()[:20]
+            primary_identity = textbook['id'] == identity and document.get('id', identity) == identity
+    if not (legacy_identity or primary_identity) or document.get('sourceSha256') != textbook['sha256']:
         raise ValueError('Extraction is not bound to the exact original source')
     if not isinstance(pages, list) or len(pages) != textbook['pages'] or any(not isinstance(page, dict) or type(page.get('page')) is not int or page['page'] != index + 1 or not isinstance(page.get('text'), str) for index, page in enumerate(pages)):
         raise ValueError('Extraction must preserve all numbered physical pages')
@@ -130,6 +138,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--asset-root', type=Path, default=Path(os.environ.get('STUDY_ASSET_ROOT', str(ROOT / 'data/assets'))))
     parser.add_argument('--textbook-base-path', type=Path, default=Path(os.environ['TEXTBOOK_BASE_PATH']) if os.environ.get('TEXTBOOK_BASE_PATH') else None)
+    parser.add_argument('--output', type=Path, default=OUTPUT)
+    parser.add_argument('--originals', type=Path, default=ROOT / 'resources/curriculum/reviewed-original-textbooks-v1.json')
     args = parser.parse_args()
     manifest = json.loads(MANIFEST.read_text('utf-8'))
     reviewed = json.loads(REVIEWED.read_text('utf-8'))
@@ -198,16 +208,31 @@ def main() -> None:
                 ('完整本地PDF未能由文本可靠定位该课时标题；必须人工翻页核对。' if not starts else '完整本地PDF可读，但未达到当前词汇候选阈值；保留待人工判断。')),
               'evidence': candidates, 'reviewStatus': 'candidate' if candidates else 'unreviewed', 'approvedAtomIds': [] })
     rows.sort(key=lambda row: (row['bookId'], row['printedPage'], row['lessonId']))
+    originals = json.loads(args.originals.read_text('utf-8'))
+    proof_file = args.originals.parent / 'textbook-edition-conformities-v1.json'
+    primary_file = args.originals.parent / 'chinatextbook-primary-v1.json'
+    proofs = json.loads(proof_file.read_text('utf-8'))
+    primary = json.loads(primary_file.read_text('utf-8'))['books']
+    sources = [{**s, 'subject': s.get('subject', 'chinese')} for s in manifest['books']] + primary
+    rows = apply_original_mappings(rows, originals, registry['books'], proofs, sources)
+    source_ids = {s['id'] for s in verified_sources}
+    for row in originals['mappingCandidates']:
+        if row['sourceBookId'] not in source_ids:
+            source = next(s for s in sources if s['id'] == row['sourceBookId'])
+            verified_source_pages(source, args.asset_root, args.textbook_base_path)
+            verified_sources.append({k: source[k] for k in ['id', 'sha256', 'bytes', 'extractedSha256', 'pages']})
+            source_ids.add(source['id'])
     result = { 'format': 'textbook-mapping-candidates-v1', 'mappingStatus': 'candidates_not_approved',
       'sourceIdentityVersion': 'textbook-source-candidate-v1', 'sourceVerification': 'complete_bytes_verified_not_content_reviewed', 'verifiedSources': verified_sources,
       'scope': 'Candidate evidence only. No candidate is a published textbook-to-atom mapping.',
       'sourceSha256': { 'textbookManifest': __import__('hashlib').sha256(MANIFEST.read_bytes()).hexdigest(),
-        'reviewedToc': hashlib.sha256(REVIEWED.read_bytes()).hexdigest(), 'atomCatalog': hashlib.sha256(ATOMS.read_bytes()).hexdigest(), 'registry': hashlib.sha256(REGISTRY.read_bytes()).hexdigest() },
-      'pageOffsets': offsets, 'books': 12, 'lessons': len(rows), 'titleMatched': sum(row['titleMatched'] for row in rows),
+        'reviewedToc': hashlib.sha256(REVIEWED.read_bytes()).hexdigest(), 'atomCatalog': hashlib.sha256(ATOMS.read_bytes()).hexdigest(), 'registry': hashlib.sha256(REGISTRY.read_bytes()).hexdigest(),
+        'originalRegistry': hashlib.sha256(args.originals.read_bytes()).hexdigest(), 'editionConformities': hashlib.sha256(proof_file.read_bytes()).hexdigest(), 'primaryManifest': hashlib.sha256(primary_file.read_bytes()).hexdigest() },
+      'pageOffsets': offsets, 'books': len({row['bookId'] for row in rows}), 'lessons': len(rows), 'titleMatched': sum(row['titleMatched'] for row in rows),
       'lessonsWithCandidates': sum(bool(row['candidateAtomIds']) for row in rows),
       'candidateMappings': sum(len(row['candidateAtomIds']) for row in rows),
       'atomsCovered': len({atom_id for row in rows for atom_id in row['candidateAtomIds']}), 'rows': rows }
-    OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', 'utf-8')
+    args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', 'utf-8')
     print(json.dumps({key: result[key] for key in ['books', 'lessons', 'titleMatched', 'lessonsWithCandidates', 'candidateMappings', 'atomsCovered']}))
 
 

@@ -403,6 +403,127 @@
         "reviewedAt": "2026-11-01T05:58:44.119Z",
         "statement": "已完整查看物理第4/5页目录，逐条登记27篇编号课文、组合子标题、全部活动和附录。目录页段按目录起点及下一条目划分，正文、图像和教学课时边界仍须逐课核对；不代表教师审阅或教学发布。"
       }
+    },
+    {
+      "protocol": "textbook-edition-conformity-v1",
+      "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+      "bookVersion": "6a7e89f4efca78ea9dc38cdd",
+      "registryFingerprint": "fe8a8408d845c4521fca883298b5dfa6af5f4e1ebb91ab1f6cefbf627c1ae5e3",
+      "sourceBookId": "chinatextbook:primary:math:9b65cbd0382c7175945b",
+      "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "extractedSha256": "29771ad3802d19a4b2c016eda0c37c70b2aa7d60f769016543e5166c62b3ff3d",
+      "sourcePages": 118,
+      "edition": {
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011,
+        "independentlyRegistered": true,
+        "statement": "物理第3页版权页明确2022年8月第2版；物理第117页后记明确依据2011年版课程标准，2022审核不等2022课标。按本件独立登记，不绑定2024修订目录。",
+        "pages": [
+          {
+            "page": 3,
+            "textSha256": "5dec1062f93b9cc2872621d4aa2a3334f09da92192c9de1b5ef04e1ac0ab3ad1",
+            "imageSha256": "fc16c49e22f55d999b7b344c7ec800085f9046bf0fa89cd6076672ffca5ae494"
+          },
+          {
+            "page": 117,
+            "textSha256": "fdf18e7519dbdf5ae75ce952907b60ba5e18bc2ee8e1534a672145a081e26112",
+            "imageSha256": "f9064ead251b40b1a4d2ba631d14e8a408f977eb38ec56411e4c33feea2f4318"
+          }
+        ]
+      },
+      "directory": {
+        "complete": true,
+        "pages": [
+          {
+            "page": 5,
+            "textSha256": "6749acdd28aab5d104ce3b45b33fe4120926c24257436f96b8c56ce5d69d2147",
+            "imageSha256": "dbab435c999a59b12024029747c16739e155f8aafb05749c7ff6da17d9709401"
+          },
+          {
+            "page": 6,
+            "textSha256": "9cb8514bd8c4b5c27284cab6738d86865590f1467fed29e39b2b2ac7f44689a0",
+            "imageSha256": "cb455349ecaac9c54a49fb6fbc724c8de43308de57da95d337561417d8630c78"
+          }
+        ],
+        "entries": [
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit1",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+            "lessonFingerprint": "c20d28828a4789ea17ca742bb9d8c43c84f3e2bc0aee98c1e50c0ce01cb39287",
+            "physicalStartPage": 7,
+            "physicalEndPage": 13
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit2",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit2:entry1",
+            "lessonFingerprint": "331223aa9d324e7d3e26e4eaaba91ef0fd56a74025cd659bb4926ada31a706c7",
+            "physicalStartPage": 14,
+            "physicalEndPage": 18
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit3",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit3:entry1",
+            "lessonFingerprint": "f5f026a3e8aad838036a529657f772de36b82488c89d6c0965b21e4dc5eb2341",
+            "physicalStartPage": 19,
+            "physicalEndPage": 38
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit4",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit4:entry1",
+            "lessonFingerprint": "4b8a7af41c47f82370a7af00fea613de0c13a23a323454053bc8e87bdf08245c",
+            "physicalStartPage": 39,
+            "physicalEndPage": 43
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit5",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit5:entry1",
+            "lessonFingerprint": "0657ef52b2ae6211c762d657f5a7a686e3fa1fe11950894f47aaf4bebb36b984",
+            "physicalStartPage": 44,
+            "physicalEndPage": 77
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit6",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit6:entry1",
+            "lessonFingerprint": "f2eb5954bfb43496ac7e3fc25f1ecef73a6c77445631ef0eee0130807fadd7c8",
+            "physicalStartPage": 78,
+            "physicalEndPage": 86
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:math-playground",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:math-playground:entry1",
+            "lessonFingerprint": "acb5cbd758c9e2de69616ee1f740928a5bc6ccb2a88088f7a605576ab8e41b38",
+            "physicalStartPage": 87,
+            "physicalEndPage": 88
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit7",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit7:entry1",
+            "lessonFingerprint": "1e39b23a7cc7c8c6d141ba7770bf38bcf3594895f6c42d751ea6df00210977c1",
+            "physicalStartPage": 89,
+            "physicalEndPage": 92
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit8",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit8:entry1",
+            "lessonFingerprint": "3d4c7c9054a5b41067bbc1cd3fa303ba2d91a6e3351dcc5086f336bc0a9b6533",
+            "physicalStartPage": 93,
+            "physicalEndPage": 108
+          },
+          {
+            "chapterId": "archive-book:math-g1-upper-a8e880217c456db6:unit9",
+            "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit9:entry1",
+            "lessonFingerprint": "83481e6a808cd8565522bbd433cda0c22449276c5eb6042c0211efd076478b6d",
+            "physicalStartPage": 109,
+            "physicalEndPage": 116
+          }
+        ]
+      },
+      "review": {
+        "method": "agent_visual_review",
+        "reviewerRef": "studyagent-exact-math-original-review",
+        "reviewedAt": "2026-11-02T14:54:34.295Z",
+        "statement": "已逐张核对两页完整目录及版权页和后记，10条是原目录单元粒度而非全部细分课时。逐课正文和教学审核仍待，不改变其他登记教材资格。"
+      }
     }
   ],
   "discrepancies": [

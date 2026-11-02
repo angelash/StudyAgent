@@ -11,6 +11,7 @@ import { openVerifiedLibraryMedia } from '../library/verified-library-media';
 import { boundTextbookSourceCandidate, lessonSourceFingerprint, loadTextbookSourceCandidates, sourceFingerprint, type TextbookSourceCandidate } from './textbook-source-candidates';
 import { makeTeachingSourceSnapshot, teachingTextHash } from './textbook-teaching-package';
 import { assertConformityExtraction, editionConformity, editionDiscrepancy, readEditionConformities } from './textbook-edition-conformity';
+import { textbookExtractionIdentityMatches } from './textbook-extraction-identity';
 
 const names = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
 type SourceDocument = { id: string; subject: Subject; grade: number; term: 'upper' | 'lower'; title: string; edition: string;
@@ -235,7 +236,7 @@ export class TextbookRegistryService {
         if (createHash('sha256').update(bytes).digest('hex') !== source.extractedSha256) throw Error('extraction_changed');
       } finally { await opened.handle.close(); }
       const extracted = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
-      if (extracted.format !== 'chinatextbook-extraction-v1' || extracted.id !== source.id || extracted.sourceSha256 !== source.sha256 ||
+      if (!textbookExtractionIdentityMatches(extracted, source) ||
         !Array.isArray(extracted.pages) || extracted.pages.length !== source.pages || extracted.pages.some((row: any, index: number) => !row || row.page !== index + 1 || typeof row.text !== 'string')) throw Error('extraction_identity_changed');
       if (signal?.aborted) throw Error('source_aborted');
       return extracted;

@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "position",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-position-v1.json",
+      "sha256": "e48e6baccf8f081c29a6dff3ca9686a1bea75391d3b26c527018563fff08b870",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit2:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 14,
+        "pageEnd": 18,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道为原创未审候选，每目标3道即时、4道拟议间隔，均不等独立题族或充分库存。位置按明确参照、面向和范围核，真实操作、声音与帮助另留，不自动发布或认定真人学习。",
+  "groups": [
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:above-below",
+      "structure": "name-current-reference",
+      "familyProposal": "a8e88021-name-current-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两个对象明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "上下关系正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "换参照表达一致",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "杯子在盒子的上面，盒子在杯子的下面；参照对象相同而表达方向相反，不说杯子永远在上。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创说明：上层架有杯子，下层架有盒子，两层上下对应。用杯子和盒子分别作开头，说两句位置。",
+          "answer": "杯子在盒子的上面，盒子在杯子的下面；参照对象相同而表达方向相反，不说杯子永远在上。",
+          "analysis": "杯子在盒子的上面，盒子在杯子的下面；参照对象相同而表达方向相反，不说杯子永远在上。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创说明：书放在桌面上，纸箱放在桌面下。请说书相对纸箱的位置，并说明参照对象。",
+          "answer": "书在纸箱的上面，参照的是纸箱；不能只说上面而不指对象，也不据此补房间其他未知位置。",
+          "analysis": "书在纸箱的上面，参照的是纸箱；不能只说上面而不指对象，也不据此补房间其他未知位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创说明：蓝盒在红盒上面，随后两盒交换上下位置。现在蓝盒相对红盒在哪里？",
+          "answer": "现在蓝盒在红盒下面，位置按当前交换后的场景判断；原先在上面不是蓝盒永久属性。",
+          "analysis": "现在蓝盒在红盒下面，位置按当前交换后的场景判断；原先在上面不是蓝盒永久属性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创图注：上排中格是鸟，下排中格是鱼。按图面上下，说鱼和鸟的位置关系。",
+          "answer": "鱼在鸟的下面，鸟在鱼的上面；按明确图面关系说，不把鱼现实中可能游动的方向补进图注。",
+          "analysis": "鱼在鸟的下面，鸟在鱼的上面；按明确图面关系说，不把鱼现实中可能游动的方向补进图注。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创说明只说杯子在架子上，没有给盒子的位置。能否断定杯子在盒子上面？还需什么？",
+          "answer": "不能确定，还需知道盒子相对杯子的位置；物品通常怎么摆不能补当前未给的关系。",
+          "analysis": "不能确定，还需知道盒子相对杯子的位置；物品通常怎么摆不能补当前未给的关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创说明：灯在桌子上方，盒子在桌子下方。说盒子相对灯的上下关系，保留这次的参照。",
+          "answer": "盒子在灯的下方，参照对象是灯；依据当前两个相对桌子的上下位置，不当所有房间都如此。",
+          "analysis": "盒子在灯的下方，参照对象是灯；依据当前两个相对桌子的上下位置，不当所有房间都如此。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-name-current-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创说明：甲卡在乙卡上面。题目要以乙卡为开头回答，请写完整位置句，不重复原句当完成。",
+          "answer": "乙卡在甲卡的下面；对象与参照互换后方向相反，仍描述同一当前关系，不把要求忽略。",
+          "analysis": "乙卡在甲卡的下面；对象与参照互换后方向相反，仍描述同一当前关系，不把要求忽略。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:front-behind",
+      "structure": "given-facing-and-order",
+      "familyProposal": "a8e88021-given-facing-and-order",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "先核给定面向",
+          "weight": 0.4
+        },
+        {
+          "criterion": "顺序与前后相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺失条件保留未知",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "甲在乙前面，因甲靠队首且面向已明确；不根据甲在纸面哪边来替代当前队伍顺序。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍按队首到队尾依次甲、乙、丙，大家面朝队首。甲在乙的前面还是后面？说依据。",
+          "answer": "甲在乙前面，因甲靠队首且面向已明确；不根据甲在纸面哪边来替代当前队伍顺序。",
+          "analysis": "甲在乙前面，因甲靠队首且面向已明确；不根据甲在纸面哪边来替代当前队伍顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍朝图面右方，按从图面左到右依次甲、乙、丙。谁在乙前面？请先说面向。",
+          "answer": "面向图面右方，乙前面是丙，乙后面是甲；图面左方不因常见例图就永远当队首。",
+          "analysis": "面向图面右方，乙前面是丙，乙后面是甲；图面左方不因常见例图就永远当队首。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍朝图面左方，从图面左到右依次丁、戊、己。戊相对己在前面还是后面？",
+          "answer": "戊在己前面，因为朝图面左方，戊比己靠前；结论依据本次面向和相对顺序。",
+          "analysis": "戊在己前面，因为朝图面左方，戊比己靠前；结论依据本次面向和相对顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡仅写甲乙并排站，没写两人面向，也没有队首。可以确定甲一定在乙前面吗？",
+          "answer": "不能；并排与未给面向不足以确定前后，应先确认队伍或朝向条件，不能凭名字先后猜。",
+          "analysis": "不能；并排与未给面向不足以确定前后，应先确认队伍或朝向条件，不能凭名字先后猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创队伍从队首到队尾为红帽、蓝帽、黄帽，均面向队首。请说蓝帽与黄帽的前后关系。",
+          "answer": "蓝帽在黄帽前面，黄帽在蓝帽后面；同一关系可从双方表达，不能把队尾当指定人物前方。",
+          "analysis": "蓝帽在黄帽前面，黄帽在蓝帽后面；同一关系可从双方表达，不能把队尾当指定人物前方。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创三辆玩具车同朝图面右方，从右到左为小车、卡车、客车。卡车在客车的哪一面？",
+          "answer": "卡车在客车前面，因更靠行进的图面右方；车大小或车型不决定谁在前面。",
+          "analysis": "卡车在客车前面，因更靠行进的图面右方；车大小或车型不决定谁在前面。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-given-facing-and-order-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创队伍朝图面左，顺序从左到右为甲、乙、丙、丁。丁说丙在我前面，这与条件相容吗？",
+          "answer": "相容，丙位于丁的图面左侧，而队伍朝左，所以丙在丁前面；按给定朝向核，不套朝右答案。",
+          "analysis": "相容，丙位于丁的图面左侧，而队伍朝左，所以丙在丁前面；按给定朝向核，不套朝右答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:own-left-right",
+      "structure": "body-reference-and-handedness",
+      "familyProposal": "a8e88021-body-reference-and-handedness",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "按本人身体辨左右",
+          "weight": 0.4
+        },
+        {
+          "criterion": "惯用手不替代定义",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际声音及支持方式可核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "左右是本人身体两侧，用左手写字的人也有右手；实际动作或示意和声音另核，不能只背参考。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请本人用可完成的动作或清楚身体示意说明左手和右手，再说用左手写字的人是否就没有右手。",
+          "answer": "左右是本人身体两侧，用左手写字的人也有右手；实际动作或示意和声音另核，不能只背参考。",
+          "analysis": "左右是本人身体两侧，用左手写字的人也有右手；实际动作或示意和声音另核，不能只背参考。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人按清楚的身体示意或已有可靠标注，分别指出左耳、右耳；说明本次是自己完成还是有人指点。",
+          "answer": "两侧按本人身体，标注和指点来源实际记录；不要求不便动作，也不把他人动作或文字代本人表达。",
+          "analysis": "两侧按本人身体，标注和指点来源实际记录；不要求不便动作，也不把他人动作或文字代本人表达。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创人物说我用左手写字，另一人说写字的一定是右手。请本人解释这句话哪里不可靠。",
+          "answer": "写字惯用手因人而异，不能把所有人的写字手定义成右；本人口头说明另留，不强制改变惯用手。",
+          "analysis": "写字惯用手因人而异，不能把所有人的写字手定义成右；本人口头说明另留，不强制改变惯用手。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人用身体或明确示意分别说左肩与右肩；如果用了标注或他人提醒，请如实说明。",
+          "answer": "左右按本人身体核，支持方式可不同且保留帮助；不能由一次说对推所有身体方位已独立稳定。",
+          "analysis": "左右按本人身体核，支持方式可不同且保留帮助；不能由一次说对推所有身体方位已独立稳定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡没有标注一只手的所属人物和朝向，只说这是写字手。本人能否确定它是右手？说明缺少什么。",
+          "answer": "不能只据写字用途确定，还需清楚的人体方位或可靠标注；可能左手写字，不能凭常见习惯猜。",
+          "analysis": "不能只据写字用途确定，还需清楚的人体方位或可靠标注；可能左手写字，不能凭常见习惯猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人说一项左手或右手实际能完成的日常动作，先指出哪一侧；动作不便可用明确示意解释。",
+          "answer": "动作按本人情况说明，左右用身体或标注核查；不规定每人同一只手做同一事，不造实际操作记录。",
+          "analysis": "动作按本人情况说明，左右用身体或标注核查；不规定每人同一只手做同一事，不造实际操作记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-body-reference-and-handedness-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请本人说明辨自己的左右与看图面左、右有什么需要先说清的；举一个明确标注的例子。",
+          "answer": "要先说按本人身体还是看图面约定；例子须有明确参照，当前声音另核，不强求镜像转换。",
+          "analysis": "要先说按本人身体还是看图面约定；例子须有明确参照，当前声音另核，不强求镜像转换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:stated-reference",
+      "structure": "state-picture-convention",
+      "familyProposal": "a8e88021-state-picture-convention",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "方向约定先说明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "关系符合约定",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不猜人物未知朝向",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "图面左边是杯子，按已给看图人的约定判断；不改为某个未给朝向人物自己的左侧。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡约定按看图人的图面左右，一排从左到右为杯子、书、盒子。书的图面左边是什么？",
+          "answer": "图面左边是杯子，按已给看图人的约定判断；不改为某个未给朝向人物自己的左侧。",
+          "analysis": "图面左边是杯子，按已给看图人的约定判断；不改为某个未给朝向人物自己的左侧。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡约定图面左右，一排从左到右为红卡、蓝卡、黄卡。请以蓝卡为参照说右边物品。",
+          "answer": "按图面约定，蓝卡右边是黄卡；参照蓝卡和方向约定均明确，不只写右边而不指对象。",
+          "analysis": "按图面约定，蓝卡右边是黄卡；参照蓝卡和方向约定均明确，不只写右边而不指对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡说一个人旁边有球，但没给人面朝哪里，也没给球在哪一侧。能确定球在他自己的左边吗？",
+          "answer": "不能，缺人物朝向和球的相对位置；先问清条件，不把物品常见位置或图面左边直接当人物左边。",
+          "analysis": "不能，缺人物朝向和球的相对位置；先问清条件，不把物品常见位置或图面左边直接当人物左边。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡约定只按图面左右，左列放圆片、中列放星片、右列放方片。圆片在星片哪一边？",
+          "answer": "圆片在星片图面左边，方片在其图面右边；结论按列的位置和图面约定，不涉及人物自身转换。",
+          "analysis": "圆片在星片图面左边，方片在其图面右边；结论按列的位置和图面约定，不涉及人物自身转换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡给甲乙两人同朝图面上方，另明确规定本题只按图面左右说摆物位置。还需要猜谁惯用哪手吗？",
+          "answer": "不需要，题目已规定图面左右；惯用手与当前纸面位置无关，不能由写字习惯改变图面方向。",
+          "analysis": "不需要，题目已规定图面左右；惯用手与当前纸面位置无关，不能由写字习惯改变图面方向。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡一排从图面左到右为猫卡、狗卡、兔卡。问题按图面方向，以兔卡为参照说狗卡在哪边。",
+          "answer": "狗卡在兔卡图面左边；参照改成兔卡后按当前位置回答，不把原以狗卡为参照的右边照搬。",
+          "analysis": "狗卡在兔卡图面左边；参照改成兔卡后按当前位置回答，不把原以狗卡为参照的右边照搬。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-state-picture-convention-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创卡只写左边放书，没有说明相对哪个物品或谁的左边。为了实际摆放，你先需要问清什么？",
+          "answer": "先问清参照物以及按图面还是谁的身体左右；缺这两项时有多种摆法，不能任猜并声称唯一正确。",
+          "analysis": "先问清参照物以及按图面还是谁的身体左右；缺这两项时有多种摆法，不能任猜并声称唯一正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:place-by-relation",
+      "structure": "place-and-check-paper",
+      "familyProposal": "a8e88021-place-and-check-paper",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "实际摆放对应指令",
+          "weight": 0.4
+        },
+        {
+          "criterion": "参照与方向明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人原稿及帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "左杯、中书、右盒，各指令可核；本人原图和帮助实际保留，文字参考不是已画好或已摆好证据。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人画一张简单三格横排图，约定按图面左右：中格写书，书左边写杯，右边写盒，保存实际图。",
+          "answer": "左杯、中书、右盒，各指令可核；本人原图和帮助实际保留，文字参考不是已画好或已摆好证据。",
+          "analysis": "左杯、中书、右盒，各指令可核；本人原图和帮助实际保留，文字参考不是已画好或已摆好证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人画上下两格，中间写清方向约定：上格放圆、下格放星。再在原图旁用完整句说明星的位置。",
+          "answer": "星在圆下面，圆在星上面；实际图与完整句相容，若未画则保留未完成，不用文字答案代图。",
+          "analysis": "星在圆下面，圆在星上面；实际图与完整句相容，若未画则保留未完成，不用文字答案代图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人画三格横排，先在中格写甲，再按图面约定在甲右边写乙，甲左边写丙。留下本人图稿。",
+          "answer": "图面从左到右为丙甲乙，参照甲核两条指令；左右不能因名字顺序改变，实际帮助另记。",
+          "analysis": "图面从左到右为丙甲乙，参照甲核两条指令；左右不能因名字顺序改变，实际帮助另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人画一个中格和它上下左右的四格，约定图面方向。中格写书，上面写灯，下面写盒，左边写杯。",
+          "answer": "灯上、盒下、杯左均相对书；右格可空，未指定处不强制填，实际图稿与提示记录可核。",
+          "analysis": "灯上、盒下、杯左均相对书；右格可空，未指定处不强制填，实际图稿与提示记录可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人画两格上下图，原先甲在乙上。另画第二幅让乙在甲上，再说明究竟改了什么，保留两幅。",
+          "answer": "第二幅乙上甲下，位置关系改变而对象身份不变；须核两幅本人图，不能只口头说交换当已画。",
+          "analysis": "第二幅乙上甲下，位置关系改变而对象身份不变；须核两幅本人图，不能只口头说交换当已画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人用圆纸片和方纸片或明确画图，按图面约定先把圆放方的左边，再核圆是否真的在指定侧。",
+          "answer": "结果圆在方左，方法可用安全纸片或本人图；实际操作和口头复述分开，未做不由示例填完成。",
+          "analysis": "结果圆在方左，方法可用安全纸片或本人图；实际操作和口头复述分开，未做不由示例填完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-position-place-and-check-paper-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人自拟两条清楚的摆放指令，必须给参照物和图面方向，再画出能同时满足的结果，保留原稿。",
+          "answer": "指令与图应逐条相容，合理不同布局可接受；若两条互相冲突则指出并修订，不编他人已照做反馈。",
+          "analysis": "指令与图应逐条相容，合理不同布局可接受；若两条互相冲突则指出并修订，不编他人已照做反馈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:one-or-all",
+      "structure": "nearest-versus-whole-range",
+      "familyProposal": "a8e88021-nearest-versus-whole-range",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "参照对象明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "一个与所有范围准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把参照者计入",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "紧挨前面是甲，后面的所有人为丙和丁；不把乙本人算入，也不只列丙代所有。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍按队首到队尾为甲乙丙丁，均面向队首。乙前面紧挨的一个是谁？乙后面的所有人是谁？",
+          "answer": "紧挨前面是甲，后面的所有人为丙和丁；不把乙本人算入，也不只列丙代所有。",
+          "analysis": "紧挨前面是甲，后面的所有人为丙和丁；不把乙本人算入，也不只列丙代所有。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍从队首到队尾为红、蓝、黄、绿。问黄后面的所有对象，请列全并说明是否包含黄。",
+          "answer": "只有绿在黄后面，不包括黄；所有的范围可能恰好一人，按当前位置核，不能为所有硬添对象。",
+          "analysis": "只有绿在黄后面，不包括黄；所有的范围可能恰好一人，按当前位置核，不能为所有硬添对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创队伍按队首到队尾为甲乙丙丁戊。问丙前面所有人和前面紧挨一个，两个答案一样吗？",
+          "answer": "前面所有为甲乙，紧挨一个为乙，不同要求范围不同；参照丙本人不列入任何一组。",
+          "analysis": "前面所有为甲乙，紧挨一个为乙，不同要求范围不同；参照丙本人不列入任何一组。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创队伍从队首到队尾为小圆、小方、小星。问小圆后面的所有对象，有人只答小方。怎样补？",
+          "answer": "应为小方和小星；只答小方仅给最近一个，漏了小星，需沿指定方向把范围列完整。",
+          "analysis": "应为小方和小星；只答小方仅给最近一个，漏了小星，需沿指定方向把范围列完整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创队伍按队首到队尾为甲乙丙。问丙后面还有人吗？没有时可以为了回答所有而补一个名字吗？",
+          "answer": "丙后面无人，应如实说没有；不能编名字，所有范围也可为空，参照丙本人不是其后面的人。",
+          "analysis": "丙后面无人，应如实说没有；不能编名字，所有范围也可为空，参照丙本人不是其后面的人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创队伍从队首到队尾为白蓝红黄。问题先问红后面紧挨一个，再问红前面所有对象，依序答。",
+          "answer": "红后面紧挨是黄，前面所有为白蓝；前后与范围各按题目核，不把两个方向答案交换。",
+          "analysis": "红后面紧挨是黄，前面所有为白蓝；前后与范围各按题目核，不把两个方向答案交换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-nearest-versus-whole-range-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创队伍按队首到队尾为甲乙丙丁戊己。以丁为参照，比较前面一个与后面所有的回答范围。",
+          "answer": "前面紧挨一个为丙，后面所有为戊己；分别核相邻和全范围，不包括丁，也不漏己。",
+          "analysis": "前面紧挨一个为丙，后面所有为戊己；分别核相邻和全范围，不包括丁，也不漏己。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "position",
+      "atomId": "source:math:g1:a8e88021:route-description",
+      "structure": "adjacent-route-around-block",
+      "familyProposal": "a8e88021-adjacent-route-around-block",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按给定图面方向",
+          "weight": 0.4
+        },
+        {
+          "criterion": "每步相邻且不穿障碍",
+          "weight": 0.4
+        },
+        {
+          "criterion": "起点终点与有效多解",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可行：经中排左格、上排左格到上排中格，三步相邻且避开障碍；不需穿越中心格。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创三乘三图：下排左格起点，上排中格终点，中排中格障碍，其余可走。按图面方向，路线上、上、右可行吗？",
+          "answer": "可行：经中排左格、上排左格到上排中格，三步相邻且避开障碍；不需穿越中心格。",
+          "analysis": "可行：经中排左格、上排左格到上排中格，三步相邻且避开障碍；不需穿越中心格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一原创图：下排左起点，上排中终点，正中障碍。有人走右、上、上，第二步会到哪里，是否可行？",
+          "answer": "右到下排中，再上到正中障碍，所以此路线不可行；不能因三步就当正确，需逐格核条件。",
+          "analysis": "右到下排中，再上到正中障碍，所以此路线不可行；不能因三步就当正确，需逐格核条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创三乘三图：上排左起点、下排左终点、正中格障碍，其余可走。给一条有效路线并说明。",
+          "answer": "可走下、下，沿左列两步到下排左格，不经过中心障碍；其他满足条件路线也可接受。",
+          "analysis": "可走下、下，沿左列两步到下排左格，不经过中心障碍；其他满足条件路线也可接受。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创图：下排左起点，上排中终点，正中障碍，其余可走。路线右、右、上、上、左比三步例子长，还能有效吗？",
+          "answer": "有效：沿下排到右列，再到上排右，最后左到终点，避开中心障碍；未要求最短时不因长就判错。",
+          "analysis": "有效：沿下排到右列，再到上排右，最后左到终点，避开中心障碍；未要求最短时不因长就判错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创三乘三图：下排中起点、上排中终点、正中障碍，其余可走。路线左、上、上、右可行吗？逐步核。",
+          "answer": "可行：下左、中左、上左、上中，四步相邻且不穿正中障碍；起终点与当前图一致。",
+          "analysis": "可行：下左、中左、上左、上中，四步相邻且不穿正中障碍；起终点与当前图一致。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创三乘三图：下排右起点、上排右终点、正中障碍，其余可走。直接上、上与斜穿中间到终点哪种符合只上下左右？",
+          "answer": "上、上沿右列有效；斜走不符合只到上下左右相邻格的约定，即便没有障碍也不能略过规则。",
+          "analysis": "上、上沿右列有效；斜走不符合只到上下左右相邻格的约定，即便没有障碍也不能略过规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-position-adjacent-route-around-block-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创图未给起点，只给终点在上排中格及正中障碍。能否断定所有人都应先走上、上、右？需先补什么？",
+          "answer": "不能，要先明确当前起点、可走格和方向约定；旧例路线不适用所有起点，不凭熟悉路径代新条件。",
+          "analysis": "不能，要先明确当前起点、可走格和方向约定；旧例路线不适用所有起点，不凭熟悉路径代新条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

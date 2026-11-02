@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T15:02:57.440Z",
+  "passed": true,
+  "outputBytesUnchanged": true,
+  "privateQaFilesRequired": false,
+  "files": [
+    {
+      "path": "scripts/content/exact-source-candidate-kit.cjs",
+      "sha256": "7d117efbb48490867472d5aa260ff5f8ca604f1e28d5b0630dacc4e5c566d2d8"
+    },
+    {
+      "path": "scripts/content/build-math-g1-preparation-candidates.cjs",
+      "sha256": "7a646587557859c7eba877076d373923eede6b8a65366f3e6f948a7cc0c67f1e"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-preparation-v1.json",
+      "sha256": "8c9d78b8d875240b56e25864b4a8adba50676b6c2e71462f4d1eb9e734330746"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-preparation-v1.json",
+      "sha256": "4356a310a0129a12e5dd8465d89a1554f3050461b8d8dd5eec525e94e9c84052"
+    }
+  ],
+  "newTargets": 7,
+  "questions": 49,
+  "immediate": 21,
+  "proposedRetention": 28,
+  "modes": {
+    "audio_record": 14,
+    "image_upload": 7,
+    "short_answer": 28
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "at": "2026-11-02T15:49:26.060Z",
+  "baseCommit": "3a2dd17fba23d993a4f04635b220a997a9d839ca",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD 3a2dd17fba23d993a4f04635b220a997a9d839ca\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-extraction-identity.ts",
+      "bytes": 1155,
+      "sha256": "3aca79607a3728c420db9138f9d3cb45e16f65ea1a57ccfd87dffa649fc74024",
+      "gitNormalizedSha256": "3aca79607a3728c420db9138f9d3cb45e16f65ea1a57ccfd87dffa649fc74024"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-extraction-identity.test.ts",
+      "bytes": 2687,
+      "sha256": "aa31cae643634eb87a8cc08191f620f02fba6b05e2f9d0f28628c1acb2c7a273",
+      "gitNormalizedSha256": "aa31cae643634eb87a8cc08191f620f02fba6b05e2f9d0f28628c1acb2c7a273"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+      "bytes": 28091,
+      "sha256": "da95efaea8a31e70708b2c7108257951324a92c48a588d575b7fe10a9c1d1ba9",
+      "gitNormalizedSha256": "722c68195ac39ac17360ac25972174601802d4f781d1ebc7a9885a06f808a030"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-lesson-source.integration.test.ts",
+      "bytes": 15926,
+      "sha256": "594fa54338df3eda13e82129e3ac49802624c509a05bfeb8ea528b5e2a22accf",
+      "gitNormalizedSha256": "ebf248d4ac83c61641ec9a61e45c36036d68f6667ba98813eaf19c8f14add2e1"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+      "bytes": 10198,
+      "sha256": "ecd06f17de987e66d72f5d84c84529762fb25de91294794c424e8cff7f98966a",
+      "gitNormalizedSha256": "ecd06f17de987e66d72f5d84c84529762fb25de91294794c424e8cff7f98966a"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts",
+      "bytes": 14352,
+      "sha256": "a68a1a4831374f3e9035a400a33b99ab9426636ea54387b209e94ec5f5edfbfa",
+      "gitNormalizedSha256": "556751b440388c8cd5554bb4189d311c6b5e8ecf0f4fa9aada0ee956433e2daa"
+    },
+    {
+      "path": "resources/curriculum/textbooks-v1.json",
+      "bytes": 1075435,
+      "sha256": "c92940a15485ecda424f4bca99a2f6a93dda818411bbe527fc1b7a6a64dba3d9",
+      "gitNormalizedSha256": "c92940a15485ecda424f4bca99a2f6a93dda818411bbe527fc1b7a6a64dba3d9"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "bytes": 27984,
+      "sha256": "8b2984e861207d153ba2130f632c7f6a5466e2027c2c055ad2f19cdd0d7376cf",
+      "gitNormalizedSha256": "8b2984e861207d153ba2130f632c7f6a5466e2027c2c055ad2f19cdd0d7376cf"
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "bytes": 686411,
+      "sha256": "5b73a7c4c46690c49a770d9c215ac6ae5ead6f8dc6abc6da4288c3b15c39b22a",
+      "gitNormalizedSha256": "ec8d47fb32031911b5fb1c337d67600126a7eb324c07aec0e0f244ed2dfe755d"
+    },
+    {
+      "path": "scripts/content/exact-source-candidate-kit.cjs",
+      "bytes": 7313,
+      "sha256": "7e05deef924020af07225be6b34083e7390617aec7933d84bac056e7188af92c",
+      "gitNormalizedSha256": "7e05deef924020af07225be6b34083e7390617aec7933d84bac056e7188af92c"
+    },
+    {
+      "path": "scripts/content/build-math-g1-preparation-candidates.cjs",
+      "bytes": 22344,
+      "sha256": "7a646587557859c7eba877076d373923eede6b8a65366f3e6f948a7cc0c67f1e",
+      "gitNormalizedSha256": "7a646587557859c7eba877076d373923eede6b8a65366f3e6f948a7cc0c67f1e"
+    },
+    {
+      "path": "scripts/content/build-math-g1-position-candidates.cjs",
+      "bytes": 22976,
+      "sha256": "98a0c39f67d66a5f4528f138e560aa611efed71eac9e579d790d6b4e7e6fd906",
+      "gitNormalizedSha256": "98a0c39f67d66a5f4528f138e560aa611efed71eac9e579d790d6b4e7e6fd906"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-preparation-v1.json",
+      "bytes": 16351,
+      "sha256": "8c9d78b8d875240b56e25864b4a8adba50676b6c2e71462f4d1eb9e734330746",
+      "gitNormalizedSha256": "8c9d78b8d875240b56e25864b4a8adba50676b6c2e71462f4d1eb9e734330746"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-position-v1.json",
+      "bytes": 16495,
+      "sha256": "e48e6baccf8f081c29a6dff3ca9686a1bea75391d3b26c527018563fff08b870",
+      "gitNormalizedSha256": "e48e6baccf8f081c29a6dff3ca9686a1bea75391d3b26c527018563fff08b870"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-preparation-v1.json",
+      "bytes": 47683,
+      "sha256": "4356a310a0129a12e5dd8465d89a1554f3050461b8d8dd5eec525e94e9c84052",
+      "gitNormalizedSha256": "4356a310a0129a12e5dd8465d89a1554f3050461b8d8dd5eec525e94e9c84052"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-position-v1.json",
+      "bytes": 48356,
+      "sha256": "3f3e0fd30adcc83a94b345f085695dbbac15614b183aae35bee0f92588336654",
+      "gitNormalizedSha256": "3f3e0fd30adcc83a94b345f085695dbbac15614b183aae35bee0f92588336654"
+    },
+    {
+      "path": "scripts/qa/source-candidate-preflight.cjs",
+      "bytes": 7532,
+      "sha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096",
+      "gitNormalizedSha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096"
+    },
+    {
+      "path": "scripts/qa/verify-source-candidate-preflight.cjs",
+      "bytes": 4945,
+      "sha256": "d870efa0a0b074956491c988884fcd2f52b2bd24f23fe6f3a0d4cd736486b088",
+      "gitNormalizedSha256": "d870efa0a0b074956491c988884fcd2f52b2bd24f23fe6f3a0d4cd736486b088"
+    },
+    {
+      "path": "scripts/qa/verify-source-candidates.cjs",
+      "bytes": 18143,
+      "sha256": "fafc8b3df706932885ba23e755221bdfcee3e109b7d129ed33624e571929e8bb",
+      "gitNormalizedSha256": "fafc8b3df706932885ba23e755221bdfcee3e109b7d129ed33624e571929e8bb"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+      "bytes": 70145,
+      "sha256": "16e7e05ca79a0957e955eeb34e4c4309d0c94caebaed85b7f1c1aa1cbb07d64d",
+      "gitNormalizedSha256": "dcbc55ce65da46c310ebd18d2224e2e370d918e3b3b18a0d53874b843140f0e1"
+    },
+    {
+      "path": "scripts/assets/reviewed_original_textbooks.py",
+      "bytes": 5380,
+      "sha256": "6f7154f07f3f18e09654f6801b638b01dda76d1ae51002b1182e3e3f94920996",
+      "gitNormalizedSha256": "6f7154f07f3f18e09654f6801b638b01dda76d1ae51002b1182e3e3f94920996"
+    },
+    {
+      "path": "scripts/assets/test_reviewed_original_textbooks.py",
+      "bytes": 3970,
+      "sha256": "6b4d6d157f17b98dccb299bfad1141c2004ae3819ab139516d448e8a009d43da",
+      "gitNormalizedSha256": "6b4d6d157f17b98dccb299bfad1141c2004ae3819ab139516d448e8a009d43da"
+    },
+    {
+      "path": "scripts/assets/build_textbook_registry.py",
+      "bytes": 7258,
+      "sha256": "8e1cc073a2a2c7d8b2ec91f4ab26f132c18752f5cecabde654073c6c3d71b726",
+      "gitNormalizedSha256": "8e1cc073a2a2c7d8b2ec91f4ab26f132c18752f5cecabde654073c6c3d71b726"
+    },
+    {
+      "path": "scripts/assets/audit_textbook_sources.py",
+      "bytes": 5200,
+      "sha256": "68fc86a57d6a643a89e8ba363bebd24e60bb922e1f29a80928a841537fbc54b2",
+      "gitNormalizedSha256": "68fc86a57d6a643a89e8ba363bebd24e60bb922e1f29a80928a841537fbc54b2"
+    },
+    {
+      "path": "scripts/assets/build_textbook_mapping_candidates.py",
+      "bytes": 18448,
+      "sha256": "c461cbba78ce537ef90d6a0649be8c6f3e9e9539a5610564cb0d6d44de5d58e0",
+      "gitNormalizedSha256": "c461cbba78ce537ef90d6a0649be8c6f3e9e9539a5610564cb0d6d44de5d58e0"
+    },
+    {
+      "path": "scripts/assets/test_textbook_mapping_candidates.py",
+      "bytes": 7655,
+      "sha256": "0ec3ec5e36bb23a99e7d3d6903deb835299cd4a9049e49f650a2cac341cd4903",
+      "gitNormalizedSha256": "0ec3ec5e36bb23a99e7d3d6903deb835299cd4a9049e49f650a2cac341cd4903"
+    },
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "bytes": 30366,
+      "sha256": "6c8f84c733cef917356e5de164cadb32976211f9fb97e9fe152d3f5ca2ec4f83",
+      "gitNormalizedSha256": "6c8f84c733cef917356e5de164cadb32976211f9fb97e9fe152d3f5ca2ec4f83"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 14247,
+      "sha256": "bbe20ca99323effb8634f6f6a9f05925bcc2857eba0865408fc9713285695b29",
+      "gitNormalizedSha256": "4f0248dc6b5ab5747cf2f54d2c2b36e2dfc44070edb42a34eafb95d1d840c910"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 177446,
+      "sha256": "7c9d6efca067e7a2c255d032910cd5f536fa782651ba3dc143ca3e2116676dc6",
+      "gitNormalizedSha256": "9ca1f597421acc18b3457f66dcf65794b258a0a03e01ede258a46cf60eb2c70a"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 103494,
+      "sha256": "ccb5e754c440c8c2abfdd7f74edcacf69bdf65977631e0aca4191b116fad4166",
+      "gitNormalizedSha256": "d6863991edc9934be1557c6877e4ed8c8cfe443d8b51f76211897a72438a9215"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 108909,
+      "sha256": "550b8606a80a8d77145b7f61bbc1830df4892bde9378bb9a1f3fe69e12a19a17",
+      "gitNormalizedSha256": "1a1532fe9688287ef1195ab279302e7694ea8f786aea5412a56beffb24545d24"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 18978,
+      "sha256": "5ba0524cb91180119edc0acbdc8abc0fe20ca8a07c2f492a54f3233201c35165",
+      "gitNormalizedSha256": "46b545b1e704002f1fe7197d2a5cc04016dbacbf3921a2e9cc12b707335c557c"
+    },
+    {
+      "path": "doc/product/209-exact-math-source-and-reusable-candidates.md",
+      "bytes": 5675,
+      "sha256": "54f1635d31428adb53d4bc20919884047a68e8c74bad1af5d898ff8faf5fdb93",
+      "gitNormalizedSha256": "54f1635d31428adb53d4bc20919884047a68e8c74bad1af5d898ff8faf5fdb93"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 37636,
+      "sha256": "ad3b2e661ef2eb63791ae4240b63cecac9029f4f5d8aef0c2e95ee62ad73aaee",
+      "gitNormalizedSha256": "3e20d2996a37a41d40021640ca3ee2f8df1b47db83d62f96ec6be1df4889a6e0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/position/math-g1-a8e88021-position-v1-desktop.png",
+      "bytes": 257799,
+      "sha256": "3504fb31cd406e3e09346091be8a62fb1bbf5f20ec2914dd3bce13fa8b2d32ea",
+      "gitNormalizedSha256": "628963e44403e9ebc730f44e45989e491f116ad62cc45b661ef3c11954c3933b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/position/math-g1-a8e88021-position-v1-mobile-table.png",
+      "bytes": 68256,
+      "sha256": "dfaa9482e8aedfa672392a09356a07fd42fb9bdc4d92717d2372384ccd318e29",
+      "gitNormalizedSha256": "5c48aa7719cf1c01b2a3aa300ffea96804ec15853ea857206f0b8fd0ebc0f3b0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/position/math-g1-a8e88021-position-v1-table.png",
+      "bytes": 13346,
+      "sha256": "5acb4272ef4fce573fd7c3e27a3bea4e4d022f465567e0c59e5e1542235dfb94",
+      "gitNormalizedSha256": "3de951f968298d2769d0a778505e91b7433ea60d5abaf357cc2c4250f4d2b552"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/position/receipt.json",
+      "bytes": 827,
+      "sha256": "8e892b38cd5eed43d22bb35dafa837f0ba25c38542e9a25e0d8bbf1d4a9d8605",
+      "gitNormalizedSha256": "8e892b38cd5eed43d22bb35dafa837f0ba25c38542e9a25e0d8bbf1d4a9d8605"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/position/runner.cjs",
+      "bytes": 17490,
+      "sha256": "675dbe55478f81a274273ecc0b83bfd16a32651341dc644693bde213cc351a9a",
+      "gitNormalizedSha256": "675dbe55478f81a274273ecc0b83bfd16a32651341dc644693bde213cc351a9a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/preparation/math-g1-a8e88021-preparation-v1-desktop.png",
+      "bytes": 227867,
+      "sha256": "36bce24619c1cfd1a0ff458fc55a04189a3a29d174ea2d41f613bc7793265215",
+      "gitNormalizedSha256": "52c6e6169dfba31e3527a6fe9679f3b3a73f6436eb82e6c68c1aab6f8b9708ea"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/preparation/math-g1-a8e88021-preparation-v1-mobile-table.png",
+      "bytes": 82843,
+      "sha256": "187d36996e7e6bd0a5873fbc91ec3789f1af871468408e6fbc1a36c605c88488",
+      "gitNormalizedSha256": "e20e2444454228672d93377b190a29dd809580240f14491c10a189e7d9af7673"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/preparation/math-g1-a8e88021-preparation-v1-table.png",
+      "bytes": 27504,
+      "sha256": "b3c566bddce9aa412f62bce628a2cce527c0b80dad26c1be4037cb0c1b249df4",
+      "gitNormalizedSha256": "bac840d19fa4567dd1b058bd71a28a30fd94dfe17019a92285782a3fa600d8ca"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/preparation/receipt.json",
+      "bytes": 839,
+      "sha256": "eea93eb9474749fcadfd88eb5e50c0b871e09d070444ea4151595d04496aaf68",
+      "gitNormalizedSha256": "eea93eb9474749fcadfd88eb5e50c0b871e09d070444ea4151595d04496aaf68"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/browser/preparation/runner.cjs",
+      "bytes": 17454,
+      "sha256": "9abd54ddc4fe1e9946b55c66f660db08f6ce2d23f9e89e53a30df4add162db8a",
+      "gitNormalizedSha256": "9abd54ddc4fe1e9946b55c66f660db08f6ce2d23f9e89e53a30df4add162db8a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/all-chinese-originals-first.json",
+      "bytes": 2498,
+      "sha256": "beea4ac192b9d7974af6d3c69957de00acec0371f48df1675e21db11a2602ecf",
+      "gitNormalizedSha256": "dcbb9342d62ef9fc3688fb5ff91b5b78c222f8332ceb9c385219df95294f50d9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/all-primary-originals-first.json",
+      "bytes": 70951,
+      "sha256": "01c6a19fc8df3cbcf0b39dca1de13703d46384bb417610e3fc6d82d819b075c9",
+      "gitNormalizedSha256": "f918dc775a0b8a6c59126d28da867f6fffc692a028cd4ceb9b9784fb0e8e4ee4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/asset-tools-regression-first.json",
+      "bytes": 438,
+      "sha256": "6fe6905baabf1e085ba36ef6a58f37cea7f8eb6276c5db8a95e339d74c218265",
+      "gitNormalizedSha256": "2849bae77593b14fb1d562dd9e1f7f10fce202ad48cdb99d7839c18d05c2cace"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/asset-tools-regression-second.json",
+      "bytes": 529,
+      "sha256": "a76bbc356f0b04016f142086ad0b1e1fa50d13c439a8e276a8a23f55d3115627",
+      "gitNormalizedSha256": "3b4cfacf1e9e504d1a5b23afa02385b2e9b0b80dffd710918a01f3b5951fd3df"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-exact-math-archive-scan.json",
+      "bytes": 998,
+      "sha256": "8f9ff036717b395902de0d948082e354dc75919575e0d036baf6af269072d761",
+      "gitNormalizedSha256": "8f9ff036717b395902de0d948082e354dc75919575e0d036baf6af269072d761"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-build-first.json",
+      "bytes": 186,
+      "sha256": "b96836f718e136bc5eabe612c7341f30ee855a462748404226ac68b2ac968d2c",
+      "gitNormalizedSha256": "b96836f718e136bc5eabe612c7341f30ee855a462748404226ac68b2ac968d2c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-diagnostic-final-vitest.json.gz",
+      "bytes": 2264,
+      "sha256": "cb2fd861271c246fc1239018019a2339572b3178c6849d72899411ace7a02d55",
+      "gitNormalizedSha256": "cb2fd861271c246fc1239018019a2339572b3178c6849d72899411ace7a02d55"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-diagnostic-final.json",
+      "bytes": 187,
+      "sha256": "c730bc5af720e064f42e9011f3ff229ef4d648f6c90c8da5a1622a18b2da0be8",
+      "gitNormalizedSha256": "c730bc5af720e064f42e9011f3ff229ef4d648f6c90c8da5a1622a18b2da0be8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-focused-first-inputs.json.gz",
+      "bytes": 98980,
+      "sha256": "edebd8725d6251354ed7c4d9b430dfb88e4d817012c1886f1742566959626b5a",
+      "gitNormalizedSha256": "3cb5a98017b1392663b78d20ae33883d8c16d062982b4865cb2f7d8fb2456cf1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-focused-first-vitest.json.gz",
+      "bytes": 2251,
+      "sha256": "a7ea9ca1d4b0881846bfed59075f45c8288606d632ab7ea968f2682be621b98d",
+      "gitNormalizedSha256": "a7ea9ca1d4b0881846bfed59075f45c8288606d632ab7ea968f2682be621b98d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-focused-first.json",
+      "bytes": 187,
+      "sha256": "e215d7512f7d23523cbad49ad22d44ff7785bce5c0ccbfcd06c9de37492c650a",
+      "gitNormalizedSha256": "e215d7512f7d23523cbad49ad22d44ff7785bce5c0ccbfcd06c9de37492c650a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-full-api-first-inputs.json.gz",
+      "bytes": 98980,
+      "sha256": "edebd8725d6251354ed7c4d9b430dfb88e4d817012c1886f1742566959626b5a",
+      "gitNormalizedSha256": "3cb5a98017b1392663b78d20ae33883d8c16d062982b4865cb2f7d8fb2456cf1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-full-api-first-vitest.json.gz",
+      "bytes": 174263,
+      "sha256": "18b2753871912ae05bcbc83c8dc140eb0c0c07183c1846ec2d8f8d233c9fc5cd",
+      "gitNormalizedSha256": "b3feeccd42bf4911a23c33109bc5982b94d321951e7e3081931af705e5d6b03e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-full-api-first.json",
+      "bytes": 185,
+      "sha256": "5eb98cff5dd171f8da67ef141d2fb87924d0312fc8c62f8faac85fbb2182ce97",
+      "gitNormalizedSha256": "5eb98cff5dd171f8da67ef141d2fb87924d0312fc8c62f8faac85fbb2182ce97"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-type-final.json",
+      "bytes": 186,
+      "sha256": "fcfe6a52c000a5f5f8fcd1938552f022397a4f8390aa2349c989b4dfe81b5fae",
+      "gitNormalizedSha256": "fcfe6a52c000a5f5f8fcd1938552f022397a4f8390aa2349c989b4dfe81b5fae"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/b4-math-type-first.json",
+      "bytes": 186,
+      "sha256": "80bd266451a327f12ddf8e6f5390f26a148ed544fd480e189303a8d7cbc2b3ee",
+      "gitNormalizedSha256": "80bd266451a327f12ddf8e6f5390f26a148ed544fd480e189303a8d7cbc2b3ee"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/content-worklist-math-final.json.gz",
+      "bytes": 116257,
+      "sha256": "a9830a59d0d387c66542a0447ed0c9326e8c692860158b2e813d365aa2c79bb3",
+      "gitNormalizedSha256": "0c1bc4fc41eadfb06b6f11562f3b6cd9c5ca407073362e52e2263ce725515dea"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/mapping-header-native-compatibility-first.json",
+      "bytes": 584,
+      "sha256": "2d980714368c8cb507afd2fac1da5b5e887651c2c532171dc4baffba86c29749",
+      "gitNormalizedSha256": "2d980714368c8cb507afd2fac1da5b5e887651c2c532171dc4baffba86c29749"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/mapping-header-native-compatibility-second.json",
+      "bytes": 584,
+      "sha256": "b2070059b9772749bd5705dcd80fe30079179ab8e9e464c49c387a07728f1758",
+      "gitNormalizedSha256": "b2070059b9772749bd5705dcd80fe30079179ab8e9e464c49c387a07728f1758"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/mapping-original-overlay-rebuild-final.json",
+      "bytes": 400,
+      "sha256": "ba151df79e3170719d26c6701b2ecec199e1677aa2c2105a74e1b2028883fe09",
+      "gitNormalizedSha256": "9929ee59417b16a73e2e3942b475c32afccb24c9d30ed0c7f9400a3f3ac11dae"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/mapping-original-overlay-rebuild-first.json",
+      "bytes": 374,
+      "sha256": "aa8f6e2e0920c79c4fe114c25976ddd71762aac89062b01e8426979c65d8b57c",
+      "gitNormalizedSha256": "6e9bc3b5d4658a1df8b567451185762be7cb9dcf16b19909372ca55860295a58"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/mapping-original-overlay-rebuild-second.json",
+      "bytes": 282,
+      "sha256": "e89d67bb9eed2204f4357c5f4c5cae66ae6286801b4163cd8e3091977e831c7c",
+      "gitNormalizedSha256": "6bf9b718dd2b4d2036239f9dfbc5dac1ab4342093634eb16eff4aea576c6d4e8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-generation-after-legacy-fix.json",
+      "bytes": 1264,
+      "sha256": "20e0a427f1135e57b6efedf7b3be61cd5551c1d1975fbfa38858125ecab47a7d",
+      "gitNormalizedSha256": "20e0a427f1135e57b6efedf7b3be61cd5551c1d1975fbfa38858125ecab47a7d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-input-preflight-first.json",
+      "bytes": 1665,
+      "sha256": "d4398a7db4d811f0231a7100524b21fcd8dd7221f3b3735d3042c9eaa49cc276",
+      "gitNormalizedSha256": "d4398a7db4d811f0231a7100524b21fcd8dd7221f3b3735d3042c9eaa49cc276"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-input-preflight-second.json",
+      "bytes": 1665,
+      "sha256": "38f4eb0f98c545606bd655ff27baba86084593e06f4d01548857ec585b3fe986",
+      "gitNormalizedSha256": "38f4eb0f98c545606bd655ff27baba86084593e06f4d01548857ec585b3fe986"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-original-registration-first.json",
+      "bytes": 1298,
+      "sha256": "a1fa7b0d7a25930650c87bf0b11c1cd92a731880e1625b0db931bf3532f54576",
+      "gitNormalizedSha256": "a1fa7b0d7a25930650c87bf0b11c1cd92a731880e1625b0db931bf3532f54576"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-position-generation-first.json",
+      "bytes": 1014,
+      "sha256": "75db36e4b9bc191739afd40db06e9d9d7aeef1236a3954a260ecb851a2e248d3",
+      "gitNormalizedSha256": "75db36e4b9bc191739afd40db06e9d9d7aeef1236a3954a260ecb851a2e248d3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-position-http-first.json",
+      "bytes": 2052,
+      "sha256": "90b4dd07061dc560e0638c0d8ed51a4f177f361a4e01f065585db61c42e8400f",
+      "gitNormalizedSha256": "90b4dd07061dc560e0638c0d8ed51a4f177f361a4e01f065585db61c42e8400f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-preparation-generation-first.json",
+      "bytes": 1024,
+      "sha256": "1d97fcdc74bc0abd38fe90feb4374a613c2b9a3a9b773ba2f19d2a0bd060ce74",
+      "gitNormalizedSha256": "1d97fcdc74bc0abd38fe90feb4374a613c2b9a3a9b773ba2f19d2a0bd060ce74"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-preparation-http-first.json",
+      "bytes": 815,
+      "sha256": "26ae17782957fddea0b7169358851ca67dae50d14ca4bbf39635aeadc69a8160",
+      "gitNormalizedSha256": "26ae17782957fddea0b7169358851ca67dae50d14ca4bbf39635aeadc69a8160"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-preparation-http-second.json",
+      "bytes": 2079,
+      "sha256": "9342ea7dda7d54709511e880c887c65ea8f2128e6574c2c06d46fe51d6302b63",
+      "gitNormalizedSha256": "9342ea7dda7d54709511e880c887c65ea8f2128e6574c2c06d46fe51d6302b63"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/math-preparation-postgres-first.json",
+      "bytes": 2149,
+      "sha256": "5ce9a0e7c7b36ace4e3bfbc460c3d7989023096b859bbcdafb3f33aa45f78d4d",
+      "gitNormalizedSha256": "5ce9a0e7c7b36ace4e3bfbc460c3d7989023096b859bbcdafb3f33aa45f78d4d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/public-source-and-registry-audit-first.json",
+      "bytes": 30706,
+      "sha256": "62ce6a6834afab3f66bd97afc378c312e2fa6fbffd09d8343a0a27abc3089be8",
+      "gitNormalizedSha256": "829a72b5285836a508691a1014e5120afb83a44531b2fd6b6fe5c351db3ae117"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/registry-original-overlay-first-failure.json",
+      "bytes": 467,
+      "sha256": "1b3aba2b3a93dcfb1c14e65ee536a8173e964e8bbb8ec04b8eae5403cca79089",
+      "gitNormalizedSha256": "179c8e9caa1b0f8ac099edb3a3dde77e858fb35aca79e114d40021116279b307"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/registry-original-overlay-second.json",
+      "bytes": 249,
+      "sha256": "823484c37edb3d1a1af1f6fa1e39bcc8a1a8fc40ad5a5c29a0016cdbba6651cf",
+      "gitNormalizedSha256": "2922459fd1aa46af3cd56d62017ae6c96a0f10b2773d4bc880379b4396292787"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/registry-original-overlay-unit-first.json",
+      "bytes": 149,
+      "sha256": "648bfe31567f73af874adb1b07ca6ee77fdd8d978e4719f4761af404f59d3e65",
+      "gitNormalizedSha256": "d3d50dce4c6bb5640a0f59d74657802e5dc0d8fbe7271ae18cceb76b49b6def1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/source-input-final.json",
+      "bytes": 1698,
+      "sha256": "d643a08fb263acebe58a6b8d690631237d47e0a7f992f021d4521a3c7bc19927",
+      "gitNormalizedSha256": "d643a08fb263acebe58a6b8d690631237d47e0a7f992f021d4521a3c7bc19927"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/source-input-legacy-first.json",
+      "bytes": 397,
+      "sha256": "412e7613235c7eb55b9d9058259bebdd70417ad5fab20840fdce946489e6aede",
+      "gitNormalizedSha256": "412e7613235c7eb55b9d9058259bebdd70417ad5fab20840fdce946489e6aede"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/checks/source-input-legacy-second.json",
+      "bytes": 1698,
+      "sha256": "0398e4b72f91fe5e01d0510575321dbf7ef3e49859d562e4b4efe494fb6d9391",
+      "gitNormalizedSha256": "0398e4b72f91fe5e01d0510575321dbf7ef3e49859d562e4b4efe494fb6d9391"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/manifest.json",
+      "bytes": 9901,
+      "sha256": "1deb6f41cc78b3ff9dd4a093c4532c27ca7fd14e05faf0da6f44055008a4151e",
+      "gitNormalizedSha256": "1deb6f41cc78b3ff9dd4a093c4532c27ca7fd14e05faf0da6f44055008a4151e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/receipt.json",
+      "bytes": 5554,
+      "sha256": "089276476f1d7024ca809f7c1e9dac393c7962cb65bf3f0481bcfb573f8b76d1",
+      "gitNormalizedSha256": "089276476f1d7024ca809f7c1e9dac393c7962cb65bf3f0481bcfb573f8b76d1"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/source-intake/edition-and-preparation.json",
+      "bytes": 5519,
+      "sha256": "96b6e53523bc275138f1328029f74ee731a77739afbcbbc1e00cb5d0b3c01082",
+      "gitNormalizedSha256": "96b6e53523bc275138f1328029f74ee731a77739afbcbbc1e00cb5d0b3c01082"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/source-intake/next-shapes-clock-intake-only.json",
+      "bytes": 4773,
+      "sha256": "813cf3220b949775d0a907d5c997b2cb233e4bd84e4a607eb0a50c15e19f500c",
+      "gitNormalizedSha256": "813cf3220b949775d0a907d5c997b2cb233e4bd84e4a607eb0a50c15e19f500c"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/source-intake/position.json",
+      "bytes": 2728,
+      "sha256": "e1ff76fb9ce4bd4be03e029567c674e5005193ea2f189b7d20c5f8bc9e7209a4",
+      "gitNormalizedSha256": "e1ff76fb9ce4bd4be03e029567c674e5005193ea2f189b7d20c5f8bc9e7209a4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/sources.json.gz",
+      "bytes": 439538,
+      "sha256": "4a55d676fdeb7ac5840940c84efd64437bd1a03014c19963ec87a003ebe71e4e",
+      "gitNormalizedSha256": "aea153f0dfa87a4cac49bf4d5175f09199890f189c2b30132885e67a077d3429"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/tools/archive-math-first.cjs",
+      "bytes": 13088,
+      "sha256": "9868a101cf9eac6de6f36b263b4d3917da63b31887383206c285b3cdf293d69b",
+      "gitNormalizedSha256": "83a49fe4be8139cc6221d3c8dc6bf992d1b38b7267ce32cef3ad0bb6a2dc0887"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/tools/check.cjs",
+      "bytes": 3539,
+      "sha256": "d09d4247ebd221e67c435537c3929c907f3f816618b05e6fd3a83a113c75a904",
+      "gitNormalizedSha256": "349191c7c1cb027a25e3eecfeed2ac3dcc0d281a25659bf049433ab69a5ca556"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/tools/register-math-first.cjs",
+      "bytes": 6687,
+      "sha256": "b65aa711e1c3b1b4d514dfb4c7db3f62df9f44c4973d8ec5596b1b75d7edaa82",
+      "gitNormalizedSha256": "ac5be4e55e6369be2e741baf80e1eb23b4a08ff99520f8d8c14e70a0efa28338"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-exact-math-source-and-candidates/tools/stage-math-first.cjs",
+      "bytes": 3414,
+      "sha256": "cd1f0fa54ff156c1129d4354d3e5ee372fe749857d171ee4cda2c7c4e459797d",
+      "gitNormalizedSha256": "cd1f0fa54ff156c1129d4354d3e5ee372fe749857d171ee4cda2c7c4e459797d"
+    }
+  ]
+}

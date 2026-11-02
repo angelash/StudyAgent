@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "expectedBooks": 450,
+  "rebuiltBooks": 448,
+  "missingOriginalBookIds": [
+    "archive-book:chinese-g3-upper-02915a7db6517258",
+    "archive-book:math-g1-upper-a8e880217c456db6"
+  ],
+  "changedOtherBooks": [],
+  "originalRegistryWritten": false,
+  "databaseWritten": false,
+  "scope": "Actual existing metadata builder loses independent exact-source registrations; source title and years must not be rebound to other editions."
+}

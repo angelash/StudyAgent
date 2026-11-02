@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T15:17:55.269Z",
+  "passed": true,
+  "outputBytesUnchanged": true,
+  "privateQaFilesRequired": false,
+  "files": [
+    {
+      "path": "scripts/content/exact-source-candidate-kit.cjs",
+      "sha256": "7d117efbb48490867472d5aa260ff5f8ca604f1e28d5b0630dacc4e5c566d2d8"
+    },
+    {
+      "path": "scripts/content/build-math-g1-position-candidates.cjs",
+      "sha256": "98a0c39f67d66a5f4528f138e560aa611efed71eac9e579d790d6b4e7e6fd906"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-position-v1.json",
+      "sha256": "e48e6baccf8f081c29a6dff3ca9686a1bea75391d3b26c527018563fff08b870"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-position-v1.json",
+      "sha256": "3f3e0fd30adcc83a94b345f085695dbbac15614b183aae35bee0f92588336654"
+    }
+  ],
+  "newTargets": 7,
+  "questions": 49,
+  "immediate": 21,
+  "proposedRetention": 28,
+  "modes": {
+    "audio_record": 7,
+    "image_upload": 7,
+    "short_answer": 35
+  }
+}

@@ -9,6 +9,7 @@ import sqlite3
 from pathlib import Path
 from uuid import uuid4
 from reviewed_textbook_chapters import apply_reviewed, load_reviewed
+from reviewed_original_textbooks import apply_originals
 
 
 def checksum(value):
@@ -26,7 +27,7 @@ def load_labels(target: Path, source: Path | None = None):
     return labels
 
 
-def run(root: Path, target: Path, source: Path | None = None, reviewed: Path | None = None, labels_path: Path | None = None):
+def run(root: Path, target: Path, source: Path | None = None, reviewed: Path | None = None, labels_path: Path | None = None, originals: Path | None = None):
     labels = load_labels(labels_path or target, source)
     grades = {f'{name}年级': i + 1 for i, name in enumerate('一二三四五六')}
     books = []
@@ -72,9 +73,17 @@ def run(root: Path, target: Path, source: Path | None = None, reviewed: Path | N
     books = sorted({book['id']: book for book in books}.values(), key=lambda b: (b['subject'], b['grade'], b['term'], b['title'], b['id']))
     if reviewed is not None:
         books = apply_reviewed(books, load_reviewed(reviewed, root / 'textbook-sources/public-v1'))
+    if originals is not None:
+        records = originals.parent
+        chinese = json.loads((records / 'chinatextbook-chinese-v1.json').read_text('utf-8'))['books']
+        primary = json.loads((records / 'chinatextbook-primary-v1.json').read_text('utf-8'))['books']
+        sources = [{**row, 'subject': row.get('subject', 'chinese')} for row in chinese] + primary
+        books = apply_originals(books, json.loads(originals.read_text('utf-8')),
+                               json.loads((records / 'textbook-edition-conformities-v1.json').read_text('utf-8')), sources)
     result = {'schemaVersion': 'textbooks-v1', 'archiveSha256': snapshot, 'tagEvidence': labels, 'books': books}
     target.parent.mkdir(parents=True, exist_ok=True)
-    body = json.dumps(result, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    body = ((json.dumps(result, ensure_ascii=False, indent=2) + '\n') if originals is not None
+            else json.dumps(result, ensure_ascii=False, separators=(',', ':'))).encode('utf-8')
     temporary = target.with_name(target.name + '.' + str(uuid4()) + '.tmp')
     try:
         with temporary.open('xb') as stream:
@@ -95,5 +104,6 @@ if __name__ == '__main__':
     parser.add_argument('--target', type=Path, default=Path('resources/curriculum/textbooks-v1.json'))
     parser.add_argument('--labels', type=Path, help='Saved registry whose tagEvidence supplies public grade and term labels')
     parser.add_argument('--reviewed', type=Path, default=Path('resources/curriculum/reviewed-textbook-chapters-v1.json'))
+    parser.add_argument('--originals', type=Path, default=Path('resources/curriculum/reviewed-original-textbooks-v1.json'))
     args = parser.parse_args()
-    run(args.root, args.target, reviewed=args.reviewed, labels_path=args.labels)
+    run(args.root, args.target, reviewed=args.reviewed, labels_path=args.labels, originals=args.originals)

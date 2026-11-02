@@ -1,0 +1,73 @@
+{
+  "at": "2026-11-02T15:25:16.756Z",
+  "passed": true,
+  "validPacketAccepted": true,
+  "legacyChineseAccepted": true,
+  "negativeCasesRejected": 15,
+  "checks": [
+    {
+      "name": "different-book",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "wrong-original-sha",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "course-standard-confused-with-publication",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "different-subject-definition",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "source-range-outside-directory-entry",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "quote-not-in-current-original",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "stale-draft-binding",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "duplicate-question-id",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "wrong-retention-interval",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "unapproved-family-marked-approved",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "stale-isolated-registry",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "filename-traversal",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "duplicate-source-binding",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "material-binding-to-different-original",
+      "rejectedBeforeRuntime": true
+    },
+    {
+      "name": "candidate-claims-publication",
+      "rejectedBeforeRuntime": true
+    }
+  ],
+  "runtimeDirectoriesUnchanged": true,
+  "databaseWritten": false,
+  "originalSourceWritten": false,
+  "teacherReviewed": false
+}

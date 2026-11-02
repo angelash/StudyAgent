@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "preparation",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-preparation-v1.json",
+      "sha256": "8c9d78b8d875240b56e25864b4a8adba50676b6c2e71462f4d1eb9e734330746",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 7,
+        "pageEnd": 13,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道均为原创未审候选。每目标3道即时和4道拟议间隔样题不等独立题族或充分未见库存。原图、本人操作、声音和提示分别保留；不自动评分、发布或创建学生事实。",
+  "groups": [
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:counting-set",
+      "structure": "choose-current-unit",
+      "familyProposal": "a8e88021-choose-current-unit",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "明确当前类别",
+          "weight": 0.4
+        },
+        {
+          "criterion": "一个对象的单位一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人声音与帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四张纸片每张各算一件，笔不计入；本人说明所选类别和单位，文字参考不代实际声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创桌面有四张纸片和两支笔。请实际口头说只数纸片时，什么算一件、什么不计入。",
+          "answer": "四张纸片每张各算一件，笔不计入；本人说明所选类别和单位，文字参考不代实际声音。",
+          "analysis": "四张纸片每张各算一件，笔不计入；本人说明所选类别和单位，文字参考不代实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "请本人拿出不超过十件的安全纸片，先说数的是什么，再逐件说明本次范围。",
+          "answer": "范围由本人实际纸片决定，每张算一件；没有摆放或声音则保留未完成，不用四张示例代填。",
+          "analysis": "范围由本人实际纸片决定，每张算一件；没有摆放或声音则保留未完成，不用四张示例代填。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡写一张桌上有三本书、五支笔。要数书，为什么不能把每本的每一页都各算一本？",
+          "answer": "一本是当前计数单位，每页不是另一本；书三本，笔不在这次数书的集合，实际口头说明另核。",
+          "analysis": "一本是当前计数单位，每页不是另一本；书三本，笔不在这次数书的集合，实际口头说明另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创材料列两顶帽子、三只杯子。本人说只数杯子时哪些属于要数的对象。",
+          "answer": "三只杯子属于选定一类，两顶帽子不计；先明确类别再回答，不把所有物件合计当杯子数。",
+          "analysis": "三只杯子属于选定一类，两顶帽子不计；先明确类别再回答，不把所有物件合计当杯子数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人选一组一至十件纸片，说清同一张纸片转一下后是否变成两张；报告看到的帮助。",
+          "answer": "转动不增加一张，仍按每张实物计一件；核当前本人声音与实物，不用旧录音代本次。",
+          "analysis": "转动不增加一张，仍按每张实物计一件；核当前本人声音与实物，不用旧录音代本次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡有一张折成两层的完整纸和两张平纸，约定每张完整纸算一张。请口头说如何数。",
+          "answer": "折纸仍一张，另两张各一张，共三张；按约定完整纸计，不把两层当两张，当前声音另核。",
+          "analysis": "折纸仍一张，另两张各一张，共三张；按约定完整纸计，不把两层当两张，当前声音另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-choose-current-unit-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请本人对新的自选安全物品说一个计数问题，明确要数的一类和一件的单位。",
+          "answer": "类别与单位由实际物品确定，可数一至十件；不把别类混入，未给实际材料就不编造数量。",
+          "analysis": "类别与单位由实际物品确定，可数一至十件；不把别类混入，未给实际材料就不编造数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:one-to-one-count",
+      "structure": "mark-each-once",
+      "familyProposal": "a8e88021-mark-each-once",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "当前对象逐件对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不漏不重且过程可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人图与提示分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六个点各对应一条数过标记，点与记号分身份；本人原图核覆盖一次，文字六不能代操作。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请本人画六个分散圆点，数一个就在旁边添一条小记号，保存含全部圆点和记号的原图。",
+          "answer": "六个点各对应一条数过标记，点与记号分身份；本人原图核覆盖一次，文字六不能代操作。",
+          "analysis": "六个点各对应一条数过标记，点与记号分身份；本人原图核覆盖一次，文字六不能代操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人在纸上画七个不重叠方框，逐个数并给已数的做记号，再检查是否漏了或记了两次。",
+          "answer": "七个对象各记一次，有错保留后另修；不得用总数七碰巧正确代不漏不重过程。",
+          "analysis": "七个对象各记一次，有错保留后另修；不得用总数七碰巧正确代不漏不重过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人画五个散放小圈，用自己设计的箭头或编号说明数的路线；记录别人指点的位置。",
+          "answer": "路线覆盖五圈各一次，不把箭头或编号又当待数对象；实际帮助另记，不拿示范图代本人图。",
+          "analysis": "路线覆盖五圈各一次，不把箭头或编号又当待数对象；实际帮助另记，不拿示范图代本人图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "在新纸上本人画八个散点，从不同起点各点数一次，用两种标记留下两个过程。",
+          "answer": "两轮各覆盖八点一次，起点不同不应改变总数；标记可分清轮次，未做的轮次不由答案补齐。",
+          "analysis": "两轮各覆盖八点一次，起点不同不应改变总数；标记可分清轮次，未做的轮次不由答案补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人画四个圈，故意示出一次漏数，再另画或改标记把漏项核对清楚，保留两次原图。",
+          "answer": "能定位漏的一圈并完整重新对应；故意示错为教学活动，不当真实错因或独立首答证据。",
+          "analysis": "能定位漏的一圈并完整重新对应；故意示错为教学活动，不当真实错因或独立首答证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人画九个对象，选移画编号或逐点标记的方法证明每个只数一次，上传实际纸面。",
+          "answer": "九个对象完整且每个一次，方法可不同；只写九无法显示过程，真实帮助和未完成范围保留。",
+          "analysis": "九个对象完整且每个一次，方法可不同；只写九无法显示过程，真实帮助和未完成范围保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-mark-each-once-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人画十个不重叠点，数完检查是否有点无标记或同点多标记，留下本人最后和原始图。",
+          "answer": "逐件覆盖十点，有错修正不覆盖原迹；这次重复数仍是教学练习，不自动成为未见保持证据。",
+          "analysis": "逐件覆盖十点，有错修正不覆盖原迹；这次重复数仍是教学练习，不自动成为未见保持证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:cardinality",
+      "structure": "last-word-whole-set",
+      "familyProposal": "a8e88021-last-word-whole-set",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "实际数词与对象对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "最后数词表示整组",
+          "weight": 0.4
+        },
+        {
+          "criterion": "换起点与帮助有记录",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "每张一次，最后五表示整组有五张，不只是最后那张；当前声音和实际点数分别核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人放五张纸片，碰一张说一个数词，再回答共有几张。最后的五只说最后一张的名字吗？",
+          "answer": "每张一次，最后五表示整组有五张，不只是最后那张；当前声音和实际点数分别核。",
+          "analysis": "每张一次，最后五表示整组有五张，不只是最后那张；当前声音和实际点数分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人放三张纸片数完后，换一张开始再数，口头说总数与为什么相同。",
+          "answer": "两轮都三张，不漏不重且未增未减；换先后次序不改变总数，不只背三而缺实际过程。",
+          "analysis": "两轮都三张，不漏不重且未增未减；换先后次序不改变总数，不只背三而缺实际过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创记录说小安数六个圈，依次一到六。小乐说这里只有最后一个圈是六，不能说总共有六个。请解释。",
+          "answer": "最后数词六在完整点数后表示六个圈组成的整组总数；不是给最后一圈取名字，口头解释另留。",
+          "analysis": "最后数词六在完整点数后表示六个圈组成的整组总数；不是给最后一圈取名字，口头解释另留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人用四张纸片实际数完并回答总数，再说如果从右侧开始数，要怎样避免漏和重。",
+          "answer": "总数四，新的起点仍每张一次；当前操作和声音实际存在才记完成，不能让文字参考补录。",
+          "analysis": "总数四，新的起点仍每张一次；当前操作和声音实际存在才记完成，不能让文字参考补录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人实际数七个自画点，最后说七。解释说到七时究竟回答哪一组的数量。",
+          "answer": "七表示已完整点过的这一组七个点；若有漏或重先核过程，不因末词七便认定数对。",
+          "analysis": "七表示已完整点过的这一组七个点；若有漏或重先核过程，不因末词七便认定数对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创过程指到八张纸片的第六张就停下说六，所以共有六张。本人说还需怎样核查。",
+          "answer": "还未覆盖全部八张，应检查未数对象并完整点数；最后词只有在不漏不重数完整组后才能表总数。",
+          "analysis": "还未覆盖全部八张，应检查未数对象并完整点数；最后词只有在不漏不重数完整组后才能表总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-last-word-whole-set-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选择一至十张新的纸片，先数后答一共有几张，再说明最后词和全组的关系，记录本次帮助。",
+          "answer": "数量依实际所选而定，完整一一对应后最后数词表示全组；不套固定例子，未实际数就保留未做。",
+          "analysis": "数量依实际所选而定，完整一一对应后最后数词表示全组；不套固定例子，未实际数就保留未做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:quantity-representation",
+      "structure": "objects-and-dots",
+      "familyProposal": "a8e88021-objects-and-dots",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两种表示各自完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "一件与一点对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不按点大小和颜色判量",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三杯与三点可各配一个，无剩余，所以同样数量；杯名不增加杯数，点的颜色大小不影响个数。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：杯子记为甲杯、乙杯、丙杯。点卡为● ● ●。每杯配一点，能否表示同样数量？说明配法。",
+          "answer": "三杯与三点可各配一个，无剩余，所以同样数量；杯名不增加杯数，点的颜色大小不影响个数。",
+          "analysis": "三杯与三点可各配一个，无剩余，所以同样数量；杯名不增加杯数，点的颜色大小不影响个数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡写五张纸片。你想用点表示每张一件，请写应画几点，并说怎样检查少画或多画。",
+          "answer": "应画五点，每张纸片各配一个点，双边都无剩余；只有数字五还未证明实际绘图已完成。",
+          "analysis": "应画五点，每张纸片各配一个点，双边都无剩余；只有数字五还未证明实际绘图已完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡有四个小点，另卡有四个大点。有人说大点代表的物品一定更多，材料是否足够支持？",
+          "answer": "没有支持更多：约定每点一件时两卡均四件，点大小不是数量；若另有不同约定则需先明确。",
+          "analysis": "没有支持更多：约定每点一件时两卡均四件，点大小不是数量；若另有不同约定则需先明确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡列六枚贴纸，用点卡● ● ● ● ●来表示，每点代表一枚。指出是否对应完整。",
+          "answer": "贴纸六枚、点五个，少一个点；应各一配一，不能一个点配两枚就说表示完整。",
+          "analysis": "贴纸六枚、点五个，少一个点；应各一配一，不能一个点配两枚就说表示完整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡列两只玩具熊，对应点卡有红点一个、蓝点一个。换颜色会改变所表示的只数吗？",
+          "answer": "每点代表一只时共两点，颜色不同仍两只；约定和逐点数量明确，不靠同色才算同一数量。",
+          "analysis": "每点代表一只时共两点，颜色不同仍两只；约定和逐点数量明确，不靠同色才算同一数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡列七本书，另一人画八点并说多画一点也可表示七本。按一书一点约定说明。",
+          "answer": "不能：八点比七本多一个，配完有一点无书；要符合一书一点，须去掉多余点或重画核对。",
+          "analysis": "不能：八点比七本多一个，配完有一点无书；要符合一书一点，须去掉多余点或重画核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-objects-and-dots-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创卡有九个独立物件名，点卡分成五点和四点两行。每点一件，能否表示这组数量？说明怎样核查。",
+          "answer": "两行总共九点，可与九件逐一配完；分行不改变一物一点，仍须核实际点数而不只看行数。",
+          "analysis": "两行总共九点，可与九件逐一配完；分行不改变一物一点，仍须核实际点数而不只看行数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:matching-compare",
+      "structure": "pairs-and-leftovers",
+      "familyProposal": "a8e88021-pairs-and-leftovers",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "每件至多一对",
+          "weight": 0.4
+        },
+        {
+          "criterion": "剩余与结论一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比较双方明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "圆纸片剩一张，所以圆纸片比方纸片多，方纸片少；不能把同一张方片重复配给剩余圆片。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：甲有四张圆纸片，乙有三张方纸片。一圆配一方，配完三对。谁还剩，谁多？",
+          "answer": "圆纸片剩一张，所以圆纸片比方纸片多，方纸片少；不能把同一张方片重复配给剩余圆片。",
+          "analysis": "圆纸片剩一张，所以圆纸片比方纸片多，方纸片少；不能把同一张方片重复配给剩余圆片。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：五个杯子与五张杯垫，每杯配一张垫。两边都无剩余，比较数量并说明依据。",
+          "answer": "五对配完都无剩余，杯子和杯垫同样多；杯子体积较大不能推出杯子个数更多。",
+          "analysis": "五对配完都无剩余，杯子和杯垫同样多；杯子体积较大不能推出杯子个数更多。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：三只纸做小鸟、五个纸做小窝，一鸟一窝。小窝排得较短，哪组数量较多？",
+          "answer": "三对配完窝剩两个，窝多鸟少；排得短不能代数量比较，以当前配对和剩余为依据。",
+          "analysis": "三对配完窝剩两个，窝多鸟少；排得短不能代数量比较，以当前配对和剩余为依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡：六支笔配四个笔帽，一支只配一个。有人把一个帽同时配三支就说同样多。哪里有问题？",
+          "answer": "违反每个只配一次；正确四对后笔剩两支，所以笔多帽少，不用重复配对制造同样多。",
+          "analysis": "违反每个只配一次；正确四对后笔剩两支，所以笔多帽少，不用重复配对制造同样多。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡：两张贴纸与两本小本子，每本一张，配好后均没有剩。请选择同样多还是一组更少，并说明。",
+          "answer": "两对且均无剩余，贴纸与本子同样多；同样多时不硬选其中较少，大小外形不改变个数。",
+          "analysis": "两对且均无剩余，贴纸与本子同样多；同样多时不硬选其中较少，大小外形不改变个数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡：八个纸圈、七个纸星，每圈配一星。一共配七对，哪个较多？还需知道图上排多长吗？",
+          "answer": "纸圈剩一个，所以纸圈多；在数量和一一配对已明确时无需用排长短判断，纸星相对较少。",
+          "analysis": "纸圈剩一个，所以纸圈多；在数量和一一配对已明确时无需用排长短判断，纸星相对较少。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-pairs-and-leftovers-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创卡：十个点与九个方框，每个只用一次。先说明配对后剩什么，再完整表达两组多少。",
+          "answer": "配九对后点剩一个，因此点比方框多、方框比点少；当前数量关系明确，不仅回答多而省比较对象。",
+          "analysis": "配九对后点剩一个，因此点比方框多、方框比点少；当前数量关系明确，不仅回答多而省比较对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:rearrange-invariance",
+      "structure": "same-set-new-layout",
+      "familyProposal": "a8e88021-same-set-new-layout",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "说明同一组未增减",
+          "weight": 0.4
+        },
+        {
+          "criterion": "用重数或配对核查",
+          "weight": 0.4
+        },
+        {
+          "criterion": "疏密与数量分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "仍四张，只改间隔未增减；可重新逐张数四或和原位置逐一对应，排长不等数量多。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：四张纸片从紧挨的一排变成宽宽的一排，期间一张没添也没拿。现在是否更多？用一种方法说明。",
+          "answer": "仍四张，只改间隔未增减；可重新逐张数四或和原位置逐一对应，排长不等数量多。",
+          "analysis": "仍四张，只改间隔未增减；可重新逐张数四或和原位置逐一对应，排长不等数量多。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：五点原来排一行，后来移成两行，仍为原来五点。怎样检查数量是否改变？",
+          "answer": "每个原点只移一次，重数或一一配完仍五；两行不是两组新增点，不能按行数猜数量。",
+          "analysis": "每个原点只移一次，重数或一一配完仍五；两行不是两组新增点，不能按行数猜数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：三张大纸片与六张小纸片，大纸片排得更长。能否仅按排得长断定三张大纸片数量更多？",
+          "answer": "不能，三张少于六张，可一一配三对后小纸片还剩；大小和排长不是件数。",
+          "analysis": "不能，三张少于六张，可一一配三对后小纸片还剩；大小和排长不是件数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡：七张纸片围成圈，随后排直线，没有添减。原来七张是否足以说明排后也七张？还可怎样核？",
+          "answer": "同一组未增未减仍七张，重新逐张数或逐个对照可核；不能把直线更长当增加。",
+          "analysis": "同一组未增未减仍七张，重新逐张数或逐个对照可核；不能把直线更长当增加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡：六张纸片重排后有人又放进一张。他说只是换位置所以仍六张，判断并说明关键条件。",
+          "answer": "不只是重排，实际增加一张，现有七张；数量不变的条件是同一组未增未减，不能忽略新加入。",
+          "analysis": "不只是重排，实际增加一张，现有七张；数量不变的条件是同一组未增未减，不能忽略新加入。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡：八张纸片重排后有一张被拿走。有人只看剩下一排更长就说更多，按当前变化说明。",
+          "answer": "拿走一张后七张，比原来少；虽然排长增大，物件数减少，核逐件变化而不只看空间。",
+          "analysis": "拿走一张后七张，比原来少；虽然排长增大，物件数减少，核逐件变化而不只看空间。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-same-set-new-layout-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创卡：九点从散开移成一个圈，每点只移位置，期间无新增删除。解释总数，并说不同起点点数注意什么。",
+          "answer": "仍九点，换起点要给已数点做记号避免环形重复；同一组未增减与完整点数支持结论。",
+          "analysis": "仍九点，换起点要给已数点做记号避免环形重复；同一组未增减与完整点数支持结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "preparation",
+      "atomId": "source:math:g1:a8e88021:relative-language",
+      "structure": "follow-more-less-direction",
+      "familyProposal": "a8e88021-follow-more-less-direction",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "比较对象说清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "多或少方向符合要求",
+          "weight": 0.4
+        },
+        {
+          "criterion": "同样多不强选",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "圆片比方片少，应指出圆片；方片多虽是真关系，却不是题目要求选出的少的一组。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：四个圆片、六个方片，题目让指出少的一组。请用包含两组名称的完整句回答。",
+          "answer": "圆片比方片少，应指出圆片；方片多虽是真关系，却不是题目要求选出的少的一组。",
+          "analysis": "圆片比方片少，应指出圆片；方片多虽是真关系，却不是题目要求选出的少的一组。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：三支铅笔、五块橡皮，题目要求指出多的一组。有人写铅笔少，是否已按要求指出？",
+          "answer": "尚未按要求指出多的一组，应答橡皮比铅笔多；铅笔少是相关正确关系，但所选方向未完成。",
+          "analysis": "尚未按要求指出多的一组，应答橡皮比铅笔多；铅笔少是相关正确关系，但所选方向未完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：两只纸鸟与两只纸兔，题目问哪一组更多。可以为了只选一个而猜纸鸟吗？说明。",
+          "answer": "不应猜：两组同样多，没有较多一组；指出材料关系，不能为了单选而制造不等数量。",
+          "analysis": "不应猜：两组同样多，没有较多一组；指出材料关系，不能为了单选而制造不等数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡：七张蓝片、四张黄片。写出蓝片和黄片互相比较的两句，再指出少的一组。",
+          "answer": "蓝片比黄片多，黄片比蓝片少；少的一组是黄片，两个方向来自同一个数量关系。",
+          "analysis": "蓝片比黄片多，黄片比蓝片少；少的一组是黄片，两个方向来自同一个数量关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创卡：五个纸圈、八个纸星，问少的一组。小安只答少，没有写谁。请补完整而不增加材料。",
+          "answer": "纸圈比纸星少，应指出纸圈；单说少没有比较对象，不能知道选择是否对应当前两组。",
+          "analysis": "纸圈比纸星少，应指出纸圈；单说少没有比较对象，不能知道选择是否对应当前两组。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创卡：六只纸杯、六个纸碟，要求若同样多就说同样多。请判断，不因纸杯摆得高就改成多。",
+          "answer": "纸杯与纸碟同样多，各六件；高度不是个数，不应硬选更多或更少，按当前相同数量表达。",
+          "analysis": "纸杯与纸碟同样多，各六件；高度不是个数，不应硬选更多或更少，按当前相同数量表达。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-preparation-follow-more-less-direction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创卡：十张白片、九张灰片。题目先问多的一组再问少的一组，请依序完整回答并说明依据。",
+          "answer": "白片比灰片多，灰片比白片少；各配九对后白片剩一张，顺序与要求一致，不交换答案方向。",
+          "analysis": "白片比灰片多，灰片比白片少；各配九对后白片剩一张，顺序与要求一致，不交换答案方向。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

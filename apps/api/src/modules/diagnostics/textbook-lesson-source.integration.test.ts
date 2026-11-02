@@ -31,14 +31,17 @@ describe('actual textbook source HTTP and native read-only state on ' + (postgre
     if (postgres) { const url = new URL(postgres); if (url.hostname !== '127.0.0.1' || !(url.port === '15453' && url.pathname === '/study_textbook_sources' || url.port === '15455' && /^\/study_teaching_package33_http_[a-f0-9]{32}$/.test(url.pathname))) throw Error('Exact owned PostgreSQL required'); }
     writeFileSync(pdf, original);
     const books: CurriculumBook[] = [], manifests: any[] = [], rows: any[] = [];
-    for (const kind of ['valid', 'wrong-id', 'wrong-pdf', 'missing-page', 'duplicate-page', 'reordered-page', 'long-page', 'stale', 'unbound', 'duplicate']) {
-      const entry: CurriculumBook = { id: 'qa:' + kind, subject: 'chinese', grade: 3, term: 'upper', edition: 'Original QA ' + kind, title: 'Original QA ' + kind, version: 'v1', source: 'public_catalog', sourceRef: 'QA generated fixture only', sourceSha256: 'a'.repeat(64), chapterState: 'available',
+    for (const kind of ['valid', 'wrong-id', 'wrong-pdf', 'missing-page', 'duplicate-page', 'reordered-page', 'long-page', 'stale', 'unbound', 'duplicate', 'primary-math', 'primary-english', 'primary-wrong-subject', 'primary-wrong-path', 'primary-wrong-id']) {
+      const primary = kind.startsWith('primary-'), subject = kind === 'primary-english' ? 'english' : primary ? 'math' : 'chinese';
+      const entry: CurriculumBook = { id: 'qa:' + kind, subject, grade: 3, term: 'upper', edition: 'Original QA ' + kind, title: 'Original QA ' + kind, version: 'v1', source: 'public_catalog', sourceRef: 'QA generated fixture only', sourceSha256: 'a'.repeat(64), chapterState: 'available',
         chapters: [{ id: 'unit', name: '原始单元', lessons: [{ id: 'lesson', name: '原始课时', printedPage: 1 }, { id: 'empty', name: '图示候选', printedPage: 2 }, { id: 'appendix', name: '附录', kind: 'reference' }] }] };
       books.push(entry); if (kind === 'valid') book = entry;
-      const sourceId = 'source:' + kind, sourcePages = kind === 'missing-page' ? pages.slice(0, 2) : kind === 'duplicate-page' ? [pages[0], pages[0], pages[2]] : kind === 'reordered-page' ? [...pages].reverse() : kind === 'long-page' ? [{ page: 1, text: '完整正文😀\n'.repeat(30000) }, pages[1], pages[2]] : pages;
-      const raw = Buffer.from(JSON.stringify({ format: 'chinatextbook-extraction-v1', id: kind === 'wrong-id' ? 'different-source' : sourceId, sourceSha256: kind === 'wrong-pdf' ? 'b'.repeat(64) : sha(original), pages: sourcePages }));
+      const sourceRelative = 'Original edition/book.pdf', sourceId = primary ? 'chinatextbook:primary:' + subject + ':' + (kind === 'primary-wrong-id' ? '0'.repeat(20) : sha(Buffer.from(sourceRelative)).slice(0, 20)) : 'source:' + kind;
+      const sourcePages = kind === 'missing-page' ? pages.slice(0, 2) : kind === 'duplicate-page' ? [pages[0], pages[0], pages[2]] : kind === 'reordered-page' ? [...pages].reverse() : kind === 'long-page' ? [{ page: 1, text: '完整正文😀\n'.repeat(30000) }, pages[1], pages[2]] : pages;
+      const raw = Buffer.from(JSON.stringify(primary ? { format: 'chinatextbook-primary-extraction-v1', subject: kind === 'primary-wrong-subject' ? 'english' : subject, sourceRelative: kind === 'primary-wrong-path' ? 'another/book.pdf' : sourceRelative, sourceSha256: sha(original), pages: sourcePages }
+        : { format: 'chinatextbook-extraction-v1', id: kind === 'wrong-id' ? 'different-source' : sourceId, sourceSha256: kind === 'wrong-pdf' ? 'b'.repeat(64) : sha(original), pages: sourcePages }));
       writeFileSync(join(assets, kind + '.json'), raw); if (kind === 'valid') extraction = raw;
-      manifests.push({ id: sourceId, grade: 3, term: 'upper', edition: entry.edition, assetPath: 'data/assets/book.pdf', sha256: sha(original), bytes: original.length, pages: 3, extractedPath: 'data/assets/' + kind + '.json', extractedSha256: sha(raw) });
+      manifests.push({ id: sourceId, subject, grade: 3, term: 'upper', edition: entry.edition, assetPath: 'data/assets/book.pdf', sha256: sha(original), bytes: original.length, pages: 3, extractedPath: 'data/assets/' + kind + '.json', extractedSha256: sha(raw) });
       for (const lesson of entry.chapters[0].lessons.filter(lesson => lesson.kind !== 'reference')) {
         const row = { bookId: entry.id, bookVersion: kind === 'stale' ? 'old-version' : entry.version, sourceBookId: sourceId, sourceSha256: sha(original), extractedSha256: sha(raw), lessonId: lesson.id, lessonFingerprint: lessonSourceFingerprint(entry.chapters[0], lesson), pdfStartPage: lesson.id === 'empty' ? 2 : 1, pdfEndPage: lesson.id === 'empty' ? 2 : 3, titleMatched: lesson.id !== 'empty', candidateAtomIds: [], rationale: 'Candidate only', evidence: [], reviewStatus: 'unreviewed', approvedAtomIds: [] };
         rows.push(kind === 'unbound' ? { ...row, bookVersion: undefined } : row); if (kind === 'duplicate') rows.push(row);
@@ -73,9 +76,14 @@ describe('actual textbook source HTTP and native read-only state on ' + (postgre
   });
   it('rejects unbound, stale, duplicate and incorrectly identified extraction sources', async () => {
     const before = await cold();
-    for (const kind of ['wrong-id', 'wrong-pdf', 'missing-page', 'duplicate-page', 'reordered-page', 'stale', 'unbound', 'duplicate']) await api(admin, route('qa:' + kind), 409);
+    for (const kind of ['wrong-id', 'wrong-pdf', 'missing-page', 'duplicate-page', 'reordered-page', 'stale', 'unbound', 'duplicate', 'primary-wrong-subject', 'primary-wrong-path', 'primary-wrong-id']) await api(admin, route('qa:' + kind), 409);
     for (const suffix of ['?page=0', '?page=4', '?page=1.5', '?page=1&page=2', '?unknown=1']) await api(admin, route('qa:valid', 'lesson', suffix), 400);
     await api(admin, route('qa:valid', 'appendix'), 404); await api(admin, route('qa:valid', 'missing'), 404);
+    expect(await cold()).toEqual(before);
+  });
+  it.each(['math', 'english'])('reads the actual primary %s extraction format without writing domain data', async subject => {
+    const before = await cold(), response = await api(teacher, route('qa:primary-' + subject));
+    expect(response.body.data.text).toBe(pages[0].text); expect(response.body.data.sourceBookId).toMatch(new RegExp('^chinatextbook:primary:' + subject + ':'));
     expect(await cold()).toEqual(before);
   });
   it('requires a current editor identity before reading private textbook text or originals', async () => {

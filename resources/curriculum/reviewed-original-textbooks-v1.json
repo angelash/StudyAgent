@@ -1,0 +1,862 @@
+{
+  "format": "reviewed-original-textbooks-v1",
+  "scope": "Versioned metadata of independent originals with separate edition proofs. Not teacher approval, knowledge mapping, complete lesson content, publication or student evidence.",
+  "books": [
+    {
+      "id": "archive-book:chinese-g3-upper-02915a7db6517258",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "edition": "统编版 · 本地原件27课 · 版次年份未核实",
+      "title": "语文三年级上册（独立原件版，出版版次年份未核实）",
+      "source": "archive",
+      "sourceRef": "chinatextbook:chinese:g3:upper@02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+      "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+      "chapterState": "available",
+      "catalogVersion": "reviewed-original-directory-v1",
+      "sourceEdition": {
+        "sourceBookId": "chinatextbook:chinese:g3:upper",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "publicationYear": null,
+        "curriculumStandardYear": null,
+        "publicationStatement": "物理第3页可确认教育部组织编写、人民教育出版社出版；当前已查看页未建立出版版次年份或课程标准年份，按该完整原件独立登记，不等同于登记修订版。"
+      },
+      "chapters": [
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1",
+          "name": "第一单元",
+          "printedPage": 1,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+              "name": "大青树下的小学",
+              "printedPage": 2,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 1
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry2",
+              "name": "花的学校",
+              "printedPage": 5,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 2
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry3",
+              "name": "不懂就要问",
+              "printedPage": 7,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 3,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry4",
+              "name": "口语交际：我的暑假生活",
+              "printedPage": 9,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry5",
+              "name": "习作：猜猜他是谁",
+              "printedPage": 10,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry6",
+              "name": "语文园地",
+              "printedPage": 11,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2",
+          "name": "第二单元",
+          "printedPage": 13,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry1",
+              "name": "古诗三首",
+              "printedPage": 14,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 4,
+              "parts": [
+                {
+                  "name": "山行",
+                  "printedPage": 14,
+                  "tocPage": 4
+                },
+                {
+                  "name": "赠刘景文",
+                  "printedPage": 14,
+                  "tocPage": 4
+                },
+                {
+                  "name": "夜书所见",
+                  "printedPage": 15,
+                  "tocPage": 4
+                }
+              ]
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry2",
+              "name": "铺满金色巴掌的水泥道",
+              "printedPage": 16,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 5
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry3",
+              "name": "秋天的雨",
+              "printedPage": 19,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 6
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry4",
+              "name": "听听，秋的声音",
+              "printedPage": 22,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 7,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry5",
+              "name": "习作：写日记",
+              "printedPage": 24,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit2:entry6",
+              "name": "语文园地",
+              "printedPage": 25,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3",
+          "name": "第三单元",
+          "printedPage": 27,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry1",
+              "name": "卖火柴的小女孩",
+              "printedPage": 28,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 8
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry2",
+              "name": "那一定会很好",
+              "printedPage": 33,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 9,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry3",
+              "name": "在牛肚子里旅行",
+              "printedPage": 35,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 10
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry4",
+              "name": "一块奶酪",
+              "printedPage": 38,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 11,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry5",
+              "name": "习作：我来编童话",
+              "printedPage": 40,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry6",
+              "name": "语文园地",
+              "printedPage": 41,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry7",
+              "name": "快乐读书吧：在那奇妙的王国里",
+              "printedPage": 43,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4",
+          "name": "第四单元",
+          "printedPage": 45,
+          "tocPage": 4,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry1",
+              "name": "总也倒不了的老屋",
+              "printedPage": 46,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 12
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry2",
+              "name": "胡萝卜先生的长胡子",
+              "printedPage": 50,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 13,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry3",
+              "name": "小狗学叫",
+              "printedPage": 53,
+              "tocPage": 4,
+              "kind": "lesson",
+              "number": 14,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry4",
+              "name": "口语交际：名字里的故事",
+              "printedPage": 59,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry5",
+              "name": "习作：续写故事",
+              "printedPage": 60,
+              "tocPage": 4,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry6",
+              "name": "语文园地",
+              "printedPage": 61,
+              "tocPage": 4,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit5",
+          "name": "第五单元",
+          "printedPage": 63,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry1",
+              "name": "搭船的鸟",
+              "printedPage": 64,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 15
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry2",
+              "name": "金色的草地",
+              "printedPage": 66,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 16
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry3",
+              "name": "习作例文",
+              "printedPage": 69,
+              "tocPage": 5,
+              "kind": "activity",
+              "parts": [
+                {
+                  "name": "我家的小狗",
+                  "printedPage": 69,
+                  "tocPage": 5
+                },
+                {
+                  "name": "我爱故乡的杨梅",
+                  "printedPage": 70,
+                  "tocPage": 5
+                }
+              ]
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry4",
+              "name": "习作：我们眼中的缤纷世界",
+              "printedPage": 72,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6",
+          "name": "第六单元",
+          "printedPage": 73,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry1",
+              "name": "古诗三首",
+              "printedPage": 74,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 17,
+              "parts": [
+                {
+                  "name": "望天门山",
+                  "printedPage": 74,
+                  "tocPage": 5
+                },
+                {
+                  "name": "饮湖上初晴后雨",
+                  "printedPage": 74,
+                  "tocPage": 5
+                },
+                {
+                  "name": "望洞庭",
+                  "printedPage": 75,
+                  "tocPage": 5
+                }
+              ]
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry2",
+              "name": "富饶的西沙群岛",
+              "printedPage": 76,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 18
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry3",
+              "name": "海滨小城",
+              "printedPage": 79,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 19
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry4",
+              "name": "美丽的小兴安岭",
+              "printedPage": 81,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 20
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry5",
+              "name": "习作：这儿真美",
+              "printedPage": 84,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit6:entry6",
+              "name": "语文园地",
+              "printedPage": 85,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7",
+          "name": "第七单元",
+          "printedPage": 87,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry1",
+              "name": "大自然的声音",
+              "printedPage": 88,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 21
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry2",
+              "name": "读不完的大书",
+              "printedPage": 91,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 22
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry3",
+              "name": "父亲、树林和鸟",
+              "printedPage": 94,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 23
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry4",
+              "name": "口语交际：身边的“小事”",
+              "printedPage": 97,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry5",
+              "name": "习作：我有一个想法",
+              "printedPage": 98,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry6",
+              "name": "语文园地",
+              "printedPage": 99,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8",
+          "name": "第八单元",
+          "printedPage": 101,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry1",
+              "name": "司马光",
+              "printedPage": 102,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 24
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry2",
+              "name": "灰雀",
+              "printedPage": 103,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 25
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry3",
+              "name": "手术台就是阵地",
+              "printedPage": 105,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 26
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry4",
+              "name": "一个粗瓷大碗",
+              "printedPage": 108,
+              "tocPage": 5,
+              "kind": "lesson",
+              "number": 27,
+              "skim": true
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry5",
+              "name": "口语交际：请教",
+              "printedPage": 110,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry6",
+              "name": "习作：那次玩得真高兴",
+              "printedPage": 111,
+              "tocPage": 5,
+              "kind": "activity"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:unit8:entry7",
+              "name": "语文园地",
+              "printedPage": 112,
+              "tocPage": 5,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:chinese-g3-upper-02915a7db6517258:appendix",
+          "name": "附录",
+          "printedPage": 114,
+          "tocPage": 5,
+          "kind": "appendix",
+          "pageBasis": "first_entry",
+          "lessons": [
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:appendix:entry1",
+              "name": "识字表",
+              "printedPage": 114,
+              "tocPage": 5,
+              "kind": "reference"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:appendix:entry2",
+              "name": "写字表",
+              "printedPage": 117,
+              "tocPage": 5,
+              "kind": "reference"
+            },
+            {
+              "id": "archive-book:chinese-g3-upper-02915a7db6517258:appendix:entry3",
+              "name": "词语表",
+              "printedPage": 119,
+              "tocPage": 5,
+              "kind": "reference"
+            }
+          ]
+        }
+      ],
+      "version": "93bdabc0bebd3987c6d417c0",
+      "chapterEvidence": {
+        "reviewId": "original-directory-02915a7d-20261101",
+        "method": "agent_visual_review",
+        "reviewedAt": "2026-11-01T05:58:44.119Z",
+        "idScheme": "local_toc_ids",
+        "sourceManifestSha256": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
+        "metadataSha256": "93bdabc0bebd3987c6d417c0bd60dce40d6902c8e2b62dfaf26779e2daf6b2dd",
+        "tocPageSha256s": [
+          "79ee57b370100c43f641c2d318e1d4d7ce0f7333a2a508bd3ae9c046277577ba",
+          "48e2d2e4c294b31436efc237475e3d2b1518d97a02ac660f885f59a2599f894b"
+        ],
+        "mappingReview": "not_reviewed"
+      }
+    },
+    {
+      "id": "archive-book:math-g1-upper-a8e880217c456db6",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "edition": "人教版 · 2022年8月第2版 · 2011课标",
+      "title": "数学一年级上册（人教2022年第2版独立原件）",
+      "source": "archive",
+      "sourceRef": "chinatextbook:primary:math:9b65cbd0382c7175945b@a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "chapterState": "available",
+      "catalogVersion": "reviewed-original-unit-directory-v1",
+      "sourceEdition": {
+        "sourceBookId": "chinatextbook:primary:math:9b65cbd0382c7175945b",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011,
+        "publicationStatement": "物理第3页版权页明确2022年8月第2版；物理第117页后记明确依据2011年版课程标准，2022审核不等2022课标。按本件独立登记，不绑定2024修订目录。"
+      },
+      "chapters": [
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit1",
+          "name": "准备课",
+          "printedPage": 2,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+              "name": "准备课",
+              "printedPage": 2,
+              "tocPage": 5,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit2",
+          "name": "位置",
+          "printedPage": 9,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit2:entry1",
+              "name": "位置",
+              "printedPage": 9,
+              "tocPage": 5,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit3",
+          "name": "5以内数的认识和加减法",
+          "printedPage": 14,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit3:entry1",
+              "name": "5以内数的认识和加减法",
+              "printedPage": 14,
+              "tocPage": 5,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit4",
+          "name": "认识图形（一）",
+          "printedPage": 34,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit4:entry1",
+              "name": "认识图形（一）",
+              "printedPage": 34,
+              "tocPage": 5,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit5",
+          "name": "6~10的认识和加减法",
+          "printedPage": 39,
+          "tocPage": 5,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit5:entry1",
+              "name": "6~10的认识和加减法",
+              "printedPage": 39,
+              "tocPage": 5,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit6",
+          "name": "11~20各数的认识",
+          "printedPage": 73,
+          "tocPage": 6,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit6:entry1",
+              "name": "11~20各数的认识",
+              "printedPage": 73,
+              "tocPage": 6,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:math-playground",
+          "name": "数学乐园",
+          "printedPage": 82,
+          "tocPage": 6,
+          "kind": "anthology",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:math-playground:entry1",
+              "name": "数学乐园",
+              "printedPage": 82,
+              "tocPage": 6,
+              "kind": "activity"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit7",
+          "name": "认识钟表",
+          "printedPage": 84,
+          "tocPage": 6,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit7:entry1",
+              "name": "认识钟表",
+              "printedPage": 84,
+              "tocPage": 6,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit8",
+          "name": "20以内的进位加法",
+          "printedPage": 88,
+          "tocPage": 6,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit8:entry1",
+              "name": "20以内的进位加法",
+              "printedPage": 88,
+              "tocPage": 6,
+              "kind": "lesson"
+            }
+          ]
+        },
+        {
+          "id": "archive-book:math-g1-upper-a8e880217c456db6:unit9",
+          "name": "总复习",
+          "printedPage": 104,
+          "tocPage": 6,
+          "kind": "unit",
+          "pageBasis": "printed_heading",
+          "lessons": [
+            {
+              "id": "archive-book:math-g1-upper-a8e880217c456db6:unit9:entry1",
+              "name": "总复习",
+              "printedPage": 104,
+              "tocPage": 6,
+              "kind": "lesson"
+            }
+          ]
+        }
+      ],
+      "version": "6a7e89f4efca78ea9dc38cdd",
+      "chapterEvidence": {
+        "reviewId": "original-unit-directory-a8e88021-20261102",
+        "method": "agent_visual_review",
+        "reviewedAt": "2026-11-02T14:54:34.295Z",
+        "idScheme": "local_toc_ids",
+        "sourceManifestSha256": "b24580485e03b29394690382762e218f61d2f802933b9ffe0985e9633a029aee",
+        "metadataSha256": "6a7e89f4efca78ea9dc38cdda46292b9a837eda3eaeb5f396f28e8bbe5e0b2b5",
+        "tocPageSha256s": [
+          "dbab435c999a59b12024029747c16739e155f8aafb05749c7ff6da17d9709401",
+          "cb455349ecaac9c54a49fb6fbc724c8de43308de57da95d337561417d8630c78"
+        ],
+        "mappingReview": "not_reviewed"
+      }
+    }
+  ],
+  "mappingCandidates": [
+    {
+      "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+      "sourceBookId": "chinatextbook:chinese:g3:upper",
+      "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+      "lessonName": "大青树下的小学",
+      "bookVersion": "93bdabc0bebd3987c6d417c0",
+      "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+      "extractedSha256": "96e8ffc8ca547a3dddfb40e8c8a98951f8a0d1d2a1a735fd988d1e091e76df63",
+      "lessonFingerprint": "ce23940a730d7f94fdcbe899fe33edac68e8c5cee5b67a0b839c6229a612ba31",
+      "printedPage": 2,
+      "pdfStartPage": 7,
+      "pdfEndPage": 9,
+      "titleMatched": true,
+      "candidateAtomIds": [
+        "core:chinese:oral-sequence",
+        "core:chinese:oral-complete"
+      ],
+      "rationale": "本独立原件的整册目录及物理7～9页已分别核对；此新定位候选不代表映射或教学审核，不能授予另一登记修订版资格。",
+      "evidence": [
+        {
+          "atomId": "core:chinese:oral-sequence",
+          "signalTerms": [
+            "说一说"
+          ],
+          "signalOccurrences": 2,
+          "score": 2,
+          "evidencePages": [
+            7,
+            9
+          ]
+        },
+        {
+          "atomId": "core:chinese:oral-complete",
+          "signalTerms": [
+            "说一说"
+          ],
+          "signalOccurrences": 2,
+          "score": 2,
+          "evidencePages": [
+            7,
+            9
+          ]
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": [],
+      "chapterName": "第一单元",
+      "editionProofFingerprint": "66abd64ba947c86623073c68dade75e957d7a2cc3f24d2fdda32b4f0a56287de"
+    },
+    {
+      "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+      "bookVersion": "6a7e89f4efca78ea9dc38cdd",
+      "sourceBookId": "chinatextbook:primary:math:9b65cbd0382c7175945b",
+      "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+      "extractedSha256": "29771ad3802d19a4b2c016eda0c37c70b2aa7d60f769016543e5166c62b3ff3d",
+      "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+      "lessonName": "准备课",
+      "chapterName": "准备课",
+      "lessonFingerprint": "c20d28828a4789ea17ca742bb9d8c43c84f3e2bc0aee98c1e50c0ce01cb39287",
+      "editionProofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1",
+      "pdfStartPage": 7,
+      "pdfEndPage": 13,
+      "titleMatched": true,
+      "candidateAtomIds": [],
+      "rationale": "准确原件准备课物理7至13页逐张核对；单元层级含数一数、比多少与练习一。不是教师审核、已批准目标映射或其他修订版来源。",
+      "evidence": [
+        {
+          "page": 5,
+          "textSha256": "6749acdd28aab5d104ce3b45b33fe4120926c24257436f96b8c56ce5d69d2147",
+          "imageSha256": "dbab435c999a59b12024029747c16739e155f8aafb05749c7ff6da17d9709401"
+        },
+        {
+          "page": 7,
+          "textSha256": "8404c76873f6f29c5227e5ab73c3fbf6edd04b40feff04f8ec667d9dcf331e14",
+          "imageSha256": "3ed603e6779a07b79a1412a7ae7bdcab051c4cce5f59a717b06f41cb28cfe6d5"
+        },
+        {
+          "page": 11,
+          "textSha256": "6dab456a5dca8bd4aa01d951db582582b3234484e78b9b0d95ea13af142a1d91",
+          "imageSha256": "b5bea7be7da108d2ea8bdd0a8013127afda8e111cdecae5401d0ffaf38e8f482"
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": []
+    }
+  ]
+}

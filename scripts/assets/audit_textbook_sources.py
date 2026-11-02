@@ -15,7 +15,7 @@ from capture_textbook_sources import checked_blob, read_index
 from reviewed_textbook_chapters import load_reviewed
 
 
-def audit(root: Path, registry: Path, reviewed: Path):
+def audit(root: Path, registry: Path, reviewed: Path, originals: Path | None = None):
     index = read_index(root)
     evidence = {'at': datetime.now(timezone.utc).isoformat(), 'passed': False,
                 'scope': 'Only the newly captured private textbook front-matter references. Visual title review is recorded separately from byte integrity; no full-book or publication qualification claim.',
@@ -50,9 +50,9 @@ def audit(root: Path, registry: Path, reviewed: Path):
     with tempfile.TemporaryDirectory(prefix='study-textbook-rebuild-') as directory:
         target = Path(directory) / 'textbooks-v1.json'
         with contextlib.redirect_stdout(io.StringIO()):
-            run(root.parents[1], target, reviewed=reviewed, labels_path=registry)
+            run(root.parents[1], target, reviewed=reviewed, labels_path=registry, originals=originals)
             first = target.read_bytes()
-            run(root.parents[1], target, reviewed=reviewed)
+            run(root.parents[1], target, reviewed=reviewed, originals=originals)
         if first != target.read_bytes() or first != registry.read_bytes(): raise ValueError('Textbook registry rebuild is not deterministic or differs from the checked-in candidate')
     captured = json.loads(registry.read_text('utf-8'))
     evidence['registry'] = {'sha256': hashlib.sha256(first).hexdigest(), 'bytes': len(first), 'books': len(captured['books']),
@@ -68,9 +68,10 @@ if __name__ == '__main__':
     parser.add_argument('--root', type=Path, default=Path('data/assets/textbook-sources/public-v1'))
     parser.add_argument('--registry', type=Path, default=Path('resources/curriculum/textbooks-v1.json'))
     parser.add_argument('--reviewed', type=Path, default=Path('resources/curriculum/reviewed-textbook-chapters-v1.json'))
+    parser.add_argument('--originals', type=Path, default=Path('resources/curriculum/reviewed-original-textbooks-v1.json'))
     parser.add_argument('--output', type=Path, default=Path('data/qa/textbook-chapters-assets.json'))
     args = parser.parse_args()
-    result = audit(args.root, args.registry, args.reviewed)
+    result = audit(args.root, args.registry, args.reviewed, args.originals)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k not in ['books', 'storedManifest']}, ensure_ascii=False))

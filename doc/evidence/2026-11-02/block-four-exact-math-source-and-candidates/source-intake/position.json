@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-02T15:13:08.288Z",
+  "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+  "sourcePages": 118,
+  "physicalPages": [
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "method": "agent_visual_review",
+  "reviewed": [
+    {
+      "physicalPage": 14,
+      "image": "data/qa/b4-source-math-position-first/physical-014.png",
+      "imageSha256": "aa0b91618393aef9c9b65472e67cbdc403ce266970cf48b57b45f446a7700c5e",
+      "textSha256": "95e23b1874927d3ba5ab4e0c88508a4174b8451ef20efa81f961a086b11bb34f",
+      "visuallyReviewed": true,
+      "statement": "印刷9页上下面与车辆前后，桥与船相对、车辆按行进方向；我说你摆保留实际操作。"
+    },
+    {
+      "physicalPage": 15,
+      "image": "data/qa/b4-source-math-position-first/physical-015.png",
+      "imageSha256": "be5c938203a9d55c09bdedb072447708ab4e84ab575acce22aaf8fbd81ba1f56",
+      "textSha256": "9b2bd998ff01589a5fcc55fef27664522dcbbe9d7689e41e4b53b6eecd0b2178",
+      "visuallyReviewed": true,
+      "statement": "印刷10页自身左右及部位动作，以本人为准；右手写字是图中示例，不将惯用手作为所有学生左右定义。"
+    },
+    {
+      "physicalPage": 16,
+      "image": "data/qa/b4-source-math-position-first/physical-016.png",
+      "imageSha256": "3be283902e3eb6d177eb4e9765d95f9e0ccadb75313d691f1ce520933e67b3b3",
+      "textSha256": "20a0e4e0b774bd897ebc4ae1b8461b443149ebcdcd359791f10a7ada7fd04405",
+      "visuallyReviewed": true,
+      "statement": "印刷11页排队与教室面向明确，前面那个与后面所有范围不同；剪贴讲述允许合理不同但依据可核。"
+    },
+    {
+      "physicalPage": 17,
+      "image": "data/qa/b4-source-math-position-first/physical-017.png",
+      "imageSha256": "79c745c3c3ffb411136d782f627bcf534723d3474c50958008e44bbfd16434dc",
+      "textSha256": "e9a069e3c6b35542b753b744b22960ebaf5d6745315de602f28cadf5b77acefe",
+      "visuallyReviewed": true,
+      "statement": "印刷12页房间物品合理摆放与九格指定相对位置，图面左右规则先明确；剪贴不等唯一居家布置。"
+    },
+    {
+      "physicalPage": 18,
+      "image": "data/qa/b4-source-math-position-first/physical-018.png",
+      "imageSha256": "e82c29924968a5dd7718a8bbe3876871c427ef1a0e85c3c2d6c0ba7b149cbc62",
+      "textSha256": "4f6817b52e0911638c147fecb292a2a26ca01ca58a68370c6094ac9e6619b1d0",
+      "visuallyReviewed": true,
+      "statement": "印刷13页蚂蚁绕障碍到目标，图面上下左右与角色朝向分清，合理路线可不同；靠右行联系实际环境，不组织危险行走复现。"
+    }
+  ],
+  "teacherReviewed": false,
+  "originalImagesOrFullTextCommitted": false
+}

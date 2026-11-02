@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T15:02:34.474Z",
+  "passed": false,
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real SQLite HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+  "subject": "math",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 49,
+    "exactOriginalSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "proofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1"
+  },
+  "drafts": [],
+  "error": "POST /admin/curriculum/teaching-packages/source-preview: 教材提取正文的完整字节或来源身份无法核对，请恢复原资料后重试\n\n409 !== 201\n"
+}

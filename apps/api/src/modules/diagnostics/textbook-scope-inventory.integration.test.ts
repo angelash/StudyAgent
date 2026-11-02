@@ -41,17 +41,20 @@ describe('actual full textbook scope and missing-book HTTP on ' + (postgres ? 'P
     const login = await request(app.getHttpServer()).post('/api/auth/learning-code').send({ code: code.code }); expect(login.status).toBe(201); student = login.body.data;
   });
   afterAll(async () => { await app?.close(); for (const name of names) if (prior[name] === undefined) delete process.env[name]; else process.env[name] = prior[name]; });
-  it('accounts for the actual 449 primary books and 3512 lessons while preserving every native row and queue', async () => {
+  it('accounts for the actual 450 primary books and 3522 entries while preserving every native row and queue', async () => {
     const before = await cold(), tasks = await store.tasks.summary(), totals = { books: 0, structured: 0, gaps: 0, lessons: 0 };
     for (const subject of ['math', 'chinese', 'english']) {
       const result = await list('?subject=' + subject + '&pageSize=1&bookPageSize=1');
       totals.books += result.inventory.registeredBooks; totals.structured += result.inventory.booksWithProgressLessons; totals.gaps += result.inventory.booksWithoutProgressLessons; totals.lessons += result.inventory.progressLessons;
       expect(result.bookGaps.rows.length).toBeLessThanOrEqual(1); expect(result.bookGaps.total).toBe(result.inventory.booksWithoutProgressLessons);
     }
-    expect(totals).toEqual({ books: 449, structured: 113, gaps: 336, lessons: 3512 });
+    expect(totals).toEqual({ books: 450, structured: 114, gaps: 336, lessons: 3522 });
     const registered = JSON.parse(readFileSync(process.env.STUDY_TEXTBOOK_REGISTRY!, 'utf8')).books, independent = registered.find((book: any) => book.id === 'archive-book:chinese-g3-upper-02915a7db6517258');
     expect(independent.chapters.flatMap((chapter: any) => chapter.lessons)).toHaveLength(51); expect(independent.chapters.flatMap((chapter: any) => chapter.lessons).filter((lesson: any) => lesson.number)).toHaveLength(27);
-    expect(registered.filter((book: any) => ['math', 'chinese', 'english'].includes(book.subject) && book.id !== independent.id)).toHaveLength(448);
+    expect(registered.filter((book: any) => ['math', 'chinese', 'english'].includes(book.subject) && book.id !== independent.id)).toHaveLength(449);
+    const mathOriginal = registered.find((book: any) => book.id === 'archive-book:math-g1-upper-a8e880217c456db6');
+    expect(mathOriginal.sourceEdition).toMatchObject({ publicationYear: 2022, curriculumStandardYear: 2011 });
+    expect(mathOriginal.chapters.flatMap((chapter: any) => chapter.lessons)).toHaveLength(10);
     expect(await cold()).toEqual(before); expect(await store.tasks.summary()).toEqual(tasks);
   });
   it('keeps whole-book gaps independent of lesson filters and pages the exact book identities separately', async () => {

@@ -1,0 +1,384 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit1:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 7,
+    "pageEnd": 13,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:counting-set",
+      "version": 1,
+      "name": "确定本次要数的一类对象",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与数量",
+      "objective": "在1至10个对象的场景中先说数什么、一个算一件什么",
+      "successCriterion": "所选类别与单位明确，不把同一器材的部分或别类物体混入",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:one-to-one-count",
+      "version": 1,
+      "name": "逐个对应点数不漏不重",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与数量",
+      "objective": "用移动、指点或标记让每个对象与一个数词对应",
+      "successCriterion": "本人操作覆盖当前每件一次，错漏可指出并重新核对，不以背数代点数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:cardinality",
+      "version": 1,
+      "name": "用最后数词回答一共有几个",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与数量",
+      "objective": "数完1至10个对象后说最后数词表示整组数量",
+      "successCriterion": "最后一个对象与总数量分清，换顺序总数相同；过程和总数均核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:quantity-representation",
+      "version": 1,
+      "name": "实物与点数表示同一数量",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与表示",
+      "objective": "将一组1至10个对象与相同个数的点一一对应",
+      "successCriterion": "对象、点和说出的数量一致，点大小颜色不同不影响一物一点",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:matching-compare",
+      "version": 1,
+      "name": "用一一配对比较多少",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数量关系",
+      "objective": "给两组各不超过10个的对象配对，判断同样多或谁多谁少",
+      "successCriterion": "每件最多配一次，无剩余是同样多，有剩余的一组较多，不只比占地长短",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:rearrange-invariance",
+      "version": 1,
+      "name": "摆放改变不等于数量改变",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数量关系",
+      "objective": "在未增未减同一组物品时重排，再核对总数量",
+      "successCriterion": "区分排得长与数量多，用重数或一一配对说明未增未减",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:relative-language",
+      "version": 1,
+      "name": "按指定对象表达多与少",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数学表达",
+      "objective": "明确比较哪两组，按要求指出多的一组或少的一组",
+      "successCriterion": "比较双方与方向清楚；同样多时不硬选多或少，不把题目选少答成选多",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:counting-set",
+    "source:math:g1:a8e88021:one-to-one-count",
+    "source:math:g1:a8e88021:cardinality",
+    "source:math:g1:a8e88021:quantity-representation",
+    "source:math:g1:a8e88021:matching-compare",
+    "source:math:g1:a8e88021:rearrange-invariance",
+    "source:math:g1:a8e88021:relative-language"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张核查本件物理7至13页校园跨页图、数量集合、配对比较及练习要求；来源核查不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 7,
+        "visualChecked": true,
+        "statement": "印刷2页校园跨页左部，数一数标题；先确定计数对象，器材整体与部件不混。"
+      },
+      {
+        "page": 8,
+        "visualChecked": true,
+        "statement": "印刷3页校园跨页右部，鸟树与学生等对象按类确定，重叠对象不重复数。"
+      },
+      {
+        "page": 9,
+        "visualChecked": true,
+        "statement": "印刷4页1至5与旗、器材、长凳等对应；数量与按何种单位数分别说明。"
+      },
+      {
+        "page": 10,
+        "visualChecked": true,
+        "statement": "印刷5页6至10与花盆鸟树学生对应；最后数词表示整组，不只是最后一个对象。"
+      },
+      {
+        "page": 11,
+        "visualChecked": true,
+        "statement": "印刷6页比多少，兔与砖同样多、熊与木有剩余，点线表一一对应。"
+      },
+      {
+        "page": 12,
+        "visualChecked": true,
+        "statement": "印刷7页实际摆比和多/少勾选，比较两组与题目指定方向分清。"
+      },
+      {
+        "page": 13,
+        "visualChecked": true,
+        "statement": "印刷8页练习一点数、连同样多、鸡鸭选少与红黄珠选多；未要求算式或比较符号。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "准备课：数一数、比多少",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      2,
+      8
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "countRange": [
+      1,
+      10
+    ],
+    "formalDigitHandwritingRequired": false,
+    "additionSubtractionRequired": false,
+    "comparisonSymbolsRequired": false,
+    "realOperationAndHelpRecordedSeparately": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "准备课：一个一个数，配成一对比",
+    "activation": {
+      "prompt": "桌面上放着几张纸片和两支笔。先说今天只数纸片，还是把笔也算进去；自己选一类后再数。",
+      "expectedObservation": "先说清数哪一类和一件是什么，再开始点数。",
+      "bridge": "书中校园有许多东西。先选要数的那一类，再一个一个数，才不会把不该数的也算进去。"
+    },
+    "concept": {
+      "explanation": "数之前先说清楚：我数的是纸片，还是笔？数一件器材时，不把它的每根杆都当一件器材。\n数的时候，碰一件说一个数词。可以把数过的移到旁边，或给它做一个记号。没有漏掉，也没有重复，才算这一组。只会顺着说一、二、三，还不能证明已经数对眼前的东西。\n数完后，最后说的数词表示这一组一共有几个。指到第四张纸片说四，四也表示这整组有四张，不只是说最后那张叫四。换一张先数，只要不漏不重，总数一样。\n画点也可以表示数量。一件物品配一个点，五件就画五个点。点大一点、小一点或换颜色，不会自己多出一件物品。\n比两组谁多时，让这边一件配那边一件，每件只配一次。两边都配完、都没有剩，就是同样多。一边有剩，这边就多，另一边就少。排得长、东西大，不一定数量多。\n同一组东西只移动位置，没有拿走，也没有添进来，数量不会改变。不放心，可以再数或再配一次。回答多和少时要说清与谁比，还要看题目让选多的一组还是少的一组。同样多时，两边都不是比另一边多。",
+      "points": [
+        "先选一类并确定一件是什么",
+        "碰一件说一个数词，不漏不重",
+        "最后数词表示一共有几个",
+        "一件配一点，表示同一数量",
+        "一件配一件，看有没有剩",
+        "只重排不增减，数量不变",
+        "多与少要说清和谁比"
+      ]
+    },
+    "example": {
+      "situation": "原创材料：桌上四张圆纸片，旁边三张方纸片。圆纸片排得紧，方纸片排得宽。",
+      "steps": [
+        {
+          "explanation": "先只数圆纸片。每碰到一张说一个数词：一、二、三、四。最后说四，回答圆纸片共有四张。",
+          "board": [
+            "圆纸片：○ ○ ○ ○",
+            "一张对应一个数词",
+            "最后的四表示共有四张"
+          ]
+        },
+        {
+          "explanation": "把每张方纸片和一张圆纸片配成一对。配好三对后，还剩一张圆纸片，所以圆纸片多，方纸片少。",
+          "board": [
+            "○ 对 □",
+            "○ 对 □",
+            "○ 对 □",
+            "○ 剩下，没有方纸片相配"
+          ]
+        },
+        {
+          "explanation": "把四张圆纸片拉开再数，仍是四张。改变的是间隔，不是张数；原来排得宽的方纸片也不会因此更多。",
+          "board": [
+            "○   ○   ○   ○",
+            "只移动，没有增减",
+            "重新核数仍是四张"
+          ]
+        }
+      ],
+      "conclusion": "总数要逐个数，多少可以配一配；大小和疏密不能替代数量。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创纸片配对：看剩余，不比排多长",
+        "headers": [
+          "对象",
+          "摆出的每一件",
+          "配对后怎样判断"
+        ],
+        "rows": [
+          [
+            "圆纸片",
+            "○ ○ ○ ○",
+            "三对配完，圆纸片还剩一张"
+          ],
+          [
+            "方纸片",
+            "□ □ □",
+            "三张都已各配一张圆纸片"
+          ],
+          [
+            "四张圆纸片重排",
+            "○   ○   ○   ○",
+            "只改变间隔，仍然是四张"
+          ]
+        ],
+        "explanation": "每个圆或方符号表示一张纸片。表格为原创可数表示，不复制教材插图。先指点每件，再判断谁剩余；重排不增减。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "一边漏数一张，一边又数了同一张两次，最后碰巧总数说对。",
+        "alternatives": [
+          "总数碰巧相同，逐个对应过程仍未稳定。"
+        ],
+        "verification": "请把每次已数的一张移到另一边，再数一次并保留原来的操作。",
+        "correctiveFeedback": "一个对象只配一个数词；总数相同也要核对过程。"
+      },
+      {
+        "observation": "说方纸片排得更宽，所以方纸片比圆纸片多。",
+        "alternatives": [
+          "把空间长度当成数量，尚未逐件比较。"
+        ],
+        "verification": "让两组各一张配一张，看看是哪一组还有剩余。",
+        "correctiveFeedback": "看有没有未配到的一件，不只看哪一排长。"
+      },
+      {
+        "observation": "题目让指出少的一组，却选出了多的一组。",
+        "alternatives": [
+          "可能已比较正确但没有保留要求方向；也可能比较双方未明确。"
+        ],
+        "verification": "先说两组各是什么、谁有剩，再用完整句说题目要选哪一组。",
+        "correctiveFeedback": "比较和按要求选择是两步；不只因选错就断定不会数。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的两组纸片换了颜色、大小和排列，其中一组较短却张数更多。",
+      "prompt": "先说明数哪一组和怎样不漏不重，再配对判断谁多；重排后说明有没有增减。",
+      "expectedStrategy": "使用当前实际对象和剩余关系，不用原例四与三的答案套新数量。"
+    },
+    "summary": {
+      "synthesis": "先说数什么，逐件对应数完整；最后数词回答共有几个。比较时一件配一件，看剩余。只重排不增减，数量不变。",
+      "takeaways": [
+        "先定对象",
+        "不漏不重",
+        "最后数词表总数",
+        "配对看剩余",
+        "间隔变化不等数量变化"
+      ]
+    },
+    "citations": [
+      {
+        "page": 7,
+        "quote": "数一数\n准备课\n1",
+        "usedFor": "concept"
+      },
+      {
+        "page": 11,
+        "quote": "图中还可以比什么？",
+        "usedFor": "example"
+      },
+      {
+        "page": 12,
+        "quote": "摆一摆，比一比。",
+        "usedFor": "summary"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:counting-set",
+        "objective": "在1至10个对象的场景中先说数什么、一个算一件什么",
+        "successCriterion": "所选类别与单位明确，不把同一器材的部分或别类物体混入"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:one-to-one-count",
+        "objective": "用移动、指点或标记让每个对象与一个数词对应",
+        "successCriterion": "本人操作覆盖当前每件一次，错漏可指出并重新核对，不以背数代点数"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:cardinality",
+        "objective": "数完1至10个对象后说最后数词表示整组数量",
+        "successCriterion": "最后一个对象与总数量分清，换顺序总数相同；过程和总数均核"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:quantity-representation",
+        "objective": "将一组1至10个对象与相同个数的点一一对应",
+        "successCriterion": "对象、点和说出的数量一致，点大小颜色不同不影响一物一点"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:matching-compare",
+        "objective": "给两组各不超过10个的对象配对，判断同样多或谁多谁少",
+        "successCriterion": "每件最多配一次，无剩余是同样多，有剩余的一组较多，不只比占地长短"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:rearrange-invariance",
+        "objective": "在未增未减同一组物品时重排，再核对总数量",
+        "successCriterion": "区分排得长与数量多，用重数或一一配对说明未增未减"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:relative-language",
+        "objective": "明确比较哪两组，按要求指出多的一组或少的一组",
+        "successCriterion": "比较双方与方向清楚；同样多时不硬选多或少，不把题目选少答成选多"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "preparation",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

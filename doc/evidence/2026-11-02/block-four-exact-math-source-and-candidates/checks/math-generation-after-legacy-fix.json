@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-02T15:25:17.631Z",
+  "passed": true,
+  "changedTool": "scripts/content/exact-source-candidate-kit.cjs",
+  "previousSha256": "7d117efbb48490867472d5aa260ff5f8ca604f1e28d5b0630dacc4e5c566d2d8",
+  "currentSha256": "7e05deef924020af07225be6b34083e7390617aec7933d84bac056e7188af92c",
+  "reason": "Normalize legacy Chinese manifest subject only; primary mathematical identity and authored outputs unchanged.",
+  "privateQaFilesRequired": false,
+  "outputBytesUnchanged": true,
+  "files": [
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-preparation-v1.json",
+      "sha256": "8c9d78b8d875240b56e25864b4a8adba50676b6c2e71462f4d1eb9e734330746"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-preparation-v1.json",
+      "sha256": "4356a310a0129a12e5dd8465d89a1554f3050461b8d8dd5eec525e94e9c84052"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-position-v1.json",
+      "sha256": "e48e6baccf8f081c29a6dff3ca9686a1bea75391d3b26c527018563fff08b870"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-position-v1.json",
+      "sha256": "3f3e0fd30adcc83a94b345f085695dbbac15614b183aae35bee0f92588336654"
+    }
+  ]
+}
