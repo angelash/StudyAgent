@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T16:04:43.067Z",
+  "phase": "math-figure-specification-and-actual36-baseline",
+  "currentApplicationSchema": 36,
+  "plannedNewSchema": 37,
+  "mathFiguresImplemented": false,
+  "current37MigrationTested": false,
+  "baseCommit": "896ff84e",
+  "actualFrozenReaderSha256": "272007ea58794c642c5bd0de98d3608dccee99c52ffac219cf55dbe4ef1e7c4a",
+  "capsule": {
+    "path": "resources/compatibility/math-before-figures-schema36-reader-v1.json.gz",
+    "sha256": "43bdcb143a9dc11ea39892d17b4d9d8453e5c6f84a0ea44cff4430959e2b7e7e",
+    "compiledInputs": 140
+  },
+  "positiveControls": {
+    "sqlite": true,
+    "actualPostgres": true,
+    "ownProtocolWriteAndColdRead": true
+  },
+  "credentialFindings": [],
+  "protectedFiles": 1063,
+  "changedProtectedFiles": [],
+  "formal": {
+    "schema": 24,
+    "revision": 188
+  },
+  "block": 4,
+  "blockCompleted": false,
+  "nextBlockEntered": false,
+  "wholeGoal": "active",
+  "pushed": false,
+  "deployed": false
+}

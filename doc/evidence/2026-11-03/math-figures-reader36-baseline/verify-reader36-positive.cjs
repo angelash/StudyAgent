@@ -1,0 +1,16 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),zlib=require('zlib'),assert=require('assert/strict'),{DatabaseSync}=require('node:sqlite'),{Pool}=require('pg');
+const root=process.cwd(),folder=path.join(root,'data/qa/block-four-math-figures-first');assert(!fs.existsSync(folder));fs.mkdirSync(folder);const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),name='resources/compatibility/math-before-figures-schema36-reader-v1.json.gz',packet=JSON.parse(zlib.gunzipSync(fs.readFileSync(name)));assert.equal(sha(Buffer.from(packet.reader.code)),packet.reader.sha256);for(const e of packet.metadata.external)assert.equal(sha(fs.readFileSync(e.path)),e.sha256);
+const entry=path.join(folder,'reader36.cjs');fs.writeFileSync(entry,packet.reader.code,{flag:'wx'});const Reader=require(entry).DomainDatabase;
+(async()=>{const results=[];let pool;
+ try{for(const driver of ['sqlite','postgres']){
+  let location=path.join(folder,'legacy36.sqlite3');
+  if(driver==='postgres'){const c=JSON.parse(fs.readFileSync('data/qa/b4pg/runtime.private.json'));assert.equal(path.resolve(c.data),path.join(root,'data/qa/b4pg/cluster'));const u=new URL(c.connectionString);assert.equal(u.hostname,'127.0.0.1');assert.equal(u.port,'15456');assert.equal(u.pathname,'/study_b4_gesp');pool=new Pool({connectionString:c.connectionString,max:1});assert.equal(path.resolve((await pool.query('SHOW data_directory')).rows[0].data_directory),path.resolve(c.data));const schema='math_figures36_'+crypto.randomBytes(10).toString('hex');await pool.query('CREATE SCHEMA '+schema);u.searchParams.set('options','-c search_path='+schema);location=u.toString();}
+  const previous=new Reader(location);await previous.open();try{await previous.commit(await previous.read(),{notebookEntries:[{id:'qa-reader36-'+driver,content:'Generated previous-reader positive control; not learner evidence.'}]});}finally{await previous.close();}
+  const cold=new Reader(location);await cold.open();try{assert.equal((await cold.read()).state.notebookEntries[0].id,'qa-reader36-'+driver);}finally{await cold.close();}
+  const db=driver==='sqlite'?new DatabaseSync(location,{readOnly:true}):new Pool({connectionString:location,max:1});
+  let version,guard;try{const q=async sql=>driver==='sqlite'?db.prepare(sql).all():(await db.query(sql)).rows;version=(await q('SELECT MAX(version) AS v FROM schema_migrations'))[0].v;guard=(await q('SELECT state FROM study_restore_guard WHERE id=1'))[0].state;}finally{if(driver==='sqlite')db.close();else await db.end();}
+  assert.equal(Number(version),36);assert.equal(guard,'ready-schema36-gesp-retention-feedback-v1');results.push({driver,passed:true,actualFrozenReader:true,ownProtocolMigrationWriteAndIndependentColdRead:true,schema:Number(version),guard,formalContacted:false});
+ }
+ fs.writeFileSync(path.join(folder,'reader36-positive-first.json'),JSON.stringify({at:new Date().toISOString(),passed:true,readerSha256:packet.reader.sha256,sourceCapsule:name,results,current37MigrationTested:false,teacherAcceptance:false},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({passed:true,readers:results,current37MigrationTested:false}));
+ }finally{await pool?.end();}
+})().catch(e=>{console.error(e.message);process.exitCode=1;});

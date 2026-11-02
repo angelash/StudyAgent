@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-02T16:00:05.336Z",
+  "passed": true,
+  "readerSha256": "272007ea58794c642c5bd0de98d3608dccee99c52ffac219cf55dbe4ef1e7c4a",
+  "sourceCapsule": "resources/compatibility/math-before-figures-schema36-reader-v1.json.gz",
+  "results": [
+    {
+      "driver": "sqlite",
+      "passed": true,
+      "actualFrozenReader": true,
+      "ownProtocolMigrationWriteAndIndependentColdRead": true,
+      "schema": 36,
+      "guard": "ready-schema36-gesp-retention-feedback-v1",
+      "formalContacted": false
+    },
+    {
+      "driver": "postgres",
+      "passed": true,
+      "actualFrozenReader": true,
+      "ownProtocolMigrationWriteAndIndependentColdRead": true,
+      "schema": 36,
+      "guard": "ready-schema36-gesp-retention-feedback-v1",
+      "formalContacted": false
+    }
+  ],
+  "current37MigrationTested": false,
+  "teacherAcceptance": false
+}
