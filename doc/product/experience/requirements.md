@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 第2块状态校正：XP-I06的原复测、教学后计时和干预复盘已有实现及当前工程证据，从planned改为in_progress。72项现为11 implemented、51 in_progress、10 planned、0 verified；教师及真人1/3/7/14日验收仍未完成。见[六链路核对](../../evidence/2026-11-02/block-two-learning-closure/receipt.json)。
+
 2026-11-02 开发组织：按[190 五块交付计划](../190-mainline-and-five-block-delivery.md)直接在主干推进。72 项编号与原验收要求保留；开发分块依次为工作台交互、学习闭环、资料纸面、教材与 GESP、工程与最终验收，每块自测通过后本地提交再继续。
 
 2026-11-01逐课来源：XP-F01/F03/F05与WS09/WS12沿[180协议](../180-textbook-lesson-source-and-teaching-package-pipeline.md)接准确来源、完整逐页文字与原工作台核对，见[本批证据](../../evidence/2026-11-01/workspace-r6-lesson-source/receipt.json)。523行仍为未批准候选，内容生产、完整教学包与教师/全教材/GESP及原所有真实条件继续；原72保持11 implemented/50 in_progress/11 planned/0 verified，WS不提升。
@@ -201,7 +203,7 @@ GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真�
 ### XP-I05 个性指导与预算 [in_progress]
 根据真实卡点选择讲法、资源、训练、成功标准与复测，家长确认修改。验收：资源可用、先修优先、日预算、暂停、旧定义不兼容和无模型降级。
 
-### XP-I06 真实复测与干预复盘 [planned]
+### XP-I06 真实复测与干预复盘 [in_progress]
 1/3/7/14日真实间隔、独立题族、前后可比、原因关闭/重开。验收：真实时间学生结果、保持失败、反向结果、不足样本均保留。
 
 ## J. AI、记忆与日历 / E04、E07

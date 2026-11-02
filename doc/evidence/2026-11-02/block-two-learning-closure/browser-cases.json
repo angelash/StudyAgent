@@ -1,0 +1,664 @@
+{
+  "inheritedSubsetOfOriginal647": true,
+  "newTestRun": false,
+  "cases": [
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 320",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 390",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 768",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: actual adult source stays independent through full observation, fixed URL and reload at 1440",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: child real report remains separate and creates exactly one original proposed plan with native manager",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: no completed report offers the native scope entry and never invents a plan",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: lost committed creation uses its exact complete original receipt after reload without a second POST",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: two tabs preserve full losing observations after a real version conflict",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: unavailable storage requires a full original command download before saving",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: a late source preflight cannot fill a reopened observation",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: complete original plan activities and reasons survive reload and a lost committed adjustment reply",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance observations: two original plan editors preserve the losing full reason after a real version conflict",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: a lost original activation survives reload and creates the original four delayed tasks per action",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: the original paused receipt stays separate from a later active plan",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: two complete forms require both actual downloads before leaving with unavailable storage",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: complete retrospective input restores and cannot be acknowledged without actual independent followup evidence",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-guidance.spec.ts",
+      "title": "guidance operations: actual completed independent followup supports an exact lost retrospective command while uncertainty stays explicit",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: explicit reason and two confirmations preserve all unstarted groups and keyboard focus",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: a lost committed acknowledgement resumes the exact original reason and key after reload",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: denied storage sends nothing until the complete reason and original command are downloaded",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: parent confirmation makes the actual learner history readonly while keeping a complete unsubmitted correction",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: two actual tabs retain separate explanations and the losing command never borrows another success",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: actual saved PNG and PCM audio remain readable after withdrawal while new media writes are refused",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-withdrawal.spec.ts",
+      "title": "practice withdrawal: a delayed pre-withdrawal activity projection cannot reenable learner writing",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: actual parent source, three groups and six learner answers retain original reasons and help",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: lost creation and arrangement replies keep exact original commands across reload",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a lost learner answer keeps the original reason separate from later local edits",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: denied storage requires a complete answer and reason download before switching questions",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: progressive help and a correction keep the learner first answer and reason unchanged",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a second tab compares both complete drafts instead of overwriting the first save",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: real image and PCM audio uploads stay attached to the original learner question and remain pending review",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: browser back without Navigation API preserves the complete current-question input",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-practice-workspace.spec.ts",
+      "title": "conversation practice workspace: a revoked learner entry clears server projection and rejects a conflicting child link",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 320",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 390",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 768",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual source, Auto model, full edit, rereview and adult first reasons at 1440",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: uncertain review preserves the original and blocks adoption until complete edits and new review",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: one lost generation acknowledgement is recovered with the same complete original command after reload",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: denied storage sends no creation until the full original copy is downloaded",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: the original adult response receipt survives reload without replacing the first reason",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: two actual tabs keep both complete edit drafts and compare the saved version",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: an explicit source change keeps original adult history readable and blocks new writes",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: original adoption and adult-start acknowledgements restore without duplicate records",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: explicit cancellation, original-model retry and Escape preserve source and restore focus",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "assistant-teaching-practice.spec.ts",
+      "title": "generated teaching workspace: actual adult-answer tabs preserve conflicting complete reasons before explicit comparison",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the isolated Web relative API route reaches the same actual QA service as the explicit client",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: actual editorial UI publishes reviewed originals, parent previews, child completes the original group and report keeps paired observations separate",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: a lost committed preview response recovers through the exact original copy without making another preview",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: an imported altered command cannot clear a committed original request and the exact downloaded input still recovers",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: two tabs retain their own input and require an explicit read of the other complete copy",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: unavailable browser storage protects internal subject changes until the latest complete input is downloaded",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "controlled-contrasts.spec.ts",
+      "title": "controlled: the report creates a dual-source plan and the actual child opens teaching while the guardian keeps a read-only view",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 320",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 390",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 768",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: original plan, explicit time and budget confirmation fit at 1440",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: an unknown original confirmation restores its exact complete command after reload without another event",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: actual other-subject occupied minutes block the day budget and a late overlap keeps the original selection",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: unavailable storage downloads the entire schedule command before any confirmation",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: two actual tabs keep separate full choices and a losing confirmation cannot borrow the winners original receipt",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "guidance-calendar.spec.ts",
+      "title": "guidance calendar: an actual missing DST minute is blocked and a repeated minute requires an explicit real offset",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 320",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 390",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 768",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 1440",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: disabled storage preserves the exact classroom time command and requires its full downloaded copy before writing",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "teaching-plan-verification.spec.ts",
+      "title": "original guidance verification: ordinary baseline retains prerequisite checks",
+      "attempts": 1,
+      "statuses": [
+        "passed"
+      ]
+    }
+  ],
+  "testHashes": [
+    {
+      "path": "tests/e2e/assistant-practice-workspace.spec.ts",
+      "sha256": "2da767e83a266b283b1a86c73a0bfc4af268b4c45630caf112ac560993665575"
+    },
+    {
+      "path": "tests/e2e/assistant-practice-withdrawal.spec.ts",
+      "sha256": "97433a9404929877cd52851a3f266974e304b6d919fed3a63b0402f806f7a465"
+    },
+    {
+      "path": "tests/e2e/assistant-teaching-practice.spec.ts",
+      "sha256": "6cde94aaf3d5657dc78cc6d4d35b6faadb66722b73c5e3db1925f3f481fb23b1"
+    },
+    {
+      "path": "tests/e2e/assistant-guidance.spec.ts",
+      "sha256": "9def615ec725e403c3166cb01d06a9238eb4bc3a0db67931fe9c8eef5287920a"
+    },
+    {
+      "path": "tests/e2e/controlled-contrasts.spec.ts",
+      "sha256": "5f76f88b37df004dee8a80f589d8898dfc0eebf92dc0da8e4c606d3a362996c5"
+    },
+    {
+      "path": "tests/e2e/guidance-calendar.spec.ts",
+      "sha256": "48007b74a8d7a2beba83911cdb9fb23da8808edafa0e26c854fe6c12522228b3"
+    },
+    {
+      "path": "tests/e2e/retention-evidence.spec.ts",
+      "sha256": "a910fad47673613a90410b904c6528699f4d3c74135b74732ebfe8807f2db25f"
+    },
+    {
+      "path": "tests/e2e/teaching-plan-verification.spec.ts",
+      "sha256": "71ae3cfd0a382e9de59acc8b6a856a711aecaee17c1d82a8113f19f35c4c938d"
+    }
+  ],
+  "flows": [
+    {
+      "id": "P2-01",
+      "name": "审核题来源、安排、本人首答与理由、帮助、媒体、撤回",
+      "files": [
+        "assistant-practice-workspace.spec.ts",
+        "assistant-practice-withdrawal.spec.ts"
+      ],
+      "specs": [
+        "156-assistant-practice-workspace-ui.md",
+        "157-practice-assignment-withdrawal-and-schema25.md"
+      ],
+      "cases": 16
+    },
+    {
+      "id": "P2-02",
+      "name": "成人与孩子AI教学持久生成、复核、采用、明确共享和本人活动",
+      "files": [
+        "assistant-teaching-practice.spec.ts"
+      ],
+      "specs": [
+        "158-generated-teaching-practice-persistence.md"
+      ],
+      "cases": 13
+    },
+    {
+      "id": "P2-03",
+      "name": "私人观察、原报告、明确指导、原命令恢复与状态复盘",
+      "files": [
+        "assistant-guidance.spec.ts"
+      ],
+      "specs": [
+        "159-conversation-clues-to-evidence-guidance.md"
+      ],
+      "cases": 17
+    },
+    {
+      "id": "P2-04",
+      "name": "受控任务条件、支持与反证、教学后关闭与后续重开",
+      "files": [
+        "controlled-contrasts.spec.ts"
+      ],
+      "specs": [
+        "163-controlled-cause-contrasts-and-counterevidence.md"
+      ],
+      "cases": 7
+    },
+    {
+      "id": "P2-05",
+      "name": "原计划排期、冲突、预算、时区、ICS与完整副本",
+      "files": [
+        "guidance-calendar.spec.ts"
+      ],
+      "specs": [
+        "161-guidance-calendar-persistence-and-timezone-protocol.md"
+      ],
+      "cases": 9
+    },
+    {
+      "id": "P2-06",
+      "name": "教学后保持、原复测与普通/完整教学稿前置规则",
+      "files": [
+        "retention-evidence.spec.ts",
+        "teaching-plan-verification.spec.ts"
+      ],
+      "specs": [
+        "162-retention-anchor-and-measurement-compatibility.md",
+        "187-first-lesson-purpose-gaps-and-following-rounds.md"
+      ],
+      "cases": 7
+    }
+  ]
+}
