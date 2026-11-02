@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-iu-yw",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "sha256": "fc04a0b7d1e206084eecf6f2ec85a24a837b5da73550f427cf678e860981f1a2",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry2",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 27,
+        "pageEnd": 28,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-iu-voice",
+      "structure": "pinyin-iu-three-real-voice",
+      "familyProposal": "a692a990-pinyin-iu-three-real-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读三单韵母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "u与ü声音区分",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示范与帮助情况清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三音与当前字母对应，u与ü听实际音值，不只凭字形两点判断声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人分别读i u ü，录下实际声音并说是否先听过示范。",
+          "answer": "三音与当前字母对应，u与ü听实际音值，不只凭字形两点判断声音。",
+          "analysis": "三音与当前字母对应，u与ü听实际音值，不只凭字形两点判断声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读u与ü，最后补读i。",
+          "answer": "实际交替声音可核，口形提示与本人发音分别说明。",
+          "analysis": "实际交替声音可核，口形提示与本人发音分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换顺序为ü i u，本人看清字母再实际认读。",
+          "answer": "当前字母和声音一一对应，不背原顺串替代。",
+          "analysis": "当前字母和声音一一对应，不背原顺串替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "如果u与ü本次还分不稳，怎样留录音再练？",
+          "answer": "保留当前真实尝试，请准确示范后再试，不用他人声音补本人。",
+          "analysis": "保留当前真实尝试，请准确示范后再试，不用他人声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "两个人嘴都较圆，就能断定他们发的是同一个音吗？本人再试u与ü。",
+          "answer": "不能仅凭嘴形断定；要听当前真实声音，u与ü分别核对。",
+          "analysis": "不能仅凭嘴形断定；要听当前真实声音，u与ü分别核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次先读i，再选一个需要练的韵母实际重读。",
+          "answer": "本人声音与所选目标清楚，说明得到的提示，不必为任务造错。",
+          "analysis": "本人声音与所选目标清楚，说明得到的提示，不必为任务造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-three-real-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "不按表顺序录三单韵母，最后说这次实际覆盖了什么。",
+          "answer": "按实际声音核三项与帮助，未读到的部分不能由熟悉感补成完成。",
+          "analysis": "按实际声音核三项与帮助，未读到的部分不能由熟悉感补成完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-yw-role",
+      "structure": "pinyin-current-five-letters",
+      "familyProposal": "a692a990-pinyin-current-five-letters",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "本课五字母范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "三单韵母与y w分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前完整形式不混同",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本课单韵母是i、u、ü，另外认识y与w，按当前范围分别说明。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "在i u ü y w五字母中，本课的三个单韵母是哪三个？",
+          "answer": "本课单韵母是i、u、ü，另外认识y与w，按当前范围分别说明。",
+          "analysis": "本课单韵母是i、u、ü，另外认识y与w，按当前范围分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "u与ü字形有什么具体差别，能因此直接知道本人发音正确吗？",
+          "answer": "ü比u多两点；字形观察正确还不能代实际声音核对。",
+          "analysis": "ü比u多两点；字形观察正确还不能代实际声音核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片把w ü y i u打乱，仍怎样找出三个单韵母？",
+          "answer": "看当前完整字母选i、u、ü，不按原来的位置猜。",
+          "analysis": "看当前完整字母选i、u、ü，不按原来的位置猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "y与i形状有联系提示，可以直接说它们是同一个字母吗？",
+          "answer": "不能，字母分别辨认，再联系yi整体音节，不把形象联系当身份相同。",
+          "analysis": "不能，字母分别辨认，再联系yi整体音节，不把形象联系当身份相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看到wu与单独w时，当前要观察的对象一样吗？",
+          "answer": "前者是本课整体认读音节，后者是一个字母，完整形式与任务不同。",
+          "analysis": "前者是本课整体认读音节，后者是一个字母，完整形式与任务不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "从五字母选一项说字形线索，是否已经完成听辨？",
+          "answer": "可以说明认形依据，听辨还需要当前真实声音与本人回应。",
+          "analysis": "可以说明认形依据，听辨还需要当前真实声音与本人回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-current-five-letters-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "按本课范围分别列三单韵母和另外两个字母，并说下一步怎样练。",
+          "answer": "i u ü与y w分组清楚，下一步可实际读写，未做仍是计划。",
+          "analysis": "i u ü与y w分组清楚，下一步可实际读写，未做仍是计划。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-whole-voice",
+      "structure": "pinyin-yi-wu-yu-whole",
+      "familyProposal": "a692a990-pinyin-yi-wu-yu-whole",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际整体认读三项",
+          "weight": 0.4
+        },
+        {
+          "criterion": "yi wu yu声音对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以英语字母名称串读",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听本人三个整体音节，与准确汉语拼音示范对应，整体认读条件清楚。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人整体认读yi wu yu并录音，不把英语字母名称逐个串起来。",
+          "answer": "听本人三个整体音节，与准确汉语拼音示范对应，整体认读条件清楚。",
+          "analysis": "听本人三个整体音节，与准确汉语拼音示范对应，整体认读条件清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人分别读yu与wu，最后补读yi。",
+          "answer": "yu联系ü音、wu联系u音，不能因都写u就读成相同音节。",
+          "analysis": "yu联系ü音、wu联系u音，不能因都写u就读成相同音节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序为wu yi yu，本人看完整音节再读。",
+          "answer": "声音对应当前完整形式，不靠原来的三项顺序背出。",
+          "analysis": "声音对应当前完整形式，不靠原来的三项顺序背出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会整体读yi时，录音后怎样说明另两项？",
+          "answer": "按真实已读范围核，wu与yu仍待练，不把参考声音补成本人已读。",
+          "analysis": "按真实已读范围核，wu与yu仍待练，不把参考声音补成本人已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看到yu写成u，可以直接按wu来读吗？本人实际尝试两项。",
+          "answer": "不可以；按本课整体音节分别听核yu与wu，省点不把音节互换。",
+          "analysis": "不可以；按本课整体音节分别听核yu与wu，省点不把音节互换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读三整体音节，说明是否跟读或刚看过示范。",
+          "answer": "本人声音与帮助条件清楚，不把跟读后表现当未经帮助的初试。",
+          "analysis": "本人声音与帮助条件清楚，不把跟读后表现当未经帮助的初试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-yi-wu-yu-whole-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择本次最不稳的整体音节再读一次，保留前后声音。",
+          "answer": "比较对应同一当前音节，变化如实，没有明显变化也可说明。",
+          "analysis": "比较对应同一当前音节，变化如实，没有明显变化也可说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-iu-tone",
+      "structure": "pinyin-dots-and-tone-conditions",
+      "familyProposal": "a692a990-pinyin-dots-and-tone-conditions",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "i与ü标调规则准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "yu省点条件不扩大",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际书写原稿清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "i标调去原来的点，ü保留两点再加调号，八项按本人原稿逐项核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人写ī í ǐ ì与ǖ ǘ ǚ ǜ，上传原稿并说明两种点的处理。",
+          "answer": "i标调去原来的点，ü保留两点再加调号，八项按本人原稿逐项核。",
+          "analysis": "i标调去原来的点，ü保留两点再加调号，八项按本人原稿逐项核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际写yī、wū、yū，再分别指出调号写在哪个韵母上。",
+          "answer": "调号落在i或u上，yu按本课形式省点，实际作品与说明对应。",
+          "analysis": "调号落在i或u上，yu按本课形式省点，实际作品与说明对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新要求写yǔ与wǔ，再写单独ǚ，上传并说明区别。",
+          "answer": "yǔ按yu省点，wǔ是另一整体音节，单独ǚ留两点；不能把字形与读音混同。",
+          "analysis": "yǔ按yu省点，wǔ是另一整体音节，单独ǚ留两点；不能把字形与读音混同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写四个i带调形式时，上传怎样说明ü的一组？",
+          "answer": "只核实际四项，ü组尚待写，不由一组规则正确推全部完成。",
+          "analysis": "只核实际四项，ü组尚待写，不由一组规则正确推全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若自己把ī上面多写一点，怎样保留并订正？",
+          "answer": "保留原稿后按i标调规则重写，不把订正稿当第一次原写。",
+          "analysis": "保留原稿后按i标调规则重写，不把订正稿当第一次原写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人说任何ü都能去点，本人写当前三种形式说明条件。",
+          "answer": "单独ü标调仍留两点，yu按本课组合省点，不能推广成无条件省点。",
+          "analysis": "单独ü标调仍留两点，yu按本课组合省点，不能推广成无条件省点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-dots-and-tone-conditions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传本次带调字母与整体音节原稿，另说声音怎样核。",
+          "answer": "字形与调号看本人原稿，实际发音还需本人声音，不能由写对代读对。",
+          "analysis": "字形与调号看本人原稿，实际发音还需本人声音，不能由写对代读对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-iu-writing",
+      "structure": "pinyin-five-own-handwriting",
+      "familyProposal": "a692a990-pinyin-five-own-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖五字母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "点与上下伸位置清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范写帮助和实际过程分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字母原稿可辨，i点与ü两点在上方，y下伸、w中格等按本件范形核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写i u ü y w，上传并指出每个字母的位置。",
+          "answer": "五字母原稿可辨，i点与ü两点在上方，y下伸、w中格等按本件范形核。",
+          "analysis": "五字母原稿可辨，i点与ü两点在上方，y下伸、w中格等按本件范形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察本件范写，再本人写u ü与y，补写i w并上传。",
+          "answer": "主体、点和下伸分别看，范形与本人作品清楚，不用键入文本代手写。",
+          "analysis": "主体、点和下伸分别看，范形与本人作品清楚，不用键入文本代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸把五字母按w i y ü u顺序实际写出并上传。",
+          "answer": "当前五项由本人写，位置按字母形状核，不因为换顺序就改变书写范围。",
+          "analysis": "当前五项由本人写，位置按字母形状核，不因为换顺序就改变书写范围。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写了i与u时，上传如何说明另外三项？",
+          "answer": "按原稿保留实际两项，ü y w待写，部分正确不补成五项全完成。",
+          "analysis": "按原稿保留实际两项，ü y w待写，部分正确不补成五项全完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己i与ü的点、y的下伸，选一处实际调整并保留前后稿。",
+          "answer": "调整接当前本人作品，不强求每个人都有同一种错误，未需调整可如实说。",
+          "analysis": "调整接当前本人作品，不强求每个人都有同一种错误，未需调整可如实说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际写五字母时得到提醒，上传要说明哪些帮助？",
+          "answer": "原写、提示和后改分别说明，静态成品不独自证明全部笔顺过程。",
+          "analysis": "原写、提示和后改分别说明，静态成品不独自证明全部笔顺过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-five-own-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传五字母原稿，再选一字说明辅助线与字母笔画的区别。",
+          "answer": "格线只是参照，字母由本人实际写出，作品与具体说明相符。",
+          "analysis": "格线只是参照，字母由本人实际写出，作品与具体说明相符。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-iu-yw",
+      "atomId": "source:chinese:g1:a692a990:pinyin-iu-hearing",
+      "structure": "pinyin-iu-whole-live-listening",
+      "familyProposal": "a692a990-pinyin-iu-whole-live-listening",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "有准确的当前真实声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应对应实际音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "目标文字可见及重复帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "保留本次原声与本人回应，按实际音值核；没有声音时听辨仍待进行。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请能准确示范的参与者另选u或ü，先不让本人看目标，发声后本人回应并录音。",
+          "answer": "保留本次原声与本人回应，按实际音值核；没有声音时听辨仍待进行。",
+          "analysis": "保留本次原声与本人回应，按实际音值核；没有声音时听辨仍待进行。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "参与者在yi wu yu中另选一项实际读，本人听完再指出对应形式。",
+          "answer": "当前声音与本人选择对应，不把题面已列三项直接当已听见其中一项。",
+          "analysis": "当前声音与本人选择对应，不把题面已列三项直接当已听见其中一项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一轮不先显示目标的yu与wu声音，本人分别回应。",
+          "answer": "按当前每次真实声音判断，省点字形不代听觉证据。",
+          "analysis": "按当前每次真实声音判断，省点字形不代听觉证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有u与ü字卡还没听声音，这次能说明做过什么？",
+          "answer": "可以说明看字区分两点，不能说已完成声音听辨，真实听辨待提供声音。",
+          "analysis": "可以说明看字区分两点，不能说已完成声音听辨，真实听辨待提供声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本次需要示范者重读时，怎样留下录音和本人回应？",
+          "answer": "原声、再次说明及本人回应对应，帮助次数与条件如实。",
+          "analysis": "原声、再次说明及本人回应对应，帮助次数与条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "先看了目标字母再听，本人怎样说明这次条件？",
+          "answer": "说明有文字提示，声音和回应仍保留，不把它说成完全没看字的听辨。",
+          "analysis": "说明有文字提示，声音和回应仍保留，不把它说成完全没看字的听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-iu-yw-pinyin-iu-whole-live-listening-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "实际再听一个本课整体音节，回应后说这次核的是听、读还是写。",
+          "answer": "有原声可核听辨，本人发声可另核认读，书写仍看原稿，不互相替代。",
+          "analysis": "有原声可核听辨，本人发声可另核认读，书写仍看原稿，不互相替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

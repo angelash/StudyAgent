@@ -1,0 +1,132 @@
+{
+  "at": "2026-11-02T22:46:36.082Z",
+  "passed": true,
+  "generationByteStable": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-first.cjs",
+      "sha256": "6999e94a9d683457dd119b76efd67a1fb01451997d7435de5a67d2b1dfc2356d"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-vowels.cjs",
+      "sha256": "e6149d58eba73834a1c8bbf664fdef5c1773953ed6021df955ca4438be1c57c4"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-initials.cjs",
+      "sha256": "d135b0533b7aaebc40a2e4c23636566d3dac653f53bb2c6ac413bfce7ceda86f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "sha256": "44426f9d734b8bb359bfa48f973caa5d6c5c5a8b1c04adc1660c0c65415f3dc7"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "sha256": "1c1aa6a64199352b50dab55b45883a36e9a6ec6cbf99e9010243439bd75a80b5"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "sha256": "bd12beead6803a72e295c478d72330a1eddca068825adea0c98861a859ab1090"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "sha256": "a7407547b7a87d2a26ebbb5281a220ee6c19cd264db9102c1d6e06ea67283a9b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "sha256": "acb559bf89433b02f2ae898389bbc64d8ab806a470982d2b39126f6c89cdf42f"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "sha256": "eeecfa413332cbd1789524a4c2de523f1af10c68d5a9255f456ff09c82d2bbf0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "sha256": "953da87458ad4dbec7da95104f52eb37c5105c90cea35be794b303ec266f3211"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "sha256": "3a2c92a16ef4e88187f654c10f2b5b1132e2103bb2bb3c401263a769389e6e72"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "sha256": "fc04a0b7d1e206084eecf6f2ec85a24a837b5da73550f427cf678e860981f1a2"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "sha256": "cca1703ed90d6fe772eda58fdc13d936e103420d9b978ae37349da6df5491cac"
+    }
+  ],
+  "rows": [
+    {
+      "name": "chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        25,
+        26
+      ],
+      "bodyCharacters": 566,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "targets": 5,
+      "questions": 35,
+      "pages": [
+        29,
+        30
+      ],
+      "bodyCharacters": 564,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "targets": 5,
+      "questions": 35,
+      "pages": [
+        31,
+        32
+      ],
+      "bodyCharacters": 562,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "targets": 5,
+      "questions": 35,
+      "pages": [
+        33,
+        34
+      ],
+      "bodyCharacters": 584,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        27,
+        28
+      ],
+      "bodyCharacters": 538,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    }
+  ],
+  "modes": {
+    "audio_record": 133,
+    "short_answer": 14,
+    "image_upload": 42
+  },
+  "targets": 27,
+  "questions": 189,
+  "failures": [],
+  "authenticSoundFilesIncluded": false,
+  "teacherReviewed": false,
+  "published": false
+}

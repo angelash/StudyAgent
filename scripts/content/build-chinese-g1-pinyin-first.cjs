@@ -1,0 +1,9 @@
+const assert=require('node:assert/strict'),{createKit}=require('./exact-source-candidate-kit.cjs');
+const bookId='archive-book:chinese-g1-upper-a692a990d41b6291',filePrefix='chinese-g1-a692a990',kit=createKit({bookId,prefix:'source:chinese:g1:a692a990:',filePrefix}),drafts=[],groups=[];
+function make(c){const d=kit.draft({slug:c.slug,lessonId:bookId+':chapter3:entry'+c.entry,start:c.start,end:c.end,definitions:c.definitions,
+ scope:{title:c.title,...c.scope,directoryGranularity:'lesson',allPageActivitiesDelivered:false,authenticListeningStimuliIncluded:false,standardSoundReferenceNeedsListeningReview:true},
+ content:{title:c.title,activation:c.activation,concept:{explanation:c.explanation,points:c.points},example:{situation:c.example.situation,steps:c.example.steps.map(([explanation,board])=>({explanation,board})),conclusion:c.example.conclusion},visuals:[{kind:'table',...c.table}],misconceptions:c.errors.map(([observation,alternative,verification,correctiveFeedback])=>({observation,alternatives:[alternative],verification,correctiveFeedback})),transfer:c.transfer,summary:c.summary,citations:c.citations},
+ sourceReview:{confirmedRange:true,statement:'本课两页已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。',pages:c.pageNotes.map((statement,i)=>({page:c.start+i,visualChecked:true,statement}))}});assert.equal(c.pageNotes.length,c.end-c.start+1);drafts.push(d);return c.slug;}
+function add(lesson,suffix,structure,mode,criteria,rows){groups.push(kit.group(lesson,suffix,structure,mode,criteria,rows));}
+for(const module of ['chinese-g1-pinyin-vowels','chinese-g1-pinyin-initials'])require('./'+module+'.cjs')({make,add});assert.equal(drafts.length,5);
+for(const d of drafts)kit.write(filePrefix+'-'+d.editorNotes.slug+'-v1',[d],groups.filter(g=>g.lesson===d.editorNotes.slug),'每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。');

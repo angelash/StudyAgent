@@ -1,0 +1,314 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry4",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 31,
+    "pageEnd": 32,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-dtnl-voice",
+      "version": 1,
+      "name": "四声母发音与d t区别",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "声母发音",
+      "objective": "本人实际读d t n l并比较d t送气",
+      "successCriterion": "声音与当前声母对应，d不送气t送气按真实过程核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-nl-hearing",
+      "version": 1,
+      "name": "n l发音与真实声音辨认",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "声母听辨",
+      "objective": "在准确示范下比较n l并在有原声时回应当前项",
+      "successCriterion": "本人声音和实际听辨分清，不以地方口音直接评价学习能力",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-dtnl-blend",
+      "version": 1,
+      "name": "当前音节及n l后ü的拼读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "音节拼读",
+      "objective": "本人拼读本件d t n l音节并看清nǚ lǘ",
+      "successCriterion": "组成与声调准确，n l后ü保留两点，不把yu省点规则套用",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-dtnl-writing",
+      "version": 1,
+      "name": "四声母实际书写与格位",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人在四线格书写d t n l并观察字形",
+      "successCriterion": "四字母原稿可辨，d t l上伸与n中格按范写核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-horse-soil-not",
+      "version": 1,
+      "name": "马土不识字与本课词语",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与词语",
+      "objective": "本人识读马土不，联系马路泥土当前词义",
+      "successCriterion": "识字行三字与词语范围分清，儿歌全文不自动升级为识写字表",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-dtnl-voice",
+    "source:chinese:g1:a692a990:pinyin-nl-hearing",
+    "source:chinese:g1:a692a990:pinyin-dtnl-blend",
+    "source:chinese:g1:a692a990:pinyin-dtnl-writing",
+    "source:chinese:g1:a692a990:pinyin-horse-soil-not"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课两页已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 31,
+        "visualChecked": true,
+        "statement": "已看四声母与具体两拼，nǚ和lǘ两点、声调按原图核，不套用yu省点条件。"
+      },
+      {
+        "page": 32,
+        "visualChecked": true,
+        "statement": "已看马路泥土、马土不识字行、轻轻跳儿歌与四字母范写，现代全文本地参考，不把儿歌所有字增为必写。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "d t n l：看清、听辨与拼读",
+    "pinyinInitials": [
+      "d",
+      "t",
+      "n",
+      "l"
+    ],
+    "recognitionCharacters": [
+      "马",
+      "土",
+      "不"
+    ],
+    "writingCharacters": [],
+    "writingPinyinLetters": [
+      "d",
+      "t",
+      "n",
+      "l"
+    ],
+    "localAccentDoesNotDetermineAbility": true,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "d t n l：看清、听辨与拼读",
+    "activation": {
+      "prompt": "把d与t、n与l两组字牌摆出，先看形状，再听准确声音。只凭形状能知道本人已经听清两种音了吗？",
+      "expectedObservation": "能区分看字和听声音，知道具体发音仍需实际尝试与听核。",
+      "bridge": "分别练四声母，再把它们放入当前音节和词语里。"
+    },
+    "concept": {
+      "explanation": "本课学习d、t、n、l四个声母。d和t发音时舌尖接触上齿龈后打开，d不送气，t送气较明显。先听准确示范，再由本人分别轻短试读；字形、音值和送气分别观察，不能仅凭声音大或小判断。\nn与l也要分别实际听读。n发音时舌尖接触上齿龈，气流经鼻腔；l的气流从舌的两侧出来。准确示范能帮助比较，不需要捏鼻或强迫动作。不同地区说话习惯可能不同，本课练当前标准音，不用地方口音给学习能力下结论。真正听辨要有当前原声，再看本人回应；看到字母作答只说明认形。\n拼读本件的dǎ、tā、nǐ、lè等形式时，先看声母韵母与标调，再连成一个音节。原页还有nǚ、lǘ，这里ü的两点保留。前一课yu中的省点写法有具体组合条件，不能搬到n和l后面一律去点。不同声调也按当前形式来，nǚ与lǘ不只声母不同，调号也不同。\n写d、t、n、l时，d、t、l主要在上中格，n主要在中格。d的圆弧在左下部、竖向上伸；t有横画，l没有横画。看完整范形再由自己实际写，不把小写l与数字1只按字体相似混作同一对象。字母认形、手写与发音各自核对。\n本课识字行是马、土、不，词语活动有马路、泥土。认识路和泥可帮助理解当前词语，但不把词语全部字或儿歌全部字自动列为本课必写。儿歌联系轻轻跳、慢慢跑与爱护青草的情境，可以在成人帮助下读原篇，再说自己的理解；角色行为和本人实际活动分开。",
+      "points": [
+        "d t送气看真实声音",
+        "n l分别听读与比较",
+        "n l后的ü保留两点",
+        "拼读按当前声母韵母声调",
+        "四字母格位按范写",
+        "识字行马土不与词语分开"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小岚先拼nǚ，再拼lǘ，最后看自己的t和l原稿。",
+      "steps": [
+        {
+          "explanation": "先看nǚ，声母n、韵母ü和三声分别确认，两点保留。",
+          "board": [
+            "n＋ǚ",
+            "ü两点保留",
+            "按当前三声读"
+          ]
+        },
+        {
+          "explanation": "再看lǘ，声母与声调都要更新，不照搬上一项。",
+          "board": [
+            "l＋ǘ",
+            "当前二声",
+            "本人实际拼读"
+          ]
+        },
+        {
+          "explanation": "本人写t与l，比较是否有横画，再联系四线格位置。",
+          "board": [
+            "t有横画",
+            "l无横画",
+            "本人原稿核格位"
+          ]
+        }
+      ],
+      "conclusion": "每次按当前完整形式判断，声音、字形与规则条件分开看。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "几组需要看清的区别",
+        "headers": [
+          "对象",
+          "当前区别",
+          "练习依据"
+        ],
+        "rows": [
+          [
+            "d与t",
+            "不送气与送气",
+            "准确示范和本人实际声音"
+          ],
+          [
+            "n与l",
+            "鼻腔与舌侧气流",
+            "听读分别核，不凭口音贴标签"
+          ],
+          [
+            "nǚ与lǘ",
+            "声母和声调不同，均留两点",
+            "按本件当前形式拼读"
+          ],
+          [
+            "t与l",
+            "有无横画",
+            "本人四线格原稿"
+          ]
+        ],
+        "explanation": "比较具体差别，字形表不能替代声音示范，写出的结果也不独自证明书写过程。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把nǚ写成nu，理由是学过yu会去点。",
+        "alternatives": [
+          "把另一个组合的省点条件无区别地推广。"
+        ],
+        "verification": "将yu与nǚ并列，先说各自当前组合。",
+        "correctiveFeedback": "yu按本课前段组合省点，n l后ü保留两点，再按当前标调读。"
+      },
+      {
+        "observation": "从一次n l读混就说某地孩子学不会。",
+        "alternatives": [
+          "把口音或单次表现扩大成学习能力判断。"
+        ],
+        "verification": "回当前声音和帮助过程，先找具体需练的一项。",
+        "correctiveFeedback": "练当前标准音，能力结论不能由地区或一次读音直接推出。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新任务打乱给tí、nù、lǘ、dǎ及t l字卡。",
+      "prompt": "先看当前条件拼读，再选择一对字母说清字形或声音的具体区别。",
+      "expectedStrategy": "按新标调和声母逐项核，n l后ü不套用yu省点，未知声音仍待实际提供。"
+    },
+    "summary": {
+      "synthesis": "四声母轻短读，d t送气、n l气流区别靠真实听读练习；当前拼读保留完整字形条件，四字母亲手写，识字与词语分别核。",
+      "takeaways": [
+        "d t实际比送气",
+        "n l听读分清",
+        "n l后ü留两点",
+        "马土不按识字行认"
+      ]
+    },
+    "citations": [
+      {
+        "page": 31,
+        "quote": "d t n l\n\tdǎ\t\ndé",
+        "usedFor": "concept"
+      },
+      {
+        "page": 31,
+        "quote": "nǚ\n\tlā\t\nlè",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-voice",
+        "objective": "本人实际读d t n l并比较d t送气",
+        "successCriterion": "声音与当前声母对应，d不送气t送气按真实过程核"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-nl-hearing",
+        "objective": "在准确示范下比较n l并在有原声时回应当前项",
+        "successCriterion": "本人声音和实际听辨分清，不以地方口音直接评价学习能力"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-blend",
+        "objective": "本人拼读本件d t n l音节并看清nǚ lǘ",
+        "successCriterion": "组成与声调准确，n l后ü保留两点，不把yu省点规则套用"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-writing",
+        "objective": "本人在四线格书写d t n l并观察字形",
+        "successCriterion": "四字母原稿可辨，d t l上伸与n中格按范写核"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-horse-soil-not",
+        "objective": "本人识读马土不，联系马路泥土当前词义",
+        "successCriterion": "识字行三字与词语范围分清，儿歌全文不自动升级为识写字表"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-dtnl",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

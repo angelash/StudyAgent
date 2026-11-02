@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-02T22:48:22.254Z",
+  "buildId": "tSQa109Myy2UD3Gs5L5KY",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 7,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "chinese-g1-a692a990-pinyin-aoe-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-aoe-v1-table.png",
+    "chinese-g1-a692a990-pinyin-aoe-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-bpmf-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-bpmf-v1-table.png",
+    "chinese-g1-a692a990-pinyin-bpmf-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-dtnl-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-dtnl-v1-table.png",
+    "chinese-g1-a692a990-pinyin-dtnl-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-gkh-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-gkh-v1-table.png",
+    "chinese-g1-a692a990-pinyin-gkh-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-iu-yw-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-iu-yw-v1-table.png",
+    "chinese-g1-a692a990-pinyin-iu-yw-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-aoe-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

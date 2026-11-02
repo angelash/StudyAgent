@@ -1,0 +1,506 @@
+{
+  "at": "2026-11-02T22:56:23.132Z",
+  "branch": "main",
+  "baseCommit": "8ef5da94620077c3690a59dfab367f3674bf92e6",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-first.cjs",
+      "bytes": 2252,
+      "sha256": "6999e94a9d683457dd119b76efd67a1fb01451997d7435de5a67d2b1dfc2356d",
+      "gitNormalizedSha256": "6999e94a9d683457dd119b76efd67a1fb01451997d7435de5a67d2b1dfc2356d"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-vowels.cjs",
+      "bytes": 28194,
+      "sha256": "364f0fdf1c68dab760e845f6fc817784c2bcbb0b4cc22aa8152b9627a6cc77e7",
+      "gitNormalizedSha256": "364f0fdf1c68dab760e845f6fc817784c2bcbb0b4cc22aa8152b9627a6cc77e7"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-initials.cjs",
+      "bytes": 38392,
+      "sha256": "d135b0533b7aaebc40a2e4c23636566d3dac653f53bb2c6ac413bfce7ceda86f",
+      "gitNormalizedSha256": "d135b0533b7aaebc40a2e4c23636566d3dac653f53bb2c6ac413bfce7ceda86f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "bytes": 13779,
+      "sha256": "560262a306e2da0a1070aa3890409103935898d397de4d0d62d01520b6084a37",
+      "gitNormalizedSha256": "560262a306e2da0a1070aa3890409103935898d397de4d0d62d01520b6084a37"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "bytes": 36927,
+      "sha256": "d78a7def41ce12cfaef8909f21b11be0025de6d44f2646c13a836ec0be6b14b0",
+      "gitNormalizedSha256": "d78a7def41ce12cfaef8909f21b11be0025de6d44f2646c13a836ec0be6b14b0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "bytes": 12971,
+      "sha256": "bd12beead6803a72e295c478d72330a1eddca068825adea0c98861a859ab1090",
+      "gitNormalizedSha256": "bd12beead6803a72e295c478d72330a1eddca068825adea0c98861a859ab1090"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "bytes": 31002,
+      "sha256": "a7407547b7a87d2a26ebbb5281a220ee6c19cd264db9102c1d6e06ea67283a9b",
+      "gitNormalizedSha256": "a7407547b7a87d2a26ebbb5281a220ee6c19cd264db9102c1d6e06ea67283a9b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "bytes": 12887,
+      "sha256": "acb559bf89433b02f2ae898389bbc64d8ab806a470982d2b39126f6c89cdf42f",
+      "gitNormalizedSha256": "acb559bf89433b02f2ae898389bbc64d8ab806a470982d2b39126f6c89cdf42f"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "bytes": 31238,
+      "sha256": "eeecfa413332cbd1789524a4c2de523f1af10c68d5a9255f456ff09c82d2bbf0",
+      "gitNormalizedSha256": "eeecfa413332cbd1789524a4c2de523f1af10c68d5a9255f456ff09c82d2bbf0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "bytes": 13089,
+      "sha256": "953da87458ad4dbec7da95104f52eb37c5105c90cea35be794b303ec266f3211",
+      "gitNormalizedSha256": "953da87458ad4dbec7da95104f52eb37c5105c90cea35be794b303ec266f3211"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "bytes": 31570,
+      "sha256": "3a2c92a16ef4e88187f654c10f2b5b1132e2103bb2bb3c401263a769389e6e72",
+      "gitNormalizedSha256": "3a2c92a16ef4e88187f654c10f2b5b1132e2103bb2bb3c401263a769389e6e72"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "bytes": 13646,
+      "sha256": "fc04a0b7d1e206084eecf6f2ec85a24a837b5da73550f427cf678e860981f1a2",
+      "gitNormalizedSha256": "fc04a0b7d1e206084eecf6f2ec85a24a837b5da73550f427cf678e860981f1a2"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "bytes": 36765,
+      "sha256": "cca1703ed90d6fe772eda58fdc13d936e103420d9b978ae37349da6df5491cac",
+      "gitNormalizedSha256": "cca1703ed90d6fe772eda58fdc13d936e103420d9b978ae37349da6df5491cac"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 16147,
+      "sha256": "45ec619b085911a85620943b81d295418abae29a28fa51d11ec36f4fa80edd8a",
+      "gitNormalizedSha256": "201bb55af6e5466ed658f6c9a2db008eb265c58df06fc4310752cf83fc76914a"
+    },
+    {
+      "path": "doc/product/222-pinyin-source-decoding-and-phonetic-lessons.md",
+      "bytes": 8106,
+      "sha256": "f4c7026b9ecdbf81f03979543b8cbd6c21a98c328802dc1d38c37a5263ccb951",
+      "gitNormalizedSha256": "f4c7026b9ecdbf81f03979543b8cbd6c21a98c328802dc1d38c37a5263ccb951"
+    },
+    {
+      "path": "doc/product/223-pinyin-remaining-lessons-and-gardens.md",
+      "bytes": 3609,
+      "sha256": "f932db08dc9230490e06851060316e8feb92d84bbdeaf4593c602d813f7f2f66",
+      "gitNormalizedSha256": "f932db08dc9230490e06851060316e8feb92d84bbdeaf4593c602d813f7f2f66"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 19787,
+      "sha256": "0fc1c98af04e30230888800c1980e7af4fafb6f11ef2f65dbc3a3ad2a541b62a",
+      "gitNormalizedSha256": "0fc1c98af04e30230888800c1980e7af4fafb6f11ef2f65dbc3a3ad2a541b62a"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 35456,
+      "sha256": "a916eb6684194dbf732c128cbea8c9b8897fec04cb5e78bcdaaf3a0f5d495824",
+      "gitNormalizedSha256": "1dabfcb28d02b647b0d3d1a2abf667b28bfe8e752d2350a3a89a19c70f1ab66e"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 187337,
+      "sha256": "fd72a645ce121242a6cc54d96126586d29b89dfffa777bbd8cc2aff7c68cf86e",
+      "gitNormalizedSha256": "12fff15687f21f630f279d3da709fedf974b5d36aa812ee1775c9bce6f4038a6"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 113721,
+      "sha256": "a284491f280f6de612ef900ea7f5c4675909f195b63c502da056ade4c8ae875f",
+      "gitNormalizedSha256": "2853efc9b00e2890edff9de8d99566f34d966037ea8e9f351b54917d851175d7"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 118800,
+      "sha256": "1dccd54254baac0bc86309e3d1ded5dac4f40af828c93bd6e9028f3dc6c4c906",
+      "gitNormalizedSha256": "180c5f89e7ca7f7fc3f7fa671c2f3687bae6fffacd06e90b029f7290c3b99f1f"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 28738,
+      "sha256": "e151232b5f7dd8574d9200dce33c3fa08819c8db2388d93ef89bb37e865d2c25",
+      "gitNormalizedSha256": "918c79dcb1c989c24fcec3c52369ca30e9258d35ee255b097fdf5da05f9a32b8"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 48010,
+      "sha256": "0dfabb2420f5f0aff723450ba067ed12998265c706664bda6055ba344111d435",
+      "gitNormalizedSha256": "8ed34233df595b52a04e4b7af85c01b796e68c5109b9093b10cada8c96fdaa53"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-aoe-v1-desktop.png",
+      "bytes": 262782,
+      "sha256": "8cfb19d8875199ce19545773b055f3cb4c8837e5b5cf15d1543b075c188581ce",
+      "gitNormalizedSha256": "5c979fd94200c1bf80c7dc46dc58a59e006becb8245f706bf403148d002fed64"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-aoe-v1-mobile-table.png",
+      "bytes": 70105,
+      "sha256": "c5ccfc946f9af4cbc6c9a94ce4a0a4d7d002720a821e5250142abead3ffa75c2",
+      "gitNormalizedSha256": "f2e57ed890ac5bbaf956d43572be1c510b366eb01050764c2a3ceeeec73b7d50"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-aoe-v1-mobile.png",
+      "bytes": 70809,
+      "sha256": "968417f4e3f5584fca715627042a706d2682782a093e8f53ee84b9d7b30fad77",
+      "gitNormalizedSha256": "9f36d6fc8d6d4c97a35dff5e658b85e7dcf8821c409f6c16e8138deef509b438"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-aoe-v1-table.png",
+      "bytes": 21788,
+      "sha256": "81fdbd947f91e745c7078fda782dd8b5d3ddc65d247a4c4a27b17cf18659cfca",
+      "gitNormalizedSha256": "8448497ac8a7eb41ea0f6a1d0068a4f76bc06717ee395cf6125c6a47951f3668"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-bpmf-v1-desktop.png",
+      "bytes": 261400,
+      "sha256": "717fabbd825ace0518ab14e5b1250943b42cba3a8268aced03b437002114b367",
+      "gitNormalizedSha256": "b83dd38113f13b99bf0e082b4795e9e5d7e575de949314cc6cc2fcb68c136185"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-bpmf-v1-mobile.png",
+      "bytes": 74150,
+      "sha256": "0fa2eec3c9be669c9308446cc896da9834fb799f288afdf68704824199de973d",
+      "gitNormalizedSha256": "921b9b051eb21e1b6b8f27098381d4054754646c8050ff25f0815b831b547c2c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-bpmf-v1-table.png",
+      "bytes": 27143,
+      "sha256": "628618205991fe74116a2135abaeab79572e5b5858de3435a66903a0d5b841ef",
+      "gitNormalizedSha256": "6a6258ff3403ffb1531f4eeb86bcc483d10d60ced167d233a6564af5f641997d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-dtnl-v1-desktop.png",
+      "bytes": 244301,
+      "sha256": "1929e5016fbb20d0668bd308951b1b95c67d5cfad9c484e7cd889a95bec3be1a",
+      "gitNormalizedSha256": "6dec53d6c861568e09811c7156f6f43ce5d17a0924693d5db9090465589f902c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-dtnl-v1-mobile.png",
+      "bytes": 73764,
+      "sha256": "603223227875b80fce722e1c0cdf07ec0648b083a1034c49ce844a167a2849f1",
+      "gitNormalizedSha256": "330e9259e4a3eed6e61db16fe2b38b01181abb945cf2f1df48f90ae670cefa1a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-dtnl-v1-table.png",
+      "bytes": 32195,
+      "sha256": "7ddcac3cb3e6d26551e2ea290cbd770e39772c9b113b88f5e4c87118bf60767a",
+      "gitNormalizedSha256": "c25ef741ad5f104362bccd7ca1196c99029435a92580fe5917ed60489c473238"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-gkh-v1-desktop.png",
+      "bytes": 259433,
+      "sha256": "00010ee2b3d6a1f9e99d2de235e282489817adca90166d53c5293dfc828f32b4",
+      "gitNormalizedSha256": "93b921ebd4e80a9a757ad563e58d70007bda373d168e7be464d76575ca6c4c2f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-gkh-v1-mobile.png",
+      "bytes": 78258,
+      "sha256": "8ac460b4194cd672568322d74ff78b63da03c302deb5dad593612d498e8c80aa",
+      "gitNormalizedSha256": "75399e142765c005f65aac972cbbfc110b0650fb5a44623323d46adedca58001"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-gkh-v1-table.png",
+      "bytes": 27810,
+      "sha256": "45a06b25f615b72f189258bb00138606b44013d8813c5e83b70973daa117dc65",
+      "gitNormalizedSha256": "89452ff70d02c92b140cd38f4ba076a40d273a002af5088c7cf57539819023e7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-iu-yw-v1-desktop.png",
+      "bytes": 234558,
+      "sha256": "f620ea9990fe120fbd839e7912404680cfaddf26ecc9a4367647b6211d3374ab",
+      "gitNormalizedSha256": "fa482752c7374ed7c9a548b928855b9615a2b5e73b6d5cfbba2528bebdcc8e3f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-iu-yw-v1-mobile.png",
+      "bytes": 73202,
+      "sha256": "60ce6ceb1f5030e5018b09ac6a1b00f853f9f3c781eb36c61455c8c857d0db50",
+      "gitNormalizedSha256": "df96e95299937e3ac18d46a6ef6d0e72db663e59135fdb71cbd73b5b7d8c2570"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/chinese-g1-a692a990-pinyin-iu-yw-v1-table.png",
+      "bytes": 24350,
+      "sha256": "ca86e6f090bd91a7fffd45b1f9b5630d4fc52eb8ac0884f9ebd4e67eeed39688",
+      "gitNormalizedSha256": "10fd190acbbc12a4df0527f157a75981b36da37687adba8783677e9500ff98f5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/derived/manifest.json",
+      "bytes": 3907,
+      "sha256": "667418d4e7689529f1a49bd6cb99241c951743613dab5e8557f2f6d88e93e265",
+      "gitNormalizedSha256": "aa8af3379ebf60fbebdff0243a817a84a4bd66b4cb2f7983230a49deeeb4ccb0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/derived/mobile-1.png",
+      "bytes": 222041,
+      "sha256": "1a5278cbf0ea6c9fd26cec4454fc8ad550c0e33e3af3829c35e80cfb2678dd20",
+      "gitNormalizedSha256": "43aa30bc38df41df72fdc67bd0e1bb3f628ce521a77e1b5a654aef1886818d4d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/derived/mobile-2.png",
+      "bytes": 158384,
+      "sha256": "73427b6155227faff5a330fc1bfffd401db13cd07ab0f7f22762958804812cea",
+      "gitNormalizedSha256": "c232dbdaec9d36f4540f6da4ed9cb369a1f17424b96e7574102ad122673e09c4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/derived/table-1.png",
+      "bytes": 90770,
+      "sha256": "743593aa498a18a94aa393081944d8a2a308ac44cbd6f4ad5cf908bbf9ea548a",
+      "gitNormalizedSha256": "88be31021816cd0fa18c8eafe7302d4d8ad9e2c3f615a77e99a0789d4ee92dd8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/derived/table-2.png",
+      "bytes": 58583,
+      "sha256": "142298631e8ad9b26f574c33da03cbfc87175d2ca45cab4b9a72fb1ff764120f",
+      "gitNormalizedSha256": "a98c62a85be48cbe816456324b3f195fb56748306ec6903756f51dcc95690339"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/receipt.json",
+      "bytes": 1999,
+      "sha256": "e9d3da89dab5d27b2275de54a068a11081fc8e62ebd1964fae5f3201c2889910",
+      "gitNormalizedSha256": "e9d3da89dab5d27b2275de54a068a11081fc8e62ebd1964fae5f3201c2889910"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-first/runner.cjs",
+      "bytes": 17710,
+      "sha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42",
+      "gitNormalizedSha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/chinese-g1-a692a990-pinyin-aoe-v1-desktop.png",
+      "bytes": 263457,
+      "sha256": "66cc878c1461fcd33d0348e4b0e88f2479c2cfd757bda7dad4794afb72823e02",
+      "gitNormalizedSha256": "455a1a37427eaefcfec59f9bf668e9d479793bf6afa86114fe6ceee9743ec7b3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/chinese-g1-a692a990-pinyin-aoe-v1-mobile-table.png",
+      "bytes": 70105,
+      "sha256": "c5ccfc946f9af4cbc6c9a94ce4a0a4d7d002720a821e5250142abead3ffa75c2",
+      "gitNormalizedSha256": "f2e57ed890ac5bbaf956d43572be1c510b366eb01050764c2a3ceeeec73b7d50"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/chinese-g1-a692a990-pinyin-aoe-v1-mobile.png",
+      "bytes": 70809,
+      "sha256": "968417f4e3f5584fca715627042a706d2682782a093e8f53ee84b9d7b30fad77",
+      "gitNormalizedSha256": "9f36d6fc8d6d4c97a35dff5e658b85e7dcf8821c409f6c16e8138deef509b438"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/chinese-g1-a692a990-pinyin-aoe-v1-table.png",
+      "bytes": 21788,
+      "sha256": "81fdbd947f91e745c7078fda782dd8b5d3ddc65d247a4c4a27b17cf18659cfca",
+      "gitNormalizedSha256": "8448497ac8a7eb41ea0f6a1d0068a4f76bc06717ee395cf6125c6a47951f3668"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/receipt.json",
+      "bytes": 899,
+      "sha256": "86fd9a69433d98363946e005437c78c43bb0f225d353bca68c9d3f7576acbe90",
+      "gitNormalizedSha256": "86fd9a69433d98363946e005437c78c43bb0f225d353bca68c9d3f7576acbe90"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/browser-second/runner.cjs",
+      "bytes": 17710,
+      "sha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42",
+      "gitNormalizedSha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/aoe-http-second.json",
+      "bytes": 2183,
+      "sha256": "07abd5fe2677b5bb9f5a7eacf9db26a623ea373e4f9d3a3dc28020a894959c24",
+      "gitNormalizedSha256": "07abd5fe2677b5bb9f5a7eacf9db26a623ea373e4f9d3a3dc28020a894959c24"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/before-volume-wording-correction.json.gz",
+      "bytes": 103264,
+      "sha256": "3f962f4dfadfe85bfe8bcc781ce87658dfa911a0e640e147e991d1bdc3845483",
+      "gitNormalizedSha256": "3f962f4dfadfe85bfe8bcc781ce87658dfa911a0e640e147e991d1bdc3845483"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/browser-visual-review.json",
+      "bytes": 360,
+      "sha256": "fed20afaa1aab3795492f14d49b0e540def19619f6046302609bc4990ad5c395",
+      "gitNormalizedSha256": "fed20afaa1aab3795492f14d49b0e540def19619f6046302609bc4990ad5c395"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/browser-visual-second.json",
+      "bytes": 224,
+      "sha256": "4c339a7a1bcd50929c41ad90a5699fe47c25741ba06c99dec418f9e75dbee57b",
+      "gitNormalizedSha256": "4c339a7a1bcd50929c41ad90a5699fe47c25741ba06c99dec418f9e75dbee57b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/content-worklist-first.json.gz",
+      "bytes": 122107,
+      "sha256": "c846491758a5d27b36e5461e33b17a33c4e0d8bfbb5f076f9a429a990e4722e9",
+      "gitNormalizedSha256": "643ec13e2736dfb9382480ef785b3f2fa50b6d6f87a39a5fad193a1f32c8cb6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "c917aeb3acb88c47509320ed344b29fc3260020bc00c31936d43d182cd7c75a9",
+      "gitNormalizedSha256": "c917aeb3acb88c47509320ed344b29fc3260020bc00c31936d43d182cd7c75a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/source-visual-next-ten.json",
+      "bytes": 35780,
+      "sha256": "d7e8970a66c42f9f8e4997e251bd0209f7a6b140000441a20018e9d6717c5443",
+      "gitNormalizedSha256": "d7e8970a66c42f9f8e4997e251bd0209f7a6b140000441a20018e9d6717c5443"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/static-first-inputs.json.gz",
+      "bytes": 102074,
+      "sha256": "60971f4be202b427d4c734368777c25e8e70689246c1e72db8cc97bb878b630b",
+      "gitNormalizedSha256": "a0df15464578f0d72157f91456b4d50e5a116ac34cd09b7081e4ad71693733e8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/static-first.json",
+      "bytes": 4070,
+      "sha256": "58c74ea4a43ca1b3e14d67250cd5779720ca7fbdfe46d98cd41981671d18da8c",
+      "gitNormalizedSha256": "58c74ea4a43ca1b3e14d67250cd5779720ca7fbdfe46d98cd41981671d18da8c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/static-second-inputs.json.gz",
+      "bytes": 102076,
+      "sha256": "c008a4c1e6b2755af4acf39fdb86aa516fb5bc4da56f9d3a1cb86bc95fef0da4",
+      "gitNormalizedSha256": "d388b9816c080f68cd4c9a18d56a9e7e59386e3031b42f2d82648b99a02f942a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/static-second.json",
+      "bytes": 4070,
+      "sha256": "e0ae14659409b1698c857651c1f4fc00e28b48a2e2744c50d702da02cd46f812",
+      "gitNormalizedSha256": "e0ae14659409b1698c857651c1f4fc00e28b48a2e2744c50d702da02cd46f812"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/volume-wording-correction.json",
+      "bytes": 802,
+      "sha256": "d838253fefa9d8e36b47e6b63ccb67dda592f4105895e06e87bc8aed70c9f63c",
+      "gitNormalizedSha256": "d838253fefa9d8e36b47e6b63ccb67dda592f4105895e06e87bc8aed70c9f63c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "bytes": 2183,
+      "sha256": "e862d9d845d446471ddfb4e436606296cfb603bfe1a1de2b58a0944b7deb4c19",
+      "gitNormalizedSha256": "e862d9d845d446471ddfb4e436606296cfb603bfe1a1de2b58a0944b7deb4c19"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "bytes": 2185,
+      "sha256": "0f935f1390b853be9714bd051d4c8f7a27ec778979f4970086101907f9064082",
+      "gitNormalizedSha256": "0f935f1390b853be9714bd051d4c8f7a27ec778979f4970086101907f9064082"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "bytes": 2185,
+      "sha256": "c2f3ebe8f652120cab4e2bfad3cd90c377e67bd67ff79d66aeb510972eb629d7",
+      "gitNormalizedSha256": "c2f3ebe8f652120cab4e2bfad3cd90c377e67bd67ff79d66aeb510972eb629d7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "bytes": 2183,
+      "sha256": "091042d614a9692ae133c2f492289dbec5ab4d427127c595ce9262ecb41c7d7a",
+      "gitNormalizedSha256": "091042d614a9692ae133c2f492289dbec5ab4d427127c595ce9262ecb41c7d7a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+      "bytes": 2187,
+      "sha256": "d11161b0fff59f6cd5a36d0d7b690ae30e046ca2978853a7c06acdc786d7c58b",
+      "gitNormalizedSha256": "d11161b0fff59f6cd5a36d0d7b690ae30e046ca2978853a7c06acdc786d7c58b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/http-first/summary.json",
+      "bytes": 645,
+      "sha256": "acea81149836524edfa23c3a7bbc5e92981602f0b0cef86a749e9b91b56b5744",
+      "gitNormalizedSha256": "acea81149836524edfa23c3a7bbc5e92981602f0b0cef86a749e9b91b56b5744"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/manifest.json",
+      "bytes": 10130,
+      "sha256": "c6ab254d1ae2b3c83a5f7b7ffa178f01dc8338026496e6bb5f0edb1b4e88e24b",
+      "gitNormalizedSha256": "c6ab254d1ae2b3c83a5f7b7ffa178f01dc8338026496e6bb5f0edb1b4e88e24b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/receipt.json",
+      "bytes": 19833,
+      "sha256": "372df5545bb89081272a58970ad9e82018ebe7b5b3d9b5b85b8ad97d579ba6bc",
+      "gitNormalizedSha256": "372df5545bb89081272a58970ad9e82018ebe7b5b3d9b5b85b8ad97d579ba6bc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/sources.json.gz",
+      "bytes": 103473,
+      "sha256": "d5acb107ec97a65b3e6986ef1c3af017706d8497f5e9a1cae839dc4ab7aa6446",
+      "gitNormalizedSha256": "d5acb107ec97a65b3e6986ef1c3af017706d8497f5e9a1cae839dc4ab7aa6446"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/archive.cjs",
+      "bytes": 6693,
+      "sha256": "750650f037d93545b7a62f4b42e512b47622142e6356f052d40a76917f7e2d4a",
+      "gitNormalizedSha256": "750650f037d93545b7a62f4b42e512b47622142e6356f052d40a76917f7e2d4a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/browser-run.cjs",
+      "bytes": 17710,
+      "sha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42",
+      "gitNormalizedSha256": "5bf7162afac824096ba0efa8315e93501bc79d5659ed7477d121a01785894c42"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/correct-volume-wording.cjs",
+      "bytes": 2064,
+      "sha256": "ee1bde8f39e52251ec0abf844ac3eafc74f1bd84d96d829ba080b87bc53dcc2b",
+      "gitNormalizedSha256": "ee1bde8f39e52251ec0abf844ac3eafc74f1bd84d96d829ba080b87bc53dcc2b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/prepare.cjs",
+      "bytes": 3384,
+      "sha256": "a96ecf5c20a23e1c286a3a36176717027ebbd34c3d9e7ea22ebaa9031419435d",
+      "gitNormalizedSha256": "a96ecf5c20a23e1c286a3a36176717027ebbd34c3d9e7ea22ebaa9031419435d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/record-source-and-visual.cjs",
+      "bytes": 2531,
+      "sha256": "ace6245e85c4b967e6cdbfbf86e2c79749260a69b407ef64cf2809c77b3b71d5",
+      "gitNormalizedSha256": "ace6245e85c4b967e6cdbfbf86e2c79749260a69b407ef64cf2809c77b3b71d5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/run-http.cjs",
+      "bytes": 1729,
+      "sha256": "31ca4da863565e1d2e1b32eb340d7ccde316aba7b075fb71ca859d808abfa87a",
+      "gitNormalizedSha256": "31ca4da863565e1d2e1b32eb340d7ccde316aba7b075fb71ca859d808abfa87a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/update-plans.cjs",
+      "bytes": 2416,
+      "sha256": "1e91df71b1008b1b1a3f8842aa8a191091859dee0ff21d34cb6ddaa8cb6be435",
+      "gitNormalizedSha256": "1e91df71b1008b1b1a3f8842aa8a191091859dee0ff21d34cb6ddaa8cb6be435"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/visual-sheets.py",
+      "bytes": 1340,
+      "sha256": "e5ac34e03fc82227906c866c04de6edd13bb14ea1d9e68a811a641eba28713ca",
+      "gitNormalizedSha256": "e5ac34e03fc82227906c866c04de6edd13bb14ea1d9e68a811a641eba28713ca"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "349f91df9ed49f694f316953d88c5d706f916d84a513b86a9813b2f11a9732fc",
+      "gitNormalizedSha256": "349f91df9ed49f694f316953d88c5d706f916d84a513b86a9813b2f11a9732fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-first-five-lesson-candidates/tools/stage.cjs",
+      "bytes": 4390,
+      "sha256": "f9e35dd5c1a95093acd8ebb9dfa454d8131032ca79101b79dcce96589df76b20",
+      "gitNormalizedSha256": "f9e35dd5c1a95093acd8ebb9dfa454d8131032ca79101b79dcce96589df76b20"
+    }
+  ]
+}

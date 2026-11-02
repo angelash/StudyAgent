@@ -1,0 +1,324 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry1",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 25,
+    "pageEnd": 26,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-voice",
+      "version": 1,
+      "name": "a o e的实际发音",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音发音",
+      "objective": "看清三字母并按汉语拼音实际发音",
+      "successCriterion": "本人声音与当前字母对应，不用英语字母名称代汉语拼音音值",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-tones",
+      "version": 1,
+      "name": "三单韵母的四声练习",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音声调",
+      "objective": "本人按当前声调分别读a o e四声",
+      "successCriterion": "三种韵母与四种声调逐项对应，音高变化不以喊得更响代替",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-form",
+      "version": 1,
+      "name": "字母和声调符号的分别观察",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音字形",
+      "objective": "分清a o e基本字形与附加声调",
+      "successCriterion": "字母与声调符号分别指出，换调不当换成另一个基本字母",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-writing",
+      "version": 1,
+      "name": "三字母的本人实际书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人在四线格中写a o e并观察中格位置",
+      "successCriterion": "三字母原稿可辨，书写范形与键入字体、辅助格线分清",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-hearing",
+      "version": 1,
+      "name": "有实际声音时辨认当前韵母",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音听辨",
+      "objective": "在明确现场示范条件下听声音再对应字母",
+      "successCriterion": "有实际声音与本人回应，未提供声音时不把看字回答当听辨",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aoe-practice",
+      "version": 1,
+      "name": "有依据地调整一次发音练习",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "练习与反思",
+      "objective": "对照准确示范区分自己当前要练的字母或声调",
+      "successCriterion": "当前尝试、帮助和再试可对应，字形或音量不独代发音正确",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-aoe-voice",
+    "source:chinese:g1:a692a990:pinyin-aoe-tones",
+    "source:chinese:g1:a692a990:pinyin-aoe-form",
+    "source:chinese:g1:a692a990:pinyin-aoe-writing",
+    "source:chinese:g1:a692a990:pinyin-aoe-hearing",
+    "source:chinese:g1:a692a990:pinyin-aoe-practice"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课两页已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 25,
+        "visualChecked": true,
+        "statement": "已看a o e三字母与情境图，字母形象线索不代准确发音，未把图中汉字添加为本课必写字。"
+      },
+      {
+        "page": 26,
+        "visualChecked": true,
+        "statement": "已看三韵母四声、汽车音高走向图与三字母范写；原图核对后使用字体解码提取，辅助格线与本人写字分开。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "a o e：字形、声音与四声",
+    "pinyinVowels": [
+      "a",
+      "o",
+      "e"
+    ],
+    "recognitionCharacters": [],
+    "writingCharacters": [],
+    "writingPinyinLetters": [
+      "a",
+      "o",
+      "e"
+    ],
+    "phoneticWritingAndChineseWritingSeparate": true,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "a o e：字形、声音与四声",
+    "activation": {
+      "prompt": "同一个a上面换成不同声调符号，基本字母变了吗？先看清字形，再听准确示范，试着读一读。",
+      "expectedObservation": "能把基本字母与声调符号分开看，知道声音的高低走向需要实际听读。",
+      "bridge": "先认识三种韵母，再把四声放到同一字母上练，最后亲手写一写。"
+    },
+    "concept": {
+      "explanation": "这一课学习a、o、e三个单韵母。看清字形，再听准确的汉语拼音示范，用自己的声音试读。a发音时嘴张得较大，o的嘴唇较圆，e的嘴唇较扁；这些口形提示帮助入门，声音是否合适还要实际听。拼音字母在这里表示汉语的声音，不能用英语里A、O、E的字母名称来代替。\n四种声调可以放到同一个韵母上。单独练习时，一声高而平，二声向上扬，三声先降后升，四声由高往下降。可以先听一组，再自己读ā、á、ǎ、à；然后练ō、ó、ǒ、ò和ē、é、ě、è。声调说的是音高走向，用较小的音量读也能有起伏，不必为了四声越读越响。这里练单独音节的典型读法，连续说话时还要联系实际语境。\n看ā与á，下面都是a，上面标调不同；换声调不等换成o或e。观察时分别指出字母和声调。四声能按顺序读之后，再听或看指定的一项，看看能否对应当前要求，不只靠顺串记忆。\n写字母时看本件的书写范形，a、o、e主要写在四线格的中格。辅助线帮助观察位置，不属于字母。印刷字体和手写范形可能有外观差别，亲手写时仍对照范写和实际步骤。先写基本字母，再按当前要求加声调；手写作品、本人声音和听辨分别练。\n需要示范时，可以请能够准确读汉语拼音的人帮助，说明先听过哪一项，再保留自己试读的声音。真正的听辨要先有声音；只有文字或字牌时，可以练认形，等有声音再练听辨。发现不稳的一项，就选一小组再练，不用假装一次就全会。",
+      "points": [
+        "三韵母看形并实际发音",
+        "汉语拼音不读英语字母名称",
+        "四声看音高走向",
+        "基本字母与标调分别看",
+        "四线格中格亲手写",
+        "真实听辨先有声音"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾先看á，说明字母和声调，再听准确示范并自己读，最后实际写在格里。",
+      "steps": [
+        {
+          "explanation": "先指出基本字母a，标调表示二声，字母形状与声音要求分别确认。",
+          "board": [
+            "基本字母：a",
+            "标调：二声",
+            "两部分分别看"
+          ]
+        },
+        {
+          "explanation": "听示范后自己试读，留意音高向上，不用提高音量代替。",
+          "board": [
+            "先听当前声音",
+            "本人实际读",
+            "音高走向向上"
+          ]
+        },
+        {
+          "explanation": "在中格写基本字母，再加当前声调，保留自己的原稿。",
+          "board": [
+            "中格作参照",
+            "本人写字母",
+            "再核当前标调"
+          ]
+        }
+      ],
+      "conclusion": "看形、听读与书写各做一步，练清当前字母和声调。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "三个韵母的四声",
+        "headers": [
+          "基本韵母",
+          "四声形式",
+          "练习时留意"
+        ],
+        "rows": [
+          [
+            "a",
+            "ā á ǎ à",
+            "字母相同，声调走向不同"
+          ],
+          [
+            "o",
+            "ō ó ǒ ò",
+            "圆唇提示后仍听本人实际声音"
+          ],
+          [
+            "e",
+            "ē é ě è",
+            "看清标调，再实际听读"
+          ]
+        ],
+        "explanation": "这是文字对照表；发音与听辨仍要有实际声音，手写还要对照本人原稿。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把二声理解为必须比一声喊得更响。",
+        "alternatives": [
+          "没有分清音高走向与音量。"
+        ],
+        "verification": "请听同样合适音量的两种声调，再实际试读。",
+        "correctiveFeedback": "留意向上或向下等音高变化，让音量适合当前环境。"
+      },
+      {
+        "observation": "看着ā读出了英语字母A的名称。",
+        "alternatives": [
+          "把拼音音值与英语字母名称混在一起。"
+        ],
+        "verification": "明确当前学汉语拼音，听准确示范后由本人再读。",
+        "correctiveFeedback": "相同字母形状可在不同体系中有不同读法，这里按当前汉语拼音练。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新字牌将ě、ā、ò按不同顺序呈现，并可由参与者提供对应声音。",
+      "prompt": "分别认出字母与声调，再按实际条件读、听或写指定一项。",
+      "expectedStrategy": "根据当前字形和声音判断，不照背旧顺序；没声音时先说明只练了认形。"
+    },
+    "summary": {
+      "synthesis": "三种基本韵母连到真实声音，四种声调用音高走向区分。看形、听读、亲手写分开练，需要帮助时先听再试。",
+      "takeaways": [
+        "a o e实际读",
+        "四声不用喊叫区分",
+        "字母与标调分清",
+        "本人写在中格"
+      ]
+    },
+    "citations": [
+      {
+        "page": 25,
+        "quote": "汉语拼音\na o e",
+        "usedFor": "concept"
+      },
+      {
+        "page": 26,
+        "quote": "ā\t\ná\t\nǎ\t\nà",
+        "usedFor": "visual"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-voice",
+        "objective": "看清三字母并按汉语拼音实际发音",
+        "successCriterion": "本人声音与当前字母对应，不用英语字母名称代汉语拼音音值"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-tones",
+        "objective": "本人按当前声调分别读a o e四声",
+        "successCriterion": "三种韵母与四种声调逐项对应，音高变化不以喊得更响代替"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-form",
+        "objective": "分清a o e基本字形与附加声调",
+        "successCriterion": "字母与声调符号分别指出，换调不当换成另一个基本字母"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-writing",
+        "objective": "本人在四线格中写a o e并观察中格位置",
+        "successCriterion": "三字母原稿可辨，书写范形与键入字体、辅助格线分清"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-hearing",
+        "objective": "在明确现场示范条件下听声音再对应字母",
+        "successCriterion": "有实际声音与本人回应，未提供声音时不把看字回答当听辨"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aoe-practice",
+        "objective": "对照准确示范区分自己当前要练的字母或声调",
+        "successCriterion": "当前尝试、帮助和再试可对应，字形或音量不独代发音正确"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-aoe",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-gkh",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-gkh-v1.json",
+      "sha256": "953da87458ad4dbec7da95104f52eb37c5105c90cea35be794b303ec266f3211",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry5",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 33,
+        "pageEnd": 34,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-gkh",
+      "atomId": "source:chinese:g1:a692a990:pinyin-gkh-voice",
+      "structure": "pinyin-gkh-current-two-part-voice",
+      "familyProposal": "a692a990-pinyin-gkh-current-two-part-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读三声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前两拼音节对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "送气摩擦与帮助核真实声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三声母与三当前音节分别听核，声母轻短，不能报英语名称代拼读。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读g k h，再拼gā、kǎ、hē并录音。",
+          "answer": "三声母与三当前音节分别听核，声母轻短，不能报英语名称代拼读。",
+          "analysis": "三声母与三当前音节分别听核，声母轻短，不能报英语名称代拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读g与k，最后补读h。",
+          "answer": "g不送气、k送气较明显，h摩擦音按当前真实声音核，不凭响度独断。",
+          "analysis": "g不送气、k送气较明显，h摩擦音按当前真实声音核，不凭响度独断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新顺序为hē、gù、kē，本人看清当前形式后实际读出。",
+          "answer": "声母韵母与声调对应新条件，不照搬上一题音节。",
+          "analysis": "声母韵母与声调对应新条件，不照搬上一题音节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读出了g和k却还没有拼音节，怎样说明本次录音？",
+          "answer": "保留实际声母范围，两拼尚待本人实际连读，不把辨字或准备当全部完成。",
+          "analysis": "保留实际声母范围，两拼尚待本人实际连读，不把辨字或准备当全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "请准确示范者另选g或k实际发声，不先亮目标，本人听完回应。",
+          "answer": "原声与本人回应对应，示范和目标可见条件如实，没有声音不算听辨。",
+          "analysis": "原声与本人回应对应，示范和目标可见条件如实，没有声音不算听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人选本课一个两拼重读，说明当前组成与帮助。",
+          "answer": "组成说明与真实声音各自核，不以口头组成正确代本人已经发音正确。",
+          "analysis": "组成说明与真实声音各自核，不以口头组成正确代本人已经发音正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-current-two-part-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再次读三声母和两项本件两拼，说实际覆盖与待练部分。",
+          "answer": "范围按本人当前声音核，重复或部分成功不扩大为全部音节都会。",
+          "analysis": "范围按本人当前声音核，重复或部分成功不扩大为全部音节都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-gkh",
+      "atomId": "source:chinese:g1:a692a990:pinyin-gua-three",
+      "structure": "pinyin-three-part-medial-process",
+      "familyProposal": "a692a990-pinyin-three-part-medial-process",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "声母介母末韵母完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际连成一个音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前标调与组合准确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "介母u进入连贯音节，不漏成gā，也不拖成独立的另一个音节。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "先指出g u ā三个部分，再由本人实际拼成guā并录音。",
+          "answer": "介母u进入连贯音节，不漏成gā，也不拖成独立的另一个音节。",
+          "analysis": "介母u进入连贯音节，不漏成gā，也不拖成独立的另一个音节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确完整示范，再本人分别读guā与guō。",
+          "answer": "最后韵母a与o分别更新，当前声调与完整声音对应。",
+          "analysis": "最后韵母a与o分别更新，当前声调与完整声音对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给huǒ、kuā、guà，本人看清三个部分后实际拼读。",
+          "answer": "各项声母、介母、末韵母和声调按新条件核，不只看首字母猜。",
+          "analysis": "各项声母、介母、末韵母和声调按新条件核，不只看首字母猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "如果本次漏u读成gā，怎样保留原音再尝试guā？",
+          "answer": "先保留真实原尝试，再看三个部分听准确示范重读，不覆盖漏读过程。",
+          "analysis": "先保留真实原尝试，再看三个部分听准确示范重读，不覆盖漏读过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "guā改成guà与改成guō，分别变了什么？本人实际读三项。",
+          "answer": "前一项改声调，后一项改末韵母；说明之后仍听本人实际声音。",
+          "analysis": "前一项改声调，后一项改末韵母；说明之后仍听本人实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本课学过几种三拼，就能把任何字母排列当常用音节吗？选本件一项实际读。",
+          "answer": "不能，先核本件具体合法形式再本人连读，不任意拼造音节作参考。",
+          "analysis": "不能，先核本件具体合法形式再本人连读，不任意拼造音节作参考。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-three-part-medial-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读一项当前三拼，说明是否先看过分步或听过提示。",
+          "answer": "真实条件与声音清楚，分步后连贯读的范围如实，不改写成无帮助初读。",
+          "analysis": "真实条件与声音清楚，分步后连贯读的范围如实，不改写成无帮助初读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-gkh",
+      "atomId": "source:chinese:g1:a692a990:pinyin-gkh-writing",
+      "structure": "pinyin-gkh-own-grid-forms",
+      "familyProposal": "a692a990-pinyin-gkh-own-grid-forms",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖g k h",
+          "weight": 0.4
+        },
+        {
+          "criterion": "下伸上伸和结构可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范写过程与帮助分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "g主要中下格，k h主要上中格，按本件完整范写看本人原稿。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写g k h，上传并指出上下伸的位置。",
+          "answer": "g主要中下格，k h主要上中格，按本件完整范写看本人原稿。",
+          "analysis": "g主要中下格，k h主要上中格，按本件完整范写看本人原稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察本件范写，再本人写h g k并上传原件。",
+          "answer": "三字母实际覆盖，k斜笔与h右部等结构分别看，不用键入文本代手写。",
+          "analysis": "三字母实际覆盖，k斜笔与h右部等结构分别看，不用键入文本代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸实际写三字母，选一处格位说明依据。",
+          "answer": "当前本人作品可核，位置联系完整字形，不因换纸而变更目标范围。",
+          "analysis": "当前本人作品可核，位置联系完整字形，不因换纸而变更目标范围。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写g与h，上传时怎样说明k？",
+          "answer": "实际两项明确，k仍待写，不用范字图片补成本人完成。",
+          "analysis": "实际两项明确，k仍待写，不用范字图片补成本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己g的下伸或k的斜笔，必要时留原稿再写并上传。",
+          "answer": "调整接当前本人作品，未发现问题可如实说，不强制制造错误。",
+          "analysis": "调整接当前本人作品，未发现问题可如实说，不强制制造错误。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "印刷字母样式与手写范形不同，上传本次作品应按什么核？",
+          "answer": "按本件完整手写范形及本人实际原稿核，不把字体样式差异简单当能力结论。",
+          "analysis": "按本件完整手写范形及本人实际原稿核，不把字体样式差异简单当能力结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-gkh-own-grid-forms-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三字母原稿，并说明笔顺和帮助还需怎样核。",
+          "answer": "照片看字形与位置，实际先后依书写过程，帮助和原写后改分别说明。",
+          "analysis": "照片看字形与位置，实际先后依书写过程，帮助和原写后改分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-gkh",
+      "atomId": "source:chinese:g1:a692a990:pinyin-draw-beat",
+      "structure": "pinyin-two-characters-action-words",
+      "familyProposal": "a692a990-pinyin-two-characters-action-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读画打两字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语意思清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色动作和本人事实分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读画与打，再读给定角色卡上的画画打鼓并录音。",
+          "answer": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。",
+          "analysis": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确词语示范，再本人读打鼓与画画，解释一处动作。",
+          "answer": "当前词语和实际声音对应，解释接给定动作，不把读对推已经操作。",
+          "analysis": "当前词语和实际声音对应，解释接给定动作，不把读对推已经操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换原创角色在画图、另一角色在敲鼓，本人选择对应词语再读。",
+          "answer": "词语配对依据当前动作，角色与本人经历分别说明。",
+          "analysis": "词语配对依据当前动作，角色与本人经历分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出画还没认出打时，录音后应怎样说范围？",
+          "answer": "保留真实已读一字，另一字待帮助后再练，不由词语熟悉补全。",
+          "analysis": "保留真实已读一字，另一字待帮助后再练，不由词语熟悉补全。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "会说打鼓就能证明本人已经敲过鼓吗？实际读当前词语说明。",
+          "answer": "不能，词义与读音是当前任务，真实动作需实际过程，不能由角色例子代。",
+          "analysis": "不能，词义与读音是当前任务，真实动作需实际过程，不能由角色例子代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本课识字行画打，是否要求把说话儿歌所有字都默写？本人认读两字说明。",
+          "answer": "不能自动扩大，识两字与字母书写另列，儿歌所有字不是本课必写表。",
+          "analysis": "不能自动扩大，识两字与字母书写另列，儿歌所有字不是本课必写表。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-two-characters-action-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读两字与选定词语，说明所用帮助和本次实际完成。",
+          "answer": "范围和条件真实，识字声音、词义解释与本人手写分别核。",
+          "analysis": "范围和条件真实，识字声音、词义解释与本人手写分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-gkh",
+      "atomId": "source:chinese:g1:a692a990:pinyin-sound-poem",
+      "structure": "pinyin-text-sound-and-personification",
+      "familyProposal": "a692a990-pinyin-text-sound-and-personification",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "解释接本件具体内容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟声拟人与真实原声分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人共读范围和帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "解释对应实际读到的部分，拟声帮助想象；现代全文回本件，不由参考补本人读过。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "在成人帮助下读本件说话儿歌一部分，本人用自己的话说一处声音描写。",
+          "answer": "解释对应实际读到的部分，拟声帮助想象；现代全文回本件，不由参考补本人读过。",
+          "analysis": "解释对应实际读到的部分，拟声帮助想象；现代全文回本件，不由参考补本人读过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录音说明儿歌把小溪写成说话，是否表示真的讲人的句子。",
+          "answer": "是生动描写自然声音，不等小溪真的说汉语句子，依据当前文本解释。",
+          "analysis": "是生动描写自然声音，不等小溪真的说汉语句子，依据当前文本解释。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色写风在唱歌，这与真实录到一首人声歌曲一样吗？本人说明。",
+          "answer": "不一样，拟人可描写风声，真实人声歌曲还需实际录音和来源，不能由文字替代。",
+          "analysis": "不一样，拟人可描写风声，真实人声歌曲还需实际录音和来源，不能由文字替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "尚未实际共读、只知道儿歌标题，本次可以怎样说明？",
+          "answer": "说明已知道题目或准备问题，具体原篇阅读仍待发生，不填成人或本人虚假过程。",
+          "analysis": "说明已知道题目或准备问题，具体原篇阅读仍待发生，不填成人或本人虚假过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只读了声音词但没听真实动物录音，可以说已现场听到吗？",
+          "answer": "不能，当前依据是文字描写，真实听闻要有当时原声与过程。",
+          "analysis": "不能，当前依据是文字描写，真实听闻要有当时原声与过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后选一处不懂的声音词提问，再录本人回应与帮助。",
+          "answer": "问题回应对应本件当前内容，未核细节回原篇查，成人解释与本人表达分明。",
+          "analysis": "问题回应对应本件当前内容，未核细节回原篇查，成人解释与本人表达分明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-gkh-pinyin-text-sound-and-personification-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再次概述本件一处描写，另说如果要练真实听辨还需什么。",
+          "answer": "文本解释有依据，听辨需实际声音和本人回应，不能以读文字代真实听到。",
+          "analysis": "文本解释有依据，听辨需实际声音和本人回应，不能以读文字代真实听到。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

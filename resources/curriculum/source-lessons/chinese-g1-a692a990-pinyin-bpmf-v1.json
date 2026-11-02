@@ -1,0 +1,313 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry3",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 29,
+    "pageEnd": 30,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-bpmf-voice",
+      "version": 1,
+      "name": "四声母发音与b p送气区别",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "声母发音",
+      "objective": "本人实际读b p m f并在准确示范后比较b p送气",
+      "successCriterion": "声音对应当前声母，b不送气与p送气分别核，不靠字母名称或音量猜",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-bpmf-blend",
+      "version": 1,
+      "name": "从声母韵母到两拼音节",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "两拼音节",
+      "objective": "本人按当前b与a等组合实际拼读完整音节",
+      "successCriterion": "分清声母韵母与合成音节，声音连成当前一项，不读成英语名称串",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-ba-tones",
+      "version": 1,
+      "name": "ba四声与当前标调",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "声调与拼读",
+      "objective": "本人实际读bā bá bǎ bà并联系标调",
+      "successCriterion": "声母和韵母保持，声调按当前音节核，字形辨调不代本人发音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-bpmf-writing",
+      "version": 1,
+      "name": "四声母的本人书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人在四线格写b p m f并比较上下位置",
+      "successCriterion": "四字母原稿可辨，b上伸与p下伸、m和f结构按范写核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-family-words",
+      "version": 1,
+      "name": "爸妈识字与词语读音",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与词语",
+      "objective": "识读爸妈并在给定角色语境读爸爸妈妈",
+      "successCriterion": "字与声音对应，词语后音节轻声按本件核，不由角色推本人家庭资料",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-bpmf-voice",
+    "source:chinese:g1:a692a990:pinyin-bpmf-blend",
+    "source:chinese:g1:a692a990:pinyin-ba-tones",
+    "source:chinese:g1:a692a990:pinyin-bpmf-writing",
+    "source:chinese:g1:a692a990:pinyin-family-words"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课两页已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 29,
+        "visualChecked": true,
+        "statement": "已看b p m f情境与b-a-ba两拼示意，字形提示不代实际音值和送气判断。"
+      },
+      {
+        "page": 30,
+        "visualChecked": true,
+        "statement": "已看ba四声、四声母具体拼读、爸妈识字行、爸爸妈妈轻声及四字母范写，不把角色家庭资料写成本人事实。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "b p m f：声母与两拼",
+    "pinyinInitials": [
+      "b",
+      "p",
+      "m",
+      "f"
+    ],
+    "recognitionCharacters": [
+      "爸",
+      "妈"
+    ],
+    "writingCharacters": [],
+    "writingPinyinLetters": [
+      "b",
+      "p",
+      "m",
+      "f"
+    ],
+    "familyDisclosureRequired": false,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "b p m f：声母与两拼",
+    "activation": {
+      "prompt": "b和p都有一竖和右边的圆弧，圆弧在上下哪个位置？再听准确示范，两种声音的送气有什么不同？",
+      "expectedObservation": "能先比较字形位置，再发现实际声音还要分别听，不由长得像就读成同一个音。",
+      "bridge": "先看清四声母并实际读，再把声母和韵母连起来拼成一个音节。"
+    },
+    "concept": {
+      "explanation": "本课认识b、p、m、f四个声母。按准确汉语拼音示范读得轻短，不能借英语字母名称来代替。b和p都从双唇闭合后打开开始，b不送气，p送气较明显；m发音时双唇闭合，气流经鼻腔；f用上齿接近下唇形成摩擦。口形与气流提示帮助观察，是否读合适仍要听本人实际声音，不用喊得更响当作送气。\n声母和韵母可以拼成音节。看b与a，先弄清两部分，再按示范把它们连成ba。声母轻、韵母较响，连起来听到的是一个完整音节，不是在中间停很久报两个字母名称。再把当前声调带进去，可以读bā、bá、bǎ、bà。\n原页有b、p、m、f与已经学过韵母的具体组合，例如bǐ、pí、mǐ、fǔ。每次先看清当前声母、韵母和标调，再实际拼读；不能以为任何声母韵母都能任意组合成常用音节。这里以本课给出的组合练习，不另造不合汉语音节习惯的形式。\n写字母时，b主要占上中格，圆弧在中格；p主要占中下格，竖向下伸。m主要在中格，f主要在上中格。按本件完整范写观察，再由本人实际写；位置、字形和先后步骤分别看，不用键入的字代手写。\n本课识字行是爸、妈，不添加汉字必写表。单字可读bà、mā，放到爸爸、妈妈两个词中，后一个音节按本件作轻声读，不必给第二个音节硬加同样声调。角色图帮助理解词语，练习可以谈给定角色，不要求讲述自己的家庭结构。认识两个字、读词语和本人写字母，各自有实际任务。",
+      "points": [
+        "四声母轻短实际读",
+        "b p送气区别要听核",
+        "声母韵母连成当前音节",
+        "ba四声逐项核",
+        "b上伸p下伸看范写",
+        "识爸妈不强制家庭披露"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾先辨b与p，再把b和带调a拼成bǎ，最后读给定角色卡上的爸爸。",
+      "steps": [
+        {
+          "explanation": "看字形，再听准确示范比较送气，形与音分别确认。",
+          "board": [
+            "b圆弧在中格",
+            "p竖向下伸",
+            "声音再核送气"
+          ]
+        },
+        {
+          "explanation": "声母b和ǎ连起来拼成bǎ，不在中间停成两个名称。",
+          "board": [
+            "声母：b",
+            "韵母：ǎ",
+            "连成：bǎ"
+          ]
+        },
+        {
+          "explanation": "读爸爸时核后一个音节的轻声，角色资料不替本人经历。",
+          "board": [
+            "单字：爸",
+            "词语：爸爸",
+            "后音节按词语读"
+          ]
+        }
+      ],
+      "conclusion": "当前字形、送气、拼读和词语读音逐项联系，不用一种表现代替全部。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "本课的几个对应",
+        "headers": [
+          "任务",
+          "当前例子",
+          "核对方法"
+        ],
+        "rows": [
+          [
+            "送气比较",
+            "b与p",
+            "听本人声音，形与音分别看"
+          ],
+          [
+            "两拼",
+            "b＋a→ba",
+            "连成一个完整音节"
+          ],
+          [
+            "四声",
+            "bā bá bǎ bà",
+            "声调落在当前韵母上"
+          ],
+          [
+            "词语",
+            "bàba、māma",
+            "后音节按本件轻声读"
+          ]
+        ],
+        "explanation": "表里是文字提示；真实发音和听辨要有声音，书写另看本人原稿。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把b与p只按形状相近读成同一音。",
+        "alternatives": [
+          "没有分别观察字母位置与实际送气。"
+        ],
+        "verification": "请听准确示范，再由本人分别读并核字形。",
+        "correctiveFeedback": "形状帮助辨字，送气区别还需真实声音。"
+      },
+      {
+        "observation": "读爸爸时两个音节都机械加同样四声。",
+        "alternatives": [
+          "把单字练习直接套到当前词语。"
+        ],
+        "verification": "回本件看后音节标法，再听准确词语示范。",
+        "correctiveFeedback": "词语按当前读音练，单字四声练习与词语连读分开。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新练习给pí、mǐ、fǔ及打乱的b p字卡。",
+      "prompt": "先看当前字母，再实际拼读指定音节，最后说一个容易混的地方。",
+      "expectedStrategy": "依据新组合的声母韵母标调，不照搬bǎ的音；词语和本人经历也分清。"
+    },
+    "summary": {
+      "synthesis": "声母读轻短，送气按真实声音比较；声母与韵母连成当前音节，字母亲手写，爸妈按单字与词语的不同条件读。",
+      "takeaways": [
+        "四声母实际发音",
+        "两音连成一音节",
+        "标调看当前形式",
+        "字母手写和汉字识读分开"
+      ]
+    },
+    "citations": [
+      {
+        "page": 30,
+        "quote": "b ā\nbā\nb á\nbá",
+        "usedFor": "example"
+      },
+      {
+        "page": 30,
+        "quote": "妈\nmā\n妈\nma\n爸\nbà\n爸\nba",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-voice",
+        "objective": "本人实际读b p m f并在准确示范后比较b p送气",
+        "successCriterion": "声音对应当前声母，b不送气与p送气分别核，不靠字母名称或音量猜"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-blend",
+        "objective": "本人按当前b与a等组合实际拼读完整音节",
+        "successCriterion": "分清声母韵母与合成音节，声音连成当前一项，不读成英语名称串"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-ba-tones",
+        "objective": "本人实际读bā bá bǎ bà并联系标调",
+        "successCriterion": "声母和韵母保持，声调按当前音节核，字形辨调不代本人发音"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-writing",
+        "objective": "本人在四线格写b p m f并比较上下位置",
+        "successCriterion": "四字母原稿可辨，b上伸与p下伸、m和f结构按范写核"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-family-words",
+        "objective": "识读爸妈并在给定角色语境读爸爸妈妈",
+        "successCriterion": "字与声音对应，词语后音节轻声按本件核，不由角色推本人家庭资料"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-bpmf",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

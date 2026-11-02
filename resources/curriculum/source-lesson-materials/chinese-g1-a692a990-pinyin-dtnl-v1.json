@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-dtnl",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+      "sha256": "acb559bf89433b02f2ae898389bbc64d8ab806a470982d2b39126f6c89cdf42f",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry4",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 31,
+        "pageEnd": 32,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-dtnl",
+      "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-voice",
+      "structure": "pinyin-dtnl-current-voice",
+      "familyProposal": "a692a990-pinyin-dtnl-current-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读四声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "d t送气区别可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范和本人条件清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四声母实际声音对应当前字母，轻短发音与帮助清楚，不用英语名称替代。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录音读d t n l，再说明是否先听过准确示范。",
+          "answer": "四声母实际声音对应当前字母，轻短发音与帮助清楚，不用英语名称替代。",
+          "analysis": "四声母实际声音对应当前字母，轻短发音与帮助清楚，不用英语名称替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读d与t，留意送气。",
+          "answer": "d不送气、t送气较明显，核真实声音与过程，不以音量大小独断。",
+          "analysis": "d不送气、t送气较明显，核真实声音与过程，不以音量大小独断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新字序为l d n t，本人看清后逐个实际认读。",
+          "answer": "当前顺序和实际声音相符，不用原顺串背出代替。",
+          "analysis": "当前顺序和实际声音相符，不用原顺串背出代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读清两项，怎样保留录音并说明其余两项？",
+          "answer": "按本人实际范围核，原卡顿和未读部分保留，帮助后另试。",
+          "analysis": "按本人实际范围核，原卡顿和未读部分保留，帮助后另试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人把t读得响却仍混音，本人怎样回到当前方法再试？",
+          "answer": "听准确示范并关注实际送气，合适音量分别试，响度不代音值。",
+          "analysis": "听准确示范并关注实际送气，合适音量分别试，响度不代音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人选一项具体声母重读，说明和上次用了哪些帮助。",
+          "answer": "目标与本人原音对应，帮助与再试清楚，不强求编出进步。",
+          "analysis": "目标与本人原音对应，帮助与再试清楚，不强求编出进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-current-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "实际重读四声母，再分别说字形辨认与声音练习完成哪些。",
+          "answer": "本人发音按声音核，认形与实际读音分别说明，不把一种任务推全部。",
+          "analysis": "本人发音按声音核，认形与实际读音分别说明，不把一种任务推全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-dtnl",
+      "atomId": "source:chinese:g1:a692a990:pinyin-nl-hearing",
+      "structure": "pinyin-nl-real-sound-contrast",
+      "familyProposal": "a692a990-pinyin-nl-real-sound-contrast",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "n l真实发音与原声清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应对应当前声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "口音与帮助不混作能力结论",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "n鼻音与l舌侧气流结合实际声音核，口形说明不代本人发音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "先听准确n与l示范，再本人分别读，保留本次真实声音。",
+          "answer": "n鼻音与l舌侧气流结合实际声音核，口形说明不代本人发音。",
+          "analysis": "n鼻音与l舌侧气流结合实际声音核，口形说明不代本人发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "请准确示范者另选n或l，不先亮目标字母，本人听后回应并录音。",
+          "answer": "原声与回应对应，没有实际声音或先看目标时如实说明条件。",
+          "analysis": "原声与回应对应，没有实际声音或先看目标时如实说明条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一轮新顺序的n l声音，本人逐项听完再回应。",
+          "answer": "按当前原声判断，不照搬上一轮排列，帮助次数保留。",
+          "analysis": "按当前原声判断，不照搬上一轮排列，帮助次数保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有n l字卡还没听声音时，能说明已完成听辨吗？",
+          "answer": "只能说明看字认形，真实听辨还待原声与本人回应，不用文字替代。",
+          "analysis": "只能说明看字认形，真实听辨还待原声与本人回应，不用文字替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "某人有地方口音且这次读混n l，可以直接判学习能力吗？",
+          "answer": "不能，应回具体当前声音、方法与帮助，选一小项练，不按地区贴能力标签。",
+          "analysis": "不能，应回具体当前声音、方法与帮助，选一小项练，不按地区贴能力标签。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "没有听清而请求重读，怎样保留这轮录音？",
+          "answer": "原声、求助、重读和本人回应分别留，帮助后正确不覆盖首遍未听清。",
+          "analysis": "原声、求助、重读和本人回应分别留，帮助后正确不覆盖首遍未听清。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-nl-real-sound-contrast-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人比较前后两次n l尝试，选下一步实际要练的一项。",
+          "answer": "比较基于真实声音，未有明显变化如实说，不要求捏鼻或强迫动作。",
+          "analysis": "比较基于真实声音，未有明显变化如实说，不要求捏鼻或强迫动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-dtnl",
+      "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-blend",
+      "structure": "pinyin-current-syllables-with-umlaut",
+      "familyProposal": "a692a990-pinyin-current-syllables-with-umlaut",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前声母韵母标调清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际拼读对应形式",
+          "weight": 0.4
+        },
+        {
+          "criterion": "n l后ü与yu条件分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四项组成和声音对应，声母韵母连成完整音节，不报名称串代拼读。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读dǎ、tā、nǐ、lè，录音说明各项当前标调。",
+          "answer": "四项组成和声音对应，声母韵母连成完整音节，不报名称串代拼读。",
+          "analysis": "四项组成和声音对应，声母韵母连成完整音节，不报名称串代拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人拼nǚ与lǘ，说明两点怎么处理。",
+          "answer": "n l后的ü保留两点，nǚ三声与lǘ二声分别核，说明不代实际声音。",
+          "analysis": "n l后的ü保留两点，nǚ三声与lǘ二声分别核，说明不代实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给lǘ、dǎ、nù、tí，本人看清后实际读出。",
+          "answer": "按当前声母、韵母和标调更新，不照搬原来的音节序列。",
+          "analysis": "按当前声母、韵母和标调更新，不照搬原来的音节序列。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看见带u的形式，可以不问组合就把所有两点去掉吗？实际读nǚ。",
+          "answer": "不能；nǚ仍保留ü两点，yu是另一具体条件，实际声音按当前形式听核。",
+          "analysis": "不能；nǚ仍保留ü两点，yu是另一具体条件，实际声音按当前形式听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果把nǚ与lǘ读成完全一样，本人应重新看哪些条件再试？",
+          "answer": "重新核声母n或l及三声或二声，ü两点保持，保留本人再试声音。",
+          "analysis": "重新核声母n或l及三声或二声，ü两点保持，保留本人再试声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际重读本课两项音节，说明是否先看过或听过提示。",
+          "answer": "当前组合与本人声音清楚，所用帮助如实，不把后一次冒作初次独立拼读。",
+          "analysis": "当前组合与本人声音清楚，所用帮助如实，不把后一次冒作初次独立拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-current-syllables-with-umlaut-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本件另选一个已给音节，本人拼读后说实际覆盖和待练范围。",
+          "answer": "所选形式来自本件具体组合，已读与未读分别说，不由一项推全部都会。",
+          "analysis": "所选形式来自本件具体组合，已读与未读分别说，不由一项推全部都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-dtnl",
+      "atomId": "source:chinese:g1:a692a990:pinyin-dtnl-writing",
+      "structure": "pinyin-dtnl-own-letter-forms",
+      "familyProposal": "a692a990-pinyin-dtnl-own-letter-forms",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖d t n l",
+          "weight": 0.4
+        },
+        {
+          "criterion": "上伸和横画结构可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "数字印刷范形与手写分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字母原稿可辨，d t l上中格、n中格，t有横画，l没有，按本件范形核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写d t n l，上传并比较t与l有无横画。",
+          "answer": "四字母原稿可辨，d t l上中格、n中格，t有横画，l没有，按本件范形核。",
+          "analysis": "四字母原稿可辨，d t l上中格、n中格，t有横画，l没有，按本件范形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "观察完整范写后，本人先写d与n再写t与l并上传。",
+          "answer": "四项由本人实际写出，形状与位置分别看，不用键入文本代手写。",
+          "analysis": "四项由本人实际写出，形状与位置分别看，不用键入文本代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸按l n d t顺序写四项，上传并选一处位置作说明。",
+          "answer": "当前四项和本人原稿对应，字母格位不随顺序更换。",
+          "analysis": "当前四项和本人原稿对应，字母格位不随顺序更换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写t与l，上传如何报告另外两项？",
+          "answer": "实际两项清楚，d n待写，不能以打印样本或口头愿望补成已写。",
+          "analysis": "实际两项清楚，d n待写，不能以打印样本或口头愿望补成已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己d的圆弧和上伸，必要时保留原稿再写一次。",
+          "answer": "调整接本人具体作品，原写和后改可对应，不必故意造错。",
+          "analysis": "调整接本人具体作品，原写和后改可对应，不必故意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "小写l在某字体看着像数字1，实际书写本课时怎样核？",
+          "answer": "按当前拼音字母和本件完整范形核，不把两个体系的对象混为一项。",
+          "analysis": "按当前拼音字母和本件完整范形核，不把两个体系的对象混为一项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-dtnl-own-letter-forms-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传四字母，另说明本人笔顺与帮助如何核对。",
+          "answer": "字形看原稿，先后看真实书写过程；范写帮助与本人作品分别说明。",
+          "analysis": "字形看原稿，先后看真实书写过程；范写帮助与本人作品分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-dtnl",
+      "atomId": "source:chinese:g1:a692a990:pinyin-horse-soil-not",
+      "structure": "pinyin-three-characters-and-words",
+      "familyProposal": "a692a990-pinyin-three-characters-and-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读马土不",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语与意义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "识字行和儿歌全部字分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三识字目标实际覆盖，词语声音与含义对应，帮助和未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读马土不，再在成人帮助下读本课马路泥土两词。",
+          "answer": "三识字目标实际覆盖，词语声音与含义对应，帮助和未读范围如实。",
+          "analysis": "三识字目标实际覆盖，词语声音与含义对应，帮助和未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看三字识字行，再本人按土不马的顺序认读。",
+          "answer": "当前字形与实际读音对应，不靠原排列顺背代辨字。",
+          "analysis": "当前字形与实际读音对应，不靠原排列顺背代辨字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换原创角色卡说脚下有泥土、前面有马路，本人读词并解释一处。",
+          "answer": "词语对应当前给定情境，角色描述不当本人已经走过或观察过的事实。",
+          "analysis": "词语对应当前给定情境，角色描述不当本人已经走过或观察过的事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读会马与土时，怎样录音说明不字的状态？",
+          "answer": "保留真实已读两字，未读的字待帮助后练，不根据熟悉词语补全。",
+          "analysis": "保留真实已读两字，未读的字待帮助后练，不根据熟悉词语补全。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读过儿歌就能把其中每个字都列成本课必写吗？本人读识字行说明。",
+          "answer": "不能；本课识字行马土不，字母写字另列，儿歌全部字不自动升级为必写。",
+          "analysis": "不能；本课识字行马土不，字母写字另列，儿歌全部字不自动升级为必写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际读原篇一小部分后，说一处轻轻或慢慢的意思并说明帮助。",
+          "answer": "解释接本件具体情境，实际读了哪部分按本人声音核，未覆盖仍待练。",
+          "analysis": "解释接本件具体情境，实际读了哪部分按本人声音核，未覆盖仍待练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-dtnl-pinyin-three-characters-and-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读三字和选定词语，分别说明读字、读词与写字完成哪些。",
+          "answer": "三任务分清，本课未列汉字必写，实际书写情况仍按本人原稿说明。",
+          "analysis": "三任务分清，本课未列汉字必写，实际书写情况仍按本人原稿说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T22:52:20.795Z",
+  "from": "声调说的是音高走向，轻声读也能有起伏，不必为了四声越读越响。",
+  "to": "声调说的是音高走向，用较小的音量读也能有起伏，不必为了四声越读越响。",
+  "changed": [
+    "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-aoe-v1.json",
+    "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-aoe-v1.json",
+    "scripts/content/chinese-g1-pinyin-vowels.cjs"
+  ],
+  "reason": "Avoid confusing ordinary low volume with the technical neutral-tone term 轻声.",
+  "onlyOneBodySentenceChanged": true,
+  "all189QuestionGroupsAndTargetsUnchanged": true,
+  "fourOtherLessonPacketsByteIdentical": true,
+  "firstHttpAllFivePassed": true,
+  "selectedRecheck": "pinyin-aoe"
+}

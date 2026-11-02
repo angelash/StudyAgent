@@ -1,0 +1,536 @@
+{
+  "protocol": "pinyin-first-five-lesson-candidates-v1",
+  "at": "2026-11-02T22:56:18.461Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
+    "currentRange": [
+      25,
+      34
+    ],
+    "currentSourcePagesFullyRead": 10,
+    "pagesVisuallyReviewed": 93,
+    "totalPages": 127,
+    "wholeBookFullyRead": false,
+    "nextRangeReadButNotAuthored": [
+      35,
+      58
+    ]
+  },
+  "content": {
+    "drafts": 5,
+    "targets": 27,
+    "candidates": 189,
+    "perPacket": [
+      {
+        "name": "chinese-g1-a692a990-pinyin-aoe-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          25,
+          26
+        ],
+        "bodyCharacters": 570,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-bpmf-v1.json",
+        "targets": 5,
+        "questions": 35,
+        "pages": [
+          29,
+          30
+        ],
+        "bodyCharacters": 564,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-dtnl-v1.json",
+        "targets": 5,
+        "questions": 35,
+        "pages": [
+          31,
+          32
+        ],
+        "bodyCharacters": 562,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-gkh-v1.json",
+        "targets": 5,
+        "questions": 35,
+        "pages": [
+          33,
+          34
+        ],
+        "bodyCharacters": 584,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          27,
+          28
+        ],
+        "bodyCharacters": 538,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      }
+    ],
+    "modes": {
+      "audio_record": 133,
+      "short_answer": 14,
+      "image_upload": 42
+    },
+    "teacherReviewed": false,
+    "authenticSoundFilesIncluded": false,
+    "independentScoringFamiliesAndSufficientStockApproved": false
+  },
+  "validation": {
+    "staticPassed": true,
+    "generationByteStable": true,
+    "firstHttp": {
+      "drafts": 5,
+      "questions": 189,
+      "allPassed": true
+    },
+    "oneBodySentenceCorrection": {
+      "at": "2026-11-02T22:52:20.795Z",
+      "from": "声调说的是音高走向，轻声读也能有起伏，不必为了四声越读越响。",
+      "to": "声调说的是音高走向，用较小的音量读也能有起伏，不必为了四声越读越响。",
+      "changed": [
+        "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-aoe-v1.json",
+        "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-aoe-v1.json",
+        "scripts/content/chinese-g1-pinyin-vowels.cjs"
+      ],
+      "reason": "Avoid confusing ordinary low volume with the technical neutral-tone term 轻声.",
+      "onlyOneBodySentenceChanged": true,
+      "all189QuestionGroupsAndTargetsUnchanged": true,
+      "fourOtherLessonPacketsByteIdentical": true,
+      "firstHttpAllFivePassed": true,
+      "selectedRecheck": "pinyin-aoe",
+      "correctedHttpQuestions": 42,
+      "correctedHttpAndColdReadPassed": true
+    },
+    "selectedCurrentHttpResults": [
+      {
+        "name": "chinese-g1-a692a990-pinyin-aoe-v1.json",
+        "attempt": "second",
+        "result": {
+          "at": "2026-11-02T22:52:31.309Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-pinyin-aoe-v1.json",
+              "sha256": "560262a306e2da0a1070aa3890409103935898d397de4d0d62d01520b6084a37",
+              "physicalPages": [
+                25,
+                26
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-aoe-v1.json",
+            "sha256": "d78a7def41ce12cfaef8909f21b11be0025de6d44f2646c13a836ec0be6b14b0",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-bpmf-v1.json",
+        "attempt": "first",
+        "result": {
+          "at": "2026-11-02T22:47:10.977Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 35,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-pinyin-bpmf-v1.json",
+              "sha256": "bd12beead6803a72e295c478d72330a1eddca068825adea0c98861a859ab1090",
+              "physicalPages": [
+                29,
+                30
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 5,
+              "preflightPublishable": false,
+              "gapCount": 65,
+              "linkedDraftMaterialReferences": 35,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 35,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+            "sha256": "a7407547b7a87d2a26ebbb5281a220ee6c19cd264db9102c1d6e06ea67283a9b",
+            "groups": 5,
+            "questions": 35,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-dtnl-v1.json",
+        "attempt": "first",
+        "result": {
+          "at": "2026-11-02T22:48:42.575Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 35,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-pinyin-dtnl-v1.json",
+              "sha256": "acb559bf89433b02f2ae898389bbc64d8ab806a470982d2b39126f6c89cdf42f",
+              "physicalPages": [
+                31,
+                32
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 5,
+              "preflightPublishable": false,
+              "gapCount": 65,
+              "linkedDraftMaterialReferences": 35,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 35,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-dtnl-v1.json",
+            "sha256": "eeecfa413332cbd1789524a4c2de523f1af10c68d5a9255f456ff09c82d2bbf0",
+            "groups": 5,
+            "questions": 35,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-gkh-v1.json",
+        "attempt": "first",
+        "result": {
+          "at": "2026-11-02T22:48:42.654Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 35,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-pinyin-gkh-v1.json",
+              "sha256": "953da87458ad4dbec7da95104f52eb37c5105c90cea35be794b303ec266f3211",
+              "physicalPages": [
+                33,
+                34
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 5,
+              "preflightPublishable": false,
+              "gapCount": 65,
+              "linkedDraftMaterialReferences": 35,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 35,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-gkh-v1.json",
+            "sha256": "3a2c92a16ef4e88187f654c10f2b5b1132e2103bb2bb3c401263a769389e6e72",
+            "groups": 5,
+            "questions": 35,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+        "attempt": "first",
+        "result": {
+          "at": "2026-11-02T22:50:03.038Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+              "sha256": "fc04a0b7d1e206084eecf6f2ec85a24a837b5da73550f427cf678e860981f1a2",
+              "physicalPages": [
+                27,
+                28
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-iu-yw-v1.json",
+            "sha256": "cca1703ed90d6fe772eda58fdc13d936e103420d9b978ae37349da6df5491cac",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "tSQa109Myy2UD3Gs5L5KY",
+      "first": {
+        "passed": 7,
+        "failed": 0,
+        "screenshotsVisuallyInspected": 16
+      },
+      "corrected": {
+        "passed": 3,
+        "failed": 0,
+        "screenshotsVisuallyInspected": 4
+      },
+      "countsNotCombined": true,
+      "wholeConceptTablesAndDownloadsCompared": true,
+      "noLearningOrPublicationWrites": true
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "frozenPriorInputs": 2217,
+    "newContentInputs": 13,
+    "changedExistingInputs": [],
+    "applicationRuntimeChanged": false,
+    "databaseProtocolUnchanged": 37,
+    "previousCompleteApi": {
+      "passed": 3105,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "currentFullSuiteRerun": false,
+      "countsNotCombined": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T22:55:24.472Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 452,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 104,
+    "booksWithDirectory": 116,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3581,
+    "lessonsWithCandidateFiles": 80,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3501,
+    "authoredFollowingMaterialCandidates": 3430,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "thisBookTeachingEntriesWithDrafts": 14,
+    "thisBookTeachingEntriesWithoutDrafts": 37,
+    "firstLessonSeparateCandidates": 44,
+    "nextTenPinyinEntriesNotAuthored": true,
+    "allTextbooksGespTeacherScoringFamiliesStockAndRealWorldConditions": true,
+    "block5": true
+  },
+  "boundaries": {
+    "rawOriginalImagesAndModernPoemsRemainLocal": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "realLearnerDataWritten": false,
+    "automaticApproval": false,
+    "published": 0,
+    "adopted": 0,
+    "learnerResponses": 0,
+    "pushed": false,
+    "deployed": false
+  }
+}

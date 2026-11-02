@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-aoe",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-aoe-v1.json",
+      "sha256": "560262a306e2da0a1070aa3890409103935898d397de4d0d62d01520b6084a37",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry1",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 25,
+        "pageEnd": 26,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-voice",
+      "structure": "pinyin-aoe-three-voice",
+      "familyProposal": "a692a990-pinyin-aoe-three-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际发三韵母音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "对应当前汉语拼音字母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范与本人尝试分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人逐项实际发音，按准确汉语拼音示范核，不用英语字母名称代替。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "看清a o e，录下本人按汉语拼音发出的三个声音。",
+          "answer": "本人逐项实际发音，按准确汉语拼音示范核，不用英语字母名称代替。",
+          "analysis": "本人逐项实际发音，按准确汉语拼音示范核，不用英语字母名称代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人分别读o与e，最后补读a。",
+          "answer": "声音对应当前字母，口形提示后仍听实际音值；先听过示范如实说明。",
+          "analysis": "声音对应当前字母，口形提示后仍听实际音值；先听过示范如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换顺序为e a o，自己看字再实际读出。",
+          "answer": "当前字母与本人声音一一对应，不只背原来的三音顺串。",
+          "analysis": "当前字母与本人声音一一对应，不只背原来的三音顺串。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只会读a与o，录音应怎样保留还不会的部分？",
+          "answer": "保留真实两音与卡顿，e待帮助后再练，不用别人的声音补本人。",
+          "analysis": "保留真实两音与卡顿，e待帮助后再练，不用别人的声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人把这里的a读成英语A名称，本人可以怎样重新尝试？",
+          "answer": "先明确当前学汉语拼音，再听准确示范并用本人声音试读，不能只说名称就算发音。",
+          "analysis": "先明确当前学汉语拼音，再听准确示范并用本人声音试读，不能只说名称就算发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较本人这次o与e的声音，指出想继续练的一项并实际再读。",
+          "answer": "依据本人原音与准确示范核，不只凭嘴圆或嘴扁推声音正确。",
+          "analysis": "依据本人原音与准确示范核，不只凭嘴圆或嘴扁推声音正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-three-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "不看旧排列，录下本人逐个认读三字母并说明得到的帮助。",
+          "answer": "看当前字母、听本人声音，原尝试与示范后再试分别说明。",
+          "analysis": "看当前字母、听本人声音，原尝试与示范后再试分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-tones",
+      "structure": "pinyin-aoe-twelve-tones",
+      "familyProposal": "a692a990-pinyin-aoe-twelve-tones",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "三韵母四声实际覆盖",
+          "weight": 0.4
+        },
+        {
+          "criterion": "音高走向对应标调",
+          "weight": 0.4
+        },
+        {
+          "criterion": "音量和帮助条件清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐项听核十二种形式，字母音值与单读四声分别对应，不能只报一二三四。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按表实际读a的四声，再依次读o与e四声并录音。",
+          "answer": "逐项听核十二种形式，字母音值与单读四声分别对应，不能只报一二三四。",
+          "analysis": "逐项听核十二种形式，字母音值与单读四声分别对应，不能只报一二三四。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读á、ǎ、à，说明音高怎样变化。",
+          "answer": "二声上扬、三声单读先降后升、四声下降，解释不能代实际声音。",
+          "analysis": "二声上扬、三声单读先降后升、四声下降，解释不能代实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给ò、ā、ě三项，本人看字实际读出。",
+          "answer": "三个当前字母与声调对应，不沿用表中的顺序。",
+          "analysis": "三个当前字母与声调对应，不沿用表中的顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次四声中有一项不稳，怎样保留原音再练？",
+          "answer": "先留当前真实尝试，再听示范重新试，原音与后改不互相覆盖。",
+          "analysis": "先留当前真实尝试，再听示范重新试，原音与后改不互相覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "能用合适的小音量读出不同声调吗？本人试两项并录音。",
+          "answer": "合适音量也可以区分音高走向，不把越响当声调越正确。",
+          "analysis": "合适音量也可以区分音高走向，不把越响当声调越正确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际重读ē、é、ě、è，说明是否刚听过示范。",
+          "answer": "本人四项声音与条件清楚，按单独练习的典型走向核，不把提示隐藏。",
+          "analysis": "本人四项声音与条件清楚，按单独练习的典型走向核，不把提示隐藏。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-twelve-tones-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选四声表中的一组读，再说还没实际覆盖哪组。",
+          "answer": "范围按当前录音核，部分成功不扩大为十二项全部完成。",
+          "analysis": "范围按当前录音核，部分成功不扩大为十二项全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-form",
+      "structure": "pinyin-letter-and-tone-mark",
+      "familyProposal": "a692a990-pinyin-letter-and-tone-mark",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "基本字母指出正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前声调符号辨清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字观察与真实声音分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "基本字母都是a，标调不同，分别是一声和二声；声音仍需实际听读。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "把ā和á并排看，基本字母一样吗，哪里不同？",
+          "answer": "基本字母都是a，标调不同，分别是一声和二声；声音仍需实际听读。",
+          "analysis": "基本字母都是a，标调不同，分别是一声和二声；声音仍需实际听读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "看到ě时，分别指出基本字母和当前声调。",
+          "answer": "基本字母e，上面的符号表示三声，观察不代本人已经读出。",
+          "analysis": "基本字母e，上面的符号表示三声，观察不代本人已经读出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给ò与á，怎样分别说明字母和声调？",
+          "answer": "ò是o的四声，á是a的二声，两部分都按当前字牌核对。",
+          "analysis": "ò是o的四声，á是a的二声，两部分都按当前字牌核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只把a的声调改成四声，会自动变成o吗？说明理由。",
+          "answer": "不会，基本字母仍是a，改变的是声调，不把标调与基本形状混为一体。",
+          "analysis": "不会，基本字母仍是a，改变的是声调，不把标调与基本形状混为一体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "写在旁边的四线格辅助线也是字母笔画吗？",
+          "answer": "不是，格线是位置参照，字母与声调符号才是当前实际书写对象。",
+          "analysis": "不是，格线是位置参照，字母与声调符号才是当前实际书写对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看字牌把一声二声说对，可以认定听辨也完成吗？",
+          "answer": "还需要真实声音与本人回应；目前能确认的是文字观察与标调辨认。",
+          "analysis": "还需要真实声音与本人回应；目前能确认的是文字观察与标调辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-letter-and-tone-mark-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从表中任选一项，分别说基本字母、声调和下一步要怎样练声音。",
+          "answer": "三部分清楚，练声音要实际听读，不用字形判断代发音表现。",
+          "analysis": "三部分清楚，练声音要实际听读，不用字形判断代发音表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-writing",
+      "structure": "pinyin-aoe-own-writing",
+      "familyProposal": "a692a990-pinyin-aoe-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖a o e",
+          "weight": 0.4
+        },
+        {
+          "criterion": "中格与字母范形清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "声调格线帮助分别说明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三字母由本人写，按本件范写核形和位置，辅助线不算字母笔画。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格中实际写a o e，上传原稿并指出中格。",
+          "answer": "三字母由本人写，按本件范写核形和位置，辅助线不算字母笔画。",
+          "analysis": "三字母由本人写，按本件范写核形和位置，辅助线不算字母笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看本件书写示范，再本人写o与e，补写a并上传。",
+          "answer": "实际三字母覆盖，范形、印刷字体和本人手写作品分别说明。",
+          "analysis": "实际三字母覆盖，范形、印刷字体和本人手写作品分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸，自己写a o e并为指定a加二声，上传原稿。",
+          "answer": "基本字母与附加标调分别可辨，按当前要求加调，不复制一整张范字图。",
+          "analysis": "基本字母与附加标调分别可辨，按当前要求加调，不复制一整张范字图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写两种韵母时，上传怎样说明第三种？",
+          "answer": "按本人原稿说明实际两项，另一项待写，不用键入字补成手写完成。",
+          "analysis": "按本人原稿说明实际两项，另一项待写，不用键入字补成手写完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己写的三字母，选择需要调整的位置，保留原稿再写并上传。",
+          "answer": "调整依据当前本人作品，未发现问题也如实说，不必故意造错。",
+          "analysis": "调整依据当前本人作品，未发现问题也如实说，不必故意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写字母时看过范形或听过提醒，上传应怎样说明？",
+          "answer": "说明实际书写与帮助，范字不替本人原稿，后改不覆盖原写。",
+          "analysis": "说明实际书写与帮助，范字不替本人原稿，后改不覆盖原写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三字母与一个带调形式，说明字形和笔顺分别怎样核。",
+          "answer": "原稿看形与位置，书写先后还需实际过程，不能仅由成品推所有步骤。",
+          "analysis": "原稿看形与位置，书写先后还需实际过程，不能仅由成品推所有步骤。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-hearing",
+      "structure": "pinyin-aoe-live-listening",
+      "familyProposal": "a692a990-pinyin-aoe-live-listening",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "有当前真实声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应对应听到的韵母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看字提示与听辨条件分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "保留当前示范与本人回应，按实际声音对应判断；未有声音时听辨仍待完成。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请愿意参与且能准确示范的人另选a o e之一，不先给本人看字，发声后本人回应并录音。",
+          "answer": "保留当前示范与本人回应，按实际声音对应判断；未有声音时听辨仍待完成。",
+          "analysis": "保留当前示范与本人回应，按实际声音对应判断；未有声音时听辨仍待完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "示范者在a与o中另选一项实际读，本人听完再指出字牌并读。",
+          "answer": "听者先未看目标，实际原声与回应对应，不用题面里的字直接当听到的音。",
+          "analysis": "听者先未看目标，实际原声与回应对应，不用题面里的字直接当听到的音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换成o与e中的实际一项声音，本人听完说或指出对应项。",
+          "answer": "按本次新声音判断，不沿用上一轮答案，原声和帮助条件清楚。",
+          "analysis": "按本次新声音判断，不沿用上一轮答案，原声和帮助条件清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "目前只有三张字牌没有声音，可以怎样说明本次练习？",
+          "answer": "可以先练看形认字母；实际听辨等待声音，不把看字回答记成听过。",
+          "analysis": "可以先练看形认字母；实际听辨等待声音，不把看字回答记成听过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "没听清当前示范，录一句怎样请求再读，再保留本人回应。",
+          "answer": "真实请求、再次示范和回应分别保留，不假装首遍就听清。",
+          "analysis": "真实请求、再次示范和回应分别保留，不假装首遍就听清。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "示范者读过两项后，本人分别回应并说明有没有先看目标字。",
+          "answer": "两次实际声音与回应可对应，可见目标提示如实，不把条件隐藏。",
+          "analysis": "两次实际声音与回应可对应，可见目标提示如实，不把条件隐藏。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-live-listening-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "实际重新听一个当前韵母再回应，最后说明这次能核哪种表现。",
+          "answer": "有真实声音才核听辨，本人发音和字牌辨认另看对应过程，不从一种表现推全部。",
+          "analysis": "有真实声音才核听辨，本人发音和字牌辨认另看对应过程，不从一种表现推全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-aoe",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoe-practice",
+      "structure": "pinyin-aoe-observe-and-retry",
+      "familyProposal": "a692a990-pinyin-aoe-observe-and-retry",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "选定当前具体问题",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人再试真实可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原音帮助后改分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "具体目标与当前原音相连，保留第一次、示范和再试，不要求刻意找错。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "听本人第一次a o e尝试，选一项想练的音，再听准确示范后本人重读。",
+          "answer": "具体目标与当前原音相连，保留第一次、示范和再试，不要求刻意找错。",
+          "analysis": "具体目标与当前原音相连，保留第一次、示范和再试，不要求刻意找错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "若声调总被说成音量大，选á与à实际练一次并录音。",
+          "answer": "留意二声上扬与四声下降，不靠喊叫区分，真实原音可听核。",
+          "analysis": "留意二声上扬与四声下降，不靠喊叫区分，真实原音可听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换到e的四声，选最需要练的一项，再给出本人实际声音。",
+          "answer": "依据新一组当前表现选择，不机械沿用a组问题。",
+          "analysis": "依据新一组当前表现选择，不机械沿用a组问题。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有准确示范或还没听原音时，应该怎样说明下一步？",
+          "answer": "先说明待听核或待示范，不凭想象写成声音已正确，再安排实际尝试。",
+          "analysis": "先说明待听核或待示范，不凭想象写成声音已正确，再安排实际尝试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "自己觉得口形正确但声音仍不稳，可以怎样继续并录音？",
+          "answer": "回到准确示范和本人真实声音，选一小项再练，口形不独自证明音值。",
+          "analysis": "回到准确示范和本人真实声音，选一小项再练，口形不独自证明音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人比较前后两次同一项录音，说变化或仍不清楚的地方。",
+          "answer": "比较接真实声音，未发现明显变化可如实说，不为了任务编出进步。",
+          "analysis": "比较接真实声音，未发现明显变化可如实说，不为了任务编出进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-aoe-pinyin-aoe-observe-and-retry-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本次练完一小项，录音说完成范围和下一次具体要练什么。",
+          "answer": "已读实际范围与后续计划分清，部分重读不扩大为全部韵母四声都会。",
+          "analysis": "已读实际范围与后续计划分清，部分重读不扩大为全部韵母四声都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

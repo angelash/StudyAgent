@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-bpmf",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-bpmf-v1.json",
+      "sha256": "bd12beead6803a72e295c478d72330a1eddca068825adea0c98861a859ab1090",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry3",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 29,
+        "pageEnd": 30,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-bpmf",
+      "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-voice",
+      "structure": "pinyin-bpmf-air-and-voice",
+      "familyProposal": "a692a990-pinyin-bpmf-air-and-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读四声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "b p送气区别核真实声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "口形音量与示范条件分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四声母按汉语拼音实际发音，轻短与帮助情况清楚，不用英语名称代替。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录音读b p m f，再说明是否先听过准确示范。",
+          "answer": "四声母按汉语拼音实际发音，轻短与帮助情况清楚，不用英语名称代替。",
+          "analysis": "四声母按汉语拼音实际发音，轻短与帮助情况清楚，不用英语名称代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读b与p，留意送气区别。",
+          "answer": "b不送气、p送气较明显，结合实际声音与过程核，不把越响当送气。",
+          "analysis": "b不送气、p送气较明显，结合实际声音与过程核，不把越响当送气。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新字牌顺序为f m p b，本人看清后实际认读。",
+          "answer": "声音对应当前字母，m鼻音、f摩擦等提示不替本人真实发音。",
+          "analysis": "声音对应当前字母，m鼻音、f摩擦等提示不替本人真实发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次b p分不稳，怎样保留第一次声音再练？",
+          "answer": "保留原尝试，听准确示范后另试，不用后改或他人声音覆盖本人。",
+          "analysis": "保留原尝试，听准确示范后另试，不用后改或他人声音覆盖本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人把p读得很响但仍与b相混，本人可以怎样再尝试？",
+          "answer": "回到送气与准确示范，按合适音量分别读，不能以响度单独判断音值。",
+          "analysis": "回到送气与准确示范，按合适音量分别读，不能以响度单独判断音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请准确示范者另选b或p不先亮字牌，本人听后回应并录下条件。",
+          "answer": "实际原声与本人回应对应，没声音或先看目标时如实说明，不当无提示听辨。",
+          "analysis": "实际原声与本人回应对应，没声音或先看目标时如实说明，不当无提示听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-air-and-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读四声母，选一项想练的地方并保留真实声音。",
+          "answer": "当前声音与具体目标对应，未发现问题可如实说，不要求刻意造错。",
+          "analysis": "当前声音与具体目标对应，未发现问题可如实说，不要求刻意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-bpmf",
+      "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-blend",
+      "structure": "pinyin-two-part-current-syllable",
+      "familyProposal": "a692a990-pinyin-two-part-current-syllable",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "声母韵母分别看清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人连成当前完整音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母名称与帮助分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按汉语拼音把声母韵母连成完整音节，不停顿报英语字母名。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "看b与a，先说明两部分，再由本人实际拼成ba并录音。",
+          "answer": "按汉语拼音把声母韵母连成完整音节，不停顿报英语字母名。",
+          "analysis": "按汉语拼音把声母韵母连成完整音节，不停顿报英语字母名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人拼读bǐ与mǐ，说明当前声母不同。",
+          "answer": "两项韵母与声调相同，声母分别b和m，实际声音与组合对应。",
+          "analysis": "两项韵母与声调相同，声母分别b和m，实际声音与组合对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换成pí与fǔ，本人看当前组合后实际拼读。",
+          "answer": "声母、韵母、声调都按新条件，不照搬bǐ的声音。",
+          "analysis": "声母、韵母、声调都按新条件，不照搬bǐ的声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只说出了b和a两个名称还没连读，怎样说明进度？",
+          "answer": "说明已辨两部分，完整音节还需实际连读，不把准备当已拼好。",
+          "analysis": "说明已辨两部分，完整音节还需实际连读，不把准备当已拼好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件出现哪些组合就能把所有声母与所有韵母任意连吗？实际选本课一项读。",
+          "answer": "不能据少数例子推任意组合；先按本课实际合法音节看清再读。",
+          "analysis": "不能据少数例子推任意组合；先按本课实际合法音节看清再读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重读一个本课两拼音节，保留得到提示前后的实际声音。",
+          "answer": "同一当前组合与两次尝试对应，示范后的流畅不覆盖原来卡顿。",
+          "analysis": "同一当前组合与两次尝试对应，示范后的流畅不覆盖原来卡顿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-two-part-current-syllable-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本课具体音节选两项，分别说组成后本人实际读出。",
+          "answer": "组成说明与真实拼读各自核，部分覆盖不扩大为全部组合都会。",
+          "analysis": "组成说明与真实拼读各自核，部分覆盖不扩大为全部组合都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-bpmf",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ba-tones",
+      "structure": "pinyin-ba-four-tones",
+      "familyProposal": "a692a990-pinyin-ba-four-tones",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读ba四声",
+          "weight": 0.4
+        },
+        {
+          "criterion": "声母韵母与标调对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单读与帮助条件如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四项实际声音与当前a上的标调对应，不能只报四个序号代声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人依次实际读bā bá bǎ bà并录音，再指出声调标在哪里。",
+          "answer": "四项实际声音与当前a上的标调对应，不能只报四个序号代声音。",
+          "analysis": "四项实际声音与当前a上的标调对应，不能只报四个序号代声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读bá与bà，说明音高走向。",
+          "answer": "二声上扬、四声下降，实际音值与说明都对应当前两项。",
+          "analysis": "二声上扬、四声下降，实际音值与说明都对应当前两项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给bǎ、bā、bà、bá，本人看清再读。",
+          "answer": "按当前顺序读四项，不用原顺串替代，b与a仍保持当前组合。",
+          "analysis": "按当前顺序读四项，不用原顺串替代，b与a仍保持当前组合。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读出两种ba声调时，录音应怎样说明其余两种？",
+          "answer": "保留实际已读与卡住处，未覆盖部分待练，不按熟悉感补齐。",
+          "analysis": "保留实际已读与卡住处，未覆盖部分待练，不按熟悉感补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把bā改成bà时，基本声母和韵母一起变了吗？本人实际读两项。",
+          "answer": "基本组成仍b与a，改变的是声调；实际声音仍需分别听核。",
+          "analysis": "基本组成仍b与a，改变的是声调；实际声音仍需分别听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次读ba四声前刚看过提示，录音怎样说明？",
+          "answer": "按真实条件说看过或听过的帮助，后一次不当无帮助的初次表现。",
+          "analysis": "按真实条件说看过或听过的帮助，后一次不当无帮助的初次表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-ba-four-tones-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选一项ba四声重读，再说与爸爸词语连读条件有什么不同。",
+          "answer": "单独声调练习核当前一项，爸爸后音节按词语轻声读，两种条件不机械互套。",
+          "analysis": "单独声调练习核当前一项，爸爸后音节按词语轻声读，两种条件不机械互套。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-bpmf",
+      "atomId": "source:chinese:g1:a692a990:pinyin-bpmf-writing",
+      "structure": "pinyin-bpmf-own-grid-writing",
+      "familyProposal": "a692a990-pinyin-bpmf-own-grid-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "b p上下位置与m f结构清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范写过程帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "b主要上中格，p主要中下格，m中格、f上中格，按本件完整范写看本人原稿。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写b p m f，上传并比较b与p的位置。",
+          "answer": "b主要上中格，p主要中下格，m中格、f上中格，按本件完整范写看本人原稿。",
+          "analysis": "b主要上中格，p主要中下格，m中格、f上中格，按本件完整范写看本人原稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "看本件范写后，先本人写b p，再写m f并上传。",
+          "answer": "四字母实际覆盖，形状和位置可辨，范字与本人作品分开。",
+          "analysis": "四字母实际覆盖，形状和位置可辨，范字与本人作品分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸按f b m p顺序写四项，上传并说明一个位置差别。",
+          "answer": "当前顺序和四项范围清楚，b上伸与p下伸等位置依本人作品核。",
+          "analysis": "当前顺序和四项范围清楚，b上伸与p下伸等位置依本人作品核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写b与p，上传时怎样说明m f？",
+          "answer": "只核实际两项，m f待写，不用键入字或打印范字补成本人已写。",
+          "analysis": "只核实际两项，m f待写，不用键入字或打印范字补成本人已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把b圆弧放错位置，怎样保留原稿再重写？",
+          "answer": "原写与订正对应，按本件范形再练，不把清稿倒作最初作品。",
+          "analysis": "原写与订正对应，按本件范形再练，不把清稿倒作最初作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际写四声母时得到提醒，上传怎样说明帮助和笔顺？",
+          "answer": "帮助和本人过程清楚，静态照片看字形，先后还需实际书写过程。",
+          "analysis": "帮助和本人过程清楚，静态照片看字形，先后还需实际书写过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-bpmf-own-grid-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传四字母，选一项自己想改进的位置并实际再写。",
+          "answer": "改进接本人当前作品，无需刻意找错，前后原稿都保留。",
+          "analysis": "改进接本人当前作品，无需刻意找错，前后原稿都保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-bpmf",
+      "atomId": "source:chinese:g1:a692a990:pinyin-family-words",
+      "structure": "pinyin-dad-mum-current-words",
+      "familyProposal": "a692a990-pinyin-dad-mum-current-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读爸妈两字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "爸爸妈妈后音节轻声按本件核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与本人家庭资料分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两字与词语实际声音对应，词语后音节按本件轻声读，不要求披露本人家庭。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读爸与妈，再读给定角色卡上的爸爸妈妈并录音。",
+          "answer": "两字与词语实际声音对应，词语后音节按本件轻声读，不要求披露本人家庭。",
+          "analysis": "两字与词语实际声音对应，词语后音节按本件轻声读，不要求披露本人家庭。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确词语示范，再本人分别读bàba与māma。",
+          "answer": "前后音节读法按当前词语核，不能把后音节机械加成同样重声调。",
+          "analysis": "前后音节读法按当前词语核，不能把后音节机械加成同样重声调。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色图中给妈爸两字，先按当前顺序认字，再读两个词。",
+          "answer": "当前字与本人声音对应，角色图只提供词义情境，不替本人身份资料。",
+          "analysis": "当前字与本人声音对应，角色图只提供词义情境，不替本人身份资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出妈还没认出爸时，录音后怎样说明？",
+          "answer": "保留真实已读一字，另一字待帮助后再练，不能按词语熟悉推两字全会。",
+          "analysis": "保留真实已读一字，另一字待帮助后再练，不能按词语熟悉推两字全会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "单字爸的读音与爸爸后一个音节读法可以直接照搬吗？实际读给定词语。",
+          "answer": "单字与词语条件不同，爸爸后音节按本件轻声读，仍听本人实际声音。",
+          "analysis": "单字与词语条件不同，爸爸后音节按本件轻声读，仍听本人实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "练习时能用教材角色而不介绍自己家人吗？本人用角色词语读一遍。",
+          "answer": "可以，任务核当前字词读音，不把角色关系写成本人真实家庭结构。",
+          "analysis": "可以，任务核当前字词读音，不把角色关系写成本人真实家庭结构。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-bpmf-pinyin-dad-mum-current-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读两字和两词，说明是否听过提示及实际覆盖。",
+          "answer": "范围和帮助真实，识字与读词不等本人已经书写这两个汉字。",
+          "analysis": "范围和帮助真实，识字与读词不等本人已经书写这两个汉字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

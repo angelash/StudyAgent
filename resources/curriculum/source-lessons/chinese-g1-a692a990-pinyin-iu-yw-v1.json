@@ -1,0 +1,339 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry2",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 27,
+    "pageEnd": 28,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-iu-voice",
+      "version": 1,
+      "name": "i u ü三单韵母发音",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音发音",
+      "objective": "本人分别实际读i u ü并区分u与ü",
+      "successCriterion": "三音与当前字母对应，ü的两点和嘴形提示不替实际发音核对",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-yw-role",
+      "version": 1,
+      "name": "单韵母与y w分别辨认",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音字母",
+      "objective": "按本课范围分清i u ü和y w",
+      "successCriterion": "字母范围与类别清楚，联系整体认读而不按形状相像归同一字母",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-whole-voice",
+      "version": 1,
+      "name": "yi wu yu的整体认读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "整体认读",
+      "objective": "本人整体读yi wu yu并联系当前单韵母",
+      "successCriterion": "本人声音可核，不用英语字母名逐个串读或机械拆拼代整体认读",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-iu-tone",
+      "version": 1,
+      "name": "i ü及整体认读的标调",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音声调与书写",
+      "objective": "看清并实际读带调形式，分清i去点与ü两点、yu写法",
+      "successCriterion": "标调位置和字形准确，n l等后续情形不套用本课yu省点规则",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-iu-writing",
+      "version": 1,
+      "name": "五字母的实际书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人实际写i u ü y w并观察四线格位置",
+      "successCriterion": "五字母原稿可辨，i的点、ü的两点与y下伸等位置分别核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-iu-hearing",
+      "version": 1,
+      "name": "当前u ü与整体音节听辨",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音听辨",
+      "objective": "有真实声音时区分当前u或ü及yi wu yu",
+      "successCriterion": "实际原声与本人回应对应，不用可见字形代听觉判断",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-iu-voice",
+    "source:chinese:g1:a692a990:pinyin-yw-role",
+    "source:chinese:g1:a692a990:pinyin-whole-voice",
+    "source:chinese:g1:a692a990:pinyin-iu-tone",
+    "source:chinese:g1:a692a990:pinyin-iu-writing",
+    "source:chinese:g1:a692a990:pinyin-iu-hearing"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课两页已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 27,
+        "visualChecked": true,
+        "statement": "已看i u ü、y w、三整体认读及单韵母四声图，嘴形、字形与真实音值分别核。"
+      },
+      {
+        "page": 28,
+        "visualChecked": true,
+        "statement": "已看三整体音节四声、y/i/yi等对应图和五字母范写，i标调去点与yu省点的条件分别说明。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "i u ü y w：单韵母与整体认读",
+    "pinyinVowels": [
+      "i",
+      "u",
+      "ü"
+    ],
+    "pinyinInitials": [
+      "y",
+      "w"
+    ],
+    "wholeSyllables": [
+      "yi",
+      "wu",
+      "yu"
+    ],
+    "writingPinyinLetters": [
+      "i",
+      "u",
+      "ü",
+      "y",
+      "w"
+    ],
+    "recognitionCharacters": [],
+    "writingCharacters": [],
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "i u ü y w：单韵母与整体认读",
+    "activation": {
+      "prompt": "u和ü看起来有什么不同？再看yu，书面上没有两点，读的时候能直接把它当成wu吗？",
+      "expectedObservation": "能看到ü的两点，知道yu与wu是不同整体音节，实际读音要听核。",
+      "bridge": "把字形、声音和书写规则连起来，逐项练单韵母与整体认读。"
+    },
+    "concept": {
+      "explanation": "本课学习单韵母i、u、ü，也认识y和w。i发音时嘴唇较扁，u的嘴唇收圆，ü的嘴唇也圆但声音与u不同；可以听准确示范再由本人分别读，不能只看嘴圆就把两个音当成一样。字形上，ü比u多两点，要看完整字母。\nyi、wu、yu在本课作为整体认读音节练习。看到整组形式，直接认出当前整体音节的声音，不把英语字母名称一个个串起来。yi联系i的声音，wu联系u，yu联系ü；这说明本课的对应关系，不是要求把y、w和后面的部分机械拆成两个独立读音。\n声调放在韵母上。i上面标调时原来的点不再写出，所以有ī、í、ǐ、ì；u有ū、ú、ǔ、ù；ü的两点保留，再加调号，写成ǖ、ǘ、ǚ、ǜ。看yī、yí、yǐ、yì，调号仍落在i上；wū、wú、wǔ、wù也是看u上的调号。\nyu中写出的u表示的是ü的韵母，按本课写法省去两点，可写yū、yú、yǔ、yù。省点不表示发成wu。先记当前yu的形式，不把它扩大成任何时候ü都能去点；后续遇到不同组合，要按新条件另学。\n实际写i、u、ü、y、w时观察四线格。i的竖在中格、点在上方；u和ü的主体在中格，ü的两点在上方；y向下伸，主要占中下格，w主要在中格。对照本件完整范形亲手写，写完再看本次原稿。读过不等写过，辨字也不等听过声音；每一种练习都从当前条件开始。",
+      "points": [
+        "i u ü各自实际读",
+        "u与ü字形声音分别比",
+        "yi wu yu整体认读",
+        "i标调去点，ü标调留两点",
+        "yu省点但仍联系ü音",
+        "五字母本人实际写"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小岚比较ǐ、ǚ与yǔ，先看字形规则，再分别实际读写。",
+      "steps": [
+        {
+          "explanation": "ǐ是i的三声，标调后原来的点不再写；ǚ仍保留两点并加三声。",
+          "board": [
+            "ǐ：i点去掉",
+            "ǚ：两点保留",
+            "均有三声符号"
+          ]
+        },
+        {
+          "explanation": "yǔ按yu的写法省去两点，读音仍联系ü，不能换成wǔ。",
+          "board": [
+            "yǔ：当前整体音节",
+            "不读作wǔ",
+            "按本课组合核"
+          ]
+        },
+        {
+          "explanation": "实际读出三项，再亲手写，分别看声音和本人的字形。",
+          "board": [
+            "本人实际读",
+            "本人实际写",
+            "两项各自核对"
+          ]
+        }
+      ],
+      "conclusion": "标调和省点都有当前条件，字形规则与实际声音一起核。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "三组对应与标调",
+        "headers": [
+          "单韵母",
+          "整体认读",
+          "当前书写提示"
+        ],
+        "rows": [
+          [
+            "i：ī í ǐ ì",
+            "yi：yī yí yǐ yì",
+            "i标调时不再写原来的点"
+          ],
+          [
+            "u：ū ú ǔ ù",
+            "wu：wū wú wǔ wù",
+            "调号落在韵母u上"
+          ],
+          [
+            "ü：ǖ ǘ ǚ ǜ",
+            "yu：yū yú yǔ yù",
+            "单独ü留两点，yu按当前形式省点"
+          ]
+        ],
+        "explanation": "按当前三组形式比较字形；发音与听辨仍核真实声音，省点规则不扩大到所有组合。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "见到yǔ就因为写成u而读成wǔ。",
+        "alternatives": [
+          "只看表面字形，忽略yu整体音节的当前对应。"
+        ],
+        "verification": "请分别听读yǔ与wǔ，再看本课yu与ü的联系。",
+        "correctiveFeedback": "yu按整体认读，省点不改变成wu的声音。"
+      },
+      {
+        "observation": "i标调仍加一点，或把ü的两点也随标调全去掉。",
+        "alternatives": [
+          "把两种字母的标调规则混在一起。"
+        ],
+        "verification": "把ī与ǖ并排看，再本人实际写一组。",
+        "correctiveFeedback": "i标调去原点，ü两点与调号分别保留；yu另按本课组合核。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新字牌给yì、wǔ、yú和单独ǚ，顺序与表格不同。",
+      "prompt": "先说明当前字形与标调，再在实际声音条件下认读或听辨其中一项。",
+      "expectedStrategy": "按当前完整形式判断，区分单独ü与yu，不从无点推出都读u。"
+    },
+    "summary": {
+      "synthesis": "三单韵母与三整体音节逐项联系；看清i和ü标调的不同，记清yu的当前写法，再由本人实际读、听、写。",
+      "takeaways": [
+        "u ü实际声音不同",
+        "yi wu yu整体认",
+        "i标调去点",
+        "ü和yu按各自形式写"
+      ]
+    },
+    "citations": [
+      {
+        "page": 28,
+        "quote": "yī yí yǐ yì",
+        "usedFor": "visual"
+      },
+      {
+        "page": 28,
+        "quote": "wū wú wǔ wù",
+        "usedFor": "visual"
+      },
+      {
+        "page": 28,
+        "quote": "yū yú yǔ yù",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-iu-voice",
+        "objective": "本人分别实际读i u ü并区分u与ü",
+        "successCriterion": "三音与当前字母对应，ü的两点和嘴形提示不替实际发音核对"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-yw-role",
+        "objective": "按本课范围分清i u ü和y w",
+        "successCriterion": "字母范围与类别清楚，联系整体认读而不按形状相像归同一字母"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-whole-voice",
+        "objective": "本人整体读yi wu yu并联系当前单韵母",
+        "successCriterion": "本人声音可核，不用英语字母名逐个串读或机械拆拼代整体认读"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-iu-tone",
+        "objective": "看清并实际读带调形式，分清i去点与ü两点、yu写法",
+        "successCriterion": "标调位置和字形准确，n l等后续情形不套用本课yu省点规则"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-iu-writing",
+        "objective": "本人实际写i u ü y w并观察四线格位置",
+        "successCriterion": "五字母原稿可辨，i的点、ü的两点与y下伸等位置分别核"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g1:a692a990:pinyin-iu-hearing",
+        "objective": "有真实声音时区分当前u或ü及yi wu yu",
+        "successCriterion": "实际原声与本人回应对应，不用可见字形代听觉判断"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-iu-yw",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}
