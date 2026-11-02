@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-02T22:27:04.428Z",
+  "passed": true,
+  "rows": [
+    {
+      "name": "test_textbook_pinyin_decoding.py",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "........\r\n----------------------------------------------------------------------\r\nRan 8 tests in 0.001s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "test_reviewed*.py",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ".....................\r\n----------------------------------------------------------------------\r\nRan 21 tests in 0.563s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "test_textbook_mapping_candidates.py",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.260s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "test_chinatextbook_source_metadata.py",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "..\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.003s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "separate-complete-import",
+      "exit": 0,
+      "stdout": "{\"books\": 12, \"bytes\": 163072594, \"pages\": 1601}\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "registry-rebuild",
+      "exit": 0,
+      "stdout": "{\"books\": 452, \"withChapters\": 116, \"subjects\": {\"math\": 185, \"chinese\": 14, \"english\": 253}, \"bytes\": 1102090}\r\n",
+      "stderr": ""
+    },
+    {
+      "name": "mapping-rebuild",
+      "exit": 0,
+      "stdout": "{\"books\": 16, \"lessons\": 527, \"titleMatched\": 320, \"lessonsWithCandidates\": 234, \"candidateMappings\": 589, \"atomsCovered\": 55}\r\n",
+      "stderr": ""
+    }
+  ],
+  "all12SourceExtractionBytesReproduced": true,
+  "activeAndLegacyExtractionFilesPreserved": 13,
+  "registryAndMappingByteStable": true,
+  "originalsAndExtractsRemainLocal": true
+}

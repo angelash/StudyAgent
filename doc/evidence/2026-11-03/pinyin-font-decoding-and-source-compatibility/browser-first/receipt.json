@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T22:29:25.102Z",
+  "buildId": "tSQa109Myy2UD3Gs5L5KY",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 1,
+  "failed": 1,
+  "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('逐页核对', { exact: true })\u001b[22m\n",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-school-start-v1.json",
+      "passed": true
+    },
+    {
+      "name": "normalized-pinyin-tone-source-renders-in-original-workbench",
+      "passed": false,
+      "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('逐页核对', { exact: true })\u001b[22m\n"
+    }
+  ],
+  "screenshots": [
+    "chinese-g1-a692a990-school-start-v1-desktop.png",
+    "chinese-g1-a692a990-school-start-v1-table.png",
+    "chinese-g1-a692a990-school-start-v1-mobile.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

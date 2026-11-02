@@ -1,0 +1,356 @@
+{
+  "at": "2026-11-02T22:33:45.788Z",
+  "branch": "main",
+  "baseCommit": "0e503ba86646fa85bcb56de2f6120e6ac6e538c4",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/curriculum/chinatextbook-chinese-v1.json",
+      "bytes": 11487,
+      "sha256": "e871311ab31e8a9bbb6b20b6548ec15d5a6dcc79dd00c0168bbb87a31011251c",
+      "gitNormalizedSha256": "e871311ab31e8a9bbb6b20b6548ec15d5a6dcc79dd00c0168bbb87a31011251c"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "bytes": 59086,
+      "sha256": "c3d80bcd0e4d2d16c30eca6687f2699eea061ea345871918fc262c7e93248a7e",
+      "gitNormalizedSha256": "c3d80bcd0e4d2d16c30eca6687f2699eea061ea345871918fc262c7e93248a7e"
+    },
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "bytes": 61332,
+      "sha256": "f7fdc4b2f7ffc91d6ad4f65f5801fb5d0ac981dba866e2acb5c1af821f79ffd9",
+      "gitNormalizedSha256": "f7fdc4b2f7ffc91d6ad4f65f5801fb5d0ac981dba866e2acb5c1af821f79ffd9"
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "bytes": 691116,
+      "sha256": "2810a9f4469fecb9b169e744f795463e86d21195514ef83697413327f3c9dac4",
+      "gitNormalizedSha256": "434551d7f13072e2367903bceeb419c8c69e3c1fdcd80baf542986d7e517dbfd"
+    },
+    {
+      "path": "scripts/assets/import_chinatextbook.py",
+      "bytes": 5896,
+      "sha256": "a4695127d90977b638e0a092a0cc98283b2eefbf0041d18a99ab5cae834627fd",
+      "gitNormalizedSha256": "a4695127d90977b638e0a092a0cc98283b2eefbf0041d18a99ab5cae834627fd"
+    },
+    {
+      "path": "scripts/assets/verify_chinatextbook_manifest.py",
+      "bytes": 3592,
+      "sha256": "2fa23766702cbe353dc1a4be2fcce6772359365346b64f467eff6ca8938760da",
+      "gitNormalizedSha256": "2fa23766702cbe353dc1a4be2fcce6772359365346b64f467eff6ca8938760da"
+    },
+    {
+      "path": "scripts/assets/textbook_pinyin_decoding.py",
+      "bytes": 7228,
+      "sha256": "8d1319e9710b630167090961156448a32841ec21e6e308c28cb311c651b75d58",
+      "gitNormalizedSha256": "8d1319e9710b630167090961156448a32841ec21e6e308c28cb311c651b75d58"
+    },
+    {
+      "path": "scripts/assets/test_textbook_pinyin_decoding.py",
+      "bytes": 2635,
+      "sha256": "856b096d3a406e6d2fac12971e0835eea9b1e2bcee035f0034607b987aee7c78",
+      "gitNormalizedSha256": "856b096d3a406e6d2fac12971e0835eea9b1e2bcee035f0034607b987aee7c78"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 16013,
+      "sha256": "2ba75a7c4768abd3dcc7a00176e823a689083d9b7bda62faaa8d2556cec50239",
+      "gitNormalizedSha256": "9140cc13f303e37bced6633ded8d6b4136ee8dc86e7b778653475e08d7e469c6"
+    },
+    {
+      "path": "doc/product/222-pinyin-source-decoding-and-phonetic-lessons.md",
+      "bytes": 5781,
+      "sha256": "ff7eabc240f51e3dea742d0d2af220ba431a1447fbac54d086e79a2472c6225d",
+      "gitNormalizedSha256": "ff7eabc240f51e3dea742d0d2af220ba431a1447fbac54d086e79a2472c6225d"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 18862,
+      "sha256": "b593d94609e40c2ace260dcb152e647b69d0a34e2e299a560c543ea6e5e15729",
+      "gitNormalizedSha256": "b593d94609e40c2ace260dcb152e647b69d0a34e2e299a560c543ea6e5e15729"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 34531,
+      "sha256": "d3d2345b4466eec34231bbd4f028bc8e55a42a882b4e7ac8ff59e67502c71548",
+      "gitNormalizedSha256": "3dd77acfe93e8f44fdc5457ae59987e384e6be93da7ca777a3664dd4d599e8bc"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 186412,
+      "sha256": "efdcace44d603ed9b909dca1d41da846f1de0e9863c813e83535ed2d062bcc9a",
+      "gitNormalizedSha256": "2111cd4ad4506335a6aac3a8cd53df3af89a2439229f8476fe8d5d5996afff86"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 112796,
+      "sha256": "9509b62b656c11273a5745318f93d403906f61efad4c2e3a6c0260d4160067f9",
+      "gitNormalizedSha256": "c1a6f124be5654d4e346aa7ea3b910f405fb232400a2a6ec784d6a61b7dd14cf"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 117875,
+      "sha256": "cc3a5b149922bf54e38702d6261d802ffa625b01606c1b2feee7c9a89c02bad3",
+      "gitNormalizedSha256": "91deba7ea03f774db7ad971bf6fc9a902c7a7de60c480a65b9e3dc97476fa2dc"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 27813,
+      "sha256": "56a28245fdb4b3bbb2df55235e6f693519ff42e96c8896e9772a097d4cd092ce",
+      "gitNormalizedSha256": "ee96bb2a4c32b84624b10d8ab5f9fc051d5f74b28f2625a80f2dfb1ecd1c3a21"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 47079,
+      "sha256": "fe572818f9ff04b8580db577dff482eafe2326973e3ed4cd8188786cd1894011",
+      "gitNormalizedSha256": "3283c589523862326eff2cd0ebc43179150d798f55980a881c072b6a005bab53"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/chinese-g1-a692a990-school-start-v1-desktop.png",
+      "bytes": 238508,
+      "sha256": "2cfa6fae201b6d04df3af8b2d305b230b673b33116a4bc592a3c824b6db68d96",
+      "gitNormalizedSha256": "85fc8bb14e100f86ae777cc9dcedb7ebd092322a6bc9ab269d097ab08e0e8a6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/chinese-g1-a692a990-school-start-v1-mobile.png",
+      "bytes": 71539,
+      "sha256": "303718f1a6f1d1c93228a0a2804169ccdeedc2010fbc19023584b4775dc3548c",
+      "gitNormalizedSha256": "acae40f7f3463d71027f56d5caafb528c7932bcbb5b7c760ef26b5109a98f6cf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/chinese-g1-a692a990-school-start-v1-table.png",
+      "bytes": 33239,
+      "sha256": "25ac2a1aa0dee200aa5f3afcd3b283ca404d81da6461a68fc76365d66fe0b803",
+      "gitNormalizedSha256": "75f4298df08d98c6345050e38ae85a7e165175cf46869a949d5c5e1fcfce20ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/failure-0.png",
+      "bytes": 121687,
+      "sha256": "13c9b82ba4ac75b07ae71650f275ffd292e2ed74e0d733fe06cdd2691063d779",
+      "gitNormalizedSha256": "7bf0dc31290468cec16893372dd7f80465be085642d0a78ca4a283271f4b9571"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/receipt.json",
+      "bytes": 1197,
+      "sha256": "799ef6938200fae8523a9fde5a320c023b6789e813d5445b9aef965ef8671063",
+      "gitNormalizedSha256": "799ef6938200fae8523a9fde5a320c023b6789e813d5445b9aef965ef8671063"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-first/runner.cjs",
+      "bytes": 20213,
+      "sha256": "993c4260803f812addeba77fe122f14b31e76d7235a8ecd2b51b3c404b19779a",
+      "gitNormalizedSha256": "993c4260803f812addeba77fe122f14b31e76d7235a8ecd2b51b3c404b19779a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/chinese-g1-a692a990-school-start-v1-desktop.png",
+      "bytes": 238508,
+      "sha256": "2cfa6fae201b6d04df3af8b2d305b230b673b33116a4bc592a3c824b6db68d96",
+      "gitNormalizedSha256": "85fc8bb14e100f86ae777cc9dcedb7ebd092322a6bc9ab269d097ab08e0e8a6d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/chinese-g1-a692a990-school-start-v1-mobile-table.png",
+      "bytes": 71390,
+      "sha256": "018cb49ef5501bb118b21cf5c435ec09707209fee896f02dd938eb9915fc2ea7",
+      "gitNormalizedSha256": "d79034f28690961f74420be61b4c021c052dd0a1cad6faa9f555bbad9d10c3f2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/chinese-g1-a692a990-school-start-v1-mobile.png",
+      "bytes": 71539,
+      "sha256": "303718f1a6f1d1c93228a0a2804169ccdeedc2010fbc19023584b4775dc3548c",
+      "gitNormalizedSha256": "acae40f7f3463d71027f56d5caafb528c7932bcbb5b7c760ef26b5109a98f6cf"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/chinese-g1-a692a990-school-start-v1-table.png",
+      "bytes": 33239,
+      "sha256": "25ac2a1aa0dee200aa5f3afcd3b283ca404d81da6461a68fc76365d66fe0b803",
+      "gitNormalizedSha256": "75f4298df08d98c6345050e38ae85a7e165175cf46869a949d5c5e1fcfce20ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/pinyin-source-26-desktop.png",
+      "bytes": 5323,
+      "sha256": "3268087bb72883b468b22b550913724ce4e377834c8a93f3f42b072c1a347cd9",
+      "gitNormalizedSha256": "b4e59a6d009b26de8f800339380cdca935e2b7bdc8273873ad288eb890691272"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/pinyin-source-26-mobile.png",
+      "bytes": 2037,
+      "sha256": "8ec9171f5f19ea60135ceafde4dcce2c259aad9981376c328c3a851473039056",
+      "gitNormalizedSha256": "29cf174edb5539cea5961ff90f239790025d70db9b8a8cfa407d2041dfc343e1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/pinyin-source-27-desktop.png",
+      "bytes": 5721,
+      "sha256": "e13890512d4538020d6eb4d3e65b60edd9640b3887270d23218a6f60db775611",
+      "gitNormalizedSha256": "e0cab7ddacdccd561f19b72225fbaf831f350c6306ba6aea369d44e71cc35d05"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/pinyin-source-27-mobile.png",
+      "bytes": 4027,
+      "sha256": "068f4886e9bb427065db7caae4ac9a4ae0a4b1e1cb95d3d78ddc5d0f78ff1055",
+      "gitNormalizedSha256": "112e5c6437136b8ac6067146125b3c1044e8419305a9e8ad8f421b79944e065c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/receipt.json",
+      "bytes": 1162,
+      "sha256": "2e521d3d8df842b3e655d64c9213d8e5ee8baf97e4251c5203558d0c8eb1db66",
+      "gitNormalizedSha256": "2e521d3d8df842b3e655d64c9213d8e5ee8baf97e4251c5203558d0c8eb1db66"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/browser-second/runner.cjs",
+      "bytes": 20218,
+      "sha256": "813d7cc423813f40155463ae13bd80a6297ae6b3a00c9b9c41f0acf6beeaed70",
+      "gitNormalizedSha256": "813d7cc423813f40155463ae13bd80a6297ae6b3a00c9b9c41f0acf6beeaed70"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/before-source-normalization.json.gz",
+      "bytes": 307018,
+      "sha256": "b319fd36b6a3e5c807f4a6055c44876d77a8eb2ddf371ad1fe2347c94b218bd1",
+      "gitNormalizedSha256": "dfacc9c15bdb44bab5a3fb2699aeea41bee11202b2b0e922fe15506555233168"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/browser-selector-correction.json",
+      "bytes": 381,
+      "sha256": "e1f38ca24bbfe47d887db8471ebc539a2eef1fd319271483c7cc1aba46bbb881",
+      "gitNormalizedSha256": "e1f38ca24bbfe47d887db8471ebc539a2eef1fd319271483c7cc1aba46bbb881"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/font-program-first.json",
+      "bytes": 2143,
+      "sha256": "ad2b9da22300374d29849aaaa1e3c4d682f7fc1519c072d74a85820b2a7ec606",
+      "gitNormalizedSha256": "22d25d69d1935e39a6982cdc4ff80d766c217b9d71cfc7f6a56208663f4a9d57"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/http-first.json",
+      "bytes": 3861,
+      "sha256": "08765435b68bd5c980058309afdc5f16a9c23eb4566a9e9b8b35fd09b8b45cf0",
+      "gitNormalizedSha256": "08765435b68bd5c980058309afdc5f16a9c23eb4566a9e9b8b35fd09b8b45cf0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/inputs-first.json.gz",
+      "bytes": 101448,
+      "sha256": "2f7f9e0a3ee9975e4fbffaefd2225361379e4b557c5037a3b4707232606d2102",
+      "gitNormalizedSha256": "2f7f9e0a3ee9975e4fbffaefd2225361379e4b557c5037a3b4707232606d2102"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/manifest-verification-first.json",
+      "bytes": 2498,
+      "sha256": "beea4ac192b9d7974af6d3c69957de00acec0371f48df1675e21db11a2602ecf",
+      "gitNormalizedSha256": "dcbb9342d62ef9fc3688fb5ff91b5b78c222f8332ceb9c385219df95294f50d9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/normalized-first.json",
+      "bytes": 60041,
+      "sha256": "670ff208cba8267f1873f745bf26eef47fbf05f7732b128cfa8c0c0435c360d6",
+      "gitNormalizedSha256": "670ff208cba8267f1873f745bf26eef47fbf05f7732b128cfa8c0c0435c360d6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/offline-first.json",
+      "bytes": 1863,
+      "sha256": "78a106ae5f63d180911f248f4a3b63036667a0687a5b34bfd53965f1864c840d",
+      "gitNormalizedSha256": "78a106ae5f63d180911f248f4a3b63036667a0687a5b34bfd53965f1864c840d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "f719322deef13a56d0390ce01e6d04966aa7f25d0b640f6a25d7f0fece59bc0f",
+      "gitNormalizedSha256": "f719322deef13a56d0390ce01e6d04966aa7f25d0b640f6a25d7f0fece59bc0f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/source-normalization-registration-first.json",
+      "bytes": 1078,
+      "sha256": "f5b16a58bc7f683af7f898496c7ea2760bbe8907fa4d688d0046d21f23d96d22",
+      "gitNormalizedSha256": "f5b16a58bc7f683af7f898496c7ea2760bbe8907fa4d688d0046d21f23d96d22"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/sync-first.json",
+      "bytes": 9129,
+      "sha256": "3338f440b4c36e3983ff2852f76905dc91d35980af5a70521b4107d7701ec07e",
+      "gitNormalizedSha256": "3338f440b4c36e3983ff2852f76905dc91d35980af5a70521b4107d7701ec07e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/manifest.json",
+      "bytes": 6529,
+      "sha256": "1bd1d88aee3848c6e44d11ee5947fea2c13fe31fbb80d89ec563753e4b504fd7",
+      "gitNormalizedSha256": "1bd1d88aee3848c6e44d11ee5947fea2c13fe31fbb80d89ec563753e4b504fd7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/receipt.json",
+      "bytes": 7389,
+      "sha256": "ad13b5daa0e2fb480853eacdf1770579325a61dba5cd04160bcd8429d0288d36",
+      "gitNormalizedSha256": "ad13b5daa0e2fb480853eacdf1770579325a61dba5cd04160bcd8429d0288d36"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/sources.json.gz",
+      "bytes": 139831,
+      "sha256": "cc53f837b88e04eade4fd3411047b9c018f4cd381471f855e9746209d059af80",
+      "gitNormalizedSha256": "cc53f837b88e04eade4fd3411047b9c018f4cd381471f855e9746209d059af80"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/apply-normalized-source.cjs",
+      "bytes": 4840,
+      "sha256": "1d03f86ee3d4741ea29b3a123eeadff60234cdde6fad4c81f5644a58e9f12fe1",
+      "gitNormalizedSha256": "1d03f86ee3d4741ea29b3a123eeadff60234cdde6fad4c81f5644a58e9f12fe1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/archive.cjs",
+      "bytes": 6645,
+      "sha256": "501ed5b5dc1078c7f97df28d919cb136c9fb0413b41a8898bdea6b76de0db3b0",
+      "gitNormalizedSha256": "501ed5b5dc1078c7f97df28d919cb136c9fb0413b41a8898bdea6b76de0db3b0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/browser-run.cjs",
+      "bytes": 20218,
+      "sha256": "813d7cc423813f40155463ae13bd80a6297ae6b3a00c9b9c41f0acf6beeaed70",
+      "gitNormalizedSha256": "813d7cc423813f40155463ae13bd80a6297ae6b3a00c9b9c41f0acf6beeaed70"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/check-offline.cjs",
+      "bytes": 3060,
+      "sha256": "3c3f4386f1c4204b6cfcaaf9e224d1045a18c3f20ac5ba6c2b8797722359c3aa",
+      "gitNormalizedSha256": "3c3f4386f1c4204b6cfcaaf9e224d1045a18c3f20ac5ba6c2b8797722359c3aa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/pinyin-http.cjs",
+      "bytes": 21576,
+      "sha256": "d3396901b0eef387b1ab38025934457133176bec570f9eecfba9b30becc05630",
+      "gitNormalizedSha256": "d3396901b0eef387b1ab38025934457133176bec570f9eecfba9b30becc05630"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/prepare-and-check.cjs",
+      "bytes": 4313,
+      "sha256": "01fdb151962856e3ba8cf3b909f5e7b78fbb39c943200e1a7421c7e6dd4650a8",
+      "gitNormalizedSha256": "01fdb151962856e3ba8cf3b909f5e7b78fbb39c943200e1a7421c7e6dd4650a8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/prepare-browser.cjs",
+      "bytes": 2791,
+      "sha256": "246e49b50a32ede113a94a0ea16c5f43f3ffd8e238efdfc3127378845d364e27",
+      "gitNormalizedSha256": "246e49b50a32ede113a94a0ea16c5f43f3ffd8e238efdfc3127378845d364e27"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/prepare-http.cjs",
+      "bytes": 2693,
+      "sha256": "15dc4482fbcb6463df137799146d827ddc9f78ebb2fa633138088492b5d8f704",
+      "gitNormalizedSha256": "15dc4482fbcb6463df137799146d827ddc9f78ebb2fa633138088492b5d8f704"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/update-plans.cjs",
+      "bytes": 2036,
+      "sha256": "666d6f13c15b15baebd7cfe44f9a9908a6cba5a595bfa25cc79f23261792095f",
+      "gitNormalizedSha256": "666d6f13c15b15baebd7cfe44f9a9908a6cba5a595bfa25cc79f23261792095f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "c187d8aa5fd4897373667cb52c7611af7ad28aa9dce0a9d6886439d183a7ae7d",
+      "gitNormalizedSha256": "c187d8aa5fd4897373667cb52c7611af7ad28aa9dce0a9d6886439d183a7ae7d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-font-decoding-and-source-compatibility/tools/stage.cjs",
+      "bytes": 4342,
+      "sha256": "5b0926624bc4c719eae75b88d4e96812b64a14d4395dcd09ac230f8164c2c627",
+      "gitNormalizedSha256": "5b0926624bc4c719eae75b88d4e96812b64a14d4395dcd09ac230f8164c2c627"
+    }
+  ]
+}

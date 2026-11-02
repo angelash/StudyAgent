@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import fitz
+from textbook_pinyin_decoding import SOURCE_SHA256 as VERIFIED_PINYIN_SOURCE, extract_verified
 
 ROOT = Path(__file__).resolve().parents[2]
 NAMES = dict(zip('一二三四五六', range(1, 7)))
@@ -61,12 +62,28 @@ def main() -> None:
                      'pages': [{'page': index + 1, 'text': page.get_text('text')} for index, page in enumerate(document)]}
         body = json.dumps(extracted, ensure_ascii=False, indent=2).encode('utf-8')
         text_path = extracted_dir / f'{identity.replace(":", "-")}.json'
+        # Keep the legacy extraction for frozen snapshots. Only the independently
+        # verified PDF/font pair opts into the separate tone-decoded derivative.
+        if expected == VERIFIED_PINYIN_SOURCE and text_path.exists() and text_path.read_bytes() != body:
+            raise ValueError('Verified pinyin legacy extraction changed; preserve it for review')
         text_path.write_bytes(body)
+        normalization = None
+        if expected == VERIFIED_PINYIN_SOURCE:
+            normalized, receipt = extract_verified(target, text_path)
+            decoded_path = extracted_dir / f'{identity.replace(":", "-")}-tone-{receipt["extractedSha256"][:16]}.json'
+            if decoded_path.exists() and decoded_path.read_bytes() != normalized:
+                raise ValueError('Existing normalized extraction bytes changed')
+            decoded_path.write_bytes(normalized)
+            normalization = {'protocol': receipt['protocol'], 'fontProgramSha256': receipt['fontProgramSha256'],
+                'legacyExtractedPath': str(text_path.relative_to(ROOT)).replace(os.sep, '/'),
+                'legacyExtractedSha256': receipt['legacyExtractionSha256']}
+            text_path, body = decoded_path, normalized
         books.append({'id': identity, 'grade': grade, 'term': term, 'edition': '统编版',
           'title': f'义务教育教科书·语文{grade}年级{"上" if term == "upper" else "下"}册',
           'sourceOriginal': str(original), 'repositoryPath': repository_path,
           'extractedPath': str(text_path.relative_to(ROOT)).replace(os.sep, '/'), 'bytes': target.stat().st_size,
-          'sha256': expected, 'pages': document.page_count, 'extractedSha256': hashlib.sha256(body).hexdigest()})
+          'sha256': expected, 'pages': document.page_count, 'extractedSha256': hashlib.sha256(body).hexdigest(),
+          **({'textNormalization': normalization} if normalization else {})})
         document.close()
     books.sort(key=lambda book: (book['grade'], book['term']))
     expected_pairs = {(grade, term) for grade in range(1, 7) for term in ['upper', 'lower']}

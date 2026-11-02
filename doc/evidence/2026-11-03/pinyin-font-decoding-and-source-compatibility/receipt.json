@@ -1,0 +1,241 @@
+{
+  "protocol": "pinyin-font-decoding-and-source-compatibility-v1",
+  "at": "2026-11-02T22:33:41.278Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "normalization": {
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "fontName": "HanyuXi-JZ",
+    "fontProgramSha256": "49fa0a112a875f123905c9bc074c378ad53eb177d426f892398adc4c6dc14494",
+    "legacyExtractionSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+    "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
+    "toneVowelMapping": {
+      "Q": "ā",
+      "W": "á",
+      "A": "ǎ",
+      "S": "à",
+      "T": "ō",
+      "Y": "ó",
+      "G": "ǒ",
+      "H": "ò",
+      "E": "ē",
+      "R": "é",
+      "D": "ě",
+      "F": "è",
+      "U": "ī",
+      "I": "í",
+      "J": "ǐ",
+      "K": "ì",
+      "O": "ū",
+      "P": "ú",
+      "L": "ǔ",
+      "M": "ù",
+      "N": "ǖ",
+      "B": "ǘ",
+      "V": "ǚ",
+      "C": "ǜ"
+    },
+    "toneChartsVisuallyRead": [
+      26,
+      27
+    ],
+    "pages": 127,
+    "changedPages": 97,
+    "replacements": 4035,
+    "onlyKnownGlyphsInVerifiedFontSpansChanged": true,
+    "allOtherCharactersWhitespaceAndOrderPreserved": true,
+    "otherOriginalsNotAutomaticallyDecoded": true,
+    "oldExtractionRetained": true,
+    "ocrAndReadingOrderReconstruction": false
+  },
+  "registration": {
+    "at": "2026-11-02T22:22:55.276Z",
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "bookVersion": "c63720a384e468a8dbd2630e",
+    "legacyExtractionSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+    "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
+    "normalizedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper-tone-9d4c9c93727eadcf.json",
+    "legacyPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper.json",
+    "oldProofFingerprint": "7aa016682f49c552065465f816e638c49b908b6ea07448e4921c0e6831bd2605",
+    "newProofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e",
+    "sourcePdfAndBookAndLessonIdentitiesUnchanged": true,
+    "first24PagesUnchanged": true,
+    "previous11SourceRowsUnchanged": true,
+    "originalTeachingDraftsUnchanged": true,
+    "registryAndMappingRebuildPending": true,
+    "teacherReviewed": false,
+    "published": false,
+    "formalDataWritten": false
+  },
+  "validation": {
+    "assetSuites": [
+      {
+        "pattern": "test_textbook_pinyin_decoding.py",
+        "passed": 8,
+        "exit": 0
+      },
+      {
+        "pattern": "test_reviewed*.py",
+        "passed": 21,
+        "exit": 0
+      },
+      {
+        "pattern": "test_textbook_mapping_candidates.py",
+        "passed": 11,
+        "exit": 0
+      },
+      {
+        "pattern": "test_chinatextbook_source_metadata.py",
+        "passed": 2,
+        "exit": 0
+      }
+    ],
+    "all12ExtractionsReproduced": true,
+    "totalSourcePagesReimported": 1601,
+    "activeAndLegacyExtractionFilesPreserved": 13,
+    "all12OriginalAndExtractionVerification": true,
+    "allNineOriginalDraftPreflightsPassed": true,
+    "all18LessonAndMaterialFilesByteIdentical": true,
+    "original39Targets273QuestionsUnchanged": true,
+    "actualHttp": {
+      "pinyinSourcePreviews": [
+        {
+          "entry": 1,
+          "physicalPages": [
+            25,
+            26
+          ],
+          "textSha256": [
+            "06b1f3b12dd43cad6da5c6c1ba6858d94d09c46571ca26acfe19b90f1f2c1d1a",
+            "c70b0a0595798e3f0a6ba22658ae43f0aca22aad8b880d9fb212fcfa2188c0ed"
+          ],
+          "exactNormalizedText": true
+        },
+        {
+          "entry": 2,
+          "physicalPages": [
+            27,
+            28
+          ],
+          "textSha256": [
+            "9672436a58c09c6ce07056c781560faf0034db2a13439badbe1454a77a820cfd",
+            "e280551e5a42e0778f76fdabe8eb31ad911fbc56017af91cdf51600cf334d81a"
+          ],
+          "exactNormalizedText": true
+        },
+        {
+          "entry": 3,
+          "physicalPages": [
+            29,
+            30
+          ],
+          "textSha256": [
+            "a55de19e06fed35084c15ed6f40877e08b202998a4814ab5a55694dea917659e",
+            "abe0ebf08d25bdeb93cf5273166482124acf8d01d86128fe84fffa2ca5154816"
+          ],
+          "exactNormalizedText": true
+        },
+        {
+          "entry": 4,
+          "physicalPages": [
+            31,
+            32
+          ],
+          "textSha256": [
+            "ddc2ce703727b61742072d4e9c3ad4377877efd46983981eddc2b7432906a815",
+            "d6693c4038860da30939e6ee86a9fac8ea4b73b76a374f22bbab3e0e4a10d252"
+          ],
+          "exactNormalizedText": true
+        },
+        {
+          "entry": 5,
+          "physicalPages": [
+            33,
+            34
+          ],
+          "textSha256": [
+            "65d05f56c93d32843d55e137fdb12738fe13475796a7bf8f42261db2579217ea",
+            "e3e6329984e8c9b6654f80f5a89252d07d4515032755be3c3a77de4741c3cfd2"
+          ],
+          "exactNormalizedText": true
+        }
+      ],
+      "oldSnapshotReadable": true,
+      "oldSourcePreflightAndSaveRefused409": true,
+      "originalSchoolDraftQuestions": 28,
+      "wholeSaveReplayAndColdRead": true
+    },
+    "browser": {
+      "buildId": "tSQa109Myy2UD3Gs5L5KY",
+      "first": {
+        "passed": 1,
+        "failed": 1,
+        "reason": "Exact label lookup did not match the page select accessible name, which includes option content; the correct normalized source had loaded."
+      },
+      "second": {
+        "passed": 4,
+        "failed": 0
+      },
+      "newToneScreenshotsVisuallyInspected": 4,
+      "originalSourceImagesAndFullModernTextNotArchived": true,
+      "applicationUnchanged": true,
+      "learningAndPublicationWrites": 0
+    },
+    "applicationAndCompiledFrozenInputs": 1930,
+    "allFrozenInputsChecked": 2217,
+    "apiApplicationRuntimeChanged": false,
+    "databaseProtocolUnchanged": 37,
+    "previousFullApi": {
+      "passed": 3105,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "currentFullSuiteRerun": false,
+      "countsNotCombined": true
+    }
+  },
+  "mapping": {
+    "changedRows": 46,
+    "onlyThisOriginalPdf": true,
+    "allStillUnapproved": true,
+    "bookAndLessonIdentitiesUnchanged": true
+  },
+  "protection": {
+    "at": "2026-11-02T22:32:39.379Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 452,
+    "lessonsWithCandidateFiles": 75,
+    "lessonsWithoutRecordedContent": 3506,
+    "booksWithoutDirectory": 336,
+    "newPinyinLessonDrafts": 0,
+    "sourcePagesVisuallyRead": 79,
+    "totalPages": 127,
+    "allTextbooksGespTeacherScoringFamiliesStockAndRealWorldConditions": true,
+    "block5": true
+  },
+  "boundaries": {
+    "originalPdfFontBytesAndFullExtractionLocalOnly": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "realLearnerDataWritten": false,
+    "automaticApproval": false,
+    "published": false,
+    "pushed": false,
+    "deployed": false
+  }
+}

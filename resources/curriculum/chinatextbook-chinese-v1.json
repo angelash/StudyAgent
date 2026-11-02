@@ -26,13 +26,19 @@
       "edition": "统编版",
       "title": "义务教育教科书·语文1年级上册",
       "sourceOriginal": "E:\\ChinaTextbook\\小学\\语文\\统编版\\义务教育教科书·语文一年级上册.pdf",
-      "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper.json",
+      "extractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper-tone-9d4c9c93727eadcf.json",
       "bytes": 10926278,
       "sha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
       "pages": 127,
-      "extractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc",
+      "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
       "repositoryPath": "小学/语文/统编版/义务教育教科书·语文一年级上册.pdf",
-      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-upper.pdf"
+      "previousAssetPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/books/chinatextbook-chinese-g1-upper.pdf",
+      "textNormalization": {
+        "protocol": "verified-hanyuxi-tone-decoding-v1",
+        "fontProgramSha256": "49fa0a112a875f123905c9bc074c378ad53eb177d426f892398adc4c6dc14494",
+        "legacyExtractedPath": "data/assets/textbook-sources/chinatextbook-chinese-v1/extracted/chinatextbook-chinese-g1-upper.json",
+        "legacyExtractedSha256": "6dae830e70696a636c29022d580bec4ddfeb357b8370df9539e4cab8b13526dc"
+      }
     },
     {
       "id": "chinatextbook:chinese:g2:lower",

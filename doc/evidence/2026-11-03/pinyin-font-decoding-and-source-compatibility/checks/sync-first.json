@@ -1,0 +1,232 @@
+{
+  "at": "2026-11-02T22:25:06.493Z",
+  "passed": true,
+  "sync": [
+    {
+      "path": "resources/curriculum/chinatextbook-chinese-v1.json",
+      "sha256": "e871311ab31e8a9bbb6b20b6548ec15d5a6dcc79dd00c0168bbb87a31011251c"
+    },
+    {
+      "path": "resources/curriculum/textbook-edition-conformities-v1.json",
+      "sha256": "c3d80bcd0e4d2d16c30eca6687f2699eea061ea345871918fc262c7e93248a7e"
+    },
+    {
+      "path": "resources/curriculum/reviewed-original-textbooks-v1.json",
+      "sha256": "f7fdc4b2f7ffc91d6ad4f65f5801fb5d0ac981dba866e2acb5c1af821f79ffd9"
+    },
+    {
+      "path": "resources/curriculum/textbook-mapping-candidates-v1.json",
+      "sha256": "2810a9f4469fecb9b169e744f795463e86d21195514ef83697413327f3c9dac4"
+    },
+    {
+      "path": "scripts/assets/import_chinatextbook.py",
+      "sha256": "a4695127d90977b638e0a092a0cc98283b2eefbf0041d18a99ab5cae834627fd"
+    },
+    {
+      "path": "scripts/assets/verify_chinatextbook_manifest.py",
+      "sha256": "2fa23766702cbe353dc1a4be2fcce6772359365346b64f467eff6ca8938760da"
+    },
+    {
+      "path": "scripts/assets/textbook_pinyin_decoding.py",
+      "sha256": "8d1319e9710b630167090961156448a32841ec21e6e308c28cb311c651b75d58"
+    },
+    {
+      "path": "scripts/assets/test_textbook_pinyin_decoding.py",
+      "sha256": "856b096d3a406e6d2fac12971e0835eea9b1e2bcee035f0034607b987aee7c78"
+    }
+  ],
+  "previousFrozenInputs": 2213,
+  "applicationAndCompiledInputsUnchanged": 1930,
+  "applicationOrProtocolChanged": false,
+  "all452BookAndLessonIdentitiesUnchanged": true,
+  "all18AuthoredLessonMaterialFilesByteIdentical": true,
+  "allNineCandidatePreflightsPassed": true,
+  "changedMappingRows": [
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c1:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c1:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c1:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c1:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c2:l6"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c3:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c3:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c3:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c3:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c3:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c4:l6"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c5:l6"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c6:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c6:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c6:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c6:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c6:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c7:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c7:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c7:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c7:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c7:l5"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c8:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c8:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c8:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c8:l4"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c9:l1"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c9:l2"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c9:l3"
+    },
+    {
+      "bookId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268",
+      "lessonId": "public-book:1c73b348-e8b6-47d6-84b0-6dbacbe28268:toc:c9:l4"
+    },
+    {
+      "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter1:entry1"
+    }
+  ],
+  "allChangedMappingRowsStillUnapproved": true,
+  "otherPdfSourcesUnaffected": true
+}
