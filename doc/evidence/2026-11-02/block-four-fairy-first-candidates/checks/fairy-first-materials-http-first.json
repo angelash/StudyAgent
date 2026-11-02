@@ -1,0 +1,74 @@
+{
+  "at": "2026-11-02T09:45:20.216Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-matches-v1.json",
+      "sha256": "befb7e68c44525b5eeb92ff05f12ea6b6c9692cf900d48700768230053dc6b6e",
+      "physicalPages": [
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 102,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-tree-journey-v1.json",
+      "sha256": "226852b97391998c41ef6af082726cb24f7b095ec8178d0ff119d232c27ce447",
+      "physicalPages": [
+        38,
+        39
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 76,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 98,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-first-v1.json",
+    "sha256": "042c077b33e2a9a6585e4d487af50554aa07886ccd538c541b479b710fb1a415",
+    "groups": 14,
+    "questions": 98,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

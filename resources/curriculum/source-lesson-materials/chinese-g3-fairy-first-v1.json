@@ -1,0 +1,1442 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "matches",
+      "path": "resources/curriculum/source-lessons/chinese-g3-matches-v1.json",
+      "sha256": "befb7e68c44525b5eeb92ff05f12ea6b6c9692cf900d48700768230053dc6b6e",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry1",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 33,
+        "pageEnd": 37,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "tree-journey",
+      "path": "resources/curriculum/source-lessons/chinese-g3-tree-journey-v1.json",
+      "sha256": "226852b97391998c41ef6af082726cb24f7b095ec8178d0ff119d232c27ce447",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry2",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 38,
+        "pageEnd": 39,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔仅一份拟议样题，原故事重复、同结构换词与重排不自动成为新独立题族；真实声音、手写与帮助条件需实际记录，未构成充分四维库存。",
+  "groups": [
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-word-reading",
+      "structure": "matches-contextual-word-reading",
+      "familyProposal": "following-matches-contextual-word-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实声音覆盖本次15个目标字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "依原页注音与具体词语核对多音字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际帮助单列，文字拼音不代替本人发音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐项听捡旧饿卷挣几燃焰蜡烛富晃划喷强15字；几乎jī、挣到钱zhèng、明晃晃huǎng、喷香pèn等依本页和当前语境，不用文字正确代替声音。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-matches-contextual-word-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“捡起、旧围裙、饥饿、打卷、挣到钱、几乎、燃烧、火焰、蜡烛、富商、明晃晃、划过、喷香、强烈”。说一个需再核对的字。",
+          "answer": "逐项听捡旧饿卷挣几燃焰蜡烛富晃划喷强15字；几乎jī、挣到钱zhèng、明晃晃huǎng、喷香pèn等依本页和当前语境，不用文字正确代替声音。",
+          "analysis": "逐项听捡旧饿卷挣几燃焰蜡烛富晃划喷强15字；几乎jī、挣到钱zhèng、明晃晃huǎng、喷香pèn等依本页和当前语境，不用文字正确代替声音。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先录音比较“几乎”和“几个”、“喷香”和“喷水”，再把其余目标字放进词语读出。",
+          "answer": "几乎jī与几个jǐ、喷香pèn与喷水pēn不同，需听本人声音；其余目标仍须实际覆盖，不由两个比较推全表。",
+          "analysis": "几乎jī与几个jǐ、喷香pèn与喷水pēn不同，需听本人声音；其余目标仍须实际覆盖，不由两个比较推全表。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡：“旧屋外，有人捡起一张纸，几乎被风卷走。”录音读卡片，再用词语补齐未出现的目标字。",
+          "answer": "卡片中的卷走与原课打卷按当前词义核对，不强行套同一读音；补齐全15字才有全表覆盖，新增非目标字另记。",
+          "analysis": "卡片中的卷走与原课打卷按当前词义核对，不强行套同一读音；补齐全15字才有全表覆盖，新增非目标字另记。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次用词语录音读全部15个目标字，注明是否刚听过示范，不上传上次录音。",
+          "answer": "本次声音与帮助清楚，重复材料不自动成为新独立题族；未录目标保留未测。",
+          "analysis": "本次声音与帮助清楚，重复材料不自动成为新独立题族；未录目标保留未测。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "录音读“挣到钱、几乎、明晃晃、划出亮光、喷香”，再补其余目标字。",
+          "answer": "当前多音字读法逐项听，原词语境保持；局部读准不推断全表已会。",
+          "analysis": "当前多音字读法逐项听，原词语境保持；局部读准不推断全表已会。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给15个目标字各找一个合理词语录音，读法不同于原课时说明具体词语。",
+          "answer": "词语合理且读音与新语境相容，不能把原课读法机械套到每个词；原目标覆盖分别核对。",
+          "analysis": "词语合理且读音与新语境相容，不能把原课读法机械套到每个词；原目标覆盖分别核对。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-matches-contextual-word-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "先录原来没把握的目标词，再补齐其余词，说明本次仍不确定处。",
+          "answer": "核对真实声音、全表集合和帮助，允许保留不知道；自报掌握不代替发音。",
+          "analysis": "核对真实声音、全表集合和帮助，允许保留不知道；自报掌握不代替发音。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-handwriting",
+      "structure": "matches-original-handwriting",
+      "familyProposal": "following-matches-original-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人实际原件覆盖指定13字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "逐字核对部件完整性与位置",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原稿订正与帮助保留，字体截图不代替书写",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人原稿，13字完整覆盖；识读表15字不全部机械加为书写要求，说明不能代替实际字形。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-matches-original-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实手写“柴旧裙怜饿蜡烛伸忽板富颗奶”13字并上传，选一字说明需注意的部件。",
+          "answer": "逐字看本人原稿，13字完整覆盖；识读表15字不全部机械加为书写要求，说明不能代替实际字形。",
+          "analysis": "逐字看本人原稿，13字完整覆盖；识读表15字不全部机械加为书写要求，说明不能代替实际字形。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先写“裙、怜、饿、蜡、烛”，再补其余八字，保留原稿和订正上传。",
+          "answer": "覆盖全部13字，部件与完整性分别看；最后改对不能倒改原先表现。",
+          "analysis": "覆盖全部13字，部件与完整性分别看；最后改对不能倒改原先表现。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "把13字放进合理词语中真实手写，上传完整原件，并说明用了什么参考。",
+          "answer": "词语相容且实际字形可核对，帮助保留；组词正确不直接证明字形写对。",
+          "analysis": "词语相容且实际字形可核对，帮助保留；组词正确不直接证明字形写对。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次真实手写“柴、旧、裙、怜”并上传，圈出还需核对的一处。",
+          "answer": "仅覆盖四字，不能推断另九字保持；本次原件不由旧图或字库图代替。",
+          "analysis": "仅覆盖四字，不能推断另九字保持；本次原件不由旧图或字库图代替。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实手写“饿、蜡、烛、伸、忽”，保留订正后上传。",
+          "answer": "实际五字部件与完整性逐一核对，未完成不补成正确，不按图像张数评价。",
+          "analysis": "实际五字部件与完整性逐一核对，未完成不补成正确，不按图像张数评价。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实手写“板、富、颗、奶”，说明哪里原先没有把握，并上传原稿。",
+          "answer": "四字原件可看，具体说明与实际字形分开；不以说出结构推断已经写对。",
+          "analysis": "四字原件可看，具体说明与实际字形分开；不以说出结构推断已经写对。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "matches-matches-original-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分两次短书写覆盖13字，保留两份本人原稿，上传并注明未完成部分。",
+          "answer": "分次可接受，实际全表覆盖才有对应信息；未完成处保持未验，不机械要求反复抄大量遍。",
+          "analysis": "分次可接受，实际全表覆盖才有对应信息；未完成处保持未验，不机械要求反复抄大量遍。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-oral-reading",
+      "structure": "fantasy-reality-oral-reading",
+      "familyProposal": "following-fantasy-reality-oral-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "保留本次声音与具体所读范围",
+          "weight": 0.4
+        },
+        {
+          "criterion": "停顿语气联系人物处境和句意",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不同合理读法可接受，不以文字说明代实际声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原音与所选原文对应，停顿有句意支持；不同有依据读法可接受，没有录到范围不推整课。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-fantasy-reality-oral-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音朗读原课你选择的一小段，说明范围，再解释一处停顿怎样帮助理解人物处境。",
+          "answer": "原音与所选原文对应，停顿有句意支持；不同有依据读法可接受，没有录到范围不推整课。",
+          "analysis": "原音与所选原文对应，停顿有句意支持；不同有依据读法可接受，没有录到范围不推整课。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "选火光画面或火灭现实的一小段真实朗读，说明你希望听者注意哪一个变化。",
+          "answer": "实际声音可核对，读法保留画面与现实关系；不靠夸张表演或音量判断理解。",
+          "analysis": "实际声音可核对，读法保留画面与现实关系；不靠夸张表演或音量判断理解。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创虚构句：“他想象屋里有热汤。抬起头时，他仍在等车的站台。”录音读出，并解释两句关系。",
+          "answer": "须读出本次声音，前句想象、后句现实清楚；不能把站台读成已经上车的结果。",
+          "analysis": "须读出本次声音，前句想象、后句现实清楚；不能把站台读成已经上车的结果。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次朗读与上次不同的一段，保留还不顺的地方，说明是否看文或听过示范。",
+          "answer": "实际本次范围与帮助可核对，朗读不直接称背诵，不把别段完成推成本段已会。",
+          "analysis": "实际本次范围与帮助可核对，朗读不直接称背诵，不把别段完成推成本段已会。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "朗读包含小女孩愿望的一小段，再用一句话说明读法怎样保留她的处境。",
+          "answer": "声音与原词句相容，解释有具体依据；不能用一句可怜标签替代朗读。",
+          "analysis": "声音与原词句相容，解释有具体依据；不能用一句可怜标签替代朗读。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择结尾一小段真实朗读，可以用平稳自然的方式，再说你注意到的一处叙述。",
+          "answer": "不强迫统一情绪，不以情绪强烈代正确；结尾现实不由幻想语句抹去。",
+          "analysis": "不强迫统一情绪，不以情绪强烈代正确；结尾现实不由幻想语句抹去。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "matches-fantasy-reality-oral-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "根据实际情况分段朗读，说明哪些已有本次声音，哪些还未完成。",
+          "answer": "分段范围明确，各段本次表现分别看；不要求全文背诵，也不把旧录音作本次。",
+          "analysis": "分段范围明确，各段本次表现分别看；不要求全文背诵，也不把旧录音作本次。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-event-wish",
+      "structure": "ignition-episode-wish-link",
+      "familyProposal": "following-ignition-episode-wish-link",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "五次擦燃情节按叙述顺序对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "所见与愿望联系现实处境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "次数与根数区分，最后一大把不编具体总数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "顺序为火炉、烤鹅、圣诞树、奶奶、最后想留住奶奶；前两项联系温暖与食物。一大把不能说一根，原文不能推出具体总根数。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-ignition-episode-wish-link-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按原文列出五次擦燃情节看到的主要画面，说明第一次和第二次分别与什么愿望联系。最后一大把能算一根吗？",
+          "answer": "顺序为火炉、烤鹅、圣诞树、奶奶、最后想留住奶奶；前两项联系温暖与食物。一大把不能说一根，原文不能推出具体总根数。",
+          "analysis": "顺序为火炉、烤鹅、圣诞树、奶奶、最后想留住奶奶；前两项联系温暖与食物。一大把不能说一根，原文不能推出具体总根数。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“所见画面、现实缺乏、愿望”三项配起来，分别说明火炉与烤鹅，不只列名称。",
+          "answer": "火炉联系冷与温暖，烤鹅联系饿与食物，配对需解释支持关系；幻想不等实际得到。",
+          "analysis": "火炉联系冷与温暖，烤鹅联系饿与食物，配对需解释支持关系；幻想不等实际得到。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创虚构卡：人物先幻想干衣服，再幻想热饭，最后想起会照顾自己的亲人。联系雨淋、饥饿与孤单说明愿望，不能搬来原课五次顺序。",
+          "answer": "分别由当前处境说明干燥温暖、食物与关爱；新卡没有五次擦燃情节，不套原故事数量和画面。",
+          "analysis": "分别由当前处境说明干燥温暖、食物与关爱；新卡没有五次擦燃情节，不套原故事数量和画面。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人说“原课五次情节证明只烧了五根火柴”。用最后一次的数量表达回应。",
+          "answer": "最后写一大把，情节次数与具体根数不同；可以统计五次叙述，不能知道总根数。",
+          "analysis": "最后写一大把，情节次数与具体根数不同；可以统计五次叙述，不能知道总根数。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "圣诞树与奶奶两种画面可以怎样联系愿望？分别指出一处实际情节支持。",
+          "answer": "节日美好欢乐与亲人关爱可有依据解释，不强制唯一措辞，也不把两项都只概括为想吃饭。",
+          "analysis": "节日美好欢乐与亲人关爱可有依据解释，不强制唯一措辞，也不把两项都只概括为想吃饭。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "画一份文字提纲，按每次情节记主要画面，再在末项写清数量未知。",
+          "answer": "顺序与原文相符，第五次一大把不编数字；提纲是组织工具，不等独立新结构已审核。",
+          "analysis": "顺序与原文相符，第五次一大把不编数字；提纲是组织工具，不等独立新结构已审核。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-ignition-episode-wish-link-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "说明最后急忙擦着一大把与想留住奶奶怎样联系，再指出这种愿望是否改变了现实结局。",
+          "answer": "联系害怕火灭奶奶消失、想亲人在身边；愿望强烈但现实结尾仍是冻死，不能改写已获救。",
+          "analysis": "联系害怕火灭奶奶消失、想亲人在身边；愿望强烈但现实结尾仍是冻死，不能改写已获救。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-feeling-evidence",
+      "structure": "reading-feeling-specific-evidence",
+      "familyProposal": "following-reading-feeling-specific-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "选择一处具体叙述作为依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "解释该处与阅读感受的联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "允许不同感受，不强制私人经历或只用情绪标签评分",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "感受联系冷饿、无人帮助、幻想或结尾等具体叙述即可，允许不同反应，不要求统一说法。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-reading-feeling-specific-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选择本课你印象深的一处，用具体词句说说阅读感受；不需要讲个人家庭经历。",
+          "answer": "感受联系冷饿、无人帮助、幻想或结尾等具体叙述即可，允许不同反应，不要求统一说法。",
+          "analysis": "感受联系冷饿、无人帮助、幻想或结尾等具体叙述即可，允许不同反应，不要求统一说法。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "比较“我觉得可怜”和“她在冷夜没有食物，也没人买火柴，我为她担心”。后者多说明了什么？",
+          "answer": "给出冷饿和无人买的具体依据，解释感受从哪里来；标签本身不能替全部理解。",
+          "analysis": "给出冷饿和无人买的具体依据，解释感受从哪里来；标签本身不能替全部理解。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：雨中的人物一直等，后来有人借给他雨伞。选一处写你的阅读感受，别把它说成小女孩原课结局。",
+          "answer": "感受由新卡等待或帮助支持，原课没有借伞获助情节；来源与故事身份清楚。",
+          "analysis": "感受由新卡等待或帮助支持，原课没有借伞获助情节；来源与故事身份清楚。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴对同一处感受不同，怎样交流比要求所有人同一种情绪更合适？",
+          "answer": "各指出具体叙述与联系，检查是否相容，不按人数、情绪强烈程度或参考措辞判断。",
+          "analysis": "各指出具体叙述与联系，检查是否相容，不按人数、情绪强烈程度或参考措辞判断。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选一处火灭后的现实线索，说明它与你读火光画面时的感受有什么联系。",
+          "answer": "具体线索与画面形成对照，感受可以多种合理表达；不能只列两个标签而不解释。",
+          "analysis": "具体线索与画面形成对照，感受可以多种合理表达；不能只列两个标签而不解释。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果目前不想表达个人情绪，可以先怎样参与本课讨论？",
+          "answer": "可指出印象深的具体叙述或比较幻想现实，不强迫公开情绪或个人丧失经历；讨论仍需材料依据。",
+          "analysis": "可指出印象深的具体叙述或比较幻想现实，不强迫公开情绪或个人丧失经历；讨论仍需材料依据。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-reading-feeling-specific-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "读回自己之前的一段感受说明，补上一条原文依据或修正一处超出材料的判断。",
+          "answer": "原说法、依据和改法对应；没有原稿就先写本次说明，不编造修订已经发生。",
+          "analysis": "原说法、依据和改法对应；没有原稿就先写本次说明，不编造修订已经发生。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "source:chinese:g3:02915a7d:matches-fantasy-reality",
+      "structure": "fantasy-and-actual-outcome",
+      "familyProposal": "following-fantasy-and-actual-outcome",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "准确分开幻想画面和现实线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明现实结局与人物愿望的对照",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把死亡当幸福办法，也不将故事变为实际用火任务",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "火炉是火光画面，火柴梗和寒冷是现实线索，愿望联系温暖；不能据画面说已真正有炉火取暖。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-fantasy-and-actual-outcome-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "火光里有温暖火炉，火灭后手中是火柴梗。把幻想、现实和愿望分别说明。",
+          "answer": "火炉是火光画面，火柴梗和寒冷是现实线索，愿望联系温暖；不能据画面说已真正有炉火取暖。",
+          "analysis": "火炉是火光画面，火柴梗和寒冷是现实线索，愿望联系温暖；不能据画面说已真正有炉火取暖。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "结尾既写微笑与幸福的表达，也明写冻死。为什么不能只读前一类词就说现实获救？",
+          "answer": "幻想与愿望的表达没有取消现实死亡，需两层一起读；不能把悲剧改成实际获救或追求死亡的办法。",
+          "analysis": "幻想与愿望的表达没有取消现实死亡，需两层一起读；不能把悲剧改成实际获救或追求死亡的办法。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡：人物想象自己已有雨伞，回过神仍站在雨里。写一句准确概括，并说什么还没发生。",
+          "answer": "人物在雨中想象雨伞，实际尚未得到；想象不能当已获帮助，不补造后续结局。",
+          "analysis": "人物在雨中想象雨伞，实际尚未得到；想象不能当已获帮助，不补造后续结局。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人说“她跟奶奶在一起的幻想证明现实中已经不冷不饿”。指出还需对照哪些叙述。",
+          "answer": "对照火灭后的处境和结尾冻死，幻想不证明实际需求已解决；不同表述可接受。",
+          "analysis": "对照火灭后的处境和结尾冻死，幻想不证明实际需求已解决；不同表述可接受。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果做本课理解练习，是否需要点火制造火光或模仿故事动作？可以用什么材料完成阅读？",
+          "answer": "不需要，依据原文和现有阅读图表即可分析画面与愿望；阅读理解不是实际用火实验。",
+          "analysis": "不需要，依据原文和现有阅读图表即可分析画面与愿望；阅读理解不是实际用火实验。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“希望得到温暖”与“实际已经得到照料”能直接互换吗？结合一处情节说明。",
+          "answer": "不能，愿望和实际结果不同，选冷夜或火灭线索支持，不能用感觉词代现实变化。",
+          "analysis": "不能，愿望和实际结果不同，选冷夜或火灭线索支持，不能用感觉词代现实变化。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-fantasy-and-actual-outcome-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为原课写一句同时保留愿望和现实结局的概括，再说明不能据此推广什么。",
+          "answer": "概括可写幻想中追求温暖关爱而现实仍遭悲剧，不能说死亡是获得幸福的途径或每个人经历都相同。",
+          "analysis": "概括可写幻想中追求温暖关爱而现实仍遭悲剧，不能说死亡是获得幸福的途径或每个人经历都相同。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前含义与具体对象和语境相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出线索或工具怎样支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械套另一义，也不补造实际结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "几乎表示接近某种状态，联系寒冷与手的状态；不是数量几个，读法也依当前词。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "“几乎冻僵”里的几乎怎样联系处境理解？能按几个物品的几解释吗？",
+          "answer": "几乎表示接近某种状态，联系寒冷与手的状态；不是数量几个，读法也依当前词。",
+          "analysis": "几乎表示接近某种状态，联系寒冷与手的状态；不是数量几个，读法也依当前词。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“喷香的烤鹅”中喷香写什么感觉？与喷水的喷是否可以直接同读同义？",
+          "answer": "写很浓的香味，喷香pèn与喷水pēn依词语区分；需语境支持，不套实体喷水动作。",
+          "analysis": "写很浓的香味，喷香pèn与喷水pēn依词语区分；需语境支持，不套实体喷水动作。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句：“他几乎错过末班车，幸好及时赶到。”解释几乎，并指出实际是否错过。",
+          "answer": "接近错过但后句说明赶到，没有真正错过；词义与实际结果都要看前后文。",
+          "analysis": "接近错过但后句说明赶到，没有真正错过；词义与实际结果都要看前后文。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“明晃晃”的晃与“晃动”的晃，当前对象和含义有什么不同？",
+          "answer": "前者联系明亮耀眼huǎng，后者晃动huàng联系动作；具体语境与读法分别核对。",
+          "analysis": "前者联系明亮耀眼huǎng，后者晃动huàng联系动作；具体语境与读法分别核对。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "文中反复“火柴灭了”，这条短句怎样帮助你理解前后画面的关系？",
+          "answer": "火灭伴随幻想消失、现实显出，组织对照；不推断先前幻想事物真实存在又被销毁。",
+          "analysis": "火灭伴随幻想消失、现实显出，组织对照；不推断先前幻想事物真实存在又被销毁。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“慈爱”用于奶奶时，可以联系哪些具体说话或动作理解？",
+          "answer": "联系温和形象、抱住等叙述说明关爱，须指出具体材料，不只换成很好。",
+          "analysis": "联系温和形象、抱住等叙述说明关爱，须指出具体材料，不只换成很好。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选本课一个词，写出当前含义和所用线索；另一常见义不适合时说明理由。",
+          "answer": "词确在原文，含义与句相容，方法有具体作用，不凭熟悉程度机械替换。",
+          "analysis": "词确在原文，含义与句相容，方法有具体作用，不凭熟悉程度机械替换。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "matches",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与材料范围一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "给出可定位依据并说明联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "叙述事实、角色想象、感受和未知保持可区分",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "只能支持该时段小女孩没有卖出与未得帮助的处境，不能推广所有人永远的行为。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "matches-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "开端写没有人买她的火柴。能否据此断言故事里所有人都永远不会帮助任何人？说明范围。",
+          "answer": "只能支持该时段小女孩没有卖出与未得帮助的处境，不能推广所有人永远的行为。",
+          "analysis": "只能支持该时段小女孩没有卖出与未得帮助的处境，不能推广所有人永远的行为。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "最后一大把火柴能确定总根数吗？哪些是原文已给、哪些仍未知？",
+          "answer": "已给末次一大把和五次叙述情节，总根数未给；不把情节次数替代根数。",
+          "analysis": "已给末次一大把和五次叙述情节，总根数未给；不把情节次数替代根数。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构记录：“两个人经过门口，没有停下。”能确定他们知道屋里有人求助吗？",
+          "answer": "不能，经过与知道求助不同；需要具体知情线索，不补造人物内心。",
+          "analysis": "不能，经过与知道求助不同；需要具体知情线索，不补造人物内心。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "插图画出奶奶与小女孩在一起，能否用它取消正文明确写出的现实结局？",
+          "answer": "不能，图帮助呈现幻想画面，正文现实结局仍需保留，不混来源和叙述层次。",
+          "analysis": "不能，图帮助呈现幻想画面，正文现实结局仍需保留，不混来源和叙述层次。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人只引用嘴上微笑，删去冻死，得出结局现实很幸福。核对遗漏了什么。",
+          "answer": "遗漏明确现实死亡与冷饿处境，只选部分词扩大结果；需完整对照幻想与现实。",
+          "analysis": "遗漏明确现实死亡与冷饿处境，只选部分词扩大结果；需完整对照幻想与现实。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选一项愿望解释，指出对应情节，再写一个材料不能证明的结果。",
+          "answer": "联系具体画面和现实缺乏，不能证明实际已经获得温暖食物或关爱；允许合理不同例子。",
+          "analysis": "联系具体画面和现实缺乏，不能证明实际已经获得温暖食物或关爱；允许合理不同例子。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "matches-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把一条正文事实、一项人物想象和一个自己的判断分别写出，说明依据。",
+          "answer": "各项对应来源与层次，不编造原文句子，也不把本人感受写成作者唯一意图。",
+          "analysis": "各项对应来源与层次，不编造原文句子，也不把本人感受写成作者唯一意图。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "source:chinese:g3:02915a7d:tree-journey-word-reading",
+      "structure": "tree-journey-contextual-reading",
+      "familyProposal": "following-tree-journey-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本次真实录音覆盖缩努茎锯斧推吱拆八字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "依具体词语和准确原页核对声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字选择不替代发音，未读目标保持未测",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际声音覆盖缩努茎锯斧推吱拆八字；读词与目标逐一对应，不增加锯斧实际操作。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“缩成一团、努力、根茎、锯子、斧子、手推车、吱吱响、拆开”。读完说哪一字还想核对。",
+          "answer": "实际声音覆盖缩努茎锯斧推吱拆八字；读词与目标逐一对应，不增加锯斧实际操作。",
+          "analysis": "实际声音覆盖缩努茎锯斧推吱拆八字；读词与目标逐一对应，不增加锯斧实际操作。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先录音读“根茎、锯子、斧子”，再用词语补读其余五个目标字。",
+          "answer": "八字实际声音分别核对，原课茎jīng等依注音，释义或选字正确不替发音。",
+          "analysis": "八字实际声音分别核对，原课茎jīng等依注音，释义或选字正确不替发音。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：“小盒缩在架角，木板吱吱响。”录音读出，再用词语读尚未覆盖的目标字。",
+          "answer": "保留当前词语发音，补努茎锯斧推拆等实际声音；非目标字不熟另记，不由短卡推全表。",
+          "analysis": "保留当前词语发音，补努茎锯斧推拆等实际声音；非目标字不熟另记，不由短卡推全表。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次用合理词语录音读全八字，说明是否刚听过示范。",
+          "answer": "本次声音、覆盖与帮助条件保留，换序不自动成为新独立题族，未录部分不补成会读。",
+          "analysis": "本次声音、覆盖与帮助条件保留，换序不自动成为新独立题族，未录部分不补成会读。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读“努力生长、细细的茎”，再补其他目标词，解释一处仍需核对的发音。",
+          "answer": "实际声音覆盖集合核查，不用两个词解释代替其余字读音。",
+          "analysis": "实际声音覆盖集合核查，不用两个词解释代替其余字读音。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把八字所在的词换一个顺序录音读出，不使用上次音频冒充。",
+          "answer": "核对本次声音和当前词语，顺序变化不改变目标，也不自动增加独立性。",
+          "analysis": "核对本次声音和当前词语，顺序变化不改变目标，也不自动增加独立性。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-tree-journey-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "先读没有把握的目标词，再读其余词，说明本次还未完成的部分。",
+          "answer": "目标声音逐字可听，允许明确未完成，不由自报掌握推断实际发音正确。",
+          "analysis": "目标声音逐字可听，允许明确未完成，不由自报掌握推断实际发音正确。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "source:chinese:g3:02915a7d:tree-journey-sequence",
+      "structure": "material-stage-order-and-cause",
+      "familyProposal": "following-material-stage-order-and-cause",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "种子树车椅地板顺序完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "区分生长和人物加工并给依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "末尾觉得变树不改成实际返生",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "种子→树→手推车→椅子→木地板；种子生长，后面有农夫加工拆用等动作，不能说愿望直接完成加工。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-material-stage-order-and-cause-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按原文写出从种子到木地板的五个阶段，再选两次变化说明怎样发生。",
+          "answer": "种子→树→手推车→椅子→木地板；种子生长，后面有农夫加工拆用等动作，不能说愿望直接完成加工。",
+          "analysis": "种子→树→手推车→椅子→木地板；种子生长，后面有农夫加工拆用等动作，不能说愿望直接完成加工。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "有人将椅子放在手推车之前。用旧木料从哪里来的线索修正顺序。",
+          "answer": "旧手推车拆下木料做椅子，椅子在后；顺序由材料转变支持，不只按名称熟悉度猜。",
+          "analysis": "旧手推车拆下木料做椅子，椅子在后；顺序由材料转变支持，不只按名称熟悉度猜。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：纸盒被改为收纳盒，边角松动后还能用的纸板做成书签。列阶段，说明哪一步由人改造。",
+          "answer": "纸盒→收纳盒→书签，改造由人物动作完成，不套原课种子树等阶段。",
+          "analysis": "纸盒→收纳盒→书签，改造由人物动作完成，不套原课种子树等阶段。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看“觉得又变成了一棵树”，能在五个阶段末尾加上“真的再次发芽成树”吗？",
+          "answer": "不能，觉得是角色感受，材料仍是铺在阳台的木地板，原文没有发芽返生情节。",
+          "analysis": "不能，觉得是角色感受，材料仍是铺在阳台的木地板，原文没有发芽返生情节。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给“生长、农夫加工、拆下旧木料再利用”各找原课对应的一步。",
+          "answer": "种子长树属生长，树成车有加工，车成椅或椅成地板有拆用；具体依据正确即可。",
+          "analysis": "种子长树属生长，树成车有加工，车成椅或椅成地板有拆用；具体依据正确即可。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "用三四句话连接五个阶段，保留重要加工动作，不只列名词。",
+          "answer": "阶段完整连贯，原因有原文支持，不能补造未经叙述的新物品和结果。",
+          "analysis": "阶段完整连贯，原因有原文支持，不能补造未经叙述的新物品和结果。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-material-stage-order-and-cause-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "解释为什么“想变成什么”和“后来怎样变成”要分开记录，举一处例子。",
+          "answer": "前者角色愿望，后者实际动作或生长，如树想跑而农夫制车；愿望不替行动依据。",
+          "analysis": "前者角色愿望，后者实际动作或生长，如树想跑而农夫制车；愿望不替行动依据。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "source:chinese:g3:02915a7d:tree-journey-wish-link",
+      "structure": "stage-condition-repeated-wish",
+      "familyProposal": "following-stage-condition-repeated-wish",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "每个愿望与当时处境对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "反复表达的组织作用有情节依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "区分想法实际加工结果，不强加唯一道德标签",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "种子想站起呼吸、树想跑、旧车想休息、椅子想躺下，各联系受束缚、看到移动、年老费力等处境；不只背四句。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "种子、树、旧车、椅子各自希望什么？选两项说明为什么产生这样的愿望。",
+          "answer": "种子想站起呼吸、树想跑、旧车想休息、椅子想躺下，各联系受束缚、看到移动、年老费力等处境；不只背四句。",
+          "analysis": "种子想站起呼吸、树想跑、旧车想休息、椅子想躺下，各联系受束缚、看到移动、年老费力等处境；不只背四句。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "手推车早先觉得奔跑舒服，后来希望停下来，是否一定前后矛盾？找时间与处境线索。",
+          "answer": "为农夫服务多年变老、跑得费力，处境改变可引起愿望改变；不能忽略时间只比两个词。",
+          "analysis": "为农夫服务多年变老、跑得费力，处境改变可引起愿望改变；不能忽略时间只比两个词。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：纸盒想看窗外，被改为收纳盒放到窗边；后来边角松了，变为书签。说明一个愿望与实际动作的联系。",
+          "answer": "愿望为角色想象，改造移动为人物动作；材料只支持给定阶段，不把所有物品都套成想躺下。",
+          "analysis": "愿望为角色想象，改造移动为人物动作；材料只支持给定阶段，不把所有物品都套成想躺下。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "反复“那一定会很好”怎样帮助把不同阶段串起来？用一项具体变化说明。",
+          "answer": "每阶段从当前处境期待下一状态，反复表达形成联系；具体愿望不同，不能只写用了反复。",
+          "analysis": "每阶段从当前处境期待下一状态，反复表达形成联系；具体愿望不同，不能只写用了反复。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "木地板最后暖洋洋、舒服极了，与你前面读到的愿望有什么联系？",
+          "answer": "联系躺下、舒展与温暖等满足状态，有原句依据；不因此说全部旧物只有变地板才好。",
+          "analysis": "联系躺下、舒展与温暖等满足状态，有原句依据；不因此说全部旧物只有变地板才好。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人把每个愿望都写成想跑。请分别用旧车和椅子的处境修正。",
+          "answer": "旧车年老费力想停下休息，椅子老了挺直腰背费力想躺下；不同阶段依据不同。",
+          "analysis": "旧车年老费力想停下休息，椅子老了挺直腰背费力想躺下；不同阶段依据不同。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-stage-condition-repeated-wish-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一个阶段，用“因为当时……所以它想……”说明，再补一句实际怎样变化。",
+          "answer": "处境愿望与结果分别有据，因果不由愿望直接跳到物理转变，允许不同准确措辞。",
+          "analysis": "处境愿望与结果分别有据，因果不由愿望直接跳到物理转变，允许不同准确措辞。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "source:chinese:g3:02915a7d:tree-journey-own-retelling",
+      "structure": "stage-supported-own-oral-retelling",
+      "familyProposal": "following-stage-supported-own-oral-retelling",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "保留本次本人实际讲述",
+          "weight": 0.4
+        },
+        {
+          "criterion": "阶段顺序和重要变化连贯",
+          "weight": 0.4
+        },
+        {
+          "criterion": "自己的话与帮助条件清楚，不只背名称或照抄原文",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听实际讲述，种子树车椅地板有序，至少说明重要生长或加工联系；看提纲条件保留，不把复述称陌生迁移。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "默读后用自己的话录音说说种子到木地板的历程。可以看自己列的阶段线索，并说明实际参考了什么。",
+          "answer": "听实际讲述，种子树车椅地板有序，至少说明重要生长或加工联系；看提纲条件保留，不把复述称陌生迁移。",
+          "analysis": "听实际讲述，种子树车椅地板有序，至少说明重要生长或加工联系；看提纲条件保留，不把复述称陌生迁移。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先列五个阶段，再合上正文，借提纲录音讲清两次重要转变，没把握的可说明。",
+          "answer": "须有本次实际声音，名称不是完整讲述，转变与顺序有据；帮助如实保留。",
+          "analysis": "须有本次实际声音，名称不是完整讲述，转变与顺序有据；帮助如实保留。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：旧布先装饰小盒，后来洗净做成抹布。录音用自己的话讲这段历程，不加入原课农夫和木地板。",
+          "answer": "讲述围绕新卡且前后相连，允许合理连接词，不把原故事整套搬入；本次声音可核对。",
+          "analysis": "讲述围绕新卡且前后相连，允许合理连接词，不把原故事整套搬入；本次声音可核对。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次再次录音讲原课历程，说明哪里借助了原文、提纲或提示。",
+          "answer": "实际声音、范围和帮助分别看，原故事重复不当未见独立新结构，也不要求逐字背原文。",
+          "analysis": "实际声音、范围和帮助分别看，原故事重复不当未见独立新结构，也不要求逐字背原文。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只讲“手推车变椅子再变地板”这一段，补上必要的处境和加工动作后录音。",
+          "answer": "两次转变连贯，旧车和椅子年老及人物拆用有据；局部讲述不能推断全篇已会。",
+          "analysis": "两次转变连贯，旧车和椅子年老及人物拆用有据；局部讲述不能推断全篇已会。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给不了解故事的听者录音讲清历程，可以先说阶段，再补变化原因。没有实际听众也可完成自己的录音。",
+          "answer": "本次声音信息够理解，未发生听众反馈就不编造；条理与原因不以录音长短单独评价。",
+          "analysis": "本次声音信息够理解，未发生听众反馈就不编造；条理与原因不以录音长短单独评价。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "tree-journey-stage-supported-own-oral-retelling-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "保留一段本次复述，听回后说明最不清楚的一处，再录修订段。",
+          "answer": "原音、疑问与修订对应，未完成部分保持；不只交最终正确稿声称全部过程已证明。",
+          "analysis": "原音、疑问与修订对应，未完成部分保持；不只交最终正确稿声称全部过程已证明。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "context-supported-explanation",
+      "familyProposal": "following-context-supported-explanation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前含义与具体对象和语境相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出线索或工具怎样支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不机械套另一义，也不补造实际结果",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "写角色放松伸展的感受，结合姿态与暖和；拟人表达不证明木板长出人体。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-context-supported-explanation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "末尾木地板“舒展着身子”，联系躺在阳台与暖阳，你怎样理解？是否真长出人的身体？",
+          "answer": "写角色放松伸展的感受，结合姿态与暖和；拟人表达不证明木板长出人体。",
+          "analysis": "写角色放松伸展的感受，结合姿态与暖和；拟人表达不证明木板长出人体。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“费力地跑来跑去”怎样帮助理解手推车为什么想休息？",
+          "answer": "费力联系多年服务和年老，支持疲劳与休息愿望；不机械套成车原本从未能跑。",
+          "analysis": "费力联系多年服务和年老，支持疲劳与休息愿望；不机械套成车原本从未能跑。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句：“纸页在桌上舒展开来，折痕仍清楚可见。”解释舒展，并说明没有被证明的变化。",
+          "answer": "可指展开平放，折痕仍在说明并未完全恢复新纸；不把舒展等于损坏全消失。",
+          "analysis": "可指展开平放，折痕仍在说明并未完全恢复新纸；不把舒展等于损坏全消失。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“骨头会吱吱嘎嘎地响”用于旧手推车，是说车有人的骨骼吗？怎样联系当前对象？",
+          "answer": "拟人写旧部件响与年老费力，不证明人的骨骼；具体对象限制词义。",
+          "analysis": "拟人写旧部件响与年老费力，不证明人的骨骼；具体对象限制词义。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "结尾“它觉得自己又变成了一棵树”里的觉得为什么不能漏掉？",
+          "answer": "觉得标明感受联想，漏掉会改成实际物态或生物变化，原文没有返生过程。",
+          "analysis": "觉得标明感受联想，漏掉会改成实际物态或生物变化，原文没有返生过程。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“服务了很多年”与“跑一次”给出的时间范围有什么不同？怎样影响你理解旧车处境？",
+          "answer": "前者长期使用，与慢慢变老相连，后者仅一次不能代替长期条件；不编具体年数。",
+          "analysis": "前者长期使用，与慢慢变老相连，后者仅一次不能代替长期条件；不编具体年数。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-context-supported-explanation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一个原课词语，用前后线索解释，再指出把它完全按字面理解会怎样偏离。",
+          "answer": "词语确在文中，含义和对象相容，例子具体；不以方法名称或抽象标签代解释。",
+          "analysis": "词语确在文中，含义和对象相容，例子具体；不以方法名称或抽象标签代解释。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "tree-journey",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与材料范围一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "给出可定位依据并说明联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "叙述事实、角色想象、感受和未知保持可区分",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，遗漏农夫加工与时间，愿望不是物理转变的直接动作；需要保留原文过程。",
+        "insufficientExample": "故事很好，我都懂了。",
+        "insufficientReason": "未执行具体任务或说明依据；解释、参考音频和字库图像不能代替本次本人表现。",
+        "alternativeAnswers": "原创人工核对参考，不是学生金样本；允许有依据的不同表述，实际未完成和帮助条件保留。"
+      },
+      "exercises": [
+        {
+          "id": "tree-journey-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原课写农夫把树制成手推车，能概括为树一有愿望就自己立刻变车吗？指出遗漏信息。",
+          "answer": "不能，遗漏农夫加工与时间，愿望不是物理转变的直接动作；需要保留原文过程。",
+          "analysis": "不能，遗漏农夫加工与时间，愿望不是物理转变的直接动作；需要保留原文过程。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原文只说好多年或很多年，能给每阶段编成正好十年吗？怎样准确概括？",
+          "answer": "不能，具体年数未给，保留较长时间或原数量范围，不把模糊时间转成精确数字。",
+          "analysis": "不能，具体年数未给，保留较长时间或原数量范围，不把模糊时间转成精确数字。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡只写纸板后来成为书签，没有写谁剪的。你可以确认什么、还不能确认什么？",
+          "answer": "可以确认给定材料变化，具体加工者或工具未知；不由常见做法补造成事实。",
+          "analysis": "可以确认给定材料变化，具体加工者或工具未知；不由常见做法补造成事实。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "插图里有蔬菜，正文写谷子土豆和儿子。复述时怎样处理插图新增细节？",
+          "answer": "区分正文与图像来源，不把图中新增品种说成原文必有；概括抓必要情节。",
+          "analysis": "区分正文与图像来源，不把图中新增品种说成原文必有；概括抓必要情节。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人从一件旧车后来变椅子得出所有手推车最后都会变椅子。原故事能支持吗？",
+          "answer": "不能，单个童话历程不证明所有物品共同结局；保留当前对象范围。",
+          "analysis": "不能，单个童话历程不证明所有物品共同结局；保留当前对象范围。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "角色想休息，是否说明它之前从未喜欢奔跑？选前后两处线索回应。",
+          "answer": "早先跑起来听风声很舒服，后来多年变老费力，时间条件变化；不能用后愿望抹去前经历。",
+          "analysis": "早先跑起来听风声很舒服，后来多年变老费力，时间条件变化；不能用后愿望抹去前经历。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "tree-journey-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把一条实际叙述、一项角色愿望和一项自己的感受分开，说明它们各从哪里来。",
+          "answer": "叙述与愿望可定位，个人感受有联系但不充当原文唯一结论，未知不强行填齐。",
+          "analysis": "叙述与愿望可定位，个人感受有联系但不充当原文唯一结论，未知不强行填齐。 不要求与参考措辞相同；实际原件和帮助条件另行核对。",
+          "expectedSeconds": 160
+        }
+      ]
+    }
+  ]
+}

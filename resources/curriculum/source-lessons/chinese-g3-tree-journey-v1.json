@@ -1,0 +1,321 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry2",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 38,
+    "pageEnd": 39,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:tree-journey-word-reading",
+      "version": 1,
+      "name": "那一定会很好八字识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在词语中识读缩努茎锯斧推吱拆八字",
+      "successCriterion": "实际声音覆盖八字，联系原词和注音；不凭文字选择替代声音，不增加本课写字表",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:tree-journey-sequence",
+      "version": 1,
+      "name": "种子到木地板变化顺序",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "童话阅读",
+      "objective": "按原文梳理种子树手推车椅子木地板的顺序",
+      "successCriterion": "区分生长与人物加工，各阶段与变化依据对应，不以最后觉得变树改写真实材料变化",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:tree-journey-wish-link",
+      "version": 1,
+      "name": "联系处境理解重复愿望",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "说明每个阶段的处境怎样引出那一定会很好的愿望",
+      "successCriterion": "区分角色想法、农夫加工与结果，改变有文中依据，不强加唯一道德结论",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:tree-journey-own-retelling",
+      "version": 1,
+      "name": "用自己的话讲清变化历程",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与表达",
+      "objective": "默读后借助阶段线索，用自己的话讲清历程",
+      "successCriterion": "本次实际讲述完整连贯，保留重要转变和原因，不用背原句或顺序标签替代讲清楚",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:tree-journey-word-reading",
+    "source:chinese:g3:02915a7d:tree-journey-sequence",
+    "source:chinese:g3:02915a7d:tree-journey-wish-link",
+    "source:chinese:g3:02915a7d:tree-journey-own-retelling",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件全部选定页已逐张查看，包括正文、作者译者、注音、识写表、课后任务和插图；AI核对不代替教师审核。",
+    "pages": [
+      {
+        "page": 38,
+        "visualChecked": true,
+        "statement": "已查看略读提示、默读与复述要求、作者流火、种子生长和农夫加工手推车开端。"
+      },
+      {
+        "page": 39,
+        "visualChecked": true,
+        "statement": "已查看车椅地板转变、各阶段愿望和满意结尾、缩努茎锯斧推吱拆八字；觉得变树不改写为实际返生，无写字表或全文背诵要求。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "那一定会很好",
+    "author": "流火",
+    "skim": true,
+    "recognitionCharacters": [
+      "缩",
+      "努",
+      "茎",
+      "锯",
+      "斧",
+      "推",
+      "吱",
+      "拆"
+    ],
+    "writingCharacters": [],
+    "fullTextRecitationRequired": false,
+    "requiredTasks": [
+      "默读",
+      "梳理种子到木地板历程",
+      "用自己的话说一说"
+    ],
+    "stages": [
+      "种子",
+      "树",
+      "手推车",
+      "椅子",
+      "木地板"
+    ],
+    "realSawAxeActivityRequired": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "那一定会很好：按阶段讲清变化和愿望",
+    "activation": {
+      "prompt": "原创虚构卡：纸盒起初装物品，后来改作玩具小屋。若说只因为它想变，小屋就自己出现了，遗漏了什么信息？",
+      "expectedObservation": "孩子能指出实际改造动作与角色想象不同，变化顺序需要材料支持。",
+      "bridge": "读种子到木地板的故事，分别找每阶段的处境、愿望和实际转变。"
+    },
+    "concept": {
+      "explanation": "默读时先抓五个阶段：种子长成树，树被农夫制成手推车，旧车拆下的木料变成椅子，椅子再拆成木片铺为木地板。第一步是生长，后几步涉及人物加工，不能说愿望本身直接造成材料变化。每个阶段的想法联系当时处境：种子想站起来呼吸，树想能跑，旧车想停下来休息，椅子想躺下，木地板最后感到舒适满足。反复的那一定会很好把变化串起来，但不要求归成唯一励志标签。末尾觉得又变成树是角色感受，不是木地板重新发芽成活。用自己的话说历程时保留阶段、转变与重要原因，可以看自己列的线索，不把看文重述记成独立陌生迁移。本课没有写字表或全文背诵要求，不安排锯斧或拆家具活动。",
+      "points": [
+        "五个阶段有先后",
+        "生长与加工分别说明",
+        "愿望与当时处境对应",
+        "角色感受不改写实际转变",
+        "默读后自己组织讲述，不只背标签"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构小故事：一个旧纸盒嫌角落太暗，想看见窗边；小禾把它改作窗台收纳盒。后来纸盒边角松了，小禾把还能用的纸板剪成书签。",
+      "steps": [
+        {
+          "explanation": "列阶段：旧纸盒、收纳盒、纸书签，先后不能因为最后喜欢书签而倒置。",
+          "board": [
+            "旧纸盒→收纳盒→纸书签"
+          ]
+        },
+        {
+          "explanation": "把想看窗边与人物改造分两项，愿望没有自己剪裁纸板。",
+          "board": [
+            "角色愿望：想看窗边",
+            "实际动作：小禾改造"
+          ]
+        },
+        {
+          "explanation": "用两三句连起来讲，保留边角松动与再次利用的原因，不照抄全部原句。",
+          "board": [
+            "阶段有序",
+            "重要原因保留",
+            "自己的话组织"
+          ]
+        }
+      ],
+      "conclusion": "线索表帮助讲述，实际声音与是否讲清仍需看本人本次表达。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "阶段、处境与转变",
+        "headers": [
+          "当前阶段",
+          "当时的想法",
+          "后来怎样变化"
+        ],
+        "rows": [
+          [
+            "种子",
+            "想站起来、呼吸空气",
+            "生长为树"
+          ],
+          [
+            "树",
+            "想能跑",
+            "农夫加工成手推车"
+          ],
+          [
+            "手推车",
+            "多年服务后想休息",
+            "旧木料被做成椅子"
+          ],
+          [
+            "椅子",
+            "老了想躺下",
+            "拆成木片拼为木地板"
+          ],
+          [
+            "木地板",
+            "舒展、暖和、满足",
+            "觉得像回到树的状态，并非实际又长成树"
+          ]
+        ],
+        "explanation": "读表后回到原文核查，用自己的话串联；表格本身不是已经发生的本人复述证据。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "阶段都认得，却把椅子放在手推车之前。",
+        "alternatives": [
+          "可能只记住对象名称，也可能没有使用变化词句。"
+        ],
+        "verification": "指出哪件东西由哪份旧材料做成，再按依赖关系排列。",
+        "correctiveFeedback": "顺序用原文的加工线索支持，不只靠猜哪个更舒服。"
+      },
+      {
+        "observation": "把木地板觉得又成树说成实际重新发芽。",
+        "alternatives": [
+          "可能忽略觉得，也可能把童话感受当自然生长事实。"
+        ],
+        "verification": "对照末句和木地板铺在阳台的状态，说明哪些改变实际发生。",
+        "correctiveFeedback": "它感到像一棵树，文中没有新发芽情节；角色感受与材料状态分开。"
+      },
+      {
+        "observation": "只背五个名称就认为已用自己的话讲清全部历程。",
+        "alternatives": [
+          "可能把线索当完整讲述，也可能遗漏转变与处境。"
+        ],
+        "verification": "请听实际讲述，检查至少一处转变与愿望的联系。",
+        "correctiveFeedback": "名称是提纲，讲述还要让听者知道前后怎样相连，不以字数或照抄量评分。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一个明确标注原创的物品再利用童话，提供完整阶段和加工动作，不要求真实工具操作。",
+      "prompt": "列出阶段与变化原因，分清愿望和实际动作，再用自己的话讲清经过。",
+      "expectedStrategy": "先核对先后和原因，再组织语言；不照搬原课愿望或补造新的实际结局。"
+    },
+    "summary": {
+      "synthesis": "沿着阶段读，联系处境理解愿望，再用自己的话讲清历程。反复表达串起故事，角色想法不替代实际变化。",
+      "takeaways": [
+        "种子树车椅地板顺序清楚",
+        "生长与人物加工不同",
+        "愿望联系当前处境",
+        "末尾感受不等实际返生"
+      ]
+    },
+    "citations": [
+      {
+        "page": 38,
+        "quote": "试着用自己的话说一说",
+        "usedFor": "transfer"
+      },
+      {
+        "page": 39,
+        "quote": "它觉得自己又变成了一棵树",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:tree-journey-word-reading",
+        "objective": "在词语中识读缩努茎锯斧推吱拆八字",
+        "successCriterion": "实际声音覆盖八字，联系原词和注音；不凭文字选择替代声音，不增加本课写字表"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:tree-journey-sequence",
+        "objective": "按原文梳理种子树手推车椅子木地板的顺序",
+        "successCriterion": "区分生长与人物加工，各阶段与变化依据对应，不以最后觉得变树改写真实材料变化"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:tree-journey-wish-link",
+        "objective": "说明每个阶段的处境怎样引出那一定会很好的愿望",
+        "successCriterion": "区分角色想法、农夫加工与结果，改变有文中依据，不强加唯一道德结论"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:tree-journey-own-retelling",
+        "objective": "默读后借助阶段线索，用自己的话讲清历程",
+        "successCriterion": "本次实际讲述完整连贯，保留重要转变和原因，不用背原句或顺序标签替代讲清楚"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "结合当前前后文和具体对象解释词句，说明方法",
+        "successCriterion": "解释与材料相容，能说明使用的线索，不机械套用同字常见义"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用具体情节支持判断，分清叙述、角色想象与个人感受",
+        "successCriterion": "指出支持关系和信息范围，不补造结果或把一个画面推成全部经历"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先完成目标、评分、结构与充分未见材料审核，再依真实日期安排。原故事重复不当陌生迁移；提示、讲解、看文和实际表现分别保留。"
+    }
+  },
+  "editorNotes": {
+    "slug": "tree-journey",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "原创讲解、例子、图表与错因已编写，检查材料、独立结构、评分金样本和充分保持库存仍需编齐审核。",
+    "reuseBoundary": "只复用明确列出的词义与细节依据目标，新增定义与等价先修保持草稿。",
+    "pacing": "较长故事分段阅读，识读、实际书写、朗读和理解表达分次安排，不以一次局部完成代表整课全部掌握。"
+  }
+}

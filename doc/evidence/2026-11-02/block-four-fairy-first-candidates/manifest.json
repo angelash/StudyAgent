@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "path": "checks/content-worklist-fairy-first.json",
+      "bytes": 2748638,
+      "sha256": "86c68b9c6a813f736ffd254343eaffd56c19dd0960a4d6338912534e5b794115"
+    },
+    {
+      "path": "checks/fairy-first-drafts-http-first.json",
+      "bytes": 1868,
+      "sha256": "1c29b79a39cb985b640b4782f344597d182789115766f2d1d9b2f9390c097a72"
+    },
+    {
+      "path": "checks/fairy-first-materials-http-first.json",
+      "bytes": 2303,
+      "sha256": "ca1636c18a2774a6c553db74bb7985db46c9c0784a73c3b22d6d7c431836d9b3"
+    },
+    {
+      "path": "checks/fairy-first-materials-static-review.json",
+      "bytes": 1247,
+      "sha256": "7241993526ca1b33df3c3af2fa1776355bbf1e8ee8877341c3c6de20c3817803"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 3336,
+      "sha256": "379c8019d558030ba6909a397a8a9586aee43e305408398bffdc48e4f510a8a1"
+    },
+    {
+      "path": "source-intake/reviewed-receipt.json",
+      "bytes": 2561,
+      "sha256": "0ef388b5aa0f474ba98273efbcc1753fa7deaa3888b3405ad1c2709587185326"
+    },
+    {
+      "path": "sources.json.gz",
+      "bytes": 61414,
+      "sha256": "e421914547dc373b6434cded8c2acb0f75ec3eb486d03e2b68d54c046b09f025"
+    },
+    {
+      "path": "tools/archive-fairy-first.cjs",
+      "bytes": 6043,
+      "sha256": "41f4aaa6aaa24423d38858100645fd57501acd0fc477e72ce8c543f7088fe0ac"
+    },
+    {
+      "path": "tools/intake-fairy-first.cjs",
+      "bytes": 1489,
+      "sha256": "8010b1d96ae8dad5d0f1d5200c2bd4fa2456ebd8cb48a29fa6ff8a0087473300"
+    },
+    {
+      "path": "tools/review-fairy-first.cjs",
+      "bytes": 4004,
+      "sha256": "11f46866b8c16f1b7bfd6c65419305c979601b075f0f72804a6520c72e7097c6"
+    },
+    {
+      "path": "tools/verify-fairy-first.cjs",
+      "bytes": 6020,
+      "sha256": "0402969b10d635e5163ae799bad99ef4b5ac8a5647005a56bdc30ec67eaf3c7d"
+    }
+  ],
+  "manifestExcludedFromOwnHash": true
+}
