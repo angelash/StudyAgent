@@ -91,5 +91,8 @@ const garden=assemble('garden',6,16,17,gardenDefinitions,[fresh],
   summary:{synthesis:'从词句中发现线索，用句意选择读法，用活动检验名称，用动作和声音读古诗。积累与理解、朗读与背诵分别看。',takeaways:['用字共性不抹平词义','朗读选择服务句意','名字与活动相联系','诗中意图不等于完成结果']},
   citations:[{page:16,quote:'下面的成语有什么特点',usedFor:'concept'},{page:17,quote:'在班里组织几个兴趣小组吧',usedFor:'transfer'}],
 },['已查看交流平台、八组成语及三句朗读交流材料，保留朗读的意义与历史语境边界。','已查看兴趣小组命名的两项提示，以及袁枚所见全文、作者朝代和插图；诗中未写已经捕到蝉，不以插图补成结论。']);
+garden.scope.poem.text=['牧童骑黄牛，','歌声振林樾。','意欲捕鸣蝉，','忽然闭口立。'];
+garden.content.concept.explanation='日积月累原诗\n《所见》\n[清] 袁枚\n'+garden.scope.poem.text.join('\n')+'\n\n园地学习\n'+garden.content.concept.explanation;
+garden.editorNotes.poemTextBoundary='Ancient public-domain poem text is included in the teaching body. Modern textbook pages and full modern annotations remain private; no extra dictation task is added.';
 for(const [slug,draft]of [['summer',summer],['portrait',portrait],['garden',garden]])fs.writeFileSync(path.join(root,'resources/curriculum/source-lessons/chinese-g3-'+slug+'-v1.json'),JSON.stringify(draft,null,2)+'\n');
 console.log(JSON.stringify({drafts:3,targets:[summer.targetIds.length,portrait.targetIds.length,garden.targetIds.length],definitionCandidates:13,published:false,learnerFactsWritten:false}));

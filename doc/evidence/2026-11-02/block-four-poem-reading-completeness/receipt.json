@@ -1,0 +1,111 @@
+{
+  "format": "study-block-four-poem-reading-completeness-v1",
+  "at": "2026-11-02T12:57:18.392Z",
+  "baseCommit": "71bf31250c944b5826d9e54e5f21049ef6db6445",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 1,
+  "newTargets": 8,
+  "newDefinitionCandidates": 7,
+  "newCandidateQuestions": 56,
+  "repairedExistingDrafts": 2,
+  "affectedExistingQuestions": 84,
+  "existingBundleQuestionsUnchanged": 259,
+  "defect": {
+    "firstNewDraftMetadataHadFullPoemsButTeachingBodyDidNot": true,
+    "earlierHttpAndPreviewDidNotProveReadingCompleteness": true,
+    "firstAttemptsPreserved": true,
+    "repairedAncientPublicDomainPoems": 7,
+    "modernTextbookPagesAndFullAnnotationsCommitted": false
+  },
+  "validation": {
+    "http": [
+      {
+        "report": "checks/landscape-poems-materials-http-reading-second.json",
+        "draftQuestions": 56,
+        "coldRead": true,
+        "originalCommandsReplayed": true,
+        "incompletePublicationRejected": true
+      },
+      {
+        "report": "checks/autumn-poems-reading-http-first.json",
+        "draftQuestions": 42,
+        "coldRead": true,
+        "originalCommandsReplayed": true,
+        "incompletePublicationRejected": true
+      },
+      {
+        "report": "checks/garden-poem-reading-http-first.json",
+        "draftQuestions": 42,
+        "coldRead": true,
+        "originalCommandsReplayed": true,
+        "incompletePublicationRejected": true
+      }
+    ],
+    "browser": [
+      {
+        "report": "browser/b4-landscape-poems-browser-reading-second/receipt.json",
+        "passed": 3,
+        "failed": 0,
+        "buildId": "ELFqjEh0ZktmjW7mcCIOL"
+      },
+      {
+        "report": "browser/b4-old-poems-reading-first/receipt.json",
+        "passed": 4,
+        "failed": 0,
+        "buildId": "ELFqjEh0ZktmjW7mcCIOL"
+      }
+    ],
+    "finalScreenshotsVisuallyReviewed": 8,
+    "firstAttemptScreenshotsSeparatelyPreserved": 3,
+    "metadataOnlyAndMissingLineRejected": 10,
+    "regeneratedOutputBytesUnchanged": 6,
+    "unrelatedDraftBytesUnchanged": 4,
+    "countsNotAddedToWholeSiteRegression": true
+  },
+  "reusedEngineering": {
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "applicationContractsAndExistingTestsUnchanged": true,
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json"
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 30,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3482,
+    "authoredFollowingMaterialCandidates": 1267,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn1267": true,
+    "next": "Continue the five remaining unit6 items, all exact-source textbook and GESP content, teacher/structure/scoring/stock review, then block5."
+  }
+}

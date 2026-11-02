@@ -1,0 +1,348 @@
+{
+  "at": "2026-11-02T12:57:37.167Z",
+  "baseCommit": "71bf31250c944b5826d9e54e5f21049ef6db6445",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD 71bf31250c944b5826d9e54e5f21049ef6db6445\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-landscape-poems-candidates.cjs",
+      "bytes": 28832,
+      "sha256": "4f70fbaa7b21d82c4105bab72e9a1fbd8d53ca109c4914f8690cc1d254e30f2a",
+      "gitNormalizedSha256": "4f70fbaa7b21d82c4105bab72e9a1fbd8d53ca109c4914f8690cc1d254e30f2a"
+    },
+    {
+      "path": "scripts/content/build-chinese-autumn-lessons.cjs",
+      "bytes": 25469,
+      "sha256": "1ebc3b4c5561d0005b0971c9565135cae69b925546dbd6e86f02b0dfc7eb165e",
+      "gitNormalizedSha256": "1ebc3b4c5561d0005b0971c9565135cae69b925546dbd6e86f02b0dfc7eb165e"
+    },
+    {
+      "path": "scripts/content/build-chinese-first-unit-activities.cjs",
+      "bytes": 22375,
+      "sha256": "c83159b5f1fa81a8575d552f44e41d12a0cfc1157444ac5fd20398bb24972c1a",
+      "gitNormalizedSha256": "c83159b5f1fa81a8575d552f44e41d12a0cfc1157444ac5fd20398bb24972c1a"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-poem-reading.cjs",
+      "bytes": 2558,
+      "sha256": "08616b605c6e8f424e7f9e61cb054205e3c11b1244dd9f03356e43b4045cc1a5",
+      "gitNormalizedSha256": "08616b605c6e8f424e7f9e61cb054205e3c11b1244dd9f03356e43b4045cc1a5"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-landscape-poems-v1.json",
+      "bytes": 20247,
+      "sha256": "844e4c209e3c38525d76b271c3d641913b241f38b964487fb48a133c9ab94e61",
+      "gitNormalizedSha256": "844e4c209e3c38525d76b271c3d641913b241f38b964487fb48a133c9ab94e61"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-autumn-poems-v1.json",
+      "bytes": 15029,
+      "sha256": "62df3a22ba1622222f0d90532b4c93b777b4fd8246707d6d47a4ce6f9bc5d519",
+      "gitNormalizedSha256": "62df3a22ba1622222f0d90532b4c93b777b4fd8246707d6d47a4ce6f9bc5d519"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-v1.json",
+      "bytes": 14752,
+      "sha256": "6e206866a74c30cea1f472db5e96c271c4705a468086a47a2f36a94739db29ec",
+      "gitNormalizedSha256": "6e206866a74c30cea1f472db5e96c271c4705a468086a47a2f36a94739db29ec"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-landscape-poems-v1.json",
+      "bytes": 52683,
+      "sha256": "a09a2271621b2d11e8d02712c6640d9482472c15fd3bd112ab77791a60af8e27",
+      "gitNormalizedSha256": "a09a2271621b2d11e8d02712c6640d9482472c15fd3bd112ab77791a60af8e27"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-autumn-v1.json",
+      "bytes": 137731,
+      "sha256": "5ce81913a0eb3bad5ca94583a19a0a2918c1e1cfe04afd7bfbb27a4bd5ed1bb0",
+      "gitNormalizedSha256": "5ce81913a0eb3bad5ca94583a19a0a2918c1e1cfe04afd7bfbb27a4bd5ed1bb0"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json",
+      "bytes": 109820,
+      "sha256": "bfca728137f10181bab3512af5c10c0767e09446c34b17d93ab84485c88c02ff",
+      "gitNormalizedSha256": "bfca728137f10181bab3512af5c10c0767e09446c34b17d93ab84485c88c02ff"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13433,
+      "sha256": "dc1270612ca55d416c7bc0a7bb7fea6ee42ad4fbc2e0a43e6b504b113d9e12de",
+      "gitNormalizedSha256": "0eab50c6d7b35d0af5cbf156933d95a52d60752adfb63ac02138db7d8ac634b6"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 174095,
+      "sha256": "a5bd779aa54a3fffe053969371cfd1d943510cb5e2df09a3a7abdeeebcc58f25",
+      "gitNormalizedSha256": "53dac09eb4f91d6b033542d6b30d466eff578dc9c6317e78e9825290a9a70d49"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 100143,
+      "sha256": "56eea73c8aa14505e0be094872da5d38ec2c080af35037c4892f61aa868a3b57",
+      "gitNormalizedSha256": "d7ead34d445118a001c5f479f02da0a1fbcf6f55b5f3ccfa7eb9fea212ee7dae"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 105558,
+      "sha256": "41ba3b025aa714943bf63340307f8804691ae94d298f335defcfc3d31e87743f",
+      "gitNormalizedSha256": "62662a9988a3d0e6f8ac3763a75461039512854921a96a0b71bae4756c5d3a1a"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 15093,
+      "sha256": "7f22ef32a67faabceecfb3d895ab3b4cbb1e502b9b2cd1e1d228cad3467db671",
+      "gitNormalizedSha256": "133477fc240c68d69c97d238d850f5525fffce0679f253df8f06ff6a5f3d4fe8"
+    },
+    {
+      "path": "doc/product/203-poem-reading-completeness-and-selected-version.md",
+      "bytes": 3342,
+      "sha256": "f41e86810746089710ede612bae5c107cae8704281298183963f4b891ddb3bcb",
+      "gitNormalizedSha256": "f41e86810746089710ede612bae5c107cae8704281298183963f4b891ddb3bcb"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 34264,
+      "sha256": "de3f089cdc3c1b526489b4768d3904641eb1a9646b39206f1df58a6968dada76",
+      "gitNormalizedSha256": "b23b2afd99e7acf7051114a016f6e9d9b0e6eeda2897e969db1553307893726f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-first/chinese-g3-landscape-poems-v1-desktop.png",
+      "bytes": 256209,
+      "sha256": "f0d414ec7d81fd11825733d8bc27db3ac230a817f1b7637fba9ae2b482a4da3f",
+      "gitNormalizedSha256": "3eb2b521a4d0b4ba6b1ce49d6fc133f0719e3b2b4db91d4ccdb3dce4e9c07cc4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-first/chinese-g3-landscape-poems-v1-mobile-table.png",
+      "bytes": 79330,
+      "sha256": "5e5dd9571d384b6e9fd5a1132fbb0f592d3d6ea3878a6d62e97ce5c9007e858e",
+      "gitNormalizedSha256": "ea812974c0891336069bb69d5afa94585d6ea046ab87420542389c845837755b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-first/chinese-g3-landscape-poems-v1-table.png",
+      "bytes": 62363,
+      "sha256": "655b59ada6b8f9f1b7f07f5190732ceae41d9a0418a32c0cee4d3cb041b8dc28",
+      "gitNormalizedSha256": "da61db4e6f3fe8170a9d66c648916b744098411961be3c5fa28a45d9eb40e9d3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-first/receipt.json",
+      "bytes": 831,
+      "sha256": "dbebfdba4a9e8407b38531a939c7eeefaf6f56f2a6cbbed3f3c2f781ffa597d0",
+      "gitNormalizedSha256": "dbebfdba4a9e8407b38531a939c7eeefaf6f56f2a6cbbed3f3c2f781ffa597d0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-first/runner.cjs",
+      "bytes": 16629,
+      "sha256": "8453b69483745389ce9c845049cdf4b23b14623a6c59c153ae890631a4930e3e",
+      "gitNormalizedSha256": "8453b69483745389ce9c845049cdf4b23b14623a6c59c153ae890631a4930e3e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-reading-second/chinese-g3-landscape-poems-v1-desktop.png",
+      "bytes": 218035,
+      "sha256": "3bf0a7c0c80b9153707c78f9940c4c14471a5c03955b3ac008970a08990f76dc",
+      "gitNormalizedSha256": "4c7b5dfad5ac52ab8f245426472298f5ff4ba92c7f8e3cefc012ab13d861d00d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-reading-second/chinese-g3-landscape-poems-v1-mobile-table.png",
+      "bytes": 79330,
+      "sha256": "5e5dd9571d384b6e9fd5a1132fbb0f592d3d6ea3878a6d62e97ce5c9007e858e",
+      "gitNormalizedSha256": "ea812974c0891336069bb69d5afa94585d6ea046ab87420542389c845837755b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-reading-second/chinese-g3-landscape-poems-v1-table.png",
+      "bytes": 62363,
+      "sha256": "655b59ada6b8f9f1b7f07f5190732ceae41d9a0418a32c0cee4d3cb041b8dc28",
+      "gitNormalizedSha256": "da61db4e6f3fe8170a9d66c648916b744098411961be3c5fa28a45d9eb40e9d3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-reading-second/receipt.json",
+      "bytes": 831,
+      "sha256": "e7989662bbc5a650a147fc0f44f5178dbe0719eb6be5ecf1f27869715909a148",
+      "gitNormalizedSha256": "e7989662bbc5a650a147fc0f44f5178dbe0719eb6be5ecf1f27869715909a148"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-landscape-poems-browser-reading-second/runner.cjs",
+      "bytes": 16629,
+      "sha256": "8453b69483745389ce9c845049cdf4b23b14623a6c59c153ae890631a4930e3e",
+      "gitNormalizedSha256": "8453b69483745389ce9c845049cdf4b23b14623a6c59c153ae890631a4930e3e"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/chinese-g3-autumn-poems-v1-desktop.png",
+      "bytes": 172549,
+      "sha256": "655e8f7d071940f2eebb487c82efc0c0623b8b1ffe4b8956eef445c4e71d071d",
+      "gitNormalizedSha256": "10dfa08be191132fd8de5fc844a7e5f1703d285dbe0bb3fbfa2eb14d5157aa4f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/chinese-g3-autumn-poems-v1-mobile-table.png",
+      "bytes": 77483,
+      "sha256": "db0e9a51c66e4bef681c9e2652dd4cc65cf58799ad69af1916de37cb1bb7aea6",
+      "gitNormalizedSha256": "dc736bdbde0fd40da32c843ca739e099154544ba6aa9f8d7695d72f180ffb7bf"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/chinese-g3-autumn-poems-v1-table.png",
+      "bytes": 36929,
+      "sha256": "63a5996a06be8cc8ec2e325566c434a0355f0c2dc4e76c9425095b3910dad711",
+      "gitNormalizedSha256": "92e27ae44eb3c66cee34e272f56fb78ed5df3f7e7c9ad2661ef7c0d781388820"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/chinese-g3-garden-v1-desktop.png",
+      "bytes": 206707,
+      "sha256": "a0f6884667de0fc3134e0f1684387034d46a5dd9491d47033cc33e2ac2a69bbb",
+      "gitNormalizedSha256": "0a0bab83521ccf78254252b1bcc4d34cafa49e4c6078113791b8f0f0ea855744"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/chinese-g3-garden-v1-table.png",
+      "bytes": 40041,
+      "sha256": "d4f2994a04154c6cdfa8b62d6a0908a9590013323a2b91cc0586bcea6c09d4cb",
+      "gitNormalizedSha256": "2be5f7a5d928a4996a1bcaf42daa00de57e34b8766d9454e304551c4644ecdc6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/receipt.json",
+      "bytes": 999,
+      "sha256": "1c691b48c00390448c157d3cc700a7a2f9368f03df168bc4024199462b26eac4",
+      "gitNormalizedSha256": "1c691b48c00390448c157d3cc700a7a2f9368f03df168bc4024199462b26eac4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/browser/b4-old-poems-reading-first/runner.cjs",
+      "bytes": 16691,
+      "sha256": "8e87c883f64f27f12badc43b8b69d605a40ab0ec1643aa281b17ab93783d3825",
+      "gitNormalizedSha256": "8e87c883f64f27f12badc43b8b69d605a40ab0ec1643aa281b17ab93783d3825"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/autumn-poems-reading-http-first.json",
+      "bytes": 1605,
+      "sha256": "aa471a294d6146ad7f5014d24752b81b29f4dcc1191d9ee6a341c66aaded7734",
+      "gitNormalizedSha256": "aa471a294d6146ad7f5014d24752b81b29f4dcc1191d9ee6a341c66aaded7734"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/b4-poem-reading-archive-scan.json",
+      "bytes": 997,
+      "sha256": "fb44bcbede685d6800c6630a44bcfcdc0054cf5640be550b5c948ab749125929",
+      "gitNormalizedSha256": "fb44bcbede685d6800c6630a44bcfcdc0054cf5640be550b5c948ab749125929"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/content-worklist-poem-reading-final.json.gz",
+      "bytes": 113842,
+      "sha256": "e73411073ac245aa45b01409bb92bf9143a88730beca1ded86b4ebf5c0552781",
+      "gitNormalizedSha256": "5e7a067b855eecfe0381d56b0eb21f2a2a960499026543e267978c338c54d995"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/garden-poem-reading-http-first.json",
+      "bytes": 1608,
+      "sha256": "38872c9a247f39862c55c2b1a8022180d13a2f43a8b33bf977fbc895c94ed870",
+      "gitNormalizedSha256": "38872c9a247f39862c55c2b1a8022180d13a2f43a8b33bf977fbc895c94ed870"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-before-reading-text.json.gz",
+      "bytes": 39586,
+      "sha256": "a6b1ca0bf3d070211d89a70a246a11041f003b4a1b1d5598ddb73eca9881c77d",
+      "gitNormalizedSha256": "a6b1ca0bf3d070211d89a70a246a11041f003b4a1b1d5598ddb73eca9881c77d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-materials-http-first.json",
+      "bytes": 1617,
+      "sha256": "bbe7daa53ee3df5f75168c3cfbca4814beea43d39ccd4328e3be649352e9827a",
+      "gitNormalizedSha256": "bbe7daa53ee3df5f75168c3cfbca4814beea43d39ccd4328e3be649352e9827a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-materials-http-reading-second.json",
+      "bytes": 1617,
+      "sha256": "84ef063d45d9402ed14a59630cd7b13392f9faadfc7f68a9329577e532d9d812",
+      "gitNormalizedSha256": "84ef063d45d9402ed14a59630cd7b13392f9faadfc7f68a9329577e532d9d812"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-materials-static-reading-second.json",
+      "bytes": 856,
+      "sha256": "5ff5f9f1ce7d75c575b0b69805fc9a9b405238e4805a341b15a6e22c2aa0a8f3",
+      "gitNormalizedSha256": "5ff5f9f1ce7d75c575b0b69805fc9a9b405238e4805a341b15a6e22c2aa0a8f3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-materials-static-review.json",
+      "bytes": 619,
+      "sha256": "759c96b4982c987a351fe7991a0dd68b7fdceb6029dfe3fde3fcb406299405bf",
+      "gitNormalizedSha256": "759c96b4982c987a351fe7991a0dd68b7fdceb6029dfe3fde3fcb406299405bf"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/landscape-poems-reading-text-revision.json",
+      "bytes": 913,
+      "sha256": "89122a973df4581f1f48dcc442cdee187d05af26f94cf79754ca5af91b28c958",
+      "gitNormalizedSha256": "89122a973df4581f1f48dcc442cdee187d05af26f94cf79754ca5af91b28c958"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/old-poems-before-reading-fix.json.gz",
+      "bytes": 126074,
+      "sha256": "c152937d7844d17b99a7a9ec18cc8d61c3636e4efaf152b6dc1289cc18d476f4",
+      "gitNormalizedSha256": "45e6be20dc9eabc1ae8d6e8c53d104e1bffd61dbc38418fee41ecc344c982ae6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/old-poems-reading-revision.json",
+      "bytes": 1758,
+      "sha256": "1f7bca45a0b2234e97757e954993e74e86c01b9e67e840be7f2c78e224154b20",
+      "gitNormalizedSha256": "1f7bca45a0b2234e97757e954993e74e86c01b9e67e840be7f2c78e224154b20"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/poem-generators-readback-first.json",
+      "bytes": 1233,
+      "sha256": "23ef9ae5035f74c2df726540f1f36ddf44efb6cf1dcd46e91e4f10330354be76",
+      "gitNormalizedSha256": "23ef9ae5035f74c2df726540f1f36ddf44efb6cf1dcd46e91e4f10330354be76"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/checks/poem-reading-regression-first.json",
+      "bytes": 313,
+      "sha256": "e160895f708275681e1df9fecc6ebaa9033d06b3954dad6d2b2d049a683d6b17",
+      "gitNormalizedSha256": "e160895f708275681e1df9fecc6ebaa9033d06b3954dad6d2b2d049a683d6b17"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/manifest.json",
+      "bytes": 6939,
+      "sha256": "c1d9ffdc8799111af680b5439b0a0595c98734f0a81d68adbdc78cf443691923",
+      "gitNormalizedSha256": "c1d9ffdc8799111af680b5439b0a0595c98734f0a81d68adbdc78cf443691923"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/receipt.json",
+      "bytes": 3484,
+      "sha256": "4c6a7bb9eed076c07327ee43de6b3a95f53bd374bd9360fe750071f745cedfcd",
+      "gitNormalizedSha256": "4c6a7bb9eed076c07327ee43de6b3a95f53bd374bd9360fe750071f745cedfcd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/source-intake/b4-source-landscape-unit-first.json",
+      "bytes": 6447,
+      "sha256": "04df049277d3cd915b22a188cd2ebc6352e84e3655289591112b483b9aae11fd",
+      "gitNormalizedSha256": "04df049277d3cd915b22a188cd2ebc6352e84e3655289591112b483b9aae11fd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/source-intake/b4-source-unit-end-first.json",
+      "bytes": 2075,
+      "sha256": "887dd6304e8322eff2669cc9fdb95d7816f9acc7f65745eda58661201ce7deab",
+      "gitNormalizedSha256": "887dd6304e8322eff2669cc9fdb95d7816f9acc7f65745eda58661201ce7deab"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/source-intake/b4-source-unit-two-first.json",
+      "bytes": 5015,
+      "sha256": "e0584329bbf0385585eee93c19d69b02ec1cfbed8908b3e7b562b905e4aa38a9",
+      "gitNormalizedSha256": "e0584329bbf0385585eee93c19d69b02ec1cfbed8908b3e7b562b905e4aa38a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/sources.json.gz",
+      "bytes": 149896,
+      "sha256": "7bbdf46f26056815b9b9682eda49b1180522fc9a55388a301b9f31e02897f956",
+      "gitNormalizedSha256": "7bbdf46f26056815b9b9682eda49b1180522fc9a55388a301b9f31e02897f956"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/tools/archive-poem-reading.cjs",
+      "bytes": 6748,
+      "sha256": "4a72e5d8380acdb35860c01d1906965461eb8641b9eede3b6d6dc14d1c73a389",
+      "gitNormalizedSha256": "4a72e5d8380acdb35860c01d1906965461eb8641b9eede3b6d6dc14d1c73a389"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-poem-reading-completeness/tools/stage-poem-reading.cjs",
+      "bytes": 3418,
+      "sha256": "a4bdc1eeb0686240090afa96ed7ce4a7d657b84b2c99810767edfa9d576bf6af",
+      "gitNormalizedSha256": "a4bdc1eeb0686240090afa96ed7ce4a7d657b84b2c99810767edfa9d576bf6af"
+    }
+  ]
+}

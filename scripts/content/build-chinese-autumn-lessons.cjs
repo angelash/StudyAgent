@@ -96,5 +96,14 @@ const rain=assemble('autumn-rain',3,24,26,rainDefinitions,
  summary:{synthesis:'读出不同方面，再用具体景物支持。写得有想象，也要保持条件联系；朗读、第二段背诵、识读和实际书写分别留证。',takeaways:['方面不是空标签','细节支持分类','仿写前后有联系','自然描述保留对象与地域条件']},
  citations:[{page:25,quote:'有感情地朗读课文。背诵第2自然段。',usedFor:'summary'},{page:25,quote:'想象一下，秋天的雨还会把颜色分给谁呢',usedFor:'transfer'}],
  },['已查看正文前部、作者脚注、颜色和气味的组织及词义提示，不把文学钥匙或颜料当自然因果。','已查看后部过冬准备与总结、11字识读和13字写字表及全部课后要求，明确仅背诵第2自然段。','已查看太阳时钟阅读链接及作者译者，保留具体地区与对象条件；自然事实仍须学科复核，不把节选描述扩大为普遍规律。']);
+// Public-domain poems must reach the real reading body, not just scope metadata.
+const poemTexts=[
+ ['远上寒山石径斜，','白云生处有人家。','停车坐爱枫林晚，','霜叶红于二月花。'],
+ ['荷尽已无擎雨盖，','菊残犹有傲霜枝。','一年好景君须记，','最是橙黄橘绿时。'],
+ ['萧萧梧叶送寒声，','江上秋风动客情。','知有儿童挑促织，','夜深篱落一灯明。'],
+];
+poems.scope.poems.forEach((poem,index)=>{poem.text=poemTexts[index];});
+poems.content.concept.explanation='本课原诗\n'+poems.scope.poems.map(poem=>'《'+poem.title+'》\n['+poem.dynasty+'] '+poem.author+'\n'+poem.text.join('\n')).join('\n\n')+'\n\n读诗与理解\n'+poems.content.concept.explanation;
+poems.editorNotes.poemTextBoundary='Ancient public-domain poem texts are included in the teaching body. Modern textbook pages and full modern annotations remain private; explanations are original.';
 for(const [slug,draft] of [['autumn-poems',poems],['pavement',pavement],['autumn-rain',rain]])fs.writeFileSync(path.join(root,'resources/curriculum/source-lessons/chinese-g3-'+slug+'-v1.json'),JSON.stringify(draft,null,2)+'\n');
 console.log(JSON.stringify({drafts:3,targets:[poems.targetIds.length,pavement.targetIds.length,rain.targetIds.length],definitionCandidates:15,published:false,learnerEvidenceCreated:false}));
