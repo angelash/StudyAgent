@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-02T19:47:27.757Z",
+  "passed": true,
+  "targets": 6,
+  "candidates": 42,
+  "modes": {
+    "audio_record": 14,
+    "short_answer": 14,
+    "image_upload": 14
+  },
+  "sourcePages": 10,
+  "sourcePageRange": [
+    27,
+    36
+  ],
+  "generatorByteIdentical": true,
+  "sourcePreflightPassed": true,
+  "sourcePageImageAndTextHashesMatched": true,
+  "sync": [
+    {
+      "file": "scripts/content/build-english-g3-look-candidates.cjs",
+      "sha256": "0f10f6a4422b530fd528284098689f1e5f8360099fd8d14faeb16ef44fdb9d7a"
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-look-v1.json",
+      "sha256": "165bbfae1d152cad8779dc544b10b9e8d5bf90e2d4f24d541371c348c65b7ff3"
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-look-v1.json",
+      "sha256": "62e490b0a4103360e7371590653cca6fb0091fef962277850466ca8419d527d3"
+    }
+  ],
+  "frozenApplicationAndCompiledInputs": 1930,
+  "applicationInputsChanged": [],
+  "mainApplicationSourceMatchesQa": true,
+  "threeEnglishUnits": {
+    "targets": 20,
+    "candidates": 140,
+    "sourcePages": 30,
+    "sourceRangesContinuous": true,
+    "targetIdsUnique": true
+  },
+  "teacherReviewed": false,
+  "published": 0,
+  "learnerResponses": 0,
+  "authenticListeningStimuliIncluded": false,
+  "allPageActivitiesDelivered": false
+}

@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "look",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-look-v1.json",
+      "sha256": "165bbfae1d152cad8779dc544b10b9e8d5bf90e2d4f24d541371c348c65b7ff3",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit3:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 27,
+        "pageEnd": 36,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "42道未审原创候选，6目标各3即时4拟议间隔，14录音/14图像/14文字。问候与本人感受、十一部位词与指称、动作和图示、Ee至Ii及ice例分别核；真实听力、教师/评分/独立题族与充分保持库存未完成。",
+  "groups": [
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-greet",
+      "structure": "current-greeting-and-role-response",
+      "familyProposal": "349949e1-current-greeting-and-role-response",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前问句功能相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与本人情况分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际声音可理解与帮助另核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录I’m fine, thank you.或Very well, thanks.，回应问候。需听实际声音核可理解程度，角色很好不证明本人实际感受，也不靠文字代开口。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Kai感觉很好，Lin问How are you?。本人录Kai的回应，不把角色状态当本人真实资料。",
+          "answer": "可录I’m fine, thank you.或Very well, thanks.，回应问候。需听实际声音核可理解程度，角色很好不证明本人实际感受，也不靠文字代开口。",
+          "analysis": "可录I’m fine, thank you.或Very well, thanks.，回应问候。需听实际声音核可理解程度，角色很好不证明本人实际感受，也不靠文字代开口。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色An问How are you?，你演感觉很好的Bo。录一个回应，不能只报My name’s Bo替近况问候。",
+          "answer": "可说I’m fine, thank you.等当前合适回应；姓名介绍与近况问题不同。角色卡和本人情况分开，录音及提示须实际核，不补造An回话。",
+          "analysis": "可说I’m fine, thank you.等当前合适回应；姓名介绍与近况问题不同。角色卡和本人情况分开，录音及提示须实际核，不补造An回话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创单人练Lin与Mei两角：Lin问候，Mei按“很好”卡回应。录两句并说明只是自己切换角色。",
+          "answer": "可录How are you? / I’m fine, thank you.，问答顺序清楚；单人录两角不等真实同伴交流，是否看参考和声音可理解程度另核。",
+          "analysis": "可录How are you? / I’m fine, thank you.，问答顺序清楚；单人录两角不等真实同伴交流，是否看参考和声音可理解程度另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：角色Yu被问How are you?且卡明说很好。本人先录回应；本人不愿谈真实感受可只演角色。",
+          "answer": "可说Very well, thanks.或I’m fine, thank you.，按给定角色回应。实际间隔、原答和提示另核，角色状态不代本人真实资料或独立保持。",
+          "analysis": "可说Very well, thanks.或I’m fine, thank you.，按给定角色回应。实际间隔、原答和提示另核，角色状态不代本人真实资料或独立保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期新角色Lin被问What’s your name?，而不是How are you?。本人录按当前问题的回答，不机械沿旧近况句。",
+          "answer": "可录My name’s Lin.或I’m Lin.，当前问名字不能只回I’m fine。需实际听核本人发声，角色资料、真实间隔和帮助分别保持。",
+          "analysis": "可录My name’s Lin.或I’m Lin.，当前问名字不能只回I’m fine。需实际听核本人发声，角色资料、真实间隔和帮助分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期自己录问候和很好回应后，能把这段角色录音存作本人所有日子都很好或已与同伴交谈吗？请录并限定范围。",
+          "answer": "本人可录How are you? / Very well, thanks.，但注明单人角色练习。不能推本人长期感受或同伴实际参与；声音、实际间隔和提示分别核。",
+          "analysis": "本人可录How are you? / Very well, thanks.，但注明单人角色练习。不能推本人长期感受或同伴实际参与；声音、实际间隔和提示分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-current-greeting-and-role-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期卡Mei感觉很好，你先看过参考再录回应。可以录吗？是否能把先看的帮助删掉称未见独立首答？",
+          "answer": "可以录I’m fine, thank you.等供听核，但先看参考的帮助保留，不倒写独立首答。实际间隔及角色范围另核，保存文件不自动等口语合格。",
+          "analysis": "可以录I’m fine, thank you.等供听核，但先看参考的帮助保留，不倒写独立首答。实际间隔及角色范围另核，保存文件不自动等口语合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-parts",
+      "structure": "whole-body-words-and-current-my-your",
+      "familyProposal": "349949e1-whole-body-words-and-current-my-your",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "十一词按当前语义区分",
+          "weight": 0.4
+        },
+        {
+          "criterion": "my/your跟随当前角色",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词牌图示与本人事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分别头/脸、胳膊/手、腿/脚，词义不同不能任意互换。当前只有文字语义，没有实物图或声音不宣称图词听辨，本人身体情况也未由文字给出。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字列head/face、arm/hand、leg/foot，请各说明对应部位；这些词相连或相近就可以任意互换吗？",
+          "answer": "分别头/脸、胳膊/手、腿/脚，词义不同不能任意互换。当前只有文字语义，没有实物图或声音不宣称图词听辨，本人身体情况也未由文字给出。",
+          "analysis": "分别头/脸、胳膊/手、腿/脚，词义不同不能任意互换。当前只有文字语义，没有实物图或声音不宣称图词听辨，本人身体情况也未由文字给出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创甲对乙说This is my face，随后乙对甲说Touch your head。两句my、your分别指谁，face与head是否同一标签？",
+          "answer": "第一句my指说话者甲，第二句your指受话者甲；face脸与head头不同。要跟随当前说话与受话角色，不能把your永远固定为老师。",
+          "analysis": "第一句my指说话者甲，第二句your指受话者甲；face脸与head头不同。要跟随当前说话与受话角色，不能把your永远固定为老师。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡ear、eye、nose、mouth、body，请分别对应词义；body在一张木偶分部图里指中间身体，能由此强定所有语境只能是躯干吗？",
+          "answer": "对应耳、眼、鼻、嘴、身体；body在该图可指中间躯干部位，但日常也可指整个身体，需看当前语境。不能把一个模型的划分强套所有材料。",
+          "analysis": "对应耳、眼、鼻、嘴、身体；body在该图可指中间躯干部位，但日常也可指整个身体，需看当前语境。不能把一个模型的划分强套所有材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：三张完整词卡hand、arm、hand，问hand词卡有几张。能据结果说本人有几只手吗？",
+          "answer": "完整hand词卡两张，arm另是胳膊；词出现次数不是本人身体部位数量。实际间隔、原答和帮助另核，不由词牌反填本人资料。",
+          "analysis": "完整hand词卡两张，arm另是胳膊；词出现次数不是本人身体部位数量。实际间隔、原答和帮助另核，不由词牌反填本人资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期角色交换：乙对甲说Look at my nose，甲再对乙说Touch your ear。各句所指是谁的哪一部分？",
+          "answer": "第一句my指乙的鼻子，第二句your指乙的耳朵；按每句当前说话者与受话者核。鼻子和耳朵不因都在头部就互换，实际动作没有给出。",
+          "analysis": "第一句my指乙的鼻子，第二句your指乙的耳朵；按每句当前说话者与受话者核。鼻子和耳朵不因都在头部就互换，实际动作没有给出。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期新卡给foot、leg、face、head，按“脸、脚、头、腿”顺序配词，不按卡原顺序抄。",
+          "answer": "依次face、foot、head、leg，按当前完整词义配；相近部位不混。文字任务不代真实看图、听音或本人动作，实际到期及帮助另核。",
+          "analysis": "依次face、foot、head、leg，按当前完整词义配；相近部位不混。文字任务不代真实看图、听音或本人动作，实际到期及帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-whole-body-words-and-current-my-your-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期原创纸偶图标Lin、Kai，句子Kai说This is my hand。能只因Lin站左边就把my指Lin并改学生本人记录吗？",
+          "answer": "不能，my由当前说话者Kai确定，指Kai纸偶的手，不由左右位置决定。纸偶角色不改学生本人身份或身体记录，原答、帮助及间隔分别核。",
+          "analysis": "不能，my由当前说话者Kai确定，指Kai纸偶的手，不由左右位置决定。纸偶角色不改学生本人身份或身体记录，原答、帮助及间隔分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-actions",
+      "structure": "given-action-object-and-visible-work",
+      "familyProposal": "349949e1-given-action-object-and-visible-work",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "动作和部位词对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人作品和过程区别",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字声音与实际行动分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "示意图应圈鼻子，不能圈耳朵或整头代鼻子；纸偶示意不等本人已经触摸。没有声音不认听辨，实际过程、原答和帮助另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字Touch your nose。可上传本人手绘纸偶并圈出应触摸部位，标为“示意”；不需要本人脸照，未真实触摸如实说明。",
+          "answer": "示意图应圈鼻子，不能圈耳朵或整头代鼻子；纸偶示意不等本人已经触摸。没有声音不认听辨，实际过程、原答和帮助另核。",
+          "analysis": "示意图应圈鼻子，不能圈耳朵或整头代鼻子；纸偶示意不等本人已经触摸。没有声音不认听辨，实际过程、原答和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创给Clap your hands文字。上传本人画的动作示意或实际可见材料，并说明单张双手展开图能否证明已拍手。",
+          "answer": "clap要求拍手，单张手展开仅见状态，不能独证拍击过程。示意图明确非本人动作，不需脸照；真实听辨和帮助、全过程分别另核。",
+          "analysis": "clap要求拍手，单张手展开仅见状态，不能独证拍击过程。示意图明确非本人动作，不需脸照；真实听辨和帮助、全过程分别另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创文字Wave your arms与Stamp your foot二选一，请画两幅不同部位的示意并标词；不必实际做动作。",
+          "answer": "挥胳膊与跺脚的动作对象不同，图或标注对应arm/foot；两张示意不代本人执行、声音输入或连续过程，未做如实保留。",
+          "analysis": "挥胳膊与跺脚的动作对象不同，图或标注对应arm/foot；两张示意不代本人执行、声音输入或连续过程，未做如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：文字Close your eyes，可画原创纸偶闭眼示意并说明；一张图能证明本人听音后独立完成吗？",
+          "answer": "图可说明闭眼要求和示意状态，不能证明本人听过输入声音或完成真实动作。无需脸照，实际到期、原答和帮助另核，示意不冒充本人过程。",
+          "analysis": "图可说明闭眼要求和示意状态，不能证明本人听过输入声音或完成真实动作。无需脸照，实际到期、原答和帮助另核，示意不冒充本人过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期文字Open your mouth，请画示意并标明嘴部，不能沿旧题画打开铅笔盒。没有实际动作也可以如实只交图。",
+          "answer": "应示意张嘴，对象mouth不是pencil box。画图用于理解文字，不认本人已经张口、听辨或无帮助，真实间隔和原答另核。",
+          "analysis": "应示意张嘴，对象mouth不是pencil box。画图用于理解文字，不认本人已经张口、听辨或无帮助，真实间隔和原答另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期文字Shake your legs与Shake your body，画标清两种当前对象的纸偶示意，不能因相连就写同一部位词。",
+          "answer": "legs是腿，body在此身体或模型中间身体范围；按当前对象标明。静图不能独证摇动过程或本人听辨，示意与真实行动、帮助和间隔分开。",
+          "analysis": "legs是腿，body在此身体或模型中间身体范围；按当前对象标明。静图不能独证摇动过程或本人听辨，示意与真实行动、帮助和间隔分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-given-action-object-and-visible-work-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期文字Touch your head，而提交图只圈mouth。请在本人纸偶图上说明或改到当前部位，是否修改及参考帮助保留。",
+          "answer": "应指头部head，不把嘴mouth局部代整个目标；修改过程和看参考情况如实保留。示意不认本人真实触摸或听辨，实际到期另核。",
+          "analysis": "应指头部head，不把嘴mouth局部代整个目标；修改过程和看参考情况如实保留。示意不认本人真实触摸或听辨，实际到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-letters",
+      "structure": "e-to-i-pairs-and-actual-writing",
+      "familyProposal": "349949e1-e-to-i-pairs-and-actual-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "五组大小写配对",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人字形可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完成图不代笔顺或声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五组大小写对应、本人字形可辨；字体差异可核具体形式，不因形不同就认不同字母。完成图不证明笔顺、听音或发音，看样本帮助保留。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Ee、Ff、Gg、Hh、Ii并上传，可看样本但如实说明；不要用印刷字截图代自己实际书写。",
+          "answer": "五组大小写对应、本人字形可辨；字体差异可核具体形式，不因形不同就认不同字母。完成图不证明笔顺、听音或发音，看样本帮助保留。",
+          "analysis": "五组大小写对应、本人字形可辨；字体差异可核具体形式，不因形不同就认不同字母。完成图不证明笔顺、听音或发音，看样本帮助保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创先本人写Gg和Hh并上传，说明大写与小写看起来不同是否还能成对；未写可如实说明。",
+          "answer": "G/g与H/h仍各为同一字母大小写，实际手写须可辨。不同字体细节不自动是错误，印刷截图不代本人，声音和书写过程需另核。",
+          "analysis": "G/g与H/h仍各为同一字母大小写，实际手写须可辨。不同字体细节不自动是错误，印刷截图不代本人，声音和书写过程需另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写Ii与Ee两组上传并标明大小写，不能用念字母歌代作品；若暂不写就说明未做。",
+          "answer": "I/i、E/e配对正确且本人的字形清楚；唱歌不提供这次实际书写。完成图不独证正确笔顺或词音，样本、提示与未做状态如实保留。",
+          "analysis": "I/i、E/e配对正确且本人的字形清楚；唱歌不提供这次实际书写。完成图不独证正确笔顺或词音，样本、提示与未做状态如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：按Hh、Ff、Ee新顺序本人先写并上传，不机械套旧排列；需要看样本可如实说明。",
+          "answer": "三组按当前顺序对应、字形可辨，实际间隔和帮助保持。图不代听辨、发音或笔顺全过程，不把临写倒记成独立首答。",
+          "analysis": "三组按当前顺序对应、字形可辨，实际间隔和帮助保持。图不代听辨、发音或笔顺全过程，不把临写倒记成独立首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期本人写Gg、Ii两组后上传。有人因印刷g与手写样本细节不同就认完全另一个字母，怎样限定核对？",
+          "answer": "先核实际样本允许字形与大小写身份，不能只凭字体细节改字母；本人作品须可辨。图不证明词音或独立书写过程，真实到期和帮助另核。",
+          "analysis": "先核实际样本允许字形与大小写身份，不能只凭字体细节改字母；本人作品须可辨。图不证明词音或独立书写过程，真实到期和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期只有旧Ee至Ii印刷表，没有本人新写。可以说明未写或现在实际写后上传，能把旧表自动当本次作业吗？",
+          "answer": "不能把旧印刷表当本人本次书写；可如实未写或新写后核字形。实际间隔与样本帮助保留，不由旧表推出本人发音、笔顺或保持通过。",
+          "analysis": "不能把旧印刷表当本人本次书写；可如实未写或新写后核字形。实际间隔与样本帮助保留，不由旧表推出本人发音、笔顺或保持通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-look-e-to-i-pairs-and-actual-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期本人写Ee/Ff/Gg/Hh/Ii一张完成图。它可支持字形核对，但能独自支持全部听音、词首音和无人提示结论吗？",
+          "answer": "不能，完成图只支持可见书写范围，听音、发音、过程和提示各需实际材料。真实到期与本人原答另核，不由一张图扩大为所有表现合格。",
+          "analysis": "不能，完成图只支持可见书写范围，听音、发音、过程和提示各需实际材料。真实到期与本人原答另核，不由一张图扩大为所有表现合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-sounds",
+      "structure": "exact-e-to-i-exemplars-not-global-phonics",
+      "familyProposal": "349949e1-exact-e-to-i-exemplars-not-global-phonics",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前完整示例词可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "ice例与原范围一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "声音示范帮助及规则边界清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人读四个完整词供听核；每组共同首字母不等其余声音全同。字母名与词音分别学，听示范帮助保留，无真实输入声音不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创请本人录egg、elephant与face、foot两组，若先听教师示范如实说明；两个词有相同首字母就须全部声音相同吗？",
+          "answer": "本人读四个完整词供听核；每组共同首字母不等其余声音全同。字母名与词音分别学，听示范帮助保留，无真实输入声音不认听辨。",
+          "analysis": "本人读四个完整词供听核；每组共同首字母不等其余声音全同。字母名与词音分别学，听示范帮助保留，无真实输入声音不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人录green、gift及hand、hi，按当前两组说。能由前组就断言所有g开头词都与本组一样读吗？",
+          "answer": "需听实际完整词是否可理解，前组g、后组h是当前词例；不能推广所有g或h词的读音。字母名不替读词，声音示范与本人原答分开。",
+          "analysis": "需听实际完整词是否可理解，前组g、后组h是当前词例；不能推广所有g或h词的读音。字母名不替读词，声音示范与本人原答分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本页i示例明确ice、ice cream。本人录这两个当前词例；能把它换成短i例并说原件就是那个示例吗？",
+          "answer": "应按当前ice、ice cream实际读供核，不能擅换短i词再冒称原件内容。字母名字与具体词音分别核，未有输入声音不认听辨，帮助如实说明。",
+          "analysis": "应按当前ice、ice cream实际读供核，不能擅换短i词再冒称原件内容。字母名字与具体词音分别核，未有输入声音不认听辨，帮助如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：本人先录elephant、egg，不念字母名代整个词；是否先听了样本和实际间隔分别说明。",
+          "answer": "本人录完整elephant、egg供听核，不用Ee字母名代两词。实际到期和示范帮助另核，文件存在不等发音已合格或独立保持。",
+          "analysis": "本人录完整elephant、egg供听核，不用Ee字母名代两词。实际到期和示范帮助另核，文件存在不等发音已合格或独立保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期录gift、green与foot、face两组，说明共同字母不等每个音都相同；不能由几词推广所有读音规则。",
+          "answer": "实际听本人完整词的可理解程度，按当前词例比较；不把共同首字母扩为全词同音或所有g/f词规则。间隔、原答和帮助分别核。",
+          "analysis": "实际听本人完整词的可理解程度，按当前词例比较；不把共同首字母扩为全词同音或所有g/f词规则。间隔、原答和帮助分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期本人录hi、hand与ice、ice cream。字母名字、具体词音与这次真实录音能否只凭印刷表同时认全部通过？",
+          "answer": "不能，需实际听本人词音；印刷表只给词形和当前示例，i仍用ice范围。输入声音、本人发声、帮助与真实间隔各核，不补听辨通过。",
+          "analysis": "不能，需实际听本人词音；印刷表只给词形和当前示例，i仍用ice范围。输入声音、本人发声、帮助与真实间隔各核，不补听辨通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-exact-e-to-i-exemplars-not-global-phonics-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期先听过教师示范ice cream再录本人尝试，能删掉示范记录并改成未见独立首答吗？请录并如实说明顺序。",
+          "answer": "可以录本人ice cream供核，但先听示范的帮助和时间顺序保持，不倒写独立首答。实际声音是否可理解与到期间隔另核，不把文件自动判合格。",
+          "analysis": "可以录本人ice cream供核，但先听示范的帮助和时间顺序保持，不倒写独立首答。实际声音是否可理解与到期间隔另核，不把文件自动判合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "look",
+      "atomId": "source:english:g3:349949e1:look-proposal",
+      "structure": "invitation-sequence-and-real-product",
+      "familyProposal": "349949e1-invitation-sequence-and-real-product",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "邀请同意和完成分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前先后条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图示故事与本人事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，前句提出一起制作的邀请，Great表达赞同，均不证明已制作。实际步骤和作品需另核，不把愿意或同意当本人完成。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲说Let’s make a puppet!，乙只说Great，尚无作品。现在可以记录木偶已经制作完成吗？说明两句话支持什么。",
+          "answer": "不能，前句提出一起制作的邀请，Great表达赞同，均不证明已制作。实际步骤和作品需另核，不把愿意或同意当本人完成。",
+          "analysis": "不能，前句提出一起制作的邀请，Great表达赞同，均不证明已制作。实际步骤和作品需另核，不把愿意或同意当本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创步骤明确first先画head、then画body。请解释本题先后；如果另一方法明说先画body，可强迫所有方法同一顺序吗？",
+          "answer": "本题先头后身体；另一方法条件已改，要按新说明核，不把本题顺序当所有制作唯一规则。文字说明不是本人已操作的过程。",
+          "analysis": "本题先头后身体；另一方法条件已改，要按新说明核，不把本题顺序当所有制作唯一规则。文字说明不是本人已操作的过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创本人只画一张带arm/leg标签的纸偶图，还没做成可活动木偶。可以怎样记录，能写已完成真实木偶并自行走动吗？",
+          "answer": "可如实记完成一张纸偶示意图，不能记已做成可活动木偶或自行走动。作品形态与虚构故事分清，未发生的制作和动作不补造。",
+          "analysis": "可如实记完成一张纸偶示意图，不能记已做成可活动木偶或自行走动。作品形态与虚构故事分清，未发生的制作和动作不补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：当前新步骤先画body再画head，有人照旧题顺序判错。应按哪个条件，什么事实仍不能由步骤文字确认？",
+          "answer": "按当前明确先身体后头条件，不能套旧顺序；步骤文字不证明本人已画或制成木偶。真实到期、原答和帮助另核，合理新方法不凭旧模板判错。",
+          "analysis": "按当前明确先身体后头条件，不能套旧顺序；步骤文字不证明本人已画或制成木偶。真实到期、原答和帮助另核，合理新方法不凭旧模板判错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期角色答应一起做并看了参考图，作品还没出现。能说已独立完成且没有看参考吗？应保留什么？",
+          "answer": "不能，答应与完成不同，已看参考的帮助保留；当前作品未提供即未核，不能补造独立首答或成品。实际到期间隔另核。",
+          "analysis": "不能，答应与完成不同，已看参考的帮助保留；当前作品未提供即未核，不能补造独立首答或成品。实际到期间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期虚构故事木偶说Goodbye后移动。能据故事认定普通纸偶现实会自己说话，或本人已经表演这段吗？",
+          "answer": "不能，虚构情节不证明现实物体能力或本人已表演。可理解故事中的告别和动作，但真实作品、本人参与、声音与间隔需分别核。",
+          "analysis": "不能，虚构情节不证明现实物体能力或本人已表演。可理解故事中的告别和动作，但真实作品、本人参与、声音与间隔需分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-look-invitation-sequence-and-real-product-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期读完How are you对话和木偶步骤，只完成文字分析。可以如实记录什么，哪些本人听说或制作结论仍待材料？",
+          "answer": "可记录文字理解或步骤分析范围，不能代本人实际听辨、录音、同伴对话和木偶制作完成。原答、帮助与实际间隔分别保留，示例不代学习事实。",
+          "analysis": "可记录文字理解或步骤分析范围，不能代本人实际听辨、录音、同伴对话和木偶制作完成。原答、帮助与实际间隔分别保留，示例不代学习事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
