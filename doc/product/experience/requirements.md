@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 开发组织：按[190 五块交付计划](../190-mainline-and-five-block-delivery.md)直接在主干推进。72 项编号与原验收要求保留；开发分块依次为工作台交互、学习闭环、资料纸面、教材与 GESP、工程与最终验收，每块自测通过后本地提交再继续。
+
 2026-11-01逐课来源：XP-F01/F03/F05与WS09/WS12沿[180协议](../180-textbook-lesson-source-and-teaching-package-pipeline.md)接准确来源、完整逐页文字与原工作台核对，见[本批证据](../../evidence/2026-11-01/workspace-r6-lesson-source/receipt.json)。523行仍为未批准候选，内容生产、完整教学包与教师/全教材/GESP及原所有真实条件继续；原72保持11 implemented/50 in_progress/11 planned/0 verified，WS不提升。
 
 状态口径：planned待实施；in_progress开发中；implemented已接入但验收不足；verified当前证据满足本条全部要求；blocked存在具体外部依赖。下面状态针对本轮完整目标，已有部分基础不自动等于verified。实现与证据在[实施记录](implementation-log.md)持续追加。
