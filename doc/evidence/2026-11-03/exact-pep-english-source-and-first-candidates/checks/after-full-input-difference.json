@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-02T19:38:19.701Z",
+  "fullInputCount": 2202,
+  "changedExistingInputs": [
+    "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+    "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts"
+  ],
+  "newContentInputs": [
+    "scripts/assets/test_reviewed_original_textbooks.py",
+    "scripts/content/build-english-g3-colours-candidates.cjs",
+    "resources/curriculum/source-lessons/english-g3-349949e1-colours-v1.json",
+    "resources/curriculum/source-lesson-materials/english-g3-349949e1-colours-v1.json"
+  ],
+  "additionalOfflineAssetTestInputs": [
+    "scripts/assets/test_textbook_mapping_candidates.py"
+  ],
+  "fullRun": {
+    "passed": 3102,
+    "failed": 2,
+    "conditionalSkips": 131
+  },
+  "reason": "Two tests still expected 450 books/3522 teaching entries. Exact PEP addition is 451/3530, references remain excluded. Only tests changed.",
+  "correctedSuitesPassed": 11,
+  "correctedSuitesFailed": 0,
+  "fullSuiteRerun": false,
+  "productionCodeChanged": false,
+  "databaseProtocolChanged": false
+}

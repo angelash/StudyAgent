@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "colours",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-colours-v1.json",
+      "sha256": "3a29b6ef9aa01ba55c412d86014ab971920ccfe2bb93c6b076ed882262393fe6",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit2:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 17,
+        "pageEnd": 26,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道未审原创候选，7目标各3即时4拟议间隔；21录音、14图像、14文字。真实听力输入、实物颜色辨认、本人表达和动作分别核；不复制原图歌词，不把游戏配对改成颜色词义，不当教师/评分/题族或充分保持库存完成。",
+  "groups": [
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-words",
+      "structure": "given-whole-colour-word-meaning",
+      "familyProposal": "349949e1-given-whole-colour-word-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "完整词义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不按位置或物品常识猜",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字与视觉听辨分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "依次红色、绿色、黄色、蓝色，可核文字词义对应；没有图不证明识别了实物颜色，没有声音不证明听辨，本人发声也需实际材料。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字卡red、green、yellow、blue分别表示什么？这里只给词，没有图片和声音，请说可核的范围。",
+          "answer": "依次红色、绿色、黄色、蓝色，可核文字词义对应；没有图不证明识别了实物颜色，没有声音不证明听辨，本人发声也需实际材料。",
+          "analysis": "依次红色、绿色、黄色、蓝色，可核文字词义对应；没有图不证明识别了实物颜色，没有声音不证明听辨，本人发声也需实际材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创把“棕色、白色、橙色、黑色”分别配brown、white、orange、black，不沿卡片先前顺序猜。",
+          "answer": "棕brown、白white、橙orange、黑black；按当前完整词义对应，不把旧排列当规则。这是文字语义，实际视觉和声音另核。",
+          "analysis": "棕brown、白white、橙orange、黑black；按当前完整词义对应，不把旧排列当规则。这是文字语义，实际视觉和声音另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只写blue bag，未给实物图片。能说词组描述蓝色包吗？能说本人现实中的包一定蓝色吗？",
+          "answer": "可说文字描述蓝色的包，但未给本人实际物品，不能认本人包是蓝色。词组条件和真实视觉或个人事实不同，没有声音也不认听辨。",
+          "analysis": "可说文字描述蓝色的包，但未给本人实际物品，不能认本人包是蓝色。词组条件和真实视觉或个人事实不同，没有声音也不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：新文字要求“黄色、绿色、红色”，从red、yellow、green按意思重排，说明不是按旧顺序。",
+          "answer": "对应yellow、green、red；以当前中文意思匹配，不沿旧排位。这只是文字识读，实际间隔、原答及帮助分别核，不代真实听辨。",
+          "analysis": "对应yellow、green、red；以当前中文意思匹配，不沿旧排位。这只是文字识读，实际间隔、原答及帮助分别核，不代真实听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期文字题给white、brown、black，问“棕色”应选哪个？只有三个词，没有任何物品外观，怎样回答不猜？",
+          "answer": "选brown，因其表示棕色；white白色、black黑色。按完整词义判断，不编自己看见哪种物品，声音和真实间隔另核。",
+          "analysis": "选brown，因其表示棕色；white白色、black黑色。按完整词义判断，不编自己看见哪种物品，声音和真实间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期某词卡写orange，旁边未显示水果。有人认定必问橘子数量而不谈颜色，本单元明确是颜色任务，应怎样答？",
+          "answer": "在已说明颜色任务里orange表示橙色，不能由词形转成未给的水果数量问题。按当前情境解释，文字不代实物或音频。",
+          "analysis": "在已说明颜色任务里orange表示橙色，不能由词形转成未给的水果数量问题。按当前情境解释，文字不代实物或音频。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-whole-colour-word-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期有人因常见天空蓝色，就把一张看不清且未标颜色的包图答成blue。与读懂blue一词相比还缺什么？",
+          "answer": "缺本图可辨颜色或明确条件；blue词义是蓝色，但常见天空或包的经验不代当前图。先核清图片，不把猜测当视觉或听辨通过。",
+          "analysis": "缺本图可辨颜色或明确条件；blue词义是蓝色，但常见天空或包的经验不代当前图。先核清图片，不把猜测当视觉或听辨通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-introduce",
+      "structure": "time-and-third-person-introduction",
+      "familyProposal": "349949e1-time-and-third-person-introduction",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "已给时段与问候相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "介绍第三人与自述分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人录音和角色事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录Good morning, An. This is Mei.，时段与角色对应；不是I’m Mei.。需听本人声音核可理解程度，角色练习不改真实身份或关系。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创明确上午：你演Bo，向An介绍Mei。本人录一句问候及介绍，不把Mei说成你自己，也不必给真名。",
+          "answer": "可录Good morning, An. This is Mei.，时段与角色对应；不是I’m Mei.。需听本人声音核可理解程度，角色练习不改真实身份或关系。",
+          "analysis": "可录Good morning, An. This is Mei.，时段与角色对应；不是I’m Mei.。需听本人声音核可理解程度，角色练习不改真实身份或关系。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创明确下午：你演Lin，向Yu介绍Bo。请本人录问候与介绍，不能沿用上午旧句或旧名字。",
+          "answer": "可说Good afternoon, Yu. This is Bo.；当前被介绍者Bo，不是说话者Lin。实际录音与提示另核，不凭书面参考认口语达标。",
+          "analysis": "可说Good afternoon, Yu. This is Bo.；当前被介绍者Bo，不是说话者Lin。实际录音与提示另核，不凭书面参考认口语达标。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色卡给Mr Lee是被介绍者，你演Mei向An介绍他。录一句This is表达；称谓按卡，不凭外貌重新猜。",
+          "answer": "可录This is Mr Lee.；按已给角色称谓，I’m Mr Lee.会改成自我介绍。实际声音、原答与帮助需另核，角色不证明真人身份。",
+          "analysis": "可录This is Mr Lee.；按已给角色称谓，I’m Mr Lee.会改成自我介绍。实际声音、原答与帮助需另核，角色不证明真人身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：上午，你演Kai向Lin介绍An。本人先录当前问候和介绍，不照抄旧Mei句。",
+          "answer": "可录Good morning, Lin. This is An.，按当前时段和第三人。实际间隔、声音可理解及是否先看参考另核，不倒写独立首答。",
+          "analysis": "可录Good morning, Lin. This is An.，按当前时段和第三人。实际间隔、声音可理解及是否先看参考另核，不倒写独立首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期明确下午，角色你演Yu向Bo介绍Mei。请本人录，若单人练习就明确，不编同伴已回答。",
+          "answer": "可说Good afternoon, Bo. This is Mei.；不能把介绍对象变自己，不能虚构对方回应。实际间隔与本人发声帮助分别保持。",
+          "analysis": "可说Good afternoon, Bo. This is Mei.；不能把介绍对象变自己，不能虚构对方回应。实际间隔与本人发声帮助分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期卡说明被介绍者称为Miss Lin，介绍者为Bo。本人录一句介绍，不能由名字或发型擅改称谓。",
+          "answer": "可录This is Miss Lin.，称谓来自当前虚构角色卡。未给真人称谓不能由外貌猜，本次录音及真实间隔另核。",
+          "analysis": "可录This is Miss Lin.，称谓来自当前虚构角色卡。未给真人称谓不能由外貌猜，本次录音及真实间隔另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-time-and-third-person-introduction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期先给上午，随后明确换为下午：你仍演An，向Mei介绍Kai。录换情境后的问候和介绍，说明按当前条件。",
+          "answer": "可录Good afternoon, Mei. This is Kai.；用现在下午条件，不沿先前Good morning。真实声音、到期和提示另核，角色不代真实会面。",
+          "analysis": "可录Good afternoon, Mei. This is Kai.；用现在下午条件，不沿先前Good morning。真实声音、到期和提示另核，角色不代真实会面。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-meet",
+      "structure": "first-meeting-and-too-response",
+      "familyProposal": "349949e1-first-meeting-and-too-response",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "初见场景明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "回应语义与顺序相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人发声不冒充双方实谈",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录Nice to meet you.；这是初见表达，需听本人声音核可理解程度。单人角色不证明已有真人见面，对方回应不能补造。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创明确初次见面，你演Bo。本人录一句表示见面高兴的话；没有同伴时只记单人练习。",
+          "answer": "可录Nice to meet you.；这是初见表达，需听本人声音核可理解程度。单人角色不证明已有真人见面，对方回应不能补造。",
+          "analysis": "可录Nice to meet you.；这是初见表达，需听本人声音核可理解程度。单人角色不证明已有真人见面，对方回应不能补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创对方先说Nice to meet you.，你演Mei。请本人录一个自然回应，说明too此处不是数字。",
+          "answer": "可录Nice to meet you, too.，too表示自己也很高兴；不是two两个人。本人录音与参考分开，不因文件存在就认发音合格。",
+          "analysis": "可录Nice to meet you, too.，too表示自己也很高兴；不是two两个人。本人录音与参考分开，不因文件存在就认发音合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创你独自演An与Lin，按初见顺序录发话和回应两句，明确是自己切换角色，不写成两名真人交谈。",
+          "answer": "可分别录Nice to meet you. / Nice to meet you, too.，顺序清楚并注明单人切换。实际两人交流未发生不代填，本人发声与帮助另核。",
+          "analysis": "可分别录Nice to meet you. / Nice to meet you, too.，顺序清楚并注明单人切换。实际两人交流未发生不代填，本人发声与帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：角色Kai初次见Yu，本人先录初见表达；不要机械把姓名问句当同样意思。",
+          "answer": "可说Nice to meet you.，表达当前初见感受；What’s your name?问姓名，意思不同。真实间隔、原答与帮助分别核，不凭参考认保持。",
+          "analysis": "可说Nice to meet you.，表达当前初见感受；What’s your name?问姓名，意思不同。真实间隔、原答与帮助分别核，不凭参考认保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期对方先表达见面高兴，你演Lin，录合适回应；不能把too换成数字说明有两个人。",
+          "answer": "可录Nice to meet you, too.，too为同样、也，不在数人数。本人声音是否可理解、实际到期和提示均另核，不能补对方更多话。",
+          "analysis": "可录Nice to meet you, too.，too为同样、也，不在数人数。本人声音是否可理解、实际到期和提示均另核，不能补对方更多话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期一份文字示例列三句初见话，但你尚未开口。现在录自己的回应，可把先前看示例隐去称独立首答吗？",
+          "answer": "可本人录Nice to meet you, too.，但须保留先看示例的帮助或曝光顺序。录音可核本次发声，不能倒写先前未受帮助的独立表现。",
+          "analysis": "可本人录Nice to meet you, too.，但须保留先看示例的帮助或曝光顺序。录音可核本次发声，不能倒写先前未受帮助的独立表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-first-meeting-and-too-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期单人录两句后有人要记成“和同伴实际交谈完成”。请录一段相同角色练习并如实说明范围。",
+          "answer": "本人可录初见表达与回应，但明确是单人角色练习。没有真实同伴发言就不代填交流完成，实际到期、声音与帮助分别保留。",
+          "analysis": "本人可录初见表达与回应，但明确是单人角色练习。没有真实同伴发言就不代填交流完成，实际到期、声音与帮助分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-action",
+      "structure": "colour-command-object-and-actual-work",
+      "familyProposal": "349949e1-colour-command-object-and-actual-work",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "颜色和对象对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "要求与实际完成分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人作品声音帮助范围明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人实际图应把B涂棕色，A不在要求内；字母编号清楚，未做不借示例代本人。当前只有文字不认听辨，图不独证全过程或无帮助。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字任务：画A、B两个圆，只把B按Colour it brown要求涂棕色。条件允许上传本人作品；无材料可说明未做。",
+          "answer": "本人实际图应把B涂棕色，A不在要求内；字母编号清楚，未做不借示例代本人。当前只有文字不认听辨，图不独证全过程或无帮助。",
+          "analysis": "本人实际图应把B涂棕色，A不在要求内；字母编号清楚，未做不借示例代本人。当前只有文字不认听辨，图不独证全过程或无帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创文字Show me blue.：有可用蓝色物品或色卡时，上传本人展示图并指出对象；不要用书面blue代已经展示。",
+          "answer": "图应展示实际蓝色对象，当前文字要求展示而非必须涂色或送人。无物保留未做，是否听过声音、实际过程和帮助需另核。",
+          "analysis": "图应展示实际蓝色对象，当前文字要求展示而非必须涂色或送人。无物保留未做，是否听过声音、实际过程和帮助需另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创文字要求把编号A方框涂green，B保持原样。上传本人实际画，不沿旧题把B涂brown；没有材料可暂不做。",
+          "answer": "应A方框绿色、B保持原样，按当前对象和颜色而非旧题。图片只核可见作品，不自动证明听辨、全过程或独立原答，未做如实说明。",
+          "analysis": "应A方框绿色、B保持原样，按当前对象和颜色而非旧题。图片只核可见作品，不自动证明听辨、全过程或独立原答，未做如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：文字Colour it yellow明确it指C三角，只对它涂色。上传本人实际作品或说明未做，不补假过程。",
+          "answer": "C三角应黄色，其余对象按原条件保持；当前给定文字不认听辨。本人作品、实际到期及是否帮助分别核，无作品不当已经完成。",
+          "analysis": "C三角应黄色，其余对象按原条件保持；当前给定文字不认听辨。本人作品、实际到期及是否帮助分别核，无作品不当已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期文字Show me red.：可展示本人现有红色物品，无需购买或改涂。上传实际图并说明与I see red的不同。",
+          "answer": "实际展示红色对象符合要求；I see red是说看见红色，展示是另一个动作。图不自动证明已听懂声音或未受助，到期另核，未做可保留。",
+          "analysis": "实际展示红色对象符合要求；I see red是说看见红色，展示是另一个动作。图不自动证明已听懂声音或未受助，到期另核，未做可保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期两框A、B，文字要求只把A涂orange。上传本人真实作品，不能因以前B棕色就沿用旧照片当新作答。",
+          "answer": "当前A应橙色，B不在新要求内；旧B棕色图不满足此题也不是本次作品。真实原答、帮助及间隔另核，文字任务不代听辨。",
+          "analysis": "当前A应橙色，B不在新要求内；旧B棕色图不满足此题也不是本次作品。真实原答、帮助及间隔另核，文字任务不代听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-command-object-and-actual-work-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期文字Colour it black没有说明it是哪块图形。请先说明条件是否充分；上传注明未涂的本人草图也可，不猜对象。",
+          "answer": "须先问清it所指对象，颜色black为黑色但对象不足；不能随意把全部图涂黑并认完成。未涂如实保留，图片和文字都不代声音或帮助证据。",
+          "analysis": "须先问清it所指对象，颜色black为黑色但对象不足；不能随意把全部图涂黑并认完成。未涂如实保留，图片和文字都不代声音或帮助证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-letters",
+      "structure": "case-pairs-and-actual-a-to-d-writing",
+      "familyProposal": "349949e1-case-pairs-and-actual-a-to-d-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "大小写配对准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "b与d结构区别可见",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际手写与参考过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四组大小写对应，b竖左弧右、d弧左竖右，字形可辨。核本人实际图片，不用印刷截图代手写；完成图不能单独证笔顺或没有看样本。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创请本人在纸上写Aa、Bb、Cc、Dd四组并上传，标清是自己实际写的；可以先看样本，帮助要如实说明。",
+          "answer": "四组大小写对应，b竖左弧右、d弧左竖右，字形可辨。核本人实际图片，不用印刷截图代手写；完成图不能单独证笔顺或没有看样本。",
+          "analysis": "四组大小写对应，b竖左弧右、d弧左竖右，字形可辨。核本人实际图片，不用印刷截图代手写；完成图不能单独证笔顺或没有看样本。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创本人写一行小写b和d并各圈一处竖笔，上传实际作品，说明左右结构；不要用同一个形状当两个字母。",
+          "answer": "b竖左弧右，d弧左竖右，两个字形区别可见。本人书写与字体样本分开，静图不证明完整书写过程或字母名发音，提示如实保留。",
+          "analysis": "b竖左弧右，d弧左竖右，两个字形区别可见。本人书写与字体样本分开，静图不证明完整书写过程或字母名发音，提示如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创请写A与a、C与c两组并上传本人作品，说明同一字母大小写不等完全相同字形；未写可如实说明。",
+          "answer": "A/a与C/c各为对应字母大小写，字形不必完全相同；作品须本人实际写。没有声音不核字母名，未写不借印刷字代本人过程。",
+          "analysis": "A/a与C/c各为对应字母大小写，字形不必完全相同；作品须本人实际写。没有声音不核字母名，未写不借印刷字代本人过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：本人先写Dd、Bb两组，上传并说明b和d竖笔位置，不按旧顺序机械抄完称独立。",
+          "answer": "Dd与Bb配对正确，小写d竖右、b竖左，实际作品可辨。真实间隔和是否先看样本另核，图不自动证明笔顺、听辨或无帮助。",
+          "analysis": "Dd与Bb配对正确，小写d竖右、b竖左，实际作品可辨。真实间隔和是否先看样本另核，图不自动证明笔顺、听辨或无帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期把顺序换成Cc、Aa、Dd、Bb，请本人按当前顺序写并上传；若需要样本，可如实看后再写。",
+          "answer": "四组按当前顺序配对，字形可辨；需要样本的帮助保留，不把看后临写倒记独立首答。实际到期、声音及完整过程各需另核。",
+          "analysis": "四组按当前顺序配对，字形可辨；需要样本的帮助保留，不把看后临写倒记独立首答。实际到期、声音及完整过程各需另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期只有印刷b/d截图但尚未手写。本人可现在写并上传，也可说明未写；能直接把截图认规范本人书写吗？",
+          "answer": "不能把印刷截图认本人书写；实际新写图可核b/d结构，未写保持未完成。图不独证笔顺或未受助，真实间隔和帮助另核。",
+          "analysis": "不能把印刷截图认本人书写；实际新写图可核b/d结构，未写保持未完成。图不独证笔顺或未受助，真实间隔和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-colours-case-pairs-and-actual-a-to-d-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期本人写Aa至Dd后上传完成图。有人据此断言已经听懂全部字母音并按正确笔顺写完，怎样限定图能支持的结论？",
+          "answer": "完成图可核所见大小写和字形，不能独自证明听音、发音、写的顺序或没有提示。实际本人作品及到期另核，不扩大成全部表现通过。",
+          "analysis": "完成图可核所见大小写和字形，不能独自证明听音、发音、写的顺序或没有提示。实际本人作品及到期另核，不扩大成全部表现通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-initial",
+      "structure": "given-exemplar-initial-sound-and-letter-name",
+      "familyProposal": "349949e1-given-exemplar-initial-sound-and-letter-name",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前示例词发声可理解",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母名和词首音区分",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例不推广全部规则或听辨",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人实际读ant、apple供听核；Aa字母名不等两词当前开头音，不能只念字母名代单词。若听示范或受助如实保留，没有输入音频不认听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创请本人录ant和apple，若教师有真实示范可听后再试并说明；Aa字母名能直接代两词的开头音吗？",
+          "answer": "本人实际读ant、apple供听核；Aa字母名不等两词当前开头音，不能只念字母名代单词。若听示范或受助如实保留，没有输入音频不认听辨。",
+          "analysis": "本人实际读ant、apple供听核；Aa字母名不等两词当前开头音，不能只念字母名代单词。若听示范或受助如实保留，没有输入音频不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创请本人读book、bag并录音，同时指出这两个词当前共同首字母；没有教师声音时先说明自己只是尝试。",
+          "answer": "两词首字母均b，本人录音需听是否可理解，不只念字母名代整个词。真实示范、原答和帮助分开，保存录音不等发音已通过。",
+          "analysis": "两词首字母均b，本人录音需听是否可理解，不只念字母名代整个词。真实示范、原答和帮助分开，保存录音不等发音已通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创请本人录cat、crayon与dog、duck，按两组读；能由cat的c就推所有含c单词都一样读吗？",
+          "answer": "前组当前首字母c、后组d，需实际听本人词音；cat/crayon示例不能推广全部c单词。未实际听输入声音不认听辨，提示情况如实保留。",
+          "analysis": "前组当前首字母c、后组d，需实际听本人词音；cat/crayon示例不能推广全部c单词。未实际听输入声音不认听辨，提示情况如实保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：把顺序换成apple、ant，请本人先录两个完整词，不用Aa字母名替它们的首音。",
+          "answer": "实际录apple、ant供核，字母名和这两个词的开头音分开。是否听过示范、帮助和真实间隔另核，不因有录音文件就认独立保持。",
+          "analysis": "实际录apple、ant供核，字母名和这两个词的开头音分开。是否听过示范、帮助和真实间隔另核，不因有录音文件就认独立保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期本人录bag、book，再说这两词的共同首字母；如果先听了示范，要保留顺序，不倒写独立首答。",
+          "answer": "本人实际读bag、book并指出b，词音需听核可理解。字母名不是整个词，先听示范的帮助保留，真实间隔及未见条件另核。",
+          "analysis": "本人实际读bag、book并指出b，词音需听核可理解。字母名不是整个词，先听示范的帮助保留，真实间隔及未见条件另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期本人录duck、dog，说明首字母d与小写b在字形上不同；能用手写图代本次实际发声吗？",
+          "answer": "两词首字母d，字形d弧左竖右与b竖左弧右不同；手写图不替本人录音。实际声音、示范帮助及到期各另核，不把字形成功当语音成功。",
+          "analysis": "两词首字母d，字形d弧左竖右与b竖左弧右不同；手写图不替本人录音。实际声音、示范帮助及到期各另核，不把字形成功当语音成功。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-given-exemplar-initial-sound-and-letter-name-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期本人录crayon、cat，教师尚未提供任何输入音频。可以核自己的读词尝试吗？能同时写已完成听辨吗？",
+          "answer": "可以保留本人实际读词尝试供听核，但没有输入声音不能记听辨通过。当前示例首字母c，不能推所有c词；真实到期和帮助另核。",
+          "analysis": "可以保留本人实际读词尝试供听核，但没有输入声音不能记听辨通过。当前示例首字母c，不能推所有c词；真实到期和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "colours",
+      "atomId": "source:english:g3:349949e1:colours-context",
+      "structure": "colour-meaning-versus-current-rule",
+      "familyProposal": "349949e1-colour-meaning-versus-current-rule",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "颜色词义和活动规则分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "观察指令和完成事实分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "额外歌词或常识不补证据",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "black仍是黑色，不是站或坐的词义；第二局按明确新规则坐下。活动配对可变，不能把旧局习惯当当前规则或已执行事实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创游戏第一局约定black后站起，第二局明确black后坐下。black的词义变成坐下了吗？第二局应按哪个动作规则？",
+          "answer": "black仍是黑色，不是站或坐的词义；第二局按明确新规则坐下。活动配对可变，不能把旧局习惯当当前规则或已执行事实。",
+          "analysis": "black仍是黑色，不是站或坐的词义；第二局按明确新规则坐下。活动配对可变，不能把旧局习惯当当前规则或已执行事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创只有文字Colour it brown，没给已涂的图。能据此说物品已经棕色吗？与I see brown表达的角色有什么不同？",
+          "answer": "不能，Colour it brown是要求把当前对象涂棕色，不是已完成事实；I see brown表达看见棕色。实际图和动作需另核，没有声音也不认听辨。",
+          "analysis": "不能，Colour it brown是要求把当前对象涂棕色，不是已完成事实；I see brown表达看见棕色。实际图和动作需另核，没有声音也不认听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本组重点八颜色词，歌曲接触pink和purple。能仅因歌曲出现就认本人必须已会这些扩展词默写，或已听懂整首吗？",
+          "answer": "不能，歌曲接触和当前核心目标、本人默写或听辨不同。按实际教学要求和本人任务分别核，缺音频不认听过，也不由扩展词推全部达标。",
+          "analysis": "不能，歌曲接触和当前核心目标、本人默写或听辨不同。按实际教学要求和本人任务分别核，缺音频不认听过，也不由扩展词推全部达标。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：本局brown配转身，下局明确brown配举卡。brown是什么意思？能直接认本人已转身或举卡吗？",
+          "answer": "brown为棕色，动作由当前局规则决定；读规则不证明本人已执行任何动作。实际行为、声音、间隔及帮助另核，不把词义和游戏配对合并。",
+          "analysis": "brown为棕色，动作由当前局规则决定；读规则不证明本人已执行任何动作。实际行为、声音、间隔及帮助另核，不把词义和游戏配对合并。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期新图的颜色看不清，文字只说Show me green。有人说绿色物品已展示完且听辨通过，哪些事实仍需核？",
+          "answer": "要求展示绿色不等已经展示；须实际可辨对象和本人动作，听辨还需真实输入声音。看不清的图不强判颜色，到期、原答和帮助另核。",
+          "analysis": "要求展示绿色不等已经展示；须实际可辨对象和本人动作，听辨还需真实输入声音。看不清的图不强判颜色，到期、原答和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期文字Nice to meet you, too.后，有人写too等于两个人，This is Lin又认作说话者自己叫Lin。应怎样按当前语境修正？",
+          "answer": "too在此是也、同样的回应，不是数字two；This is Lin介绍当前指明的他人，I’m Lin才自述。先核角色和语境，不从近音或一个名字推本人身份。",
+          "analysis": "too在此是也、同样的回应，不是数字two；This is Lin介绍当前指明的他人，I’m Lin才自述。先核角色和语境，不从近音或一个名字推本人身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-colours-colour-meaning-versus-current-rule-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期只听到角色说Look，未给它指向的图或更多说明。可以断言他看见红花、已采花并告诉学生也采吗？解释缺哪些依据。",
+          "answer": "不能，Look只要求看，缺指向对象和实际行为资料；颜色、采花与建议都不能补造。需真实图或话语再核，当前不编本人动作或听辨结果。",
+          "analysis": "不能，Look只要求看，缺指向对象和实际行为资料；颜色、采花与建议都不能补造。需真实图或话语再核，当前不编本人动作或听辨结果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

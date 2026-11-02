@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "step": "git show prior registry",
+  "error": "spawnSync git ENOBUFS",
+  "cause": "Prior registry exceeds child_process default 1 MiB output buffer",
+  "applicationChanged": false,
+  "correction": "Explicit 32 MiB bounded buffer; preserve first sync receipt and script"
+}

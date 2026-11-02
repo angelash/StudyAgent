@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-02T19:02:29.441Z",
+  "passed": true,
+  "registryBooks": 451,
+  "oldRegistryBooksUnchanged": 450,
+  "oldProofsUnchanged": 2,
+  "oldCandidateRowsUnchanged": 525,
+  "rebuild": [
+    {
+      "run": 1,
+      "registrySha256": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
+      "mappingSha256": "eed3ae8d5aeca80cb07859356cfbcf9271e5ab268f362382759d19023f25ed2c",
+      "byteIdentical": true
+    },
+    {
+      "run": 2,
+      "registrySha256": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
+      "mappingSha256": "eed3ae8d5aeca80cb07859356cfbcf9271e5ab268f362382759d19023f25ed2c",
+      "byteIdentical": true
+    }
+  ],
+  "assetTests": {
+    "passed": 47,
+    "failed": 0,
+    "first": {
+      "passed": 46,
+      "failed": 1,
+      "reason": "Mapping-candidate test expected 14 books but exact English original adds the fifteenth. Corrected only expected totals to 15 books / 526 rows."
+    },
+    "separateBatches": true
+  },
+  "sourceCandidatePreflight": {
+    "passed": true,
+    "questions": 49,
+    "targets": 7,
+    "modes": {
+      "audio_record": 21,
+      "short_answer": 21,
+      "image_upload": 7
+    },
+    "publicationYear": null,
+    "standardYear": 2011,
+    "teacherReviewed": false
+  },
+  "applicationInputs": 1930,
+  "changedApplicationInputs": [
+    "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts"
+  ],
+  "applicationRuntimeChanged": false,
+  "databaseProtocolChanged": false,
+  "authenticListeningInventoryComplete": false
+}

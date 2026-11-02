@@ -1,0 +1,449 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+    "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1:entry1",
+    "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "pageStart": 7,
+    "pageEnd": 16,
+    "publicationYear": null,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:english:g3:349949e1:hello-greet",
+      "version": 1,
+      "name": "问候并介绍当前说话者",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语交际",
+      "objective": "在初次见面的明确角色情境中问候并用I’m介绍自己",
+      "successCriterion": "当前说话者与姓名对应，先有本人实际发声才核口语；读文字或教材人物不能代本人说过",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-name",
+      "version": 1,
+      "name": "询问姓名和回应告别",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语交际",
+      "objective": "在当前角色中分清询问对方姓名、回答自己姓名及告别",
+      "successCriterion": "问答角色和场景相符，真实资料可不提供，用假设角色时明确标注",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-words",
+      "version": 1,
+      "name": "文具词义与完整词形对应",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "词义识读",
+      "objective": "把八类文具词与明确中文语义对应，并区分完整词或词组",
+      "successCriterion": "ruler/pencil/eraser/crayon/bag/pen/pencil box/book准确对应，不把pen当pencil或把词义识读记成听辨",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-have",
+      "version": 1,
+      "name": "按事实说所有物并回应相同情况",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "表达与语境",
+      "objective": "在明确物品条件下用I have表达并判断Me too回应是否合适",
+      "successCriterion": "当前持有物与表达对应，a/an示例准确；没有同样事实不机械回应，口语须实际发声",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-instructions",
+      "version": 1,
+      "name": "区分动作指令和实际执行",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "指令理解",
+      "objective": "分辨open/close/show/carry动作及book/pen/pencil box/bag对象",
+      "successCriterion": "先核动作和对象，真实动作及前后状态另留证；无音频不算听辨，单张静图不证明全过程",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-letters",
+      "version": 1,
+      "name": "字母形状和完整词计数",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "字母与读词",
+      "objective": "在给定字母串和完整词卡里按任务匹配及计数",
+      "successCriterion": "同字形与大小写配对按明确要求，完整词计数不算子串，不以字母歌熟悉度认定词中发音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:hello-story",
+      "version": 1,
+      "name": "从问答更新角色信息",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "语篇理解",
+      "objective": "在简短原创问答里分清问句、否认和随后自我介绍",
+      "successCriterion": "猜问不是身份事实，以明确回答更新，不编未出现台词、音频或本人表演",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:english:g3:349949e1:hello-greet",
+    "source:english:g3:349949e1:hello-name",
+    "source:english:g3:349949e1:hello-words",
+    "source:english:g3:349949e1:hello-have",
+    "source:english:g3:349949e1:hello-instructions",
+    "source:english:g3:349949e1:hello-letters",
+    "source:english:g3:349949e1:hello-story"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "物理7至16页逐张看图，核A/B/C、文具八词、姓名与告别、字母歌和找字母/读词、听音题与故事。歌曲和听辨没有从文本反推录音或答案，教材角色不作本人资料。",
+    "pages": [
+      {
+        "page": 7,
+        "visualChecked": true,
+        "statement": "单元跨页左图印刷2，Hello主题与示例自我介绍，原图人物不是学生本人。"
+      },
+      {
+        "page": 8,
+        "visualChecked": true,
+        "statement": "单元跨页右图印刷3，姓名问答和告别示例，角色台词与本人真实互动分开。"
+      },
+      {
+        "page": 9,
+        "visualChecked": true,
+        "statement": "A部分问候与自我介绍、游戏，I’m后姓名属于当前说话者，不强加真实姓名披露。"
+      },
+      {
+        "page": 10,
+        "visualChecked": true,
+        "statement": "ruler/pencil/eraser/crayon与所有物表达、Me too回应；图词、真实所有物和听说表现分开。"
+      },
+      {
+        "page": 11,
+        "visualChecked": true,
+        "statement": "字母歌和场景找字母；字母字形、字母名与词中语音不同，不复制歌谱歌词。"
+      },
+      {
+        "page": 12,
+        "visualChecked": true,
+        "statement": "B部分问姓名及告别，角色与代词对应；实际姓名或已交谈事实不能从课本填出。"
+      },
+      {
+        "page": 13,
+        "visualChecked": true,
+        "statement": "bag/pen/pencil box/book及打开、展示、合上、携带指令，动作对象均需核，无声文本不算听辨。"
+      },
+      {
+        "page": 14,
+        "visualChecked": true,
+        "statement": "圈相同字母、读词计数；完整词与子串、词牌和真实物品分别计，不以pen词内出现推计数。"
+      },
+      {
+        "page": 15,
+        "visualChecked": true,
+        "statement": "听音编号、图词匹配及歌曲；未获取音频时不推定编号，不把文字或图词识别当已听懂。"
+      },
+      {
+        "page": 16,
+        "visualChecked": true,
+        "statement": "故事从问谁、猜问、否认到身份揭示及邀请；问句不等肯定事实，未实际表演不代填。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "Unit 1 Hello!",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      2,
+      11
+    ],
+    "publicationEdition": "人教PEP三年级起点独立原件；具体出版版次未载",
+    "curriculumStandardYear": 2011,
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "actualSpeechAndInteractionRequired": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "Hello!：会打招呼，也分清谁在说什么",
+    "activation": {
+      "prompt": "原创角色卡：你演Lin，对方演Kai。你说“Hello, I’m Lin.”以后，谁叫Lin？如果只是看这行字，还能说自己已经录过介绍吗？",
+      "expectedObservation": "句中的I指当前说话者，Lin是角色名；看文字、实际发声和录音分别记录。",
+      "bridge": "先用短话完成见面交流，再把文具、动作和词形放回具体情境；每种任务看它实际提供什么信息。"
+    },
+    "concept": {
+      "explanation": "见面可以说Hello或Hi。用I’m Lin介绍当前说话者，I’m是I am的缩写，这里的Lin是我们特意给的虚构角色名。练习时可以用愿意使用的名字或明确角色，不必提供真实全名。对方说I’m Kai，他说的I指他自己，不会因为你先介绍过就都指你。能解释这段文字，还需要实际说一遍，才能核本人发音和表达是否可理解。\n询问对方姓名可说What’s your name?，回答自己姓名可说My name’s Lin.，也可用I’m Lin.表达。问句不是替对方取名。分别时说Goodbye或Bye；正在初次问候就只说告别，场景不合适。课堂可以练习角色问答，真实同伴交流只有确实发生才记，不能把参考对话当双方已经说过。\n八类文具先连上明确意思：ruler是尺子，pencil是铅笔，eraser是橡皮，crayon是蜡笔，bag是包，pen是钢笔或一般笔类名称，pencil box是铅笔盒，book是书。当前这组学习任务用pen对比pencil；不能因两个词都含pen就把铅笔填成钢笔，也不能因为pencil box含pencil就把盒子当一支铅笔。词义识读可以看词和中文说明，真实图词匹配要另有可辨物图或实物，真实听辨要另有声音。\nI have a ruler表示说话者有一把尺，I have an eraser表示有一块橡皮。这里a/an是单个物品表达的一部分，跟读本例时连同物品词一起学；a ruler、a pencil、a crayon、a bag、a pen、a pencil box、a book和an eraser在这些例子中分别保持。不要把本单元升级成所有冠词规则测验，也不用字母名称决定词首发音。对方说有尺子，而你也确实有尺子，Me too才可表达相同情况；若你只有书，不能只为接话便宣称也有尺。假设卡的所有物是练习条件，不自动写入本人真实资料。\n指令既含动作也含对象。Open your pencil box要打开铅笔盒；Close your book要合上书；Show me your pen是展示笔，不要求把笔盒打开或送给对方；Carry your bag是携带自己的包。先说明你理解的动作，再在真实物品条件允许时做；没有物品可明确先做词义练习。读过指令只说明文字任务，听到真实声音才核听辨，实际动作要保留确实做过的观察。单张打开的盒子照片不能独自证明你刚刚从关闭状态打开，也不证明没有提示。\n字母任务要先看要求。题目要求相同字形时，大写A与小写a不是完全相同字形；若要求同一字母的大小写配对，A和a可以配，A和B不能配。字母歌帮助接触字母名和顺序，不直接证明已会所有字母书写、词中语音或陌生单词拼读。完整词计数按词卡或明确边界数：pen、pencil、pen三张卡里，完整pen有两张；pencil内的pen字母段不是第三张pen，pencil box也要作为当前词组整体看。\n故事阅读先跟住说话者和已知范围。原创小故事中门外有人打招呼，屋内问Are you Lin?只是在问，不能认定来者就是Lin。门外明确回答No后，Lin这个猜测被否定；之后说I’m Kai才有来自当前说话者的身份信息。文字中谁说了什么按原句保留，没有声音不能补口音或情绪，没有实际表演不能记本人已演过。合理预测、否认和后续确认各有不同依据。\n练习可以先理解、再自己试、再换对象，但本人原答、跟读、提示和看参考的顺序都要保留。保存录音是资料存在，不等发音已合格；完成读词不替真实听辨，能背示例不替新的问答。以后再练要用新的小任务，自己先答，并说明中间有没有看过答案或得到提示。",
+      "points": [
+        "问候看场景，I指当前说话者",
+        "姓名可用明确角色，不代真实资料",
+        "完整词和词组分别对应物品",
+        "a ruler与an eraser随本例一起学",
+        "Me too须符合相同事实",
+        "动作与对象都要核",
+        "文字、声音、本人表达和执行分开",
+        "问句猜测不是身份确认"
+      ]
+    },
+    "example": {
+      "situation": "原创角色练习：Lin拿一把尺，Kai拿一块橡皮；两人初次见面。所有名字和物品均是给定角色条件。",
+      "steps": [
+        {
+          "explanation": "Lin先说Hello, I’m Lin.，Kai可说Hi, I’m Kai.。两句的I各指各自说话者，不能把Kai的I也写成Lin。",
+          "board": [
+            "Lin → Hello, I’m Lin.",
+            "Kai → Hi, I’m Kai.",
+            "当前说话者与姓名配对"
+          ]
+        },
+        {
+          "explanation": "Lin说I have a ruler.；Kai只有橡皮，不能机械说Me too。Kai可按给定条件说I have an eraser.，两句话都与角色物品一致。",
+          "board": [
+            "Lin：a ruler",
+            "Kai：an eraser",
+            "不同所有物不机械回应Me too"
+          ]
+        },
+        {
+          "explanation": "Kai问What’s your name?，Lin回答My name’s Lin.；结束时互说Bye。教师先听本人实际说的版本，参考对话仅供随后比较。",
+          "board": [
+            "问的是对方姓名",
+            "回答的是自己姓名",
+            "本人原答与参考分开"
+          ]
+        }
+      ],
+      "conclusion": "角色、物品与场景一致才有合适表达；这是原创示例，不证明两名真人已经对话，也不证明本人听辨或发音达标。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创文具对照卡：按完整词读",
+        "headers": [
+          "词或词组",
+          "这组任务中的意思",
+          "容易混淆处",
+          "当前可核的范围"
+        ],
+        "rows": [
+          [
+            "pen / pencil",
+            "钢笔或笔 / 铅笔",
+            "pencil不是多一张pen词卡",
+            "有文字与语义，可核识读"
+          ],
+          [
+            "pencil box / book",
+            "铅笔盒 / 书",
+            "盒子与里面的笔不是同一物品",
+            "明确中文条件，不假称看见实物"
+          ],
+          [
+            "ruler / eraser",
+            "尺子 / 橡皮",
+            "I have a ruler / an eraser",
+            "本例表达，不推全部冠词规则"
+          ],
+          [
+            "crayon / bag",
+            "蜡笔 / 包",
+            "物品名不是颜色或数量",
+            "真实听辨和本人发声另核"
+          ]
+        ],
+        "explanation": "文字表帮助比较完整词义，不复制原教材图，不把文字识别当真实图词匹配或听力表现。"
+      },
+      {
+        "kind": "table",
+        "title": "先看任务实际给了什么",
+        "headers": [
+          "实际材料",
+          "可先做什么",
+          "不能据此认定什么"
+        ],
+        "rows": [
+          [
+            "一行英文指令",
+            "理解文字里的动作和对象",
+            "本人已听过声音或完成动作"
+          ],
+          [
+            "本人的实际录音",
+            "保留这次发声及帮助情况供核",
+            "仅因文件存在就认发音合格"
+          ],
+          [
+            "一张物品静图",
+            "核可见对象及当前状态",
+            "核完整动作时间顺序或独立听辨"
+          ],
+          [
+            "角色对话示例",
+            "比较角色和表达是否相符",
+            "代填真人姓名、所有物和已说过的话"
+          ]
+        ],
+        "explanation": "听说读做分别需要相应事实。没有声音时明确先练文字理解，不反填听辨结果；本人录音与动作仍需另核。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "读到pencil就计一张pen，读到pencil box又计一支pencil。",
+        "alternatives": [
+          "按词内字母段或局部词来代完整词和物品。"
+        ],
+        "verification": "给独立卡pen、pencil、pencil box、pen，先逐卡读完整词再数完整pen。",
+        "correctiveFeedback": "完整pen两张；铅笔和铅笔盒各有自己的完整词义，不按子串计。"
+      },
+      {
+        "observation": "还没播放声音，只看指令文字，就勾选听辨通过并写本人已打开盒子。",
+        "alternatives": [
+          "把文字理解、音频听辨和动作事实合并。"
+        ],
+        "verification": "分别核有没有真实输入音频、本人原答、实际动作及帮助；缺少的环节保留未核。",
+        "correctiveFeedback": "先如实记文字任务，声音与动作各需真实材料；静图也不证明全过程。"
+      },
+      {
+        "observation": "对方问Are you Lin?就把来者认作Lin，或抄角色名覆盖学生姓名。",
+        "alternatives": [
+          "把疑问和示例身份当已确认的本人事实。"
+        ],
+        "verification": "按时间列问句、否认及后续介绍，标清说话者和虚构角色范围。",
+        "correctiveFeedback": "问句只提出可能，明确回答才更新；角色身份不改学生档案。"
+      }
+    ],
+    "transfer": {
+      "scenario": "把角色换成Bo和Mei，把物品换成书和铅笔盒；一项任务只有文字，另一项由教师真实说出。",
+      "prompt": "先说明每项可核什么，再按角色问候、回答或执行。声音未实际提供就保留听辨未核，参考与本人原答分开。",
+      "expectedStrategy": "看场景与当前说话者，读完整物品词，分清动作对象和材料形式，不照抄旧名字或假造参与。"
+    },
+    "summary": {
+      "synthesis": "Hello单元练见面交流、文具和指令。先对上说话者、物品和场景，再分别看看你实际听懂、说出、读懂和做到了什么。",
+      "takeaways": [
+        "Hello/Hi问候，Bye/Goodbye告别",
+        "I’m与My name’s介绍当前说话者",
+        "八类文具读完整词",
+        "Me too要有相同事实",
+        "动作与对象同时核",
+        "字母名不等词中发音",
+        "问句与确认分开",
+        "本人实际表现不由示例代填"
+      ]
+    },
+    "citations": [
+      {
+        "page": 9,
+        "quote": "Hello, I’m Miss White.",
+        "usedFor": "concept"
+      },
+      {
+        "page": 10,
+        "quote": "I have an eraser.",
+        "usedFor": "example"
+      },
+      {
+        "page": 13,
+        "quote": "Show me your pen.",
+        "usedFor": "concept"
+      },
+      {
+        "page": 14,
+        "quote": "Circle the same letters.",
+        "usedFor": "misconception"
+      },
+      {
+        "page": 16,
+        "quote": "Who’s there?",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:english:g3:349949e1:hello-greet",
+        "objective": "在初次见面的明确角色情境中问候并用I’m介绍自己",
+        "successCriterion": "当前说话者与姓名对应，先有本人实际发声才核口语；读文字或教材人物不能代本人说过"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:english:g3:349949e1:hello-name",
+        "objective": "在当前角色中分清询问对方姓名、回答自己姓名及告别",
+        "successCriterion": "问答角色和场景相符，真实资料可不提供，用假设角色时明确标注"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:english:g3:349949e1:hello-words",
+        "objective": "把八类文具词与明确中文语义对应，并区分完整词或词组",
+        "successCriterion": "ruler/pencil/eraser/crayon/bag/pen/pencil box/book准确对应，不把pen当pencil或把词义识读记成听辨"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:english:g3:349949e1:hello-have",
+        "objective": "在明确物品条件下用I have表达并判断Me too回应是否合适",
+        "successCriterion": "当前持有物与表达对应，a/an示例准确；没有同样事实不机械回应，口语须实际发声"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:english:g3:349949e1:hello-instructions",
+        "objective": "分辨open/close/show/carry动作及book/pen/pencil box/bag对象",
+        "successCriterion": "先核动作和对象，真实动作及前后状态另留证；无音频不算听辨，单张静图不证明全过程"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:english:g3:349949e1:hello-letters",
+        "objective": "在给定字母串和完整词卡里按任务匹配及计数",
+        "successCriterion": "同字形与大小写配对按明确要求，完整词计数不算子串，不以字母歌熟悉度认定词中发音"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:english:g3:349949e1:hello-story",
+        "objective": "在简短原创问答里分清问句、否认和随后自我介绍",
+        "successCriterion": "猜问不是身份事实，以明确回答更新，不编未出现台词、音频或本人表演"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "hello",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

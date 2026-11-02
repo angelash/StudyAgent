@@ -1,0 +1,70 @@
+{
+  "at": "2026-11-02T19:03:18.252Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+  "subject": "english",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 49,
+    "exactOriginalSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "proofFingerprint": "7ce05149ab8146c815b750108acd87657c29c25e9981ee038751482fc3aaa52e"
+  },
+  "drafts": [
+    {
+      "file": "english-g3-349949e1-hello-v1.json",
+      "sha256": "1c5b48581a2e9441d398736bfa2604d582a8c1f8ed9170d34ec29bf603963987",
+      "physicalPages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 91,
+      "linkedDraftMaterialReferences": 49,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 49,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-hello-v1.json",
+    "sha256": "7a0d829a8b792157943c50be05d5ae55fb29570bf00a87a2bb35a7df13a07ae1",
+    "groups": 7,
+    "questions": 49,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

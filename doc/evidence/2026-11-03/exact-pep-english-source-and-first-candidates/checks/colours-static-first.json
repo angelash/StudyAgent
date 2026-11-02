@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T19:17:38.554Z",
+  "passed": true,
+  "targets": 7,
+  "candidates": 49,
+  "modes": {
+    "short_answer": 14,
+    "audio_record": 21,
+    "image_upload": 14
+  },
+  "sourceRange": [
+    17,
+    26
+  ],
+  "sourcePagesRead": 10,
+  "generationByteIdentical": true,
+  "qaApplicationInputsChanged": false,
+  "newContentFilesOutsideFrozenFullApiInputs": [
+    "resources/curriculum/source-lessons/english-g3-349949e1-colours-v1.json",
+    "resources/curriculum/source-lesson-materials/english-g3-349949e1-colours-v1.json",
+    "scripts/content/build-english-g3-colours-candidates.cjs"
+  ],
+  "teacherReviewed": false,
+  "authenticListeningStimuliIncluded": false,
+  "firstToolAttempt": {
+    "passed": false,
+    "phase": "stdin script parsing",
+    "reason": "One extra closing parenthesis; no validation or file writes executed. Replaced with saved readable script."
+  }
+}

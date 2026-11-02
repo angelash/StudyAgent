@@ -134,17 +134,21 @@ describe('scope → atomic assessment → diagnosis → guidance → verificatio
   });
 
   it('keeps math and English originals reference-only until complete edition conformity is independently reviewed', async () => {
-    const reviewedOriginalId = 'archive-book:math-g1-upper-a8e880217c456db6';
+    const originals = {
+      math: { id: 'archive-book:math-g1-upper-a8e880217c456db6', grade: 1, sha256: 'a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4', publicationYear: 2022, pages: 118 },
+      english: { id: 'archive-book:english-g3-upper-349949e1df2ad88b', grade: 3, sha256: '349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d', publicationYear: null, pages: 82 },
+    };
     for (let grade = 1; grade <= 6; grade++) for (const term of ['upper', 'lower']) for (const subject of ['math', 'english']) {
       const books = await call('get', `/diagnostics/textbooks?subject=${subject}&grade=${grade}&term=${term}`);
-      const expected = subject === 'math' && grade === 1 && term === 'upper' ? [reviewedOriginalId] : [];
+      const reviewed = originals[subject as keyof typeof originals];
+      const expected = grade === reviewed.grade && term === 'upper' ? [reviewed.id] : [];
       expect(books.filter((book: any) => book.sourceDocument).map((book: any) => book.id)).toEqual(expected);
       expect(books.filter((book: any) => book.sourceAvailability.status === 'matched').map((book: any) => book.id)).toEqual(expected);
-      expect(books.filter((book: any) => book.id !== reviewedOriginalId && book.source !== 'original').every((book: any) => book.sourceAvailability.status !== 'matched')).toBe(true);
+      expect(books.filter((book: any) => book.id !== reviewed.id && book.source !== 'original').every((book: any) => book.sourceAvailability.status !== 'matched')).toBe(true);
       if (expected.length) {
-        const exact = books.find((book: any) => book.id === reviewedOriginalId);
-        expect(exact.sourceDocument.sha256).toBe('a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4');
-        expect(exact.sourceEdition).toMatchObject({ publicationYear: 2022, curriculumStandardYear: 2011 });
+        const exact = books.find((book: any) => book.id === reviewed.id);
+        expect(exact.sourceDocument).toMatchObject({ sha256: reviewed.sha256, pages: reviewed.pages });
+        expect(exact.sourceEdition).toMatchObject({ publicationYear: reviewed.publicationYear, curriculumStandardYear: 2011 });
       }
     }
     const gradeThreeMath = await call('get', '/diagnostics/textbooks?subject=math&grade=3&term=upper');

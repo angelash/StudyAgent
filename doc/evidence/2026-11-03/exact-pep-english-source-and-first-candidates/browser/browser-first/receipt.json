@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T19:05:18.347Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 1,
+  "failed": 1,
+  "error": "Complete original expression Who’s there?",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-hello-v1.json",
+      "passed": true
+    },
+    {
+      "name": "complete-language-evidence-table-and-original-role-expressions",
+      "passed": false,
+      "error": "Complete original expression Who’s there?"
+    }
+  ],
+  "screenshots": [
+    "english-g3-349949e1-hello-v1-desktop.png",
+    "english-g3-349949e1-hello-v1-table.png",
+    "english-evidence-table-desktop.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

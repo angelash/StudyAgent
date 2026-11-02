@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-02T19:38:19.699Z",
+  "rows": [
+    {
+      "file": "scripts/assets/test_reviewed_original_textbooks.py",
+      "sha256": "a24f780d6090764fb9ac6aeb581504d19fd647bacd84277681ea961fc94c045e",
+      "previouslyPresent": false,
+      "inFrozenApiInputList": false
+    },
+    {
+      "file": "scripts/assets/test_textbook_mapping_candidates.py",
+      "sha256": "10641e28523c2f4826994e2ef8862b224d050690a8162e6d209bf03f5e89da10",
+      "previouslyPresent": true,
+      "inFrozenApiInputList": false
+    },
+    {
+      "file": "scripts/content/build-english-g3-colours-candidates.cjs",
+      "sha256": "ece529b817888f795c12ea39dafe48675b49c6f79dfcb938cc0fa5dce94ac1ff",
+      "previouslyPresent": false,
+      "inFrozenApiInputList": false
+    },
+    {
+      "file": "resources/curriculum/source-lessons/english-g3-349949e1-colours-v1.json",
+      "sha256": "3a29b6ef9aa01ba55c412d86014ab971920ccfe2bb93c6b076ed882262393fe6",
+      "previouslyPresent": false,
+      "inFrozenApiInputList": false
+    },
+    {
+      "file": "resources/curriculum/source-lesson-materials/english-g3-349949e1-colours-v1.json",
+      "sha256": "70663f9401e79a22fccf3805a9e89c37d484f1ca596c67c5a0c53002c9c265d7",
+      "previouslyPresent": false,
+      "inFrozenApiInputList": false
+    }
+  ],
+  "applicationAndCompiledInputs": 1930,
+  "changedFromPriorBaseline": [
+    "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+    "apps/api/src/modules/diagnostics/verification-materials.integration.test.ts"
+  ],
+  "productionCodeChanged": false,
+  "mainApplicationSourceMatchesQa": true
+}

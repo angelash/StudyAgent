@@ -94,6 +94,13 @@
       "bytes": 50154321,
       "extractedSha256": "29771ad3802d19a4b2c016eda0c37c70b2aa7d60f769016543e5166c62b3ff3d",
       "pages": 118
+    },
+    {
+      "id": "chinatextbook:primary:english:45c80f5d333cb887ec3f",
+      "sha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+      "bytes": 9394549,
+      "extractedSha256": "ebd4418ba4294f2fb1995e7be87978c9b7437c112ced1809433296007095af1e",
+      "pages": 82
     }
   ],
   "scope": "Candidate evidence only. No candidate is a published textbook-to-atom mapping.",
@@ -101,9 +108,9 @@
     "textbookManifest": "ffea2a5ec3e8e686fbe85246aa3c24181609a8228c0adc4d33383f6a2a96e1e6",
     "reviewedToc": "948f3fd8fb9afc4f0054d8d69a2882ea8cb0ccef1448b463090ca4086d80fc34",
     "atomCatalog": "02464cb314814076ec25c3bfcdc60449f8077a84862f01b94eb65bc19298fc70",
-    "registry": "c92940a15485ecda424f4bca99a2f6a93dda818411bbe527fc1b7a6a64dba3d9",
-    "originalRegistry": "6c8f84c733cef917356e5de164cadb32976211f9fb97e9fe152d3f5ca2ec4f83",
-    "editionConformities": "8b2984e861207d153ba2130f632c7f6a5466e2027c2c055ad2f19cdd0d7376cf",
+    "registry": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
+    "originalRegistry": "5c99d674608564deab9bedf76d8ad16d4f982822d3c5659e103e7a3c91822bce",
+    "editionConformities": "854feae4109da5d5061531d550c4e15c91cef6c20fc8f3edf178ed873b4d65e4",
     "primaryManifest": "b24580485e03b29394690382762e218f61d2f802933b9ffe0985e9633a029aee"
   },
   "pageOffsets": {
@@ -120,9 +127,9 @@
     "public-book:06422d77-21f1-45c3-b409-fa2947eee424": 5,
     "public-book:2e3dc199-9c42-486b-bbee-7731bd0ee227": 8
   },
-  "books": 14,
-  "lessons": 525,
-  "titleMatched": 318,
+  "books": 15,
+  "lessons": 526,
+  "titleMatched": 319,
   "lessonsWithCandidates": 234,
   "candidateMappings": 589,
   "atomsCovered": 55,
@@ -18564,6 +18571,48 @@
           "page": 11,
           "textSha256": "6dab456a5dca8bd4aa01d951db582582b3234484e78b9b0d95ea13af142a1d91",
           "imageSha256": "b5bea7be7da108d2ea8bdd0a8013127afda8e111cdecae5401d0ffaf38e8f482"
+        }
+      ],
+      "reviewStatus": "candidate",
+      "approvedAtomIds": []
+    },
+    {
+      "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+      "bookVersion": "d27c60e843456fa701ca08d5",
+      "sourceBookId": "chinatextbook:primary:english:45c80f5d333cb887ec3f",
+      "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+      "extractedSha256": "ebd4418ba4294f2fb1995e7be87978c9b7437c112ced1809433296007095af1e",
+      "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1:entry1",
+      "lessonName": "Unit 1 Hello!",
+      "chapterName": "Unit 1 Hello!",
+      "lessonFingerprint": "55cafb9ad114e04df482b5eac2eeddfe1860276a8eaa22a863b9c9f0fc2cf47b",
+      "editionProofFingerprint": "7ce05149ab8146c815b750108acd87657c29c25e9981ee038751482fc3aaa52e",
+      "printedPage": 2,
+      "pdfStartPage": 7,
+      "pdfEndPage": 16,
+      "titleMatched": true,
+      "candidateAtomIds": [],
+      "rationale": "准确原件Unit 1物理7至16页逐张核对；单元级候选定位，不是教师审核、已批准映射或2024修订版来源。",
+      "evidence": [
+        {
+          "page": 5,
+          "textSha256": "2fecd865dad6ba34ee95b914a88ebd9aed549de55dd14a95da1686c46f72600b",
+          "imageSha256": "048550e4b7a848db8566bd02d83167d333e89c828c8e0d0dd7a3dfabcd69e6a3"
+        },
+        {
+          "page": 7,
+          "textSha256": "201a913b2df01082b9fc0dc2f3d2d2bf56cb7aee5f91823334d8ab5d2222d2a2",
+          "imageSha256": "21f5fedffefccdb1695bc2bb7db9d07100aadba773acb90d891244ff661252a3"
+        },
+        {
+          "page": 9,
+          "textSha256": "890a5b173c3f34160426425a79b3d86fd8a4b29be9539ef3a84ccf45fd3ee371",
+          "imageSha256": "6f13a6f502dbcb0fbf12c05e769f71da31f3f8c9c2679d9cd8a0913d55e62276"
+        },
+        {
+          "page": 16,
+          "textSha256": "fc95f320c38c024d32e5d508baf79db44acdc94ef40c7915ce94434ec1cadfdc",
+          "imageSha256": "d783a53deafc635e6e5c764a3fd4e7bf539499453bb30aa42b23a593b8b1a47b"
         }
       ],
       "reviewStatus": "candidate",

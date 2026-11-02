@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-02T19:06:33.757Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 4,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:english-g3-349949e1-hello-v1.json",
+      "passed": true
+    },
+    {
+      "name": "complete-language-evidence-table-and-original-role-expressions",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "english-g3-349949e1-hello-v1-desktop.png",
+    "english-g3-349949e1-hello-v1-table.png",
+    "english-evidence-table-desktop.png",
+    "english-g3-349949e1-hello-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

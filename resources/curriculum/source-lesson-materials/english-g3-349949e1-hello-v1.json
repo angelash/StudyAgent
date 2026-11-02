@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "hello",
+      "path": "resources/curriculum/source-lessons/english-g3-349949e1-hello-v1.json",
+      "sha256": "1c5b48581a2e9441d398736bfa2604d582a8c1f8ed9170d34ec29bf603963987",
+      "source": {
+        "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+        "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1:entry1",
+        "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+        "pageStart": 7,
+        "pageEnd": 16,
+        "publicationYear": null,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道原创未审候选，7目标各3即时与4拟议间隔；21录音、7图像、21文字任务。未配真实听力输入，不宣称听辨库存完成；字母、词义、本人说话、动作及角色事实分开，教师/评分/独立题族与充分保持库存待审。",
+  "groups": [
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-greet",
+      "structure": "speaker-bound-greeting",
+      "familyProposal": "349949e1-speaker-bound-greeting",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "场景与问候相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前说话者与姓名对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人录音与参考帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人实际录音可说Hello, I’m Bo.或Hi, I’m Bo.；听是否可理解、名字是否对应当前角色。文字参考和文件存在不自动证明发音合格。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色卡你演Bo。初次见面对方，录下你的一句问候和自我介绍；先自己说，名字仅为角色。",
+          "answer": "本人实际录音可说Hello, I’m Bo.或Hi, I’m Bo.；听是否可理解、名字是否对应当前角色。文字参考和文件存在不自动证明发音合格。",
+          "analysis": "本人实际录音可说Hello, I’m Bo.或Hi, I’m Bo.；听是否可理解、名字是否对应当前角色。文字参考和文件存在不自动证明发音合格。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演Mei，对方演Lin。请录下你的问候和介绍，不把对方名字说成自己的。",
+          "answer": "本人录音可为Hi, I’m Mei.；当前I指说话者Mei，Lin属于对方。需实际听录音核可理解程度，不能拿参考代本人发声。",
+          "analysis": "本人录音可为Hi, I’m Mei.；当前I指说话者Mei，Lin属于对方。需实际听录音核可理解程度，不能拿参考代本人发声。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创新同伴先说Hi，你演Kai。录一个合适的回应及自我介绍，结束场景尚未发生。",
+          "answer": "可录Hello, I’m Kai.或Hi, I’m Kai.；不是机械用Bye告别。本人真实发声和提示情况另核，不因选对文字就认口语达标。",
+          "analysis": "可录Hello, I’m Kai.或Hi, I’m Kai.；不是机械用Bye告别。本人真实发声和提示情况另核，不因选对文字就认口语达标。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期间隔满足后再练：你演An，新同伴初次见面。先独立录问候和介绍，角色不是真名。",
+          "answer": "本人可录Hello, I’m An.；核当前场景、角色和声音是否可理解。实际间隔、原答和帮助均另核，本候选不证明已到期保持。",
+          "analysis": "本人可录Hello, I’m An.；核当前场景、角色和声音是否可理解。实际间隔、原答和帮助均另核，本候选不证明已到期保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实到期任务：虚构角色Yu在会面开始时发言。请本人先录一句介绍；不要复用旧角色Bo。",
+          "answer": "录音可为Hi, I’m Yu.，当前名字要换成Yu；旧参考不是本次原答。听音和独立性需实际核，本题未自动安排复测。",
+          "analysis": "录音可为Hi, I’m Yu.，当前名字要换成Yu；旧参考不是本次原答。听音和独立性需实际核，本题未自动安排复测。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "真实到期后，角色Ning遇见新同伴。用Hello或Hi录介绍，说明是否看过本题参考；不必给真实全名。",
+          "answer": "可先本人说Hello, I’m Ning.，是否看参考如实说明；录音须可理解且角色对应。未真实发声不能用书面句代口语。",
+          "analysis": "可先本人说Hello, I’m Ning.，是否看参考如实说明；录音须可理解且角色对应。未真实发声不能用书面句代口语。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-speaker-bound-greeting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "真实到期间隔另核：你演Le，对方演Fang。本人录自己的问候和名字，不能把对方介绍抄来代答。",
+          "answer": "可说Hi, I’m Le.；I是本句说话者，Fang是对方。实际录音、是否提示与原答顺序保持，不能只凭角色卡认本人已说。",
+          "analysis": "可说Hi, I’m Le.；I是本句说话者，Fang是对方。实际录音、是否提示与原答顺序保持，不能只凭角色卡认本人已说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-name",
+      "structure": "name-question-answer-and-farewell",
+      "familyProposal": "349949e1-name-question-answer-and-farewell",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "问答角色与情境明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "表达可理解且姓名对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例与真人互动分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人可录What’s your name?；这是问对方姓名，不是给对方命名。实际声音可理解与否待听核，单人练习不冒充真实双方交流。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色Lin要询问对方姓名。请录下Lin可说的话；录单人角色句，不声称已经发生真人对话。",
+          "answer": "本人可录What’s your name?；这是问对方姓名，不是给对方命名。实际声音可理解与否待听核，单人练习不冒充真实双方交流。",
+          "analysis": "本人可录What’s your name?；这是问对方姓名，不是给对方命名。实际声音可理解与否待听核，单人练习不冒充真实双方交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演Mei，对方问What’s your name?。请录你的角色回答；无需透露本人真实姓名。",
+          "answer": "可录My name’s Mei.或I’m Mei.，当前回答自己角色名；不照抄对方名字。本人录音与角色范围保留，不改学生档案。",
+          "analysis": "可录My name’s Mei.或I’m Mei.，当前回答自己角色名；不照抄对方名字。本人录音与角色范围保留，不改学生档案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创两人结束见面准备分开。你演Bo，录一句合适告别，并别把它当初次介绍。",
+          "answer": "可录Goodbye.或Bye.；本情境为结束离开，不是再次询问姓名。需核本人真实发声，候选答案不替已经说过的话。",
+          "analysis": "可录Goodbye.或Bye.；本情境为结束离开，不是再次询问姓名。需核本人真实发声，候选答案不替已经说过的话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "到期间隔实际满足后：角色An被问姓名。先本人录角色回答，不照抄旧题Mei；真实资料可不提供。",
+          "answer": "可录My name’s An.或I’m An.；换成当前角色且声音可理解。实际间隔及是否先看参考另核，不把文本代口语保持。",
+          "analysis": "可录My name’s An.或I’m An.；换成当前角色且声音可理解。实际间隔及是否先看参考另核，不把文本代口语保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期角色练习：你演Kai，想知道对方叫什么。请本人录询问句；对方尚未回答。",
+          "answer": "可说What’s your name?；没有对方回答就不补写名字或已确认身份。本人发声、帮助和真实间隔分别保留。",
+          "analysis": "可说What’s your name?；没有对方回答就不补写名字或已确认身份。本人发声、帮助和真实间隔分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期角色卡说明“会面刚结束”。请录一个自然告别，不编对方回话，也不要求真实全名。",
+          "answer": "本人可说Bye.或Goodbye.；当前结尾情境合适。不编同伴也说了什么，声音、帮助和实际到期另核。",
+          "analysis": "本人可说Bye.或Goodbye.；当前结尾情境合适。不编同伴也说了什么，声音、帮助和实际到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-name-question-answer-and-farewell-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期练习你演Lin，独自录“问对方姓名”和“以Lin回答”两句，并说明是单人角色切换。",
+          "answer": "可依次录What’s your name? / My name’s Lin.，明确是单人练习，问答者发生切换。不能当真实同伴两次发言或未经帮助的掌握。",
+          "analysis": "可依次录What’s your name? / My name’s Lin.，明确是单人练习，问答者发生切换。不能当真实同伴两次发言或未经帮助的掌握。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-words",
+      "structure": "whole-stationery-word-meaning",
+      "familyProposal": "349949e1-whole-stationery-word-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "八类词义按当前说明对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整词和词组不混",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字任务不当图词听辨",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分别是尺子、橡皮、蜡笔、包；这是文字词义对应。没有声音不能认听辨，也没有本人实际发声，不能仅凭文字答案核发音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字卡分别写ruler、eraser、crayon、bag。请说明各是什么，并说这项只有文字还不能证明哪种听说表现。",
+          "answer": "分别是尺子、橡皮、蜡笔、包；这是文字词义对应。没有声音不能认听辨，也没有本人实际发声，不能仅凭文字答案核发音。",
+          "analysis": "分别是尺子、橡皮、蜡笔、包；这是文字词义对应。没有声音不能认听辨，也没有本人实际发声，不能仅凭文字答案核发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创文字说明要选“铅笔盒”和“书”，可选pencil、pencil box、book、pen。写出完整对应词，不把盒里物品代盒子。",
+          "answer": "铅笔盒对应pencil box，书对应book；pencil是铅笔，pen在本组与铅笔对比为钢笔或笔。完整词组代表的物品不能按局部词替换。",
+          "analysis": "铅笔盒对应pencil box，书对应book；pencil是铅笔，pen在本组与铅笔对比为钢笔或笔。完整词组代表的物品不能按局部词替换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创文字要求“铅笔”，有人只因pencil包含pen就改选pen。请给正确完整词并解释；本题没有实物图片。",
+          "answer": "应选pencil；pen与pencil在本组对应不同文具，子串相同不等同词义。本项只是文字识读，没有图片或声音不宣称真实图词听辨通过。",
+          "analysis": "应选pencil；pen与pencil在本组对应不同文具，子串相同不等同词义。本项只是文字识读，没有图片或声音不宣称真实图词听辨通过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：新卡问橡皮、蜡笔、尺子，请写三个完整词；没有音频，说明本次实际能核什么。",
+          "answer": "依次eraser、crayon、ruler；可核这些文字词义对应。没有声音不能认听辨，实际间隔、原答及提示分别核，不能当充分保持库存。",
+          "analysis": "依次eraser、crayon、ruler；可核这些文字词义对应。没有声音不能认听辨，实际间隔、原答及提示分别核，不能当充分保持库存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期文字卡book、bag、pencil box混排。请按“包、书、铅笔盒”顺序对应，不能只沿原排位抄。",
+          "answer": "包bag、书book、铅笔盒pencil box；按当前意思而非位置。实际到期另核，这项未要求也未证明本人听到或说出过三个词。",
+          "analysis": "包bag、书book、铅笔盒pencil box；按当前意思而非位置。实际到期另核，这项未要求也未证明本人听到或说出过三个词。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期文字任务给钢笔pen、铅笔pencil、铅笔盒pencil box。问后两项能否都只填pen，解释各对应什么。",
+          "answer": "不能，pencil是铅笔，pencil box是铅笔盒，pen在本对比为钢笔或笔。当前任务按完整意义分，不能按共同字母段合并物品。",
+          "analysis": "不能，pencil是铅笔，pencil box是铅笔盒，pen在本对比为钢笔或笔。当前任务按完整意义分，不能按共同字母段合并物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-whole-stationery-word-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期任务一张文字卡写“蜡笔”，另张写“橡皮”。在eraser、crayon、ruler里选对应词，并标明未提供声音。",
+          "answer": "蜡笔crayon，橡皮eraser；ruler是尺子。明确只有文字条件，不能补造音频或听辨成绩；实际到期和原答帮助仍须另核。",
+          "analysis": "蜡笔crayon，橡皮eraser；ruler是尺子。明确只有文字条件，不能补造音频或听辨成绩；实际到期和原答帮助仍须另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-have",
+      "structure": "possession-and-matching-response",
+      "familyProposal": "349949e1-possession-and-matching-response",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "物品与当前说话者相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本例a/an表达完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "Me too与实际条件一致",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可录I have an eraser.；橡皮用本例an eraser，符合角色条件。核实际声音是否可理解，不将假设所有物或参考写成学生真实资料。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创角色你演Bo，卡片明确有一块橡皮。请录一句说明所有物；不要把假设卡当本人真实物品。",
+          "answer": "可录I have an eraser.；橡皮用本例an eraser，符合角色条件。核实际声音是否可理解，不将假设所有物或参考写成学生真实资料。",
+          "analysis": "可录I have an eraser.；橡皮用本例an eraser，符合角色条件。核实际声音是否可理解，不将假设所有物或参考写成学生真实资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创你演Lin有尺子，对方也说有尺子。请录说明自己的短句及可回应的Me too；先核相同条件。",
+          "answer": "本人可说I have a ruler.，在对方与自己都有尺的给定条件下可回应Me too.。是否真实持有与对话另核，当前仅角色练习。",
+          "analysis": "本人可说I have a ruler.，在对方与自己都有尺的给定条件下可回应Me too.。是否真实持有与对话另核，当前仅角色练习。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创对方说I have a ruler.，你的角色只有一本书。请录符合你角色的表达，不能机械Me too。",
+          "answer": "可录I have a book.；只给书的条件不支持也有尺的Me too。保留本人真实发声和提示，不能把参考当学生已开口。",
+          "analysis": "可录I have a book.；只给书的条件不支持也有尺的Me too。保留本人真实发声和提示，不能把参考当学生已开口。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：角色Mei有一支铅笔。先本人录一句所有物，不沿用旧橡皮句，也不必实际拥有同物。",
+          "answer": "可说I have a pencil.；当前物品和a pencil对应。角色假设非本人真实物品，实际间隔、录音可理解及是否受助另核。",
+          "analysis": "可说I have a pencil.；当前物品和a pencil对应。角色假设非本人真实物品，实际间隔、录音可理解及是否受助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期角色卡你有蜡笔、对方明确也有蜡笔。录一句所有物和合适相同回应，不编真人已交换物品。",
+          "answer": "可录I have a crayon.并在明确相同条件下说Me too.；回应是同样情况，不表示已经交换或赠送物品，实际声音和到期另核。",
+          "analysis": "可录I have a crayon.并在明确相同条件下说Me too.；回应是同样情况，不表示已经交换或赠送物品，实际声音和到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期角色只给一个铅笔盒，请录完整表达；不能把pencil box缩成pencil而改成一支铅笔。",
+          "answer": "可录I have a pencil box.；完整词组指盒子，不是里面的铅笔。须核本人发声可理解，真实间隔和帮助保留，不倒写首答。",
+          "analysis": "可录I have a pencil box.；完整词组指盒子，不是里面的铅笔。须核本人发声可理解，真实间隔和帮助保留，不倒写首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-possession-and-matching-response-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期卡你只有包，对方说I have an eraser.。录符合当前已给事实的自述，不能为接话而声称也有橡皮。",
+          "answer": "可录I have a bag.；只知有包不足说也有橡皮，不能机械Me too。角色不代真实物品，原答、帮助、发声及实际间隔分开核。",
+          "analysis": "可录I have a bag.；只知有包不足说也有橡皮，不能机械Me too。角色不代真实物品，原答、帮助、发声及实际间隔分开核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-instructions",
+      "structure": "action-object-and-observation",
+      "familyProposal": "349949e1-action-object-and-observation",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "动作与对象对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际可见与全过程分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字听辨和帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "打开铅笔盒，前后状态应清楚区分原关闭与后打开；实际做过才上传。当前无音频只核文字指令，静图不能独自证全过程或未受帮助，无物可保留未做。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "文字任务Open your pencil box.：若有可用铅笔盒且愿意操作，上传本人实际前后状态拼图并标明顺序；没有物品先说明未做。",
+          "answer": "打开铅笔盒，前后状态应清楚区分原关闭与后打开；实际做过才上传。当前无音频只核文字指令，静图不能独自证全过程或未受帮助，无物可保留未做。",
+          "analysis": "打开铅笔盒，前后状态应清楚区分原关闭与后打开；实际做过才上传。当前无音频只核文字指令，静图不能独自证全过程或未受帮助，无物可保留未做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "文字任务Close your book.：条件允许时上传本人合书前后状态拼图并标明对象；仅有一本已合上的书照片够证明过程吗？",
+          "answer": "目标为合上书，需实际前后状态与说明；单张已合书仅显示当前状态，不能证明刚合书、听辨或独立执行。无物或未做如实保留，不用示例图代本人。",
+          "analysis": "目标为合上书，需实际前后状态与说明；单张已合书仅显示当前状态，不能证明刚合书、听辨或独立执行。无物或未做如实保留，不用示例图代本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "文字任务Show me your pen.：上传本人展示可用笔的图并说明动作和对象；不要求送给他人，无物可注明先练词义。",
+          "answer": "展示笔，让对方可看见该对象，不等赠送或打开铅笔盒。图片仅支持可见范围，是否实际听过、执行顺序和帮助需另核，未做不造本人动作。",
+          "analysis": "展示笔，让对方可看见该对象，不等赠送或打开铅笔盒。图片仅支持可见范围，是否实际听过、执行顺序和帮助需另核，未做不造本人动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：文字Carry your bag.，条件允许才上传本人携带包的实际图片，说明它不能自动证明什么。",
+          "answer": "动作是携带包，图应与实际对象对应；文字没有声音，不能认听辨，单图也不证明全过程或无帮助。无包可如实未做，真实到期另核。",
+          "analysis": "动作是携带包，图应与实际对象对应；文字没有声音，不能认听辨，单图也不证明全过程或无帮助。无包可如实未做，真实到期另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期文字Show me your pen.，有人用打开笔盒的示例图代答。请实际有条件才上传本人对应动作图，说明应核哪个对象。",
+          "answer": "应展示笔而非仅打开笔盒；实际图与原对象动作对应，示例不冒充本人。图不自动证明听辨或未受助，到期和未做状态分别保留。",
+          "analysis": "应展示笔而非仅打开笔盒；实际图与原对象动作对应，示例不冒充本人。图不自动证明听辨或未受助，到期和未做状态分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期文字Open your pencil box.：上传前后图时误把合书图当结果，怎样改为当前真实对象与状态？无物不要补拍虚假过程。",
+          "answer": "按实际铅笔盒关闭到打开的状态组织，不能用合书代打开盒子。若没有实施保持未做；当前文字不代声音，图片和帮助只能按可核事实记录。",
+          "analysis": "按实际铅笔盒关闭到打开的状态组织，不能用合书代打开盒子。若没有实施保持未做；当前文字不代声音，图片和帮助只能按可核事实记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "english-g3-349949e1-hello-action-object-and-observation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期文字Close your book.：只有书已合上的单张照片。可先提交并说明局限，不要编造前一状态或音频。",
+          "answer": "单张可说明当前书合上，不能认本人完成从开到合或听辨通过。实际过程未知即未知，真实间隔、原答与帮助另核，不靠补写假前图完成。",
+          "analysis": "单张可说明当前书合上，不能认本人完成从开到合或听辨通过。实际过程未知即未知，真实间隔、原答与帮助另核，不靠补写假前图完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-letters",
+      "structure": "letter-shape-and-whole-token-count",
+      "familyProposal": "349949e1-letter-shape-and-whole-token-count",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按明确字形或配对要求",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整词计数正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母名语音及物品数分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "相同字形选第1和第4张大写A，a不是完全相同字形；大小写配对时A可与a配。两种要求不同，不能由字母歌推定都已会写或读词。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创要求找“完全相同字形”的A，给A、a、B、A四张卡。选哪几张？若改问大小写配对，a的角色有什么不同？",
+          "answer": "相同字形选第1和第4张大写A，a不是完全相同字形；大小写配对时A可与a配。两种要求不同，不能由字母歌推定都已会写或读词。",
+          "analysis": "相同字形选第1和第4张大写A，a不是完全相同字形；大小写配对时A可与a配。两种要求不同，不能由字母歌推定都已会写或读词。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创独立词卡pen、pencil、pen、pencil box。问完整词pen出现几张，不问pen字母串出现次数。解释怎样数。",
+          "answer": "完整pen两张，第1和第3张；pencil及pencil box不因含pen字母段计入。词卡数也不等本人实际有几支笔，按当前任务边界数。",
+          "analysis": "完整pen两张，第1和第3张；pencil及pencil box不因含pen字母段计入。词卡数也不等本人实际有几支笔，按当前任务边界数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创字母卡Q、O、Q、D，要求找与首张完全相同字形。指出相同项，说明这是否证明已会词中语音。",
+          "answer": "第1与第3张同为Q；O和D不是同形。字形匹配不能证明字母名发音、词中语音或陌生词拼读，这些需相应真实任务。",
+          "analysis": "第1与第3张同为Q；O和D不是同形。字形匹配不能证明字母名发音、词中语音或陌生词拼读，这些需相应真实任务。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：完整词卡book、bag、book、pencil box、book。问完整book有几张，不问真实书本数量。",
+          "answer": "共有三张book词卡，第1、3、5张；词卡记录不等实物书数。当前文字识读不认听辨，实际间隔及原答帮助另核。",
+          "analysis": "共有三张book词卡，第1、3、5张；词卡记录不等实物书数。当前文字识读不认听辨，实际间隔及原答帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期任务说“同一字母的大小写配对”，给H与h、H与N两组。哪组符合，为什么与相同字形题不同？",
+          "answer": "H与h是同一字母大小写，符合配对；H与N不符合。大小写字形不同但字母身份对应，不能把所有任务都按完全相同字形判。",
+          "analysis": "H与h是同一字母大小写，符合配对；H与N不符合。大小写字形不同但字母身份对应，不能把所有任务都按完全相同字形判。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期完整词组卡pencil box、pencil、pencil box、pen。问完整pencil box有几张，能把一张pencil算进去吗？",
+          "answer": "有两张完整pencil box；独立pencil不是铅笔盒词组，不能计入。词组完整意思与局部词不同，实际到期和是否提示另核。",
+          "analysis": "有两张完整pencil box；独立pencil不是铅笔盒词组，不能计入。词组完整意思与局部词不同，实际到期和是否提示另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-letter-shape-and-whole-token-count-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期有人会唱字母歌，就说已会所有词中发音、陌生词拼读和每个字母规范书写。这些结论需要怎样分别核？",
+          "answer": "歌中的字母名与顺序不代词中语音、陌生词拼读或实际书写。各须对应的新任务和本人表现，不能由一次唱歌或文本识别自动扩大结论。",
+          "analysis": "歌中的字母名与顺序不代词中语音、陌生词拼读或实际书写。各须对应的新任务和本人表现，不能由一次唱歌或文本识别自动扩大结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "hello",
+      "atomId": "source:english:g3:349949e1:hello-story",
+      "structure": "question-denial-and-revealed-speaker",
+      "familyProposal": "349949e1-question-denial-and-revealed-speaker",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "分清当前说话者",
+          "weight": 0.4
+        },
+        {
+          "criterion": "问句否认和确认分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不补未知声音或参与",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，Are you Lin?只是询问一个可能身份，不是肯定来者为Lin；需等明确回答。当前只有文字，不能编声音、表情或本人已表演。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创文字故事：门内问Are you Lin?，门外尚未回答。现在能确认来者是Lin吗？说明问句实际提供什么。",
+          "answer": "不能，Are you Lin?只是询问一个可能身份，不是肯定来者为Lin；需等明确回答。当前只有文字，不能编声音、表情或本人已表演。",
+          "analysis": "不能，Are you Lin?只是询问一个可能身份，不是肯定来者为Lin；需等明确回答。当前只有文字，不能编声音、表情或本人已表演。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创门内问Are you Lin?，门外先答No.，随后说I’m Kai.。按出现顺序说能更新哪些信息，不编别的台词。",
+          "answer": "先是对Lin身份的询问，No否定该猜测，I’m Kai才提供当前门外说话者的自我介绍。不能保留Lin为已证事实或补未知对话。",
+          "analysis": "先是对Lin身份的询问，No否定该猜测，I’m Kai才提供当前门外说话者的自我介绍。不能保留Lin为已证事实或补未知对话。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创文字：甲说I’m Bo.，乙说I’m Mei.，随后甲说Bye.。两句I分别指谁？最后一句是否说明双方真的在线交谈过？",
+          "answer": "两句I各指本句说话者Bo和Mei；最后一句是甲告别。它们只是给定文字角色，不证明真人已经交谈、本人录音或对方实际回应。",
+          "analysis": "两句I各指本句说话者Bo和Mei；最后一句是甲告别。它们只是给定文字角色，不证明真人已经交谈、本人录音或对方实际回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "真实到期另核：门内问Are you Mei?，门外回答No.，却未透露姓名。现在能补填Kai吗？什么仍未知？",
+          "answer": "只能知门外否认Mei，当前真实角色名尚未知，不能因旧故事用Kai就沿填。实际间隔及原答帮助另核，问答文字不代声音。",
+          "analysis": "只能知门外否认Mei，当前真实角色名尚未知，不能因旧故事用Kai就沿填。实际间隔及原答帮助另核，问答文字不代声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "到期原创门外先说Hello.，门内问Who’s there?，尚无回答。能确认名字或说门外一定生气吗？说明依据边界。",
+          "answer": "Hello和Who’s there?未提供姓名，文字也不给真实音色情绪；身份和情绪均不能凭空确认。需要实际回答或声音等证据，不编后续。",
+          "analysis": "Hello和Who’s there?未提供姓名，文字也不给真实音色情绪；身份和情绪均不能凭空确认。需要实际回答或声音等证据，不编后续。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "到期原创甲演An说I’m An.，乙演Yu说My name’s Yu.。有人据此把两名学生档案都改成An，错在哪里？",
+          "answer": "两句各自介绍当前虚构角色，An和Yu不同；角色台词不等学生真实资料，也不授权改姓名档案。原角色与本人记录分别保持。",
+          "analysis": "两句各自介绍当前虚构角色，An和Yu不同；角色台词不等学生真实资料，也不授权改姓名档案。原角色与本人记录分别保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "english-g3-349949e1-hello-question-denial-and-revealed-speaker-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "到期只分析了原创角色问答，学生没有录音或表演。可以写“理解问句不等确认”吗？可以记“已独立演出并听辨通过”吗？",
+          "answer": "可以如实描述已完成的文字理解范围；不能记未发生的独立表演或听辨。本人原答、提示及实际间隔需真实事实，分析示例不代参与。",
+          "analysis": "可以如实描述已完成的文字理解范围；不能记未发生的独立表演或听辨。本人原答、提示及实际间隔需真实事实，分析示例不代参与。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

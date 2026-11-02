@@ -1,0 +1,449 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+    "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit2:entry1",
+    "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "pageStart": 17,
+    "pageEnd": 26,
+    "publicationYear": null,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:english:g3:349949e1:colours-words",
+      "version": 1,
+      "name": "八个颜色词与词义对应",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "颜色词义",
+      "objective": "在明确文字条件中认读red/green/yellow/blue/black/white/orange/brown",
+      "successCriterion": "按当前完整词义对应，不凭词长位置或物体常见颜色猜，文字识读不自动算实际视觉或听辨",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-introduce",
+      "version": 1,
+      "name": "按时段问候并介绍他人",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语交际",
+      "objective": "在明确上午或下午情境中问候，并用This is介绍指定第三人",
+      "successCriterion": "时段和角色对应，介绍者与被介绍者不混，角色称谓不按外貌推真实身份",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-meet",
+      "version": 1,
+      "name": "初见表达和回应相配",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语交际",
+      "objective": "在明确初次见面的角色练习中说Nice to meet you及适当回应",
+      "successCriterion": "发话与回应顺序合适，too表达同样感受，单人角色或跟读不代真人交流",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-action",
+      "version": 1,
+      "name": "颜色指令、观察和动作分开",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "指令与观察",
+      "objective": "对当前Show me或Colour it文字要求作实际可见的颜色选择或涂色",
+      "successCriterion": "对象与颜色相符才核，I see与要求涂色不同；无声音不认听辨，行动未做不代完成",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-letters",
+      "version": 1,
+      "name": "Aa至Dd的大小写配对和本人书写",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "字母书写",
+      "objective": "按Aa/Bb/Cc/Dd配对并在本人实际书写中区分b与d",
+      "successCriterion": "大小写配对准确，b/d笔竖与圆弧位置分明，印刷字体与本人手写、过程和声音分别核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-initial",
+      "version": 1,
+      "name": "字母名与给定示例词首音分开",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "字母与语音",
+      "objective": "在本人录音中读ant/apple、book/bag、cat/crayon、dog/duck，并比较给定首字母",
+      "successCriterion": "跟随具体词核可理解发声，Aa字母名不代ant/apple首音，c在此两例的读音不推全部单词规则",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:english:g3:349949e1:colours-context",
+      "version": 1,
+      "name": "在当前语境核颜色与活动规则",
+      "subject": "english",
+      "grade": 3,
+      "term": "upper",
+      "strand": "语境与依据",
+      "objective": "分清颜色词本义、当前行动规则、歌曲扩展和可见信息",
+      "successCriterion": "不把颜色词解释为站坐动作，不由歌曲或物体常识补视觉和听辨答案，文字和真实事实分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-349949e1-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:english:g3:349949e1:colours-words",
+    "source:english:g3:349949e1:colours-introduce",
+    "source:english:g3:349949e1:colours-meet",
+    "source:english:g3:349949e1:colours-action",
+    "source:english:g3:349949e1:colours-letters",
+    "source:english:g3:349949e1:colours-initial",
+    "source:english:g3:349949e1:colours-context"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "物理17至26页逐张看图，核六类颜色活动、上午下午问候/介绍与初见回应、Aa至Dd、示例首音、书写、图词和听音任务及故事。原图歌曲不复制；没有音频不推听音答案。",
+    "pages": [
+      {
+        "page": 17,
+        "visualChecked": true,
+        "statement": "Unit Two印刷12，下午问候与绘画情境，与目录Colours准确对应。"
+      },
+      {
+        "page": 18,
+        "visualChecked": true,
+        "statement": "印刷13，介绍第三人及初见回应；角色和家庭称谓不替学生真实关系或交友记录。"
+      },
+      {
+        "page": 19,
+        "visualChecked": true,
+        "statement": "A部分介绍他人与早晨问候、画说；Mr/Miss按具体角色，不按外貌推真实身份。"
+      },
+      {
+        "page": 20,
+        "visualChecked": true,
+        "statement": "red/green/yellow/blue及I see、Show me颜色任务；文字语义、实际视觉与听辨分别核。"
+      },
+      {
+        "page": 21,
+        "visualChecked": true,
+        "statement": "Aa/Bb/Cc/Dd字形与示例词首音、听圈和写说；字母名与词中音不同，未有音频不推圈选答案。"
+      },
+      {
+        "page": 22,
+        "visualChecked": true,
+        "statement": "B部分下午问候和初见回应，16:15只作本场景，不造统一文化时段边界。"
+      },
+      {
+        "page": 23,
+        "visualChecked": true,
+        "statement": "black/white/orange/brown及Colour it、动作歌谣；颜色与动作配对是本游戏规则，不是颜色词本义。"
+      },
+      {
+        "page": 24,
+        "visualChecked": true,
+        "statement": "场景找字母、颜色读词与勾选；颜色视觉、词义和字母形状分别核，不凭常识或背景猜。"
+      },
+      {
+        "page": 25,
+        "visualChecked": true,
+        "statement": "听音正误、图词连线涂色及歌曲，缺声音不推正误；pink/purple出现不等八核心词统一升级默写。"
+      },
+      {
+        "page": 26,
+        "visualChecked": true,
+        "statement": "C故事问候、花色及不采花图示；话语与图像提供不同信息，不编本人行为或额外台词。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "Unit 2 Colours",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      12,
+      21
+    ],
+    "publicationEdition": "人教PEP三年级起点独立原件；具体出版版次未载",
+    "curriculumStandardYear": 2011,
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "actualColourPerceptionAndSpeechRequired": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "Colours：读准颜色，也说清看见了什么",
+    "activation": {
+      "prompt": "原创文字卡只写blue，旁边没有图片和声音。你可以先知道它表示蓝色；但能说你已经看见一支蓝蜡笔、听懂了一段录音吗？",
+      "expectedObservation": "词义、真实可见对象和声音是不同信息；文字blue不提供实际蜡笔或录音。",
+      "bridge": "这一单元把颜色放进画画和见面交流。先理解当前材料，再自己说、自己选或自己写。"
+    },
+    "concept": {
+      "explanation": "本组八个颜色词是red红色、green绿色、yellow黄色、blue蓝色、black黑色、white白色、orange橙色和brown棕色。读词先把完整词和意思对应，不按词卡顺序或物品平常是什么颜色猜。图画可以把包涂成任意给定颜色，不能因常见书包是蓝色就把没看清的图判成blue。若画面难辨，可以先说明哪一块不清楚，再核图或实物；词义不会因此变成猜颜色。\nI see red是在当前情境中说看见红色。Show me red是要求展示红色物品或色卡，Colour it brown是要求把当前指明的对象涂棕色。看到一句涂色要求，不等物品已经被涂好；说看见某色，也不等已经完成展示或涂色。开始操作前明确it指哪一个图形，需要时先问清。手边没有合适颜色或物品，可以说明未做，先练文字意思，不借别人的图片冒充自己的动作。\n给定上午见面的情境可以用Good morning，给定下午可以用Good afternoon；这里先按已经说明的时段练习，不要求把所有文化情境划成同一条分钟界线。向别人介绍当前第三人，用This is Mei.，而I’m Mei.是在介绍自己。若句子是Bo向An介绍Mei，就不能把This is后面写成说话者Bo。Mr和Miss在书中是具体角色称谓，不凭发型、衣着或名字给真人猜称谓；角色卡已经给了称谓时再按卡练。\n初次见面可说Nice to meet you.，对方可回应Nice to meet you, too.。too在这句表示同样很高兴见面，不能只因为两个人出现就解释成数字two。单人可切换角色练问候与回应，但要说明是一个人练两句；参考文字、跟读、本人第一次说和实际同伴交流各有不同过程，不能把示例直接写成已经见过真人。\nAa、Bb、Cc、Dd分别是同一字母的大小写配对。比较b与d时先看本例标准字形：小写b的竖笔在左，圆弧在右；小写d的圆弧在左，竖笔在右。字体可有细节不同，但不能只因都有圆和竖就当同一字母。先看清样本再自己写，手写图片看得到形状，单张完成图却不能证实写的顺序或谁提示过。没有真实书写，就不要拿印刷字当自己已写。\n字母的名字和它在具体单词中的声音分开学。Aa的字母名不是ant、apple开头的声音；本组Bb在book、bag中，Cc在cat、crayon中，Dd在dog、duck中，都要听实际词再试着读。这些是当前示例，不能由c在cat中的读音推出c在所有词里都一样。若教师还未提供声音或你还未听，就先说当前只做字形和词形比较；录下本人尝试后，可听实际录音来核可理解程度，不把保存文件直接当发音合格。\n颜色动作游戏先看本局规则。若本局约定听见black后站起来，那是本局的活动配对，不表示black这个词本来就等于站起来；换了规则，动作可能改变，词义仍是黑色。歌曲里接触额外颜色词，也不等每个扩展词都要与八个重点词一样默写。故事和图画还可能给出公共提示，先看清符号或说明，不凭一个感叹句补造未出现的意思。以后换一组物品、角色和任务先自己答，再说明是否听过示范或得到帮助。",
+      "points": [
+        "八个完整颜色词各有意思",
+        "I see、Show me、Colour it分清",
+        "颜色不由常见物品或位置猜",
+        "上午下午按当前情境问候",
+        "This is介绍他人，I’m介绍自己",
+        "Nice to meet you的too不是two",
+        "Aa至Dd看清再自己写",
+        "字母名、示例首音和游戏规则分别学"
+      ]
+    },
+    "example": {
+      "situation": "原创角色卡说明下午：Bo向An介绍Mei。随后给三个白纸圆，编号A、B、C；要求只把B涂棕色。",
+      "steps": [
+        {
+          "explanation": "Bo可以说Good afternoon, An. This is Mei.。An初见Mei时可说Nice to meet you.，Mei回应Nice to meet you, too.。角色分别对应。",
+          "board": [
+            "Bo介绍Mei，不是介绍自己",
+            "An → Nice to meet you.",
+            "Mei → Nice to meet you, too."
+          ]
+        },
+        {
+          "explanation": "Colour it brown里的it在此已明确为B圆。只把B涂棕色，A、C保持原样；先理解文字，再按实际可用材料操作。",
+          "board": [
+            "对象：B圆",
+            "颜色：brown棕色",
+            "A、C不在当前涂色范围"
+          ]
+        },
+        {
+          "explanation": "若还没有涂，只能说自己理解指令；真正涂好才展示本人的图。当前没有输入音频，不能把文字理解称为听辨通过。",
+          "board": [
+            "要求不是已经完成",
+            "本人图与示例分开",
+            "文字理解与听辨分开"
+          ]
+        }
+      ],
+      "conclusion": "先看时段、说话者、对象和颜色，再完成表达或行动；不把角色练习和指令文字当真人已经做过的事。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "颜色与任务对照：词义不会变成动作",
+        "headers": [
+          "完整词或表达",
+          "当前意思",
+          "要另外核什么"
+        ],
+        "rows": [
+          [
+            "red / green / yellow / blue",
+            "红 / 绿 / 黄 / 蓝",
+            "实际图片或实物是否可辨"
+          ],
+          [
+            "black / white / orange / brown",
+            "黑 / 白 / 橙 / 棕",
+            "不能按旧位置或常见物品猜色"
+          ],
+          [
+            "I see red.",
+            "说当前看见红色",
+            "是否真有可见对象，不代已涂好"
+          ],
+          [
+            "Show me blue.",
+            "要求展示蓝色",
+            "是否实际展示，文字不代音频"
+          ],
+          [
+            "Colour it brown.",
+            "把当前对象涂棕色",
+            "it所指对象及实际操作"
+          ]
+        ],
+        "explanation": "此表提供文字语义比较。真实颜色观察、真实听辨和本人涂色要各看相应材料；这里没有把文字表冒称颜色实物或录音。"
+      },
+      {
+        "kind": "table",
+        "title": "字母配对与当前示例",
+        "headers": [
+          "大小写配对",
+          "本组词形示例",
+          "先分清什么"
+        ],
+        "rows": [
+          [
+            "A / a",
+            "ant / apple",
+            "字母名字不等两个词的首音"
+          ],
+          [
+            "B / b",
+            "book / bag",
+            "b竖左弧右，与d有方向差异"
+          ],
+          [
+            "C / c",
+            "cat / crayon",
+            "此处示例首音不推所有c规则"
+          ],
+          [
+            "D / d",
+            "dog / duck",
+            "d弧左竖右，写图不代音频"
+          ]
+        ],
+        "explanation": "看字形可做配对和比较；示例词要在真实声音示范后另听、另读。本人手写或录音按实际提供的范围核，不拿印刷字代本人作品。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "本局black配站起，就把black翻译成站起来。",
+        "alternatives": [
+          "把游戏约定动作当颜色词固有意思。"
+        ],
+        "verification": "换成明确的新规则，再分别问black的词义与本局该做的动作。",
+        "correctiveFeedback": "black仍为黑色，站起或坐下由当前活动规则决定；词义不跟动作配对改变。"
+      },
+      {
+        "observation": "This is Mei明明介绍第三人，却认作说话者本人叫Mei；too又被写成数字two。",
+        "alternatives": [
+          "未核当前角色或按近音代当前意思。"
+        ],
+        "verification": "标出谁在说、向谁介绍谁，再看初见回应中too表达什么。",
+        "correctiveFeedback": "This is介绍当前被指明的人；I’m介绍自己；此处too表示同样，不在数人数。"
+      },
+      {
+        "observation": "字母歌唱熟或看见字形，就勾选全部首音、规范书写和听音题通过。",
+        "alternatives": [
+          "把不同任务的材料和本人表现合并。"
+        ],
+        "verification": "分别核真实输入声音、本人实际录音与书写，听音未提供时保留未核。",
+        "correctiveFeedback": "字形、字母名、词中声音和书写各需对应任务，未发生的表现不代填。"
+      }
+    ],
+    "transfer": {
+      "scenario": "把情境换为上午，介绍角色换为Lin与Yu；新指令要求把A方框涂绿色，本局black改为坐下。",
+      "prompt": "按当前时段、角色和图形作答，分别说明颜色词义与本局动作。没有音频时只记文字任务。",
+      "expectedStrategy": "不照搬下午句、旧名字、B圆或旧游戏动作；先核当前对象与材料，再自己说或实际做。"
+    },
+    "summary": {
+      "synthesis": "颜色词先对上意思，问候与介绍看角色。看见、要求、实际做和本人说分开，再把字形与真实声音分别练。",
+      "takeaways": [
+        "八色完整词义",
+        "I see是观察表达",
+        "Show me和Colour it是要求",
+        "This is不替I’m",
+        "too在初见回应里不是数字",
+        "Aa/Bb/Cc/Dd分别配对",
+        "b与d方向分清",
+        "游戏规则不改颜色词义"
+      ]
+    },
+    "citations": [
+      {
+        "page": 19,
+        "quote": "This is Miss Green.",
+        "usedFor": "concept"
+      },
+      {
+        "page": 20,
+        "quote": "Show me blue.",
+        "usedFor": "example"
+      },
+      {
+        "page": 21,
+        "quote": "Listen and circle.",
+        "usedFor": "misconception"
+      },
+      {
+        "page": 22,
+        "quote": "Nice to meet you, too.",
+        "usedFor": "concept"
+      },
+      {
+        "page": 23,
+        "quote": "Colour it brown!",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:english:g3:349949e1:colours-words",
+        "objective": "在明确文字条件中认读red/green/yellow/blue/black/white/orange/brown",
+        "successCriterion": "按当前完整词义对应，不凭词长位置或物体常见颜色猜，文字识读不自动算实际视觉或听辨"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:english:g3:349949e1:colours-introduce",
+        "objective": "在明确上午或下午情境中问候，并用This is介绍指定第三人",
+        "successCriterion": "时段和角色对应，介绍者与被介绍者不混，角色称谓不按外貌推真实身份"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:english:g3:349949e1:colours-meet",
+        "objective": "在明确初次见面的角色练习中说Nice to meet you及适当回应",
+        "successCriterion": "发话与回应顺序合适，too表达同样感受，单人角色或跟读不代真人交流"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:english:g3:349949e1:colours-action",
+        "objective": "对当前Show me或Colour it文字要求作实际可见的颜色选择或涂色",
+        "successCriterion": "对象与颜色相符才核，I see与要求涂色不同；无声音不认听辨，行动未做不代完成"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:english:g3:349949e1:colours-letters",
+        "objective": "按Aa/Bb/Cc/Dd配对并在本人实际书写中区分b与d",
+        "successCriterion": "大小写配对准确，b/d笔竖与圆弧位置分明，印刷字体与本人手写、过程和声音分别核"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:english:g3:349949e1:colours-initial",
+        "objective": "在本人录音中读ant/apple、book/bag、cat/crayon、dog/duck，并比较给定首字母",
+        "successCriterion": "跟随具体词核可理解发声，Aa字母名不代ant/apple首音，c在此两例的读音不推全部单词规则"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:english:g3:349949e1:colours-context",
+        "objective": "分清颜色词本义、当前行动规则、歌曲扩展和可见信息",
+        "successCriterion": "不把颜色词解释为站坐动作，不由歌曲或物体常识补视觉和听辨答案，文字和真实事实分开"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "colours",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

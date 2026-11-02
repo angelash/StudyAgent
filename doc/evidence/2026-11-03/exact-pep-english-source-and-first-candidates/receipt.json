@@ -1,0 +1,241 @@
+{
+  "protocol": "exact-pep-english-source-and-first-candidates-v1",
+  "at": "2026-11-02T19:38:23.332Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "source": {
+    "at": "2026-11-02T18:55:27.539Z",
+    "passed": true,
+    "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+    "bookVersion": "d27c60e843456fa701ca08d5",
+    "proofFingerprint": "7ce05149ab8146c815b750108acd87657c29c25e9981ee038751482fc3aaa52e",
+    "publicationYear": null,
+    "copyrightYear": 2012,
+    "approvalYear": 2012,
+    "curriculumStandardYear": 2011,
+    "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+    "sourcePages": 82,
+    "directoryEntries": 11,
+    "instructionalEntries": 8,
+    "referenceEntries": 3,
+    "visuallyReviewedPages": 29,
+    "before": {
+      "books": 2,
+      "candidates": 2,
+      "proofs": 2
+    },
+    "previousOriginalRecordsUnchanged": true,
+    "teacherReviewed": false,
+    "published": 0,
+    "learnerEvidenceCreated": false
+  },
+  "wholeOriginalVisualReview": {
+    "allPhysicalPagesRead": true,
+    "pages": 82,
+    "originalAudioObtained": false,
+    "teachingReviewComplete": false
+  },
+  "content": {
+    "drafts": 2,
+    "targets": 14,
+    "candidates": 98,
+    "modes": {
+      "audio_record": 42,
+      "image_upload": 21,
+      "short_answer": 35
+    },
+    "teacherReviewed": false,
+    "authenticListeningStimuliIncluded": false,
+    "allPageActivitiesDelivered": false
+  },
+  "validation": {
+    "static": {
+      "at": "2026-11-02T19:02:29.441Z",
+      "passed": true,
+      "registryBooks": 451,
+      "oldRegistryBooksUnchanged": 450,
+      "oldProofsUnchanged": 2,
+      "oldCandidateRowsUnchanged": 525,
+      "rebuild": [
+        {
+          "run": 1,
+          "registrySha256": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
+          "mappingSha256": "eed3ae8d5aeca80cb07859356cfbcf9271e5ab268f362382759d19023f25ed2c",
+          "byteIdentical": true
+        },
+        {
+          "run": 2,
+          "registrySha256": "fdbd3253c3d5d46a36c235eac05311f1f0f059ad94d91a42a64f93e08212eff5",
+          "mappingSha256": "eed3ae8d5aeca80cb07859356cfbcf9271e5ab268f362382759d19023f25ed2c",
+          "byteIdentical": true
+        }
+      ],
+      "assetTests": {
+        "passed": 47,
+        "failed": 0,
+        "first": {
+          "passed": 46,
+          "failed": 1,
+          "reason": "Mapping-candidate test expected 14 books but exact English original adds the fifteenth. Corrected only expected totals to 15 books / 526 rows."
+        },
+        "separateBatches": true
+      },
+      "sourceCandidatePreflight": {
+        "passed": true,
+        "questions": 49,
+        "targets": 7,
+        "modes": {
+          "audio_record": 21,
+          "short_answer": 21,
+          "image_upload": 7
+        },
+        "publicationYear": null,
+        "standardYear": 2011,
+        "teacherReviewed": false
+      },
+      "applicationInputs": 1930,
+      "changedApplicationInputs": [
+        "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts"
+      ],
+      "applicationRuntimeChanged": false,
+      "databaseProtocolChanged": false,
+      "authenticListeningInventoryComplete": false
+    },
+    "http": {
+      "sqlite": {
+        "passed": true,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      "postgres": {
+        "passed": true,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      "coloursSqlite": {
+        "passed": true,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "visualQuestionDocuments": 0,
+          "wholeVisualDocumentsPreserved": true,
+          "staleVisualDocumentVersionRejected": false,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    },
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 4,
+      "failed": 0,
+      "screenshots": 4,
+      "wholeConceptTablesAndDownloadChecked": true,
+      "keyboardMobileAndLocalEditsChecked": true,
+      "firstPassed": 1,
+      "firstFailed": 1,
+      "firstFailure": "Source-only citation was incorrectly expected in authored reading text; corrected test only.",
+      "separateBatches": true
+    },
+    "coloursBrowser": {
+      "passed": 3,
+      "failed": 0,
+      "screenshots": 4,
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "separateBatch": true
+    },
+    "fullApi": {
+      "passed": 3102,
+      "failed": 2,
+      "conditionalSkips": 131,
+      "inputCount": 2202,
+      "changedDuringRun": [],
+      "old211ResultNotCombined": true,
+      "fullSuiteRerunAfterCorrection": false
+    },
+    "correctedSuites": {
+      "passed": 11,
+      "failed": 0,
+      "conditionalSkips": 0,
+      "productionCodeChanged": false,
+      "separateBatch": true
+    },
+    "applicationRuntimeChanged": false,
+    "databaseProtocol": 37,
+    "apiTypecheckExit": 0
+  },
+  "protection": {
+    "at": "2026-11-02T19:38:22.578Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 451,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 103,
+    "booksWithDirectory": 115,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3530,
+    "lessonsWithCandidateFiles": 60,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3470,
+    "authoredFollowingMaterialCandidates": 2695,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLessonSeparateCandidates": 44,
+    "englishRemainingInstructionalEntriesWithoutCandidates": 6,
+    "sourcePagesReviewedAcrossBothUnits": 20,
+    "allRemainingTextbooksGespTeacherScoringFamilyAndStock": true,
+    "block5": true
+  },
+  "boundaries": {
+    "originalPagesAndFullTextLocalOnly": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "published": 0,
+    "adopted": 0,
+    "newLearnerResponses": 0,
+    "pushed": false,
+    "deployed": false
+  }
+}

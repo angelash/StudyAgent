@@ -524,6 +524,139 @@
         "reviewedAt": "2026-11-02T14:54:34.295Z",
         "statement": "已逐张核对两页完整目录及版权页和后记，10条是原目录单元粒度而非全部细分课时。逐课正文和教学审核仍待，不改变其他登记教材资格。"
       }
+    },
+    {
+      "protocol": "textbook-edition-conformity-v1",
+      "bookId": "archive-book:english-g3-upper-349949e1df2ad88b",
+      "bookVersion": "d27c60e843456fa701ca08d5",
+      "registryFingerprint": "8af7e244c0df2fc24aded1c7b27a5d14005d87e52a4f024e948b51ea62298118",
+      "sourceBookId": "chinatextbook:primary:english:45c80f5d333cb887ec3f",
+      "sourceSha256": "349949e1df2ad88b9f6a8cbb6d96951f1113770d59ee1d9db4cfaaab1d9b685d",
+      "extractedSha256": "ebd4418ba4294f2fb1995e7be87978c9b7437c112ced1809433296007095af1e",
+      "sourcePages": 82,
+      "edition": {
+        "publicationYear": null,
+        "curriculumStandardYear": 2011,
+        "independentlyRegistered": true,
+        "statement": "人教PEP三年级起点三年级上册；版权页Copyright 2012、审定2012，后记依据2011年版课标。本件未载明确出版年月、版次或印次，publicationYear保持null，按完整SHA独立登记；封面印前2022时间与编者2012署时不代出版年，不能绑定2024修订版。",
+        "pages": [
+          {
+            "page": 1,
+            "textSha256": "929ad1ef16ef8c57c4d40898513b44cd8b3dd37dffce4c5dd32400d8b68464f3",
+            "imageSha256": "c53411eb1266b640a9402a703d71982e7718ece35479a4157c6eb4d7635c68a8"
+          },
+          {
+            "page": 2,
+            "textSha256": "92288204eea7697e7f2a3a7300de4c532c4f0c504bbc97cdfceaa91cf897cee3",
+            "imageSha256": "62ec174b345fa48fee5c18b6f7f6dfa5e6963c96d4a99865e535cce3ca0f3ebd"
+          },
+          {
+            "page": 3,
+            "textSha256": "764994d6e8081bbe41bb0f309619781422b94a7f66871687bda4ed333e391c3f",
+            "imageSha256": "ff2858f62028ea002b8f75502d99e86cb6a6b076264fb7e68d1923a2a8807983"
+          },
+          {
+            "page": 81,
+            "textSha256": "d8b1e2bb4be43bc6e681e6315b0d5cd42e954aa3ef628f3830a8700f8b228fba",
+            "imageSha256": "205131b58742ae9876bd76bd4f7900067e9c923cfc33ed1cd3030b5718eeaa90"
+          }
+        ]
+      },
+      "directory": {
+        "complete": true,
+        "pages": [
+          {
+            "page": 5,
+            "textSha256": "2fecd865dad6ba34ee95b914a88ebd9aed549de55dd14a95da1686c46f72600b",
+            "imageSha256": "048550e4b7a848db8566bd02d83167d333e89c828c8e0d0dd7a3dfabcd69e6a3"
+          }
+        ],
+        "entries": [
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit1:entry1",
+            "lessonFingerprint": "55cafb9ad114e04df482b5eac2eeddfe1860276a8eaa22a863b9c9f0fc2cf47b",
+            "physicalStartPage": 7,
+            "physicalEndPage": 16
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit2",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit2:entry1",
+            "lessonFingerprint": "b6be2e87e5d9fdcf2c9fb958f80e1dd4baf067ff8ec84178341900965a84b463",
+            "physicalStartPage": 17,
+            "physicalEndPage": 26
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit3",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit3:entry1",
+            "lessonFingerprint": "d4e1ea3952d8efab0022c9580b7cf95db32ffc66f33fdb78add7bc4d6a38b2a9",
+            "physicalStartPage": 27,
+            "physicalEndPage": 36
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle1",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle1:entry1",
+            "lessonFingerprint": "c2e88a8a8df34b046b5a40ef74cef5ed8b18824705eba7bc7096414e1a7f6e12",
+            "physicalStartPage": 37,
+            "physicalEndPage": 40
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit4",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit4:entry1",
+            "lessonFingerprint": "6623bcd56bcaada7d8d2eeb796d954cf4165a1b2701ee4f5c8aa1e8289947cfa",
+            "physicalStartPage": 41,
+            "physicalEndPage": 50
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit5",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit5:entry1",
+            "lessonFingerprint": "0ee6d2616844700654865abffe8ebecda6b4c9d788a8dedb341e8557ce77b4aa",
+            "physicalStartPage": 51,
+            "physicalEndPage": 60
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:unit6",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:unit6:entry1",
+            "lessonFingerprint": "6c6c3d90827eac37a380823c801100d4eb707532a543ed915f2149cbe5759965",
+            "physicalStartPage": 61,
+            "physicalEndPage": 70
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle2",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:recycle2:entry1",
+            "lessonFingerprint": "32579220ac616697dd06e4c3f89eb0d0b536bafc9ccc40306415a3e0392eeb34",
+            "physicalStartPage": 71,
+            "physicalEndPage": 74
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix1",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix1:entry1",
+            "lessonFingerprint": "a6ec20a2d8e6a9f8128f4a07aebaa9be5d228b5f141c2179c922068cf62b532d",
+            "physicalStartPage": 75,
+            "physicalEndPage": 76
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix2",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix2:entry1",
+            "lessonFingerprint": "e1c52c356ec5323ac0e581d8e242a12f6910e5eb2c1b797ef353870591480b63",
+            "physicalStartPage": 77,
+            "physicalEndPage": 78
+          },
+          {
+            "chapterId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix3",
+            "lessonId": "archive-book:english-g3-upper-349949e1df2ad88b:appendix3:entry1",
+            "lessonFingerprint": "675968f2217bba47605f2d64c3fa8ee7e624a7a940d83af1c007719e0b6306ac",
+            "physicalStartPage": 79,
+            "physicalEndPage": 80
+          }
+        ]
+      },
+      "review": {
+        "method": "agent_visual_review",
+        "reviewerRef": "studyagent-exact-pep-original-review",
+        "reviewedAt": "2026-11-02T18:55:27.539Z",
+        "statement": "完整目录逐项看图及11项正文起页分别核对；6单元、2复习、3参考附录。单元粒度不等所有细分课时或正文活动教学完成，不替教师审核，不改变其他版本和已保存学习范围。"
+      }
     }
   ],
   "discrepancies": [

@@ -20,15 +20,15 @@ class ReviewedOriginalRegistryTests(unittest.TestCase):
     def apply(self):
         return apply_originals(self.base, self.originals, self.proofs, self.sources)
 
-    def test_current_public_and_archive_books_rebuild_with_both_exact_originals(self):
+    def test_current_public_and_archive_books_rebuild_with_all_exact_originals(self):
         before = copy.deepcopy(self.base)
         self.assertEqual(self.apply(), self.current)
         self.assertEqual(self.base, before)
-        self.assertEqual(len(self.current), 450)
+        self.assertEqual(len(self.current), 451)
 
-    def test_original_candidates_remain_unapproved_and_match_both_exact_versions(self):
+    def test_original_candidates_remain_unapproved_and_match_all_exact_versions(self):
         result = apply_original_mappings([], self.originals, self.current, self.proofs, self.sources)
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(result), 3)
         self.assertTrue(all(not r['approvedAtomIds'] for r in result))
 
     def test_original_mapping_cannot_gain_approval_or_change_the_source(self):
@@ -78,6 +78,25 @@ class ReviewedOriginalRegistryTests(unittest.TestCase):
         self.proofs['rows'][1]['registryFingerprint'] = fingerprint(selected)
         with self.assertRaisesRegex(ValueError, 'years'):
             self.apply()
+
+    def test_pep_unknown_publication_is_separate_from_copyright_and_standard(self):
+        book = next(b for b in self.apply() if b['id'] == 'archive-book:english-g3-upper-349949e1df2ad88b')
+        self.assertEqual(book['sourceEdition']['publicationYear'], None)
+        self.assertEqual(book['sourceEdition']['curriculumStandardYear'], 2011)
+        self.assertEqual(len([l for c in book['chapters'] for l in c['lessons'] if l['kind'] != 'reference']), 8)
+        self.assertEqual(len([l for c in book['chapters'] for l in c['lessons'] if l['kind'] == 'reference']), 3)
+        self.assertEqual(len(self.base), 448)
+
+    def test_pep_overlay_cannot_infer_a_publication_year_from_approval_or_prepress(self):
+        for year in [2012, 2022, 2024]:
+            originals = copy.deepcopy(self.originals)
+            proofs = copy.deepcopy(self.proofs)
+            book = next(b for b in originals['books'] if b['subject'] == 'english')
+            book['sourceEdition']['publicationYear'] = year
+            proof = next(p for p in proofs['rows'] if p['bookId'] == book['id'])
+            proof['registryFingerprint'] = fingerprint({k: book[k] for k in ['id', 'version', 'subject', 'grade', 'term', 'title', 'edition', 'sourceEdition', 'chapterState', 'chapters']})
+            with self.assertRaisesRegex(ValueError, 'years'):
+                apply_originals(self.base, originals, proofs, self.sources)
 
 
 if __name__ == '__main__':
