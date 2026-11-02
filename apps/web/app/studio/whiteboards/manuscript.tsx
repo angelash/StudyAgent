@@ -1,6 +1,7 @@
 'use client';
 import { assistantWhiteboardContentSchema, topicWhiteboardContentSchema } from '@study-agent/contracts';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
+import { ClassroomMathFigureView } from '../classroom/math-figure';
 export function TopicManuscript({ content }: { content: unknown }) {
   const parsed = topicWhiteboardContentSchema.or(assistantWhiteboardContentSchema).safeParse(content);
   if (!parsed.success) return <p role="status">此原稿暂不能排版，请下载完整版本核对。</p>;
@@ -9,6 +10,6 @@ export function TopicManuscript({ content }: { content: unknown }) {
     {manuscript.scenes.map((scene, index) => <section key={index}><h4>{index + 1}. {scene.title}</h4>
       <p className="tw-spoken-copy">{scene.narration}</p>{scene.body && <p>{scene.body}</p>}
       {!!scene.bullets.length && <ul>{scene.bullets.map((text, index) => <li key={index}>{text}</li>)}</ul>}
-      <WhiteboardExhibit exhibit={scene.exhibit}/></section>)}
+      <WhiteboardExhibit exhibit={scene.exhibit}/>{scene.math && <ClassroomMathFigureView figure={scene.math} />}</section>)}
   </article>;
 }

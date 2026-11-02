@@ -34,7 +34,7 @@ export function whiteboardSceneProgress(scene: StudioWhiteboardScene, end: numbe
     Array.isArray(plan.bulletEnds) && plan.bulletEnds.length === (scene.bullets?.length ?? 0) && ordered(plan.bulletEnds) && Array.isArray(plan.exhibits) && plan.exhibits.length === exhibits.length &&
     plan.exhibits.every((item, index) => item && at(item.at) && (exhibits[index].kind === 'table' ?
       Array.isArray(item.rowEnds) && item.rowEnds.length === exhibits[index].rows.length && ordered(item.rowEnds) && item.rowEnds.every(row => row >= item.at) : !item.rowEnds?.length)) &&
-    (!scene.diagram || plan.diagramAt !== undefined && at(plan.diagramAt));
+    (!(scene.diagram || scene.math) || plan.diagramAt !== undefined && at(plan.diagramAt));
   if (!valid) return { mode: 'invalid' as const, bullets: [], exhibits: exhibits.map(() => false), rows: exhibits.map(() => 0), diagram: false };
   return { mode: 'verified' as const, bullets: plan.bulletEnds.flatMap((value, index) => value <= end ? [index] : []),
     exhibits: plan.exhibits.map(item => item.at <= end), rows: plan.exhibits.map(item => item.rowEnds?.filter(value => value <= end).length ?? 0),

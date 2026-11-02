@@ -1,0 +1,232 @@
+{
+  "at": "2026-11-02T16:29:27.480Z",
+  "source": "main",
+  "target": "data/qa/p187",
+  "rows": [
+    {
+      "file": "apps/api/src/infrastructure/domain-database.ts",
+      "sha256": "7d8725603e0bf3d32509343ec984a54e798408b015043cb53e6984821b85fb54",
+      "bytes": 55423
+    },
+    {
+      "file": "apps/api/src/infrastructure/gesp-evidence-reader.integration.test.ts",
+      "sha256": "e47dd965ca0ba8cd804f2a02d3220b89df71baacc85f22f0934196e17ba04e4f",
+      "bytes": 7571
+    },
+    {
+      "file": "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+      "sha256": "d8937959be9a42ec954c8194ee2b1ac9831d05a429d6a09226fce8e238cf040b",
+      "bytes": 6138
+    },
+    {
+      "file": "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+      "sha256": "76b02a121f02b4d9ebcd51f7e5741e8c4b363ba36c7e4328ea54e0c768557cb8",
+      "bytes": 10152
+    },
+    {
+      "file": "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+      "sha256": "1e99b107ff6005746bf0fb385e8d2ad8499f65d7d9c1f9002e7410d783e5f003",
+      "bytes": 7328
+    },
+    {
+      "file": "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "sha256": "991a592dd78451359d97d6a4191ecf182815b4a87fc461b365a62412db65edf5",
+      "bytes": 14279
+    },
+    {
+      "file": "apps/api/src/modules/ai/assistant-teaching-content.ts",
+      "sha256": "da5e1fedbb55cb043d56e6e836eb9697db1ef7dd013824e0ae9e4bfdf69ff5bf",
+      "bytes": 22503
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+      "sha256": "551a3314e25dffe6f9133ab402c114e6103f22393b9b4f733e2a4e7912aae619",
+      "bytes": 12349
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/textbook-teaching-package.ts",
+      "sha256": "c8ff8a69e419702f760b70ccae2713f30fda7e2b218b4c7d5ec27d056b90b4a8",
+      "bytes": 15904
+    },
+    {
+      "file": "apps/api/src/modules/diagnostics/textbook-teaching-public.ts",
+      "sha256": "3187f7d3e821481087d686e19dad784e8529f5517d5f558499876c05430520b3",
+      "bytes": 8207
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-curriculum.ts",
+      "sha256": "5700c78d13a61c73a493be5c2660e2924683357be6debd837fe52a7fb92ad16b",
+      "bytes": 47516
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-practice-model.ts",
+      "sha256": "b4b4a2420f63b3faa5d26f30f1abc02d3954b11fc5d8de1e57116923d7538ff0",
+      "bytes": 1108
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-schema.ts",
+      "sha256": "d9d59bbe3bd3021cfab9f71179f5853052050977d9e5c42f000be69b7b975832",
+      "bytes": 1879
+    },
+    {
+      "file": "apps/api/src/modules/learning/topic-whiteboard-visual-context.ts",
+      "sha256": "94d80ad14d9e7bc3b9ec09f4d10c16fad5b37716e3615e3a9521a3cf91f6a59d",
+      "bytes": 3554
+    },
+    {
+      "file": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "sha256": "13b38c0e333c8350688cfec7edd231943da98b4b09b3cf31c1881ec985db7c72",
+      "bytes": 8904
+    },
+    {
+      "file": "apps/web/app/admin/curriculum/teaching-package-content.tsx",
+      "sha256": "974e534459bf48a28d00517a0f6ea10eb5f85675c92f83cf8cd0f259749bc309",
+      "bytes": 24450
+    },
+    {
+      "file": "apps/web/app/admin/curriculum/teaching-package-preview.tsx",
+      "sha256": "5591ec10bec3fe98a2fc379a05d4e18cd3ef1e14870a3269a2bde08061efdc96",
+      "bytes": 5251
+    },
+    {
+      "file": "apps/web/app/studio/classroom/board-step.tsx",
+      "sha256": "a7b9a8b3373cf4d4add0a4aa8be71ea5e77c6ef90b0e0243c1d5f2620beaf5c7",
+      "bytes": 3226
+    },
+    {
+      "file": "apps/web/app/studio/classroom/practice-panel.tsx",
+      "sha256": "062a45426f3b8d57a74e8985fbd30088ff21918d897eba33a30a1b24aed89888",
+      "bytes": 16818
+    },
+    {
+      "file": "apps/web/app/studio/classroom/workbench.tsx",
+      "sha256": "2e309cbf19983c57431f8d11db93db8e15ee11721032f3efaaddee22e1520c09",
+      "bytes": 82611
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-frame.ts",
+      "sha256": "e711ce7a74e6ecf655b416ba1c0a03900bc519b5214b8a81b94b8bad8a708def",
+      "bytes": 17912
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-question-notes.ts",
+      "sha256": "f0ccc64a0c8727778df5dd9536c01b3f4fc9650ab59bf4601b00445f9bb0afd4",
+      "bytes": 3980
+    },
+    {
+      "file": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "86b81693ba2d06788d1ca96827178ab8b2243f2292efb60d871e1ffdc67606e6",
+      "bytes": 49391
+    },
+    {
+      "file": "apps/web/app/studio/whiteboards/content-draft.ts",
+      "sha256": "80a9b064489cf18a5e50a1f1f2b500e4e7a3b5454ba1ee375afc6f0153f9aab8",
+      "bytes": 1566
+    },
+    {
+      "file": "apps/web/app/studio/whiteboards/content-editor.tsx",
+      "sha256": "ce31e4e151a7e46d997fb249ec1d8b0d08ae0e5959a637a76eabc9d11c474ae2",
+      "bytes": 22204
+    },
+    {
+      "file": "apps/web/app/studio/whiteboards/manuscript.tsx",
+      "sha256": "4f83b9652a7ec1b6cd38a442742d528ac18883242bfc2ea1d95da8a6212a7a3a",
+      "bytes": 1126
+    },
+    {
+      "file": "apps/web/components/assistant-source-preview.tsx",
+      "sha256": "6be4d894b64b1ae8f2bf52f024babe9384d01d2f495cddf3152f0eada453a62d",
+      "bytes": 11313
+    },
+    {
+      "file": "apps/web/lib/teaching-editor-copy.ts",
+      "sha256": "99c024b6b5a5bfc627bc21162605a96c920e63b2afad8bcb9a21e8f3b91c343e",
+      "bytes": 15831
+    },
+    {
+      "file": "packages/contracts/src/assistant-turn.ts",
+      "sha256": "9a83b267238650c6b4a305db6fbdbcd8f4f3823910e37e3a8a73ace0d4f187ef",
+      "bytes": 5401
+    },
+    {
+      "file": "packages/contracts/src/classroom.ts",
+      "sha256": "55edc2ea202d63fbce7ce45789403cbc1f878ddc1c4df9ba138a1d0aed0f61d7",
+      "bytes": 8228
+    },
+    {
+      "file": "packages/contracts/src/index.ts",
+      "sha256": "a5d642222341ebe2544b4d07a689b9d61048aafd861f0c765ee52f667f72a41f",
+      "bytes": 26957
+    },
+    {
+      "file": "packages/contracts/src/studio.ts",
+      "sha256": "e2a8f794a962e22462a9c7fcec3bc3753d3362e86e671abc3badd282e78496ad",
+      "bytes": 11340
+    },
+    {
+      "file": "packages/contracts/src/textbook-teaching.ts",
+      "sha256": "db7a1b9176db952c92475430bab7b8a64611246ba34ec4369e3aff1d0fb729fb",
+      "bytes": 19973
+    },
+    {
+      "file": "packages/contracts/src/topic-whiteboard.ts",
+      "sha256": "99c8384abb93d784473da1463e713a502dcd8fc5eb2b89565a7aa62116362708",
+      "bytes": 5895
+    },
+    {
+      "file": "packages/contracts/src/whiteboard-speech.ts",
+      "sha256": "f82b9867c9becb799cbd6c0816177ec126d63481b3e0c87ba963528dee697c41",
+      "bytes": 7350
+    },
+    {
+      "file": "scripts/operations/database-reader-guard.cjs",
+      "sha256": "648c91075170d86b2ec241f2da933fac05a67ec835e9b5b024c3b2ca56c154a3",
+      "bytes": 1444
+    },
+    {
+      "file": "apps/api/src/infrastructure/math-figures-reader.integration.test.ts",
+      "sha256": "67ec217f1597a24593b770d3427491d0f6e3dd078cd4df61f2549592aede9a5e",
+      "bytes": 9533
+    },
+    {
+      "file": "apps/api/src/modules/learning/classroom-math.test.ts",
+      "sha256": "e0168dcdfb8d8eb910ef4cda6e68b27b1f971853f4d1cabdcfd66d0b4ea5caf6",
+      "bytes": 6376
+    },
+    {
+      "file": "apps/web/app/admin/curriculum/teaching-math-fields.tsx",
+      "sha256": "aede6fcdab8fe60dce1dd4a1870cccee43a48045dc6ad5ba055cf65f35a62790",
+      "bytes": 6142
+    },
+    {
+      "file": "apps/web/app/studio/classroom/math-canvas.ts",
+      "sha256": "a28f87e60860b4f1decf93c85cef08bbfa2812b279f5f13ef5754d8554dd65f8",
+      "bytes": 2000
+    },
+    {
+      "file": "apps/web/app/studio/classroom/math-figure.css",
+      "sha256": "c4ca84b0bcf551985c8b65c8da5c1ef0c7a02dd28a4af161d9d7a28ef169eabe",
+      "bytes": 822
+    },
+    {
+      "file": "apps/web/app/studio/classroom/math-figure.tsx",
+      "sha256": "99e4c986fa721bd4a360128cd1c47a21235e54df1a0a8dc7b4e2c17ea1ec02dc",
+      "bytes": 3222
+    },
+    {
+      "file": "packages/contracts/src/classroom-math.ts",
+      "sha256": "439e5fe7d61a306f92fe0315fc51eed1186bfad01ce7f42961e66950ddfac561",
+      "bytes": 11118
+    },
+    {
+      "file": "resources/compatibility/math-before-figures-schema36-reader-v1.json.gz",
+      "sha256": "43bdcb143a9dc11ea39892d17b4d9d8453e5c6f84a0ea44cff4430959e2b7e7e",
+      "bytes": 373780
+    },
+    {
+      "file": "resources/compatibility/math-before-figures-schema36-reader-v1.receipt.json",
+      "sha256": "a606e2baffcffb3bcfa9caeb2523f13ae8d7dd6ed29ca8811fef48796c4d1501",
+      "bytes": 374
+    }
+  ]
+}

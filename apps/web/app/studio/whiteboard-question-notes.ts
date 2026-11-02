@@ -1,3 +1,4 @@
+import { classroomMathMarkdown } from '@study-agent/contracts';
 import { whiteboardSceneExhibits, type WhiteboardTeachingNotes } from '@study-agent/contracts';
 import { replyBoardMarkdown } from './classroom/reply-board-notes';
 
@@ -18,6 +19,7 @@ export function whiteboardQuestionNotesMarkdown(notes: WhiteboardTeachingNotes) 
       else parts.push(text(exhibit.explanation), code(exhibit.latex, 'latex'));
     }
     if (scene.diagram) parts.push(text(scene.diagram.title + '：' + scene.diagram.labels.join(' / ')));
+    if (scene.math) parts.push(classroomMathMarkdown(scene.math));
     if (scene.figure) parts.push(text('图示：' + scene.figure.alt + '；' + scene.figure.caption));
     if (scene.source) parts.push(text('来源：' + scene.source.label + ' · 第' + scene.source.page + '页'));
   }

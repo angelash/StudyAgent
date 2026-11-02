@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException } from '@nestjs/common';
 import { z } from 'zod';
-import { teachingVisualSchema, whiteboardPresentation, whiteboardTaughtTableRows,
+import { teachingVisualSchema, classroomMathFigureSchema, whiteboardPresentation, whiteboardTaughtTableRows, whiteboardSceneProgress,
   type StudioWhiteboard, type StudioTopicWhiteboard, type StudioWhiteboardScene, type WhiteboardSpeechUnit,
   type WhiteboardQuestionAnchor, type WhiteboardQuestionBoardKind, type WhiteboardQuestionContextView } from '@study-agent/contracts';
 import { topicWhiteboardDigest } from './topic-whiteboard-content';
@@ -22,13 +22,15 @@ function teachingScene(scene: StudioWhiteboardScene, unit?: WhiteboardSpeechUnit
     result: { numerator: scene.visual.result.numerator, denominator: scene.visual.result.denominator } }) : undefined;
   const figure = scene.figure ? { snapshotId: scene.figure.snapshotId, sha256: scene.figure.sha256,
     width: scene.figure.width, height: scene.figure.height, alt: scene.figure.alt, caption: scene.figure.caption } : undefined;
+  const math = scene.math && (complete || !unit || whiteboardSceneProgress(scene, unit.end).diagram) ? classroomMathFigureSchema.parse(scene.math) : undefined;
+  const diagram = scene.diagram && (complete || !unit || whiteboardSceneProgress(scene, unit.end).diagram) ? structuredClone(scene.diagram) : undefined;
   const source = scene.source ? { materialId: scene.source.materialId, page: scene.source.page, label: scene.source.label } : undefined;
   if (source && (!source.materialId || !Number.isSafeInteger(source.page) || source.page < 1 || typeof source.label !== 'string'))
     throw new BadRequestException('原白板来源页标识无效，请重新读取原件');
   return { id: scene.id, kind: scene.kind, title: scene.title,
     ...(scene.body ? { body: scene.body } : {}),
     ...(scene.bullets ? { bullets: scene.bullets.filter((_, index) => complete || unit?.visibleBulletIndices.includes(index)) } : {}),
-    ...(exhibit ? { exhibit } : {}), ...(visual ? { visual } : {}), ...(figure ? { figure } : {}), ...(source ? { source } : {}),
+    ...(exhibit ? { exhibit } : {}), ...(visual ? { visual } : {}), ...(figure ? { figure } : {}), ...(source ? { source } : {}), ...(math ? { math } : {}), ...(diagram ? { diagram } : {}),
     targetAtomIds: [...(scene.targetAtomIds ?? [])] };
 }
 

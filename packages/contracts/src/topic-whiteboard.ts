@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import type { StudioSubject, StudioWhiteboardScene } from './studio';
 import { topicWhiteboardFigureSchema } from './topic-whiteboard-visual';
+import { classroomMathFigureSchema } from './classroom-math';
 import type { AssistantWhiteboardAudience, AssistantWhiteboardContent } from './assistant-whiteboard';
 
 const id = z.string().min(1).max(180), digest = z.string().regex(/^[a-f0-9]{64}$/);
@@ -26,6 +27,7 @@ export const topicWhiteboardContentSchema = z.object({
     narration: z.string().trim().min(3).max(1800), body: z.string().trim().max(1000),
     bullets: z.array(z.string().trim().min(1).max(240)).max(6), targetAtomIds: z.array(id).max(6),
     exhibit: z.union([table, formula, z.null()]),
+    math: classroomMathFigureSchema.nullable().optional(),
     figure: topicWhiteboardFigureSchema.optional(),
   }).strict()).min(3).max(8),
 }).strict().superRefine((value, context) => {

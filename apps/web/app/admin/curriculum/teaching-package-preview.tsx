@@ -41,6 +41,8 @@ export default function TeachingPackagePreview({ copy }: { copy: TeachingEditorD
       </React.Fragment>;
       if (visual.kind === 'table') return <Reading key={index} title={filled(visual.title)} text={visual.explanation}
         blocks={[{ id, kind: 'table', text: filled(visual.title), table: { headers: visual.headers, rows: visual.rows } }]} />;
+      if (visual.kind === 'math') return <Reading key={index} title={filled(visual.figure.title)} text={visual.explanation}
+        blocks={[{ id, kind: 'math', text: visual.explanation, math: visual.figure }]} />;
       return <Reading key={index} title={filled(visual.experiment.title)} text="先预测，再观察和解释。可在下方操作课堂模型。"
         blocks={[{ id, kind: 'experiment', text: '', experiment: visual.experiment }]} />;
     })}

@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-02T17:01:31.165Z",
+  "passed": true,
+  "results": [
+    {
+      "slug": "solids",
+      "targets": 7,
+      "questions": 49,
+      "mathFigures": 2,
+      "generatorBytesReproduced": true,
+      "exactSourceCitationAndScope": true,
+      "teacherReviewed": false,
+      "nativePerQuestionVisualStockComplete": false
+    },
+    {
+      "slug": "clock",
+      "targets": 7,
+      "questions": 49,
+      "mathFigures": 3,
+      "generatorBytesReproduced": true,
+      "exactSourceCitationAndScope": true,
+      "teacherReviewed": false,
+      "nativePerQuestionVisualStockComplete": false
+    }
+  ],
+  "files": [
+    {
+      "path": "scripts/content/build-math-g1-solids-candidates.cjs",
+      "bytes": 26071,
+      "sha256": "101b25d6cd9c20f21c13f72265072db8e67b09919a04e283351bcb92cd211ed5"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-solids-v1.json",
+      "bytes": 19915,
+      "sha256": "7f30eceabebe855e4bb30083de15b0e25288af4832c9ab54fc274d53c94d260c"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-solids-v1.json",
+      "bytes": 49644,
+      "sha256": "91e25dc7596803aaebd71aca424c9fc86032aea844d50dd8e14c0e4fee93d90e"
+    },
+    {
+      "path": "scripts/content/build-math-g1-clock-candidates.cjs",
+      "bytes": 22203,
+      "sha256": "091249b5a6a381c73ce26e86f8ddd15b29aab9cab8e94f82e559558c8df2f317"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-clock-v1.json",
+      "bytes": 18508,
+      "sha256": "b73fa165c94ab114545198113897ff018cdf8c696f5f59e2bbd3f93d96f949e3"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-clock-v1.json",
+      "bytes": 45576,
+      "sha256": "ea8f45ac5bc1b59916d3a3d03bdabeb2c82609af9517fb604738c5023acc0518"
+    }
+  ],
+  "reviewedOriginalPages": 9,
+  "sourceOriginalsUnchanged": true,
+  "teacherAcceptance": false,
+  "published": 0,
+  "learnerResponses": 0
+}

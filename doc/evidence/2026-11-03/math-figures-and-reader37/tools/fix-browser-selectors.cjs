@@ -1,0 +1,2 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const file=path.join(__dirname,'browser-run.cjs');let text=fs.readFileSync(file,'utf8');
+for(const [old,next] of [["getByLabel('呈现方式',{exact:true})","getByRole('combobox',{name:/^呈现方式/})"],["getByLabel('第1个钟面的小时',{exact:true})","getByRole('textbox',{name:/^第1个钟面的小时/})"],["getByLabel('第1个钟面的分钟',{exact:true})","getByRole('textbox',{name:/^第1个钟面的分钟/})"]]){assert(text.includes(old));text=text.split(old).join(next);}fs.writeFileSync(file,text);

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { ClassroomLesson } from './classroom';
+import { classroomMathDraftFigureSchema, classroomMathFigureSchema } from './classroom-math';
 import type { QuestionAnswerMode, Question, QuestionDocument, QuestionAnswerSchema, QuestionSourceRecord } from './index';
 
 const key = z.string().min(1).max(180).refine(value => value === value.trim() && !/[\x00-\x1f]/.test(value), '标识不能含首尾空白或控制字符');
@@ -58,6 +59,7 @@ function visualSchema(complete: boolean) {
  return z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('diagram'), diagram, explanation: t(1500, 10) }).strict(),
   z.object({ kind: z.literal('table'), title: t(160), headers: z.array(t(200)).min(1).max(8), rows: z.array(z.array(t(1000)).min(1).max(8)).min(1).max(40), explanation: t(1500, 10) }).strict(),
+  z.object({ kind: z.literal('math'), figure: complete ? classroomMathFigureSchema : classroomMathDraftFigureSchema, explanation: t(1500, 10) }).strict(),
   z.object({ kind: z.literal('experiment'), experiment: z.object({ kind: z.enum(['particle-change', 'air-mixture', 'catalysis', 'atom-ion', 'filtration', 'water-electrolysis', 'mass-conservation', 'balance-water', 'co2-test', 'combustion']),
     title: t(160), prediction: z.object({ question: t(1000), options: z.array(t(300)).min(2).max(4) }).strict(), observation: t(1500, 10), explanation: t(2000, 10), limitation: t(1500, 20) }).strict() }).strict(),
   z.object({ kind: z.literal('not_applicable'), rationale: t(1500, 20) }).strict(),

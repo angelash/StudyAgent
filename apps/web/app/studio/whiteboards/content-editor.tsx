@@ -3,6 +3,7 @@ import * as React from 'react';
 import { assistantWhiteboardContentSchema, assistantWhiteboardEditSchema, topicWhiteboardContentSchema, topicWhiteboardEditSchema, type AssistantWhiteboardSourceMap, type TopicWhiteboardContent, type TopicWhiteboardDraftView } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest } from '../../../lib/api';
 import { WhiteboardExhibit } from '../whiteboard-exhibit';
+import { ClassroomMathFigureView } from '../classroom/math-figure';
 import { editableAssistantContentSchema, editableTopicContentSchema } from './content-draft';
 import { AssistantWhiteboardOrigin, TopicSourceMapEditor, useWhiteboardSource } from './assistant-source';
 import { useSourceWriteGuard } from './source-write-guard';
@@ -167,6 +168,7 @@ export function TopicContentEditor({ row, ownerId, onSaved, onCanLeaveChange: re
         {isSource && source.value && <TopicSourceMapEditor map={(scene as typeof scene & { sourceMap: AssistantWhiteboardSourceMap }).sourceMap} origin={source.value.origin}
           onChange={sourceMap => change({ ...content, scenes: content.scenes.map((item, current) => current === index ? { ...item, sourceMap } : item) })}/>}
         <WhiteboardExhibit exhibit={scene.exhibit}/>
+        {scene.math && <ClassroomMathFigureView figure={scene.math} />}
         {scene.figure && <div className="tw-figure-caption"><p>本幕已选图片，保存时会重新核对原图和教学内容。</p>
           <label>已选图片的替代说明<textarea maxLength={600} value={scene.figure.alt} onChange={event => sceneChange(index, { figure: { ...scene.figure!, alt: event.target.value } })}/></label>
           <label>已选图片的图注<textarea maxLength={600} value={scene.figure.caption} onChange={event => sceneChange(index, { figure: { ...scene.figure!, caption: event.target.value } })}/></label>

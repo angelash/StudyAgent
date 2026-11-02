@@ -19,6 +19,16 @@ function at(value: StudioWhiteboard | StudioTopicWhiteboard, sceneId = value.sce
 }
 
 describe('server-owned frozen whiteboard question context', () => {
+  it('keeps current mathematical models out until their frozen reveal point and binds changes to the original content hash', () => {
+    const value = board(), scene = value.scenes[0]; scene.bullets = [];
+    scene.math = { kind: 'clocks', title: '合成隐藏数字钟面', showDigitalTime: false, showHandLabels: false, clocks: [{ hour: 7, minute: 58, caption: '完整数学图注尾行' }] };
+    scene.reveal = { version: 'whiteboard-reveal-v1', sourceText: scene.narration, bulletEnds: [], exhibits: [], diagramAt: scene.narration.length };
+    const initial = at(value); expect(initial.context.blocks[0].math).toBeUndefined(); expect(initial.contextJson).not.toContain('完整数学图注尾行');
+    const last = whiteboardPresentation(value).units.filter(unit => unit.sceneId === scene.id).at(-1)!;
+    const revealed = buildWhiteboardQuestionContext(value, 'guidance', last.id, value.fingerprint); expect(revealed.context.blocks[0].math).toEqual(scene.math);
+    scene.math.clocks[0].minute = 57; expect(at(value).contentHash).not.toBe(initial.contentHash);
+    scene.reveal.diagramAt = undefined; expect(at(value).context.blocks[0].math).toBeUndefined();
+  });
   it('binds the exact original sentence and only the notes already revealed at that sentence', () => {
     const result = at(board());
     expect(result.view.position).toMatchObject({ sceneId: 'intro', sentenceText: '第一要点。', presentationVersion: 'whiteboard-speech-v1' });

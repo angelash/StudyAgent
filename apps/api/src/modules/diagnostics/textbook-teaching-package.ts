@@ -44,6 +44,7 @@ function visualGaps(content: TextbookTeachingSave['content'], source: TextbookTe
   content.visuals.forEach((visual, index) => {
     const path = `content.visuals.${index}`;
     if (visual.kind === 'table' && visual.rows.some(row => row.length !== visual.headers.length)) add('visual_table_shape', path, '表格的每行必须与表头列数一致');
+    if (visual.kind === 'math' && source.subject !== 'math') add('visual_math_subject', path, '数学模型应对应当前数学教学目标，请核对学科和图示用途');
     if (visual.kind === 'experiment') {
       if (source.subject !== 'chemistry') add('visual_experiment_subject', path, '当前化学演示模型只能用于对应化学课时');
       if (new Set(visual.experiment.prediction.options).size !== visual.experiment.prediction.options.length) add('visual_prediction_options', path, '预测选项不能重复');

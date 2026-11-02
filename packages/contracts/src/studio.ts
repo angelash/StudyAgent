@@ -253,6 +253,7 @@ export type StudioWhiteboardScene = {
   exhibit?: StudioWhiteboardExhibit | null;
   exhibits?: StudioWhiteboardExhibit[];
   diagram?: { kind: 'venn' | 'flow'; title: string; labels: string[] };
+  math?: import('./classroom-math').ClassroomMathFigure | null;
   reveal?: StudioWhiteboardReveal;
   figure?: StudioWhiteboardFigure;
   targetAtomIds?: string[];

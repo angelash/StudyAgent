@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-02T16:39:15.350Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "generatedEngineeringMathModels": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 2,
+  "failed": 1,
+  "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+  "checks": [
+    {
+      "name": "desktop-actual-clocks-solids-and-keyboard-reader",
+      "passed": true
+    },
+    {
+      "name": "mobile-complete-captions-and-print-retain-models",
+      "passed": true
+    },
+    {
+      "name": "raw-invalid-input-switch-download-import-and-cold-local-recovery",
+      "passed": false,
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+    }
+  ],
+  "screenshots": [
+    "clocks-desktop.png",
+    "solids-desktop.png",
+    "clocks-mobile.png",
+    "solids-mobile.png",
+    "solids-print.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

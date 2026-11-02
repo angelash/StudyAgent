@@ -7,6 +7,7 @@ import type { CodeDraftContext } from './code-draft';
 import { ClassroomImage } from './classroom-image';
 export { ClassroomImage } from './classroom-image';
 import { ChemistryExperiment } from './chemistry-experiment';
+import { ClassroomMathFigureView } from './math-figure';
 
 export function BoardStep({ step, sentence, full = false, print = false,unitCount,codeContext,onExperiment }: { step: ClassroomStep; sentence: number; full?: boolean; print?: boolean;unitCount?:number;
   codeContext?: Pick<CodeDraftContext, 'ownerUserId'|'sessionId'>; onExperiment?: () => void }) {
@@ -22,6 +23,7 @@ export function BoardStep({ step, sentence, full = false, print = false,unitCoun
         visible((block.atSentence ?? 0) + index) && <tr className="cl-board-item" key={index}>{cells.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>;
     if (block.kind === 'image' && block.image) return <ClassroomImage key={block.id} image={block.image} interactive={!print} onOpen={onExperiment}/>;
     if (block.kind === 'diagram' && block.diagram) return <ClassroomFigure key={block.id} diagram={block.diagram} interactive={!print} onOpen={onExperiment}/>;
+    if (block.kind === 'math' && block.math) return <ClassroomMathFigureView key={block.id} figure={block.math} interactive={!print} onOpen={onExperiment}/>;
     if (block.kind === 'experiment' && block.experiment) return <ChemistryExperiment key={[codeContext?.sessionId, step.id, block.id].join(':')} experiment={block.experiment} print={print} onInteract={onExperiment}/>;
     if (block.kind === 'code' && block.code) return print ? <pre className="cl-code-print" key={block.id}>{block.code}</pre> : <CodeWorkbench key={[codeContext?.sessionId,step.id,block.id].join(':')} initialCode={block.code}
       context={codeContext?{...codeContext,stepId:step.id,blockId:block.id}:undefined} onInteract={onExperiment}/>;

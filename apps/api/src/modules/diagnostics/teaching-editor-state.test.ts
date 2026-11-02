@@ -5,7 +5,7 @@ import { prepareTextbookTeachingPackage, teachingHash } from './textbook-teachin
 import { prepareTeachingChange } from './textbook-teaching-record';
 import { teachingEditorDraftFromDetail, teachingEditorRebaseHeader, teachingEditorConfirmSavedVersion } from '../../../../web/lib/teaching-editor-state';
 import { readTeachingEditorDetail, readTeachingEditorSource, readTeachingEditorPreflight } from '../../../../web/lib/teaching-editor-read';
-import { teachingEditorBodyFingerprint, teachingEditorSaveCommand, completeTeachingEditorCopy } from '../../../../web/lib/teaching-editor-copy';
+import { teachingEditorBodyFingerprint, teachingEditorSaveCommand, completeTeachingEditorCopy, replaceTeachingVisual } from '../../../../web/lib/teaching-editor-copy';
 import { lookupTeachingEditorCommand } from '../../../../web/lib/teaching-editor-client';
 
 async function fixture() {
@@ -34,8 +34,14 @@ describe('teaching workspace saved-base separation and source/preflight read bou
     copy.content.concept.explanation += '\n当前未保存的新行'; copy.range.end = ' 3 '; copy.editor.publishReason = '独立保留的发布依据';
     copy.rawInputs['visual:0:value:0'] = ' 12x '; copy.sourceReview.pages[0].statement += '\n原审核补记';
     const newer = structuredClone(f.detail); newer.header.revision = 7; newer.header.contentVersion = 3;
-    const rebased = teachingEditorRebaseHeader(copy, newer), command = teachingEditorSaveCommand(rebased, 'rebase-explicit-old-content', { baselineVerified: true, verifiedOriginalRequests: [f.input.requestKey] });
+    const rebased = teachingEditorRebaseHeader(copy, newer), proof = { baselineVerified: true, verifiedOriginalRequests: [f.input.requestKey] };
     expect(rebased.content).toEqual(copy.content); expect(rebased.rawInputs).toEqual(copy.rawInputs); expect(rebased.sourceReview).toEqual(copy.sourceReview); expect(rebased.range).toEqual(copy.range);
+    // Rebasing cannot make unassigned/unfinished numeric characters safe to
+    // submit. Explicit visual replacement preserves that old input in history.
+    expect(() => teachingEditorSaveCommand(rebased, 'rebase-unresolved-number', proof)).toThrow(/未完成输入/);
+    const ready = structuredClone(rebased); replaceTeachingVisual(ready, 0, structuredClone(ready.content.visuals[0]));
+    expect(ready.visualHistory.at(-1)!.rawInputs).toEqual(copy.rawInputs); expect(rebased.rawInputs).toEqual(copy.rawInputs);
+    const command = teachingEditorSaveCommand(ready, 'rebase-explicit-old-content', proof);
     expect(command.expectedRevision).toBe(7); expect(command.action === 'save' && command.basedOn).toEqual({ contentVersion: 1, contentFingerprint: f.prepared.report.contentFingerprint });
     expect(copy.baseline?.header.revision).toBe(1); expect(rebased.editor.publishReason).toBe(copy.editor.publishReason);
   });

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { ClassroomQuestion, ClassroomAnswerReceipt, ClassroomHintReceipt, ClassroomLesson, ClassroomSessionView } from '@study-agent/contracts';
 import { classroomPracticeSummary, classroomReceiptSelection } from '@study-agent/contracts';
 import { ClassroomFigure } from './diagram';
+import { ClassroomMathFigureView } from './math-figure';
 import { ClassroomImage } from './board-step';
 import { ClassroomIcon } from './icons';
 import './practice-review.css';
@@ -84,7 +85,7 @@ export function PracticePanel({ questions, answers, questionIndex, selected, hin
       <p className={'cl-choice-selection' + (standalone ? ' sr-only' : '')} role="status">{receipt ? '首次提交已锁定' : '当前选择'}：{chosen.length ? chosen.map(index => index + 1).join('、') : '未选'}{multiple && !receipt ? ' · 再次选择可取消' : ''}</p>
       {item.image && <ClassroomImage key={item.id + ':' + item.image.src} image={item.image}/>}
       {item.table && <figure className="cl-practice-data"><figcaption>{item.table.caption}</figcaption><div role="region" aria-label={'题目数据：' + item.table.caption} tabIndex={0}><table><thead><tr>{item.table.headers.map((header,index) => <th key={index} scope="col">{header}</th>)}</tr></thead><tbody>{item.table.rows.map((cells,index) => <tr key={index}>{cells.map((cell,index) => <td key={index}>{cell}</td>)}</tr>)}</tbody></table></div></figure>}
-      {item.diagram && <ClassroomFigure diagram={item.diagram}/>}</div>
+      {item.diagram && <ClassroomFigure diagram={item.diagram}/>} {item.math && <ClassroomMathFigureView figure={item.math} />}</div>
       <fieldset className={'cl-practice-options practice-options-grid' + (multiple ? '' : ' practice-options-grid--stacked')} data-multiple={multiple} disabled={busy || Boolean(receipt)}><legend className="sr-only">{multiple ? '选择所有符合项' : '选择一个选项'}{receipt ? '，首次作答已锁定' : ''}</legend>{item.options.map((option, index) => {
         const selected = chosen.includes(index), correct = receipt?.correctIndices?.includes(index);
         const feedback = feedbackAt(index);

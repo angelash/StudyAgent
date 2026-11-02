@@ -1,0 +1,134 @@
+{
+  "protocol": "exact-source-controlled-math-candidates-v1",
+  "at": "2026-11-02T17:10:50.079Z",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "sourceFiles": 6,
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "sha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011,
+    "selectedPhysicalPages": [
+      [
+        39,
+        43
+      ],
+      [
+        89,
+        92
+      ]
+    ],
+    "reviewedPages": 9
+  },
+  "content": {
+    "drafts": 2,
+    "targets": [
+      7,
+      7
+    ],
+    "candidateQuestions": [
+      49,
+      49
+    ],
+    "controlledMathFigures": [
+      2,
+      3
+    ],
+    "teacherReviewed": false,
+    "targetScoringAndFamilyReviewed": false,
+    "nativePerQuestionVisualStockComplete": false,
+    "fullyStockedRetentionIntervals": 0
+  },
+  "validation": {
+    "static": [
+      {
+        "slug": "solids",
+        "targets": 7,
+        "questions": 49,
+        "mathFigures": 2,
+        "generatorBytesReproduced": true,
+        "exactSourceCitationAndScope": true,
+        "teacherReviewed": false,
+        "nativePerQuestionVisualStockComplete": false
+      },
+      {
+        "slug": "clock",
+        "targets": 7,
+        "questions": 49,
+        "mathFigures": 3,
+        "generatorBytesReproduced": true,
+        "exactSourceCitationAndScope": true,
+        "teacherReviewed": false,
+        "nativePerQuestionVisualStockComplete": false
+      }
+    ],
+    "http": [
+      {
+        "slug": "solids",
+        "passed": true,
+        "questions": 49,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      },
+      {
+        "slug": "clock",
+        "passed": true,
+        "questions": 49,
+        "coldRead": {
+          "drafts": 1,
+          "wholeContentAndSourceFingerprintsPreserved": true,
+          "draftQuestions": 49,
+          "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+          "exactSourceNamesAndMetadataPreserved": true,
+          "publications": 0,
+          "adoptions": 0,
+          "learnerResponses": 0
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 4,
+      "failed": 0,
+      "screenshots": 10,
+      "source": "Same application runtime as211; six content/generator files added after frozen full regression."
+    },
+    "runtimeChanges": []
+  },
+  "totals": {
+    "registeredBooks": 450,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 102,
+    "booksWithDirectory": 114,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3522,
+    "lessonsWithCandidateFiles": 52,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3470,
+    "authoredFollowingMaterialCandidates": 2275,
+    "materialBundlesWithStaleDraftIdentity": 0
+  },
+  "boundaries": {
+    "sourceOriginalsOrFullTextCommitted": false,
+    "privateRuntimeOrCopiesCommitted": false,
+    "teacherAcceptance": false,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  }
+}

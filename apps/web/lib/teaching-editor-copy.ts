@@ -5,6 +5,7 @@ import { textbookTeachingDraftContentSchema, textbookTeachingDraftVisualSchema, 
 import { paperCaptureValueHash as hash } from './paper-capture-copy';
 
 const key = z.string().min(1).max(180), fingerprint = z.string().regex(/^[a-f0-9]{64}$/);
+const visualRawInputsSchema = z.record(z.string().regex(/^visual:[0-3]:(?:value:(?:[0-9]|1[0-5])|(?:hour|minute):[0-3])$/), z.string().max(100));
 export const teachingEditorCopyByteLimit = 8 * 1024 * 1024;
 export const teachingEditorArchiveByteLimit = 256 * 1024 * 1024;
 export const teachingEditorValueHash = hash;
@@ -16,8 +17,8 @@ export const teachingEditorCopySchema = z.object({ protocol: z.literal('textbook
   packageId: key, range: z.object({ start: z.string().max(30), end: z.string().max(30) }).strict(), source: textbookTeachingSourceSnapshotSchema.nullable(),
   sourceHistory: z.array(textbookTeachingSourceSnapshotSchema).max(4), sourceReview: textbookTeachingSourceReviewSchema,
   targetRefs: z.array(textbookTeachingTargetRefSchema).max(8), content: textbookTeachingDraftContentSchema,
-  visualHistory: z.array(z.object({ index: z.number().int().min(0).max(3), visual: textbookTeachingDraftVisualSchema }).strict()).max(20),
-  rawInputs: z.record(z.string().regex(/^visual:[0-3]:value:(?:[0-9]|1[0-5])$/), z.string().max(100)),
+  visualHistory: z.array(z.object({ index: z.number().int().min(0).max(3), visual: textbookTeachingDraftVisualSchema, rawInputs: visualRawInputsSchema.optional() }).strict()).max(20),
+  rawInputs: visualRawInputsSchema,
   baseline: z.object({ header: textbookTeachingHeaderSchema, contentVersion: z.number().int().min(1).max(1000), contentFingerprint: fingerprint,
     preflightFingerprint: fingerprint, bodyFingerprint: fingerprint }).strict().nullable(),
   editor: z.object({ section: z.enum(['source', 'goals', 'explanation', 'visuals', 'checks', 'summary', 'versions']), activeSourcePage: z.number().int().min(1).max(10000).nullable(),
@@ -32,6 +33,53 @@ const fail = () => Error('完整教学稿的账号、教材课时、原命令或
 function stopped(signal?: AbortSignal) { if (signal?.aborted) throw new DOMException('完整教学稿操作已停止，当前输入仍保留。', 'AbortError'); }
 const ownsSource = (owner: TeachingEditorOwner, source: { bookId: string; bookVersion: string; lessonId: string }) =>
   owner.bookId === source.bookId && owner.bookVersion === source.bookVersion && owner.lessonId === source.lessonId;
+
+export function teachingClockInput(raw: string, field: 'hour' | 'minute'): number | null {
+  if (!/^\d+$/.test(raw.trim())) return null;
+  const value = Number(raw); return Number.isSafeInteger(value) && value >= (field === 'hour' ? 1 : 0) && value <= (field === 'hour' ? 12 : 59) ? value : null;
+}
+/** Keep unfinished characters with their original visual, then relocate only
+ * the surviving originals. A new visual never inherits the removed one's input. */
+export function replaceTeachingVisual(copy: TeachingEditorDraft, index: number, replacement?: TeachingEditorDraft['content']['visuals'][number]) {
+  if (!copy.content.visuals[index] || copy.visualHistory.length >= 20) throw Error('请先下载当前完整稿再调整旧表征。');
+  const rawInputs = Object.fromEntries(Object.entries(copy.rawInputs).filter(([field]) => Number(field.split(':')[1]) === index));
+  copy.visualHistory.push({ index, visual: structuredClone(copy.content.visuals[index]), ...(Object.keys(rawInputs).length ? { rawInputs } : {}) });
+  copy.rawInputs = Object.fromEntries(Object.entries(copy.rawInputs).flatMap(([field, value]) => {
+    const parts = field.split(':'), oldIndex = Number(parts[1]); if (oldIndex === index) return [];
+    if (!replacement && oldIndex > index) parts[1] = String(oldIndex - 1); return [[parts.join(':'), value]];
+  }));
+  if (replacement) copy.content.visuals[index] = structuredClone(replacement); else copy.content.visuals.splice(index, 1);
+}
+export function restoreTeachingVisual(copy: TeachingEditorDraft, historyIndex: number) {
+  const saved = copy.visualHistory[historyIndex]; if (!saved || copy.content.visuals.length >= 4) throw Error('当前表征已达到上限。');
+  const index = copy.content.visuals.length; copy.content.visuals.push(structuredClone(saved.visual));
+  for (const [field, value] of Object.entries(saved.rawInputs ?? {})) {
+    const parts = field.split(':'); parts[1] = String(index); copy.rawInputs[parts.join(':')] = value;
+  }
+}
+export function removeTeachingClock(copy: TeachingEditorDraft, visualIndex: number, clockIndex: number) {
+  const visual = copy.content.visuals[visualIndex]; if (visual?.kind !== 'math' || visual.figure.kind !== 'clocks' || visual.figure.clocks.length <= 1) return;
+  if (copy.visualHistory.length >= 20) throw Error('请先下载当前完整稿再调整旧表征。');
+  const originalRaw = Object.fromEntries(Object.entries(copy.rawInputs).filter(([field]) => Number(field.split(':')[1]) === visualIndex));
+  copy.visualHistory.push({ index: visualIndex, visual: structuredClone(visual), ...(Object.keys(originalRaw).length ? { rawInputs: originalRaw } : {}) });
+  visual.figure.clocks.splice(clockIndex, 1);
+  copy.rawInputs = Object.fromEntries(Object.entries(copy.rawInputs).flatMap(([field, value]) => {
+    const parts = field.split(':'); if (Number(parts[1]) !== visualIndex || !['hour', 'minute'].includes(parts[2])) return [[field, value]];
+    const oldIndex = Number(parts[3]); if (oldIndex === clockIndex) return [];
+    if (oldIndex > clockIndex) parts[3] = String(oldIndex - 1); return [[parts.join(':'), value]];
+  }));
+}
+export function removeTeachingDiagramLabel(copy: TeachingEditorDraft, visualIndex: number, labelIndex: number) {
+  const visual = copy.content.visuals[visualIndex]; if (visual?.kind !== 'diagram' || visual.diagram.labels.length <= 2) return;
+  if (copy.visualHistory.length >= 20) throw Error('请先下载当前完整稿再调整旧表征。');
+  const rawInputs = Object.fromEntries(Object.entries(copy.rawInputs).filter(([field]) => Number(field.split(':')[1]) === visualIndex));
+  copy.visualHistory.push({ index: visualIndex, visual: structuredClone(visual), ...(Object.keys(rawInputs).length ? { rawInputs } : {}) });
+  visual.diagram.labels.splice(labelIndex, 1); visual.diagram.values?.splice(labelIndex, 1);
+  copy.rawInputs = Object.fromEntries(Object.entries(copy.rawInputs).flatMap(([field, value]) => {
+    const parts = field.split(':'); if (Number(parts[1]) !== visualIndex || parts[2] !== 'value') return [[field, value]];
+    const index = Number(parts[3]); if (index === labelIndex) return []; if (index > labelIndex) parts[3] = String(index - 1); return [[parts.join(':'), value]];
+  }));
+}
 
 export function emptyTeachingEditorDraft(owner: TeachingEditorOwner, slot: string, packageId: string, range?: { start: number; end: number }): TeachingEditorDraft {
   return { protocol: 'textbook-teaching-editor-copy-v1', owner: teachingEditorOwnerSchema.parse(owner), slot, packageId,
@@ -92,8 +140,10 @@ export function teachingEditorSaveCommand(copy: TeachingEditorDraft, requestKey:
   if (!copy.source) throw Error('请先完整核对当前课时来源，原稿继续保留。');
   if (Number(copy.range.start) !== copy.source.pageStart || Number(copy.range.end) !== copy.source.pageEnd) throw Error('页码范围已改变，请先核对这个完整范围的来源再保存；原稿继续保留。');
   for (const [field, value] of Object.entries(copy.rawInputs)) {
-    const [, index, , item] = field.split(':'), visual = copy.content.visuals[Number(index)];
-    if (visual?.kind === 'diagram' && visual.diagram.kind === 'bars' && (!value.trim() || !Number.isFinite(Number(value)) || visual.diagram.values?.[Number(item)] !== Number(value)))
+    const [, index, kind, item] = field.split(':'), visual = copy.content.visuals[Number(index)];
+    const valid = kind === 'value' ? visual?.kind === 'diagram' && visual.diagram.kind === 'bars' && Number(item) < visual.diagram.labels.length && value.trim() && Number.isFinite(Number(value)) && visual.diagram.values?.[Number(item)] === Number(value) :
+      (kind === 'hour' || kind === 'minute') && visual?.kind === 'math' && visual.figure.kind === 'clocks' && teachingClockInput(value, kind) !== null && visual.figure.clocks[Number(item)]?.[kind] === teachingClockInput(value, kind);
+    if (!valid)
       throw Error('图形数值仍有未完成输入，请修正后保存；原数值文字已保留在完整本机稿中。');
   }
   const { bookId, bookVersion, lessonId, sourceBookId, sourceSha256, extractedSha256, lessonFingerprint, editionProofFingerprint, pageStart, pageEnd } = copy.source;

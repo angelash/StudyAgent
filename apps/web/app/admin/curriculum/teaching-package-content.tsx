@@ -2,22 +2,25 @@
 import * as React from 'react';
 import type { KnowledgeAtom, TextbookTeachingMaterialCatalog } from '@study-agent/contracts';
 import type { TeachingEditorDraft } from '../../../lib/teaching-editor-copy';
+import { replaceTeachingVisual, restoreTeachingVisual, removeTeachingDiagramLabel } from '../../../lib/teaching-editor-copy';
 import { ClassroomFigure } from '../../studio/classroom/diagram';
+import { defaultTeachingMath, TeachingMathFields } from './teaching-math-fields';
 
 type Visual = TeachingEditorDraft['content']['visuals'][number];
 type Edit = (recipe: (draft: TeachingEditorDraft) => void) => void;
 const purposes = { understanding: '理解', procedure: '执行', transfer: '迁移', retention: '保持储备' };
-const names = { diagram: '关系图', table: '表格', experiment: '原生演示', not_applicable: '不适用，并说明依据' };
+const names = { diagram: '关系图', math: '数学图示', table: '表格', experiment: '原生演示', not_applicable: '不适用，并说明依据' };
 const experimentNames = { 'particle-change': '粒子变化', 'air-mixture': '空气组成', catalysis: '催化作用', 'atom-ion': '原子与离子', filtration: '过滤', 'water-electrolysis': '水的电解', 'mass-conservation': '质量守恒', 'balance-water': '水反应配平', 'co2-test': '二氧化碳检验', combustion: '燃烧条件' };
 const visualDefault = (kind: Visual['kind']): Visual => kind === 'diagram' ? { kind, diagram: { kind: 'flow', title: '', labels: ['', ''] }, explanation: '' } :
+  kind === 'math' ? { kind, figure: defaultTeachingMath('clocks'), explanation: '' } :
   kind === 'table' ? { kind, title: '', headers: [''], rows: [['']], explanation: '' } : kind === 'not_applicable' ? { kind, rationale: '' } :
     { kind, experiment: { kind: 'particle-change', title: '', prediction: { question: '', options: ['', ''] }, observation: '', explanation: '', limitation: '' } };
 function Text({ label, value, onChange, max = 2000, rows = 3 }: { label: string; value: string; onChange: (value: string) => void; max?: number; rows?: number }) {
   return <label className="wide teaching-package-field">{label}<textarea aria-label={label} rows={rows} maxLength={max} value={value} onChange={event => onChange(event.target.value)} /></label>;
 }
-function Lines({ label, values, onChange, max, minimum = 0, textMax = 1000 }: { label: string; values: string[]; onChange: (values: string[]) => void; max: number; minimum?: number; textMax?: number }) {
+function Lines({ label, values, onChange, max, minimum = 0, textMax = 1000, onRemove }: { label: string; values: string[]; onChange: (values: string[]) => void; max: number; minimum?: number; textMax?: number; onRemove?: (index: number) => void }) {
   return <div className="wide teaching-package-lines"><strong>{label}</strong>{values.map((value, index) => <div key={index}><label><span className="sr-only">{label} · 第{index + 1}条</span><textarea aria-label={`${label} · 第${index + 1}条`} rows={2} maxLength={textMax} value={value} onChange={event => onChange(values.map((item, current) => current === index ? event.target.value : item))} /></label>
-    <button type="button" className="studio-text-button" aria-label={`移除${label}第${index + 1}条`} disabled={values.length <= minimum} onClick={() => onChange(values.filter((_, current) => current !== index))}>移除</button></div>)}
+    <button type="button" className="studio-text-button" aria-label={`移除${label}第${index + 1}条`} disabled={values.length <= minimum} onClick={() => onRemove ? onRemove(index) : onChange(values.filter((_, current) => current !== index))}>移除</button></div>)}
     <button type="button" className="studio-text-button" disabled={values.length >= max} onClick={() => onChange([...values, ''])}>增加{label}</button></div>;
 }
 export function TeachingPackageContent({ copy, atoms, catalogs, locked, onEdit: edit, onTarget, onMaterialPage, onError }: {
@@ -62,12 +65,23 @@ export function TeachingPackageContent({ copy, atoms, catalogs, locked, onEdit: 
     {section === 'visuals' && <><legend>帮助理解的图示与演示</legend><p>选择能够表达本课关系的表征。预检会指出当前课堂的布局限制，未完成的标注与数值仍保留在本机稿中。</p>
       {content.visuals.map((visual, index) => <fieldset key={index}><legend>表征 {index + 1}</legend><label>呈现方式<select value={visual.kind} onChange={event => {
         const kind = event.target.value as Visual['kind']; if (copy.visualHistory.length >= 20) { onError('旧表征已达到本机保留上限，请先下载完整副本并另开本机稿。'); return; }
-        edit(draft => { draft.visualHistory.push({ index, visual: structuredClone(draft.content.visuals[index]) }); draft.content.visuals[index] = visualDefault(kind); });
+        edit(draft => replaceTeachingVisual(draft, index, visualDefault(kind)));
       }}>{Object.entries(names).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
         {visual.kind === 'not_applicable' && <Text label="为何不适用，以及采用了什么解释方式" value={visual.rationale} max={1500} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'not_applicable') item.rationale = value; })} />}
-        {visual.kind === 'diagram' && <><label>图形类型<select value={visual.diagram.kind} onChange={event => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'diagram') item.diagram.kind = event.target.value as typeof item.diagram.kind; })}>{[['flow', '过程关系'], ['venn', '集合与交集'], ['bars', '示意比例'], ['network', '网络关系']].map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        {visual.kind === 'math' && <TeachingMathFields copy={copy} index={index} edit={edit} onKind={kind => {
+          if (copy.visualHistory.length >= 20) { onError('请先下载当前完整稿再调整旧表征。'); return; }
+          edit(draft => replaceTeachingVisual(draft, index, { kind: 'math', figure: defaultTeachingMath(kind), explanation: visual.explanation }));
+        }} />}
+        {visual.kind === 'diagram' && <><label>图形类型<select value={visual.diagram.kind} onChange={event => {
+          if (copy.visualHistory.length >= 20) { onError('请先下载当前完整稿再调整旧表征。'); return; }
+          const kind = event.target.value as typeof visual.diagram.kind;
+          edit(draft => replaceTeachingVisual(draft, index, { kind: 'diagram', explanation: visual.explanation, diagram: { kind, title: visual.diagram.title, labels: [...visual.diagram.labels], ...(kind === 'bars' ? { values: visual.diagram.labels.map(() => 10) } : {}) } }));
+        }}>{[['flow', '过程关系'], ['venn', '集合与交集'], ['bars', '示意比例'], ['network', '网络关系']].map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
           <Text label="图形标题" value={visual.diagram.title} max={160} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'diagram') item.diagram.title = value; })} />
-          <Lines label="完整标注" values={visual.diagram.labels} minimum={2} max={16} textMax={120} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'diagram') item.diagram.labels = value; })} />
+          <Lines label="完整标注" values={visual.diagram.labels} minimum={2} max={16} textMax={120} onRemove={position => {
+            if (copy.visualHistory.length >= 20) { onError('请先下载当前完整稿再调整旧表征。'); return; }
+            edit(draft => removeTeachingDiagramLabel(draft, index, position));
+          }} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'diagram') item.diagram.labels = value; })} />
           {visual.diagram.kind === 'bars' && visual.diagram.labels.map((label, position) => <label key={position}>{label || `第${position + 1}项`}的示意数值<input inputMode="decimal" value={copy.rawInputs[`visual:${index}:value:${position}`] ?? visual.diagram.values?.[position]?.toString() ?? ''} maxLength={100}
             onChange={event => { const raw = event.target.value; edit(draft => { draft.rawInputs[`visual:${index}:value:${position}`] = raw; const item = draft.content.visuals[index]; if (item.kind === 'diagram' && raw.trim() && Number.isFinite(Number(raw))) { const values = item.diagram.labels.map((_, current) => item.diagram.values?.[current] ?? 0); values[position] = Number(raw); item.diagram.values = values; } }); }} /></label>)}
           {visual.diagram.kind === 'venn' && <Lines label="集合补充说明" values={visual.diagram.captions ?? []} max={2} textMax={200} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'diagram') item.diagram.captions = value; })} />}
@@ -87,10 +101,10 @@ export function TeachingPackageContent({ copy, atoms, catalogs, locked, onEdit: 
           <Lines label="预测选项" values={visual.experiment.prediction.options} minimum={2} max={4} textMax={300} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'experiment') item.experiment.prediction.options = value; })} />
           {(['observation', 'explanation', 'limitation'] as const).map(field => <Text key={field} label={{ observation: '观察到什么', explanation: '怎样解释', limitation: '模型条件、简化与限制' }[field]} value={visual.experiment[field]} max={field === 'explanation' ? 2000 : 1500} onChange={value => edit(draft => { const item = draft.content.visuals[index]; if (item.kind === 'experiment') item.experiment[field] = value; })} />)}
         </>}
-        <button type="button" className="studio-text-button" onClick={() => { if (copy.visualHistory.length >= 20) { onError('请先下载当前完整稿再调整旧表征。'); return; } edit(draft => { draft.visualHistory.push({ index, visual: structuredClone(draft.content.visuals[index]) }); draft.content.visuals.splice(index, 1); }); }}>移除并保留此表征</button>
+        <button type="button" className="studio-text-button" onClick={() => { if (copy.visualHistory.length >= 20) { onError('请先下载当前完整稿再调整旧表征。'); return; } edit(draft => replaceTeachingVisual(draft, index)); }}>移除并保留此表征</button>
       </fieldset>)}
       <button type="button" className="studio-secondary" disabled={content.visuals.length >= 4} onClick={() => edit(draft => { draft.content.visuals.push(visualDefault('table')); })}>增加一种表征</button>
-      {copy.visualHistory.length > 0 && <details><summary>保留的原表征 · {copy.visualHistory.length}份</summary><p>切换呈现方式前的完整表征仍随本机副本保留。</p>{copy.visualHistory.map((item, index) => <div key={index}><span>{names[item.visual.kind]} · 原表征{item.index + 1}</span><button type="button" className="studio-text-button" disabled={content.visuals.length >= 4} onClick={() => edit(draft => { draft.content.visuals.push(structuredClone(item.visual)); })}>复制回当前稿</button></div>)}</details>}
+      {copy.visualHistory.length > 0 && <details><summary>保留的原表征 · {copy.visualHistory.length}份</summary><p>切换呈现方式前的完整表征与原数值文字仍随本机副本保留。</p>{copy.visualHistory.map((item, index) => <div key={index}><span>{names[item.visual.kind]} · 原表征{item.index + 1}</span><button type="button" className="studio-text-button" disabled={content.visuals.length >= 4} onClick={() => edit(draft => restoreTeachingVisual(draft, index))}>复制回当前稿</button></div>)}</details>}
     </>}
     {section === 'checks' && <><legend>理解、执行、迁移与保持材料</legend><p>只引用当前审核通过、作答配置可用的材料。保持材料是后续真实到期时的新题储备，未在这里形成学生结果。</p>
       <button type="button" className="studio-secondary" onClick={() => edit(draft => { for (const target of draft.targetRefs) for (const purpose of Object.keys(purposes) as Array<keyof typeof purposes>) if (!draft.content.checks.some(check => check.atomId === target.atomId && check.purpose === purpose)) draft.content.checks.push({ id: 'check-' + crypto.randomUUID(), atomId: target.atomId, purpose, instructions: '', materials: [] }); })}>补齐所选目标的检查框架</button>

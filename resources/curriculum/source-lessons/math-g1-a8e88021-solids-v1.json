@@ -1,0 +1,422 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit4:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 39,
+    "pageEnd": 43,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:solid-and-face",
+      "version": 1,
+      "name": "区分立体形状与看到的平面轮廓",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "图形认识",
+      "objective": "结合完整立体模型说清物体与可见轮廓不是一回事",
+      "successCriterion": "能区分球与平面圆、盒子与画出的面；投影或照片只有一面时保留未知",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:shape-classify",
+      "version": 1,
+      "name": "按典型外形分类并说明近似",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "形状分类",
+      "objective": "对明确提供的理想模型或日常物品按外形分类",
+      "successCriterion": "不以颜色大小朝向决定类别，物品只说外形近似，不凭未给细节强分",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:flat-and-curved",
+      "version": 1,
+      "name": "观察平面曲面和放置方式",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "形状观察",
+      "objective": "通过看摸典型模型比较平的部分与弯曲部分",
+      "successCriterion": "圆柱平放与直立分清，能立能滚不单独决定所有物品类别，球有支撑可放稳",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:compose-blocks",
+      "version": 1,
+      "name": "按给定拼法解释组合后的外形",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "图形组合",
+      "objective": "按完整相接条件比较相同小正方体拼成的形状",
+      "successCriterion": "两个全等正方体整面拼接可成典型长方体，摆法改变要重新看整体，不数画面小面当块数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:hidden-block-count",
+      "version": 1,
+      "name": "按充分条件数积木并说明遮挡",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "空间计数",
+      "objective": "根据明确层数和每层完整数量或逐块操作统计积木",
+      "successCriterion": "已知完整规则才算总数；只给可见几块不能猜遮挡数量，不把面数当块数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:build-and-check",
+      "version": 1,
+      "name": "按全部使用和稳高条件实际搭验",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "空间操作",
+      "objective": "用给定安全积木尝试搭建并记录真实结果及帮助",
+      "successCriterion": "核全部用上、能否放稳与高度三个条件；球的支撑需实测，不把示例文字登记成本人已操作",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:follow-shape-rule",
+      "version": 1,
+      "name": "按明确图形顺序摆放并核查",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "图形规律与表达",
+      "objective": "依据给定上下顺序或重复规则摆模型或清楚图稿",
+      "successCriterion": "对象、顺序和重复单位对应；规则未给或条件不全时不声称唯一答案，图稿与实际操作分记",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:solid-and-face",
+    "source:math:g1:a8e88021:shape-classify",
+    "source:math:g1:a8e88021:flat-and-curved",
+    "source:math:g1:a8e88021:compose-blocks",
+    "source:math:g1:a8e88021:hidden-block-count",
+    "source:math:g1:a8e88021:build-and-check",
+    "source:math:g1:a8e88021:follow-shape-rule"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张核对本件物理39至43页四类外形、摸拿、拼搭、遮挡计数、又稳又高和顺序活动。教材原图只作本地核对，课堂图示为确定几何参数的原创模型；来源核对不等教师、题族或评分审核。",
+    "pages": [
+      {
+        "page": 39,
+        "visualChecked": true,
+        "statement": "物理39/印刷34页按形状分一分，四类典型立体与生活物品近似；平面圆不直接等于球。"
+      },
+      {
+        "page": 40,
+        "visualChecked": true,
+        "statement": "物理40/印刷35页摸看、我说你拿和拼一拼；两正方体整面拼接与四块计数分开核查。"
+      },
+      {
+        "page": 41,
+        "visualChecked": true,
+        "statement": "物理41/印刷36页所有积木都用上且又稳又高，球可借支撑放稳，需本人实际搭验。"
+      },
+      {
+        "page": 42,
+        "visualChecked": true,
+        "statement": "物理42/印刷37页分类计数、四个相同长方体拼搭、我说你猜；能立能滚不足单独确定任意物品类别。"
+      },
+      {
+        "page": 43,
+        "visualChecked": true,
+        "statement": "物理43/印刷38页含遮挡计数、我说你搭与重复摆放，未给隐藏条件不猜总数量。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "认识图形（一）：长方体、正方体、圆柱和球",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      34,
+      38
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "exactEditionOnly": true,
+    "formalFaceEdgeVertexCountingRequired": false,
+    "objectShapeApproximation": true,
+    "occlusionNeedsSufficientConditions": true,
+    "realBuildingRequiredForOperationEvidence": true,
+    "nativeVisualQuestionBankStillNeedsReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "认识立体形状：看整体，说明条件，再动手核查",
+    "activation": {
+      "prompt": "把一个安全的盒子、塑料球和纸上画的圆放在一起。先说哪些可以拿起来转着看，哪些只是纸上的图。这里只是活动建议，做完后才记录本人的实际观察。",
+      "expectedObservation": "能把有立体外形的物品与纸上平面图分开；看到一个圆形轮廓还不能确定整个物体是球。",
+      "bridge": "本课认识四种典型立体形状，比较外形、拼法和摆法。图示帮我们观察，实际摸看和搭建另记本人过程。"
+    },
+    "concept": {
+      "explanation": "长方体、正方体、圆柱和球都是立体形状。这里的模型有固定的理想形状：正方体沿三个方向一样长；画面显示的是几个面朝我们看的投影，不是把它摊平成三块纸。示例长方体三个方向不一样长，不能只按画中某条斜边的视觉长短猜生活物品。\n纸上的圆是平面图，球是立体形状。球的照片轮廓可能像圆，圆柱从上面看也可能只看到圆；只给一个轮廓、没给整个物体时，先说还缺什么信息。\n分类要看整体外形。把同一个正方体转过方向、换颜色或放远些，它仍是原来的形状。生活中的盒子、罐子或球只在外形上近似模型，有的会有盖、突起、圆角或变形，不能把所有同名物品都当完美模型。\n看摸时可比较平的部分和弯曲的部分。典型圆柱的两端是一样大的圆面，中间有弯曲的侧面；直立与横放会影响它怎样接触桌面。球没有平面，滚动或放稳还与支撑和当前摆法有关。不能只听到某物能立又能滚，就保证它一定是圆柱。\n拼积木先说积木是不是相同、怎样接在一起。两个全等小正方体整面贴合，可拼成一个典型长方体。若只碰一个角或中间有空隙，就不是同一个完整拼法。小块数与可见面数要分开。\n数有遮挡的积木，需要完整条件。若明确两层且每层四块、没有其他块，可逐层数出八块；只看到几块而没说后面或下面怎样摆，就不能凭熟悉的图猜总数。\n搭得稳、搭得高、全部用上是要分别检查的条件。可以尝试给球安排支撑，再实际观察会不会滚开；一次示例或点击图片不等本人已经搭好。按给定顺序摆放后，逐条指着结果核查；按规则接着摆时先找明说的重复单位。",
+      "points": [
+        "先看完整立体与平面图的区别",
+        "颜色、大小和朝向不单独定类别",
+        "日常物品只说外形近似",
+        "平曲与接触方式联系当前摆法",
+        "拼法、块数与可见面分开",
+        "遮挡计数需要完整条件",
+        "稳、高、全部用上逐项实测"
+      ]
+    },
+    "example": {
+      "situation": "原创条件：有两个完全一样的小正方体，把它们的一整个面贴合，中间没有空隙，没有其他积木。随后只转动整体，不拆开、不增减。",
+      "steps": [
+        {
+          "explanation": "先把两块分开数，确认是两个一样的小正方体；数的是整块，不是图中朝外的几个面。",
+          "board": [
+            "小正方体：2块",
+            "相同模型",
+            "可见面数不是积木块数"
+          ]
+        },
+        {
+          "explanation": "把一整面对一整面贴合，没有错位和空隙。整体一个方向加长，另两个方向不变，形成典型长方体。",
+          "board": [
+            "整面贴合",
+            "没有空隙",
+            "整体外形近似本课长方体模型"
+          ]
+        },
+        {
+          "explanation": "只转动这个整体，积木没有增加或减少，块数仍是两块。若问题换成照片中背后是否还有积木，原条件必须继续保留；条件缺失时不能照抄两块。",
+          "board": [
+            "只转动，未增未减：仍2块",
+            "整体类别不因朝向改变",
+            "换了未知条件须重新核查"
+          ]
+        }
+      ],
+      "conclusion": "拼合形状取决于给定模型与接法；计数取决于完整块数条件。看到的平面不能代替整块积木。"
+    },
+    "visuals": [
+      {
+        "kind": "math",
+        "figure": {
+          "kind": "solids",
+          "title": "原创四类理想立体模型",
+          "showNames": true,
+          "solids": [
+            {
+              "shape": "cuboid",
+              "caption": "典型长方体：沿三个方向的长度不全相同。"
+            },
+            {
+              "shape": "cube",
+              "caption": "正方体：沿三个方向一样长；平行投影有斜边。"
+            },
+            {
+              "shape": "cylinder",
+              "caption": "圆柱：两个同样大的圆面与弯曲侧面。"
+            },
+            {
+              "shape": "sphere",
+              "caption": "球：圆曲面以明暗表现立体感，不是纸上的平面圆。"
+            }
+          ]
+        },
+        "explanation": "四个模型采用确定几何投影或曲面绘制，颜色仅帮助看清面与曲面。投影不能提供任意真实物品背后的信息，实际摸看与放稳要另做。"
+      },
+      {
+        "kind": "math",
+        "figure": {
+          "kind": "solids",
+          "title": "原创比较：转述看见的形体特征",
+          "showNames": false,
+          "solids": [
+            {
+              "shape": "cube",
+              "caption": "模型甲：请说整体形状与观察依据。"
+            },
+            {
+              "shape": "cylinder",
+              "caption": "模型乙：比较两端与中间侧面。"
+            },
+            {
+              "shape": "sphere",
+              "caption": "模型丙：比较平面与圆曲面的区别。"
+            }
+          ]
+        },
+        "explanation": "先自己说观察，再回到带名称的图核对。图注不代填形状名称；点击或看图只表示阅读，不表示本人已经完成摸看。"
+      },
+      {
+        "kind": "table",
+        "title": "原创条件表：总数与实际搭验分开",
+        "headers": [
+          "给定条件或任务",
+          "可核查的内容",
+          "仍不能替代的事实"
+        ],
+        "rows": [
+          [
+            "明确两层、每层四块、无其他块",
+            "按完整条件数共八块",
+            "不证明任意遮挡照片也有八块"
+          ],
+          [
+            "全部积木用上、又稳又高",
+            "实际摆后逐项检查并记帮助",
+            "示例文字不证明本人搭过"
+          ],
+          [
+            "给定重复单位：正方体、圆柱",
+            "照这个单位继续摆并逐项核",
+            "未给规则的有限排列不保证唯一延续"
+          ]
+        ],
+        "explanation": "表中是原创示例和检查办法，不是教材原图的未知答案，也不是任何学生的操作记录。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "看到照片的圆形轮廓，就把整个物体断定为球。",
+        "alternatives": [
+          "可能只注意到一个可见轮廓，也可能混淆平面圆与立体球。"
+        ],
+        "verification": "给纸上圆、球和典型圆柱顶视轮廓，要求说明哪些信息能区分整体，哪些还需转看或摸看。",
+        "correctiveFeedback": "先核整体和观察角度；一个圆形轮廓不保证整个物体是球。"
+      },
+      {
+        "observation": "把一个小正方体露出的三个面数成三块。",
+        "alternatives": [
+          "可能把可见面与完整积木的单位混同。"
+        ],
+        "verification": "拿一块小积木转看并逐块移动，再对有明确层数和每层数量的示意核查总数。",
+        "correctiveFeedback": "一整块算一块，朝外可见的几个面属于同一块；遮挡时先核完整条件。"
+      },
+      {
+        "observation": "说球无论怎样都不可能放稳，或看了支撑示例就登记本人已搭好。",
+        "alternatives": [
+          "可能忽略支撑条件，也可能把示例当成自己的真实过程。"
+        ],
+        "verification": "本人用安全积木尝试不同支撑，记录成功、未稳、未试及实际帮助；无法实操时仅记图稿方案。",
+        "correctiveFeedback": "放稳与支撑和摆法有关；实际做了什么就记什么，不用文字结论替代动手事实。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一组颜色不同、朝向不同的安全塑料积木，另给一张只有部分可见积木的照片。",
+      "prompt": "分别说形状类别、当前依据和仍缺的遮挡条件；若实际搭建，按给定稳高和全部使用条件记录过程，若只画方案则明确标注。",
+      "expectedStrategy": "用完整形体与明确条件作判断，不因换颜色或方向改类；未知数量先问条件，实际操作与示意计划分记。"
+    },
+    "summary": {
+      "synthesis": "认识立体图形先看整体，再说形状特征和适用条件。拼搭、遮挡计数与实际稳高任务需要各自证据，图示和示例不代本人完成。",
+      "takeaways": [
+        "立体与平面分开",
+        "分类看整体",
+        "物品仅外形近似",
+        "块数不等面数",
+        "遮挡先核条件",
+        "真实搭验另记"
+      ]
+    },
+    "citations": [
+      {
+        "page": 39,
+        "quote": "说一说你身边哪些物品是这些形状的。",
+        "usedFor": "activation"
+      },
+      {
+        "page": 40,
+        "quote": "可以拼成一个长方体。",
+        "usedFor": "example"
+      },
+      {
+        "page": 41,
+        "quote": "所有的积木都要用上，看谁搭得又稳又高。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:solid-and-face",
+        "objective": "结合完整立体模型说清物体与可见轮廓不是一回事",
+        "successCriterion": "能区分球与平面圆、盒子与画出的面；投影或照片只有一面时保留未知"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:shape-classify",
+        "objective": "对明确提供的理想模型或日常物品按外形分类",
+        "successCriterion": "不以颜色大小朝向决定类别，物品只说外形近似，不凭未给细节强分"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:flat-and-curved",
+        "objective": "通过看摸典型模型比较平的部分与弯曲部分",
+        "successCriterion": "圆柱平放与直立分清，能立能滚不单独决定所有物品类别，球有支撑可放稳"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:compose-blocks",
+        "objective": "按完整相接条件比较相同小正方体拼成的形状",
+        "successCriterion": "两个全等正方体整面拼接可成典型长方体，摆法改变要重新看整体，不数画面小面当块数"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:hidden-block-count",
+        "objective": "根据明确层数和每层完整数量或逐块操作统计积木",
+        "successCriterion": "已知完整规则才算总数；只给可见几块不能猜遮挡数量，不把面数当块数"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:build-and-check",
+        "objective": "用给定安全积木尝试搭建并记录真实结果及帮助",
+        "successCriterion": "核全部用上、能否放稳与高度三个条件；球的支撑需实测，不把示例文字登记成本人已操作"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:follow-shape-rule",
+        "objective": "依据给定上下顺序或重复规则摆模型或清楚图稿",
+        "successCriterion": "对象、顺序和重复单位对应；规则未给或条件不全时不声称唯一答案，图稿与实际操作分记"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "solids",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

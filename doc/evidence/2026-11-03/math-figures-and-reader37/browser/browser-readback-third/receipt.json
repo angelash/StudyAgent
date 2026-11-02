@@ -1,0 +1,41 @@
+{
+  "at": "2026-11-02T16:41:17.498Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "generatedEngineeringMathModels": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 3,
+  "failed": 1,
+  "error": "page.evaluate: Error: Future model leaked\n    at eval (eval at evaluate (:370:30), <anonymous>:5:66)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "checks": [
+    {
+      "name": "desktop-actual-clocks-solids-and-keyboard-reader",
+      "passed": true
+    },
+    {
+      "name": "mobile-complete-captions-and-print-retain-models",
+      "passed": true
+    },
+    {
+      "name": "raw-invalid-input-switch-download-import-and-cold-local-recovery",
+      "passed": true
+    },
+    {
+      "name": "shared-whiteboard-renderer-keeps-boundaries-captions-and-decodable-recording",
+      "passed": false,
+      "error": "page.evaluate: Error: Future model leaked\n    at eval (eval at evaluate (:370:30), <anonymous>:5:66)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    }
+  ],
+  "screenshots": [
+    "clocks-desktop.png",
+    "solids-desktop.png",
+    "clocks-mobile.png",
+    "solids-mobile.png",
+    "solids-print.png",
+    "invalid-clock-recovered.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

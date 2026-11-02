@@ -1,0 +1,103 @@
+require('reflect-metadata');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict'),net=require('node:net');
+const {spawn,spawnSync}=require('node:child_process'),{chromium}=require('@playwright/test'),{NestFactory}=require('@nestjs/core');
+const root=path.resolve(__dirname,'../../..'),qa=path.join(root,'data/qa/p187'),label=process.argv[2],sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+if(!/^[a-z0-9-]+$/.test(label||''))throw Error('Fresh label required');
+const folder=path.join(__dirname,label);if(fs.existsSync(folder))throw Error('Preserve earlier attempt');fs.mkdirSync(folder);fs.copyFileSync(__filename,path.join(folder,'runner.cjs'));
+const data=path.join(folder,'data'),webDir=path.join(qa,'data/qa/b4-math37-web'),build=JSON.parse(fs.readFileSync(path.join(webDir,'.build-context.json')));
+assert.equal(build.apiPort,4296);assert.equal(build.proxyApiPort,4296);assert.equal(build.buildId,fs.readFileSync(path.join(webDir,'.next/BUILD_ID'),'utf8').trim());
+const load=n=>require(path.join(qa,'apps/api/dist/apps/api/src',n+'.js')),origin='http://localhost:3296',base='http://127.0.0.1:4296/api',checks=[],screenshots=[],errors=[],mutations=[];
+let app,web,browser,actor,store,failure;const principal='qa-preview-'+crypto.randomUUID(),credential=crypto.randomBytes(24).toString('hex');
+const {teachingHash}=load('modules/diagnostics/textbook-teaching-package'),{atomDefinitionFingerprint}=load('modules/diagnostics/measurement-definition');
+async function free(port){await new Promise((yes,no)=>{const server=net.createServer();server.once('error',no);server.listen(port,'127.0.0.1',()=>server.close(yes));});}
+async function api(method,route,body,auth=actor){const r=await fetch(base+route,{method,headers:{'Content-Type':'application/json',...(auth?{Authorization:'Bearer '+auth.token}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});const v=await r.json();assert.equal(r.status,method==='POST'?201:200,v.error?.message);return v.data;}
+async function check(name,fn){try{await fn();checks.push({name,passed:true});console.log(JSON.stringify({name,passed:true}));}catch(e){checks.push({name,passed:false,error:e.message});throw e;}}
+async function ready(){for(let i=0;i<60;i++){try{if((await fetch(origin+'/parent/login')).ok)return;}catch{}await new Promise(r=>setTimeout(r,500));}throw Error('Owned web readiness timeout');}
+const tables=['diagnosticResponses','classroomSessions','textbookTeachingPackages','textbookTeachingVersions','textbookTeachingCommands','studioCourses','retentionExposureEvents'];
+const facts=()=>store.requestContext(()=>Object.fromEntries(tables.map(name=>[name,teachingHash(store.inspect(name))])));
+(async()=>{
+ await free(4296);await free(3296);
+ Object.assign(process.env,{NODE_ENV:'development',STUDY_STORAGE:'sqlite',STUDY_DATA_DIR:data,STUDY_ASSET_ROOT:path.join(root,'data/assets'),TEXTBOOK_BASE_PATH:'H:/ChinaTextbook',STUDY_SEED_FOUNDATION:'true',STUDY_WORKER_ENABLED:'false',OPENAI_API_KEY:'',MINIMAX_API_KEY:'',XIAOJIU_CHAT_ENABLED:'false',CORS_ORIGINS:origin});delete process.env.DATABASE_URL;
+ const cli=spawnSync(process.execPath,[path.join(qa,'apps/api/dist/apps/api/src/cli.js'),'create-admin',principal],{cwd:qa,env:{...process.env,STUDY_ADMIN_PASSWORD:credential},encoding:'utf8',windowsHide:true,timeout:120000});assert.equal(cli.status,0,'Owned QA admin');
+ app=await NestFactory.create(load('app.module').AppModule,{logger:false,cors:{origin,credentials:true}});load('common/http-body').configureJsonBody(app);app.setGlobalPrefix('api');await app.listen(4296,'127.0.0.1');
+ store=app.get(load('infrastructure/in-memory-store.service').InMemoryStoreService);actor=await api('POST','/auth/login',{principal,credential},null);
+ const files=fs.readdirSync(path.join(root,'resources/curriculum/source-lessons')).filter(f=>f.endsWith('.json')).map(file=>({file,draft:JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons',file)))})).filter(row=>row.draft.format==='source-original-lesson-draft-v1'&&row.draft.source&&row.draft.content);
+ const definitions=new Map(files.flatMap(row=>row.draft.definitionCandidates??[]).map(d=>[d.id,d]));
+ async function ensure(id){if(await store.requestContext(()=>store.find('knowledgeAtoms',{id})))return;const def=definitions.get(id);assert(def,'Missing original definition '+id);for(const p of def.prerequisiteIds)await ensure(p);await api('POST','/admin/knowledge-atoms',def);await new Promise(r=>setTimeout(r,350));}
+ for(const row of files.filter(row=>!process.argv[3]||process.argv[3].split(',').includes(row.file)))for(const id of row.draft.targetIds)await ensure(id);
+ const registry=JSON.parse(fs.readFileSync(path.join(qa,'resources/curriculum/textbooks-v1.json'))),imports=[];
+ for(const {file,draft} of files.filter(row=>!process.argv[3]||process.argv[3].split(',').includes(row.file))){const book=registry.books.find(b=>b.id===draft.source.bookId);assert(book);const source=await api('POST','/admin/curriculum/teaching-packages/source-preview',{bookId:book.id,bookVersion:book.version,lessonId:draft.source.lessonId,pageStart:draft.source.pageStart,pageEnd:draft.source.pageEnd});
+  const targetRefs=await store.requestContext(()=>draft.targetIds.map(id=>{const atom=store.find('knowledgeAtoms',{id});return{atomId:id,version:atom.version,definitionFingerprint:atomDefinitionFingerprint(atom)};}));
+  const body={protocol:'textbook-teaching-editor-copy-v1',owner:{actorId:actor.user.id,bookId:book.id,bookVersion:book.version,lessonId:draft.source.lessonId},slot:'qa-preview:'+file,packageId:'qa-preview:'+file,range:{start:String(source.pageStart),end:String(source.pageEnd)},source,sourceHistory:[],sourceReview:draft.sourceReview,targetRefs,content:{...draft.content,checks:[]},visualHistory:[],rawInputs:{},baseline:null,editor:{section:'source',activeSourcePage:source.pageStart,publishReason:'',withdrawReason:'',reviewed:false,originalTeaching:false},journal:[],requiresOriginalResultLookup:true};
+  const importFile=path.join(folder,file);fs.writeFileSync(importFile,JSON.stringify({...body,fingerprint:teachingHash(body)}));
+  const href='/admin/curriculum?'+new URLSearchParams({subject:draft.definitionCandidates[0].subject,grade:String(draft.definitionCandidates[0].grade),term:draft.definitionCandidates[0].term,textbook:book.id,textbookVersion:book.version,textbookLesson:draft.source.lessonId});imports.push({file,importFile,href,body});
+ }
+ const log=fs.openSync(path.join(folder,'web.private.log'),'wx');web=spawn(process.execPath,['scripts/qa/experience-web.cjs','start'],{cwd:qa,windowsHide:true,stdio:['ignore',log,log],env:{...process.env,E2E_API_PORT:'4296',E2E_WEB_PORT:'3296',E2E_WEB_DIRECTORY:webDir}});fs.closeSync(log);
+ fs.writeFileSync(path.join(folder,'runtime.private.json'),JSON.stringify({apiPid:process.pid,webPid:web.pid,data,buildId:build.buildId,apiPort:4296,webPort:3296}));await ready();
+ browser=await chromium.launch({headless:true});const context=await browser.newContext({acceptDownloads:true,viewport:{width:1440,height:1000}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+ page.on('request',r=>{if(r.method()!=='GET'&&/\/(?:teaching-packages\/commands|classroom\/sessions|diagnostic.*responses|courses)(?:\/|$)/.test(new URL(r.url()).pathname))mutations.push({method:r.method(),path:new URL(r.url()).pathname});});
+ await page.goto(origin+'/parent/login?'+new URLSearchParams({returnTo:imports[0].href}));await page.getByLabel('登录账号',{exact:true}).fill(principal);await page.getByLabel('密码',{exact:true}).fill(credential);await page.getByRole('button',{name:'登录，查看学习记录 →',exact:true}).click();
+ await page.getByRole('region',{name:'教材课时完整教学稿',exact:true}).waitFor();
+ const desk=()=>page.getByRole('region',{name:'教材课时完整教学稿',exact:true}),reading=()=>page.getByRole('region',{name:'当前教学稿阅读预览',exact:true}),before=await facts();
+ async function importCopy(file){const previous=new URL(page.url()).searchParams.get('teachingDraft');await desk().getByLabel('导入完整教学稿',{exact:true}).setInputFiles(file);await page.waitForURL(url=>url.searchParams.get('teachingDraft')!==previous);await desk().getByText('完整本机稿已保存，并已读回核对。',{exact:true}).waitFor();}
+ const row=imports[0];
+ const clock={kind:'clocks',title:'工程合成钟面 · 比较长短针',showDigitalTime:false,showHandLabels:true,clocks:[{hour:3,minute:0,caption:'短时针与长分针。'},{hour:7,minute:58,caption:'观察接近整时的针位。\n完整尾行保留。'},{hour:12,minute:0,caption:'两针重合。'},{hour:11,minute:59,caption:'跨12前的位置。'}]};
+ const solids={kind:'solids',title:'工程合成立体模型 · 识别形状',showNames:false,solids:['cuboid','cube','cylinder','sphere'].map((shape,index)=>({shape,caption:'模型'+(index+1)+'：'+(index===1?'完整长图注。'.repeat(45):'比较可见平面和曲面。')}))};
+ row.body.content.title='工程合成数学图示验证稿（未审核）';row.body.content.visuals=[{kind:'math',figure:clock,explanation:'这是功能验证材料，不是本课教材教学候选或审核结论。'},{kind:'math',figure:solids,explanation:'比较理想形状投影，实际摆搭与滚动仍需本人观察。'}];
+ fs.writeFileSync(row.importFile,JSON.stringify({...row.body,fingerprint:teachingHash(row.body)}));
+ async function download(name){const waiting=page.waitForEvent('download');await desk().getByRole('button',{name:'下载当前完整稿',exact:true}).click();const item=await waiting,file=path.join(folder,name);await item.saveAs(file);return{file,value:JSON.parse(fs.readFileSync(file))};}
+ async function shot(name,element){await element.scrollIntoViewIfNeeded();await element.screenshot({path:path.join(folder,name)});screenshots.push(name);}
+ await check('desktop-actual-clocks-solids-and-keyboard-reader',async()=>{
+  await importCopy(row.importFile);await desk().getByText('阅读当前教学稿',{exact:true}).click();await reading().waitFor();
+  const clocks=reading().getByRole('figure',{name:clock.title,exact:true}),shapes=reading().getByRole('figure',{name:solids.title,exact:true});
+  assert.equal(await clocks.locator('svg').count(),4);assert.equal(await shapes.locator('svg').count(),4);assert(!(await clocks.innerText()).includes('7:58'));assert(!(await shapes.innerText()).includes('正方体'));
+  const hand=await clocks.locator('svg').first().locator('line[x1="120"][y1="108"][stroke-width="5"]').evaluate(el=>[+el.getAttribute('x2'),+el.getAttribute('y2')]);assert.deepEqual(hand,[160,108]);
+  assert.equal(await shapes.locator('svg').nth(1).locator('polygon').count(),3);assert.equal(await shapes.locator('svg').nth(2).locator('ellipse').count(),1);assert.equal(await shapes.locator('svg').nth(3).locator('radialGradient').count(),1);
+  await shot('clocks-desktop.png',clocks);await shot('solids-desktop.png',shapes);
+  const open=clocks.getByRole('button',{name:'放大数学图示：'+clock.title,exact:true});await open.focus();await page.keyboard.press('Enter');await page.getByRole('dialog',{name:clock.title,exact:true}).waitFor();await page.keyboard.press('Escape');await page.getByRole('dialog',{name:clock.title,exact:true}).waitFor({state:'hidden'});assert(await open.evaluate(el=>el===document.activeElement));
+ });
+ await check('mobile-complete-captions-and-print-retain-models',async()=>{
+  await page.setViewportSize({width:390,height:844});const shapes=reading().getByRole('figure',{name:solids.title,exact:true}),clocks=reading().getByRole('figure',{name:clock.title,exact:true});
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.equal(await shapes.locator('.cl-math-caption').nth(1).textContent(),solids.solids[1].caption);
+  assert.equal(await shapes.locator('.cl-math-models').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),1);await shot('clocks-mobile.png',clocks);await shot('solids-mobile.png',shapes);
+  await page.emulateMedia({media:'print'});assert.equal(await shapes.locator('svg').count(),4);assert.equal(await shapes.getByRole('button',{name:'放大数学图示：'+solids.title,exact:true}).isVisible(),false);await shot('solids-print.png',shapes);await page.emulateMedia({media:'screen'});await page.setViewportSize({width:1440,height:1000});
+ });
+ await check('raw-invalid-input-switch-download-import-and-cold-local-recovery',async()=>{
+  await desk().getByText('阅读当前教学稿',{exact:true}).click();await desk().getByRole('button',{name:'图示与演示',exact:true}).click();
+  await desk().getByRole('textbox',{name:/^第1个钟面的小时/}).fill('13');await desk().getByRole('textbox',{name:/^第1个钟面的分钟/}).fill('-');const prior=mutations.length;
+  await desk().getByRole('button',{name:'保存完整教学稿',exact:true}).click();await desk().getByText('图形数值仍有未完成输入，请修正后保存；原数值文字已保留在完整本机稿中。',{exact:true}).waitFor();assert.equal(mutations.length,prior);
+  await desk().getByRole('combobox',{name:/^呈现方式/}).first().selectOption('table');const history=desk().locator('details').filter({has:page.locator('summary').filter({hasText:'保留的原表征'})});await history.locator('summary').click();await history.getByRole('button',{name:'复制回当前稿',exact:true}).first().click();
+  assert.equal(await desk().getByRole('textbox',{name:/^第1个钟面的小时/}).inputValue(),'13');assert.equal(await desk().getByRole('textbox',{name:/^第1个钟面的分钟/}).inputValue(),'-');
+  const saved=await download('generated-math-copy.private.json');assert.equal(saved.value.rawInputs['visual:2:hour:0'],'13');assert.equal(saved.value.rawInputs['visual:2:minute:0'],'-');assert.deepEqual(saved.value.content.visuals[2].figure,clock);assert.deepEqual(saved.value.visualHistory[0].visual.figure,clock);
+  await importCopy(saved.file);await desk().getByRole('button',{name:'图示与演示',exact:true}).click();assert.equal(await desk().getByRole('textbox',{name:/^第1个钟面的小时/}).inputValue(),'13');await page.reload();await desk().getByRole('textbox',{name:/^第1个钟面的小时/}).waitFor();assert.equal(await desk().getByRole('textbox',{name:/^第1个钟面的分钟/}).inputValue(),'-');await shot('invalid-clock-recovered.png',desk().getByRole('textbox',{name:/^第1个钟面的小时/}).locator('..'));
+ });
+ await check('shared-whiteboard-renderer-keeps-boundaries-captions-and-decodable-recording',async()=>{
+  await page.addScriptTag({path:path.join(__dirname,'whiteboard-harness.js')});
+  const result=await page.evaluate(async({clock,solids})=>{
+   const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=1200;canvas.id='qa-math-recording';canvas.style.cssText='position:fixed;inset:0;z-index:999999;background:white;width:100%;height:100%;object-fit:contain';document.body.append(canvas);
+   const context=canvas.getContext('2d'),scenes=[clock,solids].map((math,index)=>({id:'math-'+index,kind:'concept',title:math.title,narration:'先比较。再观察模型。',math,durationMs:1000,reveal:{version:'whiteboard-reveal-v1',sourceText:'先比较。再观察模型。',bulletEnds:[],exhibits:[],diagramAt:10}})),units=scenes.map(scene=>({id:scene.id,sceneId:scene.id,start:0,end:10,text:scene.narration,visibleBulletIndices:[],estimatedMs:1000}));
+   const harness=window.MathBoardHarness,hidden=harness.drawTeachingFrame(context,scenes,units,{...units[0],end:4},new Map(),{font:'print',captions:false,dots:false,camera:{zoom:1,x:0,y:0,follow:false}});
+   if(hidden.visiblePartIds.some(id=>id.includes(':math')))throw Error('Future model leaked');
+   const shown=harness.drawTeachingFrame(context,scenes,units,units[1],new Map(),{font:'print',captions:false,dots:false,camera:{zoom:1,x:0,y:0,follow:false}});
+   if(!shown.visiblePartIds.includes('math-0:math:0')||!shown.visiblePartIds.includes('math-1:math:3'))throw Error('Model missing');
+   const stream=canvas.captureStream(10),recorder=new MediaRecorder(stream,{mimeType:'video/webm'}),chunks=[];const done=new Promise(resolve=>{recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=resolve;});recorder.start();await new Promise(r=>setTimeout(r,1000));recorder.stop();await done;stream.getTracks().forEach(track=>track.stop());
+   const blob=new Blob(chunks,{type:'video/webm'}),url=URL.createObjectURL(blob),video=document.createElement('video');video.muted=true;video.src=url;await new Promise((yes,no)=>{video.onloadeddata=yes;video.onerror=()=>no(Error('Recording decode failed'));});const decoded={width:video.videoWidth,height:video.videoHeight,ready:video.readyState};URL.revokeObjectURL(url);
+   return{parts:shown.visiblePartIds,layout:shown.blocks.map(block=>({id:block.id,height:block.height,parts:block.parts.map(part=>({id:part.id,y:part.y,height:part.height,lines:part.kind==='text'?part.lines:undefined}))})),recording:Array.from(new Uint8Array(await blob.arrayBuffer())),decoded};
+  },{clock,solids});
+  assert.equal(result.decoded.width,1280);assert.equal(result.decoded.height,1200);assert(result.recording.length>2000);assert(result.layout[1].parts.some(part=>part.lines?.join('').includes('完整长图注')));
+  fs.writeFileSync(path.join(folder,'generated-math-recording.webm'),Buffer.from(result.recording),{flag:'wx'});delete result.recording;fs.writeFileSync(path.join(folder,'recording-readback.json'),JSON.stringify(result,null,2),{flag:'wx'});await shot('whiteboard-shared-models.png',page.locator('#qa-math-recording'));await page.locator('#qa-math-recording').evaluate(el=>el.remove());
+ });
+ await check('preview-and-invalid-save-create-no-publication-or-learner-facts',async()=>{assert.deepEqual(await facts(),before);assert.deepEqual(mutations,[]);assert.deepEqual(errors,[]);});
+ await check('actual-http-exact-command-replay-and-independent-cold-read',async()=>{
+  const body=row.body,source=body.source;const input={action:'save',packageId:'qa:math-figures-http',requestKey:'qa:math-figures-http-original',expectedRevision:0,basedOn:null,source:Object.fromEntries(['bookId','bookVersion','lessonId','sourceBookId','sourceSha256','extractedSha256','lessonFingerprint','editionProofFingerprint','pageStart','pageEnd'].filter(key=>source[key]!==undefined).map(key=>[key,source[key]])),sourceFingerprint:source.fingerprint,targetRefs:body.targetRefs,sourceReview:body.sourceReview,content:body.content};
+  const first=await api('POST','/admin/curriculum/teaching-packages/commands',input),replay=await api('POST','/admin/curriculum/teaching-packages/commands',input),lookup=await api('GET','/admin/curriculum/teaching-packages/commands/'+encodeURIComponent(input.requestKey));assert.deepEqual(replay,first);assert.deepEqual(lookup.input,input);assert.deepEqual(lookup.result,first);
+  const detail=await api('GET','/admin/curriculum/teaching-packages/'+encodeURIComponent(input.packageId));assert.deepEqual(detail.version.body.content.visuals,body.content.visuals);assert.equal(detail.version.report.publishable,false);assert.equal(detail.header.status,'draft');
+  await browser.close();browser=null;await app.close();app=null;const Reader=load('infrastructure/domain-database').DomainDatabase,cold=new Reader(path.join(data,'study-agent.sqlite3'));await cold.open();let actual;try{actual=(await cold.read()).state;}finally{await cold.close();}
+  assert.deepEqual(actual.textbookTeachingCommands.find(command=>command.requestKey===input.requestKey).input,input);assert.deepEqual(actual.textbookTeachingVersions.find(version=>version.packageId===input.packageId).body.content.visuals,body.content.visuals);assert.equal(actual.diagnosticResponses?.length??0,0);assert.equal(actual.classroomSessions?.length??0,0);
+  fs.writeFileSync(path.join(folder,'http-cold-read.json'),JSON.stringify({passed:true,exactOriginalCommandAndReplay:true,fullMathModelsPreserved:true,schema:37,published:0,studentResponses:0,teacherAcceptance:false},null,2),{flag:'wx'});
+ });
+})().catch(e=>{failure=e;console.error(e.stack);}).finally(async()=>{
+ if(failure&&browser)for(const [i,page]of browser.contexts().flatMap(c=>c.pages()).entries()){try{await page.screenshot({path:path.join(folder,'failure-'+i+'.png')});fs.writeFileSync(path.join(folder,'failure-'+i+'.private.txt'),await page.locator('body').innerText());}catch{}}
+ await browser?.close();await app?.close();if(web&&web.exitCode===null){web.kill();await Promise.race([new Promise(r=>web.once('exit',r)),new Promise(r=>setTimeout(r,5000))]);}
+ const report={at:new Date().toISOString(),buildId:build.buildId,source:'main synchronized to data/qa/p187',generatedEngineeringMathModels:true,teacherReviewed:false,published:0,studentResponses:0,passed:checks.filter(r=>r.passed).length,failed:checks.filter(r=>!r.passed).length,error:failure?.message??null,checks,screenshots,pageErrors:errors,mutations};fs.writeFileSync(path.join(folder,'receipt.json'),JSON.stringify(report,null,2),{flag:'wx'});console.log(JSON.stringify({passed:report.passed,failed:report.failed,error:report.error}));if(failure)process.exitCode=1;
+});

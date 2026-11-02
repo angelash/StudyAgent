@@ -21,6 +21,7 @@ import { WhiteboardReadingPanel, useWhiteboardReadingPanel } from './whiteboard-
 import { WhiteboardShareMenu } from './whiteboard-share-menu';
 import { WhiteboardQuestions } from './whiteboard-questions';
 import { ClassroomFigure } from './classroom/diagram';
+import { ClassroomMathFigureView } from './classroom/math-figure';
 import { ActivityWorkspaceNavigation } from '../../components/activity-workspace-navigation';
 
 const whiteboardToolSteps: ToolTourStep[] = [
@@ -482,7 +483,7 @@ export function WhiteboardSession({ whiteboard: board, ownerId, preview, narrati
         disabled={exporting !== null} onClick={() => go(index)}>{item.text}</button></li>)}</ol>
       <h3>完整笔记与来源</h3>{board.scenes.map(item => <details key={item.id} open={item.id === scene?.id}><summary>{item.title}</summary>
         {item.body && <p>{item.body}</p>}{item.bullets && <ul>{item.bullets.map((bullet, index) => <li key={index}>{bullet}</li>)}</ul>}
-        {whiteboardSceneExhibits(item).map((exhibit, index) => <WhiteboardExhibit key={index} exhibit={exhibit}/>)}{item.diagram && <div className="wb-complete-diagram"><ClassroomFigure diagram={item.diagram} onOpen={pauseForFigure}/></div>}{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
+        {whiteboardSceneExhibits(item).map((exhibit, index) => <WhiteboardExhibit key={index} exhibit={exhibit}/>)}{item.diagram && <div className="wb-complete-diagram"><ClassroomFigure diagram={item.diagram} onOpen={pauseForFigure}/></div>}{item.math && <ClassroomMathFigureView figure={item.math} onOpen={pauseForFigure} />}{item.figure && <TopicFigureImage source={item.figure} title={item.title} onOpen={pauseForFigure}/>}{item.visual && <p>{item.visual.note}</p>}{item.source && <p>来源：{item.source.label} · 第{item.source.page}页</p>}</details>)}
       {(isTopicWhiteboard(board) || isQuestionWhiteboard(board)) && <p className="wb-ai-origin">AI生成 · 待内容核对 · {board.origin.modelName}</p>}
       {isQuestionWhiteboard(board) && board.structureStatus === 'text-only' && <p>这条历史回答只保留文字，可逐句收听；尚未生成结构板书。</p>}
       <button onClick={() => { if (position.current) saveBlob(new Blob([JSON.stringify(position.current, null, 2)], { type: 'application/json' }), '-position.json'); }}>下载续播位置</button>

@@ -1,4 +1,5 @@
 'use client';
+import { ClassroomMathFigureView } from '../app/studio/classroom/math-figure';
 import * as React from 'react';
 import Link from 'next/link';
 import type { AssistantSourcePreview, AssistantTeachingBlock, AssistantContextView, AssistantLocation } from '@study-agent/contracts';
@@ -84,6 +85,7 @@ function SourceBlock({ block, heading }: { block: AssistantTeachingBlock; headin
     {block.items && <ul>{block.items.map((item, index) => <li key={index}>{item}</li>)}</ul>}
     {block.table && <div className="assistant-source-table"><table><thead><tr>{block.table.headers.map((header, index) => <th key={index} scope="col">{header}</th>)}</tr></thead><tbody>{block.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}
     {block.diagram && <><ClassroomFigure diagram={block.diagram}/><ul aria-label="图形完整标注">{block.diagram.labels.map((label, index) => <li key={index}>{label}{block.diagram?.captions?.[index] && ' · ' + block.diagram.captions[index]}</li>)}</ul></>}
+    {block.math && <ClassroomMathFigureView figure={block.math} />}
     {block.code !== undefined && <pre tabIndex={0} aria-label="原教学代码"><code>{block.code}</code></pre>}
     {block.figure && <SourceFigure figure={block.figure}/>}
   </div>;

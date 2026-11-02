@@ -37,6 +37,17 @@ const lessonId = 'source:material:1';
 const frozenPrimary = () => freezeTeachingContent(primaryUnitTeachingCatalog(primary(), 'unit-1'));
 
 describe('authorized teaching content projections, before HTTP integration', () => {
+  it('preserves exact mathematical model fields through adult teaching selection and frozen source recovery', () => {
+    const course = classroomCourse(), lecture = course.units[0].lectures[0], model = { kind: 'clocks' as const, title: '合成非整时钟面', showDigitalTime: false, showHandLabels: true, clocks: [{ hour: 11, minute: 59, caption: ' 原图注\n完整尾行 ' }] };
+    const catalog = lectureTeachingCatalog(course.id, lecture.id, course, id => {
+      const lesson = classroomLesson(id)!; if (id === lecture.lessons[0].id) lesson.steps[0].blocks.push({ id: 'qa-math', kind: 'math', text: '比较长短针', math: structuredClone(model) }); return lesson;
+    });
+    const saved = freezeTeachingContent(catalog, { mode: 'detail', partKeys: [catalog.parts[0].key] });
+    expect(saved.parts[0].blocks.find(block => block.kind === 'math')).toEqual({ kind: 'math', text: '比较长短针', math: model });
+    expect(JSON.parse(JSON.stringify(saved)).parts[0].blocks.find((block: { kind: string }) => block.kind === 'math').math).toEqual(model);
+    model.clocks[0].minute = 0; expect(saved.parts[0].blocks.find(block => block.kind === 'math')!.math!.kind).toBe('clocks');
+    expect(JSON.stringify(saved)).toContain('"minute":59');
+  });
   it('projects every authored lecture, including actual narration and every teaching step', () => {
     const course = classroomCourse(); let lectures = 0, lessons = 0;
     for (const unit of course.units) for (const lecture of unit.lectures) {

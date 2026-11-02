@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "solids",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-solids-v1.json",
+      "sha256": "7f30eceabebe855e4bb30083de15b0e25288af4832c9ab54fc274d53c94d260c",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit4:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 39,
+        "pageEnd": 43,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。课堂使用受控立体图，现有材料以明确文字条件和本人操作任务核查；原生逐题图形辨认库存、教师/评分/题族审核与真实摆搭仍须继续，不自动发布或代写学习结果。",
+  "groups": [
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:solid-and-face",
+      "structure": "whole-solid-versus-visible-outline",
+      "familyProposal": "a8e88021-whole-solid-versus-visible-outline",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "区分立体与平面",
+          "weight": 0.4
+        },
+        {
+          "criterion": "依据当前观察信息",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不足条件明确保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不是。塑料球是有立体外形的物品，纸上的圆是平面图形；不能因轮廓都圆就当同一对象。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创桌面上有一个塑料球和纸上画的圆。它们是一回事吗？分别说说。",
+          "answer": "不是。塑料球是有立体外形的物品，纸上的圆是平面图形；不能因轮廓都圆就当同一对象。",
+          "analysis": "不是。塑料球是有立体外形的物品，纸上的圆是平面图形；不能因轮廓都圆就当同一对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "只给某物从上面看的一个圆形轮廓，没有其他说明。能保证它是球吗？",
+          "answer": "不能，典型圆柱从上面看也可能是圆形；需要整体、侧面或转看摸看信息。",
+          "analysis": "不能，典型圆柱从上面看也可能是圆形；需要整体、侧面或转看摸看信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "一块正方体积木的图里能看到三个平面。有学生说这里有三块积木。请解释。",
+          "answer": "三个可见面可能属于同一块正方体，数积木要按完整一块为单位，不能把可见面数当块数。",
+          "analysis": "三个可见面可能属于同一块正方体，数积木要按完整一块为单位，不能把可见面数当块数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创照片只显示一个方形面，没有厚度或整体信息。能否保证整个物体是正方体？",
+          "answer": "不能，长方体某一面也可能是方形，纸上的方形也可能没有这里所说的立体整体；需要其他方向和完整形体信息。",
+          "analysis": "不能，长方体某一面也可能是方形，纸上的方形也可能没有这里所说的立体整体；需要其他方向和完整形体信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把同一个球转动一下，再拍一张轮廓仍圆的照片。仅凭这两张轮廓，能证明任何轮廓圆的物品都是球吗？",
+          "answer": "不能。转动这一个球的观察只对应当前物品，不能推广到所有圆形轮廓；圆柱顶面等也会产生圆轮廓。",
+          "analysis": "不能。转动这一个球的观察只对应当前物品，不能推广到所有圆形轮廓；圆柱顶面等也会产生圆轮廓。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创盒子表面贴着一张画圆的纸。有人说盒子因为有圆就变成球了。怎样核查？",
+          "answer": "分开看表面图案和盒子的整体立体外形；画圆或贴纸不自动改变整个盒子的形状。",
+          "analysis": "分开看表面图案和盒子的整体立体外形；画圆或贴纸不自动改变整个盒子的形状。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-whole-solid-versus-visible-outline-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给你一个看不清背面的立体投影，要求判断是否还有隐藏积木。你应先说什么？",
+          "answer": "先说投影只显示可见部分，需要完整摆放、其他视角或逐块核查；不能凭一个轮廓补出隐藏块数。",
+          "analysis": "先说投影只显示可见部分，需要完整摆放、其他视角或逐块核查；不能凭一个轮廓补出隐藏块数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:shape-classify",
+      "structure": "shape-invariance-and-object-approximation",
+      "familyProposal": "a8e88021-shape-invariance-and-object-approximation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "整体外形分类有据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "颜色大小朝向分离",
+          "weight": 0.4
+        },
+        {
+          "criterion": "近似与未知不混淆",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按形状应放同类，颜色不同不改变两者都是正方体；若按颜色分是另一个分类标准。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创两块都是理想正方体，一块蓝一块红。按形状分时应分开吗？说依据。",
+          "answer": "按形状应放同类，颜色不同不改变两者都是正方体；若按颜色分是另一个分类标准。",
+          "analysis": "按形状应放同类，颜色不同不改变两者都是正方体；若按颜色分是另一个分类标准。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一个正方体只转过方向，没有变形。它会因此变成另一个类别吗？",
+          "answer": "不会，只改变观察朝向，原来的立体形状没有变；图中斜边不是换类别的依据。",
+          "analysis": "不会，只改变观察朝向，原来的立体形状没有变；图中斜边不是换类别的依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "一个外形近似圆柱的饮料罐上有拉环。能说它是没有任何细节差别的理想圆柱吗？",
+          "answer": "不能，只能说罐的主要外形近似圆柱；拉环等细节使真实物品不等于完美理想模型。",
+          "analysis": "不能，只能说罐的主要外形近似圆柱；拉环等细节使真实物品不等于完美理想模型。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创说明：两只理想球模型大小不同，表面颜色也不同。按本课形状应怎样分？",
+          "answer": "都归为球这一类，大小和颜色不改变给定的理想球形状，不因为一个大就归成长方体。",
+          "analysis": "都归为球这一类，大小和颜色不改变给定的理想球形状，不因为一个大就归成长方体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只知道某物名字叫盒子，没有照片或外形描述。能保证它是正方体吗？",
+          "answer": "不能，盒子可能有不同外形；需要当前完整形体信息，日常名称不能代替形状条件。",
+          "analysis": "不能，盒子可能有不同外形；需要当前完整形体信息，日常名称不能代替形状条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "同一个外形近似长方体的纸盒从竖放改成横放，没有折叠或变形。怎样说明类别？",
+          "answer": "主要外形仍近似长方体，放置朝向变化不自动改变类别；若发生折叠变形则要重新观察。",
+          "analysis": "主要外形仍近似长方体，放置朝向变化不自动改变类别；若发生折叠变形则要重新观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-shape-invariance-and-object-approximation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创说明只给一个红色模型，没有其他形状信息。能按红色决定它是圆柱吗？",
+          "answer": "不能，颜色不是本课四类立体的充分判断依据；还要看完整外形和相关特征。",
+          "analysis": "不能，颜色不是本课四类立体的充分判断依据；还要看完整外形和相关特征。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:flat-and-curved",
+      "structure": "surface-and-placement-conditions",
+      "familyProposal": "a8e88021-surface-and-placement-conditions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "描述平曲特征",
+          "weight": 0.4
+        },
+        {
+          "criterion": "联系明确放置方式",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以单一现象包办分类",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两端可以看作平的圆面，中间连接它们的部分是弯曲的侧面；不能把整个圆柱说成只有一个平面圆。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创典型圆柱模型有两个同样大的圆形平面，中间是弯曲侧面。请用自己的话区别这两部分。",
+          "answer": "两端可以看作平的圆面，中间连接它们的部分是弯曲的侧面；不能把整个圆柱说成只有一个平面圆。",
+          "analysis": "两端可以看作平的圆面，中间连接它们的部分是弯曲的侧面；不能把整个圆柱说成只有一个平面圆。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一个圆柱先直立在平面上，再横放。是否只改变名称就能说明滚动情况？应观察什么？",
+          "answer": "名称仍是圆柱，要观察当前接触桌面的是平的端面还是弯曲侧面以及实际摆法；不能不看放置就断定每次都同样滚动。",
+          "analysis": "名称仍是圆柱，要观察当前接触桌面的是平的端面还是弯曲侧面以及实际摆法；不能不看放置就断定每次都同样滚动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "某物既能站住又能滚动，就一定是理想圆柱吗？说明还需核什么。",
+          "answer": "不能仅凭这两种表现保证类别，还要看完整典型外形、两端和侧面等条件；其他物品也可能有这些表现。",
+          "analysis": "不能仅凭这两种表现保证类别，还要看完整典型外形、两端和侧面等条件；其他物品也可能有这些表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一个理想球模型和纸上画的圆都看起来圆。要比较平面与曲面，应怎样说？",
+          "answer": "纸上圆是平面图；球的外表是圆曲面，没有平的面。不能把看起来圆当作两者表面性质相同。",
+          "analysis": "纸上圆是平面图；球的外表是圆曲面，没有平的面。不能把看起来圆当作两者表面性质相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人说球没有平面，所以放在任何支撑上都绝不可能稳。这个推理是否充分？",
+          "answer": "不充分，是否放稳还取决于支撑与摆法；可以给球安排合适支撑并实际核查，不能把单个形状特征推广为所有条件下不可能。",
+          "analysis": "不充分，是否放稳还取决于支撑与摆法；可以给球安排合适支撑并实际核查，不能把单个形状特征推广为所有条件下不可能。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创纸盒有圆角但主要外形像长方体。可以只凭圆角说整个盒子就是球吗？",
+          "answer": "不可以，局部圆角与整体球形不同；需看整体主要外形，并说明真实纸盒只近似理想长方体。",
+          "analysis": "不可以，局部圆角与整体球形不同；需看整体主要外形，并说明真实纸盒只近似理想长方体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-surface-and-placement-conditions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "典型圆柱只给顶视图一个圆。为什么不能从这一幅图直接确认中间侧面怎样？",
+          "answer": "顶视图没有完整显示侧面，单个圆形轮廓不足以还原整个立体；需要侧视、完整模型或明确说明。",
+          "analysis": "顶视图没有完整显示侧面，单个圆形轮廓不足以还原整个立体；需要侧视、完整模型或明确说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:compose-blocks",
+      "structure": "congruent-blocks-full-face-join",
+      "familyProposal": "a8e88021-congruent-blocks-full-face-join",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "核相同模型和接法",
+          "weight": 0.4
+        },
+        {
+          "criterion": "整体外形判断有条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "块数与可见面分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可拼成典型长方体：一个方向变成两块长，另两个方向保留原长；结论依赖全等且整面贴合条件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "两个完全一样的小正方体一整面贴一整面，中间没有空隙。可拼成本课哪种典型整体？",
+          "answer": "可拼成典型长方体：一个方向变成两块长，另两个方向保留原长；结论依赖全等且整面贴合条件。",
+          "analysis": "可拼成典型长方体：一个方向变成两块长，另两个方向保留原长；结论依赖全等且整面贴合条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "还是两块全等小正方体，但只碰一个角，中间其他位置空着。能照搬整面拼成长方体的结论吗？",
+          "answer": "不能，接法已不同，整体有空隙且没有形成那个完整典型长方体；要重新看当前摆法。",
+          "analysis": "不能，接法已不同，整体有空隙且没有形成那个完整典型长方体；要重新看当前摆法。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "把已经整面拼好的两块积木整体转动，不拆开也不增减。共有几块？类别会只因转动改变吗？",
+          "answer": "仍两块，整体原有形状不因转动自动改变；数的是两块完整积木，不是此时露出的面。",
+          "analysis": "仍两块，整体原有形状不因转动自动改变；数的是两块完整积木，不是此时露出的面。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "四个完全一样的小正方体整面对接排成一条直线，无空隙无其他块。怎样说整体和块数？",
+          "answer": "整体是由四块组成的典型长方体，共四块；长度方向为四块，不能数露出的若干面来改总数。",
+          "analysis": "整体是由四块组成的典型长方体，共四块；长度方向为四块，不能数露出的若干面来改总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "四个全等小正方体在同一层排成两行两列，每处整面贴合。整体一定是大正方体吗？",
+          "answer": "不是这个拼法下的正方体：两个方向各两块，厚度只有一块，是方形底面而厚度不同的长方体。",
+          "analysis": "不是这个拼法下的正方体：两个方向各两块，厚度只有一块，是方形底面而厚度不同的长方体。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两块大小不同的正方体贴在一起。没有进一步图示，能保证它们拼成例题那样的完整长方体吗？",
+          "answer": "不能，例题依赖两块全等、整面对应且无空隙；大小不同或接法未明不能套用结论。",
+          "analysis": "不能，例题依赖两块全等、整面对应且无空隙；大小不同或接法未明不能套用结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-congruent-blocks-full-face-join-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "一张两块拼合的示意画出了很多分割线。有人按每个画出的小平面算一块。怎样纠正计数单位？",
+          "answer": "先按题目给定的两块完整小正方体核查，表面的分割面或线不是另加的积木；换图时仍需完整条件。",
+          "analysis": "先按题目给定的两块完整小正方体核查，表面的分割面或线不是另加的积木；换图时仍需完整条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:hidden-block-count",
+      "structure": "complete-layer-data-versus-unknown-back",
+      "familyProposal": "a8e88021-complete-layer-data-versus-unknown-back",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按完整块数条件统计",
+          "weight": 0.4
+        },
+        {
+          "criterion": "遮挡信息不足保留未知",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以面数或旧图猜总数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "八块，可把两层各四块合起来数；依据是完整层数、每层数量且无其他块，不是只数可见平面。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创条件明确：积木分两层，每层四块，除此没有其他块。总共几块？给出依据。",
+          "answer": "八块，可把两层各四块合起来数；依据是完整层数、每层数量且无其他块，不是只数可见平面。",
+          "analysis": "八块，可把两层各四块合起来数；依据是完整层数、每层数量且无其他块，不是只数可见平面。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创照片能看见五块积木，但没有说背后和下面是否还有。可以断定总共五块吗？",
+          "answer": "不能，只能确定看见五块，完整总数还需其他视角、摆放说明或逐块核查；不能凭照片补未知。",
+          "analysis": "不能，只能确定看见五块，完整总数还需其他视角、摆放说明或逐块核查；不能凭照片补未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "题目明确只有同一层三块，彼此不重叠，没有隐藏或其他块。虽然图中露出多个面，共几块？",
+          "answer": "共三块，按三块完整积木和无隐藏条件计数，不按露出的面数重复算。",
+          "analysis": "共三块，按三块完整积木和无隐藏条件计数，不按露出的面数重复算。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创说明：三层，每层两块，所有层和块数已完整说明，无其他块。怎样不漏不重地数？",
+          "answer": "可逐层数二、四、六，共六块；也可分层列出每层两块，条件完整才支持总数。",
+          "analysis": "可逐层数二、四、六，共六块；也可分层列出每层两块，条件完整才支持总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "两张照片第一张看到四块、第二张看到三块，没有说哪些是同一块。能直接说总数七块吗？",
+          "answer": "不能，两张照片可能重复显示同一块；还需对应关系或完整清点，不能把视角中的可见数直接相加。",
+          "analysis": "不能，两张照片可能重复显示同一块；还需对应关系或完整清点，不能把视角中的可见数直接相加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给出总共六块，拿走并确认其中两块，期间没添加其他块。剩下几块？是否要靠猜遮挡？",
+          "answer": "剩四块，可从完整总数中按实际拿走两块核查；这里有完整变化条件，不必凭局部遮挡猜数。",
+          "analysis": "剩四块，可从完整总数中按实际拿走两块核查；这里有完整变化条件，不必凭局部遮挡猜数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-complete-layer-data-versus-unknown-back-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "别人说这张图很像以前八块的摆法。现在只看到部分块，没给层数。能直接写八块吗？",
+          "answer": "不能，熟悉相似图不能代当前完整摆放条件；需要问清层数、每层数量或逐块核查后再定总数。",
+          "analysis": "不能，熟悉相似图不能代当前完整摆放条件；需要问清层数、每层数量或逐块核查后再定总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:build-and-check",
+      "structure": "real-build-all-stable-high",
+      "familyProposal": "a8e88021-real-build-all-stable-high",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "真实过程或替代形式标清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "全部使用稳高逐项核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与未完成如实记录",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "核本人给定清单与真实照片或明确方案图，逐项说明是否全部用上、是否稳及帮助；未试、未稳和只画方案均如实记录，不由参考答案代操作。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创实际活动：用手边安全塑料积木，先列出给了哪些块，再尝试全部用上并搭稳。提交真实摆放和简短说明；未实操可交明确标注的方案图，不登记已搭好。",
+          "answer": "核本人给定清单与真实照片或明确方案图，逐项说明是否全部用上、是否稳及帮助；未试、未稳和只画方案均如实记录，不由参考答案代操作。",
+          "analysis": "核本人给定清单与真实照片或明确方案图，逐项说明是否全部用上、是否稳及帮助；未试、未稳和只画方案均如实记录，不由参考答案代操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际尝试给安全塑料球安排支撑，记录采用的积木、球是否滚开和实际帮助。若没有器材，只画方案并注明未实测。",
+          "answer": "应有真实尝试记录或清楚标注未实测方案，不能把支持示例照抄为自己成功；支撑、观察到的结果与帮助分别核。",
+          "analysis": "应有真实尝试记录或清楚标注未实测方案，不能把支持示例照抄为自己成功；支撑、观察到的结果与帮助分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "同一组安全积木尝试两种摆法，比较哪种在当前桌面上更稳、哪种更高。保留两次实际结果；没有完成比较就明确写未比。",
+          "answer": "依据本人两次记录比较当前条件下的稳与高，可能一项更稳另一项更高；没有实际第二次不能宣称已经比较完。",
+          "analysis": "依据本人两次记录比较当前条件下的稳与高，可能一项更稳另一项更高；没有实际第二次不能宣称已经比较完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "按全部用上、放稳、尽量高三个要求检查自己的真实搭建。用照片或有明确编号的图稿指出每项是否满足，并标注图稿是否实际做过。",
+          "answer": "三项分别有对应依据，图稿和实物状态分清；不能只看到高就忽略没用完或不稳，实际帮助保留。",
+          "analysis": "三项分别有对应依据，图稿和实物状态分清；不能只看到高就忽略没用完或不稳，实际帮助保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "实际搭建没有成功放稳时，保留失败后的照片或示意，写一处下一次想改的支撑条件。不要把改进计划记成已成功。",
+          "answer": "可接受如实失败与合理改进计划，核现状、原因猜想和未来计划分开；未实测的改法不能充当成功事实。",
+          "analysis": "可接受如实失败与合理改进计划，核现状、原因猜想和未来计划分开；未实测的改法不能充当成功事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果同伴扶着积木才暂时不倒，请记录谁扶着、何时放手以及放手后是否稳；不便操作时可只分析标清条件的图稿。",
+          "answer": "扶持与独立放置的条件必须分清，当前观察只能支持对应条件；图稿分析与本人实际尝试分别记录。",
+          "analysis": "扶持与独立放置的条件必须分清，当前观察只能支持对应条件；图稿分析与本人实际尝试分别记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-solids-real-build-all-stable-high-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "隔次再搭同一组积木，记录这次实际摆法与帮助，逐项核稳、高和全部使用。前次的照片能否代这次记录？",
+          "answer": "不能以前次照片代这次实际过程；应核当前真实尝试，未做则注明未做，帮助及三项结果分别保留。",
+          "analysis": "不能以前次照片代这次实际过程；应核当前真实尝试，未做则注明未做，帮助及三项结果分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "solids",
+      "atomId": "source:math:g1:a8e88021:follow-shape-rule",
+      "structure": "stated-order-and-repeating-unit",
+      "familyProposal": "a8e88021-stated-order-and-repeating-unit",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "对象与顺序一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "依据明说的重复单位",
+          "weight": 0.4
+        },
+        {
+          "criterion": "条件不全不声称唯一",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按给定重复单位接着摆正方体、圆柱；依据是明说的两形一组，不是从有限几个图保证所有可能规则相同。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创规则明确：反复摆正方体、圆柱这一组。已摆正方体、圆柱、正方体、圆柱，接着应摆哪两个？",
+          "answer": "按给定重复单位接着摆正方体、圆柱；依据是明说的两形一组，不是从有限几个图保证所有可能规则相同。",
+          "analysis": "按给定重复单位接着摆正方体、圆柱；依据是明说的两形一组，不是从有限几个图保证所有可能规则相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创指令：先放长方体，在它上面放正方体，再在正方体上面放圆柱。请从下到上说顺序，不声称本人已实搭。",
+          "answer": "从下到上是长方体、正方体、圆柱；这是按指令说明的顺序，实际能否放稳和本人是否搭过还要分别核查。",
+          "analysis": "从下到上是长方体、正方体、圆柱；这是按指令说明的顺序，实际能否放稳和本人是否搭过还要分别核查。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "规则明确为球、球、圆柱三件一组重复。已经完整摆两组，下一件应是什么？",
+          "answer": "下一件是球，因为下一组从第一个球重新开始；不能只按上一件圆柱随意换另一种形状。",
+          "analysis": "下一件是球，因为下一组从第一个球重新开始；不能只按上一件圆柱随意换另一种形状。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只给正方体、圆柱、正方体，没有说明接着摆的规则。有人说下一件绝对唯一是圆柱。怎样回应？",
+          "answer": "若假定正方体、圆柱交替则可接圆柱，但题目未给规则时不能声称唯一，需要确认按什么规律摆。",
+          "analysis": "若假定正方体、圆柱交替则可接圆柱，但题目未给规则时不能声称唯一，需要确认按什么规律摆。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创规则明确：长方体、球、圆柱一组重复。给出前五件长方体、球、圆柱、长方体、球，第六件应是什么？",
+          "answer": "第六件是圆柱，用三件为一组逐个对照，不能因球出现两次就说规则是两个球一组。",
+          "analysis": "第六件是圆柱，用三件为一组逐个对照，不能因球出现两次就说规则是两个球一组。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "指令说圆柱放在长方体左边，正方体放在长方体上面，方向约定按图面。能改成圆柱在右边仍说完全按原指令吗？",
+          "answer": "不能，按明确图面参照应左边放圆柱、上面放正方体；有其他合理摆法也不等符合这条特定指令，真实操作另记。",
+          "analysis": "不能，按明确图面参照应左边放圆柱、上面放正方体；有其他合理摆法也不等符合这条特定指令，真实操作另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-solids-stated-order-and-repeating-unit-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给定规则每组依次正方体、正方体、球。学生摆成正方体、球、正方体，并说用的形状一样所以正确。怎样核查？",
+          "answer": "要核对象数量与顺序，规则要求先两个正方体再一个球，不能只看形状名称集合一样；按当前指令逐项更正。",
+          "analysis": "要核对象数量与顺序，规则要求先两个正方体再一个球，不能只看形状名称集合一样；按当前指令逐项更正。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

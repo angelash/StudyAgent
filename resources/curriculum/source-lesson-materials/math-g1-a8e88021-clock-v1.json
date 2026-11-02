@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "clock",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-clock-v1.json",
+      "sha256": "b73fa165c94ab114545198113897ff018cdf8c696f5f59e2bbd3f93d96f949e3",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit7:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 89,
+        "pageEnd": 92,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "49道均为未审原创候选：每目标3道即时、4道拟议间隔，不等独立题族或充分库存。课堂受控钟面保留连续针位；现有材料用明确针位文字及本人拨针或标清图稿核查，原生逐题钟面读图库存仍待建设审核。本课不强求准确读分、不代写真实作息或操作、不自动发布或认定掌握保持。",
+  "groups": [
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:clock-hands",
+      "structure": "hand-identity-not-color",
+      "familyProposal": "a8e88021-hand-identity-not-color",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "按模型辨长短针",
+          "weight": 0.4
+        },
+        {
+          "criterion": "身份与位置分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以颜色粗细作唯一标准",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "较长的是分针，较短的是时针；先辨身份再看指向，颜色只对应当前图的画法。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创普通两针教学钟面有较长和较短两针，不依颜色应怎样辨时针与分针？",
+          "answer": "较长的是分针，较短的是时针；先辨身份再看指向，颜色只对应当前图的画法。",
+          "analysis": "较长的是分针，较短的是时针；先辨身份再看指向，颜色只对应当前图的画法。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一面普通教学钟把两针都改为黑色，长度功能未改，还能按什么辨认？",
+          "answer": "仍按较长分针与较短时针辨认；同色不等身份相同，也不改变当前钟的功能。",
+          "analysis": "仍按较长分针与较短时针辨认；同色不等身份相同，也不改变当前钟的功能。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "有人说凡指12的针都叫分针。用12时两针都指12说明这句话的问题。",
+          "answer": "12时长分针与短时针都可指12，当前位置不能独自决定针的身份；较短的仍是时针。",
+          "analysis": "12时长分针与短时针都可指12，当前位置不能独自决定针的身份；较短的仍是时针。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "甲图时针红分针黑，乙图颜色相反，能统一说红色就代表时针吗？",
+          "answer": "不能，颜色是不同画法；应依当前普通两针模型的长短和功能确认身份再读位置。",
+          "analysis": "不能，颜色是不同画法；应依当前普通两针模型的长短和功能确认身份再读位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只给某根针指3，没说明长短，也没给另一针。能直接认定3时吗？",
+          "answer": "不能，需先辨这根针身份并核另一针位置；未明身份的单个指向不足以读整时。",
+          "analysis": "不能，需先辨这根针身份并核另一针位置；未明身份的单个指向不足以读整时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创模型长分针较细、短时针较粗，学生只按粗细而不核身份，怎样纠正？",
+          "answer": "当前身份应按明确模型和长短核查，粗细只是画法，不能作为所有钟表的唯一判断。",
+          "analysis": "当前身份应按明确模型和长短核查，粗细只是画法，不能作为所有钟表的唯一判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-hand-identity-not-color-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "已经辨明身份的短时针从7附近走到8附近，会因为指向变了就成分针吗？",
+          "answer": "不会，针的身份与功能不因当前位置改变；是否整时还需同时看长分针的位置。",
+          "analysis": "不会，针的身份与功能不因当前位置改变；是否整时还需同时看长分针的位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:whole-hour-read",
+      "structure": "both-hands-whole-hour",
+      "familyProposal": "a8e88021-both-hands-whole-hour",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "分针12条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "时针数字对应正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "缺失与近整时不冒充整时",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "现在4时，分针12说明整时，时针4说明具体是4时，不能略掉其中一个条件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创钟面分针正指12、时针正指4，现在几时？请把两针依据说完整。",
+          "answer": "现在4时，分针12说明整时，时针4说明具体是4时，不能略掉其中一个条件。",
+          "analysis": "现在4时，分针12说明整时，时针4说明具体是4时，不能略掉其中一个条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创钟面分针12、时针9。读当前整时后，能否只凭它断定上午或晚上？",
+          "answer": "读9时，两针满足当前整时条件；上午晚上仍需情境，单凭这面钟不能确定。",
+          "analysis": "读9时，两针满足当前整时条件；上午晚上仍需情境，单凭这面钟不能确定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创普通两针钟面两针都指12，应读12时还是因为重合就不能读？",
+          "answer": "读12时，分针12与时针12同时满足整时条件；重合不等没有时针或必须改写钟面0时。",
+          "analysis": "读12时，分针12与时针12同时满足整时条件；重合不等没有时针或必须改写钟面0时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只知道短时针接近6，没有分针位置。能保证现在6时整吗？缺什么？",
+          "answer": "不能，需核分针是否正指12以及时针对应整时；接近某数不能单独保证整时。",
+          "analysis": "不能，需核分针是否正指12以及时针对应整时；接近某数不能单独保证整时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创分针12、时针2，学生只看长针而读12时，怎样用两针纠正？",
+          "answer": "应读2时；长分针12说明是整时，具体几时由短时针2提供，两针信息不能互相代替。",
+          "analysis": "应读2时；长分针12说明是整时，具体几时由短时针2提供，两针信息不能互相代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创分针刚过12、短时针刚过5，可直接说5时整吗？本课怎样表达？",
+          "answer": "不是5时整，可说5时过了一点儿；刚过和正到不同，不强求准确说几分。",
+          "analysis": "不是5时整，可说5时过了一点儿；刚过和正到不同，不强求准确说几分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-both-hands-whole-hour-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创分针12、时针10，为什么不能按最近学过的7时例子直接答7时？",
+          "answer": "当前应读10时，须核本图分针12、时针10；旧例时间不能代当前两针条件。",
+          "analysis": "当前应读10时，须核本图分针12、时针10；旧例时间不能代当前两针条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:whole-hour-digital",
+      "structure": "whole-hour-digital-match",
+      "familyProposal": "a8e88021-whole-hour-digital-match",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "小时与00对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "可核两针整时条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不颠倒或把非零分钟当整时",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可写7:00，小时是7，冒号后00对应整时；不能把小时与后面的00颠倒。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创钟面分针12、时针7，确认是7时后，电子整时应怎样写？",
+          "answer": "可写7:00，小时是7，冒号后00对应整时；不能把小时与后面的00颠倒。",
+          "analysis": "可写7:00，小时是7，冒号后00对应整时；不能把小时与后面的00颠倒。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "电子3:00和3:05哪一个对应本课3时整，为什么不能把两者都当整时？",
+          "answer": "3:00对应3时整，后面00是整时条件；3:05不是3时整，不必为此额外强求精确读分。",
+          "analysis": "3:00对应3时整，后面00是整时条件；3:05不是3时整，不必为此额外强求精确读分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创普通钟面两针都在12，电子12:00是否对应？请说明而不省略一根针。",
+          "answer": "对应12时，分针12、时针12均满足；两针重合仍有各自身份，不改成另一个未要求的表示。",
+          "analysis": "对应12时，分针12、时针12均满足；两针重合仍有各自身份，不改成另一个未要求的表示。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "给出电子8:00，普通两针整时钟面的分针和时针分别指哪里？",
+          "answer": "分针指12、时针指8，分别提供整时和小时信息；不能颠倒成分针8、时针12。",
+          "analysis": "分针指12、时针指8，分别提供整时和小时信息；不能颠倒成分针8、时针12。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "学生把6时整写6:30，说前面是6就足够。怎样在本课范围内纠正？",
+          "answer": "6时整应写6:00，不能忽略后面的00；6:30不是6时整，无须把本题扩成所有分钟读数。",
+          "analysis": "6时整应写6:00，不能忽略后面的00；6:30不是6时整，无须把本题扩成所有分钟读数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创分针12、时针1，没有上午下午信息。写1:00后能自动补下午吗？",
+          "answer": "不能，1:00对应当前1时整，下午信息没有给；电子写法本身不能代情境提供时段。",
+          "analysis": "不能，1:00对应当前1时整，下午信息没有给；电子写法本身不能代情境提供时段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-digital-match-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为10:00配钟面，甲明确分针12时针10，乙只说某针10，哪项条件充分？",
+          "answer": "甲充分，两针共同对应10时整；乙缺针身份和另一针位置，不能保证与10:00配对。",
+          "analysis": "甲充分，两针共同对应10时整；乙缺针身份和另一针位置，不能保证与10:00配对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:set-whole-hour",
+      "structure": "real-dial-or-explicit-drawing",
+      "familyProposal": "a8e88021-real-dial-or-explicit-drawing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "两针均满足目标",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人操作与图稿标清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助及未完成如实保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分针12、时针3须同时正确；核实际拨针或标明的替代图稿，保留帮助，看示例不算已实际拨过。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人用安全教学钟拨3时并留下图；也可交明确标为图稿的示意。说两针位置，未实拨不记已操作。",
+          "answer": "分针12、时针3须同时正确；核实际拨针或标明的替代图稿，保留帮助，看示例不算已实际拨过。",
+          "analysis": "分针12、时针3须同时正确；核实际拨针或标明的替代图稿，保留帮助，看示例不算已实际拨过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人表示8时并反读核查，可拍拨后的钟或交标清图稿。哪些完成方式要分别记录？",
+          "answer": "核分针12、时针8与反读8时；本人实拨、图稿表达和他人帮助分记，不将图稿冒充已实操。",
+          "analysis": "核分针12、时针8与反读8时；本人实拨、图稿表达和他人帮助分记，不将图稿冒充已实操。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "表示12时整，图中两针重合时也要说明长分针短时针，提交真实拨针图或标清画稿。",
+          "answer": "应核两针都指12，重合不等只剩一根；真实操作或替代图稿及帮助必须如实标明。",
+          "analysis": "应核两针都指12，重合不等只剩一根；真实操作或替代图稿及帮助必须如实标明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴帮你拨好了6时，你只作检查。保留帮助与检查依据，能说自己完全独立拨好吗？",
+          "answer": "不能隐去同伴帮助；应核分针12、时针6并说本人完成了哪步，代拨与本人检查分记。",
+          "analysis": "不能隐去同伴帮助；应核分针12、时针6并说本人完成了哪步，代拨与本人检查分记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "想表示9时，但原图时针9、分针6。提交修正后的实际钟或图稿，说明修正什么及是否实拨。",
+          "answer": "应修为分针12并核时针9，原图不是9时整；修正的实际方式与帮助另记，参考句不能代操作。",
+          "analysis": "应修为分针12并核时针9，原图不是9时整；修正的实际方式与帮助另记，参考句不能代操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "隔次表示2时整，能用上次3时的照片代这次图吗？提交当前本人操作或标清图稿并说明。",
+          "answer": "不能用旧3时图代当前2时；需核这次分针12、时针2，真实操作和帮助另有当前记录。",
+          "analysis": "不能用旧3时图代当前2时；需核这次分针12、时针2，真实操作和帮助另有当前记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-clock-real-dial-or-explicit-drawing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "没有教学钟时画带标注图表示11时，注明未实际拨针。以后若实拨，再保留新的实际过程。",
+          "answer": "图稿须核分针12、时针11，可作表达但不登记已实际拨针；后续真实过程及帮助需另外保留。",
+          "analysis": "图稿须核分针12、时针11，可作表达但不登记已实际拨针；后续真实过程及帮助需另外保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:one-hour-later",
+      "structure": "whole-hour-successor-wrap",
+      "familyProposal": "a8e88021-whole-hour-successor-wrap",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "顺钟面正确前进",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分针整时条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "12后回1且不补造时段",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "过一小时8时，时针8、分针回12；当前没给时段，不凭空补上午或晚上。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创当前7时整，过一小时几时？说明普通钟面两针应在什么位置。",
+          "answer": "过一小时8时，时针8、分针回12；当前没给时段，不凭空补上午或晚上。",
+          "analysis": "过一小时8时，时针8、分针回12；当前没给时段，不凭空补上午或晚上。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创当前11时整，过一小时与再过一小时分别几时？按顺序说明。",
+          "answer": "依次12时、1时，钟面12后接1；每次整时分针在12，不把本课钟面写成13时。",
+          "analysis": "依次12时、1时，钟面12后接1；每次整时分针在12，不把本课钟面写成13时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "当前12时整，学生说过一小时是钟面13时。应怎样按本课钟面改正？",
+          "answer": "应改成1时，钟面12后接1；本题未给也未要求24小时制转换，不另补时段。",
+          "analysis": "应改成1时，钟面12后接1；本题未给也未要求24小时制转换，不另补时段。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "从8时过一小时，有人只把分针12挪到1、时针仍8。怎样核真正过一小时的整时？",
+          "answer": "应是9时整，短时针9且分针12；不能把分针只走一个数字就说整整一小时。",
+          "analysis": "应是9时整，短时针9且分针12；不能把分针只走一个数字就说整整一小时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创从10时整开始，连续两次各过一小时，两个结果依次是什么？",
+          "answer": "先11时、再12时；不能把起始10时错算为第一次过后的结果，整时两针均应相容。",
+          "analysis": "先11时、再12时；不能把起始10时错算为第一次过后的结果，整时两针均应相容。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创当前1时整，过一小时会直接到12时吗？应按哪种顺序核查？",
+          "answer": "应到2时，按时针前进顺序1后是2；不能反向数回12代过一小时。",
+          "analysis": "应到2时，按时针前进顺序1后是2；不能反向数回12代过一小时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-whole-hour-successor-wrap-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "只给12时过一小时到1时，未说起始中午或夜里，能断定一定进入第二天吗？",
+          "answer": "不能，钟面顺序支持到1时，是否跨日还依赖起始时段，未给信息应保留未知。",
+          "analysis": "不能，钟面顺序支持到1时，是否跨日还依赖起始时段，未给信息应保留未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:near-whole-hour",
+      "structure": "just-before-versus-after",
+      "familyProposal": "a8e88021-just-before-versus-after",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两针位置相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "快到正到刚过分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不强求精确分钟或补未知",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说快8时了，分针未正指12尚不满足整时条件；不能把接近当作已经8时整。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创分针快到12但未到、时针快到8，应说快8时了还是8时整？为什么？",
+          "answer": "可说快8时了，分针未正指12尚不满足整时条件；不能把接近当作已经8时整。",
+          "analysis": "可说快8时了，分针未正指12尚不满足整时条件；不能把接近当作已经8时整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创分针刚过12、短时针刚过10，本课可怎样说，与快10时有何区别？",
+          "answer": "可说10时过了一点儿，已经过与尚未到不同；不强求精确几分，不能反说快10时。",
+          "analysis": "可说10时过了一点儿，已经过与尚未到不同；不强求精确几分，不能反说快10时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "甲分针未到12且时针接近6，乙分针正到12且时针正到6，能都说6时整吗？",
+          "answer": "不能，甲可说快6时，乙才是6时整；须核两针共同条件，不能只看靠近6。",
+          "analysis": "不能，甲可说快6时，乙才是6时整；须核两针共同条件，不能只看靠近6。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创分针刚过12、时针刚过8，学生说快8时了，怎样用尚未到与已经过纠正？",
+          "answer": "应说8时过了一点儿，因为已经过8时；快8时了对应尚未到的另一种相容针位。",
+          "analysis": "应说8时过了一点儿，因为已经过8时；快8时了对应尚未到的另一种相容针位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只说分针接近12，没说从哪侧也没给时针，能保证具体是快9时吗？",
+          "answer": "不能，需分清未到或刚过，也需时针接近哪个整时；单根分针接近12不足以定快9时。",
+          "analysis": "不能，需分清未到或刚过，也需时针接近哪个整时；单根分针接近12不足以定快9时。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创短时针略过3、分针刚过12，本课一定要精确报几分才能表达当前时间吗？",
+          "answer": "不必，可先说3时过了一点儿，核刚过与两针位置；不把尚未要求的准确读分强作条件。",
+          "analysis": "不必，可先说3时过了一点儿，核刚过与两针位置；不把尚未要求的准确读分强作条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-just-before-versus-after-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "快12时与12时过一点的两面钟，两针都近12，能因此当成完全相同的整时吗？",
+          "answer": "不能，要区分分针未到或刚过12及时针前后位置；接近同一数字不等同一时刻或12时整。",
+          "analysis": "不能，要区分分针未到或刚过12及时针前后位置；接近同一数字不等同一时刻或12时整。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "clock",
+      "atomId": "source:math:g1:a8e88021:clock-context",
+      "structure": "same-clock-stated-period",
+      "familyProposal": "a8e88021-same-clock-stated-period",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "区分钟面与时段",
+          "weight": 0.4
+        },
+        {
+          "criterion": "先后有明确情境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不代写本人作息与事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可以相同，都是分针12、时针9；上午晚上由情境区分，不能仅凭钟面认定同一次活动。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创明确上午9时阅读、晚上9时休息，两次普通整时钟面可相同吗？怎样区分？",
+          "answer": "可以相同，都是分针12、时针9；上午晚上由情境区分，不能仅凭钟面认定同一次活动。",
+          "analysis": "可以相同，都是分针12、时针9；上午晚上由情境区分，不能仅凭钟面认定同一次活动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "只给9时整钟面，没有活动或时段，能说一定是晚上睡觉时吗？还缺什么？",
+          "answer": "不能，只能读9时整，时段与活动未知；需要情境，常见作息不能代当前缺失信息。",
+          "analysis": "不能，只能读9时整，时段与活动未知；需要情境，常见作息不能代当前缺失信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创同一上午7时早餐、8时阅读、9时出门，按先后说明，并标明不是真实本人记录。",
+          "answer": "先7时早餐，再8时阅读，后9时出门，依据同一上午条件；这是示例顺序，不表示本人做过。",
+          "analysis": "先7时早餐，再8时阅读，后9时出门，依据同一上午条件；这是示例顺序，不表示本人做过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只知甲活动9时、乙活动8时，没给上午晚上或日期，能保证乙一定先于甲吗？",
+          "answer": "不能，可能不在同一时段或同一天；需明确时段日期及比较范围，再判断活动先后。",
+          "analysis": "不能，可能不在同一时段或同一天；需明确时段日期及比较范围，再判断活动先后。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "示例安排晚上9时休息，是否就要求或证明每个人那时都已经睡觉？",
+          "answer": "不是，示例只对应给定情境，不代每个人实际作息或完成事实；个人记录需要本人真实信息。",
+          "analysis": "不是，示例只对应给定情境，不代每个人实际作息或完成事实；个人记录需要本人真实信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "同一天上午9时阅读、晚上9时看图，只因钟面相同就删除后一项当重复，合理吗？",
+          "answer": "不合理，已给不同上午晚上，虽钟面同样仍可两次活动；不能只凭钟面去重。",
+          "analysis": "不合理，已给不同上午晚上，虽钟面同样仍可两次活动；不能只凭钟面去重。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-clock-same-clock-stated-period-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "同一上午8时开始，过一小时到9时，能据此断定所有人在9时都应做同一件事吗？",
+          "answer": "不能，时间关系只对应当前条件；其他人的真实任务和作息未给，不能用示例代安排或已完成记录。",
+          "analysis": "不能，时间关系只对应当前条件；其他人的真实任务和作息未给，不能用示例代安排或已完成记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

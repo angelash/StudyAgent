@@ -798,3 +798,4 @@ export * from './textbook-teaching';
 export * from './studio-course-history';
 export * from './studio-pdf-table';
 export * from './gesp-teaching';
+export * from './classroom-math';

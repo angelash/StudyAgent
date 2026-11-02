@@ -1,0 +1,974 @@
+{
+  "at": "2026-11-02T17:12:00.538Z",
+  "baseCommit": "c426c478da0c6405614fef7803a1ebd7f5c98672",
+  "branch": "main",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "sha256": "7d8725603e0bf3d32509343ec984a54e798408b015043cb53e6984821b85fb54",
+      "gitNormalizedSha256": "6d8e2a00e5e413ca235065ba96741245957da762c456b724260ee57a7a48f03d",
+      "bytes": 55423
+    },
+    {
+      "path": "apps/api/src/infrastructure/gesp-evidence-reader.integration.test.ts",
+      "sha256": "e47dd965ca0ba8cd804f2a02d3220b89df71baacc85f22f0934196e17ba04e4f",
+      "gitNormalizedSha256": "e47dd965ca0ba8cd804f2a02d3220b89df71baacc85f22f0934196e17ba04e4f",
+      "bytes": 7571
+    },
+    {
+      "path": "apps/api/src/infrastructure/math-figures-reader.integration.test.ts",
+      "sha256": "67ec217f1597a24593b770d3427491d0f6e3dd078cd4df61f2549592aede9a5e",
+      "gitNormalizedSha256": "67ec217f1597a24593b770d3427491d0f6e3dd078cd4df61f2549592aede9a5e",
+      "bytes": 9533
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+      "sha256": "d8937959be9a42ec954c8194ee2b1ac9831d05a429d6a09226fce8e238cf040b",
+      "gitNormalizedSha256": "577497c05f66bfdd0fdbc65a69d38397143514df7aa7aaea1f75922d44f1d8f4",
+      "bytes": 6138
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+      "sha256": "76b02a121f02b4d9ebcd51f7e5741e8c4b363ba36c7e4328ea54e0c768557cb8",
+      "gitNormalizedSha256": "d675ab2e05f60b9a75dc6452986569a731c1e60468e4b9a7b15ee62f2024171b",
+      "bytes": 10152
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+      "sha256": "1e99b107ff6005746bf0fb385e8d2ad8499f65d7d9c1f9002e7410d783e5f003",
+      "gitNormalizedSha256": "278b8e293a606e2f93973eb05ad0a4cd5b652569949ada79dcf03bb81b00e8bd",
+      "bytes": 7328
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "sha256": "991a592dd78451359d97d6a4191ecf182815b4a87fc461b365a62412db65edf5",
+      "gitNormalizedSha256": "70d0bf81eac9099a804a2a54e355cfc5a222e8af341f366a397b5aac602a2ef4",
+      "bytes": 14279
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-teaching-content.test.ts",
+      "sha256": "f5add8c49f183747349322b8e5184336d14aa858414c9cd94326674f94279e57",
+      "gitNormalizedSha256": "30d2d8a3ed749afa6fe005c10a516645e0975535783484075b0f3e8cf24771e3",
+      "bytes": 24915
+    },
+    {
+      "path": "apps/api/src/modules/ai/assistant-teaching-content.ts",
+      "sha256": "da5e1fedbb55cb043d56e6e836eb9697db1ef7dd013824e0ae9e4bfdf69ff5bf",
+      "gitNormalizedSha256": "b85f4d9b1a361b06436004613af6ed008b40e464b17b580caf95b43ceef6b70d",
+      "bytes": 22503
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-editor-copy.test.ts",
+      "sha256": "551a3314e25dffe6f9133ab402c114e6103f22393b9b4f733e2a4e7912aae619",
+      "gitNormalizedSha256": "551a3314e25dffe6f9133ab402c114e6103f22393b9b4f733e2a4e7912aae619",
+      "bytes": 12349
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts",
+      "sha256": "f01a131646db7c54dd5102690945253d18f1cd50f0a4bc4b64ee3b20bb60a527",
+      "gitNormalizedSha256": "f01a131646db7c54dd5102690945253d18f1cd50f0a4bc4b64ee3b20bb60a527",
+      "bytes": 11415
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-package.ts",
+      "sha256": "c8ff8a69e419702f760b70ccae2713f30fda7e2b218b4c7d5ec27d056b90b4a8",
+      "gitNormalizedSha256": "c8ff8a69e419702f760b70ccae2713f30fda7e2b218b4c7d5ec27d056b90b4a8",
+      "bytes": 15904
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching-public.ts",
+      "sha256": "3187f7d3e821481087d686e19dad784e8529f5517d5f558499876c05430520b3",
+      "gitNormalizedSha256": "3187f7d3e821481087d686e19dad784e8529f5517d5f558499876c05430520b3",
+      "bytes": 8207
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-curriculum.ts",
+      "sha256": "5700c78d13a61c73a493be5c2660e2924683357be6debd837fe52a7fb92ad16b",
+      "gitNormalizedSha256": "eebb27815e4f8ba1a0947edf60fd8892157d135b2bff67d64bd96039dfce5d51",
+      "bytes": 47516
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-math.test.ts",
+      "sha256": "e0168dcdfb8d8eb910ef4cda6e68b27b1f971853f4d1cabdcfd66d0b4ea5caf6",
+      "gitNormalizedSha256": "e0168dcdfb8d8eb910ef4cda6e68b27b1f971853f4d1cabdcfd66d0b4ea5caf6",
+      "bytes": 6376
+    },
+    {
+      "path": "apps/api/src/modules/learning/classroom-practice-model.ts",
+      "sha256": "b4b4a2420f63b3faa5d26f30f1abc02d3954b11fc5d8de1e57116923d7538ff0",
+      "gitNormalizedSha256": "951610051bf62c4121ee6ad5cdc8104997ed23f012aa4098fd24963136ba0d8d",
+      "bytes": 1108
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-schema.ts",
+      "sha256": "d9d59bbe3bd3021cfab9f71179f5853052050977d9e5c42f000be69b7b975832",
+      "gitNormalizedSha256": "8e56bea4261f4a7a4a7d2b710bd6891de23f75df903c76f284b9b1261a16229e",
+      "bytes": 1879
+    },
+    {
+      "path": "apps/api/src/modules/learning/topic-whiteboard-visual-context.ts",
+      "sha256": "94d80ad14d9e7bc3b9ec09f4d10c16fad5b37716e3615e3a9521a3cf91f6a59d",
+      "gitNormalizedSha256": "64649600576a68ff88c3516817ede3f21dbc05d429b13ce5ba88c92c3b45a2b3",
+      "bytes": 3554
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-context.test.ts",
+      "sha256": "2ec9caa6031a78ee1dcb450a179b4e4f1305d2dabfa9d94d02fd01eebd1bbff1",
+      "gitNormalizedSha256": "48f8c940c8852ded896e6589264044d623d1e19dfdd9805013c72ac52cfecb41",
+      "bytes": 12123
+    },
+    {
+      "path": "apps/api/src/modules/learning/whiteboard-question-context.ts",
+      "sha256": "13b38c0e333c8350688cfec7edd231943da98b4b09b3cf31c1881ec985db7c72",
+      "gitNormalizedSha256": "d5b667cf3c82cdbe2258afe9f1915c05e2f5458654bbd62522af0a603729a4e9",
+      "bytes": 8904
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-math-fields.tsx",
+      "sha256": "aede6fcdab8fe60dce1dd4a1870cccee43a48045dc6ad5ba055cf65f35a62790",
+      "gitNormalizedSha256": "aede6fcdab8fe60dce1dd4a1870cccee43a48045dc6ad5ba055cf65f35a62790",
+      "bytes": 6142
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-package-content.tsx",
+      "sha256": "d3ca0de132e75c33a2b6421ceff37108ab50da68d3169632399877dc95694fe6",
+      "gitNormalizedSha256": "d3ca0de132e75c33a2b6421ceff37108ab50da68d3169632399877dc95694fe6",
+      "bytes": 25114
+    },
+    {
+      "path": "apps/web/app/admin/curriculum/teaching-package-preview.tsx",
+      "sha256": "5591ec10bec3fe98a2fc379a05d4e18cd3ef1e14870a3269a2bde08061efdc96",
+      "gitNormalizedSha256": "5591ec10bec3fe98a2fc379a05d4e18cd3ef1e14870a3269a2bde08061efdc96",
+      "bytes": 5251
+    },
+    {
+      "path": "apps/web/app/studio/classroom/board-step.tsx",
+      "sha256": "a7b9a8b3373cf4d4add0a4aa8be71ea5e77c6ef90b0e0243c1d5f2620beaf5c7",
+      "gitNormalizedSha256": "bff392ffdc360d35e260dfbb46c3ccfa7c77971aec57627ef6deec37898ccdd2",
+      "bytes": 3226
+    },
+    {
+      "path": "apps/web/app/studio/classroom/math-canvas.ts",
+      "sha256": "a28f87e60860b4f1decf93c85cef08bbfa2812b279f5f13ef5754d8554dd65f8",
+      "gitNormalizedSha256": "a28f87e60860b4f1decf93c85cef08bbfa2812b279f5f13ef5754d8554dd65f8",
+      "bytes": 2000
+    },
+    {
+      "path": "apps/web/app/studio/classroom/math-figure.css",
+      "sha256": "c4ca84b0bcf551985c8b65c8da5c1ef0c7a02dd28a4af161d9d7a28ef169eabe",
+      "gitNormalizedSha256": "c4ca84b0bcf551985c8b65c8da5c1ef0c7a02dd28a4af161d9d7a28ef169eabe",
+      "bytes": 822
+    },
+    {
+      "path": "apps/web/app/studio/classroom/math-figure.tsx",
+      "sha256": "99e4c986fa721bd4a360128cd1c47a21235e54df1a0a8dc7b4e2c17ea1ec02dc",
+      "gitNormalizedSha256": "99e4c986fa721bd4a360128cd1c47a21235e54df1a0a8dc7b4e2c17ea1ec02dc",
+      "bytes": 3222
+    },
+    {
+      "path": "apps/web/app/studio/classroom/practice-panel.tsx",
+      "sha256": "062a45426f3b8d57a74e8985fbd30088ff21918d897eba33a30a1b24aed89888",
+      "gitNormalizedSha256": "751ca8f825c35392ec28796905714a89c425ee39dda7b005cf145e06b03f5580",
+      "bytes": 16818
+    },
+    {
+      "path": "apps/web/app/studio/classroom/workbench.tsx",
+      "sha256": "2e309cbf19983c57431f8d11db93db8e15ee11721032f3efaaddee22e1520c09",
+      "gitNormalizedSha256": "2e309cbf19983c57431f8d11db93db8e15ee11721032f3efaaddee22e1520c09",
+      "bytes": 82611
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-frame.ts",
+      "sha256": "e711ce7a74e6ecf655b416ba1c0a03900bc519b5214b8a81b94b8bad8a708def",
+      "gitNormalizedSha256": "3b95d131e4a06cc8f1a9d8a8cad5a93350a3f129ecbffa80f07224ac72ae5daa",
+      "bytes": 17912
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-question-notes.ts",
+      "sha256": "f0ccc64a0c8727778df5dd9536c01b3f4fc9650ab59bf4601b00445f9bb0afd4",
+      "gitNormalizedSha256": "10e0a765d087fec01f1119d6680896845937b8988e8a681d0de7d3c5ee722643",
+      "bytes": 3980
+    },
+    {
+      "path": "apps/web/app/studio/whiteboard-session.tsx",
+      "sha256": "86b81693ba2d06788d1ca96827178ab8b2243f2292efb60d871e1ffdc67606e6",
+      "gitNormalizedSha256": "86b81693ba2d06788d1ca96827178ab8b2243f2292efb60d871e1ffdc67606e6",
+      "bytes": 49391
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/content-draft.ts",
+      "sha256": "80a9b064489cf18a5e50a1f1f2b500e4e7a3b5454ba1ee375afc6f0153f9aab8",
+      "gitNormalizedSha256": "c5f622dca6dc4acb4ee8e80f189dd08170480276be60e39da7b6abe3647b90ea",
+      "bytes": 1566
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/content-editor.tsx",
+      "sha256": "ce31e4e151a7e46d997fb249ec1d8b0d08ae0e5959a637a76eabc9d11c474ae2",
+      "gitNormalizedSha256": "d419150250a69c3b693fddad231b1b2ed67377d504305f5c90a97446a65a29bb",
+      "bytes": 22204
+    },
+    {
+      "path": "apps/web/app/studio/whiteboards/manuscript.tsx",
+      "sha256": "4f83b9652a7ec1b6cd38a442742d528ac18883242bfc2ea1d95da8a6212a7a3a",
+      "gitNormalizedSha256": "e752b699e908f6f5b78ca1811d368d2069290306e408f7e87110d3a2fe1134f7",
+      "bytes": 1126
+    },
+    {
+      "path": "apps/web/components/assistant-source-preview.tsx",
+      "sha256": "6be4d894b64b1ae8f2bf52f024babe9384d01d2f495cddf3152f0eada453a62d",
+      "gitNormalizedSha256": "bc365b135260fbe18fa837f9b00e5ff0a4fdb8a00f889c04ce73d2003ac6e26c",
+      "bytes": 11313
+    },
+    {
+      "path": "apps/web/lib/teaching-editor-copy.ts",
+      "sha256": "840b391008127882a7c1b3cd2957b200e32739463af2c2b095fef8b9b7c52075",
+      "gitNormalizedSha256": "840b391008127882a7c1b3cd2957b200e32739463af2c2b095fef8b9b7c52075",
+      "bytes": 16941
+    },
+    {
+      "path": "packages/contracts/src/assistant-turn.ts",
+      "sha256": "9a83b267238650c6b4a305db6fbdbcd8f4f3823910e37e3a8a73ace0d4f187ef",
+      "gitNormalizedSha256": "f9189290f4372607ac44b126daba9318f3fe89dc6e95c9b4b8c37eeae6087ba4",
+      "bytes": 5401
+    },
+    {
+      "path": "packages/contracts/src/classroom-math.ts",
+      "sha256": "af24eabdbd645ef8ab84833877eea38e9ca4ca2efbf7ae40674e94ec5ab0b68d",
+      "gitNormalizedSha256": "af24eabdbd645ef8ab84833877eea38e9ca4ca2efbf7ae40674e94ec5ab0b68d",
+      "bytes": 11116
+    },
+    {
+      "path": "packages/contracts/src/classroom.ts",
+      "sha256": "55edc2ea202d63fbce7ce45789403cbc1f878ddc1c4df9ba138a1d0aed0f61d7",
+      "gitNormalizedSha256": "a8da3c7047799a46be2bbe32899a052cd4a862031b14d27b39b63297cac838ec",
+      "bytes": 8228
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "a5d642222341ebe2544b4d07a689b9d61048aafd861f0c765ee52f667f72a41f",
+      "gitNormalizedSha256": "b0d5c5ab8fcf093ad5cb7bc7d31f4bb2cd8d27d2c5f58276656b20ca4e70422a",
+      "bytes": 26957
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "sha256": "e2a8f794a962e22462a9c7fcec3bc3753d3362e86e671abc3badd282e78496ad",
+      "gitNormalizedSha256": "e2a8f794a962e22462a9c7fcec3bc3753d3362e86e671abc3badd282e78496ad",
+      "bytes": 11340
+    },
+    {
+      "path": "packages/contracts/src/textbook-teaching.ts",
+      "sha256": "db7a1b9176db952c92475430bab7b8a64611246ba34ec4369e3aff1d0fb729fb",
+      "gitNormalizedSha256": "db7a1b9176db952c92475430bab7b8a64611246ba34ec4369e3aff1d0fb729fb",
+      "bytes": 19973
+    },
+    {
+      "path": "packages/contracts/src/topic-whiteboard.ts",
+      "sha256": "99c8384abb93d784473da1463e713a502dcd8fc5eb2b89565a7aa62116362708",
+      "gitNormalizedSha256": "c2d3c2f34855297e9c41f65f441182fa95d0bbf40d5caeee6a6cb9a91b1ca681",
+      "bytes": 5895
+    },
+    {
+      "path": "packages/contracts/src/whiteboard-speech.ts",
+      "sha256": "f82b9867c9becb799cbd6c0816177ec126d63481b3e0c87ba963528dee697c41",
+      "gitNormalizedSha256": "2755e603961f266f5c204ee7636a71e4e963bc531f1cea6fd64033dc37cb2a7f",
+      "bytes": 7350
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "sha256": "648c91075170d86b2ec241f2da933fac05a67ec835e9b5b024c3b2ca56c154a3",
+      "gitNormalizedSha256": "5e2ed822fb6b4ed34ee772f9a4812be98b69b5256946dfc220739b6e687247d8",
+      "bytes": 1444
+    },
+    {
+      "path": "scripts/content/build-math-g1-solids-candidates.cjs",
+      "sha256": "101b25d6cd9c20f21c13f72265072db8e67b09919a04e283351bcb92cd211ed5",
+      "gitNormalizedSha256": "101b25d6cd9c20f21c13f72265072db8e67b09919a04e283351bcb92cd211ed5",
+      "bytes": 26071
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-solids-v1.json",
+      "sha256": "7f30eceabebe855e4bb30083de15b0e25288af4832c9ab54fc274d53c94d260c",
+      "gitNormalizedSha256": "7f30eceabebe855e4bb30083de15b0e25288af4832c9ab54fc274d53c94d260c",
+      "bytes": 19915
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-solids-v1.json",
+      "sha256": "91e25dc7596803aaebd71aca424c9fc86032aea844d50dd8e14c0e4fee93d90e",
+      "gitNormalizedSha256": "91e25dc7596803aaebd71aca424c9fc86032aea844d50dd8e14c0e4fee93d90e",
+      "bytes": 49644
+    },
+    {
+      "path": "scripts/content/build-math-g1-clock-candidates.cjs",
+      "sha256": "091249b5a6a381c73ce26e86f8ddd15b29aab9cab8e94f82e559558c8df2f317",
+      "gitNormalizedSha256": "091249b5a6a381c73ce26e86f8ddd15b29aab9cab8e94f82e559558c8df2f317",
+      "bytes": 22203
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-clock-v1.json",
+      "sha256": "b73fa165c94ab114545198113897ff018cdf8c696f5f59e2bbd3f93d96f949e3",
+      "gitNormalizedSha256": "b73fa165c94ab114545198113897ff018cdf8c696f5f59e2bbd3f93d96f949e3",
+      "bytes": 18508
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-clock-v1.json",
+      "sha256": "ea8f45ac5bc1b59916d3a3d03bdabeb2c82609af9517fb604738c5023acc0518",
+      "gitNormalizedSha256": "ea8f45ac5bc1b59916d3a3d03bdabeb2c82609af9517fb604738c5023acc0518",
+      "bytes": 45576
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "cd60031e27e2dc048d28cb24c27f65fdd686df12a003d0c90e67a8654d0577a3",
+      "gitNormalizedSha256": "8834d4d555801025a455e77617417a0ce3faec7ebdd682bd7ba196bc3aac8f06",
+      "bytes": 14633
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "sha256": "523fb77504a4425a96253c25cc3df6d06eee30420ee8db2b346c83625b81dce1",
+      "gitNormalizedSha256": "5e20a0e898aef0a3bbe0c8093b041d49e174155389ba2d7bd557a81ce72643e4",
+      "bytes": 178323
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "sha256": "bb91078deea0095068bcdb7ad58a59c91b165cf1d1a8b3d71bbf45ad555fe8c3",
+      "gitNormalizedSha256": "dbead7ddfd86aac7cb16f8f70178898eff379f38feba3a3b1f33dbd0ae544f16",
+      "bytes": 104707
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "sha256": "fa41d05b1b197c8cb39aca2d3b15adc50af37a524bd55c42429c034047602211",
+      "gitNormalizedSha256": "0b278e0efa1b39fadc18ba921382cbb550580a1b8475c1ac7144734cf8182b92",
+      "bytes": 109786
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "sha256": "0cb114d3b675ae2b51dc4c6c6d78f49531912532cc547d7bf2e7fad7e71f5138",
+      "gitNormalizedSha256": "7ffbd0c5f2813d91ddc748815220518837bb9c0294c409c124d03be3de863561",
+      "bytes": 19724
+    },
+    {
+      "path": "doc/product/210-controlled-math-figures-and-reader-boundary.md",
+      "sha256": "9e60b6fce6f5a8a60e4d003565332033e77b31344b00b0a83ae1189d6343f7e6",
+      "gitNormalizedSha256": "9e60b6fce6f5a8a60e4d003565332033e77b31344b00b0a83ae1189d6343f7e6",
+      "bytes": 4740
+    },
+    {
+      "path": "doc/product/211-math-figures-editing-playback-and-reader37.md",
+      "sha256": "fecc4f91aa900d99f1b58070d3dabbe8d89b185e1d9a72118819ea6ad3c30e60",
+      "gitNormalizedSha256": "fecc4f91aa900d99f1b58070d3dabbe8d89b185e1d9a72118819ea6ad3c30e60",
+      "bytes": 5110
+    },
+    {
+      "path": "doc/product/212-solids-and-clock-source-candidates.md",
+      "sha256": "0043ed599228837ffd81ca23e82750071b242d00264e74472afb3e2bc5d02427",
+      "gitNormalizedSha256": "0043ed599228837ffd81ca23e82750071b242d00264e74472afb3e2bc5d02427",
+      "bytes": 4001
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "sha256": "ae1834e0f2bf13df33f5d579573298ab20028f25dbd62ff8cecfb719b5b5fac3",
+      "gitNormalizedSha256": "15006aa8b4bf779ca1171923280b29820bc6aebf110aabd46dc1b94112da4cc6",
+      "bytes": 38522
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-final-fourth/receipt.json",
+      "sha256": "047c346bb5335a797d720fba57345c838bf5cbdd5ddcb67f3ab122de3e8455c2",
+      "gitNormalizedSha256": "047c346bb5335a797d720fba57345c838bf5cbdd5ddcb67f3ab122de3e8455c2",
+      "bytes": 1231
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-final-fourth/runner.cjs",
+      "sha256": "59f0a9a137ec45457166ebefd9f96a3f139fe86abe6f0e18a181a2f5cea30bbf",
+      "gitNormalizedSha256": "59f0a9a137ec45457166ebefd9f96a3f139fe86abe6f0e18a181a2f5cea30bbf",
+      "bytes": 21670
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-first/receipt.json",
+      "sha256": "db68d92613c79cf00893dbfcddfa3bbefa5312dc02ed3fc94c0910d13641e5f6",
+      "gitNormalizedSha256": "db68d92613c79cf00893dbfcddfa3bbefa5312dc02ed3fc94c0910d13641e5f6",
+      "bytes": 1269
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-first/runner.cjs",
+      "sha256": "5452cecc2dc95f6929a07fe5b8bdc7466c56268bf3c1a427425b1858c6556932",
+      "gitNormalizedSha256": "5452cecc2dc95f6929a07fe5b8bdc7466c56268bf3c1a427425b1858c6556932",
+      "bytes": 21163
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-readback-third/receipt.json",
+      "sha256": "b3356c08b4cd42dc0b33612096f1eed781a122fc822df8317d9c56cc0cf89c97",
+      "gitNormalizedSha256": "b3356c08b4cd42dc0b33612096f1eed781a122fc822df8317d9c56cc0cf89c97",
+      "bytes": 1400
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-readback-third/runner.cjs",
+      "sha256": "e4054de392077fdfe3da92b20ebc760311b473034d092995c8b8f49cc4681a54",
+      "gitNormalizedSha256": "e4054de392077fdfe3da92b20ebc760311b473034d092995c8b8f49cc4681a54",
+      "bytes": 21545
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-selector-second/receipt.json",
+      "sha256": "7d9e0ff740fec8108239ac89770a5674f58b95fdd4fcb0636f22e33b45f979b6",
+      "gitNormalizedSha256": "7d9e0ff740fec8108239ac89770a5674f58b95fdd4fcb0636f22e33b45f979b6",
+      "bytes": 1235
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/browser-selector-second/runner.cjs",
+      "sha256": "49e106c0533b23c21cd554f393b2a186bec1415d17b6c433641bcfc5ba8be2f5",
+      "gitNormalizedSha256": "49e106c0533b23c21cd554f393b2a186bec1415d17b6c433641bcfc5ba8be2f5",
+      "bytes": 21200
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/canvas-independent-readback.json",
+      "sha256": "af88c1e984d10d461699048dcd896d3bf3e3860788c51b1cb49442d3a80457c4",
+      "gitNormalizedSha256": "af88c1e984d10d461699048dcd896d3bf3e3860788c51b1cb49442d3a80457c4",
+      "bytes": 4768
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/clocks-desktop.png",
+      "sha256": "58312a2267b165dccba99f482c83634c87d1f9e1f618a85d203246524e1442d4",
+      "gitNormalizedSha256": "6263ea5c87f0105f323e91d259750c6b4bf34cbe799d5091b20502217e5033a3",
+      "bytes": 56204
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/clocks-mobile.png",
+      "sha256": "10b250b23e0c4784253014257181f8e2f604c7253c39944ff3c95758f7c64308",
+      "gitNormalizedSha256": "675c9ef5299c02cc16f40799c027ba50cf006f15e7b1627b72cb212dab4076a3",
+      "bytes": 84355
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/generated-math-recording.webm",
+      "sha256": "d3df33b37ab39ffc80e70269b3bf351642a8426a9777bb88689deee73caf8062",
+      "gitNormalizedSha256": "531042c8f08c256fc161101a43f2aa3b8cd64a896faf685faa27629f083bba80",
+      "bytes": 29321
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/http-cold-read.json",
+      "sha256": "6bad2dc2f4d83ffacc9b4901f454e85ea8a304e20089067748eae5549de1832d",
+      "gitNormalizedSha256": "6bad2dc2f4d83ffacc9b4901f454e85ea8a304e20089067748eae5549de1832d",
+      "bytes": 185
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/invalid-clock-recovered.png",
+      "sha256": "1e87154a1c3f8e92295a7e3df4b94732c54abbe85c4493272ca3a9d098cc1862",
+      "gitNormalizedSha256": "f1827df38ade57462b282e07e500b487c84c259569254bc9f7a955872d3ce957",
+      "bytes": 6164
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/recording-readback.json",
+      "sha256": "af88c1e984d10d461699048dcd896d3bf3e3860788c51b1cb49442d3a80457c4",
+      "gitNormalizedSha256": "af88c1e984d10d461699048dcd896d3bf3e3860788c51b1cb49442d3a80457c4",
+      "bytes": 4768
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/solids-desktop.png",
+      "sha256": "60e463e307ae815ec61e1d6c7929a03cda9dba9071dd720f95b29450b70b771a",
+      "gitNormalizedSha256": "6a73ad6777e76031b025c4192710418bd5531b56a4e199c0ca558c01cd76fd4c",
+      "bytes": 62999
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/solids-mobile.png",
+      "sha256": "157b9de029fa289ebc3b768c82d224deb6563773e441154cce4f9c179ddfd912",
+      "gitNormalizedSha256": "45777a5a0e8c914d1224b75e5440ae080742ed0bc1f39a93c3041eb728189492",
+      "bytes": 50761
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/solids-print.png",
+      "sha256": "29224d3f54167f0a0ea103da539defd202db27738eb7511f2f3a4ed0ce45d012",
+      "gitNormalizedSha256": "14df1b53bbaa2ad4b8d52403b6e577c7421e9192e4b27fbb669eddacba239cb5",
+      "bytes": 50149
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/browser/final/whiteboard-shared-models.png",
+      "sha256": "e572b91b656d0e3cf1e3826a70a51fedcc82828eff129f05c9fa8a9ccb4d2fd3",
+      "gitNormalizedSha256": "5efe27342e33424eb23453b2bbe309caca4388169cd275ba2ef3e4097de8d038",
+      "bytes": 200384
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/after-full-difference.json",
+      "sha256": "f111616576ef3eaae35b6dd63ac03b1c96b49b70a7e429938ced11ee9fe0f1b4",
+      "gitNormalizedSha256": "f111616576ef3eaae35b6dd63ac03b1c96b49b70a7e429938ced11ee9fe0f1b4",
+      "bytes": 813
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/before-correction-state-test.ts",
+      "sha256": "bf7f8b0acfcb10c89ffdeb48b7f9a7de598ee2c49e18a11b35881a65f4c5330e",
+      "gitNormalizedSha256": "bf7f8b0acfcb10c89ffdeb48b7f9a7de598ee2c49e18a11b35881a65f4c5330e",
+      "bytes": 10850
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-api-type-corrected-inputs.json.gz",
+      "sha256": "6b46ca00282d1584e48735b49a151c38f369ff7a324b3acde46fd6c28dfff7be",
+      "gitNormalizedSha256": "6b46ca00282d1584e48735b49a151c38f369ff7a324b3acde46fd6c28dfff7be",
+      "bytes": 72556
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-api-type-corrected.json",
+      "sha256": "d67aa0c67e2226c8b1dfc84e0f5325f695759b3f703e0701a538468030312cb8",
+      "gitNormalizedSha256": "d67aa0c67e2226c8b1dfc84e0f5325f695759b3f703e0701a538468030312cb8",
+      "bytes": 186
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-api-type-first-inputs.json.gz",
+      "sha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "gitNormalizedSha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-api-type-first.json",
+      "sha256": "ef1b3629e0578d18e421a25be073cac9f794cfba65d2ea35fe57454c2182eedf",
+      "gitNormalizedSha256": "ef1b3629e0578d18e421a25be073cac9f794cfba65d2ea35fe57454c2182eedf",
+      "bytes": 186
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-build-first-inputs.json.gz",
+      "sha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "gitNormalizedSha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-build-first.json",
+      "sha256": "40b4d57c84c225e628884b1805f027904d142f47d6b56b1ff1a29e8021136074",
+      "gitNormalizedSha256": "40b4d57c84c225e628884b1805f027904d142f47d6b56b1ff1a29e8021136074",
+      "bytes": 186
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-contracts-first-inputs.json.gz",
+      "sha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "gitNormalizedSha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-contracts-first.json",
+      "sha256": "8047fe9babbccecce9ba086250d4fb17aa7bfec431e7acd1062de6e0f58d7519",
+      "gitNormalizedSha256": "8047fe9babbccecce9ba086250d4fb17aa7bfec431e7acd1062de6e0f58d7519",
+      "bytes": 190
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-contracts-focused-inputs.json.gz",
+      "sha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "gitNormalizedSha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-contracts-focused.json",
+      "sha256": "b20c1998ea94ca64bb043032ab3d08607f0309c0c2651b0f8d689bd7255b7b7c",
+      "gitNormalizedSha256": "b20c1998ea94ca64bb043032ab3d08607f0309c0c2651b0f8d689bd7255b7b7c",
+      "bytes": 190
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-editor-state-correction-inputs.json.gz",
+      "sha256": "8c200b277a312c4862bfc68fa19db9812372c8f0ee664ebd40b187b422bfe4ff",
+      "gitNormalizedSha256": "8c200b277a312c4862bfc68fa19db9812372c8f0ee664ebd40b187b422bfe4ff",
+      "bytes": 99728
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-editor-state-correction-vitest.json.gz",
+      "sha256": "10a6336205c0c0168fe94a4e006b35ebc777164820a2988f1b8805d5ce12b420",
+      "gitNormalizedSha256": "10a6336205c0c0168fe94a4e006b35ebc777164820a2988f1b8805d5ce12b420",
+      "bytes": 2828
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-editor-state-correction.json",
+      "sha256": "916967f7129fe87818ff8bf2f16fd4cfe5d1e8eb1c4419e951c8c580258982b3",
+      "gitNormalizedSha256": "916967f7129fe87818ff8bf2f16fd4cfe5d1e8eb1c4419e951c8c580258982b3",
+      "bytes": 187
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-final-types-api-inputs.json.gz",
+      "sha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "gitNormalizedSha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-final-types-api.json",
+      "sha256": "7ff95d9d87fa5214c44acea9f853acc67bcb09ff5bbf320b3ad858ab6e8ff84e",
+      "gitNormalizedSha256": "7ff95d9d87fa5214c44acea9f853acc67bcb09ff5bbf320b3ad858ab6e8ff84e",
+      "bytes": 186
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-final-types-web-inputs.json.gz",
+      "sha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "gitNormalizedSha256": "2c852f00f1f43cdc4b8c24c157a31d6549c04fd8512556017c96e3d1f1903fe8",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-final-types-web.json",
+      "sha256": "b3f745f87d614e7c44693da493c2354d0cbf8dba14034f3e9043cdd7141f927d",
+      "gitNormalizedSha256": "b3f745f87d614e7c44693da493c2354d0cbf8dba14034f3e9043cdd7141f927d",
+      "bytes": 189
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-first-inputs.json.gz",
+      "sha256": "8f987fc24c2e967312f993872980c47f6f2fe7590fcc8fca91349bf3f3b6c9fc",
+      "gitNormalizedSha256": "8f987fc24c2e967312f993872980c47f6f2fe7590fcc8fca91349bf3f3b6c9fc",
+      "bytes": 99400
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-first-vitest.json.gz",
+      "sha256": "406c5c53a0fc1ebe50035c280d16ebfb7f35192a779ea85823808cb6f122f24b",
+      "gitNormalizedSha256": "406c5c53a0fc1ebe50035c280d16ebfb7f35192a779ea85823808cb6f122f24b",
+      "bytes": 5898
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-first.json",
+      "sha256": "931d956664c9c5567403cb0d83996b94af9fe2eab772ad5b1c7ff627065529f7",
+      "gitNormalizedSha256": "931d956664c9c5567403cb0d83996b94af9fe2eab772ad5b1c7ff627065529f7",
+      "bytes": 1065
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-fixed-input-inputs.json.gz",
+      "sha256": "5733834a374fb6f0de4aab13a1b8af656806de1aedfb5277a0b7a5f8191224d4",
+      "gitNormalizedSha256": "5733834a374fb6f0de4aab13a1b8af656806de1aedfb5277a0b7a5f8191224d4",
+      "bytes": 99432
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-fixed-input-vitest.json.gz",
+      "sha256": "31b70510204319e75807ab2b6a349827555b7bd6b496bf7a77e7102784cf029c",
+      "gitNormalizedSha256": "31b70510204319e75807ab2b6a349827555b7bd6b496bf7a77e7102784cf029c",
+      "bytes": 5919
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-focused-fixed-input.json",
+      "sha256": "916144d10776a2571ee3df73cd42de3fb4bfd6475fb1b636f35c35b86c8f08e9",
+      "gitNormalizedSha256": "916144d10776a2571ee3df73cd42de3fb4bfd6475fb1b636f35c35b86c8f08e9",
+      "bytes": 187
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-full-api-first-inputs.json.gz",
+      "sha256": "5733834a374fb6f0de4aab13a1b8af656806de1aedfb5277a0b7a5f8191224d4",
+      "gitNormalizedSha256": "5733834a374fb6f0de4aab13a1b8af656806de1aedfb5277a0b7a5f8191224d4",
+      "bytes": 99432
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-full-api-first-vitest.json.gz",
+      "sha256": "ba945766f711e8f22fd2151b8bafcfd8cdc4ccaeaf96748bfc6ad08d061340e7",
+      "gitNormalizedSha256": "e1f6ea0054b6391e37694749c0e50f92664a14051bc95410d78c5dbc876d8d78",
+      "bytes": 175987
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-full-api-first.json",
+      "sha256": "073d7cae80c4e7d1236fb267070db111f69186abf6881baebe9ce31057ec67aa",
+      "gitNormalizedSha256": "073d7cae80c4e7d1236fb267070db111f69186abf6881baebe9ce31057ec67aa",
+      "bytes": 185
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-web-type-first-inputs.json.gz",
+      "sha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "gitNormalizedSha256": "f880799d9b6d24f7bea37b1dbd09ce2a2ab936ddb2a6272c637f78a6a113515e",
+      "bytes": 72257
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/math37-web-type-first.json",
+      "sha256": "80db703874e7b80cef010405eace19656455ca969b8c9f899c78a70cd075381d",
+      "gitNormalizedSha256": "80db703874e7b80cef010405eace19656455ca969b8c9f899c78a70cd075381d",
+      "bytes": 189
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/postgres-first-inputs.json.gz",
+      "sha256": "1a0faa8d7ae578bebdd44949940410754ec7d6978bbf62bc7a194598d9f5b976",
+      "gitNormalizedSha256": "1a0faa8d7ae578bebdd44949940410754ec7d6978bbf62bc7a194598d9f5b976",
+      "bytes": 69852
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/postgres-first-vitest.json.gz",
+      "sha256": "e97fe24ca2523331867608ff0fa12150406dc28bf731119561d74e2d85bc6f5f",
+      "gitNormalizedSha256": "e97fe24ca2523331867608ff0fa12150406dc28bf731119561d74e2d85bc6f5f",
+      "bytes": 751
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/postgres-first.json",
+      "sha256": "e2145a70a1e67d78f8dbbf97036db5fd20c82e059fed10b0843ffc3dad6fda20",
+      "gitNormalizedSha256": "e2145a70a1e67d78f8dbbf97036db5fd20c82e059fed10b0843ffc3dad6fda20",
+      "bytes": 167
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/protection-before-archive.json",
+      "sha256": "fd09fdeeb48f5072fc12fea65114311fe79b86cc232967488eff09c1f6bd0d38",
+      "gitNormalizedSha256": "fd09fdeeb48f5072fc12fea65114311fe79b86cc232967488eff09c1f6bd0d38",
+      "bytes": 294
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/protection-first.json",
+      "sha256": "2f4480c7726685ebacf54eb95dd4ce34d222ceff1a2273cfc7c16d6174ac7081",
+      "gitNormalizedSha256": "2f4480c7726685ebacf54eb95dd4ce34d222ceff1a2273cfc7c16d6174ac7081",
+      "bytes": 294
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/sync-final-content-and-state-test.json",
+      "sha256": "bf4bdcb3f29450561390be13e9e005901a7c134a5a7dcc2cde0893e78840ccb2",
+      "gitNormalizedSha256": "bf4bdcb3f29450561390be13e9e005901a7c134a5a7dcc2cde0893e78840ccb2",
+      "bytes": 10344
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/sync-focused.json",
+      "sha256": "4aa74656c5ab1dd30db583027647253944af4cff1d41b6552a97d0cdab47eebd",
+      "gitNormalizedSha256": "4aa74656c5ab1dd30db583027647253944af4cff1d41b6552a97d0cdab47eebd",
+      "bytes": 8945
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/sync-initial.json",
+      "sha256": "bbb68b9aefbc007ad5508ea1551653855018403f7fee81728070ca6a9221e3e2",
+      "gitNormalizedSha256": "bbb68b9aefbc007ad5508ea1551653855018403f7fee81728070ca6a9221e3e2",
+      "bytes": 8550
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/webbuild-first-inputs.json.gz",
+      "sha256": "1a0faa8d7ae578bebdd44949940410754ec7d6978bbf62bc7a194598d9f5b976",
+      "gitNormalizedSha256": "1a0faa8d7ae578bebdd44949940410754ec7d6978bbf62bc7a194598d9f5b976",
+      "bytes": 69852
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/webbuild-first.json",
+      "sha256": "ccdf21a52d11b08ba0be05adfff84d452dbef385e89df0ef619a2b692ac5b34e",
+      "gitNormalizedSha256": "ccdf21a52d11b08ba0be05adfff84d452dbef385e89df0ef619a2b692ac5b34e",
+      "bytes": 167
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/manifest.json",
+      "sha256": "7151260b4c201229d1aa20cae463cdb60ae4e8ae6708268774a2ac4b9d0f8462",
+      "gitNormalizedSha256": "7151260b4c201229d1aa20cae463cdb60ae4e8ae6708268774a2ac4b9d0f8462",
+      "bytes": 12146
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/receipt.json",
+      "sha256": "d61048da00f7a9732d1151a4bf5631d94c0bde05590965d5e48d9eeb8063cbfa",
+      "gitNormalizedSha256": "d61048da00f7a9732d1151a4bf5631d94c0bde05590965d5e48d9eeb8063cbfa",
+      "bytes": 2549
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/sources.json.gz",
+      "sha256": "18c7fab7d4934a3cf596c9b7f07175ad2b754d1e93ede64098e85463caef7d88",
+      "gitNormalizedSha256": "897f723d289b66ced52f27ce9e2b5b99897bbd3e4b14f108ebc20131c3bf7043",
+      "bytes": 272564
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/archive.cjs",
+      "sha256": "19d0da47a7537924a51c46733528f93c000534272622c421bf20aa3c7d7af714",
+      "gitNormalizedSha256": "19d0da47a7537924a51c46733528f93c000534272622c421bf20aa3c7d7af714",
+      "bytes": 8074
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/b4-math-sync.cjs",
+      "sha256": "574fef19077a8a027a03ecf88c58e5f1f639e24c61c5240ba11c7adb80ba3daa",
+      "gitNormalizedSha256": "574fef19077a8a027a03ecf88c58e5f1f639e24c61c5240ba11c7adb80ba3daa",
+      "bytes": 2311
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/browser-checks.cjs",
+      "sha256": "cddae3236a5d0d908e3f2367fd02867decc7c6f33e26d563501dad2450e3c064",
+      "gitNormalizedSha256": "cddae3236a5d0d908e3f2367fd02867decc7c6f33e26d563501dad2450e3c064",
+      "bytes": 11685
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/check.cjs",
+      "sha256": "d09d4247ebd221e67c435537c3929c907f3f816618b05e6fd3a83a113c75a904",
+      "gitNormalizedSha256": "349191c7c1cb027a25e3eecfeed2ac3dcc0d281a25659bf049433ab69a5ca556",
+      "bytes": 3539
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/fix-browser-readback.cjs",
+      "sha256": "006a07b4ab76a0594fd54552a881854a23d7dbdfd6d03f6ee26053ab9bcc9818",
+      "gitNormalizedSha256": "006a07b4ab76a0594fd54552a881854a23d7dbdfd6d03f6ee26053ab9bcc9818",
+      "bytes": 963
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/fix-browser-selectors.cjs",
+      "sha256": "03dd1d79f1370c1d2ff6492e98705eb9f70c49f0bdc09fa92d1ec0aed4af9357",
+      "gitNormalizedSha256": "03dd1d79f1370c1d2ff6492e98705eb9f70c49f0bdc09fa92d1ec0aed4af9357",
+      "bytes": 592
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/fix-canvas-units.cjs",
+      "sha256": "6a606adabc196dcc5fedff8a5b30f4987354093fb04d4612f6b997f3b3d65c84",
+      "gitNormalizedSha256": "6a606adabc196dcc5fedff8a5b30f4987354093fb04d4612f6b997f3b3d65c84",
+      "bytes": 1838
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/prepare-browser.cjs",
+      "sha256": "cdadf0f408fd767a3b4042e918ac077a91fb13f6e92035f713498afba02c2fe5",
+      "gitNormalizedSha256": "cdadf0f408fd767a3b4042e918ac077a91fb13f6e92035f713498afba02c2fe5",
+      "bytes": 1168
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/protection-scan.cjs",
+      "sha256": "ce084d6902b10b6036f4fef5739e737bc5d05bfe1b6f7fa64e8144e632dd3924",
+      "gitNormalizedSha256": "ce084d6902b10b6036f4fef5739e737bc5d05bfe1b6f7fa64e8144e632dd3924",
+      "bytes": 1964
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/run.cjs",
+      "sha256": "588f83a245559e47e5397404f2abe94c32ebd379022182eaa6c5ff9845fd26d4",
+      "gitNormalizedSha256": "588f83a245559e47e5397404f2abe94c32ebd379022182eaa6c5ff9845fd26d4",
+      "bytes": 3066
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-1-desktop.png",
+      "sha256": "984c22cb878c0f5fb001f2619ebd792341b664dd2b75fa6dfb2ea8b034656b4c",
+      "gitNormalizedSha256": "ad847606b560aa161d81cd248bd93ef3ad7ba5883ff18b2c9e2853dbbbcbbf29",
+      "bytes": 58144
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-1-mobile.png",
+      "sha256": "9d1263de2999c035b28e3ec5ef862ddc7f76f53af27a10a6f0988a663a4d9676",
+      "gitNormalizedSha256": "8001ce253d0fa05053234cc0a3a7ea795d0c21c565ec98355271cd937c7b4666",
+      "bytes": 85232
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-2-desktop.png",
+      "sha256": "7e2f349fe1f75794a058b30a1ce8dd942a0d2e7045fcab61c951688a587c27a6",
+      "gitNormalizedSha256": "c2f1001f06795a658f3333f337d47521fa2d851823c14519a6fe97fecf24206d",
+      "bytes": 48746
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-2-mobile.png",
+      "sha256": "8408bac9df6db75ea017952de2eaf468029c0ffe6f0433b281feeff2d10f6a36",
+      "gitNormalizedSha256": "cc6c034e9cd5aed90a6052d6a55a21583a9ec57b7243b969ec9c2577c514d7c2",
+      "bytes": 60171
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-3-desktop.png",
+      "sha256": "36191f83857725a6c1e1a11cdf0267b74c76014f3f5eb1aeea75ae567db2b9e6",
+      "gitNormalizedSha256": "83421159ea797d9697af38443d69dc31e7df8ec166e6f0771b8a88dca1659251",
+      "bytes": 30755
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-clock-v1-figure-3-mobile.png",
+      "sha256": "5477f14b514f25517a936241b38812f800700102235cb8255fcb2aac3c9cede4",
+      "gitNormalizedSha256": "fe183610e3f9cfaf5894cf160ccd42a4140c92755094da2fd97452c34800636c",
+      "bytes": 43129
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-solids-v1-figure-1-desktop.png",
+      "sha256": "f54d4cb992e4c32c97b62055f399f3a242851f7e2859fa1028f8267d26905d2c",
+      "gitNormalizedSha256": "c00edd26dcc1e6673ab299a4115fa79aedc0267771eaf846d3c46dedb6159b98",
+      "bytes": 48326
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-solids-v1-figure-1-mobile.png",
+      "sha256": "fc3c3db69bfe0257e881ff5f38d9eb9a00de85a4b53b06357922c9c0b56f6c9b",
+      "gitNormalizedSha256": "ae596b73e9777e9b7a1661b7401554f975d721c0a4e551b928cd8da82883cc23",
+      "bytes": 52984
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-solids-v1-figure-2-desktop.png",
+      "sha256": "450296532d139b4ca7186c33a657f56f48dacc238e54642f8b997379a47e9f0b",
+      "gitNormalizedSha256": "5404d2b2b68dd662252ea25a18407b430755aaf94c9215ff719d913b2a91a86c",
+      "bytes": 34548
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/math-g1-a8e88021-solids-v1-figure-2-mobile.png",
+      "sha256": "b825cedbd9b9b9899b9fa02a347d2495082e998f651e40204f41adaffc199e91",
+      "gitNormalizedSha256": "021d9071a68176d7c0dc57cef346387287c241ab4a835d0f7daf8d414d02874f",
+      "bytes": 35661
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/browser/receipt.json",
+      "sha256": "96d593fdc2c7306a4d33ec381bf6466e25a6803c2d62bb0edbdaec5c02f5d372",
+      "gitNormalizedSha256": "96d593fdc2c7306a4d33ec381bf6466e25a6803c2d62bb0edbdaec5c02f5d372",
+      "bytes": 1327
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/checks/clock-http-first.json",
+      "sha256": "12bf3b24c541e04f31a10ebf3ba4fc5321d7b014d138705db732dddfc8ef0261",
+      "gitNormalizedSha256": "12bf3b24c541e04f31a10ebf3ba4fc5321d7b014d138705db732dddfc8ef0261",
+      "bytes": 2059
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/checks/content-worklist-first.json.gz",
+      "sha256": "d8dd967251f202e7044eab8c19a4e21742155cc3eed5aae5736d20b92c8252b3",
+      "gitNormalizedSha256": "56640e66b67ea2c1f4d98dfe6c26d9d34601bd68a42382472cfa14a6c5744802",
+      "bytes": 116431
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/checks/solids-http-first.json",
+      "sha256": "6424c3d3b114f511e3d54d2727e28cc793bdd0d563c5747ec86c80281bb4b74d",
+      "gitNormalizedSha256": "6424c3d3b114f511e3d54d2727e28cc793bdd0d563c5747ec86c80281bb4b74d",
+      "bytes": 2073
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/checks/source-review-and-original-image-hashes.json",
+      "sha256": "813cf3220b949775d0a907d5c997b2cb233e4bd84e4a607eb0a50c15e19f500c",
+      "gitNormalizedSha256": "813cf3220b949775d0a907d5c997b2cb233e4bd84e4a607eb0a50c15e19f500c",
+      "bytes": 4773
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/checks/static-first.json",
+      "sha256": "dd1e64f48dc071d8c229dbf15fbc9ca3aa5fbfb6eaa5dc41a074d3696b0f0920",
+      "gitNormalizedSha256": "dd1e64f48dc071d8c229dbf15fbc9ca3aa5fbfb6eaa5dc41a074d3696b0f0920",
+      "bytes": 1974
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/manifest.json",
+      "sha256": "8e51524ac910bcdac1148882a9d297ecf742bf6790c64ac199e2e22e842f6516",
+      "gitNormalizedSha256": "8e51524ac910bcdac1148882a9d297ecf742bf6790c64ac199e2e22e842f6516",
+      "bytes": 4385
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/receipt.json",
+      "sha256": "5fc52f0d9a2a71870862f325b6a19e06ad9a285f036e2da99a8269600a0d9ff5",
+      "gitNormalizedSha256": "5fc52f0d9a2a71870862f325b6a19e06ad9a285f036e2da99a8269600a0d9ff5",
+      "bytes": 3528
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/sources.json.gz",
+      "sha256": "993980a1a6f582e1adfd267fe7b5ab426ef7e013fa9daf46904191e1c4686854",
+      "gitNormalizedSha256": "f9d98a7922b76993d994754df628f8b7361b06a4f97a05f75d0e03cd83fb6a14",
+      "bytes": 67521
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/archive.cjs",
+      "sha256": "96cd8e33657c68605da5ffd6822f23ab816c7f0213185a3101c9feb548b9c31e",
+      "gitNormalizedSha256": "96cd8e33657c68605da5ffd6822f23ab816c7f0213185a3101c9feb548b9c31e",
+      "bytes": 4818
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/audit-content-delivery.cjs",
+      "sha256": "a50149e331eaa97e0596ef99ad351d02a5e51641097f0b1c68bfab8bb2a888f6",
+      "gitNormalizedSha256": "bae5f123d4cbb338c187fdc55a93f6fec681d779af7b81d011d3ca5b40985b58",
+      "bytes": 9687
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/browser-run.cjs",
+      "sha256": "8aecfdef83e81b5a193855123090a0047e524d6f691ef75e33dbc8af451238cc",
+      "gitNormalizedSha256": "8aecfdef83e81b5a193855123090a0047e524d6f691ef75e33dbc8af451238cc",
+      "bytes": 12716
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/prepare-browser.cjs",
+      "sha256": "0bb57090f88c78401ba8b686c8a4416dbadbd057a01c71d41d44ab93392bc816",
+      "gitNormalizedSha256": "0bb57090f88c78401ba8b686c8a4416dbadbd057a01c71d41d44ab93392bc816",
+      "bytes": 3916
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/source-candidate-preflight.cjs",
+      "sha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096",
+      "gitNormalizedSha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096",
+      "bytes": 7532
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/static.cjs",
+      "sha256": "9f08627b7ca6da77235ba8d78a1eed56a72f237da718a5c27a3b8bd9c66a7949",
+      "gitNormalizedSha256": "9f08627b7ca6da77235ba8d78a1eed56a72f237da718a5c27a3b8bd9c66a7949",
+      "bytes": 3180
+    },
+    {
+      "path": "doc/evidence/2026-11-03/solids-clock-source-candidates/tools/verify-source-candidates.cjs",
+      "sha256": "fafc8b3df706932885ba23e755221bdfcee3e109b7d129ed33624e571929e8bb",
+      "gitNormalizedSha256": "fafc8b3df706932885ba23e755221bdfcee3e109b7d129ed33624e571929e8bb",
+      "bytes": 18143
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/checks/staging-scan.json",
+      "sha256": "753064d362ba750d7a51c019c411663f8c37747d8bc2e52d81df3ab359721dd8",
+      "gitNormalizedSha256": "753064d362ba750d7a51c019c411663f8c37747d8bc2e52d81df3ab359721dd8",
+      "bytes": 196
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-figures-and-reader37/tools/stage.cjs",
+      "sha256": "9dfbfffcfb4ffded84a3ffd1e352fd0532d07d15afd3fb90f3344f9be47807e0",
+      "gitNormalizedSha256": "9dfbfffcfb4ffded84a3ffd1e352fd0532d07d15afd3fb90f3344f9be47807e0",
+      "bytes": 4843
+    }
+  ]
+}

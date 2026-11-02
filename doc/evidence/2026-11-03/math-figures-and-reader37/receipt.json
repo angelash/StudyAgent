@@ -1,0 +1,96 @@
+{
+  "protocol": "math-figures-reader37-development-checkpoint-v1",
+  "at": "2026-11-02T17:10:49.489Z",
+  "branch": "main",
+  "sourceFiles": 46,
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "implementation": {
+    "controlledClocks": true,
+    "controlledSolids": true,
+    "sharedSvgCanvasAndNotesGeometry": true,
+    "originalNumericInputsAndVisualHistory": true,
+    "minimumReader": 37,
+    "readyState": "ready-schema37-math-figures-v1"
+  },
+  "validation": {
+    "focused": {
+      "passed": 99,
+      "failed": 0,
+      "unchangedInputs": 2173,
+      "firstAttemptInvalidatedByConcurrentCompile": true
+    },
+    "postgres": {
+      "passed": 4,
+      "failed": 0,
+      "actualOwnedCluster": true
+    },
+    "fullApi": {
+      "passed": 3103,
+      "failed": 1,
+      "conditionalSkips": 131,
+      "inputCount": 2173,
+      "changedDuringRun": [],
+      "failedCase": "Old CAS test allowed an unassigned invalid numeric input; guard correctly refused it.",
+      "fullSuiteRerunAfterCorrection": false
+    },
+    "correctedEditorSuites": {
+      "passed": 50,
+      "failed": 0,
+      "inputCount": 2179,
+      "applicationRuntimeUnchanged": true
+    },
+    "browser": {
+      "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+      "passed": 6,
+      "failed": 0,
+      "screenshots": 7,
+      "priorFailedBatchesPreserved": true,
+      "httpSaveOriginalReplayAndSqliteColdRead": true,
+      "recordingDecoded": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-02T17:09:32.569Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "newTextbookCandidateDrafts": 0,
+    "newLearnerResponses": 0,
+    "published": 0,
+    "adopted": 0,
+    "sourceOriginalsOrPrivateRuntimeCommitted": false,
+    "physicalPrintVerified": false,
+    "realDeviceOrLongTermLearnerVerified": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 450,
+    "booksWithoutDirectory": 336,
+    "directoryEntries": 3522,
+    "entriesWithCandidateFiles": 50,
+    "entriesWithoutCandidates": 3472,
+    "followingCandidates": 2177,
+    "firstLessonSeparateCandidates": 44,
+    "allRemainingContentAndGesp": true,
+    "allTeacherScoringFamilyAndSufficientRetentionReviews": true,
+    "block5": true
+  }
+}

@@ -216,7 +216,7 @@ const course: ClassroomCourse = {
           hints.set(questionId, [...variation.hints]);
           lesson.questions.push({ id: questionId, prompt: variation.prompt, options, hint: variation.hints[0], hintCount: 2,
             purpose: variation.purpose, topic: { lessonId: id, title: name },
-            ...(variation.table ? { table: structuredClone(variation.table) } : {}), ...(variation.diagram ? { diagram: structuredClone(variation.diagram) } : {}) });
+            ...(variation.table ? { table: structuredClone(variation.table) } : {}), ...(variation.diagram ? { diagram: structuredClone(variation.diagram) } : {}), ...(variation.math ? { math: structuredClone(variation.math) } : {}) });
         }
         for (const choice of microChoices.filter(choice => choice.lessonId === id)) {
           const frozen = freezeMultipleChoice(id + ':practice:v2:multiple:' + choice.purpose, choice, name);

@@ -4,11 +4,12 @@ import type { ClassroomPresentation, ClassroomPresentationRevision, ClassroomSpe
 import type { CourseLessonActivity,CourseProjectActivity } from './course-journey';
 import type { ClassroomExperiment } from './classroom-experiment';
 import type { ActivityNavigationContext } from './activity-navigation';
+import type { ClassroomMathFigure } from './classroom-math';
 
 export type ClassroomDiagram = { kind: 'venn' | 'flow' | 'bars' | 'network'; title: string; labels: string[]; values?: number[]; captions?: string[] };
-export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' | 'image' | 'diagram' | 'code' | 'table' | 'experiment'; text: string;
+export type ClassroomBlock = { id: string; kind: 'heading' | 'text' | 'points' | 'image' | 'diagram' | 'code' | 'table' | 'experiment' | 'math'; text: string;
   atSentence?: number; items?: string[]; image?: { src: string; alt: string; caption: string };
-  diagram?: ClassroomDiagram; experiment?: ClassroomExperiment; code?: string; table?: { headers: string[]; rows: string[][] } };
+  diagram?: ClassroomDiagram; math?: ClassroomMathFigure; experiment?: ClassroomExperiment; code?: string; table?: { headers: string[]; rows: string[][] } };
 export type ClassroomStep = { id: string; title: string; narration: string; blocks: ClassroomBlock[];
   phase: 'orient' | 'concept' | 'example' | 'contrast' | 'check' | 'transfer'; durationMs: number };
 export type ClassroomSelectionMode = 'single' | 'multiple';
@@ -17,7 +18,7 @@ export type ClassroomQuestion = { id: string; prompt: string; options: string[];
   image?: NonNullable<ClassroomBlock['image']>;
   targetLessonIds?: string[];
   selectionMode?: ClassroomSelectionMode;
-  hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram;
+  hintCount?: number; table?: { caption: string; headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram; math?: ClassroomMathFigure;
   topic?: { lessonId: string; title: string }; purpose?: 'application' | 'evidence' | 'boundary' };
 export type ClassroomLesson = { id: string; title: string; objective: string; lectureId: string; steps: ClassroomStep[];
   generatedNotice?: string; nextLessonId?: string;

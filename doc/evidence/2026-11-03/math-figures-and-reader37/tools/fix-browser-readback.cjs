@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const file=path.join(__dirname,'browser-run.cjs');let text=fs.readFileSync(file,'utf8');
+const old="await page.waitForURL(url=>url.searchParams.get('teachingDraft')!==previous);await desk().getByText('完整本机稿已保存，并已读回核对。',{exact:true}).waitFor();";
+const next="const navigation=page.waitForURL(url=>url.searchParams.get('teachingDraft')!==previous),guard=page.getByRole('dialog',{name:'先保留完整教学稿',exact:true});await Promise.race([navigation,guard.waitFor()]);if(await guard.isVisible()){await guard.getByLabel('读回下载副本',{exact:true}).setInputFiles(file);await guard.getByRole('button',{name:'已保留，继续切换',exact:true}).click();}await navigation;await desk().getByText('完整本机稿已保存，并已读回核对。',{exact:true}).waitFor();";
+assert(text.includes(old));fs.writeFileSync(file,text.replace(old,next));

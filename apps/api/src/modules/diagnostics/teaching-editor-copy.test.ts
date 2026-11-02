@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { completeTeachingEditorCopy, emptyTeachingEditorDraft, readTeachingEditorCopy, teachingEditorSaveCommand,
-  teachingJournalEntry, teachingEditorValueHash, type TeachingEditorDraft } from '../../../../web/lib/teaching-editor-copy';
+  teachingJournalEntry, teachingEditorValueHash, replaceTeachingVisual, restoreTeachingVisual, removeTeachingClock, teachingClockInput, type TeachingEditorDraft } from '../../../../web/lib/teaching-editor-copy';
 import { teachingFixture } from './textbook-teaching-fixture';
 import { prepareTeachingChange } from './textbook-teaching-record';
 import { prepareTextbookTeachingPackage } from './textbook-teaching-package';
@@ -22,6 +22,37 @@ async function accepted() {
   return { ...f, input, change };
 }
 describe('complete private teaching draft ownership, original commands and receipt recovery', () => {
+  it.each(['', ' ', '-', '1e1', '3.5', '13', '0', '三'])('retains unfinished hour %j through full download/import and blocks saving', async raw => {
+    const f = draft(); f.body.content.visuals = [{ kind: 'math', figure: { kind: 'clocks', title: '合成钟面', showDigitalTime: false, showHandLabels: true, clocks: [{ hour: 3, minute: 0, caption: ' 原注\n下一行 ' }] }, explanation: '比较长短针' }];
+    f.body.rawInputs['visual:0:hour:0'] = raw;
+    const restored = (await readTeachingEditorCopy(await completeTeachingEditorCopy(f.body), f.owner)).copy;
+    expect(restored.rawInputs['visual:0:hour:0']).toBe(raw); expect(restored.content.visuals).toEqual(f.body.content.visuals);
+    expect(teachingClockInput(raw, 'hour')).toBeNull(); expect(() => teachingEditorSaveCommand(restored, 'qa-invalid-clock-hour')).toThrow(/未完成输入/);
+  });
+  it('relocates raw numbers with surviving visuals and restores each removed original without inheriting another figure input', async () => {
+    const f = draft(), model = { kind: 'math' as const, figure: { kind: 'clocks' as const, title: '独立钟面', showDigitalTime: false, showHandLabels: false, clocks: [{ hour: 12, minute: 0, caption: '' }] }, explanation: '保留原针位' };
+    f.body.content.visuals = [structuredClone(model), structuredClone(model), structuredClone(model)];
+    f.body.rawInputs = { 'visual:0:hour:0': ' 12 ', 'visual:1:minute:0': '6x', 'visual:2:hour:0': '-' };
+    replaceTeachingVisual(f.body, 0); expect(f.body.rawInputs).toEqual({ 'visual:0:minute:0': '6x', 'visual:1:hour:0': '-' });
+    replaceTeachingVisual(f.body, 0, { kind: 'not_applicable', rationale: '其他解释' }); expect(f.body.rawInputs).toEqual({ 'visual:1:hour:0': '-' });
+    restoreTeachingVisual(f.body, 1); expect(f.body.rawInputs['visual:2:minute:0']).toBe('6x');
+    restoreTeachingVisual(f.body, 0); expect(f.body.rawInputs['visual:3:hour:0']).toBe(' 12 ');
+    expect((await readTeachingEditorCopy(await completeTeachingEditorCopy(f.body), f.owner)).copy.visualHistory).toEqual(f.body.visualHistory);
+    expect(() => teachingEditorSaveCommand(f.body, 'qa-restored-clock-inputs')).toThrow(/未完成输入/);
+  });
+  it('preserves removed clock originals and rebinds the second clock raw input to its surviving model', () => {
+    const f = draft(); f.body.content.visuals = [{ kind: 'math', figure: { kind: 'clocks', title: '两面钟', showDigitalTime: false, showHandLabels: false,
+      clocks: [{ hour: 3, minute: 0, caption: '第一面' }, { hour: 7, minute: 58, caption: '第二面' }] }, explanation: '合成输入核查' }];
+    f.body.rawInputs = { 'visual:0:hour:0': '', 'visual:0:minute:1': '5x' }; removeTeachingClock(f.body, 0, 0);
+    expect(f.body.rawInputs).toEqual({ 'visual:0:minute:0': '5x' }); expect(f.body.visualHistory[0].rawInputs).toEqual({ 'visual:0:hour:0': '', 'visual:0:minute:1': '5x' });
+    restoreTeachingVisual(f.body, 0); expect(f.body.rawInputs['visual:1:hour:0']).toBe(''); expect(f.body.rawInputs['visual:1:minute:1']).toBe('5x');
+  });
+  it('accepts exact valid clock text while refusing a mismatched stale numerical model', () => {
+    const f = draft(); f.body.content.visuals = [{ kind: 'math', figure: { kind: 'clocks', title: '合成边界', showDigitalTime: true, showHandLabels: true, clocks: [{ hour: 12, minute: 59, caption: '' }] }, explanation: '核对12后连续针位' }];
+    f.body.rawInputs = { 'visual:0:hour:0': ' 12 ', 'visual:0:minute:0': '59' };
+    expect(teachingEditorSaveCommand(f.body, 'qa-valid-clock-save').action).toBe('save');
+    f.body.rawInputs['visual:0:minute:0'] = '58'; expect(() => teachingEditorSaveCommand(f.body, 'qa-stale-clock-save')).toThrow(/未完成输入/);
+  });
   it('retains incomplete visual/text fields and exact whitespace without declaring a publishable teaching package', async () => {
     const f = draft(); f.body.content.title = ' \n 合成稿 🧪 \n '; f.body.content.visuals = [{ kind: 'not_applicable', rationale: '' }]; f.body.content.summary.synthesis = '';
     const copy = await completeTeachingEditorCopy(f.body), restored = await readTeachingEditorCopy(copy, f.owner);

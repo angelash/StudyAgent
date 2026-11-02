@@ -1,4 +1,5 @@
 import type { ClassroomDiagram } from './classroom';
+import type { ClassroomMathFigure } from './classroom-math';
 import type { StudioSubject } from './studio';
 
 export type AssistantReplySource = 'rules' | 'openai' | 'xiaojiu';
@@ -7,8 +8,8 @@ export type AssistantTeachingSelection = { mode: 'complete' } | { mode: 'overvie
 export type AssistantTeachingCoverage = { totalParts: number; includedParts: number; totalTargets: number; includedTargets: number; complete: boolean };
 export type AssistantSourceReference = { key: string; kind: 'classroom_lecture' | AssistantCourseKind; courseId: string; itemId: string;
   title: string; href: string; contextFingerprint: string; originHref?: string; page?: number; quote?: string; sourceVersion?: string };
-export type AssistantTeachingBlock = { kind: 'text' | 'points' | 'table' | 'diagram' | 'code' | 'figure'; text: string; items?: string[]; code?: string;
-  table?: { headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram; figure?: { alt: string; caption: string;
+export type AssistantTeachingBlock = { kind: 'text' | 'points' | 'table' | 'diagram' | 'math' | 'code' | 'figure'; text: string; items?: string[]; code?: string;
+  table?: { headers: string[]; rows: string[][] }; diagram?: ClassroomDiagram; math?: ClassroomMathFigure; figure?: { alt: string; caption: string;
     asset?: { href: string; sha256: string; status?: 'verified' | 'changed' | 'unavailable' } } };
 export type AssistantSourcePreview = { reference: AssistantSourceReference; current: boolean; scope: 'teaching-sections' | 'lesson-citation';
   accessMode?: 'published' | 'authoring'; selection: AssistantTeachingSelection; coverage: AssistantTeachingCoverage;

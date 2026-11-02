@@ -1,5 +1,6 @@
 'use client';
-import { whiteboardTaughtTableRows, whiteboardSceneExhibits, whiteboardSceneProgress, type StudioWhiteboardScene, type WhiteboardSpeechUnit } from '@study-agent/contracts';
+import { classroomMathDrawings, whiteboardTaughtTableRows, whiteboardSceneExhibits, whiteboardSceneProgress, type ClassroomMathDrawing, type StudioWhiteboardScene, type WhiteboardSpeechUnit } from '@study-agent/contracts';
+import { drawClassroomMath } from './classroom/math-canvas';
 import { originalBoardFontFamily, originalUiFontFamily, type OriginalBoardFont } from '../../lib/original-teaching-fonts';
 import { whiteboardTextLines } from './whiteboard-table';
 import { renderWhiteboardFormula, whiteboardFormulaKey, whiteboardFormulaPages, type FormulaPage } from './whiteboard-formula';
@@ -10,7 +11,8 @@ type Part = { id: string; y: number; height: number; bullet?: number; row?: numb
   { kind: 'table'; cells: string[][]; header: boolean; font: number } |
   { kind: 'image'; key: string; label: string; crop?: FormulaPage & { scale: number } } |
   { kind: 'fraction'; visual: NonNullable<StudioWhiteboardScene['visual']>; scale: number } |
-  { kind: 'diagram'; diagram: NonNullable<StudioWhiteboardScene['diagram']>; scale: number }
+  { kind: 'diagram'; diagram: NonNullable<StudioWhiteboardScene['diagram']>; scale: number } |
+  { kind: 'math'; drawing: ClassroomMathDrawing; scale: number }
 );
 export type TeachingBlock = { id: string; scene: StudioWhiteboardScene; x: number; y: number; width: number; height: number; parts: Part[] };
 const gutter = 64, margin = 72;
@@ -36,6 +38,14 @@ export function layoutTeachingBlocks(context: CanvasRenderingContext2D, scenes: 
     if (scene.diagram) {
       text('diagram-title', scene.diagram.title, 24, { diagramPart: true });
       parts.push({ id: scene.id + ':diagram', kind: 'diagram', diagramPart: true, diagram: scene.diagram, scale: fontScale, y, height: 230 * fontScale }); y += 250 * fontScale;
+    }
+    if (scene.math) {
+      text('math-title', scene.math.title, 24, { diagramPart: true });
+      classroomMathDrawings(scene.math).forEach((drawing, index) => {
+        const scale = fontScale * 1.5, height = drawing.height * scale;
+        parts.push({ id: scene.id + ':math:' + index, kind: 'math', drawing, diagramPart: true, scale, y, height }); y += height + 14;
+        text('math-caption:' + index, drawing.caption, 22, { diagramPart: true });
+      });
     }
     for (const [exhibitIndex, exhibit] of whiteboardSceneExhibits(scene).entries()) {
       const prefix = scene.exhibits ? 'exhibit:' + exhibitIndex + ':' : '';
@@ -156,6 +166,8 @@ export function drawTeachingFrame(context: CanvasRenderingContext2D, scenes: Stu
         context.fillStyle = '#737373'; context.font = '20px ' + family;
         context.fillText('图片尚未就绪，请在完整讲稿中核对来源。', x, y + 30);
       }
+    } else if (part.kind === 'math') {
+      drawClassroomMath(context, part.drawing, x + (block.width - part.drawing.width * part.scale) / 2, y, part.scale, family);
     } else if (part.kind === 'diagram') {
       const { diagram, scale } = part, middle = y + 110 * scale;
       context.strokeStyle = '#7950ff'; context.lineWidth = 2 * scale; context.font = 22 * scale + 'px ' + family; context.textAlign = 'center';

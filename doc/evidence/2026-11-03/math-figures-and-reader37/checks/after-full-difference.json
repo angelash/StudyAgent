@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-02T17:09:30.196Z",
+  "frozenFullInputCount": 2173,
+  "changedExistingInputs": [
+    "apps/api/src/modules/diagnostics/teaching-editor-state.test.ts"
+  ],
+  "addedInputs": [
+    "resources/curriculum/source-lesson-materials/math-g1-a8e88021-clock-v1.json",
+    "resources/curriculum/source-lesson-materials/math-g1-a8e88021-solids-v1.json",
+    "resources/curriculum/source-lessons/math-g1-a8e88021-clock-v1.json",
+    "resources/curriculum/source-lessons/math-g1-a8e88021-solids-v1.json",
+    "scripts/content/build-math-g1-clock-candidates.cjs",
+    "scripts/content/build-math-g1-solids-candidates.cjs"
+  ],
+  "applicationRuntimeInputsChanged": [],
+  "testCorrectionOnly": true,
+  "newContentHasIndependentStaticHttpColdReadAndBrowserChecks": true,
+  "fullSuiteRerunAfterCorrection": false
+}

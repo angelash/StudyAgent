@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-02T16:59:50.580Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+  "subject": "math",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 49,
+    "exactOriginalSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "proofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1"
+  },
+  "drafts": [
+    {
+      "file": "math-g1-a8e88021-solids-v1.json",
+      "sha256": "7f30eceabebe855e4bb30083de15b0e25288af4832c9ab54fc274d53c94d260c",
+      "physicalPages": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 91,
+      "linkedDraftMaterialReferences": 49,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 49,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-solids-v1.json",
+    "sha256": "91e25dc7596803aaebd71aca424c9fc86032aea844d50dd8e14c0e4fee93d90e",
+    "groups": 7,
+    "questions": 49,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

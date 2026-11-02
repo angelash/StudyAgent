@@ -14,7 +14,7 @@ export function freezeTopicVisualContext(draft: TopicWhiteboardDraftRecord, scen
   if (draft.status !== 'ready' || !draft.content || !Number.isSafeInteger(sceneIndex) || sceneIndex < 0 || !draft.content.scenes[sceneIndex])
     throw Error('topic_figure_scene_unavailable');
   const original = draft.content.scenes[sceneIndex], scene: Scene = structuredClone({ kind: original.kind, title: original.title,
-    narration: original.narration, body: original.body, bullets: original.bullets, targetAtomIds: original.targetAtomIds, exhibit: original.exhibit });
+    narration: original.narration, body: original.body, bullets: original.bullets, targetAtomIds: original.targetAtomIds, exhibit: original.exhibit, ...(original.math ? { math: original.math } : {}) });
   const targets = draft.prepared.targets.filter(target => scene.targetAtomIds.includes(target.id));
   if (scene.targetAtomIds.some(id => !targets.some(target => target.id === id))) throw Error('topic_figure_target_changed');
   const identity = { version: 'topic-whiteboard-figure-v1' as const, draftId: draft.id, sceneIndex,

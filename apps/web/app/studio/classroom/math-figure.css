@@ -1,0 +1,7 @@
+.cl-math-models{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;min-width:0;max-width:720px;margin:0 auto}
+.cl-math-model{min-width:0;align-self:start}
+.cl-math-models .cl-math-model>svg{display:block;width:100%;height:auto;max-width:320px;max-height:none;margin:0 auto;overflow:visible}
+.cl-board-step .cl-math-model .cl-math-caption,.cl-math-caption{font:inherit;font-size:17px;line-height:1.7;letter-spacing:normal;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 12px 16px;text-align:center}
+.cl-math-figure>figcaption{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:600px){.cl-math-models{grid-template-columns:minmax(0,1fr)}.cl-math-caption{margin-inline:8px}}
+@media print{.cl-math-model{break-inside:avoid}.cl-math-figure .cl-figure-open{display:none}}

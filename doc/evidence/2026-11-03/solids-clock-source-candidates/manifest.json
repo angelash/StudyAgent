@@ -1,0 +1,130 @@
+{
+  "files": [
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-1-desktop.png",
+      "bytes": 58144,
+      "sha256": "984c22cb878c0f5fb001f2619ebd792341b664dd2b75fa6dfb2ea8b034656b4c"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-1-mobile.png",
+      "bytes": 85232,
+      "sha256": "9d1263de2999c035b28e3ec5ef862ddc7f76f53af27a10a6f0988a663a4d9676"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-2-desktop.png",
+      "bytes": 48746,
+      "sha256": "7e2f349fe1f75794a058b30a1ce8dd942a0d2e7045fcab61c951688a587c27a6"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-2-mobile.png",
+      "bytes": 60171,
+      "sha256": "8408bac9df6db75ea017952de2eaf468029c0ffe6f0433b281feeff2d10f6a36"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-3-desktop.png",
+      "bytes": 30755,
+      "sha256": "36191f83857725a6c1e1a11cdf0267b74c76014f3f5eb1aeea75ae567db2b9e6"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-clock-v1-figure-3-mobile.png",
+      "bytes": 43129,
+      "sha256": "5477f14b514f25517a936241b38812f800700102235cb8255fcb2aac3c9cede4"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-solids-v1-figure-1-desktop.png",
+      "bytes": 48326,
+      "sha256": "f54d4cb992e4c32c97b62055f399f3a242851f7e2859fa1028f8267d26905d2c"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-solids-v1-figure-1-mobile.png",
+      "bytes": 52984,
+      "sha256": "fc3c3db69bfe0257e881ff5f38d9eb9a00de85a4b53b06357922c9c0b56f6c9b"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-solids-v1-figure-2-desktop.png",
+      "bytes": 34548,
+      "sha256": "450296532d139b4ca7186c33a657f56f48dacc238e54642f8b997379a47e9f0b"
+    },
+    {
+      "path": "browser/math-g1-a8e88021-solids-v1-figure-2-mobile.png",
+      "bytes": 35661,
+      "sha256": "b825cedbd9b9b9899b9fa02a347d2495082e998f651e40204f41adaffc199e91"
+    },
+    {
+      "path": "browser/receipt.json",
+      "bytes": 1327,
+      "sha256": "96d593fdc2c7306a4d33ec381bf6466e25a6803c2d62bb0edbdaec5c02f5d372"
+    },
+    {
+      "path": "checks/clock-http-first.json",
+      "bytes": 2059,
+      "sha256": "12bf3b24c541e04f31a10ebf3ba4fc5321d7b014d138705db732dddfc8ef0261"
+    },
+    {
+      "path": "checks/content-worklist-first.json.gz",
+      "bytes": 116431,
+      "sha256": "d8dd967251f202e7044eab8c19a4e21742155cc3eed5aae5736d20b92c8252b3"
+    },
+    {
+      "path": "checks/solids-http-first.json",
+      "bytes": 2073,
+      "sha256": "6424c3d3b114f511e3d54d2727e28cc793bdd0d563c5747ec86c80281bb4b74d"
+    },
+    {
+      "path": "checks/source-review-and-original-image-hashes.json",
+      "bytes": 4773,
+      "sha256": "813cf3220b949775d0a907d5c997b2cb233e4bd84e4a607eb0a50c15e19f500c"
+    },
+    {
+      "path": "checks/static-first.json",
+      "bytes": 1974,
+      "sha256": "dd1e64f48dc071d8c229dbf15fbc9ca3aa5fbfb6eaa5dc41a074d3696b0f0920"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 3528,
+      "sha256": "5fc52f0d9a2a71870862f325b6a19e06ad9a285f036e2da99a8269600a0d9ff5"
+    },
+    {
+      "path": "sources.json.gz",
+      "bytes": 67521,
+      "sha256": "993980a1a6f582e1adfd267fe7b5ab426ef7e013fa9daf46904191e1c4686854"
+    },
+    {
+      "path": "tools/archive.cjs",
+      "bytes": 4818,
+      "sha256": "96cd8e33657c68605da5ffd6822f23ab816c7f0213185a3101c9feb548b9c31e"
+    },
+    {
+      "path": "tools/audit-content-delivery.cjs",
+      "bytes": 9687,
+      "sha256": "a50149e331eaa97e0596ef99ad351d02a5e51641097f0b1c68bfab8bb2a888f6"
+    },
+    {
+      "path": "tools/browser-run.cjs",
+      "bytes": 12716,
+      "sha256": "8aecfdef83e81b5a193855123090a0047e524d6f691ef75e33dbc8af451238cc"
+    },
+    {
+      "path": "tools/prepare-browser.cjs",
+      "bytes": 3916,
+      "sha256": "0bb57090f88c78401ba8b686c8a4416dbadbd057a01c71d41d44ab93392bc816"
+    },
+    {
+      "path": "tools/source-candidate-preflight.cjs",
+      "bytes": 7532,
+      "sha256": "55612a975453d94908d03c950b99d14ede02211e169fe778acf51c1c01c0c096"
+    },
+    {
+      "path": "tools/static.cjs",
+      "bytes": 3180,
+      "sha256": "9f08627b7ca6da77235ba8d78a1eed56a72f237da718a5c27a3b8bd9c66a7949"
+    },
+    {
+      "path": "tools/verify-source-candidates.cjs",
+      "bytes": 18143,
+      "sha256": "fafc8b3df706932885ba23e755221bdfcee3e109b7d129ed33624e571929e8bb"
+    }
+  ],
+  "manifestExcludedFromOwnHash": true
+}

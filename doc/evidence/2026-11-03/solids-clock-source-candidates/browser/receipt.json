@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-02T17:03:55.778Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 4,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-controlled-model-reading:math-g1-a8e88021-clock-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-controlled-model-reading:math-g1-a8e88021-solids-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-models-mobile-complete-captions-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "reading-has-no-publication-or-learner-writes",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "math-g1-a8e88021-clock-v1-figure-1-desktop.png",
+    "math-g1-a8e88021-clock-v1-figure-2-desktop.png",
+    "math-g1-a8e88021-clock-v1-figure-3-desktop.png",
+    "math-g1-a8e88021-solids-v1-figure-1-desktop.png",
+    "math-g1-a8e88021-solids-v1-figure-2-desktop.png",
+    "math-g1-a8e88021-clock-v1-figure-1-mobile.png",
+    "math-g1-a8e88021-clock-v1-figure-2-mobile.png",
+    "math-g1-a8e88021-clock-v1-figure-3-mobile.png",
+    "math-g1-a8e88021-solids-v1-figure-1-mobile.png",
+    "math-g1-a8e88021-solids-v1-figure-2-mobile.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

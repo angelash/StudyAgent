@@ -1,5 +1,6 @@
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import type { ClassroomCourse, ClassroomLesson, ClassroomBlock, StudioCourse } from '@study-agent/contracts';
+import { classroomMathFigureSchema } from '@study-agent/contracts';
 import { z } from 'zod';
 import { classroomCourse, classroomLesson, curriculumClassroomLesson } from '../learning/classroom-curriculum';
 import type { SourceCourseRecord } from '../learning/source-course-content';
@@ -12,8 +13,9 @@ const id = z.string().min(1).max(180), key = z.string().min(1).max(100);
 const text = z.string().max(20_000), title = z.string().min(1).max(6000);
 const strings = z.array(text).max(200);
 const blockSchema = z.object({
-  kind: z.enum(['text', 'points', 'table', 'diagram', 'code', 'figure']), text,
+  kind: z.enum(['text', 'points', 'table', 'diagram', 'math', 'code', 'figure']), text,
   items: strings.optional(), code: text.optional(),
+  math: classroomMathFigureSchema.optional(),
   table: z.object({ headers: strings, rows: z.array(strings).max(500) }).strict().optional(),
   diagram: z.object({ kind: z.enum(['venn', 'flow', 'bars', 'network']), title, labels: strings,
     values: z.array(z.number().finite()).max(200).optional(), captions: strings.optional() }).strict().optional(),
@@ -79,6 +81,10 @@ const points = (heading: string, values: string[]): Block => ({ kind: 'points', 
 function classroomBlock(block: ClassroomBlock): Block {
   switch (block.kind) {
     case 'heading': case 'text': return paragraph(block.text);
+    case 'math': {
+      if (!block.math) throw new ConflictException('数学图示原件不完整，请返回课程核对');
+      return { kind: 'math', text: block.text, math: classroomMathFigureSchema.parse(block.math) };
+    }
     case 'points': return { kind: 'points', text: block.text, ...(block.items ? { items: [...block.items] } : {}) };
     case 'code': return { kind: 'code', text: block.text, ...(block.code !== undefined ? { code: block.code } : {}) };
     case 'table': return { kind: 'table', text: block.text, ...(block.table ? {

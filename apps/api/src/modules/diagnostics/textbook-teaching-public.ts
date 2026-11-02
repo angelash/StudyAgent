@@ -48,10 +48,11 @@ export function teachingClassroomSnapshot(raw: TextbookTeachingPublicBase, locat
   add('example-conclusion', 'example', '例题结论', content.example.conclusion);
   content.visuals.forEach((visual, index) => {
     if (visual.kind === 'not_applicable') { add('visual-' + index, 'concept', '表征选择与依据', visual.rationale); return; }
-    const title = visual.kind === 'diagram' ? visual.diagram.title : visual.kind === 'experiment' ? visual.experiment.title : visual.title,
+    const title = visual.kind === 'diagram' ? visual.diagram.title : visual.kind === 'math' ? visual.figure.title : visual.kind === 'experiment' ? visual.experiment.title : visual.title,
       narration = visual.kind === 'experiment' ? [visual.experiment.prediction.question, visual.experiment.observation, visual.experiment.explanation, '模型限制：' + visual.experiment.limitation].join('\n') : visual.explanation,
       step = add('visual-' + index, 'concept', title, narration);
     if (visual.kind === 'diagram') step.blocks.push({ id: step.id + ':figure', kind: 'diagram', text: visual.explanation, diagram: structuredClone(visual.diagram) });
+    if (visual.kind === 'math') step.blocks.push({ id: step.id + ':math', kind: 'math', text: visual.explanation, math: structuredClone(visual.figure) });
     if (visual.kind === 'table') step.blocks.push({ id: step.id + ':table', kind: 'table', text: visual.explanation, table: { headers: [...visual.headers], rows: structuredClone(visual.rows) } });
     if (visual.kind === 'experiment') step.blocks.push({ id: step.id + ':experiment', kind: 'experiment', text: '', experiment: structuredClone(visual.experiment) });
   });

@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-02T16:32:29.613Z",
+  "mode": "tests",
+  "exit": 0,
+  "error": null,
+  "inputCount": 2172,
+  "changedDuringRun": [
+    "apps/api/dist/apps/api/src/infrastructure/domain-database.js",
+    "apps/api/dist/apps/api/src/modules/ai/assistant-teaching-content.js",
+    "apps/api/dist/apps/api/src/modules/diagnostics/textbook-teaching-package.js",
+    "apps/api/dist/apps/api/src/modules/diagnostics/textbook-teaching-public.js",
+    "apps/api/dist/apps/api/src/modules/learning/classroom-curriculum.js",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-schema.js",
+    "apps/api/dist/apps/api/src/modules/learning/topic-whiteboard-visual-context.js",
+    "apps/api/dist/apps/api/src/modules/learning/whiteboard-question-context.js",
+    "apps/api/dist/packages/contracts/src/index.js",
+    "apps/api/dist/packages/contracts/src/textbook-teaching.js",
+    "apps/api/dist/packages/contracts/src/topic-whiteboard.js",
+    "apps/api/dist/packages/contracts/src/whiteboard-speech.js"
+  ],
+  "compiledOutputsExcludedFromChangeCheck": false
+}

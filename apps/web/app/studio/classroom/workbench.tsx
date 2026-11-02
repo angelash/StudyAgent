@@ -1,4 +1,5 @@
 'use client';
+import { classroomMathMarkdown } from '@study-agent/contracts';
 import { LoginLink } from '../../../components/login-link';
 import {commitWorkspaceNavigation} from '../../../lib/workspace-exit-guard';
 import * as React from 'react';
@@ -531,7 +532,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     listener.onend = () => setListening(false); listener.start(); setListening(true);
   }
   async function exportNotes(format: 'auto'|'markdown' = 'auto') {
-    const source = ['# ' + lesson.title, '\n' + lesson.objective, ...lesson.steps.slice(0, session.revealed).map(step => '\n## ' + step.title + '\n\n' + step.blocks.filter(block => block.kind !== 'heading').map(block => block.items?.map(point => '- ' + point).join('\n') ?? (block.table ? [block.table.headers.join(' | '), ...block.table.rows.map(cells => cells.join(' | '))].join('\n') : block.image ? '![' + block.image.alt + '](' + block.image.src + ')' : block.experiment ? [block.text + '（模型演示）', block.experiment.prediction.question, block.experiment.observation, block.experiment.explanation, block.experiment.limitation].join('\n\n') : block.text)).join('\n\n')),
+    const source = ['# ' + lesson.title, '\n' + lesson.objective, ...lesson.steps.slice(0, session.revealed).map(step => '\n## ' + step.title + '\n\n' + step.blocks.filter(block => block.kind !== 'heading').map(block => block.items?.map(point => '- ' + point).join('\n') ?? (block.table ? [block.table.headers.join(' | '), ...block.table.rows.map(cells => cells.join(' | '))].join('\n') : block.image ? '![' + block.image.alt + '](' + block.image.src + ')' : block.math ? block.text + '\n\n' + classroomMathMarkdown(block.math) : block.experiment ? [block.text + '（模型演示）', block.experiment.prediction.question, block.experiment.observation, block.experiment.explanation, block.experiment.limitation].join('\n\n') : block.text)).join('\n\n')),
       ...(lesson.sourceReferences?.map(reference => '\n## 本课来源\n' + reference.title + '\n' + (reference.locator ?? `来源 ${reference.page}`) + '\n' + reference.quote + '\n' + reference.href) ?? []),
       '\n## 课堂插问', ...session.messages.map(message => '\n**' + (message.role === 'user' ? '我' : '老师') + '** ' + message.content +
         (message.board ? '\n\n' + replyBoardMarkdown(message.board) : '')),
