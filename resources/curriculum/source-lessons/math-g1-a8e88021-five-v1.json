@@ -1,0 +1,490 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+    "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit3:entry1",
+    "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "pageStart": 19,
+    "pageEnd": 38,
+    "publicationYear": 2022,
+    "curriculumStandardYear": 2011
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:math:g1:a8e88021:five-number-writing",
+      "version": 1,
+      "name": "数量、数字与本人书写",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数与表示",
+      "objective": "把1至5的当前数量、所读数字和本人书写对应",
+      "successCriterion": "逐件数量与数字一致，独立辨认和真实纸面笔迹分别核，提示与描写保留",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-compare",
+      "version": 1,
+      "name": "用比较符号说明大小",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数量关系",
+      "objective": "在0至5内比较两数并读出完整关系",
+      "successCriterion": "比较双方和方向明确，交换两边后关系相应改变，等量不误用大于小于",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-ordinal",
+      "version": 1,
+      "name": "区分几个与第几个",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "顺序与位置",
+      "objective": "对明确方向的1至5个对象区分总数与指定序位",
+      "successCriterion": "总数为整组，序位是单个对象，换方向重新确定，不把选几个当第几个",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-parts",
+      "version": 1,
+      "name": "把完整数量分成两部分",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数的组成",
+      "objective": "用不超过5的整体及明确非空条件分合两份",
+      "successCriterion": "两份合起来仍为原总量，按有标签或无标签说明是否算不同，条件不足不补数",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-add",
+      "version": 1,
+      "name": "解释5以内合起来的加法",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "加法意义",
+      "objective": "给两部分或添入情境列加法并说明每个数",
+      "successCriterion": "两部分不重复，合计不超过5，接数次数与第二部分一致，不只套关键词",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-subtract",
+      "version": 1,
+      "name": "解释5以内去掉与剩余",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "减法意义",
+      "objective": "给整体和去掉部分列减法并核剩余",
+      "successCriterion": "整体、去掉和剩余对象明确，不交换被减数与减数，减法结果非负",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-zero",
+      "version": 1,
+      "name": "区分零、没有与未知",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "零与运算",
+      "objective": "在0至5情境解释没有、全部去掉及加减0",
+      "successCriterion": "零是确定数量而非未回答，加0减0仍原数，同数相减为0，缺条件保留未知",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:math:g1:a8e88021:five-organise",
+      "version": 1,
+      "name": "按明确规则整理和核对算式",
+      "subject": "math",
+      "grade": 1,
+      "term": "upper",
+      "strand": "数学整理",
+      "objective": "对5以内算式按选定关系整理并用对象复核",
+      "successCriterion": "说明排序或分类规则，核每式当前意义，错误保留后更正，不由熟悉答案认定掌握",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a8e88021-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:math:g1:a8e88021:five-number-writing",
+    "source:math:g1:a8e88021:five-compare",
+    "source:math:g1:a8e88021:five-ordinal",
+    "source:math:g1:a8e88021:five-parts",
+    "source:math:g1:a8e88021:five-add",
+    "source:math:g1:a8e88021:five-subtract",
+    "source:math:g1:a8e88021:five-zero",
+    "source:math:g1:a8e88021:five-organise"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已实际查看物理19至38页全部20页的计数、书写、比较、序位、分合、加减、0与整理；这是来源核查，不是教师或测量效度审核。",
+    "pages": [
+      {
+        "page": 19,
+        "visualChecked": true,
+        "statement": "单元标题与1至3的实物对应；完整一件与数字符号不同，不能把画面装饰混进选定集合。"
+      },
+      {
+        "page": 20,
+        "visualChecked": true,
+        "statement": "4与5的实物集合、数字及摆棒；识认数量与本人书写数字分别核查。"
+      },
+      {
+        "page": 21,
+        "visualChecked": true,
+        "statement": "1至5逐个加一的表示、数字书写与连线；打字结果不能代纸面笔迹。"
+      },
+      {
+        "page": 22,
+        "visualChecked": true,
+        "statement": "猴与水果一一对应，等于大于小于及符号书写；开口朝较大数。"
+      },
+      {
+        "page": 23,
+        "visualChecked": true,
+        "statement": "按数量涂色、1至5顺序连线、实物分类计数与比较，不按对象大小替个数。"
+      },
+      {
+        "page": 24,
+        "visualChecked": true,
+        "statement": "自选表示1至5、按要求涂同样多或多或少、交换左右比较和明确重复规则。"
+      },
+      {
+        "page": 25,
+        "visualChecked": true,
+        "statement": "排队第几、前后人数与颁奖次序；几个与第几个及起数方向不同。"
+      },
+      {
+        "page": 26,
+        "visualChecked": true,
+        "statement": "4分成两份且每份都要有，三种有序分法；3的隐藏另一部分须有已知总量。"
+      },
+      {
+        "page": 27,
+        "visualChecked": true,
+        "statement": "5分两份、各份非空的四种有序分法及摆涂记录；整体与各份相加一致。"
+      },
+      {
+        "page": 28,
+        "visualChecked": true,
+        "statement": "左边4只与从左第4只不同，遮挡次序及5分两份；公平讨论不只看总数。"
+      },
+      {
+        "page": 29,
+        "visualChecked": true,
+        "statement": "加法用合起来与添入解释，3加1及静态两部分；算式各数对应当前对象。"
+      },
+      {
+        "page": 30,
+        "visualChecked": true,
+        "statement": "3加2可全数、接数或据分合，起点3后数两次得5，不把起点再算一次。"
+      },
+      {
+        "page": 31,
+        "visualChecked": true,
+        "statement": "减法用去掉与还剩解释，4减1；被去掉与留下的对象要分清。"
+      },
+      {
+        "page": 32,
+        "visualChecked": true,
+        "statement": "5减3、画去与涂剩，倒数次数核查；只背结果不能代当前减法意义。"
+      },
+      {
+        "page": 33,
+        "visualChecked": true,
+        "statement": "练习五两部分合计、5以内算式及画图解释；题中对象单位保持一致。"
+      },
+      {
+        "page": 34,
+        "visualChecked": true,
+        "statement": "同总量的互换加法与不同减去部分、动态情境及结果连线，不只看同一数字。"
+      },
+      {
+        "page": 35,
+        "visualChecked": true,
+        "statement": "0表示没有、尺上起点、全部减去、加0与减0及书写0，不把0等同没回答。"
+      },
+      {
+        "page": 36,
+        "visualChecked": true,
+        "statement": "练习六逐次拿走、全部画去及零参与运算，空集合与缺失数据分清。"
+      },
+      {
+        "page": 37,
+        "visualChecked": true,
+        "statement": "整理加减法卡片与两部分分合；说明按哪个数或结果排，分类依据须明确。"
+      },
+      {
+        "page": 38,
+        "visualChecked": true,
+        "statement": "0至5顺序、加0减0和同数相减、多少比较及条件填数，成长自评不能代实际表现。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "5以内数的认识和加减法",
+    "directoryGranularity": "unit",
+    "printedPages": [
+      14,
+      33
+    ],
+    "publicationEdition": "2022年8月第2版",
+    "curriculumStandardYear": 2011,
+    "countRange": [
+      0,
+      5
+    ],
+    "genuineHandwritingSeparatelyRequired": true,
+    "allPageActivitiesDelivered": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "五以内：数字说数量，算式说变化",
+    "activation": {
+      "prompt": "摆出三张纸片，再把同一组三张拉开。数量变了吗？请选数字表示，再亲手写下来；没有纸笔时先说明还没完成书写。",
+      "expectedObservation": "先核数量不随间隔改变，读、选、写是不同表现，记录本人操作与帮助。",
+      "bridge": "数清楚之后，用数字记数量；比较、找第几、分成两份和加减，还要看问题要求。"
+    },
+    "concept": {
+      "explanation": "一张纸片用1表示，两张用2表示，依次到5。每件配一个数词，最后的数词说整组有几个。数字是记录数量的符号；会读、会选和亲手写得清楚，要分别看看。打出一个数字不能代你纸上写过。\n比较两组，先数或一件配一件。同样多可写等号，例如3=3；左边更多可写3>2；左边更少可写2<3。开口朝较大的数。交换左右两边，比较的方向也要一起检查，不能只移动数字。\n几个问整组数量，第几个问按某个方向找到的一个位置。从左数第2个和从右数第2个可能不同。圈左边3个是圈三件，圈从左第3个只圈一件。\n四张纸片分到甲、乙两个有名字的盒子，每盒都要有，可以甲1乙3、甲2乙2、甲3乙1。两份再合起来仍是4。盒子有名字时左右互换可以是一种不同分法；如果只问两份数量、不区分盒子，就要先约定怎样算不同。\n加法说明把不重叠的两部分合起来，也能表示原来有几件又添几件。原来2张再添1张，2+1=3。可以全部再数，也可以从2后接着数一次到3；起点2不算添进来的那一次。\n减法说明从原来的整体中去掉一部分。原来5张拿走2张，5-2=3；5是原来总数，2是拿走的，3是还剩的。拿走和剩下是不同部分，不能只看到2和3就随意交换。\n一张也没有，可以用0表示。三张全部拿走是3-3=0；四张没有添入是4+0=4；五张一张也没拿走是5-0=5。0不是空着不答，也不是看到照片缺失就猜没有。尺上的0还可标起点，先看所说的情境。\n整理算式时，说清按什么放：按合计、按第一个数，或按相同的数量关系。相同得数不一定是同一个变化，2+2与5-1都得4，表示的过程却不同。用当前纸片或自己的图解释，保留最初想法和更正。",
+      "points": [
+        "数量、识认和本人书写分别看",
+        "比较符号跟随左右关系",
+        "几个是总数，第几个要定方向",
+        "分开后总量不变，先说怎样算不同",
+        "加法合并或添入，接数不重数起点",
+        "减法核整体、去掉与剩余",
+        "零是确定没有，未知不补零",
+        "整理说明规则，得数相同不等意义相同"
+      ]
+    },
+    "example": {
+      "situation": "原创桌面：甲区2张圆纸片，乙区1张圆纸片，后来把三张合拢，又拿走其中一张。",
+      "steps": [
+        {
+          "explanation": "两区没有重复的纸片，数甲2张、乙1张。把两部分合起来，用2+1=3说明共有3张。",
+          "board": [
+            "甲：○ ○",
+            "乙：○",
+            "2+1=3（张）"
+          ]
+        },
+        {
+          "explanation": "三张从左到右标甲、乙、丙。从左第2张是乙，只选一张；从左2张是甲和乙，共选两张。",
+          "board": [
+            "从左到右：甲 乙 丙",
+            "第2张：乙",
+            "左边2张：甲、乙"
+          ]
+        },
+        {
+          "explanation": "从三张中拿走一张，拿走的放到另一区，桌上剩两张。3-1=2，重新把拿走和剩下合起来可核原来3张。",
+          "board": [
+            "原来3，拿走1，还剩2",
+            "3-1=2（张）",
+            "剩2与拿走1合起来仍3"
+          ]
+        },
+        {
+          "explanation": "把剩下两张也全拿走，这一区一张都没有，用0表示。没有图或没数过却不能直接填0。",
+          "board": [
+            "2-2=0（张）",
+            "确定没有：0",
+            "不知道：先核条件"
+          ]
+        }
+      ],
+      "conclusion": "同一组纸片可以说明数量、位置和变化；每次先看问的是什么，再用相应表示。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "原创数量卡：每个圆代表一张纸片",
+        "headers": [
+          "要说明什么",
+          "完整表示",
+          "要核哪一步"
+        ],
+        "rows": [
+          [
+            "两个部分合起来",
+            "○ ○ 与 ○ → ○ ○ ○",
+            "两部分无重叠，2+1=3"
+          ],
+          [
+            "从三张中拿走一张",
+            "○ ○ ○ → 拿走○，还剩○ ○",
+            "整体3、拿走1、剩2"
+          ],
+          [
+            "从左第2张与左边2张",
+            "甲 乙 丙；第2张是乙，2张是甲乙",
+            "方向与选一张或两张不同"
+          ],
+          [
+            "全拿走与未知",
+            "确定拿完：0；未看见原图：待核",
+            "没有与缺条件分开"
+          ]
+        ],
+        "explanation": "圆符号是原创可数表示，不复制教材插图。表中变化列给完整对象；真实摆放、笔迹和帮助须另记录，表格不代本人做过。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "能选出数字4，于是说本人已经独立写好了4。",
+        "alternatives": [
+          "识认和书写被混为一个表现，尚无纸面笔迹。"
+        ],
+        "verification": "请本人在纸上写4并保留原稿，另说明有没有照着描或接受提示。",
+        "correctiveFeedback": "认得和写得出都可练，实际没有写就保留未完成。"
+      },
+      {
+        "observation": "把从左第3个圈成左边三个，或换方向后仍指原来的第3个。",
+        "alternatives": [
+          "数量词和序位可能混淆，也可能漏了参照方向。"
+        ],
+        "verification": "先说起数方向，再分别圈第3个与3个，核所选件数。",
+        "correctiveFeedback": "第几个选位置，几个选数量；换方向要重新数。"
+      },
+      {
+        "observation": "看到5-2就算2-5，或认为5-0一定变0。",
+        "alternatives": [
+          "整体、拿走与剩余的角色没有保持。"
+        ],
+        "verification": "用五张纸片实际分出拿走的两张，再演示一张都不拿；保留两种操作。",
+        "correctiveFeedback": "减的是拿走的部分，拿走0张就是仍有原来五张。"
+      },
+      {
+        "observation": "图片没加载，便把当前数量或没作答的地方都填0。",
+        "alternatives": [
+          "把未知条件、未完成与确定没有混淆。"
+        ],
+        "verification": "分别给空盘、被遮盘和缺图三种情况，说各自知道什么。",
+        "correctiveFeedback": "只有条件说明确定没有时才能填0；缺图或未知要先核查。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一组不超过五件的纸片，先比较，再按指定方向找第几，最后改变一部分数量。",
+      "prompt": "请用当前对象解释一个加法和一个减法，亲手写数字并保留原迹；没有条件的地方明确待核。",
+      "expectedStrategy": "按当前类别、方向和变化确定数字，实际书写与口头解释分别保留，不照抄原例。"
+    },
+    "summary": {
+      "synthesis": "数字记录数量，序位要定方向，分合保持整体；加减说明当前两部分关系。0可以表示确定没有，未知和未做另记。",
+      "takeaways": [
+        "先数清再用数字记",
+        "几个与第几个不同",
+        "两部分合成整体",
+        "加减看当前关系",
+        "0不代未知",
+        "本人笔迹和帮助保留"
+      ]
+    },
+    "citations": [
+      {
+        "page": 24,
+        "quote": "用自己的方式表示1、2、3、4、5。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 25,
+        "quote": "从图中还可以提出什么问题？",
+        "usedFor": "example"
+      },
+      {
+        "page": 29,
+        "quote": "看图说一说算式表示的意思。",
+        "usedFor": "summary"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:math:g1:a8e88021:five-number-writing",
+        "objective": "把1至5的当前数量、所读数字和本人书写对应",
+        "successCriterion": "逐件数量与数字一致，独立辨认和真实纸面笔迹分别核，提示与描写保留"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:math:g1:a8e88021:five-compare",
+        "objective": "在0至5内比较两数并读出完整关系",
+        "successCriterion": "比较双方和方向明确，交换两边后关系相应改变，等量不误用大于小于"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:math:g1:a8e88021:five-ordinal",
+        "objective": "对明确方向的1至5个对象区分总数与指定序位",
+        "successCriterion": "总数为整组，序位是单个对象，换方向重新确定，不把选几个当第几个"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:math:g1:a8e88021:five-parts",
+        "objective": "用不超过5的整体及明确非空条件分合两份",
+        "successCriterion": "两份合起来仍为原总量，按有标签或无标签说明是否算不同，条件不足不补数"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:math:g1:a8e88021:five-add",
+        "objective": "给两部分或添入情境列加法并说明每个数",
+        "successCriterion": "两部分不重复，合计不超过5，接数次数与第二部分一致，不只套关键词"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:math:g1:a8e88021:five-subtract",
+        "objective": "给整体和去掉部分列减法并核剩余",
+        "successCriterion": "整体、去掉和剩余对象明确，不交换被减数与减数，减法结果非负"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:math:g1:a8e88021:five-zero",
+        "objective": "在0至5情境解释没有、全部去掉及加减0",
+        "successCriterion": "零是确定数量而非未回答，加0减0仍原数，同数相减为0，缺条件保留未知"
+      },
+      {
+        "id": "goal-8",
+        "atomId": "source:math:g1:a8e88021:five-organise",
+        "objective": "对5以内算式按选定关系整理并用对象复核",
+        "successCriterion": "说明排序或分类规则，核每式当前意义，错误保留后更正，不由熟悉答案认定掌握"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "five",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

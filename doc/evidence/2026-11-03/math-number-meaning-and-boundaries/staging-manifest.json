@@ -1,0 +1,254 @@
+{
+  "at": "2026-11-02T18:09:00.400Z",
+  "branch": "main",
+  "baseCommit": "0468ea4e44e1b96fa31665ebbc7bf9f7ca69008f",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-math-g1-five-candidates.cjs",
+      "bytes": 26081,
+      "sha256": "4127c5a52fad3ff45d62cc8f8485618d9a83d6301b349ce84c8f6723a16237d9",
+      "gitNormalizedSha256": "4127c5a52fad3ff45d62cc8f8485618d9a83d6301b349ce84c8f6723a16237d9"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-five-v1.json",
+      "bytes": 21304,
+      "sha256": "cfdba701a4dd4106aa21e64f9807261f221fea823bb206a5afee8f660d8872f7",
+      "gitNormalizedSha256": "cfdba701a4dd4106aa21e64f9807261f221fea823bb206a5afee8f660d8872f7"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-five-v1.json",
+      "bytes": 53300,
+      "sha256": "8c2d89a8567c7d864a3e871392c2e3beaddc5288c3a1592bc9ea1958e1ccea14",
+      "gitNormalizedSha256": "8c2d89a8567c7d864a3e871392c2e3beaddc5288c3a1592bc9ea1958e1ccea14"
+    },
+    {
+      "path": "scripts/content/build-math-g1-twenty-candidates.cjs",
+      "bytes": 26755,
+      "sha256": "ac6fe2659c1ef43ff6c390a79de95ba258832ba993b6310b903353f819a7a018",
+      "gitNormalizedSha256": "ac6fe2659c1ef43ff6c390a79de95ba258832ba993b6310b903353f819a7a018"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-twenty-v1.json",
+      "bytes": 21430,
+      "sha256": "39b0500d08a02835bce236784f9f3af7a5f0f51309b56ac4fdd98aa28b3a028d",
+      "gitNormalizedSha256": "39b0500d08a02835bce236784f9f3af7a5f0f51309b56ac4fdd98aa28b3a028d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-twenty-v1.json",
+      "bytes": 53595,
+      "sha256": "2b8e641b37dad58282062a30e5b25b3c6d1b463f345c17cc6e26654fa9d850ac",
+      "gitNormalizedSha256": "2b8e641b37dad58282062a30e5b25b3c6d1b463f345c17cc6e26654fa9d850ac"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 14893,
+      "sha256": "f17c9c107191e1685366cd3c6e81f51046d8478d10d1a8190e6748863447a0d3",
+      "gitNormalizedSha256": "6bc99d4fda4d8e52e2f48e13d61c01021b60a0c95868a7294ac1f61156e65f3a"
+    },
+    {
+      "path": "doc/product/214-number-meaning-place-value-and-counting-boundaries.md",
+      "bytes": 4042,
+      "sha256": "2e4a506f7c4e99b6a5ea875eb192600ddd0944cb8d98ba0cd6d22a069f348746",
+      "gitNormalizedSha256": "2e4a506f7c4e99b6a5ea875eb192600ddd0944cb8d98ba0cd6d22a069f348746"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 179759,
+      "sha256": "0c37d05227c0a8c1af7d45a2e89b297a85194df3778151ef847c960f9d9b9119",
+      "gitNormalizedSha256": "480ba4d686dab8dc41d4756b786780dd68e7c0c2bec6bbc983415b52c1b4bc91"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 106143,
+      "sha256": "cd45d7dbad4950cde4d16cdb5bb0b9b9ff4ef88030bd630b74b48e54b8ba1f6c",
+      "gitNormalizedSha256": "5ff5abcc7f27398432b44a95f92555e250d4f87384d0c0fe906f362f7a036a43"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 111222,
+      "sha256": "c1b38ecfc4dfe43d7312977f6a7708b92195d8460c388f26d4e6c06522264001",
+      "gitNormalizedSha256": "a48e8dcb616194402732b3f2b8526ac0ce2e5870693e7186fac63b3341f9a247"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 21160,
+      "sha256": "d71050ae7110de9990e244a6ced89b38a66d8a89103cf507421640d037d140b9",
+      "gitNormalizedSha256": "46c1b78b1ae1f665460d7bf1005bfa3bb5a6a4bf62c818ac6d1842d37f76d3c4"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 39964,
+      "sha256": "fc571f000425117c4c8829ccc0aae6b3b58e127c3c0d6cf7b9a42d5cb1d05d32",
+      "gitNormalizedSha256": "38049b4f5a12d257d85ca66692acab8cc9ae040577efd9a329cb67e0cef1fcd2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/math-g1-a8e88021-five-v1-desktop.png",
+      "bytes": 263782,
+      "sha256": "97655f2c427baddd4e82d2179f2aa24904e25a232370e042d46a6b4d0f375fb1",
+      "gitNormalizedSha256": "29c05f853bc86a9515abcda198272d9ba8be2aadf0323aac3324153bc0720930"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/math-g1-a8e88021-five-v1-mobile-table.png",
+      "bytes": 68563,
+      "sha256": "777ef7b5fab7a12349c86092cf392a0cdccb69a0e8b9e1050686531daa72916f",
+      "gitNormalizedSha256": "6a65b4e96fa5a8455853f264731197a4f57e6e3ea4ad0d893e04f41c4e741dcb"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/math-g1-a8e88021-five-v1-table.png",
+      "bytes": 41326,
+      "sha256": "715eca2d0ef3fe2cb0f18d1559c6d2c61727859abd5b4318a7627886e95a480e",
+      "gitNormalizedSha256": "3a1f7b705d173e948d0677b97d75b64db191627c167b8c034bbc44eff6f87260"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/math-g1-a8e88021-twenty-v1-desktop.png",
+      "bytes": 300217,
+      "sha256": "1386165e0752e6b94f5b8bbbc8a32bb93ff3ad49812b11fc5feacee21da68591",
+      "gitNormalizedSha256": "c866035f32ce61cf08fa7679e63843a642914d41b4e525bb58c0619dd2f36af5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/math-g1-a8e88021-twenty-v1-table.png",
+      "bytes": 15783,
+      "sha256": "cdc750322c3a5ec8de884a3e31f3e93d00442ea3d2c77706014dd8a14e759d3a",
+      "gitNormalizedSha256": "c758c5902fe8d994ca99b2bf4b274c515dbf10644dda2c0f2cb0485c0a5baf6b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/receipt.json",
+      "bytes": 1205,
+      "sha256": "0eec4ccbd1607826cf8d922a48166e87c8932b6582433b87dc6a1c9a69a4aead",
+      "gitNormalizedSha256": "0eec4ccbd1607826cf8d922a48166e87c8932b6582433b87dc6a1c9a69a4aead"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/runner.cjs",
+      "bytes": 18568,
+      "sha256": "eba6733b9c8b0c2df97385e962a91451c8e7eaa246c609139cecd612a8db89fa",
+      "gitNormalizedSha256": "eba6733b9c8b0c2df97385e962a91451c8e7eaa246c609139cecd612a8db89fa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/twenty-counting-boundaries-mobile.png",
+      "bytes": 74221,
+      "sha256": "caa4c5e233719cab5a385c09a9a441d043c2b179886d145dad3c5b28fc655e3e",
+      "gitNormalizedSha256": "a807fecfb4f9707b52a6716706478dbbf903fcb02f37a6dddb8e6c89abe6aade"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/browser/twenty-counting-boundaries-table.png",
+      "bytes": 38379,
+      "sha256": "d2593b515abff90fa347432bf373f3350d8e2d6e4e803f3fc71aae7482c60dc2",
+      "gitNormalizedSha256": "aa92926857252b8c230e1ef5cca296b002a6286aa5e8b08fc4eec63af71cd332"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/branch-audit-current.json",
+      "bytes": 6896,
+      "sha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461",
+      "gitNormalizedSha256": "eda6ffacfb67cc72776bb3ec114cd251aeaabf4a7e5b7cf85e0ab44a036b3461"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/content-worklist-first.json.gz",
+      "bytes": 116690,
+      "sha256": "56ba08e1f2a475dfb11e759dd9348a8af0522a74509d4f28985287b6fcced5fc",
+      "gitNormalizedSha256": "56ba08e1f2a475dfb11e759dd9348a8af0522a74509d4f28985287b6fcced5fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/five-http-first.json",
+      "bytes": 2376,
+      "sha256": "c09b42eafec73eeb7d11b7e03c876b470073f27b5d64c4f245ebe830b8e27359",
+      "gitNormalizedSha256": "c09b42eafec73eeb7d11b7e03c876b470073f27b5d64c4f245ebe830b8e27359"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "822b17d15845f86b868dadace44d0212a1b1842f20e2845d53e29b8951110af9",
+      "gitNormalizedSha256": "822b17d15845f86b868dadace44d0212a1b1842f20e2845d53e29b8951110af9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/rendered.json",
+      "bytes": 4921,
+      "sha256": "c883395138f8fb7cf6fbe45f1e6caa64045d859aa8d682e8566a27cdf983ea14",
+      "gitNormalizedSha256": "c883395138f8fb7cf6fbe45f1e6caa64045d859aa8d682e8566a27cdf983ea14"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/reviewed-receipt.json",
+      "bytes": 10963,
+      "sha256": "bb50f9359be95cacaba8599f0d100313122699fc2a011f20c72e79102e8caca5",
+      "gitNormalizedSha256": "bb50f9359be95cacaba8599f0d100313122699fc2a011f20c72e79102e8caca5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/static-first.json",
+      "bytes": 966,
+      "sha256": "85d1aba47b4ccb436558591748fd3bbe52286969404306b38d91ba789d5035af",
+      "gitNormalizedSha256": "85d1aba47b4ccb436558591748fd3bbe52286969404306b38d91ba789d5035af"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/sync-initial.json",
+      "bytes": 1716,
+      "sha256": "3ccc7b26c70601c14334d261864b2f8d4372fcebb8f0e47dde3fbaaeea2d312c",
+      "gitNormalizedSha256": "3ccc7b26c70601c14334d261864b2f8d4372fcebb8f0e47dde3fbaaeea2d312c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/twenty-http-first.json",
+      "bytes": 2248,
+      "sha256": "a1acf37eea4c96a073e85ecc41de372c8e64cc998a679795891be2d44ba5f341",
+      "gitNormalizedSha256": "a1acf37eea4c96a073e85ecc41de372c8e64cc998a679795891be2d44ba5f341"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/manifest.json",
+      "bytes": 4176,
+      "sha256": "7247034ea04dc92c9de3bb9363d61f49e68e53160cc479e0586b7c54eef8abb9",
+      "gitNormalizedSha256": "7247034ea04dc92c9de3bb9363d61f49e68e53160cc479e0586b7c54eef8abb9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/receipt.json",
+      "bytes": 7059,
+      "sha256": "a3fb799406cf195520a3020c1c4955ef8f49e2a882a33efa6baab275abce2633",
+      "gitNormalizedSha256": "a3fb799406cf195520a3020c1c4955ef8f49e2a882a33efa6baab275abce2633"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/sources.json.gz",
+      "bytes": 76833,
+      "sha256": "d3ddfa59fa1ff46e10b48b25ad3cf13c0519a9e47e59b0f935e570e7ebcb8814",
+      "gitNormalizedSha256": "478a9403d3639dbc0c57d71dd7f909863c0afbd1b4df641a13a8e8384d221b52"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/archive.cjs",
+      "bytes": 6186,
+      "sha256": "deb663e863090e4ecfa1081c6accb75f9d6a3b9c489c6e2f5b7288a981fd3002",
+      "gitNormalizedSha256": "deb663e863090e4ecfa1081c6accb75f9d6a3b9c489c6e2f5b7288a981fd3002"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/browser-run.cjs",
+      "bytes": 18568,
+      "sha256": "eba6733b9c8b0c2df97385e962a91451c8e7eaa246c609139cecd612a8db89fa",
+      "gitNormalizedSha256": "eba6733b9c8b0c2df97385e962a91451c8e7eaa246c609139cecd612a8db89fa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/check.cjs",
+      "bytes": 3563,
+      "sha256": "96c58fa03eaf85cc1d4792194e35f7891b5c37f3d38ea079f091380a5ff91148",
+      "gitNormalizedSha256": "96c58fa03eaf85cc1d4792194e35f7891b5c37f3d38ea079f091380a5ff91148"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/prepare-browser.cjs",
+      "bytes": 1975,
+      "sha256": "6243a72f78558b5b8c704e4b69885f413901858857a0099003103bfff1820835",
+      "gitNormalizedSha256": "6243a72f78558b5b8c704e4b69885f413901858857a0099003103bfff1820835"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/render-source.cjs",
+      "bytes": 1410,
+      "sha256": "1907d232f757c68fd1b1ef15351d857a558a9ad1ff9f242a9c3b757d07c42926",
+      "gitNormalizedSha256": "1907d232f757c68fd1b1ef15351d857a558a9ad1ff9f242a9c3b757d07c42926"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "e5c327450d04fc170a9d6537dd060bb59e9ace96eabcba5625f4526402ba3b9e",
+      "gitNormalizedSha256": "e5c327450d04fc170a9d6537dd060bb59e9ace96eabcba5625f4526402ba3b9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/math-number-meaning-and-boundaries/tools/stage.cjs",
+      "bytes": 4270,
+      "sha256": "101eaedd52fe944eb4a5109925343b6644fba27cff006baa27bb6ee48ac3d1d3",
+      "gitNormalizedSha256": "101eaedd52fe944eb4a5109925343b6644fba27cff006baa27bb6ee48ac3d1d3"
+    }
+  ]
+}

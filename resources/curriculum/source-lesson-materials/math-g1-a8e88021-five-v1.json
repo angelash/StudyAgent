@@ -1,0 +1,828 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "five",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-five-v1.json",
+      "sha256": "cfdba701a4dd4106aa21e64f9807261f221fea823bb206a5afee8f660d8872f7",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit3:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 19,
+        "pageEnd": 38,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "56道未审原创候选，每目标3道即时和4道拟议间隔。来源覆盖本次20页的主题，单元稿不等全部逐页活动交付；真实书写与摆数需本人原图，不据候选数或数值变化批准独立题族、评分及充分保持库存。",
+  "groups": [
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-number-writing",
+      "structure": "quantity-digit-and-genuine-writing",
+      "familyProposal": "a8e88021-quantity-digit-and-genuine-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "数量与数字一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人笔迹而非打字代填",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原迹提示与修改分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "应有三圈和本人写的3；打字不能代纸面书写，若未上传则书写未完成，提示和描写另记。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人画三圈，在旁边亲手写表示圈数的数字，上传含圈和笔迹的完整原图。只打字写3够吗？",
+          "answer": "应有三圈和本人写的3；打字不能代纸面书写，若未上传则书写未完成，提示和描写另记。",
+          "analysis": "应有三圈和本人写的3；打字不能代纸面书写，若未上传则书写未完成，提示和描写另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "在纸上分别画一个点和五个点，各亲手写数量数字，保留第一次笔迹和修改。",
+          "answer": "一组对应1、另一组对应5，核点数和实际字形；改错不覆盖原迹，未画未写不由文字代做。",
+          "analysis": "一组对应1、另一组对应5，核点数和实际字形；改错不覆盖原迹，未画未写不由文字代做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人选两到四张纸片，拍完整物件和亲手写的数量。纸片大小不同会改变应写的数字吗？",
+          "answer": "按当前张数写2至4之一，大小不改变张数；需核本人原图而非沿用某个固定答案。",
+          "analysis": "按当前张数写2至4之一，大小不改变张数；需核本人原图而非沿用某个固定答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人把两张纸片画成两个点，亲手写2。另有人给一张打字2的截图，能当本次本人笔迹吗？",
+          "answer": "不能把别人或打字截图当本人手写；应保存本次数量表示和实际写的2，帮助如实记录。",
+          "analysis": "不能把别人或打字截图当本人手写；应保存本次数量表示和实际写的2，帮助如实记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人先画四个圈再写数量，有一个圈画得大。保存实际原图并说明应数四个还是五个。",
+          "answer": "每个完整圈各一件，四圈对应4；大圈不多算一件，实际笔迹与说出的数各自核对。",
+          "analysis": "每个完整圈各一件，四圈对应4；大圈不多算一件，实际笔迹与说出的数各自核对。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人画五点，先把数字写反了后另写。保留两次笔迹，指出哪次表达了当前数量，不抹原迹。",
+          "answer": "五点对应数字5，字形是否可辨由真实原图核；更正不等首次已正确，示例不能代本人表现。",
+          "analysis": "五点对应数字5，字形是否可辨由真实原图核；更正不等首次已正确，示例不能代本人表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-five-quantity-digit-and-genuine-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "另一天本人自己选择1至5个点，亲手写数并保存，说明本次是否看过前一张答案。",
+          "answer": "按本次点数与实际笔迹判断，暴露和帮助另记；重复练习不自动成为独立未见保持证据。",
+          "analysis": "按本次点数与实际笔迹判断，暴露和帮助另记；重复练习不自动成为独立未见保持证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-compare",
+      "structure": "ordered-comparison-with-symbols",
+      "familyProposal": "a8e88021-ordered-comparison-with-symbols",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "双方数量明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "符号方向正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "解释与左右顺序一致",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "应填3<5，读三小于五；左边三点比右边五点少，开口朝5而不是只凭符号外形猜。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡左边3点、右边5点。在3和5之间填比较符号，并把整句读出来说明依据。",
+          "answer": "应填3<5，读三小于五；左边三点比右边五点少，开口朝5而不是只凭符号外形猜。",
+          "analysis": "应填3<5，读三小于五；左边三点比右边五点少，开口朝5而不是只凭符号外形猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原卡写4>2，现在把两边数字交换。请写新关系，并说明能否只换数字不换符号。",
+          "answer": "交换后是2<4，不能仍写2>4；数量关系相同但左右位置变了，符号方向随之改变。",
+          "analysis": "交换后是2<4，不能仍写2>4；数量关系相同但左右位置变了，符号方向随之改变。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "甲卡两个大圆，乙卡两个小圆，约定每圆各一件。比较数量并写符号，说明为什么。",
+          "answer": "两卡各两件，应写2=2；圆的大小不是件数，不因甲圆更大就写大于。",
+          "analysis": "两卡各两件，应写2=2；圆的大小不是件数，不因甲圆更大就写大于。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡左边0张，右边1张。写完整比较式，并说明0是不是未知数。",
+          "answer": "应写0<1，这里明确左边没有是确定的0；不是因看不见原图而猜零，未知另核。",
+          "analysis": "应写0<1，这里明确左边没有是确定的0；不是因看不见原图而猜零，未知另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "题目只说左边有五张，右边被遮住且没给总量。能直接写5>右边张数吗？说明。",
+          "answer": "不能直接断言，右边可能少、等或多；须先核右边数量，遮住不是零也不保证少。",
+          "analysis": "不能直接断言，右边可能少、等或多；须先核右边数量，遮住不是零也不保证少。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一张卡写5=5，学生因题目让选多的一边而硬选左边。请判断并说明怎样回答。",
+          "answer": "两边同样多，没有更大的一边；应保持等量关系，不能为满足硬选而把等号改成大于。",
+          "analysis": "两边同样多，没有更大的一边；应保持等量关系，不能为满足硬选而把等号改成大于。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-ordered-comparison-with-symbols-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "在0至5内，给4>□找两个不同合适数字，再说明□能否填4。",
+          "answer": "例如可填0和3，其他小于4的整数也可；4不能填，因为4=4不满足严格大于。",
+          "analysis": "例如可填0和3，其他小于4的整数也可；4不能填，因为4=4不满足严格大于。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-ordinal",
+      "structure": "cardinality-versus-stated-direction-rank",
+      "familyProposal": "a8e88021-cardinality-versus-stated-direction-rank",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "区分总数与序位",
+          "weight": 0.4
+        },
+        {
+          "criterion": "起数方向明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "选取件数符合要求",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "共有5个，从左第2个是乙；5说总数量，2说所选位置，不是说乙有两个人。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创一排从左到右为甲乙丙丁戊。共有几个？从左第2个是谁？两个回答意思一样吗？",
+          "answer": "共有5个，从左第2个是乙；5说总数量，2说所选位置，不是说乙有两个人。",
+          "analysis": "共有5个，从左第2个是乙；5说总数量，2说所选位置，不是说乙有两个人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一排从左到右甲乙丙丁戊，请分别写左边3个和从左第3个，说明选了几件。",
+          "answer": "左边3个是甲乙丙，共三件；从左第3个只有丙一件，几个与第几个不能混用。",
+          "analysis": "左边3个是甲乙丙，共三件；从左第3个只有丙一件，几个与第几个不能混用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创一排从左到右甲乙丙丁，从右第2个是谁？若仍答乙，漏核了什么条件？",
+          "answer": "从右依次丁丙乙甲，第2个是丙；答乙可能沿用从左方向，需核起数方向。",
+          "analysis": "从右依次丁丙乙甲，第2个是丙；答乙可能沿用从左方向，需核起数方向。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "四人朝同一方向排队，已知甲排第2，队首开始计数。甲前面和后面各有几人？",
+          "answer": "甲前面1人，后面2人；甲自己占一个位置，总共1+1+2=4，不把自己重复算入前后。",
+          "analysis": "甲前面1人，后面2人；甲自己占一个位置，总共1+1+2=4，不把自己重复算入前后。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只说乙排第3，没有给队伍总人数。能确定乙前面与后面都各有两人吗？说明。",
+          "answer": "从队首先后计数可知前面2人，但总人数未知，后面人数不能确定；不能自动假定只有五人。",
+          "analysis": "从队首先后计数可知前面2人，但总人数未知，后面人数不能确定；不能自动假定只有五人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创五张卡从左甲乙丙丁戊。第1张到第3张都取出，一共取几张？仅取第3张呢？",
+          "answer": "含首尾取甲乙丙共3张；仅取第3张是丙一张，两个动作范围不同，不能只报同一个3。",
+          "analysis": "含首尾取甲乙丙共3张；仅取第3张是丙一张，两个动作范围不同，不能只报同一个3。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-cardinality-versus-stated-direction-rank-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "某图没有说明从哪边数，且左右没有约定。问第2个是谁，可以唯一回答吗？请说明。",
+          "answer": "不能唯一确定，应先确认起数方向或队首；不同方向可能选不同对象，不能照旧图猜。",
+          "analysis": "不能唯一确定，应先确认起数方向或队首；不同方向可能选不同对象，不能照旧图猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-parts",
+      "structure": "whole-and-labelled-nonempty-parts",
+      "familyProposal": "a8e88021-whole-and-labelled-nonempty-parts",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两份合计守恒",
+          "weight": 0.4
+        },
+        {
+          "criterion": "非空和标签条件保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把换位一律当新结构",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "甲1乙3、甲2乙2、甲3乙1，每种两份合计4且非空；有盒名时三种有序分配不同。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创4张分到甲乙两盒，每盒至少1张。按甲盒从少到多列全部分法，说明总量。",
+          "answer": "甲1乙3、甲2乙2、甲3乙1，每种两份合计4且非空；有盒名时三种有序分配不同。",
+          "analysis": "甲1乙3、甲2乙2、甲3乙1，每种两份合计4且非空；有盒名时三种有序分配不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创5张纸，甲盒已经放2张，所有纸都放完且只有甲乙两盒。乙盒应有多少？说明。",
+          "answer": "乙应3张，因为2与3合成5；完整总量和只有两盒已明确，不能把少的纸放到未给的第三处。",
+          "analysis": "乙应3张，因为2与3合成5；完整总量和只有两盒已明确，不能把少的纸放到未给的第三处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原题要求两盒都要有，有人把4张全放甲、乙放0张。两份合计正确就符合题意吗？",
+          "answer": "合计虽是4，但乙为空不符合每盒都要有；应同时核总量和非空条件，不能只算总数。",
+          "analysis": "合计虽是4，但乙为空不符合每盒都要有；应同时核总量和非空条件，不能只算总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "5张分两份，只关心两份数量、不分甲乙，1与4和4与1一定算两种吗？怎样约定？",
+          "answer": "若不区分哪份，1与4和4与1是同一数量组合；有标签时分配可不同，先明确怎样计不同。",
+          "analysis": "若不区分哪份，1与4和4与1是同一数量组合；有标签时分配可不同，先明确怎样计不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "总共有3张纸，一部分被遮住，只看见1张且说明其余全部在遮挡处。能求遮住多少？",
+          "answer": "能求出2张，因完整3张中可见1张，其余全在遮挡处；不是凭遮挡面积猜，也不漏另一区域。",
+          "analysis": "能求出2张，因完整3张中可见1张，其余全在遮挡处；不是凭遮挡面积猜，也不漏另一区域。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看到一个盒里有2张，另盒被遮住但没给总数。有人沿用总数5答3张，合理吗？",
+          "answer": "不合理，缺完整总数或其他关系，不能套旧例5；隐藏部分暂未知，不把候选答案当事实。",
+          "analysis": "不合理，缺完整总数或其他关系，不能套旧例5；隐藏部分暂未知，不把候选答案当事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-and-labelled-nonempty-parts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人提出把5张分成两份的一个新分法，写两份数和非空条件。只写2与2能代表全部5张吗？",
+          "answer": "两份应如2与3等合成5；2与2只合成4，少了一张。当前完整分配另核，不能把漏项自动忽略。",
+          "analysis": "两份应如2与3等合成5；2与2只合成4，少了一张。当前完整分配另核，不能把漏项自动忽略。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-add",
+      "structure": "disjoint-parts-and-count-on",
+      "familyProposal": "a8e88021-disjoint-parts-and-count-on",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "两部分不重叠",
+          "weight": 0.4
+        },
+        {
+          "criterion": "接数次数准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "算式与当前情境对应",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "2+3=5，2和3分别两区张数，5是合计；依据是两部分无重叠，不只因文字有合起来就猜。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲区2张、乙区3张，两个区没有同一张纸重复出现。求合起来几张，列式说各数。",
+          "answer": "2+3=5，2和3分别两区张数，5是合计；依据是两部分无重叠，不只因文字有合起来就猜。",
+          "analysis": "2+3=5，2和3分别两区张数，5是合计；依据是两部分无重叠，不只因文字有合起来就猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "从原来3张再添1张，采用接着数的方法。起点3也算添的一次，会发生什么？正确怎样数？",
+          "answer": "应从3后接着说4，只数添入的一次，3+1=4；把起点当一次会少走一次或混淆操作。",
+          "analysis": "应从3后接着说4，只数添入的一次，3+1=4；把起点当一次会少走一次或混淆操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "甲有2张，乙有2张，其中1张其实是同一张照片里重复标到的纸。能直接当4张不同纸吗？",
+          "answer": "不能，若求不同纸张共3张；2+2=4要求两部分不重叠，重复那一张不能算两次。",
+          "analysis": "不能，若求不同纸张共3张；2+2=4要求两部分不重叠，重复那一张不能算两次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创先有1人，再来2人，现在几人？另题左区1人右区2人同时在场，能都用1+2吗？",
+          "answer": "两题都可1+2=3，但前者是添入、后者是静态两部分；得数同而情境不同，说明各数角色。",
+          "analysis": "两题都可1+2=3，但前者是添入、后者是静态两部分；得数同而情境不同，说明各数角色。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创有1张红纸、4张蓝纸，换写4+1后总张数会变吗？请依据当前两部分说明。",
+          "answer": "两部分合起来仍5张，1+4与4+1都可表示合计；交换描述顺序不增减纸，不代未给的实际操作。",
+          "analysis": "两部分合起来仍5张，1+4与4+1都可表示合计；交换描述顺序不增减纸，不代未给的实际操作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创一共5张，其中2张是红纸。现在问题求红纸之外几张，看到共字就列5+2合理吗？",
+          "answer": "不合理，此处5是整体、2是已知部分，应求另一部分3张；不能只看共字决定加法。",
+          "analysis": "不合理，此处5是整体、2是已知部分，应求另一部分3张；不能只看共字决定加法。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-disjoint-parts-and-count-on-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请给2+1=3编一个不重复计数的原创纸片情境，说明三个数与问题；不写本人真的做过。",
+          "answer": "如两张加新来一张共三张，2是原有、1是新增、3是合计；情境为原创示例，真实经历另记。",
+          "analysis": "如两张加新来一张共三张，2是原有、1是新增、3是合计；情境为原创示例，真实经历另记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-subtract",
+      "structure": "whole-removed-and-remainder",
+      "familyProposal": "a8e88021-whole-removed-and-remainder",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "整体与去掉分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "列式顺序正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "用剩余关系复核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "5-2=3，5是原来整体、2是拿走部分、3是剩余；不是把见到的两数交换后随意相减。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创原来5张纸，拿走2张且没有添入。还剩多少？列式并说明5、2和结果的角色。",
+          "answer": "5-2=3，5是原来整体、2是拿走部分、3是剩余；不是把见到的两数交换后随意相减。",
+          "analysis": "5-2=3，5是原来整体、2是拿走部分、3是剩余；不是把见到的两数交换后随意相减。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创4张中拿走1张。用剩下和拿走的数量合起来检查你的结果，说明为什么能核对。",
+          "answer": "4-1=3，还剩3张；3张与拿走1张合回4张，对应原整体，核的是同一批纸片。",
+          "analysis": "4-1=3，还剩3张；3张与拿走1张合回4张，对应原整体，核的是同一批纸片。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创3人中2人离开。学生写2-3，并说只要出现减号即可。请按当前对象更正。",
+          "answer": "应为3-2=1，3是原来的人数，2是离开的部分；本范围不以2减3，减号不能替角色判断。",
+          "analysis": "应为3-2=1，3是原来的人数，2是离开的部分；本范围不以2减3，减号不能替角色判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创5张放在桌面，只把2张挪到桌面另一边，没有拿走。问整个桌面还剩几张，能答3吗？",
+          "answer": "整个桌面仍5张，因为只是换位置没有离开所问范围；若只问原一区域才需另核，不混边界。",
+          "analysis": "整个桌面仍5张，因为只是换位置没有离开所问范围；若只问原一区域才需另核，不混边界。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创共有4张，遮住1张但没有移出整组。看得见几张与整组有几张分别怎样答？",
+          "answer": "可见3张，整组仍4张；遮挡只改变可见条件，求可见可算4-1，不能据此说整组少了一张。",
+          "analysis": "可见3张，整组仍4张；遮挡只改变可见条件，求可见可算4-1，不能据此说整组少了一张。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创5张拿走4张，另一题5张拿走1张。两题都有5，剩下能相同吗？说明两种结果。",
+          "answer": "分别剩1张和4张，去掉部分不同；整体同不等剩余同，用5-4=1、5-1=4核角色。",
+          "analysis": "分别剩1张和4张，去掉部分不同；整体同不等剩余同，用5-4=1、5-1=4核角色。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-whole-removed-and-remainder-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "请给4-2=2写一段明确说明原来、拿走和剩下的原创情境；不要把参考当本人真实经历。",
+          "answer": "如原来四张拿走两张还剩两张，三个角色完整且无添入；这是示例，实际本人操作需另外记录。",
+          "analysis": "如原来四张拿走两张还剩两张，三个角色完整且无添入；这是示例，实际本人操作需另外记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-zero",
+      "structure": "known-zero-versus-unknown",
+      "familyProposal": "a8e88021-known-zero-versus-unknown",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "确定没有才用0",
+          "weight": 0.4
+        },
+        {
+          "criterion": "零参与运算准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知与未完成不代填",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "3-3=0，0表示该盘确定一枚也没有；不是未作答，完整取走和边界条件已明确。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创盘里原有3枚贴纸，已全部取走，确认没有别的贴纸。用算式说明现在多少，0表示什么？",
+          "answer": "3-3=0，0表示该盘确定一枚也没有；不是未作答，完整取走和边界条件已明确。",
+          "analysis": "3-3=0，0表示该盘确定一枚也没有；不是未作答，完整取走和边界条件已明确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创原来4张纸，没有添进任何纸。有人说4+0=0，请说明错误并给正确关系。",
+          "answer": "4+0=4，没有添入就仍4张；0是新增部分，不把新增0与当前整体数量混为一谈。",
+          "analysis": "4+0=4，没有添入就仍4张；0是新增部分，不把新增0与当前整体数量混为一谈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创5张纸一张也没拿走。请列式解释现在多少，与把五张全拿走有什么不同？",
+          "answer": "5-0=5，而全部拿走为5-5=0；前者减去零张、后者减去完整五张，过程与结果不同。",
+          "analysis": "5-0=5，而全部拿走为5-5=0；前者减去零张、后者减去完整五张，过程与结果不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "题图加载失败，看不到盒里物品。能把答案空白改成0并说盒子空吗？请说明依据。",
+          "answer": "不能，缺图只说明当前未知，没有证据盒子空；应先恢复题图或核条件，不能以0代未知。",
+          "analysis": "不能，缺图只说明当前未知，没有证据盒子空；应先恢复题图或核条件，不能以0代未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "在明确是空盘的图旁写0，与没有提交本次答案，两者能在学习记录里视为同一表现吗？",
+          "answer": "不能，正确写0是一次实际回答，没提交是未作答；是否本人完成及提示另核，不代写学习事实。",
+          "analysis": "不能，正确写0是一次实际回答，没提交是未作答；是否本人完成及提示另核，不代写学习事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创0张纸再添2张，另题2张全部拿走。分别写结果并解释零在两题中的位置。",
+          "answer": "0+2=2，起初没有；2-2=0，最后没有。零可在不同角色，不是看到0就把整题都答0。",
+          "analysis": "0+2=2，起初没有；2-2=0，最后没有。零可在不同角色，不是看到0就把整题都答0。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-known-zero-versus-unknown-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "尺上的0常标起点，空盒的0表示没有。本次问没看过的盒里有几张，可直接借尺上0回答吗？",
+          "answer": "不能，零在尺和计数有具体意义，未知盒的数量仍待核；其他情境有0不等当前已知为零。",
+          "analysis": "不能，零在尺和计数有具体意义，未知盒的数量仍待核；其他情境有0不等当前已知为零。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "five",
+      "atomId": "source:math:g1:a8e88021:five-organise",
+      "structure": "stated-rule-and-independent-check",
+      "familyProposal": "a8e88021-stated-rule-and-independent-check",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "整理规则明说",
+          "weight": 0.4
+        },
+        {
+          "criterion": "算式逐一核对",
+          "weight": 0.4
+        },
+        {
+          "criterion": "同得数与同过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "1+3、2+2、5-1同得4，4-2得2另组；同组只按结果，不表示合并与拿走是同一变化。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡有1+3、2+2、5-1、4-2，约定按得数分类。请分组，并说明同组就表示同一变化吗？",
+          "answer": "1+3、2+2、5-1同得4，4-2得2另组；同组只按结果，不表示合并与拿走是同一变化。",
+          "analysis": "1+3、2+2、5-1同得4，4-2得2另组；同组只按结果，不表示合并与拿走是同一变化。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创把0+3、1+2、2+1、3+0排一行。指出明说按和为3整理后，各卡怎样核对。",
+          "answer": "四卡和均为3，可用对应两部分或计数核；左部分逐次多1、右部分少1，合计仍3。",
+          "analysis": "四卡和均为3，可用对应两部分或计数核；左部分逐次多1、右部分少1，合计仍3。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创按被减数4整理，卡有4-0、4-1、4-2。学生把3-1也放入，只因得2，符合规则吗？",
+          "answer": "不符合，被减数是3不是4；按被减数与按得数是不同分类，先保留当前明确规则。",
+          "analysis": "不符合，被减数是3不是4；按被减数与按得数是不同分类，先保留当前明确规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创卡列3+1=4和4-1=3。有人说数字相同所以完全同一道题，请分清相同与不同。",
+          "answer": "同涉及3、1、4的部分整体关系，但加法求合计、减法求剩余；不能把两种过程或原答合并。",
+          "analysis": "同涉及3、1、4的部分整体关系，但加法求合计、减法求剩余；不能把两种过程或原答合并。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定0至5内填□>3，要求列全部可能整数。学生只写4就说全部齐了，怎样核查？",
+          "answer": "可能是4和5，4是一个合适解但未列全；需按明确数域逐个核，不能把一个例子当全部。",
+          "analysis": "可能是4和5，4是一个合适解但未列全；需按明确数域逐个核，不能把一个例子当全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一张卡把2+2写成5，修改时只抄另卡4却没有核纸片。怎样保留错误并进行当前核对？",
+          "answer": "先保留2+2=5原迹，再数两组各2得4并另写更正；抄结果不证明本人已理解当前两部分。",
+          "analysis": "先保留2+2=5原迹，再数两组各2得4并另写更正；抄结果不证明本人已理解当前两部分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-five-stated-rule-and-independent-check-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "复习时能很快说5-1=4，是否足够证明从未见过的新情境也能独立完成且保持14天？说明。",
+          "answer": "不够，熟悉算式的表现不代新情境独立迁移或真实14天保持；需各自未见任务和到期本人证据。",
+          "analysis": "不够，熟悉算式的表现不代新情境独立迁移或真实14天保持；需各自未见任务和到期本人证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

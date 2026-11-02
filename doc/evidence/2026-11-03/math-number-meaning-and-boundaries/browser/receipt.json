@@ -1,0 +1,45 @@
+{
+  "at": "2026-11-02T18:06:20.775Z",
+  "buildId": "PDeMYjMLh5Gt7qvTJNa7d",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 5,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:math-g1-a8e88021-five-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:math-g1-a8e88021-twenty-v1.json",
+      "passed": true
+    },
+    {
+      "name": "twenty-second-table-mobile-boundary-and-full-conditions",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "math-g1-a8e88021-five-v1-desktop.png",
+    "math-g1-a8e88021-five-v1-table.png",
+    "math-g1-a8e88021-twenty-v1-desktop.png",
+    "math-g1-a8e88021-twenty-v1-table.png",
+    "twenty-counting-boundaries-table.png",
+    "twenty-counting-boundaries-mobile.png",
+    "math-g1-a8e88021-five-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

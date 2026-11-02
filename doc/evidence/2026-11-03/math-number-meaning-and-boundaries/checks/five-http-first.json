@@ -1,0 +1,80 @@
+{
+  "at": "2026-11-02T18:04:36.310Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+  "subject": "math",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 56,
+    "exactOriginalSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "proofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1"
+  },
+  "drafts": [
+    {
+      "file": "math-g1-a8e88021-five-v1.json",
+      "sha256": "cfdba701a4dd4106aa21e64f9807261f221fea823bb206a5afee8f660d8872f7",
+      "physicalPages": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 104,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 56,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-five-v1.json",
+    "sha256": "8c2d89a8567c7d864a3e871392c2e3beaddc5288c3a1592bc9ea1958e1ccea14",
+    "groups": 8,
+    "questions": 56,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-02T18:04:36.369Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+  "subject": "math",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 56,
+    "exactOriginalSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+    "proofFingerprint": "63ac11f7992a7a51b86b4c8c1cfb7d8233c1e4ca720368f4fda5e7db0aeea1b1"
+  },
+  "drafts": [
+    {
+      "file": "math-g1-a8e88021-twenty-v1.json",
+      "sha256": "39b0500d08a02835bce236784f9f3af7a5f0f51309b56ac4fdd98aa28b3a028d",
+      "physicalPages": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 104,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 56,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/math-g1-a8e88021-twenty-v1.json",
+    "sha256": "2b8e641b37dad58282062a30e5b25b3c6d1b463f345c17cc6e26654fa9d850ac",
+    "groups": 8,
+    "questions": 56,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

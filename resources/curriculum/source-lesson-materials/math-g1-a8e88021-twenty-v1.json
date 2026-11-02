@@ -1,0 +1,828 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "twenty",
+      "path": "resources/curriculum/source-lessons/math-g1-a8e88021-twenty-v1.json",
+      "sha256": "39b0500d08a02835bce236784f9f3af7a5f0f51309b56ac4fdd98aa28b3a028d",
+      "source": {
+        "bookId": "archive-book:math-g1-upper-a8e880217c456db6",
+        "lessonId": "archive-book:math-g1-upper-a8e880217c456db6:unit6:entry1",
+        "sourceSha256": "a8e880217c456db68bb363cadba9e235263197d375243a5d0850d4f9131562d4",
+        "pageStart": 78,
+        "pageEnd": 86,
+        "publicationYear": 2022,
+        "curriculumStandardYear": 2011
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "56道未审原创候选，每目标3道即时和4道拟议间隔。明确十与一、数位、非进退位条件、严格之间、含首尾与经过步数；单元稿不等逐页全部活动，拟议样题不等独立题族、评分合格或充分保持库存。本人分组与实际阅读事实另记。",
+  "groups": [
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-ten-unit",
+      "structure": "regroup-ten-ones-with-original-work",
+      "familyProposal": "a8e88021-regroup-ten-ones-with-original-work",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "每组恰有十个一",
+          "weight": 0.4
+        },
+        {
+          "criterion": "分组前后总量一致",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人原图与帮助分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十点一组与三散点合计十三，圈不改数量；本人图须能核每点一次，示例文字不代实际绘图。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人画十三个小点，圈出十个为一组，另外三点不圈。写总数并上传完整原图，说明圈完数量变没变。",
+          "answer": "十点一组与三散点合计十三，圈不改数量；本人图须能核每点一次，示例文字不代实际绘图。",
+          "analysis": "十点一组与三散点合计十三，圈不改数量；本人图须能核每点一次，示例文字不代实际绘图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人画二十个点，分成每组十点的两组，保存全部点和圈线。只画两个空圈能证明有二十点吗？",
+          "answer": "不能，需见两组各十点或明确逐件记录，总计二十；空圈无每组数量不能代实际分组。",
+          "analysis": "不能，需见两组各十点或明确逐件记录，总计二十；空圈无每组数量不能代实际分组。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人画十一点，用自己选择的排列圈十点，再标出散的一点。排列拉长是否应改变总数？",
+          "answer": "总量仍十一，十点一组和一点各可核；拉长不添点，当前原图与实际帮助分别保存。",
+          "analysis": "总量仍十一，十点一组和一点各可核；拉长不添点，当前原图与实际帮助分别保存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人画十四点，先故意只圈九点并标示教学示错，再另圈十点更正，保留两次图。",
+          "answer": "正确一个十应圈十点，余四点；九点不是一个十，故意示错不当真实首答错误或错因结论。",
+          "analysis": "正确一个十应圈十点，余四点；九点不是一个十，故意示错不当真实首答错误或错因结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人画十八点，按一组十点和散点表示，并在图旁写余下多少。有人给的参考图能代本人吗？",
+          "answer": "应余八散点且完整十八点；他人参考不是本人本次操作，若未画则保留未完成和曝光记录。",
+          "analysis": "应余八散点且完整十八点；他人参考不是本人本次操作，若未画则保留未完成和曝光记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人画十六点并圈十点，再把圈线擦除另存图。两张图点数是否应相同？保留完整前后图。",
+          "answer": "都应十六点，圈线只标分组不是物品；去圈不减点，用原图核点数变化和有无帮助。",
+          "analysis": "都应十六点，圈线只标分组不是物品；去圈不减点，用原图核点数变化和有无帮助。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-regroup-ten-ones-with-original-work-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "隔次本人自选十一至十九个点，圈十点并写当前总数，注明有没有看过旧图，不直接沿用十三。",
+          "answer": "按当前完整原图核一个十与散的一，不固定十三；曝光、提示和真实时间另记，不自动认定保持。",
+          "analysis": "按当前完整原图核一个十与散的一，不固定十三；曝光、提示和真实时间另记，不自动认定保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-place-value",
+      "structure": "labelled-tens-and-ones",
+      "familyProposal": "a8e88021-labelled-tens-and-ones",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "数位方向明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "每位单位正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "零占位不丢失",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十位1表示一个十即十，个位3表示三个一；不是两个数字都按一计，合起来十三。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创数13，写明十位与个位各是几，分别表示什么数量。能把1和3都叫几个一吗？",
+          "answer": "十位1表示一个十即十，个位3表示三个一；不是两个数字都按一计，合起来十三。",
+          "analysis": "十位1表示一个十即十，个位3表示三个一；不是两个数字都按一计，合起来十三。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创数11的两个数字都写1，它们表示的数量一样吗？请用数位单位说明。",
+          "answer": "不一样，左边十位1是一个十，右边个位1是一个一；数字相同而位值不同，共十一。",
+          "analysis": "不一样，左边十位1是一个十，右边个位1是一个一；数字相同而位值不同，共十一。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "有两个十、零个一。请写数并解释最后的0能否删去不影响当前表示。",
+          "answer": "应写20，个位0不能删去变2；20表示两个十，2表示两个一，数量和数位不同。",
+          "analysis": "应写20，个位0不能删去变2；20表示两个十，2表示两个一，数量和数位不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原表明确从左到右为十位、个位，分别填1、7。若交换列中的数字，还能说表示同一个数吗？",
+          "answer": "原来表示17，交换成十位7个位1会成71，已超本课范围且不同数；不能只看数字集合相同。",
+          "analysis": "原来表示17，交换成十位7个位1会成71，已超本课范围且不同数；不能只看数字集合相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创标签给十位1、个位0，学生写01。请说明数位方向与正确写法，不按读音拼接。",
+          "answer": "应写10，十位在个位左边；01不能表达一个十零个一，位置不能随意交换。",
+          "analysis": "应写10，十位在个位左边；01不能表达一个十零个一，位置不能随意交换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只看一根没标签的计数杆上有1颗珠，能确定表示一个一还是一个十吗？说明缺什么。",
+          "answer": "不能唯一确定，需要数位标签或杆的位置约定；同一颗珠在不同数位表示的单位不同。",
+          "analysis": "不能唯一确定，需要数位标签或杆的位置约定；同一颗珠在不同数位表示的单位不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-labelled-tens-and-ones-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "把19添一个一得到20时，数位表要怎样记？能把个位写10而十位仍写1吗？",
+          "answer": "十个一重新成一个十，写十位2个位0，即20；个位不是写两位数字10，不能直接拼成110。",
+          "analysis": "十个一重新成一个十，写十位2个位0，即20；个位不是写两位数字10，不能直接拼成110。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-order",
+      "structure": "bounded-order-neighbours-and-comparison",
+      "familyProposal": "a8e88021-bounded-order-neighbours-and-comparison",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "相邻数方向正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比较为严格关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "全部答案按数域核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "前一个15，比16少1；后一个17，比16多1，按每次一个的数序，不把方向或数字倒置。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创数16，请给前一个和后一个数，再说明前与后分别按多一还是少一判断。",
+          "answer": "前一个15，比16少1；后一个17，比16多1，按每次一个的数序，不把方向或数字倒置。",
+          "analysis": "前一个15，比16少1；后一个17，比16多1，按每次一个的数序，不把方向或数字倒置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "按一个一个从18向大数，连续说到20。有人说18、19、110，哪里要修正？",
+          "answer": "应18、19、20，十九后是两个十；不能把个位十和原十位直接拼接成110。",
+          "analysis": "应18、19、20，十九后是两个十；不能把个位十和原十位直接拼接成110。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在0至20内比较14和18，写完整关系，再说明个位4与8怎样在同一个十条件下比较。",
+          "answer": "14<18，两数都有一个十，比较散的一是4少于8；条件相同才直接比较个位，不只凭字形。",
+          "analysis": "14<18，两数都有一个十，比较散的一是4少于8；条件相同才直接比较个位，不只凭字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "在0至20的整数中，□>18，要求列出全部答案。只写19是否已经列全？说明。",
+          "answer": "全部是19和20，只写19是一个合适解但未列全；20也严格大于18，按给定数域核。",
+          "analysis": "全部是19和20，只写19是一个合适解但未列全；20也严格大于18，按给定数域核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同一范围内□<1，要求找全部非负整数。0可以填吗？1可以填吗？为什么？",
+          "answer": "0可填且是全部；1不满足严格小于，1=1。这里数域含0，不把未知或负数混入。",
+          "analysis": "0可填且是全部；1不满足严格小于，1=1。这里数域含0，不把未知或负数混入。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "新卡要求按从大到小排12、20、17。学生仍按旧例从小到大，怎样核当前要求？",
+          "answer": "应20、17、12，先读本题方向再比较；会比较数不等按指定排序完成，原迹和更正分别留。",
+          "analysis": "应20、17、12，先读本题方向再比较；会比较数不等按指定排序完成，原迹和更正分别留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-bounded-order-neighbours-and-comparison-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "只给两个标签甲和乙，没有数量或顺序，能说甲的前一个数必为12吗？请说明条件。",
+          "answer": "不能，需先知道甲所代表的数及按什么数序；标签或旧例不能代当前条件，保留待核。",
+          "analysis": "不能，需先知道甲所代表的数及按什么数序；标签或旧例不能代当前条件，保留待核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-ten-arithmetic",
+      "structure": "ten-and-ones-part-whole",
+      "familyProposal": "a8e88021-ten-and-ones-part-whole",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "十和一单位不混",
+          "weight": 0.4
+        },
+        {
+          "criterion": "整体与两部分对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "式子和情境一致",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "10+4=14，十张这一部分与四张散纸不重叠，结果十四张；不是把包数1与散纸4直接相加。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创已知一包十张纸，另有四张散纸。问共多少张，列式解释10、4和结果。",
+          "answer": "10+4=14，十张这一部分与四张散纸不重叠，结果十四张；不是把包数1与散纸4直接相加。",
+          "analysis": "10+4=14，十张这一部分与四张散纸不重叠，结果十四张；不是把包数1与散纸4直接相加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创共有十七张，其中十张装成一包，其余散放。散放几张？用整体与部分解释。",
+          "answer": "17-10=7，整体十七拿出十张后散七张；包和张单位分清，不把一包当一张减。",
+          "analysis": "17-10=7，整体十七拿出十张后散七张；包和张单位分清，不把一包当一张减。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创十四张中取走四张散纸，剩下多少？与取走整包十张的结果各怎样？",
+          "answer": "14-4=10，取走整包则14-10=4；同一整体中取不同部分，不能把两个结果混为一个。",
+          "analysis": "14-4=10，取走整包则14-10=4；同一整体中取不同部分，不能把两个结果混为一个。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创10+0应得多少？这里个位0能否说明整包十张也不存在？请解释。",
+          "answer": "10+0=10，零是散放部分没有，整包十张仍在；部分为零不表示整体也为零。",
+          "analysis": "10+0=10，零是散放部分没有，整包十张仍在；部分为零不表示整体也为零。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人把10+6看成把数字10和6拼成106，请用一个十和六个一说明正确数。",
+          "answer": "一个十加六个一是十六，写16；数字串接不是数量相加，106不表示当前十六件。",
+          "analysis": "一个十加六个一是十六，写16；数字串接不是数量相加，106不表示当前十六件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创二十张均分为明确每包十张的两包。拿走一包后几张？用加法核回原总数。",
+          "answer": "20-10=10，剩十张；再合回10+10=20，核的是每包十张，不凭包的外观推数量。",
+          "analysis": "20-10=10，剩十张；再合回10+10=20，核的是每包十张，不凭包的外观推数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ten-and-ones-part-whole-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "只说一包纸和五张散纸，没说包里多少，能保证共十五张吗？请说明。",
+          "answer": "不能保证，需确认包里恰十张才可10+5=15；包装单位不自动等一个十，未知不能套示例。",
+          "analysis": "不能保证，需确认包里恰十张才可10+5=15；包装单位不自动等一个十，未知不能套示例。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-no-carry",
+      "structure": "ones-operation-with-applicability-check",
+      "familyProposal": "a8e88021-ones-operation-with-applicability-check",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "个位运算核条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "十位按单位保持",
+          "weight": 0.4
+        },
+        {
+          "criterion": "名称与角色对应",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "一个十不变，两个一加三个一为五个一，所以15；加数是12和3，和是15，个位未满十。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创12+3，说明十和一各怎样变化，指出两个加数与和，不只报一个结果。",
+          "answer": "一个十不变，两个一加三个一为五个一，所以15；加数是12和3，和是15，个位未满十。",
+          "analysis": "一个十不变，两个一加三个一为五个一，所以15；加数是12和3，和是15，个位未满十。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创16-2，按十和一解释，并指出被减数、减数和差。哪些对象被拿走了？",
+          "answer": "六个一去掉两个一剩四个一，保留一个十得14；被减数16、减数2、差14，不拿走整十。",
+          "analysis": "六个一去掉两个一剩四个一，保留一个十得14；被减数16、减数2、差14，不拿走整十。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "有人把15-3算成2，因为只写5-3。怎样补完整数量解释，而非只抄正确答案？",
+          "answer": "五个一减三个一剩两个一，还保留一个十，应12；个位结果2只是一部分，不是完整差。",
+          "analysis": "五个一减三个一剩两个一，还保留一个十，应12；个位结果2只是一部分，不是完整差。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创13+4与13-4，前题可按个位不进位计算；后题能同样保留十再直接算3-4吗？",
+          "answer": "13+4=17满足个位未满十；13-4个位不够减，超本步不退位条件，不能机械套3-4，本阶段先换方法或后续学习。",
+          "analysis": "13+4=17满足个位未满十；13-4个位不够减，超本步不退位条件，不能机械套3-4，本阶段先换方法或后续学习。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创18+4，有人仍保留十位1，把8+4的12拼到后面成112。请判断方法适用条件。",
+          "answer": "个位合计超过十，已需进位，不可直接拼112；此题超本步不进位范围，应另学重组方法，不能假装条件满足。",
+          "analysis": "个位合计超过十，已需进位，不可直接拼112；此题超本步不进位范围，应另学重组方法，不能假装条件满足。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创17-0与17-7，分别解释十和一的变化，为什么两题不能都答10？",
+          "answer": "17-0=17，一件没去掉；17-7=10，去掉全部七个一留下一个十。减数不同，结果不同。",
+          "analysis": "17-0=17，一件没去掉；17-7=10，去掉全部七个一留下一个十。减数不同，结果不同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-ones-operation-with-applicability-check-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创11+5先有人报16，随后才看到参考；能否仅凭结果认定独立理解各数角色？怎样再核？",
+          "answer": "结果16正确但须分清首答与看参考时间，再请解释一个十和一加五及当前新题；不由参考后的复述改写独立首答。",
+          "analysis": "结果16正确但须分清首答与看参考时间，再请解释一个十和一加五及当前新题；不由参考后的复述改写独立首答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-between",
+      "structure": "strict-interior-ranks",
+      "familyProposal": "a8e88021-strict-interior-ranks",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "同队同方向成立",
+          "weight": 0.4
+        },
+        {
+          "criterion": "两个端点排除",
+          "weight": 0.4
+        },
+        {
+          "criterion": "逐项数与结果一致",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "只数第7、8、9，共3人；第6和第10是两端不计，位置差4是走步数，不是中间人数。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创同一排从队首计数，甲第6、乙第10。两人之间有几人？请列所数序位，不把甲乙算入。",
+          "answer": "只数第7、8、9，共3人；第6和第10是两端不计，位置差4是走步数，不是中间人数。",
+          "analysis": "只数第7、8、9，共3人；第6和第10是两端不计，位置差4是走步数，不是中间人数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创同队第4与第8之间，先列中间各序位再作答。把8-4=4直接答4人遗漏什么？",
+          "answer": "中间第5、6、7共3人，直接差4混入端点走步；先排除两端再数，不能机械沿用差。",
+          "analysis": "中间第5、6、7共3人，直接差4混入端点走步；先排除两端再数，不能机械沿用差。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创同队甲第12、乙第13。两人之间有人吗？0是确定没有还是未作答？说明。",
+          "answer": "两人相邻，中间没有人，数量0是有条件支持的结果；不是没提交或条件缺失。",
+          "analysis": "两人相邻，中间没有人，数量0是有条件支持的结果；不是没提交或条件缺失。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创同队甲第15、乙第11，从同一个队首数。先把较小序位放前，再说明中间几个。",
+          "answer": "两端是第11与第15，中间第12、13、14共3人；叙述先后反过来不改变严格之间集合。",
+          "analysis": "两端是第11与第15，中间第12、13、14共3人；叙述先后反过来不改变严格之间集合。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "甲在A队第6、乙在B队第10，两个队没有共同顺序。能据10与6说两人之间3人吗？",
+          "answer": "不能，不同队伍没有这条共同序位线；需明确同一排和方向，不能把数字相减当实际中间人数。",
+          "analysis": "不能，不同队伍没有这条共同序位线；需明确同一排和方向，不能把数字相减当实际中间人数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一排甲从左第3，乙从右第6，没给总人数。能直接用6与3求两人之间几人吗？",
+          "answer": "不能，两序位参照方向不同且缺总人数，无法确定同一坐标位置；先核队伍长度和方向。",
+          "analysis": "不能，两序位参照方向不同且缺总人数，无法确定同一坐标位置；先核队伍长度和方向。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-strict-interior-ranks-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创同队第2与第5，问题改为从第2到第5连两人都算，共几人。还能套严格之间答案吗？",
+          "answer": "不能，含端点数第2、3、4、5共4人；严格之间才只第3、4共2人，本次边界已改变。",
+          "analysis": "不能，含端点数第2、3、4、5共4人；严格之间才只第3、4共2人，本次边界已改变。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-inclusive",
+      "structure": "inclusive-items-versus-elapsed-steps",
+      "familyProposal": "a8e88021-inclusive-items-versus-elapsed-steps",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "首尾计数条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "经过步数起点不重算",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例与本人事实分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "第6、7、8、9、10共5页，首尾都算；这只是题设示例，不证明本人已读或写入阅读记录。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创示例从第6页读到第10页，每页都读且首尾也读，一共几页？请逐页列举，不登记本人已读。",
+          "answer": "第6、7、8、9、10共5页，首尾都算；这只是题设示例，不证明本人已读或写入阅读记录。",
+          "analysis": "第6、7、8、9、10共5页，首尾都算；这只是题设示例，不证明本人已读或写入阅读记录。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创示例今天是星期二，明确再过两天举办活动。第一天和第二天各到星期几？",
+          "answer": "过一天星期三，过两天星期四；星期二是起点，不把当天当已过一天，情境不当真实日期。",
+          "analysis": "过一天星期三，过两天星期四；星期二是起点，不把当天当已过一天，情境不当真实日期。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创第12至第15页每页都读。有人用15-12直接答3页，为什么少了哪一类项目？",
+          "answer": "应列12、13、14、15共4页，差3是两端间的步数，未把起始页也计作已读项目。",
+          "analysis": "应列12、13、14、15共4页，差3是两端间的步数，未把起始页也计作已读项目。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创只读第7页到第7页这一页，起止页相同且明确读完。能因7-7=0说读0页吗？",
+          "answer": "不能，所读集合只有第7页一页；起止相同仍有一个包含端点的项目，不能把差当页数。",
+          "analysis": "不能，所读集合只有第7页一页；起止相同仍有一个包含端点的项目，不能把差当页数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创周一到周三三天都放假，与从周一再过三天，各怎样计数？说明两问题不同。",
+          "answer": "都放假含周一二三共3天；从周一过3天到周四。一个数日期项目，一个数经过步数，不混起点。",
+          "analysis": "都放假含周一二三共3天；从周一过3天到周四。一个数日期项目，一个数经过步数，不混起点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人说从第4页读到第8页，但没说明是否连续和含首尾，系统能直接写完成5页吗？",
+          "answer": "不能代写真实完成，需要本人确认实际读过哪些页；在连续含首尾假设下才是5页，假设不当事实。",
+          "analysis": "不能代写真实完成，需要本人确认实际读过哪些页；在连续含首尾假设下才是5页，假设不当事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-inclusive-items-versus-elapsed-steps-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创任务是只读第8页和第12页两页，中间不读。有人把8到12都算成5页，合理吗？",
+          "answer": "不合理，明确只读两个端点，共2页；包含首尾的连续范围未成立，要按实际要求集合计数。",
+          "analysis": "不合理，明确只读两个端点，共2页；包含首尾的连续范围未成立，要按实际要求集合计数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "twenty",
+      "atomId": "source:math:g1:a8e88021:twenty-counted-unit",
+      "structure": "explicit-pack-and-item-units",
+      "familyProposal": "a8e88021-explicit-pack-and-item-units",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "每组数量有依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "组数和件数分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "按当前所问单位回答",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按只数2、4、6，共6只；按双数仍3双。同一批鞋用不同单位，数字不同而总对象一致。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创三双鞋，每双恰两只。问共有多少只，再问多少双，两个答案怎样表示？",
+          "answer": "按只数2、4、6，共6只；按双数仍3双。同一批鞋用不同单位，数字不同而总对象一致。",
+          "analysis": "按只数2、4、6，共6只；按双数仍3双。同一批鞋用不同单位，数字不同而总对象一致。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创每包十张，一包另有两张散纸，共多少张？若问有几包，散纸能直接算第二包吗？",
+          "answer": "共12张，完整包装只有1包；两张散纸不自动等第二包，按所问单位分别回答。",
+          "analysis": "共12张，完整包装只有1包；两张散纸不自动等第二包，按所问单位分别回答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创两捆棒，明确每捆十根，无散棒。问多少根，不能只报几捆的数，说明理由。",
+          "answer": "共20根，两捆是组数；每捆十根，数一个十再一个十，不能把两捆直接当两根。",
+          "analysis": "共20根，两捆是组数；每捆十根，数一个十再一个十，不能把两捆直接当两根。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创一盒与三颗散珠，盒上未标数量、也未打开。能确定共有13颗吗？请说明。",
+          "answer": "不能，只有盒内确为10颗时才可得13；包装外形和旧例不能代盒内数量，需先核明。",
+          "analysis": "不能，只有盒内确为10颗时才可得13；包装外形和旧例不能代盒内数量，需先核明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创两双完整鞋，另外一只单鞋。按只数有多少？按完整双数能把单鞋说成第三双吗？",
+          "answer": "共有5只，完整双数2双另1只；单只不等一双，不能把三个摆放位置误记3双。",
+          "analysis": "共有5只，完整双数2双另1只；单只不等一双，不能把三个摆放位置误记3双。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创一捆标10根，另有六根；有人为数得快只写一加六等于七。错在单位还是一定不会加？",
+          "answer": "一捆是10根，应10+6=16根；问题在把捆与根混加，不凭这一答就判不会做1+6本身。",
+          "analysis": "一捆是10根，应10+6=16根；问题在把捆与根混加，不凭这一答就判不会做1+6本身。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "math-g1-a8e88021-twenty-explicit-pack-and-item-units-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人报告家里有四双鞋，题目问能确定共有几只鞋吗？需要先确认哪类情况才能说八只？",
+          "answer": "若四双都完整且每双两只，才为8只；若只是摆放组或有缺只需核实，不能代编本人实物事实。",
+          "analysis": "若四双都完整且每双两只，才为8只；若只是摆放组或有缺只需核实，不能代编本人实物事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
