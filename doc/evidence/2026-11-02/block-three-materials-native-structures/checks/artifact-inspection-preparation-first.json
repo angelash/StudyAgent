@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "originalScript": "inspect.py",
+  "reason": "The QA script shadowed the Python standard library inspect module.",
+  "correction": "Renamed to artifact_audit.py; production files are unchanged."
+}

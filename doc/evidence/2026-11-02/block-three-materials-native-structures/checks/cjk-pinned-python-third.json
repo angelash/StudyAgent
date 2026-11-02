@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T02:58:40.724Z",
+  "label": "cjk-pinned-python-third",
+  "mode": "python",
+  "exit": 1,
+  "error": null,
+  "inputs": [
+    {
+      "path": "scripts/processing/paper_export_content.py",
+      "sha256": "4d073d732c1a840818707aabbf4179b8ac823ae83b802837e46b28da806aa259"
+    },
+    {
+      "path": "scripts/processing/paper_export_math.py",
+      "sha256": "b0e04abbf73cd9a0ca927e04b67790bd88b239e9eea0a5789f58e8cc7d5be49d"
+    },
+    {
+      "path": "scripts/processing/paper_export_document.py",
+      "sha256": "a40370ea25c10d78c740e1b48911f38fe0d34ba97b89caba053228f2c6141324"
+    },
+    {
+      "path": "scripts/processing/test_paper_export.py",
+      "sha256": "a76ec9142e11d31f7540e2a3d6c48fcb586c0f4f250eda74a055b4f7d9f43e07"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+      "sha256": "5825a845639ddc7cbb67da0dc0e1e75c77ea6408ba8565c885edb1c06247d4b8"
+    }
+  ],
+  "changedDuringRun": []
+}

@@ -1,0 +1,93 @@
+{
+  "at": "2026-11-02T03:28:53.922Z",
+  "source": "generated PDF only",
+  "coldDatabaseOpenPassed": true,
+  "revision": 21,
+  "materialId": "studio_material_347ae1c4-85d1-4f8b-9976-3c0d05dbd072",
+  "sourceSha256": "d5a759244ea841a43ce944a668335dffa7f8b36981252f6d331ff8d680fb03b6",
+  "table": {
+    "id": "page-1-table-1",
+    "kind": "table",
+    "headers": [
+      "Group",
+      "",
+      "Total"
+    ],
+    "rows": [
+      [
+        "Shared",
+        "10",
+        "20"
+      ],
+      [
+        "",
+        "30",
+        "40"
+      ]
+    ],
+    "plainText": "Group\t\tTotal\nShared\t10\t20\n\t30\t40",
+    "bbox": [
+      0.09804,
+      0.10101,
+      0.88235,
+      0.2904
+    ],
+    "confidence": 1,
+    "reviewRequired": true,
+    "cells": [
+      {
+        "row": 0,
+        "column": 0,
+        "rowSpan": 1,
+        "columnSpan": 2,
+        "text": "Group"
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "rowSpan": 1,
+        "columnSpan": 1,
+        "text": "Total"
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "rowSpan": 2,
+        "columnSpan": 1,
+        "text": "Shared"
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "rowSpan": 1,
+        "columnSpan": 1,
+        "text": "10"
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "rowSpan": 1,
+        "columnSpan": 1,
+        "text": "20"
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "rowSpan": 1,
+        "columnSpan": 1,
+        "text": "30"
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "rowSpan": 1,
+        "columnSpan": 1,
+        "text": "40"
+      }
+    ]
+  },
+  "tableSha256": "b3d4f7c0b5a0c31ef3f6d61ade9bc081a9db308c22fd12885e0551a6353c6d94",
+  "database": "data\\qa\\p187\\data\\qa\\b3-merged-browser-first\\study-agent.sqlite3",
+  "formalDatabaseUntouched": true,
+  "notFullAssetRestore": true
+}

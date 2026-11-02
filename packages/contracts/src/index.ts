@@ -796,3 +796,4 @@ export * from './paper-library-copy';
 export * from './paper-library-view';
 export * from './textbook-teaching';
 export * from './studio-course-history';
+export * from './studio-pdf-table';

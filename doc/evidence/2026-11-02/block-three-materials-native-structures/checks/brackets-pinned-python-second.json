@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T02:53:36.443Z",
+  "label": "brackets-pinned-python-second",
+  "mode": "python",
+  "exit": 0,
+  "error": null,
+  "inputs": [
+    {
+      "path": "scripts/processing/paper_export_content.py",
+      "sha256": "9f128cadb7ef67e818dbafe999acd90150197a082d9f7d5f2723dacd122713d4"
+    },
+    {
+      "path": "scripts/processing/paper_export_math.py",
+      "sha256": "6793d298046f2fa3dd3853a3da64156007e9a1998e05d1cd1ed29ebaddb8cc78"
+    },
+    {
+      "path": "scripts/processing/paper_export_document.py",
+      "sha256": "a40370ea25c10d78c740e1b48911f38fe0d34ba97b89caba053228f2c6141324"
+    },
+    {
+      "path": "scripts/processing/test_paper_export.py",
+      "sha256": "f771d1ba68a5655830baa1425bf8e2c7901a242c0c4fd28b24f51f828400d3d9"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+      "sha256": "9776661981453d9de153033b3b7214191d83627107c4a35859340ff7cb53f6b2"
+    }
+  ],
+  "changedDuringRun": []
+}

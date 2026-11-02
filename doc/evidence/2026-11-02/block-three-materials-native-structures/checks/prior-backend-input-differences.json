@@ -1,0 +1,47 @@
+{
+  "baseline": "Block two 1534 backend inputs",
+  "inputs": 1534,
+  "changed": [
+    {
+      "path": "apps/api/src/modules/learning/studio-pdf-structure.test.ts",
+      "beforeSha256": "3116bf9736912a34415f26e6c8503c88648cdc2701fe5e455fb1509d116bd6f3",
+      "afterSha256": "62ef5785167bc39f844bcca76a56b39ee19d56375e530a298c03b324b1542abb"
+    },
+    {
+      "path": "apps/api/src/modules/learning/studio-pdf-structure.ts",
+      "beforeSha256": "05d7cadd8ea4a2eb0af9b28231203b75842bbbfa671711eaf5862d54abbc82fc",
+      "afterSha256": "d67746341b89478a9628bf22ce886dcc0b280405f89e0f92d6996d3e710ed37a"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+      "beforeSha256": "69ad1132bef2aee2a46472c38daa620579e48c2897b61acab924408f2cf2187a",
+      "afterSha256": "bf813c3cdc38003daf36a57fb42cd65afa1b5b74c582c5fa32fb033deab818b4"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "beforeSha256": "ecf8b340c24f5a7d9d33a6bde8f7f1ccbf46e0e213c0d38bf19febf0c7abf640",
+      "afterSha256": "eaec3b1c1fd7c2c193354dba05001ced23f1cc5af176f91107c4594e268fe750"
+    },
+    {
+      "path": "packages/contracts/src/studio.ts",
+      "beforeSha256": "1ce74b4b094d024d32eafa9f2a5914645cf28958be27033814600f4b1c38074e",
+      "afterSha256": "b2c5921ff9ad4f43b0cf9784cdaa46cef83dc732829af94095108586a27c9443"
+    },
+    {
+      "path": "apps/api/dist/apps/api/src/modules/learning/studio-pdf-structure.js",
+      "beforeSha256": "6889eb840576cb7ee1b8246eaf6c89d911f2197a4a20c6ad432f775cd158fdb7",
+      "afterSha256": "6c2f987d9eba05e4eab150f2a01083c3eb7daad1ad3ff182723ebdad4e8e2134"
+    },
+    {
+      "path": "apps/api/dist/packages/contracts/src/index.js",
+      "beforeSha256": "101ecc8dde9583e4ef44bd3b3cd0a22647dd90bbc665c96bd568b132e3306fb2",
+      "afterSha256": "5d3cf860592fc87bb16e81a8c75f835cecce82642a9b635b253e87408dd83b0c"
+    },
+    {
+      "path": "packages/contracts/dist/index.js",
+      "beforeSha256": "e0908a4f22c453f5ebf9fb50d09677f5d1f0b09de82294f45345019e3dfb59a1",
+      "afterSha256": "3bf8022c4d74f78443f7b9eaa197a7c14d2ef567643d31f4b1dd14364d67e340"
+    }
+  ],
+  "finalFullApiRunAvailable": true
+}

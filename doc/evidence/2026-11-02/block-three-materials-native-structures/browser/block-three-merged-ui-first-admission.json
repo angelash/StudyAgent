@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-02T03:17:32.968Z",
+  "buildId": "HOw9lmGhMxYrimyxThwpB",
+  "webInputCount": 1610,
+  "webInputsStillMatch": true,
+  "initialGuardExit": 1,
+  "actualNextBuildExit": 0,
+  "reason": "The concurrent isolated API build changed two compiled API inputs watched by the Web wrapper; those files are not Web build inputs.",
+  "expectedCompiledApiChanges": [
+    {
+      "path": "apps/api/dist/apps/api/src/modules/learning/studio-pdf-structure.js",
+      "sha256": "6c2f987d9eba05e4eab150f2a01083c3eb7daad1ad3ff182723ebdad4e8e2134"
+    },
+    {
+      "path": "apps/api/dist/packages/contracts/src/index.js",
+      "sha256": "5d3cf860592fc87bb16e81a8c75f835cecce82642a9b635b253e87408dd83b0c"
+    }
+  ],
+  "unresolvedWebBuildFailure": false
+}

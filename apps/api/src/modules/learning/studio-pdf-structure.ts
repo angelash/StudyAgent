@@ -1,4 +1,5 @@
 import type { StudioMaterialStructure, StudioPdfStructureBlock, StudioSourcePage } from '@study-agent/contracts';
+import { validStudioPdfTableCells } from '@study-agent/contracts';
 import type { PdfStructureModelResult } from '../ai/codex-pdf-structure.service';
 
 export type RawStudioPdfPage = {
@@ -26,11 +27,24 @@ export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructure
     page.tables.length > 0 || page.formulas.length > 0) && !modeled.has(page.pageNumber)).length : 0;
   const pages: StudioSourcePage[] = raw.map(page => {
     const next = modeled.get(page.pageNumber);
-    const tables = next?.tables.length ? next.tables.map((table, index) => ({
+    for (const table of page.tables) if (table.cells !== undefined && !validStudioPdfTableCells(table.headers, table.rows, table.cells)) {
+      throw new Error('invalid_processor_output');
+    }
+    let retainedGeometry = false;
+    const tables = next?.tables.length ? Array.from({ length: Math.max(next.tables.length, page.tables.length) }, (_, index) => {
+      const original = page.tables[index], table = next.tables[index];
+      // A rectangular model candidate cannot erase a source's merged cells.
+      if (original?.cells?.some(cell => cell.rowSpan > 1 || cell.columnSpan > 1)) {
+        retainedGeometry = true;
+        return { ...original, reviewRequired: true };
+      }
+      if (!table) return original;
+      return {
       id: 'page-' + page.pageNumber + '-table-' + (index + 1), kind: 'table' as const,
       headers: table.headers, rows: table.rows, plainText: [table.headers, ...table.rows].map(row => row.join('\t')).join('\n'),
       bbox: page.tables[index]?.bbox, confidence: table.confidence, reviewRequired: true,
-    })) : page.tables;
+      };
+    }) : page.tables;
     const formulas = next?.formulas.length ? next.formulas.map((formula, index) => ({
       id: 'page-' + page.pageNumber + '-formula-' + (index + 1), kind: 'formula' as const,
       latex: formula.latex, plainText: formula.plainText, bbox: page.formulas[index]?.bbox,
@@ -46,7 +60,7 @@ export function mergeStudioPdfPages(raw: RawStudioPdfPage[], model: PdfStructure
     const text = page.text;
     return { page: page.pageNumber, text, method: page.method,
       confidence: next ? average([...next.paragraphs, ...next.formulas, ...next.tables].map(item => item.confidence)) : page.confidence,
-      blocks, warnings: [...new Set([...page.warnings, ...(next?.warnings ?? []),...(next?.paragraphs.length&&next.paragraphs.map(paragraph=>paragraph.text).join('\n')!==page.text?['model_paragraphs_require_original_review']:[])])] };
+      blocks, warnings: [...new Set([...page.warnings, ...(next?.warnings ?? []), ...(retainedGeometry ? ['model_table_geometry_retained'] : []),...(next?.paragraphs.length&&next.paragraphs.map(paragraph=>paragraph.text).join('\n')!==page.text?['model_paragraphs_require_original_review']:[])])] };
   });
   const warnings = [...new Set([...pages.flatMap(page => page.warnings ?? []),
     ...(unmodeledReviewPages ? ['model_review_page_limit'] : [])])];

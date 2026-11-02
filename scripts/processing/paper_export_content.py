@@ -17,7 +17,7 @@ SHA = re.compile(r'[a-f0-9]{64}')
 IDENTIFIER = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}')
 INLINE = {'span', 'strong', 'b', 'em', 'i', 'u', 's', 'sub', 'sup', 'br', 'code', 'ruby', 'rb', 'rt', 'rp', 'img', 'math'}
 BLOCK = {'p', 'div', 'h1', 'h2', 'h3', 'blockquote', 'ul', 'ol', 'li', 'table', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th', 'caption'}
-MATH = {'math', 'mrow', 'mi', 'mn', 'mo', 'mtext', 'mfrac', 'msup', 'msub', 'msubsup', 'msqrt', 'mroot', 'mfenced', 'semantics', 'annotation'}
+MATH = {'math', 'mrow', 'mi', 'mn', 'mo', 'mtext', 'mfrac', 'msup', 'msub', 'msubsup', 'msqrt', 'mroot', 'mfenced', 'semantics', 'annotation', 'mtable', 'mtr', 'mtd', 'mstyle'}
 
 
 def fail(code):
@@ -67,6 +67,8 @@ def validate_math(node, fonts):
     if name in {'mi', 'mn', 'mo', 'mtext'}: attributes |= {'mathvariant'}
     if name == 'mfenced': attributes |= {'open', 'close', 'separators'}
     if name == 'mo': attributes |= {'fence'}
+    if name == 'mtable': attributes |= {'rowspacing', 'columnspacing', 'columnalign'}
+    if name == 'mstyle': attributes |= {'scriptlevel', 'displaystyle'}
     if name == 'annotation': attributes = {'encoding'}
     if set(node.attrib) - attributes: fail('unsupported_markup')
     if node.get('mathvariant', 'normal') != 'normal' or node.get('display', 'inline') not in {'inline', 'block'}:
@@ -77,11 +79,26 @@ def validate_math(node, fonts):
         return
     if name == 'semantics':
         if len(nodes) != 2 or tag(nodes[0]) in {'annotation', 'semantics'} or tag(nodes[1]) != 'annotation': fail('unsupported_markup')
+    if name == 'mstyle':
+        if node.get('scriptlevel', '0') != '0' or node.get('displaystyle', 'false') != 'false' or not nodes:
+            fail('unsupported_markup')
+    if name == 'mtable':
+        if not nodes or any(tag(row) != 'mtr' for row in nodes): fail('unsupported_markup')
+        columns = len(nodes[0])
+        if not columns or any(len(row) != columns or any(tag(cell) != 'mtd' for cell in row) for row in nodes):
+            fail('unsupported_markup')
+        if len(nodes) > 16 or columns > 12 or len(nodes) * columns > 160: fail('layout_limit')
+        alignment = node.get('columnalign', 'center').split()
+        if len(alignment) not in {1, columns} or any(value != 'center' for value in alignment): fail('unsupported_markup')
+        if node.get('rowspacing', '0.16em') != '0.16em' or node.get('columnspacing', '1em') != '1em':
+            fail('unsupported_markup')
+    if name == 'mtr' and (tag(node.getparent()) != 'mtable' or not nodes or any(tag(child) != 'mtd' for child in nodes)):
+        fail('unsupported_markup')
+    if name == 'mtd' and (tag(node.getparent()) != 'mtr' or not nodes): fail('unsupported_markup')
     if name in {'mi', 'mn', 'mo', 'mtext'}:
         if nodes or not (node.text or '').strip() and not (name == 'mo' and node.get('fence') == 'true'): fail('unsupported_markup')
-        # Actual LibreOffice Math uses a separate CJK fallback for mtext despite
-        # FontNameText. Keep prose outside formulas until that path is proven.
-        if name == 'mtext' and any(ord(char) > 127 for char in node.text): fail('unsupported_markup')
+        # mtext is exported with the native normal-text role and the pinned
+        # serif font. Symbols/identifiers still require the math font's cmap.
         glyphs(node.text or '', fonts[0 if name == 'mtext' else 1])
     elif (node.text or '').strip() or any((child.tail or '').strip() for child in nodes):
         fail('unsupported_markup')
@@ -163,6 +180,7 @@ def parse_markup(value, media, fonts):
         name = tag(node)
         if name not in INLINE | BLOCK | MATH: fail('unsupported_markup')
         in_math = name == 'math' or any(tag(parent) == 'math' for parent in node.iterancestors())
+        if name in MATH and not in_math: fail('unsupported_markup')
         if in_math:
             if name == 'math':
                 validate_math(node, fonts)

@@ -128,11 +128,12 @@ export type StudioStudyPlanPreview = StudioStudyPlan & {
 };
 
 export type StudioPdfBBox = [number, number, number, number];
+export type StudioPdfTableCell = { row: number; column: number; rowSpan: number; columnSpan: number; text: string };
 
 export type StudioPdfStructureBlock =
   | { id: string; kind: 'paragraph'; text: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean }
   | { id: string; kind: 'formula'; latex: string; plainText: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean }
-  | { id: string; kind: 'table'; headers: string[]; rows: string[][]; plainText: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean };
+  | { id: string; kind: 'table'; headers: string[]; rows: string[][]; cells?: StudioPdfTableCell[]; plainText: string; bbox?: StudioPdfBBox; confidence: number | null; reviewRequired: boolean };
 
 export type StudioSourcePage = {
   page: number;

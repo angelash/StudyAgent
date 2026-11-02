@@ -307,7 +307,7 @@ def question_body(document, number, source_position):
     table = borderless_table(document, 2)
     setting(table.rows[0]._tr.get_or_add_trPr(), 'tblHeader', val='true')
     context = table.cell(0, 0).paragraphs[0]
-    plain(context, f'第{number}题（跨页接续） / 原题{source_position}')
+    plain(context, f'第{number}题内容 / 原题{source_position}')
     for run in context.runs: run.font.size = Pt(9)
     context.paragraph_format.keep_with_next = True
     body = table.cell(1, 0)
@@ -427,7 +427,7 @@ def inspect_continuation_labels(pdf, source_map):
         for index in range(source['startPage'], source['endPage']):
             page = pdf[index]
             top = re.sub(r'\s+', '', page.get_text(clip=fitz.Rect(0, 0, page.rect.width, 160)))
-            if f"第{source['number']}题（跨页接续）" not in top: fail('source_map_invalid')
+            if f"第{source['number']}题内容" not in top: fail('source_map_invalid')
 
 
 def inspect_text_coverage(pdf, value, book, parsed):

@@ -1,0 +1,99 @@
+{
+  "at": "2026-11-02T03:54:17.099Z",
+  "block": 3,
+  "mainOnly": true,
+  "sourceFiles": 14,
+  "exportUnits": {
+    "passed": 38,
+    "failed": 0
+  },
+  "realExportBatches": [
+    {
+      "runtime": "mx3s1",
+      "passed": 3,
+      "failed": 0,
+      "visualFailure": true
+    },
+    {
+      "runtime": "mx3s2",
+      "passed": 3,
+      "failed": 0,
+      "closingFenceCorrected": true
+    },
+    {
+      "runtime": "mx3s3",
+      "passed": 2,
+      "failed": 1,
+      "positiveArtifactsPassed": true,
+      "failure": "Negative fixture used a supported sum expression"
+    },
+    {
+      "runtime": "mx3s4",
+      "passed": 1,
+      "failed": 0,
+      "filtered": 2,
+      "negativeFixtureChangedOnly": true
+    }
+  ],
+  "nativePdfUnits": {
+    "priorFull": 2,
+    "latestAffectedSubset": 1,
+    "notAddedTogether": true
+  },
+  "targetedApi": {
+    "passed": 45,
+    "failed": 0
+  },
+  "finalApi": {
+    "passed": 3021,
+    "failed": 0,
+    "skipped": 131,
+    "inputCount": 1930,
+    "changedDuringRun": []
+  },
+  "browser": {
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "buildId": "HOw9lmGhMxYrimyxThwpB",
+    "newMergeJourneyIncluded": true,
+    "priorWhole647NotCountedAsCurrentBuild": true,
+    "interrupted653NotClaimedPassed": true
+  },
+  "rootTypes": {
+    "api": 0,
+    "web": 0,
+    "noEmit": true
+  },
+  "visual": {
+    "docxPages": 6,
+    "pdfPages": 6,
+    "viewports": [
+      390,
+      768,
+      1440
+    ],
+    "allOpened": true
+  },
+  "persistence": {
+    "actualIndependentColdOpen": true,
+    "schemaBump": false,
+    "newSourceCacheVersion": 4
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 187,
+    "protectionScan": "Final delivery verification required before commit"
+  },
+  "acceptanceMissing": [
+    "teacher review",
+    "physical Office/printer/camera/touchscreen",
+    "scanned and handwritten ground-truth corpus",
+    "all textbook/GESP authored content",
+    "current complete dual-database asset restore",
+    "actual 1/3/7/14-day learner observations"
+  ],
+  "wholeGoal": "active",
+  "pushOrDeployment": false
+}

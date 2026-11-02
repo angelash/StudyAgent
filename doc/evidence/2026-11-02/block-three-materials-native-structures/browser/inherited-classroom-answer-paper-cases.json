@@ -1,0 +1,1073 @@
+{
+  "at": "2026-11-02T03:46:03.565Z",
+  "originalWholeRun": 647,
+  "originalBuildId": "gUXB3iRftmNGkCVrd7IqK",
+  "currentBuildId": "HOw9lmGhMxYrimyxThwpB",
+  "newRun": false,
+  "applicationWholeBuildNotRevalidated": true,
+  "scope": "Prior classroom, native answer protocols and paper practice journeys; unchanged tests are indexed, not rerun or added to current 52.",
+  "cases": [
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a late save receipt cannot mark a newer local answer saved or overwrite its queue",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a dropped save acknowledgment survives refresh with its original command and one server revision",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: two real tabs retain conflicting input and explicitly download before keeping the local version",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a lost diagnostic first-submit reply replays the frozen time and advances exactly one question after reload",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: practice correction drafts and their lost submit reply preserve the original first answer and the current question",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: leaving before debounce flushes the exact question, while offline navigation retains its local input",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: unavailable browser storage keeps the full answer editable and offers a real downloaded copy",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: attachment completion revalidates a conflict without another upload or a manufactured first answer",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: a delayed old question read cannot reopen a practice after the learner has left",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "recovery: an older tab keeps its original attempt binding after another page submits the first answer",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic single_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic boolean: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic text_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic table_fill: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic matching: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic sorting: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic hotspot: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic stepwise: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic image_upload: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic short_answer: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "diagnostic audio_record: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice single_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice multiple_choice: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice boolean: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice numeric_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice text_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice formula_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice multi_blank: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice table_fill: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice matching: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice sorting: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice drag_drop: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice hotspot: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice geometry_draw: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice stepwise: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice image_upload: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice short_answer: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "practice audio_record: incomplete input, reload, continued editing, first submit and historical read",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "title": "text reading reveals whole points, rows and formulas; stop restores the original line and complete notes",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "title": "audio ended advances frozen units, abort settles a pending reader and a new reply rejects late audio",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "title": "recovery: complete notes, cross-page reply navigation, keyboard activation and narrow layouts remain usable",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-boards.spec.ts",
+      "title": "untrusted table/formula text stays inert in the board, actual offline HTML, Markdown and print",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "frozen English sentences drive audio, table rows, resume, voice selection and reply playback",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "muted English reading follows the same frozen units without requesting audio",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "an explicit legacy upgrade cancels an old pending track and restores focus at the mapped sentence",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "lost upgrade acknowledgements replay the same command and stale tabs can read the current frozen version",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "closing confirmation sends nothing; cancelling an in-flight acknowledgement can read its committed state",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-captions.spec.ts",
+      "title": "long protected tokens remain readable without widening the board or transcript on small screens",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "single and multiple choices retain drafts, lock original feedback and separate submitted option states",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "lost acknowledgement is resolved by reading the saved first answer without creating another request",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "an undelivered command survives refresh and reuses its exact request key and choices",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "a definitive rejected submission retains its command copy and permits a new checked selection",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "another account cannot restore prior selections or open its frozen classroom",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "unit checks expose the new selection mode and retain first feedback after reopening",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "skip, unknown and actual hints remain separate immutable first-answer facts",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "a complete correct set, assisted wrong answer, skip and unknown produce a usable first-answer review",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "keyboard selection stays in the question area and leaves assistant input isolated",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "enlarged practice artwork restores focus and preserves the selection without submitting from its dialog",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "unavailable local storage keeps current choices and a downloadable command copy",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 390",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 768",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-choice.spec.ts",
+      "title": "multiple-choice layout and assistant fit at 1440",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "title": "code and input save, execute, survive whiteboard navigation and reload at three widths",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "title": "a lost save acknowledgment and offline refresh retain exact local edits until the same command can recover",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "title": "concurrent pages preserve a conflicting buffer and require an explicit choice before replacement",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-code.spec.ts",
+      "title": "errors, timeouts, stop and oversize programs have explicit states without truncation or unwanted reset",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "a neutral sample decodes before the first lecture, changes no selection and sends only its fixed version",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "closing the settings aborts an unfinished sample and its late audio cannot start",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "failed neutral playback keeps an explicit retry and cannot advance or reveal the lesson",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "a legacy voice can preview only the selected already-revealed frozen sentence",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 390",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 768",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-neutral-voices.spec.ts",
+      "title": "six real voice cards and preview controls fit at 1440",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-practice.spec.ts",
+      "title": "practice records dont-know, skip, sequential help and replay after a lost hint response",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-practice.spec.ts",
+      "title": "every unit has a readable data or diagram practice example at desktop, tablet and phone widths",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-review.spec.ts",
+      "title": "unit check resumes holes, persists help and provides a faithful review with topic return",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-review.spec.ts",
+      "title": "saved-session links restore the exact activity and reject a mismatched lesson",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "title": "anchored tour visits actual controls, resizes and returns without issuing learning or voice requests",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "title": "phone tour exposes the real chat controls then restores the original board and survives unavailable storage",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "title": "controlled figures and curriculum images retain their content, contain focus and support reading and printing",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "title": "a failed curriculum image still has a readable alternative and a keyboard exit",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-tools.spec.ts",
+      "title": "voice samples decode actual audio, keep the selected voice and original progress, and cannot play after settings closes",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "title": "lost submission receipt, refresh and explicit return preserve a single turn and the original spoken line",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "title": "in-flight cancellation survives refresh and explicit retry creates only one saved answer",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "title": "all teaching modes show an editable request and keep the conventional model picker",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "title": "provider errors remain visible and retry preserves the chosen question",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-turns.spec.ts",
+      "title": "a real learning-code user asks in their own approved course and resumes the same answer after refresh",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "queued previous clicks use each confirmed position, first save succeeds",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "queued previous clicks use each confirmed position, first save fails",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "failed and cancelled classroom image tasks retry their saved version",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "lost image creation acknowledgement recovers the single saved task",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom-visual.spec.ts",
+      "title": "PDF preparation waits for selected image bytes and closing settings cancels a pending print",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "course classroom supports teaching, executable examples, learning checks and durable resume",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "audio playback ends drive teaching progress and pause prevents later automatic advancement",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "question replies add safe board notes with page links, export and restored session rendering",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "board notes reveal whole items and subtitle advances only at spoken sentence boundaries",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "independent practice matches four-option illustrated question flow on desktop and phone",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "classroom.spec.ts",
+      "title": "practice geometry, whiteboard image and comparison table use the observed display scale",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 390",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 768",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 1440",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "attempts": [
+        "passed"
+      ]
+    },
+    {
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "attempts": [
+        "passed"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "tests/e2e/answer-journeys.spec.ts",
+      "sha256": "726c5bd9500bdc45dacc045ff683a59a7c468c41df7e14b70d62d2e6e7b13160"
+    },
+    {
+      "path": "tests/e2e/classroom-boards.spec.ts",
+      "sha256": "9cd54f8833c421ffed057289e9dc6b1e782bc8af9ecdd9dfaead770c02d119c2"
+    },
+    {
+      "path": "tests/e2e/classroom-captions.spec.ts",
+      "sha256": "a2fa3848145681c8c1442fd58dc2b1223460c9a5a03017a5f24f77c14bfb3074"
+    },
+    {
+      "path": "tests/e2e/classroom-choice.spec.ts",
+      "sha256": "6c639d063db63d5580d629277716c1bcc49a5660fc3a27b93925725e59f8c456"
+    },
+    {
+      "path": "tests/e2e/classroom-code.spec.ts",
+      "sha256": "a226583b93db8d1e2c91ea0b9b36682f96ce8d2346469e41ce55a98597ac16c9"
+    },
+    {
+      "path": "tests/e2e/classroom-neutral-voices.spec.ts",
+      "sha256": "f01d3166162a9815cd6e11905ced4110c0c526dee6518947dee3db451d9e6979"
+    },
+    {
+      "path": "tests/e2e/classroom-practice.spec.ts",
+      "sha256": "db65198d4d2782d19e32995492ed2cf4f9177a2e69feb3d6a59ac480c4a9d820"
+    },
+    {
+      "path": "tests/e2e/classroom-review.spec.ts",
+      "sha256": "09844814072a5030ce6c23b70c831f3ee19b364cd269d8203e179e4810257e1d"
+    },
+    {
+      "path": "tests/e2e/classroom-tools.spec.ts",
+      "sha256": "59a24472e4c9f98be11d7352ff3653475fd26bb9ae3edd23b9dc03c1a78a14a5"
+    },
+    {
+      "path": "tests/e2e/classroom-turns.spec.ts",
+      "sha256": "ffd9d236c2a7d9ff33b364247e3aabf72d4eb85b83618f5f37c5210ac8ae12fd"
+    },
+    {
+      "path": "tests/e2e/classroom-visual.spec.ts",
+      "sha256": "3f7956153930faba7a42be867e2ae7bb512dcba497a2cdcb8fb9891c6d081868"
+    },
+    {
+      "path": "tests/e2e/classroom.spec.ts",
+      "sha256": "95e232039956e8d48441a6b8e6199e87e10e75d84d9e6a45e5c89e9107f112a7"
+    },
+    {
+      "path": "tests/e2e/paper-practice.spec.ts",
+      "sha256": "8a73c58c97a52b009eaf091d187b1ab168bdd43b199f7a5e3c472c7ceb3515d0"
+    }
+  ]
+}

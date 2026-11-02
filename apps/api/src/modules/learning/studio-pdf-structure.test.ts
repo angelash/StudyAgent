@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { mergeStudioPdfPages, RawStudioPdfPage } from './studio-pdf-structure';
+import { validStudioPdfTableCells } from '@study-agent/contracts';
 
 function page(pageNumber: number, method: RawStudioPdfPage['method'] = 'pdf_text'): RawStudioPdfPage {
   return { pageNumber, method, text: '1/2 + 1/3 = 5/6', lines: [
@@ -10,6 +11,35 @@ function page(pageNumber: number, method: RawStudioPdfPage['method'] = 'pdf_text
 }
 
 describe('mergeStudioPdfPages', () => {
+  const merged = () => ({ id: 'original-table', kind: 'table' as const, headers: ['Group', '', 'Total'], rows: [['Shared', '10', '20'], ['', '30', '40']],
+    plainText: 'Original source', confidence: 1, reviewRequired: true, cells: [
+      { row: 0, column: 0, rowSpan: 1, columnSpan: 2, text: 'Group' }, { row: 0, column: 2, rowSpan: 1, columnSpan: 1, text: 'Total' },
+      { row: 1, column: 0, rowSpan: 2, columnSpan: 1, text: 'Shared' }, { row: 1, column: 1, rowSpan: 1, columnSpan: 1, text: '10' },
+      { row: 1, column: 2, rowSpan: 1, columnSpan: 1, text: '20' }, { row: 2, column: 1, rowSpan: 1, columnSpan: 1, text: '30' },
+      { row: 2, column: 2, rowSpan: 1, columnSpan: 1, text: '40' },
+    ] });
+  it('keeps original merged geometry when a model offers a flattened or missing table', () => {
+    const original = page(1); original.tables = [merged(), { ...merged(), id: 'second-table' }];
+    const result = mergeStudioPdfPages([original], { pages: [{ pageNumber: 1, paragraphs: [], formulas: [],
+      tables: [{ headers: ['Changed', 'Total'], rows: [['Shared', '40']], confidence: 0.99 }], warnings: [] }] });
+    expect(result.pages[0].blocks?.filter(block => block.kind === 'table')).toEqual(original.tables);
+    expect(result.pages[0].warnings).toContain('model_table_geometry_retained');
+    expect(result.structure.reviewRequired).toBe(true);
+  });
+  it('rejects overlapping, missing, out of bounds or text-hiding cell geometry', () => {
+    const table = merged(); expect(validStudioPdfTableCells(table.headers, table.rows, table.cells)).toBe(true);
+    const invalid = [table.cells.slice(1), [...table.cells, table.cells[0]], table.cells.map((cell, index) => index === 0 ? { ...cell, rowSpan: 4 } : cell),
+      table.cells.map((cell, index) => index === 0 ? { ...cell, column: 1.5 } : cell), table.cells.map((cell, index) => index === 0 ? { ...cell, text: 'Another text' } : cell)];
+    for (const cells of invalid) {
+      const original = page(1); original.tables = [{ ...table, cells }];
+      expect(() => mergeStudioPdfPages([original], null)).toThrow('invalid_processor_output');
+    }
+    expect(validStudioPdfTableCells(table.headers, [['Shared', '10', '20'], ['Hidden condition', '30', '40']], table.cells)).toBe(false);
+  });
+  it('keeps legacy plain grids unchanged and does not infer a merge from empty text', () => {
+    const { cells: _cells, ...table } = merged(), original = page(1); original.tables = [table];
+    expect(mergeStudioPdfPages([original], null).pages[0].blocks?.find(block => block.kind === 'table')).toEqual(table);
+  });
   it('uses model page structure without inventing pages that were not reviewed', () => {
     const result = mergeStudioPdfPages([page(1, 'ocr'), page(2, 'ocr')], { pages: [{
       pageNumber: 1, paragraphs: [{ text: '分数加法', confidence: 0.92 }],

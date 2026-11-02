@@ -1,0 +1,11 @@
+{
+  "apiPassed": 3,
+  "nativeXmlStructurePassed": true,
+  "visualPassed": false,
+  "observation": "The source closing square bracket in the matrix answer renders as a closing round parenthesis in both production PDF and independent DOCX rendering.",
+  "pdfExtracted": "MATRIXREFERENCE: [1 2 3 4)",
+  "source": "data/qa/mx3s1/matrix-downloaded/answers.pdf",
+  "crop": "matrix-answer-bracket-crop.png",
+  "hypothesis": "Native delimiter property ordering is not compatible with Office import.",
+  "alsoObserved": "Repeated context says continuation on the first page too; use neutral repeated question identity."
+}

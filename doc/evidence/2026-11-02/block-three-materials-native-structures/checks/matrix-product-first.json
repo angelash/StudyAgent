@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-02T02:32:11.497Z",
+  "label": "matrix-product-first",
+  "mode": "product",
+  "exit": 0,
+  "error": null,
+  "inputs": [
+    {
+      "path": "scripts/processing/paper_export_content.py",
+      "sha256": "9f128cadb7ef67e818dbafe999acd90150197a082d9f7d5f2723dacd122713d4"
+    },
+    {
+      "path": "scripts/processing/paper_export_math.py",
+      "sha256": "f6a8e4461afeffe8daca9dcaa5e85ffe3c8a81f2c4f6c2a108df58761fbd4bca"
+    },
+    {
+      "path": "scripts/processing/test_paper_export.py",
+      "sha256": "5793a61b8cb4597a88c6e62dbb8f9030d95c97a2464875d64c0bd6ca1e21ac19"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+      "sha256": "9776661981453d9de153033b3b7214191d83627107c4a35859340ff7cb53f6b2"
+    }
+  ],
+  "changedDuringRun": []
+}

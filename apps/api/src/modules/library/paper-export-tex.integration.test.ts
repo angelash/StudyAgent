@@ -49,9 +49,14 @@ describe.skipIf(!installation || !workspace)('real source TeX export, frozen rec
       const value = JSON.parse(row.detail); if (!value.questions.length) continue;
       Object.assign(value.questions[0], { title: '<p>ORIGINALONE：分别观察分式 \\(\\frac{1}{2}+x^2\\)、根式 \\(\\sqrt[3]{8}\\) 和括号 \\(\\left(\\frac{a}{b}+x\\right)\\)。</p><p>符号关系：\\(\\alpha+\\beta\\leq 2\\)。</p>', options: ['<p>\\(\\frac{1}{2}\\)</p>', '<p>\\(\\frac{2}{3}\\)</p>'], answer: '<p>REFERENCEONE：保留分式 \\(\\frac{1}{2}\\)。</p>', details: '<p>原生分子分母分别是1和2；合成内容只验证结构。</p>' });
       Object.assign(value.questions[1], { title: '<p>ORIGINALTWO：PREBLOCK $$x_1^2+1=2$$ POSTBLOCK。</p><p>PREBRACKET \\[\\sqrt{9}=3\\] POSTBRACKET。</p>', options: [], answer: '<p>REFERENCETWO：$$x+1=2$$</p>', details: '<p>合成结构核对，不代表教师内容审核。</p>' });
-      if (row.key.includes(':30:')) value.questions[0].answer = '<p>\\(\\begin{matrix}1&2\\\\3&4\\end{matrix}\\)</p>';
+      if (row.key.includes(':30:')) {
+        value.questions[0].title = '<p>MATRIXPROMPT：保留两行两列及嵌套分式。\\(\\begin{pmatrix}\\frac{1}{2}&x^2\\\\3&4\\end{pmatrix}\\)</p>';
+        value.questions[0].answer = '<p>MATRIXREFERENCE：\\(\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}\\)</p>';
+        value.questions[0].title += '<p>CJKPROMPT：\\(\\text{速度}=\\frac{\\text{路程}}{\\text{时间}}\\)</p>';
+        value.questions[0].answer += '<p>CJKREFERENCE：\\(\\text{面积}=\\text{长}\\times\\text{宽}\\)</p>';
+      }
       if (row.key.includes(':31:')) value.questions[0].title = '<p>\\(\\thisCommandDoesNotExist\\)</p>';
-      if (row.key.includes(':32:')) value.questions[0].answer = '<p>\\(\\text{汉字}\\)</p>';
+      if (row.key.includes(':32:')) value.questions[0].answer = '<p>\\(\\overline{x}\\)</p>';
       const text = JSON.stringify(value); archive.prepare('UPDATE papers SET detail=? WHERE key=?').run(text, row.key); catalog.prepare('UPDATE papers SET detail_sha256=? WHERE id=?').run(sha(text), row.key);
     } } finally { archive.close(); catalog.close(); }
     Object.assign(process.env, { NODE_ENV: 'development', STUDY_STORAGE: postgres ? 'postgres' : 'sqlite', STUDY_DATA_DIR: directory, STUDY_ASSET_ROOT: assets, STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'false', STUDY_PAPER_EXPORT_INSTALLATION: installation! });
@@ -91,9 +96,29 @@ describe.skipIf(!installation || !workspace)('real source TeX export, frozen rec
     expect(recovered.input).toEqual(f.input); expect(recovered.result).toEqual(result);
     expect(((await cold()).state.paperExports!.find((row: any) => row.id === result.exportId) as any).intent).toEqual(frozen.intent);
   }, 240000);
-  it('refuses complex or malformed formulas only in the affected book without changing the original source', async () => {
+  it('exports actual native matrix rows and columns in both books without changing their source or frozen request', async () => {
+    const actor = await register(), f = await selected(actor, 30);
+    const report = await api(actor, 'post', '/library/export-preflight', f.input);
+    expect(report.books.practice.available).toBe(true); expect(report.books.answers.available).toBe(true);
+    const result = await api(actor, 'post', '/library/export-commands', f.input), frozen = (await cold()).state.paperExports!.find((row: any) => row.id === result.exportId) as any;
+    expect(frozen.intent.document.items[0].promptHtml).toContain('<mtable');
+    expect(frozen.intent.document.items[0].reference.answerHtml).toContain('<mtable');
+    for (let index = 0; index < 4; index++) expect(await worker.runNext()).toBe(true);
+    const view = await api(actor, 'get', '/library/exports/' + result.exportId);
+    expect(view.slots.map((slot: any) => slot.state)).toEqual(['succeeded', 'succeeded', 'succeeded', 'succeeded']);
+    mkdirSync(join(directory, 'matrix-downloaded'));
+    for (const slot of view.slots) {
+      const response = await request(app.getHttpServer()).get(slot.downloadUrl).set('Authorization', 'Bearer ' + actor.token).buffer(true).parse((response: any, done: any) => { const chunks: Buffer[] = []; response.on('data', (chunk: Buffer) => chunks.push(chunk)); response.on('end', () => done(null, Buffer.concat(chunks))); });
+      expect(response.status).toBe(200); expect(sha(response.body)).toBe(slot.publication.sha256);
+      writeFileSync(join(directory, 'matrix-downloaded', slot.book + '.' + slot.format), response.body);
+      receipts.push({ kind: 'matrix', book: slot.book, format: slot.format, bytes: response.body.length, sha256: sha(response.body), pages: slot.publication.pageCount });
+    }
+    expect(((await cold()).state.paperExports!.find((row: any) => row.id === result.exportId) as any).intent).toEqual(frozen.intent);
+    expect(await api(actor, 'post', '/library/export-commands', f.input)).toEqual(result);
+  }, 240000);
+  it('refuses unproved or malformed formulas only in the affected book without changing the original source', async () => {
     const actor = await register();
-    for (const [variant, available] of [[30, [true, false]], [31, [false, true]], [32, [true, false]]] as const) {
+    for (const [variant, available] of [[31, [false, true]], [32, [true, false]]] as const) {
       const f = await selected(actor, variant), before = await cold(), report = await api(actor, 'post', '/library/export-preflight', f.input);
       expect([report.books.practice.available, report.books.answers.available]).toEqual(available);
       const refused = available[0] ? 'answers' : 'practice'; expect(report.books[refused].reason).toMatch(/^paper_export_(unsupported_markup|missing_glyph)$/);

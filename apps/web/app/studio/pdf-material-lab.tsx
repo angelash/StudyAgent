@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import katex from 'katex';
 import {PdfMaterialUploader,PdfProcessingProgress} from './source-courses/pdf-material';
 import type { CourseSourceSnapshot, StudioSourcePage, StudioOverview, StudioPdfStructureBlock, StudioSourceMaterial, StudioSubject, StudioWhiteboard } from '@study-agent/contracts';
+import { validStudioPdfTableCells } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../lib/api';
 import { materialsReturn, withMaterialsReturn } from '../../lib/materials-navigation';
 
@@ -43,6 +44,7 @@ const warningNames: Record<string, string> = {
   model_structure_review_unavailable: '小九AI 复核暂不可用，已保留本地恢复结果',
   model_review_page_limit: '结构页较多，仅对前 8 个复核页调用模型；其余保留本地结果',
   review_against_source_page: '请对照原页核对结构',
+  model_table_geometry_retained: '已保留原页合并单元格，请对照原页核对文字',
 };
 
 function FormulaBlock({ latex, plainText }: { latex: string; plainText: string }) {
@@ -55,10 +57,16 @@ function FormulaBlock({ latex, plainText }: { latex: string; plainText: string }
 
 function StructureBlock({ block }: { block: StudioPdfStructureBlock }) {
   if (block.kind === 'table') {
+    const geometryValid = block.cells === undefined || validStudioPdfTableCells(block.headers, block.rows, block.cells);
     return <article className="sa-pdf-table-block" data-review={block.reviewRequired}>
       <header><span>TABLE</span><b>表格结构</b>{block.reviewRequired && <em>待核对</em>}</header>
-      <div><table><thead><tr>{block.headers.map((cell, index) => <th key={index}>{cell}</th>)}</tr></thead>
+      {!geometryValid ? <p role="alert">表格合并关系未通过核对，请查看原页后重新识别。</p> : block.cells ? <div><table><tbody>
+        {[block.headers, ...block.rows].map((_, row) => <tr key={row}>{block.cells!.filter(cell => cell.row === row).sort((a, b) => a.column - b.column).map(cell => row === 0 ?
+          <th key={cell.column} scope={cell.columnSpan > 1 ? 'colgroup' : 'col'} rowSpan={cell.rowSpan} colSpan={cell.columnSpan}>{cell.text}</th> :
+          <td key={cell.column} rowSpan={cell.rowSpan} colSpan={cell.columnSpan}>{cell.text}</td>)}</tr>)}
+      </tbody></table></div> : <div><table><thead><tr>{block.headers.map((cell, index) => <th key={index}>{cell}</th>)}</tr></thead>
         <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, index) => <td key={index}>{cell}</td>)}</tr>)}</tbody></table></div>
+      }
     </article>;
   }
   if (block.kind === 'formula') return <article className="sa-pdf-formula-block" data-review={block.reviewRequired}>

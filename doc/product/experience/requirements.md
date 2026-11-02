@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 第3块核对：三种图片采集用途、原图版本、多页整理和原件恢复已在主干接通，XP-G02由planned校正为in_progress。72项当前为11 implemented、52 in_progress、9 planned、0 verified。相机权限、实机和扫描/手写标注集仍待验；原生合并表格和公式的本批实现见[191](../191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md)。
+
 2026-11-02 第2块状态校正：XP-I06的原复测、教学后计时和干预复盘已有实现及当前工程证据，从planned改为in_progress。72项现为11 implemented、51 in_progress、10 planned、0 verified；教师及真人1/3/7/14日验收仍未完成。见[六链路核对](../../evidence/2026-11-02/block-two-learning-closure/receipt.json)。
 
 2026-11-02 开发组织：按[190 五块交付计划](../190-mainline-and-five-block-delivery.md)直接在主干推进。72 项编号与原验收要求保留；开发分块依次为工作台交互、学习闭环、资料纸面、教材与 GESP、工程与最终验收，每块自测通过后本地提交再继续。
@@ -151,7 +153,7 @@ GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真�
 ### XP-G01 全量资料复用对账 [in_progress]
 核对研究工程与本项目全部可复用原卷、媒体、模型、工具、教材和证据。验收：来源/目标清单、一致性与哈希、缺口、独立备份，不只复制样例。
 
-### XP-G02 一题/整页/教辅采集分流 [planned]
+### XP-G02 一题/整页/教辅采集分流 [in_progress]
 相机相册、多页PDF、已知题卷和教材有明确入口。验收：真实手机权限、取消、旋转、模糊、页序与中断恢复。
 
 ### XP-G03 原图与处理图 [in_progress]

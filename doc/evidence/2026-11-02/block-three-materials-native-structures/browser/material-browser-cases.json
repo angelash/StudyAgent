@@ -1,0 +1,578 @@
+{
+  "rawSha256": "0334502ee57a6d085a1d70d72cb7a35d518ccf7175c7ddafd1b1b354a22e8009",
+  "cases": [
+    {
+      "file": "pdf-material.spec.ts",
+      "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 11469
+        }
+      ]
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 10451
+        }
+      ]
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8432
+        }
+      ]
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 16586
+        }
+      ]
+    },
+    {
+      "file": "pdf-material.spec.ts",
+      "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 21462
+        }
+      ]
+    },
+    {
+      "file": "pdf-merged-table.spec.ts",
+      "title": "native PDF preserves merged source cells through processing, confirmation and browser reload",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6798
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6385
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 7621
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 7462
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8464
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8236
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6350
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 11349
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 11200
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4535
+        }
+      ]
+    },
+    {
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6472
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5848
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3297
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6276
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a lost publication reply recovers after refresh without another publication or another lesson version",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5538
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a stale publication preview reads the actual saved version before a new explicit confirmation",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3361
+        }
+      ]
+    },
+    {
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "stopping a lost publication wait preserves the committed command and ignores its late reply",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4990
+        }
+      ]
+    },
+    {
+      "file": "source-course-long.spec.ts",
+      "title": "long text import, cancellable preflight, lost acknowledgment, original coverage and single-lesson authoring reach the classroom",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 9197
+        }
+      ]
+    },
+    {
+      "file": "source-course-long.spec.ts",
+      "title": "a long-source failure resumes saved stages across page reload and retains exact progress",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 19353
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 11046
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4482
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 390",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3626
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 768",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3235
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 1440",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4959
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8570
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6441
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5589
+        }
+      ]
+    },
+    {
+      "file": "source-course-project.spec.ts",
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 217093
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 9499
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "in-flight cancellation and retry survive reload and never publish the cancelled attempt",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8691
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "lost generation acknowledgment is replayed and stale blueprint edits preserve local input without overwriting another page",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5136
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "an adult can upload a PDF, inspect its real page and preserve selected page and language through generation",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 8442
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 7195
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "staged generation retains reviewed work through failure, retry and manuscript correction",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 21191
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "uncertain model checks remain visible through confirmation and retain private review details",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5178
+        }
+      ]
+    },
+    {
+      "file": "source-course.spec.ts",
+      "title": "stale full manuscripts stay local through a public reload and offer an export before browser back",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5826
+        }
+      ]
+    },
+    {
+      "file": "studio.spec.ts",
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 49055
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4107
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4470
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3576
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 7815
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 10916
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4099
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 5577
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3471
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3257
+        }
+      ]
+    },
+    {
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a late catalog cannot replace a new object and list pagination restores from URL",
+      "expectedStatus": "passed",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 6874
+        }
+      ]
+    }
+  ],
+  "rawReportAndTraceRetainedLocally": true
+}

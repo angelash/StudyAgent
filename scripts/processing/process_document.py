@@ -8,7 +8,7 @@ import sys
 from file_leases import file_lease
 
 VERSION = 'study-document-v3'
-STRUCTURE_VERSION = 'study-pdf-structure-v3'
+STRUCTURE_VERSION = 'study-pdf-structure-v4'
 
 
 def digest(path):
@@ -139,6 +139,31 @@ def inside_bbox(line, bbox):
     return bbox[0] - 0.005 <= x <= bbox[2] + 0.005 and bbox[1] - 0.005 <= y <= bbox[3] + 0.005
 
 
+def native_table_cells(table, rows):
+    """Recover a complete tiling from real PDF cell bounds, including merges.
+
+    None means the geometry is not proved. Never guess spans from empty text.
+    """
+    boxes = {tuple(round(float(value), 3) for value in box) for box in table.cells if box is not None}
+    if not boxes or not rows: return None
+    xs = sorted({value for box in boxes for value in (box[0], box[2])})
+    ys = sorted({value for box in boxes for value in (box[1], box[3])})
+    height, width = len(rows), len(rows[0])
+    if len(xs) != width + 1 or len(ys) != height + 1 or width > 256 or height > 2048 or height * width > 32768: return None
+    covered, cells = set(), []
+    for box in sorted(boxes, key=lambda box: (box[1], box[0])):
+        column, end_column = xs.index(box[0]), xs.index(box[2])
+        row, end_row = ys.index(box[1]), ys.index(box[3])
+        if end_column <= column or end_row <= row: return None
+        for r in range(row, end_row):
+            for c in range(column, end_column):
+                if (r, c) in covered or ((r, c) != (row, column) and rows[r][c]): return None
+                covered.add((r, c))
+        cells.append({'row': row, 'column': column, 'rowSpan': end_row - row,
+                      'columnSpan': end_column - column, 'text': rows[row][column]})
+    return cells if len(covered) == height * width else None
+
+
 def structure_checkpoint(cache, source_hash, page_number):
     checkpoint = cache / f'page-{page_number}.json'
     image = cache / f'page-{page_number}.png'
@@ -260,17 +285,18 @@ def _pdf_structure(config):
                 for table_index, table in enumerate(finder.tables):
                     extracted = table.extract() or []
                     rows = [[str(value or '').replace('\n', ' ').strip() for value in row] for row in extracted if row]
-                    rows = [row for row in rows if any(row)]
                     if len(rows) < 2 or max((len(row) for row in rows), default=0) < 2:
                         continue
                     width = max(len(row) for row in rows)
                     rows = [row + [''] * (width - len(row)) for row in rows]
+                    cells = native_table_cells(table, rows)
                     bbox = structure_bbox(table.bbox, page.rect.width, page.rect.height)
                     table_boxes.append(table.bbox)
                     confidence = 1.0 if method == 'pdf_text' else round(sum(line['confidence'] for line in lines) / max(1, len(lines)), 5)
                     tables.append({'id': 'page-' + str(page_number) + '-table-' + str(table_index + 1), 'kind': 'table',
                         'headers': rows[0], 'rows': rows[1:], 'plainText': '\n'.join('\t'.join(row) for row in rows),
-                        'bbox': bbox, 'confidence': confidence, 'reviewRequired': method != 'pdf_text' or confidence < 0.95})
+                        'bbox': bbox, 'confidence': confidence, 'reviewRequired': True,
+                        **({'cells': cells} if cells is not None else {})})
             except Exception:
                 tables = []
                 table_boxes = []

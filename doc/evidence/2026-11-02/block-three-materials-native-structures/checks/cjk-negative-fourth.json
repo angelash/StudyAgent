@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T03:04:44.637Z",
+  "label": "cjk-negative-fourth",
+  "mode": "product",
+  "exit": 0,
+  "error": null,
+  "inputs": [
+    {
+      "path": "scripts/processing/paper_export_content.py",
+      "sha256": "4d073d732c1a840818707aabbf4179b8ac823ae83b802837e46b28da806aa259"
+    },
+    {
+      "path": "scripts/processing/paper_export_math.py",
+      "sha256": "b0e04abbf73cd9a0ca927e04b67790bd88b239e9eea0a5789f58e8cc7d5be49d"
+    },
+    {
+      "path": "scripts/processing/paper_export_document.py",
+      "sha256": "a40370ea25c10d78c740e1b48911f38fe0d34ba97b89caba053228f2c6141324"
+    },
+    {
+      "path": "scripts/processing/test_paper_export.py",
+      "sha256": "c9a009206ee02a3c41401e811cf55e567f11910ad08074bcc09f171cbd5a188d"
+    },
+    {
+      "path": "apps/api/src/modules/library/paper-export-tex.integration.test.ts",
+      "sha256": "bf813c3cdc38003daf36a57fb42cd65afa1b5b74c582c5fa32fb033deab818b4"
+    }
+  ],
+  "changedDuringRun": []
+}

@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),label=process.argv[2],kind=process.argv[3],book=process.argv[4],runtimeName=process.argv[5];
+if(!/^[a-z0-9-]+$/.test(label??'')||!['downloaded','matrix-downloaded'].includes(kind)||!['practice','answers'].includes(book))throw Error('New label, set and book required');
+if(!/^[a-z0-9]+$/.test(runtimeName??''))throw Error('Runtime required');
+const out=path.join(__dirname,label);if(fs.existsSync(out))throw Error('Preserve original render');fs.mkdirSync(out);
+const input=path.join(root,'data/qa',runtimeName,kind,book+'.docx'),sha=b=>crypto.createHash('sha256').update(b).digest('hex'),before=sha(fs.readFileSync(input));
+const runtime='C:/Users/Lenovo/.cache/codex-runtimes/codex-primary-runtime/dependencies',skill='C:/Users/Lenovo/AppData/Roaming/xiaojiu-ai/profiles/production-profile-v1-8b56a2c7820e132288bd137250466b099804897ae6e38431b9df9c5809eabdfd/codex-home/skills/documents/render_docx.py';
+const temp=path.join(out,'temporary');fs.mkdirSync(temp);const env={...process.env,PYTHONPATH:path.join(runtime,'python'),PATH:[path.join(root,'data/qa/er2/office/program'),path.join(runtime,'native/poppler/Library/bin'),path.join(runtime,'bin'),process.env.PATH??''].join(path.delimiter),TEMP:temp,TMP:temp};
+const log=fs.openSync(path.join(out,'render.log'),'wx'),r=spawnSync('C:/Python310/python.exe',[skill,input,'--output_dir',path.join(out,'pages'),'--dpi','150','--emit_pdf','--verbose'],{cwd:out,env,windowsHide:true,stdio:['ignore',log,log],timeout:240000});fs.closeSync(log);
+const report={at:new Date().toISOString(),input,inputSha256:before,inputUnchanged:sha(fs.readFileSync(input))===before,exit:r.status,error:r.error?.message??null,pages:fs.existsSync(path.join(out,'pages'))?fs.readdirSync(path.join(out,'pages')).filter(x=>/^page-\d+\.png$/.test(x)):[]};fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));if(r.status||!report.inputUnchanged||!report.pages.length)process.exitCode=1;

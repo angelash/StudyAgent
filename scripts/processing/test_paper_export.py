@@ -16,7 +16,7 @@ from docx import Document
 from docx.oxml.ns import qn
 from paper_export_content import load_input, parse_markup, table_grid, preflight, text
 from paper_export_protocol import error_code
-from paper_export_document import Builder, styles, inspect_visual_bounds, inspect_continuation_labels, inspect_text_coverage, reference_section
+from paper_export_document import Builder, styles, inspect_visual_bounds, inspect_continuation_labels, inspect_text_coverage, reference_section, question_body
 from paper_export_math import omml
 
 
@@ -38,13 +38,72 @@ class PaperDocumentSemantics(unittest.TestCase):
         self.assertEqual(result.xpath('string(m:sSubSup/m:sub/m:r/m:t)', namespaces=ns), '1')
         self.assertEqual(result.xpath('string(m:sSubSup/m:sup/m:r/m:t)', namespaces=ns), '2')
 
+    def test_native_matrices_keep_row_column_order_nested_formulas_and_fences(self):
+        markup = '<math><mrow><mo fence="true">(</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msup><mi>x</mi><mn>2</mn></msup></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>3</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>4</mn></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></math>'
+        result = omml(parse_markup(markup, {}, self.fonts)[0])
+        ns = {'m': 'http://schemas.openxmlformats.org/officeDocument/2006/math'}
+        rows = result.xpath('m:d/m:e/m:m/m:mr', namespaces=ns)
+        self.assertEqual([len(row) for row in rows], [2, 2])
+        self.assertEqual(rows[0].xpath('string(m:e[1]/m:f/m:num/m:r/m:t)', namespaces=ns), '1')
+        self.assertEqual(rows[0].xpath('string(m:e[1]/m:f/m:den/m:r/m:t)', namespaces=ns), '2')
+        self.assertEqual(rows[0].xpath('string(m:e[2]/m:sSup/m:e/m:r/m:t)', namespaces=ns), 'x')
+        self.assertEqual(rows[1].xpath('m:e/m:r/m:t/text()', namespaces=ns), ['3', '4'])
+        self.assertEqual(result.xpath('string(m:d/m:dPr/m:begChr/@m:val)', namespaces=ns), '(')
+        self.assertEqual(result.xpath('string(m:d/m:dPr/m:endChr/@m:val)', namespaces=ns), ')')
+        self.assertEqual(result.xpath('string(m:d/m:e/m:m/m:mPr/m:mcs/m:mc/m:mcPr/m:count/@m:val)', namespaces=ns), '2')
+
+    def test_native_matrix_validation_rejects_ragged_rows_orphan_cells_and_unproved_layout(self):
+        cell = '<mtd><mn>1</mn></mtd>'
+        valid = '<mtable><mtr>' + cell * 2 + '</mtr><mtr>' + cell * 2 + '</mtr></mtable>'
+        self.assertIsNotNone(parse_markup('<math>' + valid + '</math>', {}, self.fonts))
+        invalid = [valid.replace('<mtr>' + cell * 2 + '</mtr>', '<mtr>' + cell + '</mtr>', 1),
+                   '<mtr>' + cell + '</mtr>', cell, '<mtable/>', '<mtable><mi>x</mi></mtable>',
+                   valid.replace('<mtable>', '<mtable columnalign="left center">'),
+                   valid.replace('<mtable>', '<mtable rowspacing="8em">'),
+                   valid.replace('<mn>1</mn>', '<mstyle mathcolor="red"><mn>1</mn></mstyle>', 1),
+                   '<mtable><mtr>' + cell * 13 + '</mtr></mtable>',
+                   '<mtable>' + ('<mtr>' + cell + '</mtr>') * 17 + '</mtable>']
+        for value in invalid:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                parse_markup('<math>' + value + '</math>', {}, self.fonts)
+        for value in [cell, valid, '<mstyle scriptlevel="0"><mn>1</mn></mstyle>']:
+            with self.subTest(orphan=value), self.assertRaises(ValueError):
+                parse_markup(value, {}, self.fonts)
+
+    def test_native_delimiters_preserve_closing_brackets_in_office_property_order(self):
+        values = ['<math><mrow><mo fence="true">[</mo><mi>x</mi><mo fence="true">]</mo></mrow></math>',
+                  '<math><mfenced open="[" close="]"><mi>x</mi></mfenced></math>']
+        for markup in values:
+            result = omml(parse_markup(markup, {}, self.fonts)[0])
+            properties = result.find('.//' + qn('m:dPr'))
+            self.assertEqual([ET.QName(node).localname for node in properties], ['begChr', 'sepChr', 'endChr'])
+            self.assertEqual(properties.find(qn('m:endChr')).get(qn('m:val')), ']')
+
+    def test_repeated_question_identity_does_not_claim_continuation_on_its_first_page(self):
+        document = Document(); styles(document, 'test')
+        question_body(document, 3, 5)
+        context = document.tables[0].cell(0, 0)
+        self.assertEqual(context.text, '第3题内容 / 原题5')
+        self.assertEqual(len(document.tables[0].rows[0]._tr.xpath('w:trPr/w:tblHeader')), 1)
+
     def test_plain_prose_after_math_is_not_lost_or_exempt_from_glyph_checks(self):
         with self.assertRaisesRegex(ValueError, '^paper_export_missing_glyph$'):
             parse_markup('<p><math><mi>x</mi></math>\U0010ffff</p>', {}, self.fonts)
 
-    def test_cjk_formula_text_is_explicitly_unsupported_until_font_path_verified(self):
-        with self.assertRaisesRegex(ValueError, '^paper_export_unsupported_markup$'):
-            parse_markup('<math><mtext>汉</mtext></math>', {}, self.fonts)
+    def test_native_formula_text_uses_normal_text_role_and_pinned_serif(self):
+        markup = '<math><mtext>汉</mtext><mo>=</mo><mfrac><mtext>甲</mtext><mtext>乙</mtext></mfrac></math>'
+        result = omml(parse_markup(markup, {}, self.fonts)[0])
+        ns = {'m': 'http://schemas.openxmlformats.org/officeDocument/2006/math', 'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+        runs = result.xpath('.//m:r[m:rPr/m:nor]', namespaces=ns)
+        self.assertEqual([run.xpath('string(m:t)', namespaces=ns) for run in runs], ['汉', '甲', '乙'])
+        for run in runs:
+            self.assertEqual(run.xpath('string(w:rPr/w:rFonts/@w:eastAsia)', namespaces=ns), 'StudyAgent Print Serif')
+        self.assertEqual(result.xpath('string(m:r[2]/w:rPr/w:rFonts/@w:ascii)', namespaces=ns), 'StudyAgent Print Math')
+
+    def test_formula_text_and_identifiers_still_require_their_respective_font_glyphs(self):
+        for markup in ['<math><mtext>缺</mtext></math>', '<math><mi>汉</mi></math>']:
+            with self.subTest(markup=markup), self.assertRaisesRegex(ValueError, '^paper_export_missing_glyph$'):
+                parse_markup(markup, {}, self.fonts)
 
     def test_workbench_tex_delimiters_are_not_printed_as_literal_formula_text(self):
         for value in [r'<p>\(\frac{1}{2}\)</p>', r'<p>\[x^2\]</p>', '<p>$$x+1$$</p>']:
@@ -274,17 +333,17 @@ class ActualPdfGeometry(unittest.TestCase):
         import fitz
         with fitz.open() as pdf:
             for _ in range(3): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
-            pdf[1].insert_text((55, 80), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            pdf[1].insert_text((55, 80), '第1题内容', fontname='china-s', fontsize=9)
             with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
                 inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 3}])
-            pdf[2].insert_text((55, 80), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            pdf[2].insert_text((55, 80), '第1题内容', fontname='china-s', fontsize=9)
             inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 3}])
 
     def test_a_wrong_question_number_cannot_satisfy_continuation_context(self):
         import fitz
         with fitz.open() as pdf:
             for _ in range(2): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
-            pdf[1].insert_text((55, 80), '第2题（跨页接续）', fontname='china-s', fontsize=9)
+            pdf[1].insert_text((55, 80), '第2题内容', fontname='china-s', fontsize=9)
             with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
                 inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 2}])
 
@@ -292,7 +351,7 @@ class ActualPdfGeometry(unittest.TestCase):
         import fitz
         with fitz.open() as pdf:
             for _ in range(2): pdf.new_page(width=210*72/25.4, height=297*72/25.4)
-            pdf[1].insert_text((55, 250), '第1题（跨页接续）', fontname='china-s', fontsize=9)
+            pdf[1].insert_text((55, 250), '第1题内容', fontname='china-s', fontsize=9)
             with self.assertRaisesRegex(ValueError, '^paper_export_source_map_invalid$'):
                 inspect_continuation_labels(pdf, [{'number': 1, 'startPage': 1, 'endPage': 2}])
 
