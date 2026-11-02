@@ -1,0 +1,268 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry5",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 15,
+    "pageEnd": 15,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:portrait-feature-selection",
+      "version": 1,
+      "name": "选一两处能区分人物的特点",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作",
+      "objective": "从人物提供的材料中选择一两处特别且有区分作用的特点",
+      "successCriterion": "解释为何比空泛评价更能帮助辨认，不把外貌标签或贬损当作特点",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:portrait-specific-description",
+      "version": 1,
+      "name": "用具体表现支持人物特点",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作",
+      "objective": "用动作、习惯或一个小例子把选定特点写具体",
+      "successCriterion": "描写与给定材料或真实观察一致；一句好人、很棒不能替代具体依据",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:portrait-name-free-clues",
+      "version": 1,
+      "name": "不点名仍保留有效线索",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作",
+      "objective": "在不写姓名的条件下组织能帮助猜认的几句话或一段话",
+      "successCriterion": "线索具体且相互一致；听众未必猜中时仍检查线索，不以猜中人数单独评写作",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:portrait-paragraph-revision",
+      "version": 1,
+      "name": "按反馈修订人物习作",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "习作",
+      "objective": "开头空两格，写后朗读并核对听众对线索的理解",
+      "successCriterion": "保存原稿与具体修订，段首格式与内容质量分别检查，不以字体截图替代本人习作",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:portrait-feature-selection",
+    "source:chinese:g3:02915a7d:portrait-specific-description",
+    "source:chinese:g3:02915a7d:portrait-name-free-clues",
+    "source:chinese:g3:02915a7d:portrait-paragraph-revision",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看准确原件的完整活动页、插图、提示与要求；此为AI来源核对，不是教师审核、结构独立性批准或真人效果。",
+    "pages": [
+      {
+        "page": 15,
+        "visualChecked": true,
+        "statement": "已查看不出现姓名、选一两处特点、几句话或一段话、开头空两格及写后读给同学听的要求；没有固定字数或必须逐一描写所有方面的要求。"
+      }
+    ]
+  },
+  "scope": {
+    "activityKind": "writing",
+    "title": "猜猜他是谁",
+    "selectedFeatureCount": [
+      1,
+      2
+    ],
+    "nameInCompositionAllowed": false,
+    "firstLineIndentCharacters": 2,
+    "requiredWordCount": null,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "猜猜他是谁：让一两处具体特点成为线索",
+    "activation": {
+      "prompt": "比较“这个同学很好”和“每次借走图书，他会把折起的书角轻轻展平再归还”。哪句更容易让读者想象一个人的表现？为什么？",
+      "expectedObservation": "孩子能指出具体行为比空泛评价提供更多线索，不据一件事推断人物永远如此。",
+      "bridge": "接下来先选一两处特点，再用实际材料支持，写作中不点姓名。"
+    },
+    "concept": {
+      "explanation": "原页要求选择一个同学，用几句话或一段话写一写，不出现姓名，并选择一两点特别之处。特点可以来自外貌、性格、爱好或具体行为，不必全部列齐。用一个动作、习惯或小例子让特点可理解，避免只有评价词。写完检查开头空两格，再读给同伴听，看线索是否清楚；猜错也可能是听众不熟悉材料，应核对表达而不是只数猜中人数。练习可用虚构人物资料卡，必须标明虚构，不把例子冒充对真实同学的观察。",
+      "points": [
+        "选一两点，避免人物清单式堆砌",
+        "用具体表现支撑特点",
+        "不点姓名，但保留有效线索",
+        "段首格式、表达内容和听众理解分别检查"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构资料卡：甲喜欢做纸模型，午休会把边角纸留作零件；乙喜欢朗读，会比较同一句的不同读法。任务是描写甲，不写姓名。",
+      "steps": [
+        {
+          "explanation": "先选择有区分作用的一点：爱做纸模型。不要把乙的朗读习惯写进来。",
+          "board": [
+            "对象：甲",
+            "选择：模型爱好",
+            "排除混写其他资料"
+          ]
+        },
+        {
+          "explanation": "加入支持特点的动作，比“非常有才华”具体。",
+          "board": [
+            "边角纸也留着",
+            "留作模型零件",
+            "行为支持爱好"
+          ]
+        },
+        {
+          "explanation": "形成一小段后，检查不出现姓名、段首空两格、两句是否连贯。请真实听众说明依据；无人参与时不编造猜认结果。",
+          "board": [
+            "段首格式",
+            "姓名检查",
+            "线索是否有据"
+          ]
+        }
+      ],
+      "conclusion": "例如“他爱做纸模型，连边角纸也舍不得扔，会留着当小零件。”只是资料卡写作例子，不是对某位学生的真实评价。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "从资料到特点，再到句子",
+        "headers": [
+          "资料",
+          "可选特点",
+          "应避免的跳跃"
+        ],
+        "rows": [
+          [
+            "把边角纸留作零件",
+            "喜欢做模型，可用动作支持",
+            "不能断言所有手工都做得最好"
+          ],
+          [
+            "比较一句话的不同读法",
+            "喜欢朗读并留意表达",
+            "不能把它混入甲的资料"
+          ],
+          [
+            "有一次帮助同伴整理材料",
+            "这一具体帮助行为",
+            "不能只凭一次写成每次、永远"
+          ]
+        ],
+        "explanation": "表格帮助核对描写是否有依据，不把虚构人物资料当作真实学生档案。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "列出很多外貌、爱好，却没有可区分的具体表现。",
+        "alternatives": [
+          "可能把丰富误解为列得多，也可能还不会选择重点。"
+        ],
+        "verification": "请删到一两点，再给每点找一个有据的动作或小例子。",
+        "correctiveFeedback": "重点少而清楚可以比长清单更有效，不新增字数竞赛。"
+      },
+      {
+        "observation": "同伴猜错，作者就随意添加材料没有写过的事。",
+        "alternatives": [
+          "可能只追求猜中，也可能没有分清修订与编造。"
+        ],
+        "verification": "逐句标出资料依据或真实观察，解释哪条线索仍含糊。",
+        "correctiveFeedback": "修订表达可更具体，但不能靠补造经历证明人物特点；听众了解程度也要考虑。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换用两个特点容易混淆的原创虚构人物资料，或由学生选择一位熟悉同伴并只用可表达的真实观察。",
+      "prompt": "选一两处特点写几句话或一段话，不写姓名。标出支持特点的细节，检查段首空两格，并根据实际朗读意见修订一处。",
+      "expectedStrategy": "先核对对象与信息，再选有区分作用的细节，分别检查内容、姓名条件与格式。"
+    },
+    "summary": {
+      "synthesis": "人物习作靠有依据的具体线索，让读者认识一两处特点。写作不要求面面俱到，猜认结果也不能替代内容核查。",
+      "takeaways": [
+        "特点有区分作用",
+        "具体细节支持判断",
+        "不点名但不含糊",
+        "原稿与修订分别保留"
+      ]
+    },
+    "citations": [
+      {
+        "page": 15,
+        "quote": "选择一两点写下来",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:portrait-feature-selection",
+        "objective": "从人物提供的材料中选择一两处特别且有区分作用的特点",
+        "successCriterion": "解释为何比空泛评价更能帮助辨认，不把外貌标签或贬损当作特点"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:portrait-specific-description",
+        "objective": "用动作、习惯或一个小例子把选定特点写具体",
+        "successCriterion": "描写与给定材料或真实观察一致；一句好人、很棒不能替代具体依据"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:portrait-name-free-clues",
+        "objective": "在不写姓名的条件下组织能帮助猜认的几句话或一段话",
+        "successCriterion": "线索具体且相互一致；听众未必猜中时仍检查线索，不以猜中人数单独评写作"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:portrait-paragraph-revision",
+        "objective": "开头空两格，写后朗读并核对听众对线索的理解",
+        "successCriterion": "保存原稿与具体修订，段首格式与内容质量分别检查，不以字体截图替代本人习作"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "将表达中的判断与具体材料对应，分清原信息和补充想象",
+        "successCriterion": "指出支持关系，不把虚构例子、推测或听众猜测记成事实"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分与未见材料库存，再按真实日期核对表现。讲解、提示或重复材料保留曝光与新的保持锚点；本说明不是已经发生的保持结果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "portrait",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "reuseBoundary": "仅复用列出的原有目标。新增定义与其他课程的等价、先修关系仍需审阅，不自动注册发布图谱或独立题族。",
+    "materialStatus": "讲解、例子与图表已具体编写；独立检查材料、评分金样本、各间隔充分库存、实际口语与习作表现仍待完成。"
+  }
+}

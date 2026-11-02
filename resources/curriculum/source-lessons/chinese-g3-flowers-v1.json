@@ -1,0 +1,330 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry2",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 10,
+    "pageEnd": 11,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:flowers-word-reading",
+      "version": 1,
+      "name": "准确原件第二课字词识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "识读第二课规定的5个目标字，并在词语中核对读音和意义",
+      "successCriterion": "在改变顺序或词语条件后辨认；真实读音需保留音频，放假与衣裳的实际读法分别核对",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:flowers-handwriting",
+      "version": 1,
+      "name": "准确原件第二课13字书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "观察并书写准确原页规定的13个字，说明部件位置与整体结构",
+      "successCriterion": "提供真实手写原件并按字形量规核对，选择字形或键盘输入不替代手写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:flowers-imagined-scene",
+      "version": 1,
+      "name": "诗句线索支持的画面想象",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "从动作、声音和环境线索想象诗中画面，说明想象依据",
+      "successCriterion": "画面保留原文主要条件，能指出至少一处依据；额外联想与文中信息分清",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:flowers-conditional-expression",
+      "version": 1,
+      "name": "条件触发的文学仿写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "表达与交流",
+      "objective": "在给定触发条件后续写有联系的动作和想象",
+      "successCriterion": "前后条件相联系，表达可以不同；不凭套用句式自动得分",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:flowers-imagination-boundary",
+      "version": 1,
+      "name": "诗中说话者与想象依据",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "区分诗中说话者的联想、可观察景物与自然科学事实",
+      "successCriterion": "结合叙述方式解释文学想象，不能用花真的上学作为事实结论，也不因此否定文学表达",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:flowers-word-reading",
+    "source:chinese:g3:02915a7d:flowers-handwriting",
+    "source:chinese:g3:02915a7d:flowers-imagined-scene",
+    "source:chinese:g3:02915a7d:flowers-conditional-expression",
+    "source:chinese:g3:02915a7d:flowers-imagination-boundary",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence",
+    "core:chinese:personification"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看本准确原件的完整课文范围及课后要求；仅为AI原页核对，不代表教师审核、材料独立性或学习效果。",
+    "pages": [
+      {
+        "page": 10,
+        "visualChecked": true,
+        "statement": "已查看完整诗文、景物图示、叙述视角和作者/译者脚注；文学联想与事实边界分别保留。"
+      },
+      {
+        "page": 11,
+        "visualChecked": true,
+        "statement": "已查看5字识读行、13字写字格、三项课后要求和资料袋；未把字音选择当朗读或书写。"
+      }
+    ]
+  },
+  "scope": {
+    "recognitionCharacters": [
+      "荒",
+      "笛",
+      "罚",
+      "假",
+      "裳"
+    ],
+    "writingCharacters": [
+      "落",
+      "荒",
+      "笛",
+      "舞",
+      "狂",
+      "罚",
+      "假",
+      "互",
+      "所",
+      "够",
+      "猜",
+      "扬",
+      "臂"
+    ],
+    "sourceAuthor": "泰戈尔",
+    "sourceTranslator": "郑振铎",
+    "readingMode": "read_aloud_and_imagine",
+    "requiredTaskTypes": [
+      "朗读与画面想象",
+      "注意词句表达",
+      "有关联的仿写"
+    ],
+    "teacherReviewed": false,
+    "audioPronunciationReviewed": false,
+    "handwritingReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "花的学校：让语言支持画面和想象",
+    "prerequisites": [],
+    "activation": {
+      "prompt": "假如你把风想成来做客的朋友，会让它做什么？先把自己的想象与实际看见的风中景物分开。",
+      "expectedObservation": "孩子可以分别说出景物的实际变化和自己赋予它的人的活动。",
+      "bridge": "读诗时也要发现语言怎样把景物和人的生活联系起来；想象需要有诗句线索。"
+    },
+    "concept": {
+      "explanation": "先读出环境和动作，再在脑中连成画面。诗中说话者把花与孩子的学校、游戏和亲情联系起来，这是一种文学想象。说明画面时，应交代哪些来自诗句，哪些是自己的联想。关注词句的表达作用，不能看到动作词就认定拟人：树枝相碰可以是自然动作，声音词也不自动表示人的行为。朗读可帮助表达感受，但自己的感受不必与参考措辞相同。",
+      "points": [
+        "把环境、声音和动作连成有依据的画面",
+        "根据被赋予的活动和情感判断拟人，不以词性替代语义",
+        "仿写保留前后条件联系，允许不同合理想象",
+        "分别核对识读、真实朗读和13字实际书写"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：一阵风吹过，纸风车转了起来。小作者又写纸风车正向路过的云打招呼。",
+      "steps": [
+        {
+          "explanation": "先说明可以观察到的变化：风吹过，纸风车转动。",
+          "board": [
+            "触发条件：一阵风吹过",
+            "可以观察的动作：转动"
+          ]
+        },
+        {
+          "explanation": "再找作者增加的人的活动：向云打招呼。把这一处与普通转动比较。",
+          "board": [
+            "联想：向云打招呼",
+            "判断依据：把人的交往活动赋给物"
+          ]
+        },
+        {
+          "explanation": "换一个条件续写时，先核对条件能否支持后续画面，而不是任意拼接一个热闹动作。",
+          "board": [
+            "条件与后续有联系",
+            "原信息与追加联想分清"
+          ]
+        }
+      ],
+      "conclusion": "画面从线索出发，拟人需要人的活动或情感依据；表达有想象，也要保持条件关系。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "把景物变化和人的活动分清",
+        "headers": [
+          "原创表达",
+          "怎样理解"
+        ],
+        "rows": [
+          [
+            "树枝在风中相碰",
+            "自然动作本身，不能仅因有动词就判拟人"
+          ],
+          [
+            "小树邀请白云来做客",
+            "赋予小树人的交往活动，是拟人表达"
+          ],
+          [
+            "树叶发出沙沙声",
+            "声音描写本身，不自动构成拟人"
+          ]
+        ],
+        "explanation": "三种写法形成可比较的依据；不要把表格当成原诗情节或科学实验记录。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把所有加点词都判成拟人。",
+        "alternatives": [
+          "可能只按动词猜测，也可能没有区分自然动作与人的活动。"
+        ],
+        "verification": "换用自然动作、声音词和人的交往活动三个原创例子，请分别说依据。",
+        "correctiveFeedback": "先问对象被赋予了什么行为；自然物本来会发生的动作，不因有动词就变成拟人。"
+      },
+      {
+        "observation": "仿写有前后两部分，但后面的活动与触发条件没有联系。",
+        "alternatives": [
+          "可能只注意句式外形，也可能还没把前后画面连起来。"
+        ],
+        "verification": "请解释前一个条件怎样引出后面的变化，再给一个不同条件。",
+        "correctiveFeedback": "先把条件说具体，再选择与它有关联的后续画面，允许多种合理写法。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换成晴天的操场、窗边的纸风车或一场小雪，所写对象与原诗不同。",
+      "prompt": "选一个触发条件，写后续画面，并说明其中哪一处是自己的想象；如果使用拟人，指出人的活动依据。",
+      "expectedStrategy": "先核对条件关系，再选择具体动作；把原信息、自然现象和追加联想分别说明。"
+    },
+    "summary": {
+      "synthesis": "有依据的画面想象既关注诗句，也允许个人表达。识读、朗读、书写和仿写分别留证，不能互相顶替。",
+      "takeaways": [
+        "画面与线索相联系",
+        "判断表达看语义，不机械看动词",
+        "仿写要有条件联系",
+        "文学想象不等于生物学事实"
+      ]
+    },
+    "citations": [
+      {
+        "page": 10,
+        "quote": "我真的觉得那些花朵",
+        "usedFor": "concept"
+      },
+      {
+        "page": 11,
+        "quote": "请你照样子写\n一写",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:flowers-word-reading",
+        "objective": "识读第二课规定的5个目标字，并在词语中核对读音和意义",
+        "successCriterion": "在改变顺序或词语条件后辨认；真实读音需保留音频，放假与衣裳的实际读法分别核对"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:flowers-handwriting",
+        "objective": "观察并书写准确原页规定的13个字，说明部件位置与整体结构",
+        "successCriterion": "提供真实手写原件并按字形量规核对，选择字形或键盘输入不替代手写"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:flowers-imagined-scene",
+        "objective": "从动作、声音和环境线索想象诗中画面，说明想象依据",
+        "successCriterion": "画面保留原文主要条件，能指出至少一处依据；额外联想与文中信息分清"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:flowers-conditional-expression",
+        "objective": "在给定触发条件后续写有联系的动作和想象",
+        "successCriterion": "前后条件相联系，表达可以不同；不凭套用句式自动得分"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:flowers-imagination-boundary",
+        "objective": "区分诗中说话者的联想、可观察景物与自然科学事实",
+        "successCriterion": "结合叙述方式解释文学想象，不能用花真的上学作为事实结论，也不因此否定文学表达"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "结合当前诗句与上下文解释词语所表达的情境",
+        "successCriterion": "解释受原语境约束，不机械使用另一个词义"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用动作、环境和叙述线索支持对诗中画面的理解",
+        "successCriterion": "指出依据并说明支持关系，不用插图或个人联想代替正文"
+      },
+      {
+        "id": "goal-8",
+        "atomId": "core:chinese:personification",
+        "objective": "辨认赋予自然物的人的活动或情感，并与自然动作、声音描写比较",
+        "successCriterion": "既能举出拟人依据，也能指出含动作词但不构成拟人的反例"
+      }
+    ],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先完成与本课目标适配及独立题族审核，再预留未见新题。到真实间隔后核查；有讲解、提示或重复曝光时保留记录并重核保持锚点，不把重复原句当作独立保持。"
+    }
+  },
+  "editorNotes": {
+    "teacherReviewed": false,
+    "realLearnerEvidence": false,
+    "automaticPublication": false,
+    "reuseBoundary": "只引用明确列出的已有通用定义。新目标及其与通用目标的关系仍待审核，不自动增加发布知识图或独立题族。",
+    "materialStatus": "此文件是有具体教学内容的原创草稿。检查材料、评分金样本、独立结构、媒体及各间隔储备尚未齐备，不可发布或采用。",
+    "teachingPacing": "按实际时长分次完成，不以一次短学习覆盖全部目标；保留未完成内容及学生自行表达的空间。",
+    "slug": "flowers"
+  }
+}

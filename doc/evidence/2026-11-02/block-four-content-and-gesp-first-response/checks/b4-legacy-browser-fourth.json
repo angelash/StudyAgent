@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-02T05:42:31.028Z",
+  "stats": {
+    "startTime": "2026-11-02T05:41:51.852Z",
+    "duration": 39077.678,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "build": {
+    "version": 1,
+    "apiPort": 4294,
+    "proxyApiPort": 4294,
+    "buildId": "ITKi4U_aqj1Xa59vvKqXN"
+  },
+  "mainTestSha256": "94485b7b85b233c2dffccd96b5be9bac3693a911cc0a241c7fdcc37c63924a83",
+  "runtimeSourceUntouched": true,
+  "scope": "Main-authored test copy; transport and result waits match the existing actual-C++ budget. Application and isolated runner limits are unchanged."
+}

@@ -82,9 +82,9 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' fifth textbook a
     await f.database.commit(await f.database.read(), next); await f.database.close(); const cold = new DomainDatabase(f.url); await cold.open(); const state = (await cold.read()).state; await cold.close();
     expect(state.textbookTeachingAdoptions ?? []).toEqual([]); expect(state.studioCourses ?? []).toEqual([]); expect(state.students ?? []).toEqual([]); expect(state.questions).toHaveLength(40);
   });
-  it('refuses an obsolete four-collection33 candidate without silently changing its data or registering another migration', async () => {
+  it('refuses a missing legacy33 adoption index without silently changing the current database', async () => {
     const f = await setup('obsolete', false); await f.database.close(); await sql(f.url, 'DROP INDEX textbook_teaching_adopted_lesson'); const before = await native(f.url), cold = new DomainDatabase(f.url);
     try { await expect(cold.open()).rejects.toThrow('textbook_teaching_schema33_candidate_incomplete'); } finally { await cold.close(); }
-    expect(teachingHash(await native(f.url))).toBe(teachingHash(before)); expect(Number((await sql(f.url, 'SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(33);
+    expect(teachingHash(await native(f.url))).toBe(teachingHash(before)); expect(Number((await sql(f.url, 'SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(35);
   });
 });

@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-02T07:00:08.363Z",
+  "passed": true,
+  "scope": "Two original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-flowers-v1.json",
+      "sha256": "1666bf81592f0943d1c50bb907e1731edc45fc5a8af254dafcc5f8596a059b73",
+      "physicalPages": [
+        10,
+        11
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 102,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "citation_not_in_source",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-asking-v1.json",
+      "sha256": "f9510a78b1a2351b287352682ca0c909f4e3c36bc3ff1b29e78488c645d0b8f2",
+      "physicalPages": [
+        12,
+        13
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 90,
+      "linkedDraftMaterialReferences": 49,
+      "gapCodes": [
+        "target_not_published",
+        "citation_not_in_source",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 105,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json",
+    "sha256": "2a9fe83aa9dda4d3d5679ff3ddeefed49b4ad574f44d1bf6aa1bf11a7d10ac19",
+    "groups": 15,
+    "questions": 105,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

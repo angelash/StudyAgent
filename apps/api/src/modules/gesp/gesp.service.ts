@@ -9,7 +9,8 @@ import { gespCodeSubmissionSchema, gespGuidancePlanCreateSchema, gespGuidancePla
   type GespGuidanceAction, type GespGuidancePlan, type GespGuidancePlanRevision, type GespHintEvent, type GespOverview,
   type GespLearningScopeRevision, type GespProbeSubmissionReceipt, type GespQuestion, type GespQuestionDetail,
   type GespReviewTask, type GespStudentTask, type GespTaskReview, type GespTaskReviewRevision, type GespTeachingPlan,
-  type GespPilotTaskReviewView, type GespTaskProvenance, type GespTaskReviewHistoryItem } from '@study-agent/contracts';
+  type GespPilotTaskReviewView, type GespTaskProvenance, type GespTaskReviewHistoryItem, type GespResponseEvidence,
+  gespTeachingBundleSchema, type GespTeachingCandidateView } from '@study-agent/contracts';
 import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
@@ -97,6 +98,23 @@ export class GespService implements OnModuleDestroy {
         tests: task.tests.map(test => ({ ...test })), review };
     }) };
   }
+  teachingCandidates(user: InMemoryUserAccount, input: unknown): GespTeachingCandidateView {
+    this.assertAccess(user);
+    const query = validate(gespSearchSchema.pick({ level: true }).strict(), input);
+    try {
+      const bytes = readFileSync(this.resource('teaching-candidates-v1.json'));
+      const bundle = gespTeachingBundleSchema.parse(JSON.parse(bytes.toString('utf8')));
+      const atoms = this.data().graph.atoms.filter(atom => atom.level <= 4), tasks = this.studentData().tasks;
+      if (new Set(bundle.lessons.map(row => row.atomId)).size !== atoms.length || new Set(bundle.lessons.map(row => row.id)).size !== 49 ||
+        bundle.lessons.some(row => {
+          const atom = atoms.find(atom => atom.id === row.atomId), task = tasks.find(task => task.id === row.linkedTaskId);
+          return !atom || atom.level !== row.level || !task || task.atomId !== row.atomId || hash(JSON.stringify(task)) !== row.linkedTaskContentSha256 ||
+            JSON.stringify(row.sourceEvidence) !== JSON.stringify(atom.sourceEvidence);
+        })) throw Error('Stale or mismatched teaching candidate');
+      return { contentSha256: hash(bytes), notice: bundle.notice, automaticPublication: false, teacherReviewed: false,
+        lessons: bundle.lessons.filter(row => query.level === undefined || row.level === query.level) };
+    } catch { throw new ServiceUnavailableException('GESP教学候选未安装或与当前来源、试题版本不符，请核对候选包'); }
+  }
   reviewStudentTask(user: InMemoryUserAccount, input: unknown) {
     this.assertAccess(user);
     const command = validate(gespTaskReviewInputSchema, input), task = this.studentData().tasks.find(row => row.id === command.taskId);
@@ -152,11 +170,11 @@ export class GespService implements OnModuleDestroy {
     const scope = this.store.find('gespLearningScopes', { studentId, status: 'active' }), tasks = this.studentData().tasks,
       catalog = tasks.map(task => this.publicTask(task));
     if (!scope) return { studentId, scope: null, scopeHistory: [], notice: this.studentData().notice,
-      tasks: user.role === 'student' ? [] : catalog, availableTasks: catalog, submissions: [], probeSubmissions: [],
+      tasks: user.role === 'student' ? [] : catalog, availableTasks: user.role === 'student' ? [] : catalog, submissions: [], probeSubmissions: [],
       hintEvents: [], guidancePlans: [], reviewTasks: [], capabilities: [] };
     const available = tasks.filter(task => scope.atomIds.includes(task.atomId)).map(task => this.publicTask(task));
-    const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicSubmission(row));
-    const probes = this.store.select('gespProbeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicProbeSubmission(row));
+    const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicSubmission(row, true));
+    const probes = this.store.select('gespProbeSubmissions', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicProbeSubmission(row, true));
     const scopeHistory = this.store.select('gespLearningScopeRevisions', { studentId }).sort((a, b) => a.version - b.version).map(row => this.scopeView(row));
     const hints = this.store.select('gespHintEvents', { studentId }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(row => this.publicHint(row));
     const guidancePlans = this.store.select('gespGuidancePlans', { studentId }).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).map(row => this.publicPlan(row));
@@ -264,12 +282,16 @@ export class GespService implements OnModuleDestroy {
     if (!probe.options.includes(command.answer)) throw new BadRequestException('请选择一个有效选项');
     const status = command.answer === probe.answer ? 'correct' as const : 'incorrect' as const;
     const provenance = this.taskProvenance(task);
+    const evidence = this.responseEvidence(command.studentId, task.id, probe.id);
     const receipt: GespProbeSubmissionReceipt = { id: this.store.nextId('gesp_probe'), studentId: command.studentId, atomId: command.atomId,
       taskId: task.id, probeId: probe.id, dimension: probe.dimension, status, requestKey: command.requestKey, answer: command.answer,
-      provenance,
+      provenance, evidence,
       createdAt: new Date().toISOString(), analysis: status === 'correct' ? (probe.analysis ?? '当前证据支持这一判断。') :
         `当前判断还不一致。请回到题目材料，核对当前知识点的可观察目标：${task.title}。本结果只针对该探针，不直接确定更深原因。` };
-    this.store.append('gespProbeSubmissions', receipt); return this.publicProbeSubmission(receipt);
+    this.store.append('gespProbeSubmissions', receipt);
+    receipt.feedbackHeld = !this.feedbackReleased(command.studentId, task.id);
+    this.scheduleCompletedGroup(command.studentId, task);
+    return this.publicProbeSubmission(receipt);
   }
   async submitCode(user: InMemoryUserAccount, input: unknown) {
     if (user.role !== 'student') throw new ForbiddenException('编程作答必须由当前独立学习身份提交');
@@ -287,19 +309,24 @@ export class GespService implements OnModuleDestroy {
     if (command.hintEventId && (!hint || hint.taskId !== task.id)) throw new BadRequestException('提示记录不属于当前编程任务');
     const review = command.reviewTaskId ? this.store.find('gespReviewTasks', { id: command.reviewTaskId, studentId: command.studentId }) : undefined;
     if (command.reviewTaskId && (!review || review.atomId !== command.atomId || review.taskId !== task.id)) throw new BadRequestException('复测任务不属于当前编程任务');
-    if (review && hint) throw new BadRequestException('间隔复测必须独立完成，请关闭提示记录后重新作答');
+    // A client cannot erase help by omitting a hint identifier or closing its panel.
+    const evidence = this.responseEvidence(command.studentId, task.id, undefined, Boolean(review));
+    if (review && (hint || evidence.hintEventIds.length)) throw new BadRequestException('间隔复测必须独立完成；本题已有提示曝光，请使用新的已审核独立任务');
     if (review && (review.status !== 'scheduled' || Date.parse(review.dueAt) > Date.now())) throw new BadRequestException('复测尚未到期或已经完成');
     const taskContentSha256 = hash(JSON.stringify(task)), tests = review ? this.reviewTests(task, review.stageDay) : task.tests;
     if (review) {
       const testPackSha256 = hash(JSON.stringify(tests));
       const source = this.store.find('gespCodeSubmissions', { id: review.sourceSubmissionId });
-      if (!source || testPackSha256 !== review.testPackSha256 || review.taskContentSha256 && review.taskContentSha256 !== taskContentSha256 ||
+      if (!this.independentResponse(source) || testPackSha256 !== review.testPackSha256 || review.taskContentSha256 && review.taskContentSha256 !== taskContentSha256 ||
         source?.provenance?.taskContentSha256 && source.provenance.taskContentSha256 !== taskContentSha256) {
         throw new ConflictException('复测任务对应的题面或隐藏测试包已变化，请重新完成独立评测后再安排复测');
       }
     }
     const provenance = this.taskProvenance(task, tests);
     const receipt = await this.runCpp(command.source, tests), now = new Date().toISOString(), sourceSha256 = receipt.sourceSha256;
+    const finalEvidence = this.responseEvidence(command.studentId, task.id, undefined, Boolean(review));
+    if (review && finalEvidence.hintEventIds.length) throw new ConflictException('运行期间已有提示曝光，本次不能计入独立保持证据');
+    const hintLevel = Math.max(0, ...this.store.select('gespHintEvents', { studentId: command.studentId, taskId: task.id }).map(row => row.level));
     const status = receipt.passed ? 'passed' as const : receipt.compile?.passed ? 'failed' as const : 'error' as const;
     const row: GespCodeSubmissionReceipt = { id: this.store.nextId('gesp_submission'), studentId: command.studentId, atomId: command.atomId,
       taskId: task.id, sourceSha256, status, createdAt: now, toolchain: receipt.toolchain, compilePassed: Boolean(receipt.compile?.passed),
@@ -308,19 +335,14 @@ export class GespService implements OnModuleDestroy {
         status: test.status, stderr: this.safeDiagnostic(test.stderr).join('\n').slice(0, 2000) })),
       tests: (receipt.tests ?? []).map((test: any) => ({ index: test.index, passed: test.passed,
         status: test.status, exitCode: test.exitCode, durationMs: test.durationMs })), hintEventId: hint?.id ?? null,
-      hintLevel: hint?.level ?? 0, independent: !hint && !review, reviewTaskId: review?.id ?? null };
+      hintLevel, independent: finalEvidence.classification === 'independent', reviewTaskId: review?.id ?? null, evidence: finalEvidence };
     row.provenance = provenance;
     this.store.append('gespCodeSubmissions', row);
+    row.feedbackHeld = !review && !this.feedbackReleased(command.studentId, task.id);
     if (review) {
       review.attemptCount++; review.lastSubmissionId = row.id; review.lastStatus = status;
       if (receipt.passed) { review.status = 'completed'; review.completedSubmissionId = row.id; review.completedAt = now; }
-    } else if (receipt.passed && row.independent) {
-      const latest = this.capabilities(scope.atomIds,
-        [...this.store.select('gespProbeSubmissions', { studentId: command.studentId })].sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
-        [...this.store.select('gespCodeSubmissions', { studentId: command.studentId })].sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
-        this.store.select('gespReviewTasks', { studentId: command.studentId })).find(capability => capability.atomId === command.atomId);
-      if (latest?.state === 'current_evidence_met') this.scheduleReviews(command.studentId, command.atomId, task.id, row.id, now);
-    }
+    } else this.scheduleCompletedGroup(command.studentId, task);
     return this.publicSubmission(row);
   }
   private scopeView(scope: any) { const { confirmedByUserId: _confirmedByUserId, requestKey: _requestKey, ...safe } = scope; return safe; }
@@ -349,7 +371,44 @@ export class GespService implements OnModuleDestroy {
     return { taskContentSha256, testPackSha256: tests ? hash(JSON.stringify(tests)) : null,
       contentReviewVersion: review?.version ?? 0, contentReviewStatus };
   }
-  private publicProbeSubmission(row: GespProbeSubmissionReceipt) { const { requestKey: _requestKey, ...safe } = row; return safe; }
+  private publicProbeSubmission(row: GespProbeSubmissionReceipt, projection = false) {
+    const { requestKey: _requestKey, feedbackHeld: _held, ...safe } = row;
+    if (row.feedbackHeld && !(projection && this.feedbackReleased(row.studentId, row.taskId))) {
+      return { ...safe, status: 'recorded' as const, analysis: '首答已保存。完成本题的理解、跟踪和代码首答后一起查看反馈；也可结束首组并获取提示。', feedbackState: 'held' as const };
+    }
+    return safe;
+  }
+  private taskResponses(studentId: string, taskId: string) {
+    return [...this.store.select('gespProbeSubmissions', { studentId, taskId }),
+      ...this.store.select('gespCodeSubmissions', { studentId, taskId }).filter(row => !row.reviewTaskId)];
+  }
+  private feedbackReleased(studentId: string, taskId: string) {
+    const rows = this.taskResponses(studentId, taskId);
+    // Legacy responses already exposed feedback. They cannot become a fresh independent group.
+    if (rows.some(row => row.evidence?.policy !== 'gesp-first-group-v2') || this.store.select('gespHintEvents', { studentId, taskId }).length) return true;
+    const task = this.studentData().tasks.find(row => row.id === taskId);
+    return Boolean(task && task.probes.every(probe => rows.some(row => 'probeId' in row && row.probeId === probe.id)) &&
+      rows.some(row => 'sourceSha256' in row));
+  }
+  private scheduleCompletedGroup(studentId: string, task: PilotTask) {
+    const probes = this.store.select('gespProbeSubmissions', { studentId }).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+    const submissions = this.store.select('gespCodeSubmissions', { studentId }).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+    const capability = this.capabilities([task.atomId], probes, submissions).at(0);
+    const code = submissions.find(row => row.taskId === task.id && this.independentResponse(row) && !row.reviewTaskId);
+    if (capability?.state === 'current_evidence_met' && code) this.scheduleReviews(studentId, task.atomId, task.id, code.id, code.createdAt);
+  }
+  private responseEvidence(studentId: string, taskId: string, probeId?: string, retention = false): GespResponseEvidence {
+    const hintEventIds = this.store.select('gespHintEvents', { studentId, taskId }).map(row => row.id);
+    const priorResponseIds = probeId
+      ? this.store.select('gespProbeSubmissions', { studentId, taskId, probeId }).map(row => row.id)
+      : this.store.select('gespCodeSubmissions', { studentId, taskId }).filter(row => !row.reviewTaskId).map(row => row.id);
+    const feedbackExposureIds = this.feedbackReleased(studentId, taskId) ? this.taskResponses(studentId, taskId).map(row => row.id) : [];
+    return { policy: 'gesp-first-group-v2', classification: hintEventIds.length ? 'assisted' : retention ? 'retention' : priorResponseIds.length ? 'practice' : feedbackExposureIds.length ? 'assisted' : 'independent',
+      priorResponseIds, hintEventIds, feedbackExposureIds };
+  }
+  private independentResponse(row: any) {
+    return row?.evidence?.policy === 'gesp-first-group-v2' && row.evidence.classification === 'independent';
+  }
   private capabilities(atomIds: string[], probes: any[], submissions: any[], reviews: any[] = []) {
     return atomIds.map(atomId => {
       const task = this.studentData().tasks.find(row => row.atomId === atomId), contentSha256 = task ? hash(JSON.stringify(task)) : null,
@@ -361,13 +420,16 @@ export class GespService implements OnModuleDestroy {
         invalidatedEvidenceIds = [...probes.filter(row => row.atomId === atomId && !compatible(row)),
           ...submissions.filter(row => row.atomId === atomId && !compatible(row)),
           ...reviews.filter((row: any) => row.atomId === atomId && !compatibleReviews.includes(row))].map(row => row.id);
-      const latestProbe = (dimension: string) => compatibleProbes.find(row => row.dimension === dimension);
-      const latestCode = compatibleSubmissions.find(row => !row.reviewTaskId), understanding = latestProbe('understanding'), procedure = latestProbe('procedure'),
+      const latestProbe = (dimension: string) => compatibleProbes.find(row => row.dimension === dimension && this.independentResponse(row))
+        ?? compatibleProbes.find(row => row.dimension === dimension);
+      const latestCode = compatibleSubmissions.find(row => !row.reviewTaskId && this.independentResponse(row)) ?? compatibleSubmissions.find(row => !row.reviewTaskId), understanding = latestProbe('understanding'), procedure = latestProbe('procedure'),
         atomReviews = compatibleReviews, completedReviews = atomReviews.filter(row => row.status === 'completed'),
         latestReview = [...atomReviews].sort((left, right) => left.dueAt.localeCompare(right.dueAt)).at(-1),
-        implementationStatus = latestCode?.status === 'passed' && latestCode.independent === false ? 'assisted_pass' : latestCode?.status,
-        dimensions = [{ dimension: 'understanding', status: understanding?.status ?? 'unknown', attempts: compatibleProbes.filter(row => row.dimension === 'understanding').length },
-          { dimension: 'procedure', status: procedure?.status ?? 'unknown', attempts: compatibleProbes.filter(row => row.dimension === 'procedure').length },
+        responseStatus = (row: any, passed: string) => !row ? 'unknown' : row.feedbackHeld && !this.feedbackReleased(row.studentId, row.taskId) ? 'recorded' : row.status !== passed ? row.status : this.independentResponse(row) ? row.status
+          : row.evidence?.classification === 'assisted' ? `assisted_${passed === 'passed' ? 'pass' : 'correct'}` : row.evidence ? `practice_${passed === 'passed' ? 'pass' : 'correct'}` : 'independence_unknown',
+        implementationStatus = responseStatus(latestCode, 'passed'),
+        dimensions = [{ dimension: 'understanding', status: responseStatus(understanding, 'correct'), attempts: compatibleProbes.filter(row => row.dimension === 'understanding').length },
+          { dimension: 'procedure', status: responseStatus(procedure, 'correct'), attempts: compatibleProbes.filter(row => row.dimension === 'procedure').length },
           { dimension: 'implementation', status: implementationStatus ?? 'unknown', attempts: compatibleSubmissions.filter(row => !row.reviewTaskId).length },
           { dimension: 'retention', status: completedReviews.length ? 'correct' : latestReview?.lastStatus ?? (atomReviews.length ? 'scheduled' : 'unknown'),
             attempts: atomReviews.reduce((sum, review) => sum + review.attemptCount, 0) }];
@@ -379,18 +441,22 @@ export class GespService implements OnModuleDestroy {
       else if (procedure?.status === 'incorrect') { hypothesis = '状态跟踪或步骤执行假设仍待验证'; nextAction = '用状态表逐步跟踪相同小例子，再换输入复测。'; }
       else if (latestCode?.status === 'error') { hypothesis = '编译或语言形式问题是当前表面障碍'; nextAction = '根据编译器诊断修复语法或类型问题，再运行原有边界。'; }
       else if (latestCode?.status === 'failed') { hypothesis = '边界、输入输出或实现细节假设仍待验证'; nextAction = '保留概念与跟踪证据，分别检查最小输入、边界和输出格式。'; }
-      else if (implementationStatus === 'assisted_pass') { hypothesis = '提示后已经能够完成，但独立性仍待验证'; nextAction = '关闭提示后使用不同隐藏边界独立重做；此次结果继续标为提示后证据。'; }
+      else if (implementationStatus === 'assisted_pass') { hypothesis = '提示后已经能够完成，但独立性仍待验证'; nextAction = '此次保留为辅助练习；需要新的已审核任务验证独立完成，关闭提示不会清除曝光。'; }
+      else if (core.some(row => ['practice_pass', 'practice_correct', 'assisted_correct', 'independence_unknown'].includes(row.status))) {
+        hypothesis = '练习结果已保存，首答或帮助边界仍不支持独立通过'; nextAction = '保留首次响应和原有反馈，使用新的已审核任务继续核对；原题重做不能替代独立后测。';
+      }
       else if (state === 'current_evidence_met') { hypothesis = '当前三个维度均有独立通过证据'; nextAction = completedReviews.length ? '已保留延迟保持证据；继续用新任务验证陌生情境迁移。' : '已生成1、3、7、14日复测，到期使用不同隐藏边界验证保持。'; }
       return { atomId, state, dimensions, hypothesis, nextAction,
         independentEvidenceIds: this.latestEvidenceIds(atomId, compatibleProbes, compatibleSubmissions),
         invalidatedEvidenceIds, evidenceNotice: invalidatedEvidenceIds.length
-          ? `${invalidatedEvidenceIds.length}条证据来自已变化的题面或测试版本，保留在历史中但不计入当前能力。` : '' };
+          ? `${invalidatedEvidenceIds.length}条证据来自已变化的题面或测试版本，保留在历史中但不计入当前能力。` :
+          [...compatibleProbes, ...compatibleSubmissions].some(row => row.evidence?.policy !== 'gesp-first-group-v2') ? '历史回执保持；缺少首组反馈边界的旧结果不自动计为独立证据。' : '' };
     });
   }
   private latestEvidenceIds(atomId: string, probes: any[], submissions: any[]) {
-    const probeIds = ['understanding', 'procedure'].map(dimension => probes.find(row => row.atomId === atomId && row.dimension === dimension)?.id);
-    const code = submissions.find(row => row.atomId === atomId && !row.reviewTaskId);
-    return [...probeIds, code?.id].filter((id): id is string => typeof id === 'string');
+    const probeIds = ['understanding', 'procedure'].map(dimension => probes.find(row => row.atomId === atomId && row.dimension === dimension && this.independentResponse(row))?.id);
+    const code = submissions.find(row => row.atomId === atomId && !row.reviewTaskId && this.independentResponse(row));
+    return [...probeIds, this.independentResponse(code) ? code?.id : undefined].filter((id): id is string => typeof id === 'string');
   }
   private reviewTests(task: PilotTask, stageDay: number) {
     const ranked = task.tests.map((test, index) => ({ test, rank: createHash('sha256').update(`${task.id}:${stageDay}:${index}:${test.input}:${test.expected}`).digest('hex') }))
@@ -422,7 +488,13 @@ export class GespService implements OnModuleDestroy {
     const revision: GespLearningScopeRevision = { ...structuredClone(scope), id: this.store.nextId('gesp_scope_revision'), scopeId: scope.id };
     this.store.append('gespLearningScopeRevisions', revision);
   }
-  private publicSubmission(row: GespCodeSubmissionReceipt) { const { source: _source, requestKey: _requestKey, ...safe } = row; return safe; }
+  private publicSubmission(row: GespCodeSubmissionReceipt, projection = false) {
+    const { source: _source, requestKey: _requestKey, feedbackHeld: _held, ...safe } = row;
+    if (row.feedbackHeld && !(projection && this.feedbackReleased(row.studentId, row.taskId))) {
+      return { ...safe, status: 'recorded' as const, compilePassed: null, compileDiagnostics: [], runtimeDiagnostics: [], tests: [], feedbackState: 'held' as const };
+    }
+    return safe;
+  }
   private runCpp(source: string, tests: Array<{ input: string; expected: string }>) {
     const script = resolve(workspaceRoot(), 'scripts/gesp/run_submission.cjs');
     return new Promise<any>((resolvePromise, reject) => {

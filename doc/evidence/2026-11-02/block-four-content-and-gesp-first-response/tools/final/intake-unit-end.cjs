@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{spawnSync}=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),dir=path.join(root,'data/qa/b4-source-unit-end-first'),source='H:/ChinaTextbook/小学/语文/统编版/义务教育教科书·语文三年级上册.pdf';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+if(fs.existsSync(dir))throw Error('Preserve earlier intake');
+const sourceSha256=sha(fs.readFileSync(source));if(sourceSha256!=='02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf')throw Error('Exact source differs');
+fs.mkdirSync(dir);
+const result=spawnSync(path.join(root,'data/tools/poppler-windows-26.09.0-0/poppler-26.09.0/Library/bin/pdftoppm.exe'),['-f','14','-l','17','-r','110','-png',source,path.join(dir,'page')],{windowsHide:true,encoding:'utf8',timeout:60000});
+fs.writeFileSync(path.join(dir,'render.log'),result.stdout+result.stderr,{flag:'wx'});if(result.status!==0)throw Error('Source render failed');
+const pages=[14,15,16,17].map(page=>{const name='page-'+String(page).padStart(3,'0')+'.png';return{physicalPage:page,path:name,sha256:sha(fs.readFileSync(path.join(dir,name)))};});
+fs.writeFileSync(path.join(dir,'render-receipt.json'),JSON.stringify({at:new Date().toISOString(),sourceSha256,readOnlySource:true,pages,visualReviewStillRequired:true,teacherReviewed:false},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({renderedPages:pages.length,readOnly:true}));

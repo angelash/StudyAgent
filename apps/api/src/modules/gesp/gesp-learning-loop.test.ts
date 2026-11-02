@@ -47,9 +47,6 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     store.transaction(() => { store.find('gespReviewTasks', { id: first.id })!.dueAt = new Date(Date.now() - 1).toISOString(); });
     workspace = service.studentWorkspace(learner, studentId);
     expect(workspace.reviewTasks.find((review: any) => review.id === first.id)!.due).toBe(true);
-    const reviewHint = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });
-    await expect(service.submitCode(learner, { studentId, atomId, source: 'int main(){return 1;}', requestKey: randomUUID(),
-      reviewTaskId: first.id, hintEventId: reviewHint.id })).rejects.toThrow('独立完成');
     const review = await service.submitCode(learner, { studentId, atomId, source: 'int main(){return 0;}', requestKey: randomUUID(), reviewTaskId: first.id });
     expect(review).toMatchObject({ status: 'passed', independent: false, reviewTaskId: first.id });
     expect(review.provenance).toEqual(expect.objectContaining({ contentReviewStatus: 'unreviewed', contentReviewVersion: 0,
@@ -143,5 +140,59 @@ describe('GESP assisted hints, confirmed guidance and delayed reviews', () => {
     expect(active).toMatchObject({ status: 'active', version: 2 });
     expect(service.studentWorkspace(learner, studentId).guidancePlans[0].status).toBe('active');
     expect(store.select('gespGuidancePlanRevisions', { planId: draft.id })).toHaveLength(2);
+  });
+
+  it('keeps the first probe response without leaking feedback or counting a repeat as fresh evidence', () => {
+    const probe = task.probes[0], first = service.submitProbe(learner, { studentId, atomId, probeId: probe.id,
+      answer: probe.options.find(value => value !== probe.answer)!, requestKey: randomUUID() });
+    const command = { studentId, atomId, probeId: probe.id, answer: probe.answer, requestKey: randomUUID() };
+    const repeat = service.submitProbe(learner, command);
+    expect(first.evidence).toMatchObject({ classification: 'independent', priorResponseIds: [] });
+    expect(repeat.evidence).toMatchObject({ classification: 'practice', priorResponseIds: [first.id] });
+    expect(service.submitProbe(learner, command)).toEqual(repeat);
+    const capability = service.studentWorkspace(learner, studentId).capabilities[0];
+    expect(capability.state).toBe('partial_evidence');
+    expect(capability.independentEvidenceIds).toContain(first.id);
+    expect(capability.independentEvidenceIds).not.toContain(repeat.id);
+    expect(store.select('gespProbeSubmissions', { studentId })).toHaveLength(2);
+  });
+
+  it('records all server-observed help even when an older hint or no hint is sent', async () => {
+    const first = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });
+    const second = service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 2, requestKey: randomUUID() });
+    const command = { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() };
+    const omitted = await service.submitCode(learner, command);
+    expect(omitted).toMatchObject({ independent: false, hintEventId: null, hintLevel: 2,
+      evidence: { classification: 'assisted', hintEventIds: [first.id, second.id] } });
+    expect(await service.submitCode(learner, command)).toEqual(omitted);
+    expect(await service.submitCode(learner, { ...command, requestKey: randomUUID(), hintEventId: first.id }))
+      .toMatchObject({ independent: false, hintEventId: first.id, hintLevel: 2 });
+    expect(service.studentWorkspace(learner, studentId).reviewTasks).toHaveLength(0);
+  });
+
+  it('rejects help-exposed retention without trusting an omitted hint reference', async () => {
+    submitProbes();
+    await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
+    const scheduled = store.select('gespReviewTasks', { studentId })[0]; scheduled.dueAt = new Date(Date.now() - 1).toISOString();
+    service.requestHint(learner, { studentId, atomId, taskId: task.id, level: 1, requestKey: randomUUID() });
+    await expect(service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID(),
+      reviewTaskId: scheduled.id })).rejects.toThrow('独立完成');
+    expect(scheduled.status).toBe('scheduled'); expect(scheduled.attemptCount).toBe(0);
+  });
+
+  it('keeps historical receipts unchanged while refusing unrecorded independence', async () => {
+    submitProbes();
+    const passed = await service.submitCode(learner, { studentId, atomId, source: 'int main(){}', requestKey: randomUUID() });
+    const row = store.find('gespCodeSubmissions', { id: passed.id })!; delete row.evidence;
+    const before = JSON.stringify(row), capability = service.studentWorkspace(learner, studentId).capabilities[0];
+    expect(capability.state).not.toBe('current_evidence_met'); expect(capability.independentEvidenceIds).not.toContain(row.id);
+    expect(capability.evidenceNotice).toContain('历史回执保持'); expect(JSON.stringify(row)).toBe(before);
+  });
+
+  it('withholds the unconfirmed task catalog from students while the guardian can still select a scope', () => {
+    store.gespLearningScopes = [];
+    const unconfirmed = service.studentWorkspace(learner, studentId);
+    expect(unconfirmed.scope).toBeNull(); expect(unconfirmed.tasks).toEqual([]); expect(unconfirmed.availableTasks).toEqual([]);
+    expect(service.studentWorkspace(parent, studentId).availableTasks).toHaveLength(49);
   });
 });

@@ -1,0 +1,2446 @@
+{
+  "format": "gesp-teaching-candidates-v1",
+  "status": "editorial_candidate",
+  "automaticPublication": false,
+  "notice": "原创逐目标教学候选：讲解、例题、检查、调试、迁移及保持活动均待教师逐项审阅。参考回答只对教研身份开放；尚未作为学生独立题族或完整审核课程发布。",
+  "teacherReviewed": false,
+  "familyIndependenceReviewed": false,
+  "officialScopeAlignmentReviewed": false,
+  "lessons": [
+    {
+      "id": "gesp-teaching-l1-computer",
+      "atomId": "gesp-cpp.l1.computer",
+      "level": 1,
+      "title": "计算机组成、操作系统与历史",
+      "goal": "区分CPU、内存、输入输出设备并说明一次信息流动",
+      "prerequisiteIds": [],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause01"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-computer-flow",
+      "linkedTaskContentSha256": "8fc872f2f7cb9c0a6cc7d87a26e8040d95735fe5a09165bb60c99d3b8cf6ccfd",
+      "explanation": "CPU执行指令，RAM暂存程序和工作数据，输入与输出设备负责信息进入和呈现。操作系统管理资源；磁盘保存文件。生活流程示例只能解释信息流，不能证明编程能力。",
+      "example": {
+        "prompt": "用键盘计算8与6的和，说明信息路径。",
+        "referenceAnswer": "键盘输入→内存保存8和6→CPU执行加法→内存保存14→显示器呈现14；保存文件还需要存储设备。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "程序关闭后，刚才未保存的草稿为什么可能找不回？",
+        "referenceAnswer": "工作数据可能只在RAM中；应用关闭释放内存，持久保存须写入存储设备。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "同学说“显示器在计算，因为14出现在屏幕上”，错在哪里？",
+        "referenceAnswer": "把输出位置当作处理位置；计算由CPU按指令完成。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "给条码结账过程标出输入、处理、暂存与输出。",
+        "referenceAnswer": "扫码器输入；内存保存商品和价格；CPU累计金额；屏幕或打印机输出。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日不用原图，解释录音保存到文件经过哪些部件。",
+        "referenceAnswer": "话筒输入、内存缓存、CPU编码、存储写文件；播放时读取、解码并经扬声器输出。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-ide",
+      "atomId": "gesp-cpp.l1.ide",
+      "level": 1,
+      "title": "编辑、编译、运行与调试环境",
+      "goal": "独立创建保存源文件并区分编译错误和运行结果",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause02"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-ide-compile-run",
+      "linkedTaskContentSha256": "0ec7cdf0056d60f42314c82a9b2a94704cbfbd412a548fb840ec7cb610c0fedc",
+      "explanation": "源文件是文本。编辑并保存后，编译器检查语法并生成程序，运行时才处理输入。调试器用于观察执行状态。旧可执行文件存在不代表最新源码已编译成功。",
+      "example": {
+        "prompt": "保存新代码后编译报缺分号，却还能运行旧输出，如何解释？",
+        "referenceAnswer": "新编译失败；IDE可能运行上次成功生成的程序。修语法、重新编译，再核对运行对象和输出。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "编译成功但输出数量错误，首先检查哪个阶段？",
+        "referenceAnswer": "检查运行中的输入、控制流程和输出逻辑；语法可通过但逻辑仍会错。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "改了源码却没保存就编译，结果为何未变化？",
+        "referenceAnswer": "编译器可能读取磁盘上的旧源码；先保存并核对实际构建输入。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "在陌生IDE中设计“新建→保存→编译→输入→输出”的核对清单。",
+        "referenceAnswer": "记录源码路径、保存状态、编译回执、程序路径和一组预测输入输出。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日区分编译错误、运行错误和错误答案，各举一例。",
+        "referenceAnswer": "缺分号；合法代码运行时除零；加法写成减法。除零只作静态分析，不实际执行。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-io",
+      "atomId": "gesp-cpp.l1.io",
+      "level": 1,
+      "title": "输入输出与赋值",
+      "goal": "按指定次序读取输入并精确输出所需格式",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.ide",
+        "gesp-cpp.l1.variables"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause03"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-sum-two",
+      "linkedTaskContentSha256": "c811fdf1175683e40bcc8e8b612e7d5c77a4d80c6ed4fbb9d9e6d2fbb57ad780",
+      "explanation": "cin读取输入，cout写输出，赋值把右侧的当前值存入左侧。空白通常分隔格式化输入。评测只接受题目要求的内容；整数相加前需选择足够范围的类型。",
+      "example": {
+        "prompt": "输入12 5，先读入a和b，再输出a-b；列出状态。",
+        "referenceAnswer": "a=12，b=5，a-b=7；输出7及换行，不额外输出“请输入”。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "执行cin>>b>>a后，输入12 5，a-b是多少？",
+        "referenceAnswer": "b=12，a=5，因此a-b=-7；变量名不决定读入顺序。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "输出答案前写了cout<<\"答案是\"，本机看着正确却未通过。",
+        "referenceAnswer": "输出了题面未要求的文字；保留规定格式并检查空格、换行。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "车票每张7元，读入购买张数，说明输入、运算和输出。",
+        "referenceAnswer": "用足够范围整数读取张数，计算7×张数，按约定只输出总价。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日给一段“先读b后读a”的程序，先预测再核对结果。",
+        "referenceAnswer": "逐个输入对应到实际读取目标，列状态再计算；不能照搬原例答案。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-identifiers",
+      "atomId": "gesp-cpp.l1.identifiers",
+      "level": 1,
+      "title": "标识符、关键字、常量和表达式",
+      "goal": "能判断名称是否合法并区分关键字、变量名和表达式",
+      "prerequisiteIds": [],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause04"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-identifier-validity",
+      "linkedTaskContentSha256": "51359ba011c27697f23303955d817b256061bfc087fef40113c9db95fb6030f6",
+      "explanation": "名称首字符可为字母或下划线，后续可含数字；C++区分大小写，关键字不能作变量名。cout是标准库对象名而非语言关键字。课堂普通名称应避免保留标识符。",
+      "example": {
+        "prompt": "比较score2、2score、while、Score2。",
+        "referenceAnswer": "score2与Score2可作普通变量名且不同；2score首字符不合法；while是关键字。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "total-score能否表示一个变量名？",
+        "referenceAnswer": "不能；连字符被解析为减号。可用total_score。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "定义int Score=3，却输出score，为什么不能把大小写忽略？",
+        "referenceAnswer": "两个名称不同；使用未声明的score会编译失败。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "给温度、最低温度和学生人数命名，解释选择。",
+        "referenceAnswer": "例如temperature、min_temperature、student_count；名称合法且能表达各自含义。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日判断item_7、7item和return，并说明规则。",
+        "referenceAnswer": "item_7合法；7item以数字开头；return是关键字。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-variables",
+      "atomId": "gesp-cpp.l1.variables",
+      "level": 1,
+      "title": "变量定义、初始化与赋值",
+      "goal": "用状态表说明每次赋值后变量的值",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.identifiers"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause05"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-variable-state",
+      "linkedTaskContentSha256": "775e09182ffb4759277bbc2e625896c785baff2810f31814c30af74d7d043c4c",
+      "explanation": "变量有类型和当前值。赋值按执行时右侧的值更新左侧；初始化先给确定值。交换两个值时，应防止先覆盖后丢失旧值。",
+      "example": {
+        "prompt": "a=4,b=9；执行t=a;a=b;b=t。",
+        "referenceAnswer": "t保存4，a变9，b变4；临时变量保护了旧a。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "a=4；执行a=a+2是否矛盾？",
+        "referenceAnswer": "不矛盾，这是赋值：右侧先求6，再把a更新为6。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "写成a=b;b=a后两个数相同，哪里丢了数据？",
+        "referenceAnswer": "第一句覆盖旧a；第二句读到新的a。用临时变量保存旧值。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "两个容器的水量记录要交换，写出不丢旧量的状态表。",
+        "referenceAnswer": "先保存第一项到临时记录，再复制第二项到第一项，最后把临时记录复制到第二项。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日跟踪x=2;y=x;x=8;y=y+1。",
+        "referenceAnswer": "最后x=8，y=3；复制数值不会让y持续绑定x。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-types",
+      "atomId": "gesp-cpp.l1.types",
+      "level": 1,
+      "title": "整型、浮点型、字符型和布尔型",
+      "goal": "为数据选择int、long long、double、char、bool并解释范围",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause09"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-type-format",
+      "linkedTaskContentSha256": "4df4dc0adbdbd56a4bdb664f2cbaaf26403e9110751ba8275dada6f0218f1f26",
+      "explanation": "int和long long表示不同范围的整数，double表示有限精度浮点数，char表示字符，bool表示真假。输出格式与存储类型是两件事；浮点数不是精确的任意小数。",
+      "example": {
+        "prompt": "保存3000000000、字符Q和温度18.75，如何选类型？",
+        "referenceAnswer": "整数用long long，字符用char，温度可用double；不要假定int能容纳30亿。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "把double设为两位小数输出，能说明其内部恰好等于该十进制数吗？",
+        "referenceAnswer": "不能；格式化只控制显示，浮点数通常是近似表示。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "先用int相加再赋给long long，为什么仍可能溢出？",
+        "referenceAnswer": "右侧可能先按int计算；应在运算前使用足够范围的操作数类型。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "设计商品数量、单个类别字母、是否缺货的数据类型。",
+        "referenceAnswer": "数量选足够范围整数，类别用char，缺货状态用bool；价格若需精确分值可用整数分。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明字符'0'与整数0有何不同。",
+        "referenceAnswer": "一个是字符编码的值，一个是数值零；不能凭显示外观互换。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-arithmetic",
+      "atomId": "gesp-cpp.l1.arithmetic",
+      "level": 1,
+      "title": "算术运算、优先级与自增自减",
+      "goal": "逐步跟踪带括号、优先级和自增的表达式",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables",
+        "gesp-cpp.l1.types"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause05"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause06"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-arithmetic-priority",
+      "linkedTaskContentSha256": "d5a9e77c8ca5c7e235d9c2e2e982c516c0c189fa47da89d69ed072477b3552ea",
+      "explanation": "先按括号和优先级分组，再计算。整型与浮点型的除法语义不同。自增会修改变量；初学跟踪应把修改分开，避免同一表达式中不清楚的求值顺序。",
+      "example": {
+        "prompt": "a=3,b=5,c=2，比较a+b*c与(a+b)*c。",
+        "referenceAnswer": "前者先乘得13；后者先括号得16。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "x=4；先y=x；再x++，最后x、y是多少？",
+        "referenceAnswer": "x=5，y=4；复制在自增之前完成。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "想把总和乘3，却写成a+b*3。",
+        "referenceAnswer": "当前只乘b；若意图是总和，应写(a+b)*3并用不同a值核对。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "每盒4支笔，买n盒再加散装3支，写数量表达式并说明。",
+        "referenceAnswer": "4*n+3；先算整盒总支数，再加散装支数。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日计算18-6/3与(18-6)/3并解释。",
+        "referenceAnswer": "先除法得16；先括号得4。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-division",
+      "atomId": "gesp-cpp.l1.division",
+      "level": 1,
+      "title": "整除与求余",
+      "goal": "能解释商与余数并独立处理数位或奇偶任务",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause06"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-division",
+      "linkedTaskContentSha256": "cf3debde89be8d131d1efb89435f5c3b594b2f2c02639a522dc4230d17732268",
+      "explanation": "非负整数a除以正整数b时，a=(a/b)*b+a%b，且余数在0到b-1。整数除法截去小数部分。除数必须非零；负数规则应另行明确。",
+      "example": {
+        "prompt": "29本书每盒放6本，整盒和剩余各多少？",
+        "referenceAnswer": "29/6=4，29%6=5；29=4×6+5。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "当a小于b时，商和余数是什么？",
+        "referenceAnswer": "商为0，余数为a；前提为非负a和正b。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "用a/b当作剩余数量。",
+        "referenceAnswer": "商表示整份数，余数用a%b；用能整除与不能整除两组输入反证。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "把非负秒数转换为整分钟与剩余秒数。",
+        "referenceAnswer": "分钟=s/60，秒=s%60；核对0、59、60、61。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日用等式核对47除以8的结果。",
+        "referenceAnswer": "商5余7，47=5×8+7，且0≤7<8。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-relations",
+      "atomId": "gesp-cpp.l1.relations",
+      "level": 1,
+      "title": "关系运算与相等比较",
+      "goal": "用边界值判断六种比较表达式真假",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.variables"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-compare",
+      "linkedTaskContentSha256": "b56fee8d703218ce8de9d72dde79c03c38324821bd23ce281e3bf6d91714d770",
+      "explanation": "比较表达式产生真假。==判断相等，=用于赋值。闭区间包含两端，开区间不包含端点；必须用端点附近的数据核查。",
+      "example": {
+        "prompt": "判断x是否至少10，测试9、10、11。",
+        "referenceAnswer": "使用x>=10，分别为假、真、真；x>10漏掉10。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "a==b和a=b分别做什么？",
+        "referenceAnswer": "前者比较，后者赋值；把赋值放进条件可能改变数据。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "及格线60却写score>60。",
+        "referenceAnswer": "恰好60被排除；若规则是至少60应使用>=并测试59、60、61。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "身高不超过120可享优惠，翻译并选边界测试。",
+        "referenceAnswer": "h<=120；测试119、120、121，明确单位。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明x!=0与x<0是否等价。",
+        "referenceAnswer": "不等价，正数满足前者而不满足后者；举x=2即可。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-logic",
+      "atomId": "gesp-cpp.l1.logic",
+      "level": 1,
+      "title": "逻辑与、或、非",
+      "goal": "把复合条件翻译为逻辑表达式并举反例",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.relations"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause07"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-logic-bits",
+      "linkedTaskContentSha256": "c4f5a5dec450364e9acf63fda7bcb21d56f24bdd065de3e1cd6f99d1dd064a60",
+      "explanation": "&&要求两边同时为真，||允许至少一边为真，!反转真假。把自然语言条件先拆成简单判断，再组合；C++不能把链式数学不等式原样照写。",
+      "example": {
+        "prompt": "判断x是否在闭区间3到8。",
+        "referenceAnswer": "x>=3 && x<=8；测试2、3、8、9。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "为什么3<=x<=8不能表达这个区间？",
+        "referenceAnswer": "先比较的布尔结果会再与8比较，语义不是两个边界同时满足。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "“小于0或大于100”误写成x<0&&x>100。",
+        "referenceAnswer": "两个范围不能同时发生，应使用||；用-1与101核对。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "借书须持有效卡且未欠书；把两个条件组合并举拒绝例。",
+        "referenceAnswer": "valid_card && !has_overdue；任一必要条件不满足均拒绝。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日比较a||b与!( !a && !b )。",
+        "referenceAnswer": "对四种真假组合列真值表，结果相同；解释至少一个为真。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-sequence",
+      "atomId": "gesp-cpp.l1.sequence",
+      "level": 1,
+      "title": "顺序结构与程序状态跟踪",
+      "goal": "按执行顺序用状态表说明每一步输入、计算和输出",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.io",
+        "gesp-cpp.l1.arithmetic"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause10"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-swap",
+      "linkedTaskContentSha256": "7a3b692b528218bbdaf942b3b6b47f4a0686bee106c7449be501e52bbad457e8",
+      "explanation": "顺序结构按照语句次序读取当前状态。每句执行后立即更新状态表，后句读取更新后的值。不要用最后输出倒推未执行的步骤。",
+      "example": {
+        "prompt": "x=2;y=5;x=x+y;y=x-y，逐步跟踪。",
+        "referenceAnswer": "初始2,5；第三句后7,5；第四句后7,2。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "交换最后两句，结果还一样吗？",
+        "referenceAnswer": "y先变-3，然后x变-1；执行次序影响结果。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "状态表每行都抄初始x，后续答案错误。",
+        "referenceAnswer": "每行从上一行的状态出发，仅更新本句修改的变量。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "模拟账户先存入20再扣5，指出每一步的余额。",
+        "referenceAnswer": "若初始为b，依次为b+20、b+15；读取和更新顺序必须明确。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日跟踪a=6;b=1;b=a-b;a=b+2。",
+        "referenceAnswer": "b变5，a再变7；最后7,5。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-branch",
+      "atomId": "gesp-cpp.l1.branch",
+      "level": 1,
+      "title": "if、switch 与条件选择",
+      "goal": "独立编写含互斥条件的分支并验证边界",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.logic",
+        "gesp-cpp.l1.sequence"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause11"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-sign",
+      "linkedTaskContentSha256": "be3858f6ebf47d242f27e7f334a00db226dbbaf643b73e1745822a0cb62e2c85",
+      "explanation": "if只在条件真时执行分支；if-else二选一。多个独立if可能执行多次。switch按标签跳转，常需break避免继续落入后续case。",
+      "example": {
+        "prompt": "用互斥分支判断负数、零、正数。",
+        "referenceAnswer": "if(x<0)…else if(x==0)…else…；每个输入只进入一个分支。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "两个独立if的条件都真时会怎样？",
+        "referenceAnswer": "两个分支都可执行；不能当作互斥链。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "switch的case1没有break，后面又输出case2内容。",
+        "referenceAnswer": "发生贯穿；按要求添加break，或明确标注确有意的贯穿。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "按0、1、2类票分别计价，设计互斥分支和非法值处理。",
+        "referenceAnswer": "逐一匹配三种合法分类，余下进入错误分支；测试全部分支。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日比较“两个if”和“if-else”在相同条件下的路径。",
+        "referenceAnswer": "画路径或列条件表，指出前者可能执行两次，后者只能选择一个分支。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-loop",
+      "atomId": "gesp-cpp.l1.loop",
+      "level": 1,
+      "title": "for、while、do-while",
+      "goal": "说明初值、条件、更新及终止原因并独立实现累加",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause12"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-sum-range",
+      "linkedTaskContentSha256": "27183d9d0f419edb42fb6652328c1cfb61521967c6037a2d0981355c459ff1ba",
+      "explanation": "循环包含初始化、继续条件、循环体和更新。for与while可执行零次；do-while先执行体，再检查。终止须有能推进状态的更新。",
+      "example": {
+        "prompt": "用s=0，i从1到4，累加s+=i。",
+        "referenceAnswer": "s依次为1、3、6、10；下一次i=5不再满足i<=4。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "n=0时，for(i=1;i<=n;i++)执行几次？",
+        "referenceAnswer": "零次；初始条件已为假。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "while(i<=n)里忘记i++。",
+        "referenceAnswer": "条件所依赖的i不前进，可能不能终止；静态定位并补更新后再运行。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "按每天增加2页的规则，求k天累计阅读页数。",
+        "referenceAnswer": "写清初值、每天页数和累计更新，先手算k=0、1、2再实现。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明while与do-while在初始条件为假时的差别。",
+        "referenceAnswer": "while零次；do-while至少一次，需确认题目是否允许。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-loop-control",
+      "atomId": "gesp-cpp.l1.loop-control",
+      "level": 1,
+      "title": "break 与 continue",
+      "goal": "用同一例子解释结束整个循环与跳过本次迭代的区别",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.loop"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause12"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-loop-continue",
+      "linkedTaskContentSha256": "691ab7d630611cb54c02fb99a3fdfc5dfe0157fbd13f1cb6ae5f11c7cd4d5fbe",
+      "explanation": "break退出最近一层循环，continue跳到该层下一轮。for的continue仍会执行更新表达式；while中需防止continue跳过必要更新。",
+      "example": {
+        "prompt": "i从1到5，遇3用continue，只输出其余i。",
+        "referenceAnswer": "输出1、2、4、5；若改break，则只输出1、2。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "嵌套循环中的break会退出全部循环吗？",
+        "referenceAnswer": "不会，默认只退出最近一层循环。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "while循环在continue前未更新i而一直停在同一值。",
+        "referenceAnswer": "必要更新被跳过；调整更新位置或改写控制结构并检查每条路径。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "读取分数，负数结束，零分跳过，其余累计；说明两种控制语句用途。",
+        "referenceAnswer": "负数对应break，零对应continue；确保每轮仍能读取下一项。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日跟踪for中遇偶数continue，i从2到6。",
+        "referenceAnswer": "仅处理3和5；偶数跳过本轮，更新表达式仍推进i。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l1-debug",
+      "atomId": "gesp-cpp.l1.debug",
+      "level": 1,
+      "title": "注释、测试与基础调试",
+      "goal": "用正常和边界输入复现问题并解释修改原因",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.sequence"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            5
+          ],
+          "clauseId": "gesp-cpp.l1.clause13"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-debug-input-output",
+      "linkedTaskContentSha256": "37a39aa2c6e1b9c2e117a168cb14472e67305fbb81e1ea004c91dd57fb6a53cd",
+      "explanation": "先写预测，再运行正常、边界和反例。编译诊断提示语法或类型问题；测试失败提示行为不符。修改应针对可解释原因，不能只为一个样例硬编码。",
+      "example": {
+        "prompt": "求三数最大值时只比较前两项，怎样找反例？",
+        "referenceAnswer": "使用1,2,9使第三项最大；再测负数、相等值，定位遗漏比较。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "一个样例通过能否证明程序对所有合法输入都正确？",
+        "referenceAnswer": "不能；只验证了该输入，仍需分析分支、边界和不变量。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "程序对输入5输出错误，于是加入if(n==5)直接给答案。",
+        "referenceAnswer": "只是掩盖一个表面症状；应复现同类输入，修通用计算规则。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "给找最小值程序设计至少三类输入并解释目的。",
+        "referenceAnswer": "首项最小、末项最小、全部相等或含负数；覆盖初始化、更新和边界。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日拿一份失败记录，说清预测、实际、原因、改动与复验。",
+        "referenceAnswer": "保留原输入和错误输出，用证据说明修改改变了哪条规则，并补正常与边界回归。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-memory",
+      "atomId": "gesp-cpp.l2.memory",
+      "level": 2,
+      "title": "RAM、ROM 与 Cache",
+      "goal": "说明三类存储的作用与区别",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause01"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-memory-latency-order",
+      "linkedTaskContentSha256": "84e456efcf1bed7eaeaf27927dbcb76faccb077c9185e7a3aa7d7675620827f0",
+      "explanation": "RAM通常断电丢失工作数据，ROM用于保存较固定内容，Cache靠近处理器缓存近期或常用数据。它们的作用、容量和速度不同；缓存不替代文件持久保存。",
+      "example": {
+        "prompt": "编辑文档、执行指令、保存文件涉及哪些存储？",
+        "referenceAnswer": "工作文档在RAM，CPU可通过Cache快速取数据；保存写入持久存储。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "“Cache越大就能永久保存更多文件”有何问题？",
+        "referenceAnswer": "混淆缓存与文件存储；Cache主要服务处理器访问速度。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把未保存文档放在RAM的事实理解为断电后仍在。",
+        "referenceAnswer": "RAM通常易失；应区分运行中暂存与持久写入。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "解释图书馆书架、书桌、手边便签的类比有什么局限。",
+        "referenceAnswer": "可帮助比较访问距离和容量，但不能据此认定硬件具体实现、速度或断电特性。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日不用类比，分别说RAM、ROM、Cache的一项作用。",
+        "referenceAnswer": "RAM工作暂存，ROM较固定内容，Cache降低处理器访问常用数据的延迟。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-network",
+      "atomId": "gesp-cpp.l2.network",
+      "level": 2,
+      "title": "网络分类、分层、协议及 IP",
+      "goal": "区分WAN、MAN、LAN及TCP/IP和OSI层级并解释地址作用",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.computer"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause02"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-ipv4-boundary",
+      "linkedTaskContentSha256": "05a8b351348b4261bd2d782bd1b7379608e736bc0d716020b2e096271d84e07a",
+      "explanation": "LAN、MAN、WAN按覆盖范围区分。协议约定通信规则；IP地址用于网络层寻址，域名需解析为地址。TCP/IP与OSI是不同分层模型，不能只靠层数互相等同。",
+      "example": {
+        "prompt": "同一教室局域网访问外地网站，区分范围、地址和协议。",
+        "referenceAnswer": "教室内部是LAN，跨地域路径涉及WAN；IP用于寻址，协议组织传输。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "知道IP地址是否就等于有权访问对方所有文件？",
+        "referenceAnswer": "不等于；寻址与身份认证、授权是不同问题。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把网址当作网线或把Wi-Fi当作互联网本身。",
+        "referenceAnswer": "网址是资源标识；无线接入只是链路方式，接入点未必连通互联网。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "为家庭设备访问校内服务画逻辑路径，标出可能断开的环节。",
+        "referenceAnswer": "设备→接入网络→路由→目标网络→服务；区分连接、解析、寻址和服务权限。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明LAN与WAN的区别，并指出协议不等于网络规模。",
+        "referenceAnswer": "前者一般局部，后者跨较大地域；TCP/IP可用于不同规模网络。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-languages",
+      "atomId": "gesp-cpp.l2.languages",
+      "level": 2,
+      "title": "程序设计语言分类",
+      "goal": "区分机器语言、汇编语言和高级语言",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.ide"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause03"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-language-class",
+      "linkedTaskContentSha256": "a285e669acd5a5afe549b534c306fb337304b70feb280e494efb196d1556ab44",
+      "explanation": "机器语言编码供处理器执行，汇编用助记符表达特定体系指令，高级语言提供较抽象结构。C++源码通常经编译等步骤成为目标程序；可移植源码仍受语言标准和平台环境约束。",
+      "example": {
+        "prompt": "保存main.cpp后能否直接把其文本交给CPU执行？",
+        "referenceAnswer": "通常不能；需经编译、链接生成目标程序，再由系统加载运行。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "“高级”是否表示程序一定更快？",
+        "referenceAnswer": "不是速度等级；抽象程度与实际性能需分别分析。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "将编译器与文本编辑器混为一谈。",
+        "referenceAnswer": "编辑器修改源码，编译器转换并诊断源码；一个IDE可以同时提供二者。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "向同学解释换CPU体系后，为何常需重新编译。",
+        "referenceAnswer": "机器指令及目标格式依平台而变；同一源码也需满足新平台库与标准要求。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日按源码、编译器、目标程序、运行输入排序。",
+        "referenceAnswer": "编辑源码→编译/链接→加载目标程序→读取运行输入并执行。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-flowchart",
+      "atomId": "gesp-cpp.l2.flowchart",
+      "level": 2,
+      "title": "流程图符号与控制流程",
+      "goal": "按流程图逐步跟踪并能画出分支和循环",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch",
+        "gesp-cpp.l1.loop"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause04"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-flowchart-sequence",
+      "linkedTaskContentSha256": "bfdde69e2208b50f7eb74c316adc2da15f2b54b88161e34f8eb44079c24b2518",
+      "explanation": "流程图用开始结束、处理、输入输出和判断等节点表示控制流。沿箭头执行；判断要标注每个出口，循环必须有回边和终止条件。图上的上下位置不决定先后。",
+      "example": {
+        "prompt": "画“输入n，若n为偶数输出E，否则输出O”。",
+        "referenceAnswer": "开始→输入n→判断n%2==0；真到输出E，假到输出O；两路汇到结束。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "判断节点只有“是”箭头时缺什么？",
+        "referenceAnswer": "缺条件为假的路径；需说明另一出口是处理、循环还是结束。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "按纸面从上到下读图，忽略回边。",
+        "referenceAnswer": "应沿箭头逐步跟踪变量；回边可能重复执行前面的节点。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "把最多尝试3次的密码核对画成流程图，明确停止条件。",
+        "referenceAnswer": "计数初值、每次输入与计数更新、成功出口、次数耗尽出口都需出现。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日按一张新流程图列n=0和n=2的执行轨迹。",
+        "referenceAnswer": "从开始沿箭头写节点和状态，不从图形位置猜测；指出各自终止原因。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-ascii",
+      "atomId": "gesp-cpp.l2.ascii",
+      "level": 2,
+      "title": "ASCII 及字符转换",
+      "goal": "利用0、A、a的编码关系处理字符转换",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause05"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-ascii-neighbor",
+      "linkedTaskContentSha256": "adbdb95585243801e8ae428a6f8f1c11318a9cdcb4b81065339e48591c253ca1",
+      "explanation": "ASCII中的数字与英文字母各有连续编码区间。字符'0'与数字0不同；s[i]-'0'仅适用于已确认的数字字符。大小写转换需先检查字符范围，不假定所有字符都相差固定值。",
+      "example": {
+        "prompt": "字符'7'怎样转换为整数7？",
+        "referenceAnswer": "先确认在'0'到'9'之间，再用'7'-'0'得到7。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "字符'A'+1表示什么前提下的哪个字符？",
+        "referenceAnswer": "在ASCII兼容编码下是B；说明是在相同字符编码体系内。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "对数字字符也统一减去'a'-'A'做大写转换。",
+        "referenceAnswer": "应只转换小写字母，其他字符保持；先做范围判断。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "设计统计字符串中数字字符个数的步骤。",
+        "referenceAnswer": "逐个判断字符是否在'0'至'9'闭区间，符合才计数。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日解释'3'+'2'为何不是数字5。",
+        "referenceAnswer": "相加的是编码值；应先各减'0'转数字，若要显示字符还须明确转换。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-conversion",
+      "atomId": "gesp-cpp.l2.conversion",
+      "level": 2,
+      "title": "隐式与显式类型转换",
+      "goal": "解释先计算后转换与先转换后计算的区别",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.division"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause06"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-conversion-order",
+      "linkedTaskContentSha256": "adaca0458f4c95c1a4b9751541466220793af36ec08aed2d44f6e04fd29adfac",
+      "explanation": "表达式先按操作数类型计算，再转换保存结果。整数除法后转double不能找回已经丢弃的小数；应在除法前转换。浮点转整数会截去小数部分，并须在目标类型可表示范围内。",
+      "example": {
+        "prompt": "比较double a=5/2与double b=double(5)/2。",
+        "referenceAnswer": "a是2.0，因为先整数除法；b是2.5，因为除法前已有浮点操作数。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "double(5/2)能得到2.5吗？",
+        "referenceAnswer": "不能；括号内先算整数2，再转成2.0。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把平均分sum/count先用整数算完再强转。",
+        "referenceAnswer": "在除法前转换sum或count，并拒绝count为0。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "3个容器共8升水，求平均每个的水量并解释类型。",
+        "referenceAnswer": "用double(8)/3得到近似值；显示位数由输出要求决定。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明整数截断与四舍五入不是一回事。",
+        "referenceAnswer": "截断向零去掉小数；四舍五入有另一套规则，不能用强转替代。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-branches",
+      "atomId": "gesp-cpp.l2.branches",
+      "level": 2,
+      "title": "多层分支",
+      "goal": "独立写出嵌套条件并解释else的绑定关系",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.branch"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause07"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-nested-grade-branch",
+      "linkedTaskContentSha256": "c609c6e4be299cf4bcbf66d3c858c3a405e7106070b20efd53a2059fe5c871e4",
+      "explanation": "嵌套分支中else默认匹配最近一个尚未配对的if，缩进不改变语法。用花括号明确结构，再检查每条条件路径的覆盖与互斥。",
+      "example": {
+        "prompt": "先判断年龄，再判断是否持卡，如何表达两层条件？",
+        "referenceAnswer": "外层判断年龄；在允许年龄内用一组有花括号的if-else判断卡；外层不满足单独处理。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "不写花括号时，缩进是否能决定else属于谁？",
+        "referenceAnswer": "不能；语法按最近未匹配if绑定。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "想让else对应外层，却被内层if接走。",
+        "referenceAnswer": "给外层体和内层分支加明确花括号，用各条件组合逐条跟踪。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "图书借阅按身份和是否逾期决定，列四种条件组合。",
+        "referenceAnswer": "成人/学生与逾期/未逾期形成四格，每格给明确结果，再写分支。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日重画一段嵌套if的语法树并选反例。",
+        "referenceAnswer": "先标else绑定，再取外层假、外层真内层假两类输入区分意图。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-nested-loops",
+      "atomId": "gesp-cpp.l2.nested-loops",
+      "level": 2,
+      "title": "多层循环与图形输出",
+      "goal": "将行号与列号对应到两层循环并保持状态更新正确",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.loop"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-nested-star-grid",
+      "linkedTaskContentSha256": "d0f1db9705b10fe1240e8fc943c1df1e0c23b23f8d640549d63972a94cccc0c0",
+      "explanation": "外层通常控制行，内层控制列；每次新行内层从初值重新开始。把每个输出位置对应到行列条件，再决定字符和换行位置。",
+      "example": {
+        "prompt": "输出3行，第r行有r个星号。",
+        "referenceAnswer": "r=1..3，c=1..r输出星号，内层结束后换行；各行1、2、3个。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "换行放在内层会怎样？",
+        "referenceAnswer": "每输出一个字符就换行，原本一行多列的图形被打散。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "内层变量只在循环外初始化一次。",
+        "referenceAnswer": "第一行结束后未重置，后面行可能零次；每行重设内层初值。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "输出行列边界为星号、内部为空格的矩形，写位置条件。",
+        "referenceAnswer": "r在首末行或c在首末列输出星号，其余空格；每行结束换行。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日计算外层3次、内层分别1至3次时总输出数。",
+        "referenceAnswer": "1+2+3=6；不机械当成3×3。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-math-functions",
+      "atomId": "gesp-cpp.l2.math-functions",
+      "level": 2,
+      "title": "abs、sqrt、max、min",
+      "goal": "正确选择函数并解释参数范围和结果类型",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l2.conversion"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause09"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-math-function-choice",
+      "linkedTaskContentSha256": "116e3bc2fc6eaf215f1d5fe789ed44c495a45ee8631feb64cd7eaf10dd2f5d9b",
+      "explanation": "abs求绝对值，sqrt求平方根，max/min选择较大/较小。先核对参数类型、定义域和范围。浮点结果可能有舍入误差；绝对值也受整数范围约束。",
+      "example": {
+        "prompt": "比较点到零的距离与边长平方的平方根。",
+        "referenceAnswer": "距离用绝对值；非负面积A的边长可用sqrt(A)，不能对负面积直接求实数平方根。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "sqrt(2)*sqrt(2)能否一律用==2判断？",
+        "referenceAnswer": "浮点计算可能存在误差，应按问题精度选择比较方式。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "对最小有符号整数取同类型abs并假定总安全。",
+        "referenceAnswer": "其正值可能超出该类型；扩大表示范围或限制输入。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "从三次测温中找最低与最高值，说明如何组合min/max。",
+        "referenceAnswer": "先比较前两次，再和第三次比较；含负温度仍按数值顺序。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明求欧氏距离前为何要注意中间平方的范围。",
+        "referenceAnswer": "整数乘法可先溢出，再转换已太晚；运算前选合适类型并核对输入界限。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l2-random",
+      "atomId": "gesp-cpp.l2.random",
+      "level": 2,
+      "title": "rand 与 srand",
+      "goal": "解释伪随机序列与种子并理解简单范围映射",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.division"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            11
+          ],
+          "clauseId": "gesp-cpp.l2.clause09"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-lcg-pseudorandom",
+      "linkedTaskContentSha256": "4d2738d452f3c827ecbf4f1300b0ed9cfd54ecb8ed7e3d2f7d29f07f8cd1555b",
+      "explanation": "rand产生伪随机序列，srand设置种子。同一实现、相同种子和调用顺序可复现序列；具体数值并非跨实现保证。rand()%m可映射范围，但通常存在模偏差，不适合安全用途。",
+      "example": {
+        "prompt": "同一环境两次从相同种子开始调用rand，会怎样？",
+        "referenceAnswer": "序列可重复；伪随机不是每次必不同。不要把具体首项硬编码为跨平台结论。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "rand()%6+1的取值区间是什么？",
+        "referenceAnswer": "1到6，但不能据此证明六个值严格等概率。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "每抽一个数前都重新设置相同种子。",
+        "referenceAnswer": "反复重置到相同起点，常重复首项；应按需求初始化并连续取样。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "为了重现模拟故障，需要记录哪些条件？",
+        "referenceAnswer": "种子、生成器实现、参数和调用顺序；不能只记最后一个数。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明游戏模拟与密码生成对随机性的要求差异。",
+        "referenceAnswer": "可复现伪随机适合测试模拟；密码需专用安全随机机制，不能用rand替代。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-number-code",
+      "atomId": "gesp-cpp.l3.number-code",
+      "level": 3,
+      "title": "原码、反码与补码",
+      "goal": "在指定位宽下解释正负数编码",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.ascii"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause01"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-twos-complement-byte",
+      "linkedTaskContentSha256": "2db6056ad8af3162c78722052bfda99d8fd7b208fbb93b95f44326873a727fde",
+      "explanation": "原码、反码与补码须先指定总位宽。教学编码模型的符号位和数值位有明确规则；补码负数可按对应正数逐位取反再加一，并保持固定位宽。不要用未定义的溢出来验证模型。",
+      "example": {
+        "prompt": "用8位模型表示-5的补码。",
+        "referenceAnswer": "5为00000101，取反11111010，加一得11111011；保留8位。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "同一串11111011不说明编码与位宽，能唯一解读吗？",
+        "referenceAnswer": "不能；可按无符号得251，按8位补码得-5。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "取反时把前导零丢掉，只翻转101。",
+        "referenceAnswer": "位宽被改变；必须翻转完整8位并保留进位规则。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "在8位补码模型中解释11111111和10000000。",
+        "referenceAnswer": "分别为-1和-128；先说明位宽与补码解释。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日用“按权值解释”复核8位11111100。",
+        "referenceAnswer": "-128+64+32+16+8+4=-4；这是编码模型计算，不运行有符号溢出。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-base",
+      "atomId": "gesp-cpp.l3.base",
+      "level": 3,
+      "title": "二、八、十、十六进制转换",
+      "goal": "解释按权展开及除基取余并能双向检验",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.division"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause02"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-base-conversion",
+      "linkedTaskContentSha256": "41ecbd9b1ba8cfd1cb5326a25df9a173035ff8baab4645d3604a073a498cce64",
+      "explanation": "按权展开把数码乘以进制的幂并相加；除基取余把整数反向转换。数码必须小于进制，余数按最后产生的在高位排列。",
+      "example": {
+        "prompt": "把十进制26转二进制并复核。",
+        "referenceAnswer": "除2余数依次0,1,0,1,1，反向为11010；16+8+2=26。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "二进制102是否合法？",
+        "referenceAnswer": "不合法，二进制只允许0和1。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把除基余数按产生顺序直接连接。",
+        "referenceAnswer": "高低位颠倒；逆序排列后再按权展开复核。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "将十六进制2F转换为十进制和二进制。",
+        "referenceAnswer": "2×16+15=47；每位展开得0010 1111，去前导零为101111。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日转换八进制35并反向检验。",
+        "referenceAnswer": "3×8+5=29；29除8商3余5，回到35。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-bitwise",
+      "atomId": "gesp-cpp.l3.bitwise",
+      "level": 3,
+      "title": "按位与、或、非和异或",
+      "goal": "逐位计算并与逻辑运算区分",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.number-code",
+        "gesp-cpp.l3.base"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause03"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-bitwise-three",
+      "linkedTaskContentSha256": "c7db74beb8f01af8a3e61157aea3add2dbbfcf8a4a294acda550c5f0e7eafb9d",
+      "explanation": "按位运算逐个二进制位处理，逻辑运算按整值真假处理。先指定无符号类型和位宽；按位非的结果依赖位宽，不能只翻转纸面上看见的几位。",
+      "example": {
+        "prompt": "以4位模型比较0101与0011的&、|、^。",
+        "referenceAnswer": "分别为0001、0111、0110；每一位独立计算。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "5&&3与5&3是否一样？",
+        "referenceAnswer": "逻辑与结果为true，按位与为1；本例数值碰巧相同，改成6与3可区分。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把~5直接说成二进制10。",
+        "referenceAnswer": "遗漏位宽与类型；应完整列定位宽，并区分教学模型与C++整数提升。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "用掩码检查无符号整数的最低位，并解释奇偶。",
+        "referenceAnswer": "(x&1u)为1表示最低位为1，即奇数；说明类型和合法范围。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日计算6^3并给逐位理由。",
+        "referenceAnswer": "0110^0011=0101，即5；不同位为1，相同位为0。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-shift",
+      "atomId": "gesp-cpp.l3.shift",
+      "level": 3,
+      "title": "左右移与位宽边界",
+      "goal": "在明确类型和有效移位范围内说明移位结果",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.bitwise"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause03"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-shift-left-right",
+      "linkedTaskContentSha256": "39dd5d59b9f5df7023baa723f11c4250869f348cdf6e2e756e08c15cc99856e8",
+      "explanation": "使用明确的无符号类型，移位数须非负且小于类型位数。无符号左移可能丢高位；右移补零。对负有符号数或越界位移不作可移植结果推断。",
+      "example": {
+        "prompt": "在至少16位的unsigned int上，6u<<2与6u>>1是多少？",
+        "referenceAnswer": "分别24与3；这组值不丢高位，移位数有效。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "位宽为32时移32位是否有效？",
+        "referenceAnswer": "无效；移位数必须小于位宽，不能据某台机器结果定答案。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "把所有有符号左移都当成安全乘2。",
+        "referenceAnswer": "忽略类型、负值、范围与标准规则；先限制为有效无符号运算再解释。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "用右移读取一个无符号数第k位，说明检查条件。",
+        "referenceAnswer": "先保证0≤k<位宽，再计算(x>>k)&1u。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日解释“左移后再右移一定恢复原值”为何错误。",
+        "referenceAnswer": "左移可能丢掉高位；原信息丢失后右移无法还原。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-algorithm-description",
+      "atomId": "gesp-cpp.l3.algorithm-description",
+      "level": 3,
+      "title": "自然语言、流程图与伪代码",
+      "goal": "写出有输入、输出、有限步骤的解题过程",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.flowchart"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause04"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-algorithm-parity-count",
+      "linkedTaskContentSha256": "78d3219c4b7c94eaecfeee8ed1b6ec6b3d48db73996986f9e4046f2cfed7e1b0",
+      "explanation": "算法描述须有输入、输出、可执行步骤和终止条件。自然语言、流程图、伪代码可表达同一过程；“求答案”不是足够细的步骤。",
+      "example": {
+        "prompt": "描述找非空数组最小值的算法。",
+        "referenceAnswer": "令best为第一项；依次比较其余项，小于best则更新；遍历结束输出best。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "为什么初始化best=0可能错误？",
+        "referenceAnswer": "所有元素为正时会保留不存在的0；应依据合法输入初始化。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "伪代码只有“把数组排好后找最小”，未说明可用排序步骤。",
+        "referenceAnswer": "抽象层次未交代清楚；明确调用已定义算法或直接给可执行遍历。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "把寻找最高温度写为自然语言和伪代码，并核对对应。",
+        "referenceAnswer": "初始化第一天、逐日比较更新、输出最大值；两种描述应处理相同输入与空数据前提。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日指出一个算法为何终止、为何不漏元素。",
+        "referenceAnswer": "循环索引每次递增且有有限上界，遍历区间恰好覆盖每个合法下标。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-array",
+      "atomId": "gesp-cpp.l3.array",
+      "level": 3,
+      "title": "定长一维数组与遍历",
+      "goal": "正确使用下标并说明数组范围和初始化",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.loop"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause05"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-array-summary",
+      "linkedTaskContentSha256": "45289f23916f8a2bdb4cb33427be7f9378ce734fe55590f20706910a4064b463",
+      "explanation": "定长数组有固定元素数；长度n的合法下标为0到n-1。初始化与输入范围必须明确。C++标准数组长度需符合常量表达式要求，不能用变长数组冒充标准特性。",
+      "example": {
+        "prompt": "int a[4]={2,5,1,7}，从0到3累加。",
+        "referenceAnswer": "和依次为2、7、8、15；a[4]不属于这4个元素。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "循环i<=4访问a[i]的问题是什么？",
+        "referenceAnswer": "会访问a[4]越界；改为i<4，不能靠实机偶然输出验证越界。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "求和变量未初始化，结果每次不同。",
+        "referenceAnswer": "先将累加器置0；不得读取不确定的初始值。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "在最多100项的固定容量数组里保存n项并求最大值。",
+        "referenceAnswer": "检查1≤n≤100，仅遍历0至n-1；未使用容量不参与计算。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日画出长度5数组的合法下标并解释尾项位置。",
+        "referenceAnswer": "0,1,2,3,4；元素数量为5，尾项下标为数量减1。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-strings",
+      "atomId": "gesp-cpp.l3.strings",
+      "level": 3,
+      "title": "字符串遍历、查找、分割和替换",
+      "goal": "区分读入单词与整行并正确处理空串和空格",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.ascii",
+        "gesp-cpp.l3.array"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause06"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-string-word-count",
+      "linkedTaskContentSha256": "ead5cc0c2774ef9accae46a1fbda54c780c7c89865df86067349a9a121625283",
+      "explanation": "字符串是字符序列；cin>>s通常按空白读一个词，getline读取一行。混用格式化读取和getline时需处理遗留换行。子串连续，子序列可有间隔。",
+      "example": {
+        "prompt": "输入“red blue”用getline与cin>>s分别得到什么？",
+        "referenceAnswer": "getline可得整行red blue；cin>>s先得red，blue留待后续读取。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "空字符串的size()是多少，能访问s[0]当普通字符吗？",
+        "referenceAnswer": "长度为0；没有第0个内容字符，遍历应从长度条件控制。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "先cin>>n再getline，意外读到空行。",
+        "referenceAnswer": "前次读取留下换行；按输入格式处理到行尾后再读下一行，避免盲目丢数据。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "统计一行中空格数，选读取方式并说明。",
+        "referenceAnswer": "用getline保留行内空格，逐字符判断并计数；不能只读第一个单词。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日区分abc中的ac是子串还是子序列。",
+        "referenceAnswer": "是子序列而非连续子串；给出对应下标0和2。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-enumeration",
+      "atomId": "gesp-cpp.l3.enumeration",
+      "level": 3,
+      "title": "枚举候选与条件检查",
+      "goal": "给出候选范围并说明枚举不重不漏",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.nested-loops",
+        "gesp-cpp.l3.algorithm-description"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause07"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-enumeration-selected",
+      "linkedTaskContentSha256": "65fc169c2a2935d4315efa5250d8439979d35387f601e1b55d55e423c7e66ceb",
+      "explanation": "枚举先定义完整候选空间，再逐项检验条件。用边界说明不漏，用唯一生成规则说明不重；对称方案是否视为同一解由题意决定。",
+      "example": {
+        "prompt": "非负整数x+y=4，列全部有序解。",
+        "referenceAnswer": "(0,4),(1,3),(2,2),(3,1),(4,0)；x从0到4唯一决定y。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "如果两项无序，哪些解会重复？",
+        "referenceAnswer": "(0,4)与(4,0)、(1,3)与(3,1)；可限制x≤y。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "循环从1开始，漏掉含0的解。",
+        "referenceAnswer": "候选域是非负，应包括0；从题目合法范围推导上下界。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "用2元与5元硬币组成某总额，说明枚举范围与检验。",
+        "referenceAnswer": "枚举5元数量0到总额/5，剩余非负且能被2整除；每个数量对应唯一组合。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日证明枚举矩形整数边长时的边界和对称处理。",
+        "referenceAnswer": "由正长度及面积条件推上界，若不区分长宽可限制一边不大于另一边。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l3-simulation",
+      "atomId": "gesp-cpp.l3.simulation",
+      "level": 3,
+      "title": "按规则维护状态的模拟",
+      "goal": "将题目每步规则落实为状态更新并检查先后顺序",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.algorithm-description",
+        "gesp-cpp.l3.array"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause07"
+        },
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            17
+          ],
+          "clauseId": "gesp-cpp.l3.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-robot-command-simulation",
+      "linkedTaskContentSha256": "01c5fd9eedb05f4a77697e03f2f024e00e4dabad8e7a3512bae97bf5d2d5341e",
+      "explanation": "模拟把规则落实为状态与更新顺序。同步更新须从旧状态计算新状态；顺序更新则允许后一步读取已变化状态。两种规则不能混用。",
+      "example": {
+        "prompt": "两格同时变成对方旧值，初始3和8。",
+        "referenceAnswer": "新状态为8和3；应先保存两格旧值或使用新数组。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "先a=b再b=a能否完成同时交换？",
+        "referenceAnswer": "不能，第二句读到更新后的a，变成8和8。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "邻居求和时就地更新，后面格子读到了新值。",
+        "referenceAnswer": "同步题应分别维护旧数组与新数组，整轮完成后再替换。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "按天模拟库存：先到货再售出，与先售后到有何区别？",
+        "referenceAnswer": "可售库存约束不同；逐步写事件顺序、库存与不足处理，不只比较最终加减。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日给新规则列状态、事件、更新和停止条件。",
+        "referenceAnswer": "明确每个变量含义，每事件读取哪个时刻状态，必要时保留旧值。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-pointer",
+      "atomId": "gesp-cpp.l4.pointer",
+      "level": 4,
+      "title": "指针定义、赋值与解引用",
+      "goal": "画出变量、地址和指针关系并解释解引用",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.types",
+        "gesp-cpp.l1.variables"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause01"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-pointer-value-address",
+      "linkedTaskContentSha256": "394dc318e16e15015e315373c2d9bc4c5058906e1ca3c0b80b788e2e03210f69",
+      "explanation": "指针保存对象地址，解引用访问所指对象。&取地址，*在表达式中解引用。只访问有效生命周期内的对象；空指针、悬空指针不应解引用。",
+      "example": {
+        "prompt": "int x=6;int* p=&x;*p=9，x怎样变化？",
+        "referenceAnswer": "p指向x，*p写入x，因此x=9；p本身仍保存x的地址。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "p与*p分别是什么？",
+        "referenceAnswer": "p是地址值，*p是所指对象；先确认p有效。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "函数返回局部变量地址，调用后继续使用。",
+        "referenceAnswer": "局部对象生命周期已结束，形成悬空指针；改为返回值或由调用方提供有效存储。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "画出两个指针同时指向一个变量，说明经其中一个修改的影响。",
+        "referenceAnswer": "两个箭头指向同一对象；通过任一有效指针写入会改变该共享对象。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日解释把指针设nullptr与把所指整数设0的区别。",
+        "referenceAnswer": "前者取消该指针的有效指向，后者修改对象数值；二者不是同一步。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-matrix",
+      "atomId": "gesp-cpp.l4.matrix",
+      "level": 4,
+      "title": "二维与多维定长数组",
+      "goal": "遍历矩阵并正确转换行列和邻接位置",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause02"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-matrix-boundary",
+      "linkedTaskContentSha256": "89d0eef5639be924328db5fbec2fbe5add4fcd7f3bfd8e8473cbf717605df664",
+      "explanation": "二维数组按行、列两个下标定位。行列各有独立边界。邻接位置要先验证合法性再访问；矩阵不必是方阵，因此不能互换行数与列数。",
+      "example": {
+        "prompt": "2行3列矩阵中访问右下角用什么下标？",
+        "referenceAnswer": "从0编号时是a[1][2]；行范围0..1，列范围0..2。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "遍历2×3矩阵时，内层为何不能也用i<2？",
+        "referenceAnswer": "内层应按列索引与列数3控制；否则漏列或破坏循环。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "检查上邻居时先访问a[r-1][c]再判断r>0。",
+        "referenceAnswer": "越界发生在判断前；必须先核对边界再读取。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "求非方阵每一行的和，指出累加器重置位置。",
+        "referenceAnswer": "每行开始把sum置0，再遍历该行所有列，行结束输出sum。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日列出3×4矩阵角落的合法四邻接位置。",
+        "referenceAnswer": "例如(0,0)只有(1,0)和(0,1)；分别校验行列边界。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-struct",
+      "atomId": "gesp-cpp.l4.struct",
+      "level": 4,
+      "title": "结构体及结构体数组、指针和参数",
+      "goal": "将关联字段组织为记录并完成按字段访问",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l4.pointer"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause02"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-struct-best-score",
+      "linkedTaskContentSha256": "63c151b4bb7458d3cfe553450045e6b988e7b72e0580d4a208225aa36c5cd97e",
+      "explanation": "结构体把相关字段组成记录；数组保存多条记录。移动或排序时必须保持字段对应。对象访问用点，指向对象的有效指针可用箭头访问字段。",
+      "example": {
+        "prompt": "学生记录含姓名和分数，按分数交换两名学生应交换什么？",
+        "referenceAnswer": "交换整条记录；只交换分数会把姓名和原成绩错配。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "s.score与p->score分别用于什么对象？",
+        "referenceAnswer": "s为记录对象，p为指向记录的有效指针。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "只给分数字段排序，再按原姓名输出。",
+        "referenceAnswer": "关联被破坏；用结构体整体排序或同步维护完整记录。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "设计商品名、单价分值、库存的结构体，并说明补货修改哪个字段。",
+        "referenceAnswer": "三个字段组成一条商品记录；定位目标商品后只更新该记录库存。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日用两条同分学生记录解释保留记录身份的重要性。",
+        "referenceAnswer": "分数相同仍是不同对象，姓名和其他字段应始终随记录一起移动。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-function",
+      "atomId": "gesp-cpp.l4.function",
+      "level": 4,
+      "title": "函数声明、定义、调用及形实参",
+      "goal": "将任务拆成函数并解释输入、返回值和调用过程",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.sequence"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause03"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-function-factorial",
+      "linkedTaskContentSha256": "0552bb536ab54209f3c4629570d845466f9ea331feae59cc131b2a0c2977f99d",
+      "explanation": "声明描述可调用接口，定义给函数体，调用才执行。形参属于被调用函数，实参来自调用处。返回值沿调用关系传回；参数类型与返回类型需要匹配。",
+      "example": {
+        "prompt": "int twice(int x){return x*2;}，twice(7)的过程。",
+        "referenceAnswer": "实参7初始化形参x，计算14并返回；函数定义本身不会自动运行。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "只有int twice(int);声明，是否已经有实现？",
+        "referenceAnswer": "没有；可声明接口，但实际调用仍需要相应定义参与链接。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "函数算出了局部result却没有返回调用者。",
+        "referenceAnswer": "若接口要求返回结果，应在所有需要的路径return，调用处使用返回值。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "把求矩形周长提取为函数，写清接口与调用责任。",
+        "referenceAnswer": "接收合法长宽、返回2*(长+宽)；输入读取和结果输出由调用者按约定处理。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日画出main调用f再调用g时的返回路径。",
+        "referenceAnswer": "g返回给f，f继续后返回main；每层形参和局部状态分别保存。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-scope",
+      "atomId": "gesp-cpp.l4.scope",
+      "level": 4,
+      "title": "全局和局部作用域",
+      "goal": "用嵌套同名变量说明可见性和生命周期",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause04"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-scope-shadow",
+      "linkedTaskContentSha256": "8bc8c54edca38548dd604a9e56de65fc9e0ec96917881efd0c2ebfb890b4a607",
+      "explanation": "作用域决定名称在哪些位置可见，生命周期决定对象何时存在。内层同名变量可遮蔽外层名称，但它们仍是不同对象。离开局部作用域后不能保留无效引用。",
+      "example": {
+        "prompt": "外层x=4，内层另定义x=9，内外分别输出。",
+        "referenceAnswer": "内层输出9，离开后输出外层4；不是把同一个x改回4。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "名字相同能否证明地址和对象相同？",
+        "referenceAnswer": "不能；需看定义位置、作用域与具体对象。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "循环体内重新定义sum，外层累计一直为0。",
+        "referenceAnswer": "内层sum遮蔽外层；应按意图修改已有对象，避免重复定义。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "比较全局计数与每次函数调用的局部计数。",
+        "referenceAnswer": "全局对象跨调用存在，普通局部对象每次调用建立；用途和可见范围应明确。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日分别解释作用域与生命周期，指出不是同一个概念。",
+        "referenceAnswer": "前者是名称可见区域，后者是对象存在时间；可见的指针也可能指向已结束对象。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-parameter-value",
+      "atomId": "gesp-cpp.l4.parameter-value",
+      "level": 4,
+      "title": "函数值传递",
+      "goal": "说明参数副本修改为何不改变调用者变量",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause05"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-parameter-value-copy",
+      "linkedTaskContentSha256": "8ef6b32882c6e6e5f5a1f6028552cd1b204ab92981319a63e4410b6a6bc77124",
+      "explanation": "值传递用实参初始化形参副本。函数修改副本通常不改变调用方对象。需要结果可返回值；不要从形参名称相同推断它们共享存储。",
+      "example": {
+        "prompt": "void inc(int x){x++;}，a=5，调用inc(a)。",
+        "referenceAnswer": "形参副本变6，调用方a仍为5。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "把函数形参也命名为a，会改变调用方a吗？",
+        "referenceAnswer": "不会；名称相同不改变值传递语义。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "交换函数接收int a,int b，返回后外面未交换。",
+        "referenceAnswer": "只交换了副本；可以改用引用参数或返回所需新值，并明确接口。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "编写“不修改原温度，只返回调整后温度”的函数接口。",
+        "referenceAnswer": "按值接收温度，返回原值加调整量；调用者可选择是否保存返回值。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日列调用前、函数内、返回后三个状态。",
+        "referenceAnswer": "分别写实参对象和形参副本，不把两张状态表合并。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-parameter-reference",
+      "atomId": "gesp-cpp.l4.parameter-reference",
+      "level": 4,
+      "title": "引用传递与指针传递",
+      "goal": "解释实参如何被函数修改并避免悬空引用",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function",
+        "gesp-cpp.l4.pointer",
+        "gesp-cpp.l4.parameter-value"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause05"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-parameter-reference-update",
+      "linkedTaskContentSha256": "e3d6d71242eb461bc28a82ca51cc27abae4d04bdbd6d0409c6d05fb1e1deb4b7",
+      "explanation": "引用形参可成为调用方对象的别名；指针形参按值复制地址，通过有效地址也可修改对象。修改指针形参本身不自动修改调用者的指针变量。",
+      "example": {
+        "prompt": "void inc(int& x){++x;}，a=5后inc(a)。",
+        "referenceAnswer": "x引用a，a变6；若形参为int* p，需通过*p修改。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "指针按值传入后令p=nullptr，调用者指针一定变空吗？",
+        "referenceAnswer": "不会；改变的是地址副本，除非接口显式接收引用或更高层地址。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "返回局部变量引用，认为引用永远有效。",
+        "referenceAnswer": "对象结束后引用悬空；返回值或引用生命周期足够长的对象。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "设计将两个调用方整数互换的引用接口，并解释副作用。",
+        "referenceAnswer": "使用两个int&参数并交换所引用对象；调用者的两项值会改变。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日对比按值、引用、指针三种传参的状态图。",
+        "referenceAnswer": "副本、对象别名、地址副本分别画清；只在有效指向时解引用。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-recurrence",
+      "atomId": "gesp-cpp.l4.recurrence",
+      "level": 4,
+      "title": "递推状态、边界与转移",
+      "goal": "从最后一步分类推导递推式并给出初始状态",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array",
+        "gesp-cpp.l1.loop"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause06"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-fibonacci-recurrence",
+      "linkedTaskContentSha256": "fb3e9866cf0d39383aef1ea52f679bdea17bb9bb9fc1558b9d9b3a3b3ca7e331",
+      "explanation": "递推用已知较小状态构造新状态。先定义状态含义，再按最后一步分类推出转移，最后核对初始边界与计算顺序；不能只背一条数列公式。",
+      "example": {
+        "prompt": "每次走1或2级，走到n级的方案数如何递推？",
+        "referenceAnswer": "f(n)表示恰到n级的方案数；末步来自n-1或n-2，故相加；f(0)=1,f(1)=1。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "这里f(0)=1为什么不是“真的走了一步”？",
+        "referenceAnswer": "表示空走法这一种基础方案，服务组合计数，并未增加台阶。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "从i=0开始算f[i]=f[i-1]+f[i-2]。",
+        "referenceAnswer": "读取负下标；先设边界，从可合法引用的状态开始递推。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "若每次只能走1或3级，重新推导边界与转移。",
+        "referenceAnswer": "按末步分成n-1与n-3，缺失的负状态按0处理，f(0)=1；不能原样沿用前式。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明计算顺序和数值范围为何都需检查。",
+        "referenceAnswer": "依赖状态必须已算；方案数增长可能超出整数范围，按约定选类型或限制n。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-sort-concepts",
+      "atomId": "gesp-cpp.l4.sort-concepts",
+      "level": 4,
+      "title": "排序概念、稳定性与内外排序",
+      "goal": "用带相同关键字的记录解释排序稳定性",
+      "prerequisiteIds": [
+        "gesp-cpp.l3.array"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause07"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-stable-record-sort",
+      "linkedTaskContentSha256": "95595076d46635d731fbb619807fe19ebb8543093ded63fab4306709bd2618b6",
+      "explanation": "排序按关键字建立顺序。稳定排序保留相同关键字记录的原相对次序，不能只看数字结果判断稳定性。内部与外部排序还涉及数据是否能主要放入内存处理。",
+      "example": {
+        "prompt": "记录A:2、B:1、C:2稳定升序后怎样排列？",
+        "referenceAnswer": "B:1、A:2、C:2；A与C同键，原来A在前，之后仍在前。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "只给数组1,2,2能否证明某算法稳定？",
+        "referenceAnswer": "不能区分两个2的身份；需带原记录标识并分析操作。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "排序结果数值正确就宣布稳定。",
+        "referenceAnswer": "缺少同键记录相对顺序证据；使用带身份记录追踪。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "先按姓名排序，再用稳定算法按成绩排序，有何效果？",
+        "referenceAnswer": "成绩为主键；同成绩内保留此前姓名顺序，前提是第二轮稳定。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日区分“已经有序”与“排序算法稳定”。",
+        "referenceAnswer": "前者描述结果键值顺序，后者描述同键身份关系的保留性质。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-bubble",
+      "atomId": "gesp-cpp.l4.bubble",
+      "level": 4,
+      "title": "冒泡排序",
+      "goal": "说明一轮交换后的已确定位置并独立实现",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-bubble-sort-impl",
+      "linkedTaskContentSha256": "9104944d8d1d6aca171848f728c639b2c4a445a08b5731b1d2c7b4bb1814ef89",
+      "explanation": "冒泡排序反复比较相邻项并按逆序交换。升序的一轮把本轮最大项推到末端，之后可缩小待处理范围。仅在严格大于时交换可保留同键相对次序。",
+      "example": {
+        "prompt": "对3,1,2从左到右做一轮升序冒泡。",
+        "referenceAnswer": "比较3与1得1,3,2；再比较3与2得1,2,3，最大3到末端。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "第一轮之后能断言所有元素都已排好吗？",
+        "referenceAnswer": "一般不能；只确认一个末端位置，本例碰巧全序。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "内层访问a[j+1]却让j走到末项。",
+        "referenceAnswer": "末项之后越界；按当前未确定区间设置比较终点。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "用带身份的相等记录说明何时不应交换。",
+        "referenceAnswer": "相等时不交换，原先靠前的同键记录不会被相邻交换越过。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日对4,3,2,1画两轮状态并标已确定后缀。",
+        "referenceAnswer": "第一轮3,2,1,4，第二轮2,1,3,4；后缀4再到3,4已确定。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-insertion",
+      "atomId": "gesp-cpp.l4.insertion",
+      "level": 4,
+      "title": "插入排序",
+      "goal": "维护有序前缀并正确移动元素",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-insertion-sort-impl",
+      "linkedTaskContentSha256": "e74d5e22ff0c4ebffa20d64f3ca8e131758d1ebb827de133db4b57e1f76346c5",
+      "explanation": "插入排序维护有序前缀。取出下一项作为key，向右移动较大元素，再把key放入空位。key必须先保存，移动时需检查下标边界。",
+      "example": {
+        "prompt": "有序前缀2,5,7，插入4。",
+        "referenceAnswer": "保存4；7右移、5右移，2不大于4；在2后放4，得2,4,5,7。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "为什么不能先覆盖待插入位置再保存key？",
+        "referenceAnswer": "移动可能覆盖原值，丢失要插入的数据。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "判断条件先读a[j]再判j>=0。",
+        "referenceAnswer": "当j为负时先越界；应先验证下标，利用短路再访问。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "新来一条成绩记录，插入已有有序记录且保持同分原序。",
+        "referenceAnswer": "仅移动严格大于新键的记录，把新记录放在既有同键记录后面。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日解释每轮结束后哪个区间有序。",
+        "referenceAnswer": "处理第i项后0..i前缀有序；后续部分尚不保证。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-selection",
+      "atomId": "gesp-cpp.l4.selection",
+      "level": 4,
+      "title": "选择排序",
+      "goal": "每轮选出剩余最小元素并解释稳定性",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.sort-concepts",
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause08"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-selection-sort-impl",
+      "linkedTaskContentSha256": "d7c4ccee84085b126a2c9a7c5b950d105b6ef79788a3390eaca6dca4fb3e9899",
+      "explanation": "选择排序每轮在未排序后缀中找最小项，与后缀首项交换。保存最小位置而非只保存数值。远距离交换可能改变同键记录的相对次序。",
+      "example": {
+        "prompt": "对3,1,2第一轮选择最小并交换。",
+        "referenceAnswer": "最小位置1，与位置0交换，得1,3,2；首位置已确定。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "更新minValue却不记录minIndex会缺什么？",
+        "referenceAnswer": "无法可靠知道应与哪个位置交换，尤其有重复值时。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "每次比较发现更小项就立刻交换，仍把过程称标准选择排序。",
+        "referenceAnswer": "标准过程先完成最小位置搜索，再一轮一次交换；需按实际过程解释。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "用A:2、B:2、C:1说明常规交换式选择排序可能不稳定。",
+        "referenceAnswer": "第一轮C与A交换后为C:1、B:2、A:2，A/B相对顺序翻转。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日说明第k轮后已确定与未处理区域。",
+        "referenceAnswer": "前k个位置为当前最小的k项且有序，剩余后缀继续找最小。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-complexity",
+      "atomId": "gesp-cpp.l4.complexity",
+      "level": 4,
+      "title": "简单时间和空间效率估算",
+      "goal": "根据实际循环次数区分多项式和指数增长",
+      "prerequisiteIds": [
+        "gesp-cpp.l2.nested-loops"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause09"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-loop-count-complexity",
+      "linkedTaskContentSha256": "c12f3dab6d1f1f41284d5cc8366de9d8c83db7e6f2e4dabb1590ed087f09ec31",
+      "explanation": "估算实际执行次数与额外空间，再看规模增长。嵌套循环不必都是n平方；内层次数是否依n、是否每次重新开始都会影响结果。区分渐近阶与具体运行时间。",
+      "example": {
+        "prompt": "外层n次，每次内层固定3次，与内层n次比较。",
+        "referenceAnswer": "分别约3n与n²；前者O(n)，后者O(n²)。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "一次循环每次把i乘2到n，次数为何近似log n？",
+        "referenceAnswer": "经历1,2,4,…，增长按幂；次数随n的二进制位数增加。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "看到两层循环就直接写O(n²)。",
+        "referenceAnswer": "应列内层总次数；例如内层固定上界或共用单调指针时不是n²。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "比较额外开n项数组与只用两个变量的空间需求。",
+        "referenceAnswer": "前者额外空间O(n)，后者O(1)；输入存储是否计入须说明口径。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日分析1+2+…+n次操作与2^n种候选的增长差异。",
+        "referenceAnswer": "前者O(n²)，后者指数O(2^n)，规模翻倍的代价差异很大。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-file",
+      "atomId": "gesp-cpp.l4.file",
+      "level": 4,
+      "title": "文件重定向与读写",
+      "goal": "区分标准输入输出重定向与文件流读写",
+      "prerequisiteIds": [
+        "gesp-cpp.l1.io"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause10"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-file-roundtrip",
+      "linkedTaskContentSha256": "1063cfd4d8883a6a76ab1567a7f90a5259a564f496b221443607bfa9480ced68",
+      "explanation": "文件流与标准流重定向都把数据接入程序，但接口不同。打开后先检查状态，读取结果必须核对。不要依赖个人电脑绝对路径；隔离评测只使用约定的标准输入输出。",
+      "example": {
+        "prompt": "ifstream in(\"scores.txt\")后如何安全读取？",
+        "referenceAnswer": "先检查流是否打开成功，再在读取成功条件内处理数据；文件缺失不能当作正常零值。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "本机有文件就能证明评测环境也有吗？",
+        "referenceAnswer": "不能；路径、工作目录和权限都可能不同，必须按环境约定。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "while(!in.eof())导致末项重复。",
+        "referenceAnswer": "eof在读取失败后才设置；用while(in>>x)以实际读取成功驱动循环。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "把读取数字求和的逻辑改为可从标准输入接收，说明测试益处。",
+        "referenceAnswer": "将解析计算与数据来源分开，用受控输入验证，不要求访问宿主文件。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日区分重定向与在代码里硬编码文件路径。",
+        "referenceAnswer": "重定向由运行环境连接标准流；文件流由程序按路径打开，两者失败条件需分别处理。",
+        "scoring": "human_review_required"
+      }
+    },
+    {
+      "id": "gesp-teaching-l4-exception",
+      "atomId": "gesp-cpp.l4.exception",
+      "level": 4,
+      "title": "异常处理基础",
+      "goal": "解释try、throw、catch的基本控制流",
+      "prerequisiteIds": [
+        "gesp-cpp.l4.function"
+      ],
+      "sourceEvidence": [
+        {
+          "pdfUrl": "https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf",
+          "pdfSha256": "f2943af97fe7d0ac121dcb98b6b5dd4bbe1537dcdee6f1fd2ad49a0c4e7c5a71",
+          "pdfPages": [
+            19
+          ],
+          "clauseId": "gesp-cpp.l4.clause11"
+        }
+      ],
+      "status": "editorial_candidate",
+      "linkedTaskId": "gesp-student-cpp-safe-division-exception",
+      "linkedTaskContentSha256": "be0c2c76412194ff602d3ce97084e1dc86c7d484fc88a10ba6dfe5f0896a5aee",
+      "explanation": "throw触发异常传播，catch按类型接住匹配异常。try块抛出后其后语句不继续执行；处理完成后按控制流向后。异常不是对所有错误的自动检测，也不能用来挽救未定义行为。",
+      "example": {
+        "prompt": "try中先输出A，再throw整数，再输出B，catch(int)输出C。",
+        "referenceAnswer": "输出A与C，B被跳过；随后继续执行处理块之后的语句。",
+        "scoring": "human_review_required"
+      },
+      "check": {
+        "prompt": "逻辑上算错但没有throw，catch会自动发现吗？",
+        "referenceAnswer": "不会；需要测试和显式条件检查。",
+        "scoring": "human_review_required"
+      },
+      "debug": {
+        "prompt": "只写catch(double)，却抛出int并认为会自动数值转换匹配。",
+        "referenceAnswer": "异常匹配不是一般数值赋值转换；应设置匹配类型或按设计统一异常接口。",
+        "scoring": "human_review_required"
+      },
+      "transfer": {
+        "prompt": "解析输入时发现不合法，设计明确错误返回或异常处理路径。",
+        "referenceAnswer": "先验证再计算；约定返回状态或抛出匹配异常，处理后不能把失败数据计为成功结果。",
+        "scoring": "human_review_required"
+      },
+      "retention": {
+        "prompt": "隔日解释try/catch不能使越界读取成为合法操作。",
+        "referenceAnswer": "越界可产生未定义行为，必须在访问前验证边界，不能依赖catch补救。",
+        "scoring": "human_review_required"
+      }
+    }
+  ]
+}

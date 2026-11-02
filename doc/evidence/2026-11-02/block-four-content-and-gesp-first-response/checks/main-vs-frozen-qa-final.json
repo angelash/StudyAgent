@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-02T07:24:45.245Z",
+  "equalSourceFiles": 33,
+  "equalRuntimeAndTestSources": true,
+  "deltas": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json",
+      "qaSha256": null,
+      "currentSha256": "b959c35559857ce852671f9b96d69129b76ea3e9dacd9a5bde3cd7b9f82eb864"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-asking-v1.json",
+      "qaSha256": "f9510a78b1a2351b287352682ca0c909f4e3c36bc3ff1b29e78488c645d0b8f2",
+      "currentSha256": "837f260f0050c6d68d96a9b6cc1f26f6a71f06970b6e2740e29bcaa5813a0ca2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-flowers-v1.json",
+      "qaSha256": "e66958b2bcce1d6f1aa08068489b714d15cd8156844aebdec3b165cec86e3e14",
+      "currentSha256": "ca09930380ab5dea892e25d7b11c7fbc885e5826e821ab4a4f9d6b71312634c7"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-v1.json",
+      "qaSha256": null,
+      "currentSha256": "cdcd1af98d1125ac7fe02de43c0b5d42dfa29d7753ef733ff4f2ed14e3200f93"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-portrait-v1.json",
+      "qaSha256": null,
+      "currentSha256": "4301a1c55a272d5fdcbb29bc6c2ac289e83435633e1a3d386d1a5013d1f49cd0"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-summer-v1.json",
+      "qaSha256": null,
+      "currentSha256": "aa9a512bbb66a72a15c4786715a4de52b3a6f995514b2255c4215b4e1bcf9c91"
+    },
+    {
+      "path": "scripts/content/build-chinese-first-unit-activities.cjs",
+      "qaSha256": null,
+      "currentSha256": "713900aab84788fb2be20618dab45c47454795440ad930d65441cfa0dc51f644"
+    },
+    {
+      "path": "scripts/content/build-chinese-first-unit-following-drafts.cjs",
+      "qaSha256": "3d2b605e768b12906a5f03cd9317c09415fdf7cf28b9b54d69b7d5fc87118c5e",
+      "currentSha256": "b7ccb6881376a625c9980b0103cc7b5683e0a9a35f97fd6cc50c7f755adc8d94"
+    },
+    {
+      "path": "scripts/content/build-chinese-following-materials.cjs",
+      "qaSha256": null,
+      "currentSha256": "0a2e7c933546ebdfb3eecb75d2e4cbccd39a0ea43d6dac0e7912c8df0c05ffa6"
+    },
+    {
+      "path": "scripts/operations/audit-content-delivery.cjs",
+      "qaSha256": "5eebfbb4364b3c4d8d263798001876a9366fd41ac01d64e872762cb4da64eb5c",
+      "currentSha256": "a50149e331eaa97e0596ef99ad351d02a5e51641097f0b1c68bfab8bb2a888f6"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-following-drafts.cjs",
+      "qaSha256": "bc5456d39526e2a5417c85cfeb25d4c0eaaef7dab19bc6438d5321f3ed00f4e4",
+      "currentSha256": "02b813dd39ea4f878514aea22774811d54a7a8422ab6fdf0517c5207af2247e3"
+    }
+  ],
+  "scope": "New or revised original content and offline editorial/audit tools only. No running QA inputs were mutated. Their separate actual source/HTTP/cold-read checks are recorded."
+}

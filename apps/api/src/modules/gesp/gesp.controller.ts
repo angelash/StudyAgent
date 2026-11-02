@@ -10,6 +10,10 @@ export class GespController {
   constructor(private readonly gesp: GespService) {}
   @Get('overview') overview(@Req() req: AuthenticatedRequest) { return this.gesp.overview(req.user); }
   @Get('student-content') studentContent(@Req() req: AuthenticatedRequest, @Query() query: unknown) { return this.gesp.studentContentReview(req.user, query); }
+  @Get('teaching-candidates') teachingCandidates(@Req() req: AuthenticatedRequest, @Query() query: unknown, @Res({ passthrough: true }) response: Response) {
+    response.setHeader('Cache-Control', 'private, no-store');
+    return this.gesp.teachingCandidates(req.user, query);
+  }
   @Post('student-content/reviews') reviewStudentContent(@Req() req: AuthenticatedRequest, @Body() body: unknown) { return this.gesp.reviewStudentTask(req.user, body); }
   @Get('student-content/:taskId/reviews') studentContentReviews(@Req() req: AuthenticatedRequest, @Param('taskId') taskId: string) {
     return this.gesp.studentTaskReviewHistory(req.user, taskId);

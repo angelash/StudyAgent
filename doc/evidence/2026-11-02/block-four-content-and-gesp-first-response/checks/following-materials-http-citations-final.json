@@ -1,0 +1,70 @@
+{
+  "at": "2026-11-02T07:07:46.659Z",
+  "passed": true,
+  "scope": "Two original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-flowers-v1.json",
+      "sha256": "ca09930380ab5dea892e25d7b11c7fbc885e5826e821ab4a4f9d6b71312634c7",
+      "physicalPages": [
+        10,
+        11
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 101,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-asking-v1.json",
+      "sha256": "837f260f0050c6d68d96a9b6cc1f26f6a71f06970b6e2740e29bcaa5813a0ca2",
+      "physicalPages": [
+        12,
+        13
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 89,
+      "linkedDraftMaterialReferences": 49,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 105,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json",
+    "sha256": "b959c35559857ce852671f9b96d69129b76ea3e9dacd9a5bde3cd7b9f82eb864",
+    "groups": 15,
+    "questions": 105,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

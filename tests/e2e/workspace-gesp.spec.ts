@@ -5,6 +5,22 @@ import { syntheticFamilyHeaders } from './synthetic-family';
 import { browserEvidence } from './evidence';
 const api='http://localhost:'+(process.env.E2E_API_PORT??'4204')+'/api',evidence=browserEvidence('workspace-gesp');
 const io='gesp-student-cpp-sum-two';
+
+test('GESP workspace: a legacy receipt without first-response metadata never displays an independent-completion claim',async({page})=>{
+  test.setTimeout(120000);const f=await fixture(page);
+  await page.getByRole('button',{name:'获取第 1 级提示',exact:true}).click();
+  await expect(page.locator('.gesp-probes[aria-label="渐进提示"] .studio-notice')).toBeVisible();
+  await page.route('**/api/gesp/code-submissions',async route=>{
+    const response=await route.fetch({timeout:60000}),body=await response.json();
+    // Response-only historical-shape fixture. The actual database receipt is kept unchanged.
+    delete body.data.evidence;body.data.independent=true;body.data.hintLevel=0;
+    await route.fulfill({response,json:body});
+  });
+  await f.input.fill('#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}');
+  await page.getByRole('button',{name:'提交并运行 →',exact:true}).click();
+  await expect(page.locator('.gesp-result')).toContainText('独立性尚未确认的历史记录',{timeout:60000});
+  await expect(page.locator('.gesp-result')).not.toContainText('本次首答在反馈展示前保存');
+});
 test.afterEach(async({page})=>page.unrouteAll({behavior:'wait'}));
 async function fixture(page:Page){
   const headers=await syntheticFamilyHeaders(page),nonce=crypto.randomUUID(),principal='gesp-workspace-'+nonce,credential='GESP-QA-'+nonce;
@@ -18,6 +34,25 @@ async function fixture(page:Page){
   return {actor,child,call,href,input,principal,credential,workspace:()=>call('/gesp/students/'+child.id+'/workspace')};
 }
 async function capture(page:Page,name:string){mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+name+'.png',fullPage:true});}
+
+test('GESP workspace: code-first feedback stays held until both probe first responses are saved',async({page})=>{
+  test.setTimeout(180000);const f=await fixture(page);
+  await f.input.fill('#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}');
+  await page.getByRole('button',{name:'提交并运行 →',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'代码首答已保存',exact:true})).toBeVisible({timeout:60000});
+  await expect(page.locator('.gesp-result')).toHaveCount(0);
+  const before=await f.workspace();expect(before.submissions[0]).toMatchObject({status:'recorded',tests:[],compilePassed:null});
+  for(const [pattern,answer] of [[/理解.*标准输入/,'cin 与 cout'],[/步骤跟踪.*读入/,'5']] as const){
+    const group=page.getByRole('group',{name:pattern});await group.getByLabel(answer,{exact:true}).check();
+    await group.getByRole('button',{name:'提交本次判断',exact:true}).click();
+    await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toHaveCount(0);
+  }
+  await expect(page.locator('.gesp-result')).toContainText('当前隐藏测试全部通过');
+  await expect(page.locator('.gesp-result')).toContainText('本次首答在反馈展示前保存');
+  const after=await f.workspace();expect(after.capabilities[0].state).toBe('current_evidence_met');expect(after.reviewTasks).toHaveLength(4);
+  await page.setViewportSize({width:390,height:760});expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+  await capture(page,'first-group-code-before-probes-mobile');
+});
 
 test('GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab',async({page,context})=>{
   test.setTimeout(120000);const f=await fixture(page),original=(await f.workspace()),loop=original.tasks.find((task:any)=>task.atomId==='gesp-cpp.l1.loop'),source='// 完整的原始推理和边界\n'.repeat(1500)+'int main(){return 0;}';
@@ -40,7 +75,7 @@ test('GESP workspace: disabled storage requires the complete code download befor
 test('GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom',async({page})=>{
   test.setTimeout(120000);const f=await fixture(page);let writes=0;
   await page.route('**/api/gesp/probe-submissions',async route=>{writes++;await route.fetch();await route.abort('failed');});
-  const probe=page.getByRole('group',{name:/理解.*标准输入/});await probe.getByLabel('cin 与 cout',{exact:true}).check();await probe.getByRole('button',{name:'提交这个独立探针',exact:true}).click();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toBeVisible();
+  const probe=page.getByRole('group',{name:/理解.*标准输入/});await probe.getByLabel('cin 与 cout',{exact:true}).check();await probe.getByRole('button',{name:'提交本次判断',exact:true}).click();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toBeVisible();
   const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'下载完整学习副本与原操作',exact:true}).click();const file=await downloading,copy=JSON.parse(await readFile((await file.path())!,'utf8'));expect(copy.pending.kind).toBe('probe');expect(copy.pending.command.answer).toBe('cin 与 cout');expect((await f.workspace()).probeSubmissions).toHaveLength(1);
   await page.unroute('**/api/gesp/probe-submissions');await page.reload();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toBeVisible();expect((await f.workspace()).probeSubmissions).toHaveLength(1);await page.getByRole('button',{name:'核对并继续原操作',exact:true}).click();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toHaveCount(0);expect((await f.workspace()).probeSubmissions).toHaveLength(1);expect(writes).toBe(1);
   const changed=await page.request.post(api+'/gesp/probe-submissions',{data:{...copy.pending.command,atomId:'gesp-cpp.l1.loop'}});expect(changed.status()).toBe(409);
@@ -83,7 +118,7 @@ test('GESP workspace: without Navigation API browser back preserves the full ori
 test('GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits',async({page})=>{
   test.setTimeout(180000);const f=await fixture(page),source='#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}';let writes=0;
   await page.route('**/api/gesp/code-submissions',async route=>{writes++;const response=await route.fetch({timeout:60000});expect(response.ok()).toBe(true);await route.abort('failed');});await f.input.fill(source);await page.getByRole('button',{name:'提交并运行 →',exact:true}).click();const later=source+'\n// 原请求发出后的完整边界说明与后续编辑。';await f.input.fill(later);await expect.poll(async()=>(await f.workspace()).submissions.length,{timeout:60000}).toBe(1);await expect(page.getByRole('button',{name:'核对并继续原操作',exact:true})).toBeEnabled();const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'下载完整学习副本与原操作',exact:true}).click();const copy=JSON.parse(await readFile((await(await downloading).path())!,'utf8'));expect(copy.source).toBe(later);expect(copy.pending.command.source).toBe(source);
-  await page.unroute('**/api/gesp/code-submissions');await page.reload();await expect(f.input).toHaveValue(later);await page.getByRole('button',{name:'核对并继续原操作',exact:true}).click();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toHaveCount(0);await expect(f.input).toHaveValue(later);const workspace=await f.workspace();expect(workspace.submissions).toHaveLength(1);expect(workspace.submissions[0]).toMatchObject({status:'passed',compilePassed:true});expect(workspace.capabilities.find((item:any)=>item.atomId==='gesp-cpp.l1.io').state).not.toBe('current_evidence_met');expect(writes).toBe(1);await capture(page,'real-code-receipt-and-later-code');
+  await page.unroute('**/api/gesp/code-submissions');await page.reload();await expect(f.input).toHaveValue(later);await page.getByRole('button',{name:'核对并继续原操作',exact:true}).click();await expect(page.getByRole('region',{name:'GESP原操作恢复',exact:true})).toHaveCount(0);await expect(f.input).toHaveValue(later);const workspace=await f.workspace();expect(workspace.submissions).toHaveLength(1);expect(workspace.submissions[0]).toMatchObject({status:'recorded',compilePassed:null,tests:[]});await expect(page.getByRole('heading',{name:'代码首答已保存',exact:true})).toBeVisible();expect(workspace.capabilities.find((item:any)=>item.atomId==='gesp-cpp.l1.io').state).not.toBe('current_evidence_met');expect(writes).toBe(1);await capture(page,'real-code-receipt-and-later-code');
 });
 
 test('GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft',async({page})=>{

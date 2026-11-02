@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-02T05:11:42.969Z",
+  "driver": "sqlite",
+  "passed": true,
+  "scope": "Owned production-mode SQLite, formal HTTP roles, persistent restarts and deterministic control receipt; not a substitute for the real isolated runner, human review or learning-effect study.",
+  "beforeRestart": {
+    "hintId": "gesp_hint_cdeeb9f7-fdbf-4af3-b9ed-f03142ef2ba0",
+    "planId": "gesp_guidance_65f839a9-1a84-443d-ab2e-450f0d1430b6",
+    "reviewId": "gesp_review_b1fe45d958c1d8287116abfbc375f16f27d8",
+    "contentReviewVersion": 1,
+    "stages": [
+      1,
+      3,
+      7,
+      14
+    ]
+  },
+  "result": {
+    "assistedSeparated": true,
+    "hiddenContentReviewerOnly": true,
+    "contentReviewPersists": true,
+    "hintPersists": true,
+    "planConfirmedByParent": true,
+    "planBudgetMinutes": 20,
+    "reviewStages": 4,
+    "differentPackHashes": 4,
+    "dueReviewCompleted": true,
+    "retentionDimensionSeparated": true,
+    "privateSourceAndTestsWithheld": true,
+    "restarts": 1
+  }
+}

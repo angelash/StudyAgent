@@ -1,0 +1,91 @@
+{
+  "format": "study-block-four-local-development-checkpoint-v1",
+  "at": "2026-11-02T07:32:38.510Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "sourceSnapshot": "sources-final.json.gz",
+  "sourceFiles": 44,
+  "priorSnapshotsPreserved": true,
+  "implementation": {
+    "firstLessonFollowupQuestions": 44,
+    "proposedFirstLessonStructures": 32,
+    "followingLessonDrafts": 5,
+    "followingTwoLessonQuestionCandidates": 105,
+    "activityDraftTargets": [
+      5,
+      5,
+      6
+    ],
+    "gesp": {
+      "targets": 49,
+      "originalActivities": 245,
+      "policy": "gesp-first-group-v2",
+      "minimumReaderSchema": 35
+    }
+  },
+  "validation": {
+    "fullApi": {
+      "passed": 3046,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "inputCount": 2137,
+      "changedInputs": [],
+      "report": "checks/b4-group-full-api-vitest.json"
+    },
+    "focusedApi": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0,
+      "report": "checks/b4-group-focused-vitest.json"
+    },
+    "postgresReader": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "report": "checks/b4-reader-postgres35-receipt.json"
+    },
+    "sqliteRestart": "checks/b4-group-sqlite-receipt.json",
+    "postgresRestart": "checks/b4-gesp-postgres35-receipt.json",
+    "browser": {
+      "buildId": "pwEjykKsqWUJsQO10qXe0",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "report": "browser/schema35-first-index.json"
+    },
+    "followingMaterials": "checks/following-materials-http-citations-final.json",
+    "activityDrafts": "checks/unit-activities-http-first.json",
+    "sourceDifference": "checks/main-vs-frozen-qa-final.json",
+    "credentialAndProtection": "checks/b4-prearchive-protection.json"
+  },
+  "formal": {
+    "migrated": false,
+    "schema": 24,
+    "revision": 188,
+    "liveRevisionChange": "Only sessions/events changed at the independently observed live auth.logged_in; no rollback.",
+    "protectedRuntimeFiles": 1063
+  },
+  "boundaries": {
+    "teacherReview": false,
+    "independentFamiliesApproved": 0,
+    "publishedTeachingPackages": 0,
+    "adoptions": 0,
+    "learnerResponsesCreated": 0,
+    "sourceOriginalPagesCommitted": false,
+    "rawBrowserTracesAndCredentialsLocalOnly": true,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "booksWithoutDirectory": 336,
+    "directoryEntries": 3512,
+    "entriesWithVersionedCandidateDrafts": 6,
+    "entriesWithoutCandidateDraftsInSelectedInputs": 3506,
+    "required": "Continue per-lesson content, material/scoring/family reviews, classroom/media verification, sufficient retention stocks and adoption; then block5 engineering and human/device/time-dependent acceptance."
+  }
+}

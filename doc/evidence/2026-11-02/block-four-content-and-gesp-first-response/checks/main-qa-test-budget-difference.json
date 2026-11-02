@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-02T05:44:08.852Z",
+  "frozenFullAPI": "b4-schema34-full-api",
+  "filesCompared": 32,
+  "otherDifferences": [],
+  "apiAndProductInputsEqual": true,
+  "testDifference": {
+    "path": "tests/e2e/workspace-gesp.spec.ts",
+    "mainSha256": "94485b7b85b233c2dffccd96b5be9bac3693a911cc0a241c7fdcc37c63924a83",
+    "frozenQASha256": "861ede959631c640103de848dcf2ac347d5c05504afff3d1c5259b528dda9a05",
+    "change": "Only the new legacy-response test transport and result waits: 15s default to the existing actual-C++ 60s budget"
+  },
+  "correctedTestRun": "b4-legacy-browser-fourth",
+  "applicationAndRunnerLimitsUnchanged": true
+}

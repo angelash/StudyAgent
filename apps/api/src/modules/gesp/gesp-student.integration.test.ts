@@ -54,19 +54,19 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
   it('keeps concept and state-tracking evidence independent from code execution', async () => {
     const probeKey = randomUUID(), answer = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
       probeId: 'gesp-student-cpp-sum-two-concept', answer: 'cin 与 cout', requestKey: probeKey }, learner);
-    expect(answer).toMatchObject({ status: 'correct', dimension: 'understanding' });
+    expect(answer).toMatchObject({ status: 'recorded', dimension: 'understanding' });
     const replay = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
       probeId: 'gesp-student-cpp-sum-two-concept', answer: 'cin 与 cout', requestKey: probeKey }, learner); expect(replay.id).toBe(answer.id);
     await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io', probeId: 'gesp-student-cpp-sum-two-concept',
       answer: 'printf 与 scanf', requestKey: probeKey }, learner, 409);
     const wrong = await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io',
-      probeId: 'gesp-student-cpp-sum-two-trace', answer: '23', requestKey: randomUUID() }, learner); expect(wrong.status).toBe('incorrect');
+      probeId: 'gesp-student-cpp-sum-two-trace', answer: '23', requestKey: randomUUID() }, learner); expect(wrong.status).toBe('recorded');
     await call('post', '/gesp/probe-submissions', { studentId, atomId: 'gesp-cpp.l1.io', probeId: 'gesp-student-cpp-sum-two-trace',
       answer: '5', requestKey: randomUUID() }, parent, 403);
     const workspace = await call('get', `/gesp/students/${studentId}/workspace`);
     const capability = workspace.capabilities.find((row: any) => row.atomId === 'gesp-cpp.l1.io');
-    expect(capability.state).toBe('needs_verification'); expect(capability.hypothesis).toContain('状态跟踪');
-    expect(capability.dimensions).toContainEqual({ dimension: 'understanding', status: 'correct', attempts: 1 });
+    expect(capability.state).toBe('partial_evidence');
+    expect(capability.dimensions).toContainEqual({ dimension: 'understanding', status: 'recorded', attempts: 1 });
   }, 30_000);
 
   it('runs source with hidden tests and returns only sanitized evidence', async () => {
@@ -90,4 +90,23 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     const outsider = await call('post', '/auth/register', { principal: `gesp-outsider-${randomUUID()}`, credential: randomBytes(18).toString('hex') }, null);
     await call('get', `/gesp/students/${studentId}/workspace`, undefined, outsider, 403);
   }, 30_000);
+
+  it('cannot omit a recorded hint or repeat a probe to claim independent evidence', async () => {
+    const hint = await call('post', '/gesp/hints', { studentId, atomId: 'gesp-cpp.l1.io',
+      taskId: 'gesp-student-cpp-sum-two', level: 1, requestKey: randomUUID() }, learner);
+    const command = { studentId, atomId: 'gesp-cpp.l1.io',
+      source: '#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}', requestKey: randomUUID() };
+    // Deliberately omit hintEventId: only the server can establish prior help.
+    const receipt = await call('post', '/gesp/code-submissions', command, learner);
+    expect(receipt).toMatchObject({ status: 'passed', independent: false, hintLevel: 1,
+      evidence: { policy: 'gesp-first-group-v2', classification: 'assisted', hintEventIds: [hint.id] } });
+    expect(await call('post', '/gesp/code-submissions', command, learner)).toEqual(receipt);
+    const repeated = await call('post', '/gesp/probe-submissions', { studentId, atomId: command.atomId,
+      probeId: 'gesp-student-cpp-sum-two-trace', answer: '5', requestKey: randomUUID() }, learner);
+    expect(repeated).toMatchObject({ status: 'correct', evidence: { classification: 'assisted' } });
+    const workspace = await call('get', `/gesp/students/${studentId}/workspace`, undefined, learner);
+    expect(workspace.capabilities[0].state).not.toBe('current_evidence_met');
+    expect(workspace.capabilities[0].independentEvidenceIds).not.toContain(receipt.id);
+    expect(workspace.capabilities[0].independentEvidenceIds).not.toContain(repeated.id);
+  }, 60_000);
 });

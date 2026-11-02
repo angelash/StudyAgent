@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-02T07:35:19.143Z",
+  "command": "verify.cjs b4-staged-readback staged",
+  "exit": 1,
+  "error": "EISDIR: empty unstaged source list was interpreted as a directory after all sources had been staged.",
+  "productTestFailure": false,
+  "correction": "Ignore empty inventory lines and include exact staged source/docs paths. Preserve the original archived verifier; corrected verifier archived separately."
+}

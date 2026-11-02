@@ -1,0 +1,774 @@
+{
+  "format": "study-first-source-followup-candidate-v1",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 7,
+    "pageEnd": 9,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "review": {
+    "status": "editorial_candidate",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      7,
+      8,
+      9
+    ],
+    "familyIndependenceReviewed": false,
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "notice": "原创后续候选。结构名称不是独立性审核结论；不得自动发布、改写旧题族或占用原保持储备。",
+    "scope": "Teacher and content-editor candidate file; contains private reference answers"
+  },
+  "sourceUse": "reference_only",
+  "sourceOriginalCopied": false,
+  "publicationYear": null,
+  "coverage": {
+    "entireLessonCompleted": false,
+    "targetCount": 8,
+    "candidateTargetCount": 3,
+    "targets": [
+      {
+        "atomId": "source:chinese:g3:02915a7d:word-reading",
+        "state": "still_needs_followup_candidates"
+      },
+      {
+        "atomId": "source:chinese:g3:02915a7d:handwriting",
+        "state": "still_needs_followup_candidates"
+      },
+      {
+        "atomId": "core:chinese:contextmeaning",
+        "state": "candidate_requires_review"
+      },
+      {
+        "atomId": "source:chinese:g3:02915a7d:scene-reconstruction",
+        "state": "still_needs_followup_candidates"
+      },
+      {
+        "atomId": "core:chinese:detail-evidence",
+        "state": "candidate_requires_review"
+      },
+      {
+        "atomId": "core:chinese:personification",
+        "state": "candidate_requires_review"
+      },
+      {
+        "atomId": "source:chinese:g3:02915a7d:scene-description",
+        "state": "still_needs_followup_candidates"
+      },
+      {
+        "atomId": "source:chinese:g3:02915a7d:feature-summary",
+        "state": "still_needs_followup_candidates"
+      }
+    ]
+  },
+  "familyCount": 12,
+  "questionCount": 24,
+  "materials": [
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "proposedFamily": "followup-context-equivalent-rewrite",
+      "dimension": "understanding",
+      "behavior": "核对改写是否保留词语在当前句中的含义和限定条件",
+      "structure": "原句与完整改写 → 选择含义相容且不擅自增加条件的改写",
+      "distinctionToReview": "候选操作从解释一个词转向核对两段话的语义是否相容；是否与现有词义选择同族仍需教研确认。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_64d3abb508ee8a9af74328d5",
+          "stem": "原创记录：“这本小册子内容很厚实，既有观察记录，也有不同看法的比较。”这里没有说明册子的重量。哪种改写保留了原意？",
+          "answer": "小册子的内容比较丰富，有记录，也有比较。",
+          "options": [
+            "小册子的内容比较丰富，有记录，也有比较。",
+            "小册子一定很重，拿起来费力。",
+            "小册子的纸张一定比其他书厚。",
+            "小册子只收集了一种看法。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "“厚实”由后面的内容类型限定；重量和纸张厚度没有依据，不能把词的另一个用法带进来。",
+          "family": "followup-context-equivalent-rewrite",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        },
+        {
+          "questionId": "foundation_q_v2_f6be51a972fd6547ebab85e1",
+          "stem": "原创记录：“这一轮讨论很热烈，大家接连提问、补充。”没有记录室内温度。哪种改写符合这里的“热烈”？",
+          "answer": "大家积极参与，发言和提问接连出现。",
+          "options": [
+            "大家积极参与，发言和提问接连出现。",
+            "教室气温升得很高。",
+            "每个人都已经同意同一个答案。",
+            "讨论一定发生在夏天。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "后面的发言行为限定参与状态；不能由“热烈”推断温度、季节或意见完全一致。",
+          "family": "followup-context-equivalent-rewrite",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "proposedFamily": "followup-context-clue-production",
+      "dimension": "procedure",
+      "behavior": "自己补出能限定目标词含义的具体语境",
+      "structure": "给定词语与想表达的含义 → 写具体语句并指出起限定作用的线索",
+      "distinctionToReview": "学生产生限定语境而不是抄释义；给一个空泛赞美词或只重复目标词不能满足任务。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_1d6e7f51ae312f2b87633750",
+          "stem": "要让读者知道“暖”说的是人与人之间的关心，不能误以为在报告气温。请写两句相连的原创话，其中用到“暖”，再指出哪处具体行为帮助读者理解。不要声称这件事真的发生过。",
+          "answer": "例如：同桌发现故事里的小林忘带伞，把自己的伞往他那边挪了挪。小林心里暖暖的。让出伞下位置的行为限定关心，不是在报告温度。",
+          "analysis": "接受有具体帮助行为的其他虚构例子，不能因为含“暖”就自动得分；情节仍作为原创材料，不当作本人经历。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "语句具体体现人与人之间的关心，且不与所给含义矛盾",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能指出帮助限定词义的行为或前后条件",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达清楚，明确是原创例子而非伪造实际观察",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-clue-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_0eacd3ab45d3781e9c924294",
+          "stem": "要用“深”表达“内容不容易理解”。请写一个带具体阅读或交流条件的小片段，再说明为什么这里不能直接理解成水很深。片段是你设计的例子。",
+          "answer": "例如：故事里的同学读完这段说明，还要对照两个例子才能明白。他觉得这段话有点深。阅读说明与理解所需条件指向内容难懂，没有测量水位。",
+          "analysis": "不要求与参考措辞一致；若只写“很深很深”而没有限制条件，保持待改进。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "原创片段的情境确实涉及理解内容",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能用具体条件说明词义而非机械重复释义",
+              "weight": 0.4
+            },
+            {
+              "criterion": "不加入没有给出的真实经历或测量结论",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-clue-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "proposedFamily": "followup-context-instruction-disambiguation",
+      "dimension": "transfer",
+      "behavior": "发现一个词可能引发两种操作后，修订实际表达使要求明确",
+      "structure": "两种合理操作与含糊指令 → 按给定意图重写指令并解释修改位置",
+      "distinctionToReview": "目标是消除行动歧义，而非选择一条追加背景；仍须审核其与原歧义澄清题族的独立性。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_aaf1b2c59fb91713503d4f88",
+          "stem": "原创说明只写“把这一段写短些”。甲删去一部分事情，乙把每件事写得更简洁。现在明确要求：三件事情都保留，只减少重复说法。请替说明者重写一句指令，再解释为什么不会误导甲。",
+          "answer": "请保留这三件事情，把每件事中重复的说法删减，使表达更简洁。明确保留事情、删减说法，避免把“短”理解为少写一件事。",
+          "analysis": "含糊本身不能让读者背锅；按题目已经给定的意图修订，不自行猜另一个目的。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "修订明确保留三件事情，且只精简表达",
+              "weight": 0.4
+            },
+            {
+              "criterion": "解释所加条件如何排除另一种操作",
+              "weight": 0.4
+            },
+            {
+              "criterion": "指令可以实际执行，接受不同准确措辞",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-instruction-disambiguation",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_a49aa8f497e36e65aff8a497",
+          "stem": "原创通知写“请把画面调亮一点”。甲想打开教室的灯，乙想调高电子画面的亮度。现在明确需要修改的是投影文件里的画面，教室灯保持原状态。请把通知写清楚，再指出是哪处条件消除了歧义。",
+          "answer": "请调高投影文件中画面的亮度，教室灯保持原状态。“投影文件中”限定操作对象，“灯保持原状态”排除另一种理解。",
+          "analysis": "不要求学生真实操作设备；文字说明须区分屏幕内容与环境灯光。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "正确限定操作对象与不需要改变的条件",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能解释语境如何限定“亮”的要求",
+              "weight": 0.4
+            },
+            {
+              "criterion": "表达清楚，不要求真实设备操作",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-instruction-disambiguation",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:contextmeaning",
+      "proposedFamily": "followup-context-definition-counterexample",
+      "dimension": "transfer",
+      "behavior": "用原创反例检验过宽的词义规则并给出较准确的限定",
+      "structure": "一条过度概括的词义规则 → 设计反例、指出冲突并修订规则",
+      "distinctionToReview": "不直接给另一个句子让学生选释义；反例需能实际使原规则失效，独立性仍待审核。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_5ebfe533942994ac9d59082c",
+          "stem": "有人提出规则：“句子里出现‘重’，一定是在说重量。”请自己设计一句不符合这条规则的原创话，说明具体语境，再把规则改得更稳妥。",
+          "answer": "例如：班会记录里，小组把保护原件看得很重，所以每次借用都登记。这里指重视程度，不是克数。应根据前后文判断，谈称量时才可能明确指重量。",
+          "analysis": "仅说规则不对不够；反例也不能偷偷换成另一个目标词。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "原创例子中“重”有清楚的非重量含义",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能说明例子为何反驳“一定”的说法",
+              "weight": 0.4
+            },
+            {
+              "criterion": "修订保留按具体语境判断，不换成另一个绝对规则",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-definition-counterexample",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_57334de82b4d49f48bbc72e8",
+          "stem": "有人说：“只要出现‘开’，就是把门打开。”请设计一个能检验这句话的原创例子，再解释怎样修改规则。",
+          "answer": "例如：自然角的花开了。“开”指花朵开放，不是开门。理解“开”应联系对象和上下文，不能只套开门这一种意思。",
+          "analysis": "其他词语和语境相容的例子也可，不因与参考不同就判错。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "例子确实使用“开”且含义与开门不同",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能以对象或上下文解释词义",
+              "weight": 0.4
+            },
+            {
+              "criterion": "修订规则不过度概括，表达可理解",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-context-definition-counterexample",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "proposedFamily": "followup-evidence-claim-partition",
+      "dimension": "understanding",
+      "behavior": "分开核对一句概括中的两个部分，避免一个细节替全部结论背书",
+      "structure": "两个独立子判断与编号记录 → 指出哪部分有据、哪部分尚无依据",
+      "distinctionToReview": "显式拆开证据覆盖范围；多空形式本身不是新题族依据，需审核实际操作差异。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_fcb25bbe830c13534fc4a0c9",
+          "stem": "原创记录只写：“小林把借来的三本书按约定日期归还。”有人据此说“小林按时还书，而且总能把书中每个问题答对”。哪项核对最准确？",
+          "answer": "按时归还这部分有依据，答对书中每个问题还没有依据。",
+          "options": [
+            "按时归还这部分有依据，答对书中每个问题还没有依据。",
+            "整句话的两部分都已证明。",
+            "按时还书说明他从不读错任何字。",
+            "没有答题记录就连归还日期也不能核对。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "归还记录支持约定日期这一部分，不支持阅读答题；也不能因为第二部分未知而抹去第一部分的已有证据。",
+          "family": "followup-evidence-claim-partition",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        },
+        {
+          "questionId": "foundation_q_v2_fb997ac3bb67934ca1fd114e",
+          "stem": "原创记录：“小禾连续三天记录盆栽叶片的变化。”有人概括“她持续观察，而且已经知道每种变化的原因”。哪项处理恰当？",
+          "answer": "保留持续记录的判断，变化原因是否知道仍未知。",
+          "options": [
+            "保留持续记录的判断，变化原因是否知道仍未知。",
+            "三天记录能证明她已知道所有原因。",
+            "不知道原因说明从来没有观察。",
+            "记录三天能保证以后每天都观察。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "时间与行为支持持续记录；知道原因以及未来每天继续，都需要另外的证据。",
+          "family": "followup-evidence-claim-partition",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "proposedFamily": "followup-evidence-warrant-production",
+      "dimension": "procedure",
+      "behavior": "说明细节如何支持判断，同时交代这条证据不能说明的范围",
+      "structure": "给定原始细节与有限判断 → 用自己的话补出推理联系和边界",
+      "distinctionToReview": "考查产生性理由，不把选中证据当成已经说明联系；与原证据解释任务是否同族须复核。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_eab84ec7e23dddeeee64b082",
+          "stem": "原创记录：“小宁发现抄写的日期与借书卡不同，又回到登记处核对了一次。”有人据此说“这次她愿意核查不一致的信息”。请说明记录怎样支持这个有限判断，再说一个不能由此保证的结论。",
+          "answer": "发现不同后又去核对，是面对不一致信息采取核查行动；只能说明这次的行为，不能保证她以后每次都不会出错。",
+          "analysis": "支持的是本次愿意核查，不是给人贴永久标签；没有查到最终结果也不能编造日期已经改对。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "引用实际给出的发现不一致与再次核对行为",
+              "weight": 0.4
+            },
+            {
+              "criterion": "说明行为和有限判断之间的联系",
+              "weight": 0.4
+            },
+            {
+              "criterion": "至少指出一个未被证明的范围，不伪造结果",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-warrant-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_5aa527b6809e09f8b49eb56e",
+          "stem": "原创记录：“小禾先听完同伴的说明，再指出双方记录中的同一个时间。”请解释它为什么能支持“这次交流有对照材料”，再指出这不一定证明什么。",
+          "answer": "交流中实际引用并比较了记录里的时间，因此有对照材料；不一定证明两人的其他结论都正确，也不保证记录本身没有误记。",
+          "analysis": "不能由礼貌或发言多少替代对照证据，也不把对照动作等同最终答案正确。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "理由依托实际提到的两份记录与时间",
+              "weight": 0.4
+            },
+            {
+              "criterion": "说明对照动作怎样关联判断",
+              "weight": 0.4
+            },
+            {
+              "criterion": "保留记录准确性或其他结论的未知边界",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-warrant-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "proposedFamily": "followup-evidence-copied-source-audit",
+      "dimension": "transfer",
+      "behavior": "发现两份记录来自同一次观察时，避免把复制当作两次独立观察",
+      "structure": "记录及其来历 → 区分新增观察与复制、转述",
+      "distinctionToReview": "按来源关系核对证据而不只数纸条；是否适合本目标与年龄须教研审核，不自动增加测量资格。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_391bf252c8f0044fac665c8d",
+          "stem": "原创资料：甲在周一观察到窗边盆栽有一片新叶，并写下记录。乙把甲的记录抄到小组卡上，没有再次观察。两张纸能证明“周一和周二各长出一片新叶”吗？请说明能保留的事实和还缺什么。",
+          "answer": "不能。两张纸来自周一的同一次记录；可保留甲记录周一有一片新叶。周二是否有新的变化，需要周二独立观察和相应记录。",
+          "analysis": "两份载体不等于两次观察；也不应把复制错误扩大成甲没有观察。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "识别乙的材料是转抄而非新观察",
+              "weight": 0.4
+            },
+            {
+              "criterion": "保留原记录的时间范围，不编造第二天变化",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能提出与待验证判断相对应的新证据",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-copied-source-audit",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_ea81b69929a83622d05b9659",
+          "stem": "原创资料：班报摘录了小林的一次访谈，墙报又引用了同一段访谈。有人说“已有两次不同访谈相互印证”。请核对这个说法，并提出一项可补的独立材料。",
+          "answer": "说法不成立，班报和墙报指向同一次访谈。可再做有日期、对象和问题记录的独立访谈；另一份转印或同一次访谈的截图不算第二次。",
+          "analysis": "原访谈可作为一次来源，不能仅因展示位置不同就认两次。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "能沿来历识别同一次访谈",
+              "weight": 0.4
+            },
+            {
+              "criterion": "解释重复展示为何不增加独立次数",
+              "weight": 0.4
+            },
+            {
+              "criterion": "提出可区分来源的补充记录，不假称已经取得",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-copied-source-audit",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:detail-evidence",
+      "proposedFamily": "followup-evidence-deletion-sensitivity",
+      "dimension": "transfer",
+      "behavior": "撤去支持某一部分的记录后，主动缩小结论而不推断相反结论",
+      "structure": "分部分支持的结论与记录 → 在删去一条证据的条件下重写仍能保留的结论",
+      "distinctionToReview": "有控制地改变可用证据，核对结论怎样收缩；不是再填一条修复用证据。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_1bdd6be7824f0ff04802487f",
+          "stem": "原创记录：A写“小禾按时交回工具”；B写“交回时逐件核对数量”。原结论是“这次归还有按时完成，也有数量核对”。现在B原件遗失，不能核对它的内容。仅据A，结论应怎样改？能说她没有核对数量吗？",
+          "answer": "可以保留这次按时交回；数量核对暂缺可核查证据。不能据B缺失断言她没有核对，缺证不是相反行为的证据。",
+          "analysis": "不伪造遗失材料，也不因为一个部分未知而丢弃A仍支持的事实。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "保留A直接支持的按时归还",
+              "weight": 0.4
+            },
+            {
+              "criterion": "把数量核对改为未知而非自动否定",
+              "weight": 0.4
+            },
+            {
+              "criterion": "解释证据缺失与相反事实的区别",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-deletion-sensitivity",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_f072ff104421e40d4c9194cf",
+          "stem": "原创记录：A记“活动有阅读和绘画”；B记“使用后按类别归还材料”。原概括是“活动多样且收纳有序”。若本次只获准引用A，怎样写一个仍有依据的概括？为什么不能补写B？",
+          "answer": "本次材料显示活动有阅读和绘画，可以概括活动形式不止一种。收纳是否有序暂不据此判断；没有获准引用的B不能冒充当前已核对材料。",
+          "analysis": "题目只改变可引用材料，不证明真实收纳变乱；来源资格和事实真假分别处理。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "新概括与A中的具体活动相符",
+              "weight": 0.4
+            },
+            {
+              "criterion": "不把不可引用的内容当作当前证据",
+              "weight": 0.4
+            },
+            {
+              "criterion": "不因引用范围收缩就推断真实情况相反",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-evidence-deletion-sensitivity",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "proposedFamily": "followup-personification-speaker-binding",
+      "dimension": "understanding",
+      "behavior": "分清是人物对事物说话，还是作者把说话动作赋给事物",
+      "structure": "相似引语与不同说话主体 → 根据主体和动作关系判断拟人",
+      "distinctionToReview": "用主体归属检查而非看到说话词就机械归类；与原人类动作辨认的独立性需审核。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_7399b1483fcfc19f2f1915a3",
+          "stem": "下面两句是原创材料。甲：“小林对同学说：‘这是小草。’”乙：“小草对小林说：‘你好！’”只按这两句，哪项分析恰当？",
+          "answer": "乙把人的说话动作赋给小草；甲只写人物谈论小草，不能仅因出现小草就认定用了拟人。",
+          "options": [
+            "乙把人的说话动作赋给小草；甲只写人物谈论小草，不能仅因出现小草就认定用了拟人。",
+            "甲乙都因为有引号而一定是拟人。",
+            "乙的主体是小林，所以没有拟人。",
+            "甲证明小草真的听懂了问候。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "关键是动作由谁承担；引号、人物出现或人物谈论事物本身都不等于事物具有人的动作。",
+          "family": "followup-personification-speaker-binding",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        },
+        {
+          "questionId": "foundation_q_v2_9a26d7bb324b3634a6351f7f",
+          "stem": "原创材料：甲：“小禾说，花开了。”乙：“花儿笑着欢迎清晨。”哪项理由能准确区分两句？",
+          "answer": "甲的说话者是小禾，乙把笑着欢迎的表现赋给花儿。",
+          "options": [
+            "甲的说话者是小禾，乙把笑着欢迎的表现赋给花儿。",
+            "只要有花就都是拟人。",
+            "甲有“说”字，所以花在说话。",
+            "乙说明真实的花都有人的嘴和情感。"
+          ],
+          "mode": "single_choice",
+          "expectedSeconds": 90,
+          "analysis": "拟人是语言表达安排，不是自然事实证明；先核对主体与动作，再判断修辞。",
+          "family": "followup-personification-speaker-binding",
+          "dimension": "understanding",
+          "identityVersion": 2,
+          "expectedReview": "closed_gold_checked_separately"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "proposedFamily": "followup-personification-grounded-production",
+      "dimension": "procedure",
+      "behavior": "根据明确自然现象主动写拟人句，并交代保留的实际依据",
+      "structure": "可观察现象与表达要求 → 原创拟人句＋主体动作说明",
+      "distinctionToReview": "学生自己产生表达，不只选择现成句；不能用可观察依据要求排除所有童话，本题明确限定贴近实景的描写。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_5929471fc1aa230df35674ec",
+          "stem": "原创记录只有“风吹过，树叶轻轻摇动”。请写一句贴近这一实景的拟人句，再指出被当作人写的事物和动作。最后说明它没有证明什么自然事实。",
+          "answer": "例如：树叶轻轻挥手，向路过的同学问好。树叶被当作人，挥手问好是人的表现；依据是叶片摇动，不能据此认定叶片真的认识同学。",
+          "analysis": "接受有摇动依据的其他表达；本题限定实景，不对其他文学体裁作绝对限制。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "表达确实赋予事物人的动作或表现",
+              "weight": 0.4
+            },
+            {
+              "criterion": "指出主体与动作，并联系所给自然现象",
+              "weight": 0.4
+            },
+            {
+              "criterion": "区分修辞与自然事实，不把想象当实验结论",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-grounded-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_f217568336824583604b9c1c",
+          "stem": "原创记录：“清晨，花瓣逐渐展开。”请用一句贴近这个现象的拟人描写迎接一天，再说明哪部分是观察依据、哪部分是作者的表达。",
+          "answer": "例如：花儿舒展身体，笑着迎接新的一天。花瓣展开是所给现象，舒展身体和笑着迎接是把人的表现赋给花儿的写法。",
+          "analysis": "不要求照参考仿写，不把文学表达当花具有人的器官或心理的证明。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "有清楚的拟人对象与人的表现",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能说明原始现象与表达安排的关系",
+              "weight": 0.4
+            },
+            {
+              "criterion": "承认其他准确写法并保留事实与想象边界",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-grounded-production",
+          "dimension": "procedure",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "proposedFamily": "followup-personification-selective-figure-edit",
+      "dimension": "transfer",
+      "behavior": "在复合表达中只改变指定修辞，检查另一部分是否仍满足要求",
+      "structure": "同时含比喻和拟人的句子＋两个保留/删除条件 → 选择性改写并逐项核对",
+      "distinctionToReview": "不是给整句只贴一个标签；需同时保留一项与改变另一项，不能用表面格式当独立性证据。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_c217c738e5be2b14ebeb36cc",
+          "stem": "原创句子：“柳枝像绿色的丝带，在风中跳起舞来。”这句同时有两种表达。请去掉“像丝带”的比喻，保留拟人，再说明你分别怎样做到。",
+          "answer": "例如：柳枝在风中跳起舞来。去掉了与丝带的比较，仍用人的跳舞动作写柳枝；改写还保留风中摇动这一实景依据。",
+          "analysis": "不能因为原句有“像”就只认比喻，也不能把去掉比喻误作撤去全部修辞。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "改写确实撤去指定比较表达",
+              "weight": 0.4
+            },
+            {
+              "criterion": "仍有清楚的拟人主体和人的表现",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能分别解释两个条件，不机械给整句唯一标签",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-selective-figure-edit",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_d73d9d878b87f81420f65e8f",
+          "stem": "原创句子：“小溪像一条银带，唱着歌穿过树林。”请保留“像银带”的比较，去掉“唱着歌”的拟人，并尽量保留溪流穿过树林的事实。逐项说明修改。",
+          "answer": "例如：小溪像一条银带，流过树林。保留银带比较，改用流过说明溪流，不再赋予人的唱歌动作；没有据此认定溪流有人的发声器官。",
+          "analysis": "保留比较不是自然属性证明；接受满足两个明确条件的其他表达。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "保留指定比较而非删光表达",
+              "weight": 0.4
+            },
+            {
+              "criterion": "去掉人的动作且保留给定溪流事实",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能逐项解释修改，不把表达效果当科学证明",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-selective-figure-edit",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    },
+    {
+      "atomId": "core:chinese:personification",
+      "proposedFamily": "followup-personification-viewpoint-continuation",
+      "dimension": "transfer",
+      "behavior": "续写时保持拟人对象、叙述视角和给定实景之间的一致",
+      "structure": "已有拟人视角、自然条件与续写要求 → 连贯续句并核对指代与事实边界",
+      "distinctionToReview": "在跨句约束下保持表达，而非单独产生一句；适切性和与原产生性任务的独立性仍待教师判断。",
+      "questions": [
+        {
+          "questionId": "foundation_q_v2_648540ce58ab464b344e1f74",
+          "stem": "原创开头：“花坛里的小花向来客点头。”已知现场只有微风，花朵轻轻摇动。请接写一句，继续把小花当作迎客者，指代清楚且不编成实际长腿走路的观察记录。再说哪部分属于想象。",
+          "answer": "例如：它们轻轻摆动着身子，仿佛请大家走近看看。它们指小花，摆动联系微风下摇动；迎客和邀请是表达安排，不是观察到小花真的会邀请。",
+          "analysis": "本题指定贴近实景的续写；不把这一限制推广成所有童话都不能有行走的花。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "续句保持原拟人对象且指代明确",
+              "weight": 0.4
+            },
+            {
+              "criterion": "与题目限定的微风摇动相容",
+              "weight": 0.4
+            },
+            {
+              "criterion": "主动区分给定观察与作者想象",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-viewpoint-continuation",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        },
+        {
+          "questionId": "foundation_q_v2_5ac23740d5fb9c5250506d1f",
+          "stem": "原创开头：“小溪一路哼着歌。”材料限定溪水在石头间流动，叙述者站在岸上。请从同一拟人对象续一句，别把叙述者忽然改成溪流里的小鱼。说明你保留了哪些条件。",
+          "answer": "例如：它绕过石头，继续轻快地向前走。它仍指小溪，绕石联系溪流路径，哼歌和向前走是作者赋予的人的表现；没有改成小鱼的第一人称经历。",
+          "analysis": "接受不同自然相容的拟人续写；明确叙述者和拟人对象是两个角色。",
+          "mode": "short_answer",
+          "expectedSeconds": 160,
+          "rubric": [
+            {
+              "criterion": "续句能与前句的拟人对象连贯衔接",
+              "weight": 0.4
+            },
+            {
+              "criterion": "没有偷换叙述者或材料中的流动条件",
+              "weight": 0.4
+            },
+            {
+              "criterion": "能说明事实依据和文学表达各自的位置",
+              "weight": 0.2
+            }
+          ],
+          "family": "followup-personification-viewpoint-continuation",
+          "dimension": "transfer",
+          "identityVersion": 2,
+          "expectedReview": "human_rubric_required"
+        }
+      ]
+    }
+  ],
+  "sideEffects": {
+    "databaseWritten": false,
+    "published": false,
+    "originalStockChanged": false,
+    "retentionReservesConsumed": false
+  }
+}

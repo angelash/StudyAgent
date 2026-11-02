@@ -143,6 +143,18 @@ export type GespProbeSubmissionReceipt = {
   dimension: 'understanding' | 'procedure'; status: 'correct' | 'incorrect'; requestKey: string; answer: string;
   createdAt: string; analysis: string;
   provenance?: GespTaskProvenance;
+  evidence?: GespResponseEvidence;
+  /** Frozen command-response visibility; workspace may later project released feedback. */
+  feedbackHeld?: boolean;
+};
+
+/** Frozen server observations. Missing metadata denotes historical, unverified independence. */
+export type GespResponseEvidence = {
+  policy: 'gesp-first-response-v1' | 'gesp-first-group-v2';
+  classification: 'independent' | 'assisted' | 'practice' | 'retention';
+  priorResponseIds: string[];
+  hintEventIds: string[];
+  feedbackExposureIds?: string[];
 };
 
 export type GespCodeSubmissionReceipt = {
@@ -152,6 +164,8 @@ export type GespCodeSubmissionReceipt = {
   tests: Array<{ index: number; passed: boolean; status: string; exitCode: number | null; durationMs: number }>;
   hintEventId: string | null; hintLevel: number; independent: boolean; reviewTaskId: string | null;
   provenance?: GespTaskProvenance;
+  evidence?: GespResponseEvidence;
+  feedbackHeld?: boolean;
 };
 
 export type GespHintEvent = {

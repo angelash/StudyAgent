@@ -1,0 +1,44 @@
+{
+  "at": "2026-11-02T06:15:27.143Z",
+  "passed": true,
+  "scope": "Two original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-flowers-v1.json",
+      "sha256": "e66958b2bcce1d6f1aa08068489b714d15cd8156844aebdec3b165cec86e3e14",
+      "physicalPages": [
+        10,
+        11
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 81,
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-asking-v1.json",
+      "sha256": "f9510a78b1a2351b287352682ca0c909f4e3c36bc3ff1b29e78488c645d0b8f2",
+      "physicalPages": [
+        12,
+        13
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 70,
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  }
+}

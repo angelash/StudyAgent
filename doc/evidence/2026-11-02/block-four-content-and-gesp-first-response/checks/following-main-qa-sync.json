@@ -1,0 +1,158 @@
+{
+  "at": "2026-11-02T06:23:03.522Z",
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/gesp-evidence-reader.integration.test.ts",
+      "sha256": "8193c4a2ea1976be5ed863639fddfe3b076445b154790e73b4093b8cf313cb0b"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-followup-probes.test.ts",
+      "sha256": "322fb08ee91bb12cd7f9adc3f3a4d32fe57187e41939463e3fab7631a6432d44"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-followup-probes.ts",
+      "sha256": "3db77f67ef7f155f83ec7b3efff2f560c0f53f27e8b886993d4c2ef6b67975c6"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-followup.integration.test.ts",
+      "sha256": "26dda351fea5f8b0f3562dcd1987711396e7f3c5c068d9c024a4e1651b676e35"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/source-chinese-practical-followup-probes.ts",
+      "sha256": "0b08b061c95f8204d635dcbf5fcc0549bd5487d8ca6b95e92375eb9243dc7737"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-teaching-candidates.test.ts",
+      "sha256": "d7ec34464844fa05ce196fcd6dc5648d66a32667ea8f94cda6521fc306e5434c"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/teaching-candidates.tsx",
+      "sha256": "ff019725a239956244c0785c36c48ebcae1a4c294cf315710cceba19e3b71946"
+    },
+    {
+      "path": "packages/contracts/src/gesp-teaching.ts",
+      "sha256": "ffc8a7e107785cf33c604c987c46bc053c271888c36bfced25da99a831bc0327"
+    },
+    {
+      "path": "resources/compatibility/gesp-before-evidence-schema33-reader-v1.json.gz",
+      "sha256": "66d2e37c56cd6542b09b7e45eef17e7559a2fd31bdd7be482d8248bf1e6b3457"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-asking-v1.json",
+      "sha256": "f9510a78b1a2351b287352682ca0c909f4e3c36bc3ff1b29e78488c645d0b8f2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-flowers-v1.json",
+      "sha256": "e66958b2bcce1d6f1aa08068489b714d15cd8156844aebdec3b165cec86e3e14"
+    },
+    {
+      "path": "resources/gesp/teaching-candidates-v1.json",
+      "sha256": "20d4d55beb7b1cf5be2d14c3ad0785f3d610591201b683e1220f5e37bafe266f"
+    },
+    {
+      "path": "scripts/content/build-chinese-first-unit-following-drafts.cjs",
+      "sha256": "3d2b605e768b12906a5f03cd9317c09415fdf7cf28b9b54d69b7d5fc87118c5e"
+    },
+    {
+      "path": "scripts/content/build-gesp-teaching-candidates.cjs",
+      "sha256": "dbb873295e33f461160bd2dde13977acb1833c6c8c162f2f43216d71ce41e379"
+    },
+    {
+      "path": "scripts/operations/audit-content-delivery.cjs",
+      "sha256": "5eebfbb4364b3c4d8d263798001876a9366fd41ac01d64e872762cb4da64eb5c"
+    },
+    {
+      "path": "scripts/operations/prepare-first-source-followup.cjs",
+      "sha256": "92c66cffc8a121a6530a2544fbf72e09ee7fca4983334dc27d8411d152109d1a"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-following-drafts.cjs",
+      "sha256": "bc5456d39526e2a5417c85cfeb25d4c0eaaef7dab19bc6438d5321f3ed00f4e4"
+    },
+    {
+      "path": "tests/e2e/gesp-teaching-candidates.spec.ts",
+      "sha256": "262e4c69f492cb925e0e184ac7955dfbb8a2f209e674ba9dba21b0641de84b19"
+    },
+    {
+      "path": "apps/api/src/infrastructure/domain-database.ts",
+      "sha256": "ea830730c517becf8fb631350d1a376f887cc5477ea8eea35e3edf87a3b8bf04"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-edition-reader.integration.test.ts",
+      "sha256": "0f25a61c3384050cbef7d8b913660067100fb7b0c6a9c639e4b9fdfd895a0f2a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+      "sha256": "639eb8ed4bf016049ec6bc71ddbad5f3868c01ef0118445ab15a3561de4b4690"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+      "sha256": "c7f4943b7c367011ff0ff948641169f3f807f3eb47d4162a238b2509223f10fb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "sha256": "2f56a366f8d14d9adaf6af19f922b4ae1481c7fdbee35571da085617c10d529b"
+    },
+    {
+      "path": "apps/api/src/modules/diagnostics/textbook-teaching.integration.test.ts",
+      "sha256": "6f9d913e33ba182c89845e82cf803a75439c97ccdfe045c9caf5461f3fa5396b"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-learning-loop.integration.test.ts",
+      "sha256": "291b790c6b8c9c050c17e46b78a1d5f9854502a575254ea5502c8abb1185a5bf"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-learning-loop.test.ts",
+      "sha256": "e57d2bb047c6da17035bc377a9efb6b91710a21721d38300ae2a4b9f8e9c3881"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+      "sha256": "44f7f88de004e32c7d53a3300e0dc57c5f4049bc715be9fc7a338d7f3410eb21"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp.controller.ts",
+      "sha256": "1c41016497753fa0eb48cfb52d1afd49d2b8cbb76e08b56e1c53b622b4a584d4"
+    },
+    {
+      "path": "apps/api/src/modules/gesp/gesp.service.ts",
+      "sha256": "9c928872f7aea6d502635862408b87e7a45d5a61868c031f602370f2f3d781fe"
+    },
+    {
+      "path": "apps/web/app/admin/gesp/page.tsx",
+      "sha256": "d9a3dcb03844b9efaa04403779c747af58610150a1c0d2d094143854fd6c64e8"
+    },
+    {
+      "path": "apps/web/app/student/gesp/workbench.tsx",
+      "sha256": "1d5addd8b5a071ca3230c23f297d743e83082183f8fdc88b83a100ca42ac5ba8"
+    },
+    {
+      "path": "packages/contracts/src/gesp.ts",
+      "sha256": "2cf53cb2df1b13780e5273031bf1a16d68fd91977a88e7e9304b1ed79e265cda"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "sha256": "e607de1877f72a35b91b5f532a34c15fa42bacd1b48900c62a139cbd9ebb4611"
+    },
+    {
+      "path": "scripts/operations/database-reader-guard.cjs",
+      "sha256": "d679ab85eb69a93995f825f307eaff449a6e9471435b7fcec0a89437ada14f33"
+    },
+    {
+      "path": "scripts/qa/verify-gesp-learning-loop.cjs",
+      "sha256": "d1ddbf49c459093f9dae4e91e879646521b71c4f8bd9822afebe5e2116936e32"
+    },
+    {
+      "path": "tests/e2e/workspace-gesp.spec.ts",
+      "sha256": "94485b7b85b233c2dffccd96b5be9bac3693a911cc0a241c7fdcc37c63924a83"
+    }
+  ],
+  "developmentBranch": "main",
+  "priorFullAPI": {
+    "passed": 3038,
+    "failed": 0,
+    "conditionalSkipped": 131,
+    "inputCount": 2132,
+    "changedDuringRun": []
+  },
+  "subsequentProductChange": "Student without a confirmed scope receives no availableTasks catalog; two exact-source draft resources and their standalone tools do not auto-register or publish."
+}

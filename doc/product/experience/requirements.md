@@ -1,5 +1,8 @@
 # 逐项需求与验收账本
 
+2026-11-02 第4块继续开发：首课44道后续候选、后续两课105道原创材料与第一单元另三项活动稿已实际保存/冷开核对；GESP49目标教学候选及首组反馈边界已实现，schema35专项32/0/0、PG读取4/0/0、双库重启和最新浏览器13/13通过，完整API3046通过/0失败/131条件跳过、2137输入保持。教师/结构/评分审核、全教材其余逐课内容和第5块未完成，72项仍11 implemented/52 in_progress/9 planned/0 verified，详见[192当前记录](../192-textbook-followups-gesp-teaching-and-first-response-evidence.md)。正式库当前24/revision188仅有已核实实时登录变化，1063运行文件保持；只做本地交付。
+
+
 2026-11-02 第3块核对：三种图片采集用途、原图版本、多页整理和原件恢复已在主干接通，XP-G02由planned校正为in_progress。72项当前为11 implemented、52 in_progress、9 planned、0 verified。相机权限、实机和扫描/手写标注集仍待验；原生合并表格和公式的本批实现见[191](../191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md)。
 
 2026-11-02 第2块状态校正：XP-I06的原复测、教学后计时和干预复盘已有实现及当前工程证据，从planned改为in_progress。72项现为11 implemented、51 in_progress、10 planned、0 verified；教师及真人1/3/7/14日验收仍未完成。见[六链路核对](../../evidence/2026-11-02/block-two-learning-closure/receipt.json)。

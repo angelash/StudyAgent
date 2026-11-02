@@ -19,6 +19,7 @@ delete process.env.OPENAI_API_KEY;
 let adminPool, ownedDatabase;
 const curriculum = require('../../resources/gesp/student-curriculum-v2.json');
 const task = curriculum.tasks.find(row => row.atomId === 'gesp-cpp.l1.io');
+const assistedTask = curriculum.tasks.find(row => row.atomId === 'gesp-cpp.l1.division');
 const evidence = { at: new Date().toISOString(), driver, passed: false,
   scope: 'Owned production-mode SQLite, formal HTTP roles, persistent restarts and deterministic control receipt; not a substitute for the real isolated runner, human review or learning-effect study.'
 };
@@ -68,9 +69,9 @@ async function main() {
     requestKey: randomUUID(), reason: '家长允许孩子使用独立GESP学习身份' });
   const code = await call('POST', `/students/${studentId}/learning-access/codes`, { expectedVersion: access.version, requestKey: randomUUID() });
   learner = await call('POST', '/auth/learning-code', { code: code.code }, null);
-  await call('PUT', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: [task.atomId], requestKey: randomUUID(),
+  await call('PUT', `/gesp/students/${studentId}/scope`, { level: 1, atomIds: [task.atomId, assistedTask.atomId], requestKey: randomUUID(),
     reason: '家长确认测试知识点的一级原创编程范围' });
-  const hint = await call('POST', '/gesp/hints', { studentId, atomId: task.atomId, taskId: task.id, level: 1, requestKey: randomUUID() }, learner);
+  const hint = await call('POST', '/gesp/hints', { studentId, atomId: assistedTask.atomId, taskId: assistedTask.id, level: 1, requestKey: randomUUID() }, learner);
   const content = await call('GET', '/gesp/student-content?level=1', undefined, reviewer);
   const reviewTask = content.tasks.find(row => row.id === task.id);
   assert(reviewTask && reviewTask.tests.length === task.tests.length);
@@ -80,18 +81,21 @@ async function main() {
   assert.equal(contentReview.status, 'approved');
   for (const probe of task.probes) await call('POST', '/gesp/probe-submissions', { studentId, atomId: task.atomId, probeId: probe.id,
     answer: probe.answer, requestKey: randomUUID() }, learner);
-  const assisted = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){}',
-    requestKey: randomUUID(), hintEventId: hint.id }, learner);
+  // Deliberately omit the client reference. Server help history must still classify this as assisted.
+  const assistedCommand = { studentId, atomId: assistedTask.atomId, source: 'int main(){}', requestKey: randomUUID() };
+  const assisted = await call('POST', '/gesp/code-submissions', assistedCommand, learner);
   assert.equal(assisted.independent, false); assert.equal(assisted.hintLevel, 1);
+  assert(assisted.evidence.hintEventIds.includes(hint.id));
+  assert.deepEqual(await call('POST', '/gesp/code-submissions', assistedCommand, learner), assisted);
   assert.match(assisted.provenance.taskContentSha256, /^[a-f0-9]{64}$/);
   assert.match(assisted.provenance.testPackSha256, /^[a-f0-9]{64}$/);
-  assert.equal(assisted.provenance.contentReviewStatus, 'approved');
-  assert.equal(assisted.provenance.contentReviewVersion, 1);
+  assert.equal(assisted.provenance.contentReviewStatus, 'unreviewed');
+  assert.equal(assisted.provenance.contentReviewVersion, 0);
   const independent = await call('POST', '/gesp/code-submissions', { studentId, atomId: task.atomId, source: 'int main(){return 0;}', requestKey: randomUUID() }, learner);
   assert.equal(independent.independent, true);
   let workspace = await call('GET', `/gesp/students/${studentId}/workspace`, undefined, learner);
-  assert.equal(workspace.capabilities[0].state, 'current_evidence_met', JSON.stringify({ capability: workspace.capabilities[0], submissions: workspace.submissions, probes: workspace.probeSubmissions }));
-  assert.deepEqual(workspace.reviewTasks.map(row => row.stageDay), [1, 3, 7, 14], JSON.stringify({ capability: workspace.capabilities[0], reviews: workspace.reviewTasks }));
+  assert.equal(workspace.capabilities.find(row => row.atomId === task.atomId).state, 'current_evidence_met', JSON.stringify({ capability: workspace.capabilities.find(row => row.atomId === task.atomId), submissions: workspace.submissions, probes: workspace.probeSubmissions }));
+  assert.deepEqual(workspace.reviewTasks.map(row => row.stageDay), [1, 3, 7, 14], JSON.stringify({ capability: workspace.capabilities.find(row => row.atomId === task.atomId), reviews: workspace.reviewTasks }));
   assert(workspace.reviewTasks.every(row => /^[a-f0-9]{64}$/.test(row.testPackSha256)));
   const plan = await call('POST', '/gesp/guidance-plans', { studentId, scopeVersion: 1, minutesPerDay: 20,
     requestKey: randomUUID(), reason: '家长依据当前GESP独立证据生成待确认计划' });
@@ -117,8 +121,8 @@ async function main() {
   assert.equal(workspace.guidancePlans.find(row => row.id === plan.id).status, 'active');
   assert.deepEqual(workspace.reviewTasks.find(row => row.id === due.id), { ...workspace.reviewTasks.find(row => row.id === due.id),
     status: 'completed', attemptCount: 1, lastStatus: 'passed' });
-  assert.equal(workspace.capabilities[0].dimensions.find(row => row.dimension === 'retention').status, 'correct');
-  assert.equal(workspace.capabilities[0].state, 'current_evidence_met');
+  assert.equal(workspace.capabilities.find(row => row.atomId === task.atomId).dimensions.find(row => row.dimension === 'retention').status, 'correct');
+  assert.equal(workspace.capabilities.find(row => row.atomId === task.atomId).state, 'current_evidence_met');
   const serialized = JSON.stringify(workspace);
   assert.equal(serialized.includes('"expected"'), false, 'hidden expected output'); assert.equal(serialized.includes('requestKey'), false, 'request key');
   assert(workspace.tasks.every(row => !Object.prototype.hasOwnProperty.call(row, 'tests')));

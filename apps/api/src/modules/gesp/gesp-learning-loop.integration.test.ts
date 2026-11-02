@@ -99,4 +99,38 @@ describe('GESP learning support HTTP boundaries', () => {
     await call('post', '/gesp/guidance-plans', { studentId, scopeVersion: 1, minutesPerDay: 20, requestKey: randomUUID(),
       reason: '无关家长不能生成指导计划' }, outsider, 403);
   });
+
+  it('serves the complete private teaching candidate pack without approving content or changing learner evidence', async () => {
+    const from = (file: string) => require('../../../dist/apps/api/src/' + file + '.js');
+    const store = app.get(from('infrastructure/in-memory-store.service').InMemoryStoreService);
+    const collections = ['gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespTaskReviews', 'gespReviewTasks'];
+    const snapshot = () => store.requestContext(() => JSON.stringify(collections.map(name => store.inspect(name))));
+    const before = await snapshot(), all = await call('get', '/gesp/teaching-candidates', undefined, reviewer);
+    expect(all.lessons).toHaveLength(49); expect(all).toMatchObject({ automaticPublication: false, teacherReviewed: false });
+    expect(all.lessons[0].example.referenceAnswer).toBeTruthy();
+    await call('get', '/gesp/teaching-candidates', undefined, learner, 403);
+    await call('get', '/gesp/teaching-candidates', undefined, parent, 403);
+    await call('get', '/gesp/teaching-candidates?level=0', undefined, reviewer, 400);
+    const filtered = await call('get', '/gesp/teaching-candidates?level=4', undefined, reviewer);
+    expect(filtered.lessons.every((row: any) => row.level === 4)).toBe(true);
+    const workspace = await call('get', `/gesp/students/${studentId}/workspace`, undefined, learner);
+    expect(JSON.stringify(workspace)).not.toContain('referenceAnswer');
+    expect(JSON.stringify(workspace)).not.toContain(all.lessons[0].explanation);
+    expect(await snapshot()).toBe(before);
+  });
+
+  it('keeps the task catalog private from a learner until the guardian confirms the scope', async () => {
+    const child = (await call('post', '/students', { nickname: '未确认认证范围的合成档案', grade: 3, preferredSessionMinutes: 15,
+      defaultVersionMap: { math: '', chinese: '', english: '' } })).profile;
+    const access = await call('post', `/students/${child.id}/learning-access`, { enabled: true, expectedVersion: 0,
+      requestKey: randomUUID(), reason: '仅开放独立身份，尚未确认认证任务范围' });
+    const code = await call('post', `/students/${child.id}/learning-access/codes`, { expectedVersion: access.version, requestKey: randomUUID() });
+    const childActor = await call('post', '/auth/learning-code', { code: code.code }, null);
+    const before = await call('get', `/gesp/students/${child.id}/workspace`, undefined, childActor);
+    expect(before.scope).toBeNull(); expect(before.tasks).toEqual([]); expect(before.availableTasks).toEqual([]);
+    expect((await call('get', `/gesp/students/${child.id}/workspace`)).availableTasks).toHaveLength(49);
+    await call('put', `/gesp/students/${child.id}/scope`, { level: 1, atomIds: ['gesp-cpp.l1.io'], requestKey: randomUUID(), reason: '家长只确认一个原创认证目标' });
+    const after = await call('get', `/gesp/students/${child.id}/workspace`, undefined, childActor);
+    expect(after.tasks.map((row: any) => row.atomId)).toEqual(['gesp-cpp.l1.io']); expect(after.availableTasks).toEqual([]);
+  });
 });

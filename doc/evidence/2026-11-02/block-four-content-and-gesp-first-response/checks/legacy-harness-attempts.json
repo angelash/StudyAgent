@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "label": "second",
+      "phase": "harness_setup",
+      "testsExecuted": 0,
+      "passed": false,
+      "privateLogLocalOnly": true,
+      "originalLogSha256": "28cabb25acf85d1e6272ced8febd9039bc1ce4f8be5d35c9eda233167d6c5e3a",
+      "issue": "Custom Playwright config needed explicit webServer cwd"
+    },
+    {
+      "label": "third",
+      "phase": "harness_setup",
+      "testsExecuted": 0,
+      "passed": false,
+      "privateLogLocalOnly": true,
+      "originalLogSha256": "10e11a39890f3bd21a8017b8a35f5306a3e0ed1a692df44be9adeee73e89ce69",
+      "issue": "Isolated fixture server required E2E_SOURCE_COURSE_SNAPSHOT=1"
+    }
+  ],
+  "finalRun": "b4-legacy-browser-fourth",
+  "finalPassed": 1,
+  "actualCodeExecution": true
+}

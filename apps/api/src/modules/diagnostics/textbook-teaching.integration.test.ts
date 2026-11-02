@@ -217,6 +217,6 @@ describe('actual ' + (postgres ? 'PostgreSQL' : 'SQLite') + ' teaching package H
     } finally { await restoredApp?.close(); process.env.STUDY_DATA_DIR = originalDir; if (originalUrl === undefined) delete process.env.DATABASE_URL; else process.env.DATABASE_URL = originalUrl; }
     writeFileSync(join(directory, 'native-privacy-restore.receipt.json'), JSON.stringify({ generatedOnly: true, driver: postgres ? 'postgres' : 'sqlite', fourPrivateCollectionsRemoved: true,
       otherOwnerOriginalsRetained: true, nativeBackupAndEmptyRestore: true, latestDeletionLedger: true, restoredOldPublicationSuspended: true, explicitReconfirmationAfterRestore: true,
-      schema: 33, realLearnerEvidence: false }, null, 2), { flag: 'wx' });
+      schema: 35, realLearnerEvidence: false }, null, 2), { flag: 'wx' });
   });
 });
