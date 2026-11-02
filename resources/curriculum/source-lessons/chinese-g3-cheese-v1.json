@@ -1,0 +1,297 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit3:entry4",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 43,
+    "pageEnd": 44,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:cheese-word-reading",
+      "version": 1,
+      "name": "奶酪课12字识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在词语中识读酪宣处诱舔毅犯禁稍豫跺聚12字",
+      "successCriterion": "真实声音覆盖目标字，处罚chǔ稍息shào等依当前语境核对，无本课写字表",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:cheese-plot-sequence",
+      "version": 1,
+      "name": "围绕奶酪梳理主要情节",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "童话阅读",
+      "objective": "默读后抓搬运奶酪掉渣犹豫分配完成的主要变化",
+      "successCriterion": "用自己的话讲清前后转变，重要行动有材料依据，不把心动直接写成已偷吃",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:cheese-character-judgment",
+      "version": 1,
+      "name": "用具体行动评价队长",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "说明喜不喜欢蚂蚁队长并用不同阶段的实际行动支持",
+      "successCriterion": "允许有依据的不同看法，区分犹豫与最后选择，不用领导身份或统一道德标签替代依据",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:cheese-word-reading",
+    "source:chinese:g3:02915a7d:cheese-plot-sequence",
+    "source:chinese:g3:02915a7d:cheese-character-judgment",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件全部选定正文、注音、识写表、作者脚注、任务与插图已逐张查看；AI核对不是教师审核。",
+    "pages": [
+      {
+        "page": 43,
+        "visualChecked": true,
+        "statement": "已查看作者辛勤、略读提示、宣布约定、搬运掉渣和诱惑犹豫；规则对队长同样适用。"
+      },
+      {
+        "page": 44,
+        "visualChecked": true,
+        "statement": "已查看调开队伍、独自犹豫、叫回分配幼蚁和完成搬运；12字识读，处罚chǔ稍息shào，无写字表或全文背诵要求。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "一块奶酪",
+    "author": "辛勤",
+    "skim": true,
+    "recognitionCharacters": [
+      "酪",
+      "宣",
+      "处",
+      "诱",
+      "舔",
+      "毅",
+      "犯",
+      "禁",
+      "稍",
+      "豫",
+      "跺",
+      "聚"
+    ],
+    "writingCharacters": [],
+    "fullTextRecitationRequired": false,
+    "requiredTasks": [
+      "默读",
+      "说围绕奶酪讲了什么事",
+      "说明对队长的看法及理由"
+    ],
+    "oneRequiredCharacterOpinion": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "一块奶酪：看清想法和行动，再说自己的看法",
+    "activation": {
+      "prompt": "原创虚构卡：大家约定先搬书，一人很想先看新书，想了一会儿仍继续搬。想看与已经违约能直接画等号吗？",
+      "expectedObservation": "孩子区分想法与实际行动，评价需具体材料，不只按身份或心动判断。",
+      "bridge": "读蚂蚁队长面对奶酪渣时怎样犹豫、怎样选择，再说明自己的看法。"
+    },
+    "concept": {
+      "explanation": "故事围绕奶酪搬运展开：先宣布不偷嘴，队伍积极劳动；搬大奶酪时掉下一角，队长因诱惑和禁令犹豫；他把队伍调开，独自面对奶酪渣，最终没有自己偷吃，而是叫回大家，将碎渣给年龄最小的蚂蚁，最后完成搬运。梳理时抓转变和选择，不将犹豫直接写成已经偷吃，也不能从结尾的选择倒改成他从未心动。评价喜不喜欢要说明理由，可以肯定他最终约束自己、照顾小蚂蚁，也可以对过程中的做法提出有据疑问；不能只因队长身份就认为永远正确。公开分配与背着大家偷嘴在故事中不同，实际规则解释仍需看具体行动，不概括成现实所有分配都应这样。",
+      "points": [
+        "抓奶酪引出的主要事件",
+        "想法犹豫和行动分别看",
+        "结尾选择不抹去过程",
+        "人物评价允许有依据的不同意见"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构卡：小组约定先把图书搬完再看。有一张书签掉落，组长很想留下，独自想了一会儿，最后把大家叫回来，说明情况并把书签归还原书。",
+      "steps": [
+        {
+          "explanation": "先记约定和掉落事件，不把小物件换成无关的大情节。",
+          "board": [
+            "约定：先搬再看",
+            "变化：书签掉落"
+          ]
+        },
+        {
+          "explanation": "想留下是心理活动，归还是最后行动，两者不相互替代。",
+          "board": [
+            "想法：想留",
+            "行动：说明、归还"
+          ]
+        },
+        {
+          "explanation": "评价可肯定归还，也可讨论过程是否应早点说明，但都要指向材料。",
+          "board": [
+            "看法有具体依据",
+            "不同意见可交流",
+            "不能编成已经私藏"
+          ]
+        }
+      ],
+      "conclusion": "人物在情节中作选择，评价看具体证据，不把一个标签当全部理解。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "奶酪事件的转变",
+        "headers": [
+          "阶段",
+          "具体线索",
+          "评价需分清"
+        ],
+        "rows": [
+          [
+            "宣布约定",
+            "不许偷嘴，队长也适用",
+            "身份不自动免除规则"
+          ],
+          [
+            "掉渣诱惑",
+            "想吃又怕违反禁令",
+            "心动不等已经偷吃"
+          ],
+          [
+            "独自犹豫",
+            "队伍调开后仍在作选择",
+            "不能跳过中间过程"
+          ],
+          [
+            "叫回并分配",
+            "给年龄最小者，继续搬运",
+            "公开分配与背着大家偷吃分开"
+          ],
+          [
+            "完成搬运",
+            "劲头更足，奶酪进洞",
+            "不由一次结果推人物永远完美"
+          ]
+        ],
+        "explanation": "表格帮助梳理变化，人物看法须用具体行动支持，允许有依据的不同意见。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "队长犹豫想吃，所以他已经偷吃了。",
+        "alternatives": [
+          "可能将心理和行动混同，也可能没有读到最后选择。"
+        ],
+        "verification": "分别找想吃、犹豫和实际处理奶酪渣的句子。",
+        "correctiveFeedback": "心动与行动分开记录，结尾给幼蚁不改写为自己偷偷吃。"
+      },
+      {
+        "observation": "只说喜欢，因为他是队长或从来不受诱惑。",
+        "alternatives": [
+          "可能按身份评价，也可能用结果倒改过程。"
+        ],
+        "verification": "指出两处实际行动，核对原文是否写过犹豫和想吃。",
+        "correctiveFeedback": "身份不是证据，可以肯定最终选择，同时保留过程中的心动。"
+      },
+      {
+        "observation": "不同意同伴看法，就给人物补造贪心或完美的未写情节。",
+        "alternatives": [
+          "可能只求意见一致，也可能没区分推测与正文。"
+        ],
+        "verification": "逐项指出材料已给和自己追加，再说明真实分歧。",
+        "correctiveFeedback": "不同意见可保留，理由必须有据，不用编造经历支撑评价。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一个有约定、诱惑和最终选择的原创小故事，不要求学生披露本人或同学的违约经历。",
+      "prompt": "说清主要变化，再写你的看法和两条具体依据，分开人物想法与行动。",
+      "expectedStrategy": "按情节核对选择，观点允许不同，材料未给的动机结果保持未知。"
+    },
+    "summary": {
+      "synthesis": "围绕一块奶酪读清事件，再用实际行动说明看法。心动不是已经偷吃，最终选择也不倒改过程。",
+      "takeaways": [
+        "主要情节抓变化",
+        "想法行动分别看",
+        "看法用具体依据支持",
+        "不同有据意见可以交流"
+      ]
+    },
+    "citations": [
+      {
+        "page": 43,
+        "quote": "想想课文围绕一块奶酪讲了一件什么事",
+        "usedFor": "concept"
+      },
+      {
+        "page": 43,
+        "quote": "再说说你喜不喜欢文中的蚂蚁队长",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:cheese-word-reading",
+        "objective": "在词语中识读酪宣处诱舔毅犯禁稍豫跺聚12字",
+        "successCriterion": "真实声音覆盖目标字，处罚chǔ稍息shào等依当前语境核对，无本课写字表"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:cheese-plot-sequence",
+        "objective": "默读后抓搬运奶酪掉渣犹豫分配完成的主要变化",
+        "successCriterion": "用自己的话讲清前后转变，重要行动有材料依据，不把心动直接写成已偷吃"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:cheese-character-judgment",
+        "objective": "说明喜不喜欢蚂蚁队长并用不同阶段的实际行动支持",
+        "successCriterion": "允许有依据的不同看法，区分犹豫与最后选择，不用领导身份或统一道德标签替代依据"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "联系当前前后文和具体对象解释词句，说明所用方法",
+        "successCriterion": "含义与语境相容，不只重复目标词或机械套同字常见义"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用具体情节支持判断，分清角色想法实际行动和推测",
+        "successCriterion": "指出依据及支持关系，未给的动机结果不编造，局部判断不扩大成永远如此"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "目标、量规、结构与充分未见库存须先审核，再按真实日期核对。原故事重述和重复题不自动当独立迁移，提示与看文保留。"
+    }
+  },
+  "editorNotes": {
+    "slug": "cheese",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "具体原创讲解、例子、图表和错因已编写；检查材料、独立结构、评分与充分保持库存仍须审核。",
+    "reuseBoundary": "仅复用明确列出的词义与依据目标，新增定义先修和等价关系保持候选。",
+    "pacing": "识读、书写、朗读、画图与复述分次核对，不把一次局部完成说成整课全部掌握。"
+  }
+}

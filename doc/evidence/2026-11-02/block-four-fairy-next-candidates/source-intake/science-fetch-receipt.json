@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "url": "https://extension.umn.edu/dairy-nutrition/ruminant-digestive-system",
+      "status": 403,
+      "qualifiedAsSource": false,
+      "reason": "HTTP client received a challenge page, not article text. No challenge interaction attempted."
+    },
+    {
+      "label": "msstate",
+      "url": "https://extension.msstate.edu/publications/understanding-the-ruminant-animal-digestive-system",
+      "finalUrl": "https://extension.msstate.edu/publications/understanding-the-ruminant-animal-digestive-system",
+      "status": 200,
+      "title": "Understanding the Ruminant Animal Digestive System | Mississippi State University Extension Service",
+      "rawSha256": "441e44ed2a613893a13c26543ce9f94ad5de6a7af170b30c24739b06da51a6b6",
+      "qualifiedAsSource": true,
+      "requiresActualReading": true
+    },
+    {
+      "label": "okstate",
+      "url": "https://extension.okstate.edu/fact-sheets/digestive-system-of-goats.html",
+      "status": 403,
+      "qualifiedAsSource": false
+    }
+  ],
+  "readOnlyPublicSources": true,
+  "teacherReviewed": false
+}

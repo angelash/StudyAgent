@@ -1,0 +1,222 @@
+{
+  "at": "2026-11-02T10:10:25.580Z",
+  "baseCommit": "c39681cb801b53e361847d32be1bda794312d49f",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD c39681cb801b53e361847d32be1bda794312d49f\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json",
+      "bytes": 80185,
+      "sha256": "4572f31e5a3bb838e8aeac26c77fa84e23c94b021580614929b703454407d9e2",
+      "gitNormalizedSha256": "4572f31e5a3bb838e8aeac26c77fa84e23c94b021580614929b703454407d9e2"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-cheese-v1.json",
+      "bytes": 12301,
+      "sha256": "dc5420bdd790fa8501c7304053ff09ee22e2080ea971785cf0fec24f99ab3ab9",
+      "gitNormalizedSha256": "dc5420bdd790fa8501c7304053ff09ee22e2080ea971785cf0fec24f99ab3ab9"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-cow-journey-v1.json",
+      "bytes": 17469,
+      "sha256": "bd46ff3ba64f6770061f5d7a57b10a947267cd29ac8aef6d9501c62b126db3b0",
+      "gitNormalizedSha256": "bd46ff3ba64f6770061f5d7a57b10a947267cd29ac8aef6d9501c62b126db3b0"
+    },
+    {
+      "path": "resources/curriculum/source-reviews/ruminant-digestion-msstate-v1.json",
+      "bytes": 1962,
+      "sha256": "217298461396033032102576ba368e1d7278f3866d18d7acf8eb9151dd4daf25",
+      "gitNormalizedSha256": "217298461396033032102576ba368e1d7278f3866d18d7acf8eb9151dd4daf25"
+    },
+    {
+      "path": "scripts/content/build-chinese-fairy-next-lessons.cjs",
+      "bytes": 18167,
+      "sha256": "b3954cca64c0e70eeb4b69dd9700b6f8fbffa12af2f00793188b79fca8f54b90",
+      "gitNormalizedSha256": "b3954cca64c0e70eeb4b69dd9700b6f8fbffa12af2f00793188b79fca8f54b90"
+    },
+    {
+      "path": "scripts/content/build-chinese-fairy-next-materials.cjs",
+      "bytes": 26259,
+      "sha256": "7703f886da8a5871c62719cbe2ec3d5f56f5d78d936772170981b4933bd2e697",
+      "gitNormalizedSha256": "7703f886da8a5871c62719cbe2ec3d5f56f5d78d936772170981b4933bd2e697"
+    },
+    {
+      "path": "scripts/qa/verify-chinese-following-drafts.cjs",
+      "bytes": 16706,
+      "sha256": "9fece9b8f9deb0fe69da9ba85badfc66efdb596ff73a059dadfa471b430cbb8f",
+      "gitNormalizedSha256": "9fece9b8f9deb0fe69da9ba85badfc66efdb596ff73a059dadfa471b430cbb8f"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 12346,
+      "sha256": "f8acb3083de7159b49db2976b603850e9fff8a4d8ce3443efd98427a4caf5e04",
+      "gitNormalizedSha256": "6ca3d9d2e6a10ef7d2f27a9e6627807fe653a0062316a1e3c601db7477b69fbd"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 169712,
+      "sha256": "1641f6df7101530e4bb43ac6fb0ef761adae6748fd00a7b06b9ca3f8006d5082",
+      "gitNormalizedSha256": "0e981db403ab44ffd0d4ecd40b726b38de876360b3b558190c29e3ce28e8293c"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 95604,
+      "sha256": "272b1fb8690293ac4bff2232ef07682de4b15fd79f9f313af55ca41c04427f66",
+      "gitNormalizedSha256": "9424b6d912e07cabadc0c92a2841bd3a1d750a6327122a0ab52185ce85562d27"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 101204,
+      "sha256": "940fdc44443d5c7a1657c8851b0c176e4d44f68f53fabe81440671b399038083",
+      "gitNormalizedSha256": "813340df44ea284e88a1768190305442c81681021a8ae078ea2bfb71e32e2b18"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 10578,
+      "sha256": "8f221c8a528929bcf166cf21a698964a30ab13f50d93c3e39449a4fbff27b28d",
+      "gitNormalizedSha256": "6037cfc9715a85b0cc4fdbe1a222d8c78fdc5ec4cd7344e91bb8f3f0ecfe12cd"
+    },
+    {
+      "path": "doc/product/195-cow-route-science-boundary-and-cheese-judgment.md",
+      "bytes": 4368,
+      "sha256": "5d320829d357463d50fa485f7b83ffa88c954575c192b3a651d7f0bdcbc9840e",
+      "gitNormalizedSha256": "5d320829d357463d50fa485f7b83ffa88c954575c192b3a651d7f0bdcbc9840e"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 29810,
+      "sha256": "eeb187e9662a71a2001216495b4f66a2667bf28a34bdaf0186e026215e4ff873",
+      "gitNormalizedSha256": "cb3c6ede631eb0f2fd1592207d1e770a908e27d754ae17690ae441ca69251ba3"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/b4-next-archive-scan.json",
+      "bytes": 997,
+      "sha256": "8063ce563aca9f6a078f219c4986c8553d3ada7ce89f9384d1a6ec192d836735",
+      "gitNormalizedSha256": "8063ce563aca9f6a078f219c4986c8553d3ada7ce89f9384d1a6ec192d836735"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/content-worklist-fairy-next.json",
+      "bytes": 2750060,
+      "sha256": "052b1c55b187fa60640b6b35b07995c8d9f6094335c7fd1ef468830063b6a8d8",
+      "gitNormalizedSha256": "052b1c55b187fa60640b6b35b07995c8d9f6094335c7fd1ef468830063b6a8d8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-contract-boundary.json",
+      "bytes": 982,
+      "sha256": "5b3e6e42e4d37b66ffec53fb9235357ba260f14fe8eded18ff61396c137a4a20",
+      "gitNormalizedSha256": "5b3e6e42e4d37b66ffec53fb9235357ba260f14fe8eded18ff61396c137a4a20"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-drafts-http-first.json",
+      "bytes": 336,
+      "sha256": "62c62a504a75a3ecf7f61928e91c14affaff80b02743cc538fd6c3b92ec78c76",
+      "gitNormalizedSha256": "62c62a504a75a3ecf7f61928e91c14affaff80b02743cc538fd6c3b92ec78c76"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-materials-http-first.json",
+      "bytes": 336,
+      "sha256": "1172760251f2ac750183f20fba1a9df04a92f5d0b3c44d2eb02954bb44a089c7",
+      "gitNormalizedSha256": "1172760251f2ac750183f20fba1a9df04a92f5d0b3c44d2eb02954bb44a089c7"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-materials-http-second.json",
+      "bytes": 2276,
+      "sha256": "39428eddcd8f84c2773a9b9f55654d4491eb5acf7a8649a895621fae24cbf647",
+      "gitNormalizedSha256": "39428eddcd8f84c2773a9b9f55654d4491eb5acf7a8649a895621fae24cbf647"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-materials-static-review.json",
+      "bytes": 1096,
+      "sha256": "0c9baa548a691366797acc548397dab90e78489bc03692f92a7f07d6fc68e1a0",
+      "gitNormalizedSha256": "0c9baa548a691366797acc548397dab90e78489bc03692f92a7f07d6fc68e1a0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/checks/fairy-next-nine-targets-first-sources.json.gz",
+      "bytes": 65424,
+      "sha256": "7ee1386d00ae4807789f009abc3d694147290f2998fdad7f437fc6dbab0807e6",
+      "gitNormalizedSha256": "7ee1386d00ae4807789f009abc3d694147290f2998fdad7f437fc6dbab0807e6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/manifest.json",
+      "bytes": 2932,
+      "sha256": "adc7074568f876347a04a4b68a10aaf27ee36b74516fa7f9d9b90221bf0fc54a",
+      "gitNormalizedSha256": "adc7074568f876347a04a4b68a10aaf27ee36b74516fa7f9d9b90221bf0fc54a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/README.md",
+      "bytes": 2010,
+      "sha256": "cd3994c2b859eac4aea46dc3f7672f01f6c099b71afeff7d33091117a66b87c8",
+      "gitNormalizedSha256": "cd3994c2b859eac4aea46dc3f7672f01f6c099b71afeff7d33091117a66b87c8"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/receipt.json",
+      "bytes": 4562,
+      "sha256": "456beca9e5c8ccda0bc4e43c62e22cd0dfda12d96db35ba024ff54482f99d7b6",
+      "gitNormalizedSha256": "456beca9e5c8ccda0bc4e43c62e22cd0dfda12d96db35ba024ff54482f99d7b6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/source-intake/reviewed-receipt.json",
+      "bytes": 2031,
+      "sha256": "c783c4677e79fb360676f9b084e8d0bcc55d021acc03d94beae8f4c5f461bc41",
+      "gitNormalizedSha256": "c783c4677e79fb360676f9b084e8d0bcc55d021acc03d94beae8f4c5f461bc41"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/source-intake/science-fetch-receipt.json",
+      "bytes": 1113,
+      "sha256": "93bacb752fafae5f333d94a31c631daed395d9364809237878479b3bc8391a33",
+      "gitNormalizedSha256": "f69ef4b62d16903d7570c37375effbc1ce84515d5954847f11c6817c8d3846ca"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/sources.json.gz",
+      "bytes": 69050,
+      "sha256": "08514e91b7930595930c335a191e586f448b57e9661d697ebcf4a3c4c416df59",
+      "gitNormalizedSha256": "e90a4fc8330fb5f5b8c0097cbb7a66cbcb7de32bd2290bb5a8b6b93a7cc80256"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/archive-fairy-next.cjs",
+      "bytes": 7576,
+      "sha256": "9c748c8e83c29e2830bf1abe64193adc39e4a59bb374e821eddf38a7d299c51b",
+      "gitNormalizedSha256": "9c748c8e83c29e2830bf1abe64193adc39e4a59bb374e821eddf38a7d299c51b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/intake-fairy-next.cjs",
+      "bytes": 1482,
+      "sha256": "b62da7b7efe49c96902980dd0995a52622c5caef10af51ee60b2b2a3b2a684a0",
+      "gitNormalizedSha256": "b62da7b7efe49c96902980dd0995a52622c5caef10af51ee60b2b2a3b2a684a0"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/read-ruminant-source.py",
+      "bytes": 2531,
+      "sha256": "5b6987058acfacc34294ac00d748698c82b2b756c7d56a40935c0a7b9f3ba4dd",
+      "gitNormalizedSha256": "5b6987058acfacc34294ac00d748698c82b2b756c7d56a40935c0a7b9f3ba4dd"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/record-ruminant-review.cjs",
+      "bytes": 2569,
+      "sha256": "542841441b87cb78e7069fafcf347565d2e55850a68471f7b9ab260fce3095ca",
+      "gitNormalizedSha256": "542841441b87cb78e7069fafcf347565d2e55850a68471f7b9ab260fce3095ca"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/review-fairy-next.cjs",
+      "bytes": 5794,
+      "sha256": "343e918fe1dac02f78a16d78b5406070cc2a28e1c07409cb2361247935984b84",
+      "gitNormalizedSha256": "343e918fe1dac02f78a16d78b5406070cc2a28e1c07409cb2361247935984b84"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/stage-fairy-next.cjs",
+      "bytes": 3396,
+      "sha256": "2b2053de32543101b63a0a04ce3c0889e60edab894257872e302bebebfd12ecc",
+      "gitNormalizedSha256": "2b2053de32543101b63a0a04ce3c0889e60edab894257872e302bebebfd12ecc"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-fairy-next-candidates/tools/verify-fairy-next.cjs",
+      "bytes": 6019,
+      "sha256": "4d31bc8b0346c1b3dae4232aba0b975a216c0dea29f2a4aad36890f6f4276ff9",
+      "gitNormalizedSha256": "8ba8f72b393383ad3825e739222549144da6da8a23a03e92fe2aaeef14f06631"
+    }
+  ]
+}

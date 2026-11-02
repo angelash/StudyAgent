@@ -20,6 +20,18 @@ if(candidates&&(candidates.format!=='source-following-original-materials-v1'||ca
 const lessonNames=options['--lessons']?options['--lessons'].split(','):['chinese-g3-flowers-v1.json','chinese-g3-asking-v1.json'];
 if(!lessonNames.length||lessonNames.length>10||new Set(lessonNames).size!==lessonNames.length||lessonNames.some(name=>!/^chinese-g3-[a-z-]+-v1\.json$/.test(name)))throw Error('One to ten unique, versioned grade3 draft filenames required');
 if(candidates&&(!Array.isArray(candidates.sourceLessons)||lessonNames.some(name=>!candidates.sourceLessons.some(entry=>entry.path==='resources/curriculum/source-lessons/'+name))))throw Error('Every selected draft must be explicitly bound by this material bundle');
+const contracts=require(path.join(apiRoot,'packages/contracts/dist/index.js'));
+// Reject invalid authored packets before administrator bootstrap and per-question HTTP writes.
+for(const name of lessonNames){
+  const draft=JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons',name)));
+  contracts.textbookTeachingDraftContentSchema.parse({...draft.content,checks:[]});
+  contracts.textbookTeachingSourceReviewSchema.parse(draft.sourceReview);
+  for(const definition of draft.definitionCandidates??[])contracts.knowledgeAtomSchema.parse(definition);
+  assert.deepEqual(draft.content.goals.map(row=>row.atomId),draft.targetIds,'Explicit target identities must match the draft goals before any HTTP mutation');
+  if(candidates){const entry=candidates.sourceLessons.find(row=>row.path==='resources/curriculum/source-lessons/'+name);
+    assert.equal(entry.sha256,sha(fs.readFileSync(path.join(root,entry.path))),'Current source binding before HTTP writes');
+    assert.deepEqual(candidates.groups.filter(row=>row.lesson===entry.lesson).map(row=>row.atomId).sort(),[...draft.targetIds].sort(),'Material target groups must match before HTTP writes');}
+}
 const definitions=new Map(fs.readdirSync(path.join(root,'resources/curriculum/source-lessons')).filter(name=>name.endsWith('.json'))
   .flatMap(name=>JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons',name))).definitionCandidates??[]).map(row=>[row.id,row]));
 let app,base,actor;const result={at:new Date().toISOString(),passed:false,scope:'Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.',drafts:[]};

@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-02T10:05:17.654Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-cow-journey-v1.json",
+      "sha256": "bd46ff3ba64f6770061f5d7a57b10a947267cd29ac8aef6d9501c62b126db3b0",
+      "physicalPages": [
+        40,
+        41,
+        42
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 103,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-cheese-v1.json",
+      "sha256": "dc5420bdd790fa8501c7304053ff09ee22e2080ea971785cf0fec24f99ab3ab9",
+      "physicalPages": [
+        43,
+        44
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 63,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 91,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json",
+    "sha256": "4572f31e5a3bb838e8aeac26c77fa84e23c94b021580614929b703454407d9e2",
+    "groups": 13,
+    "questions": 91,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

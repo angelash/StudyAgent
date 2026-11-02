@@ -1,0 +1,143 @@
+{
+  "format": "study-block-four-fairy-next-candidates-v1",
+  "at": "2026-11-02T10:09:24.881Z",
+  "baseCommit": "c39681cb801b53e361847d32be1bda794312d49f",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 2,
+  "targetGroups": 13,
+  "targetCounts": [
+    8,
+    5
+  ],
+  "newDefinitionCandidates": 10,
+  "newCandidateQuestions": 91,
+  "purposeCounts": {
+    "immediate": 39,
+    "proposedRetention": 52
+  },
+  "modes": {
+    "audio_record": 28,
+    "image_upload": 14,
+    "short_answer": 49
+  },
+  "bundle": {
+    "path": "resources/curriculum/source-lesson-materials/chinese-g3-fairy-next-v1.json",
+    "sha256": "4572f31e5a3bb838e8aeac26c77fa84e23c94b021580614929b703454407d9e2"
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "allFivePagesVisuallyViewed": true,
+    "sourceImagesCommitted": false
+  },
+  "scienceSource": {
+    "reviewFile": {
+      "path": "resources/curriculum/source-reviews/ruminant-digestion-msstate-v1.json",
+      "sha256": "217298461396033032102576ba368e1d7278f3866d18d7acf8eb9151dd4daf25"
+    },
+    "publisher": "Mississippi State University Extension Service",
+    "actuallyReadPassages": 3,
+    "rawHtmlLocalOnly": true,
+    "teacherReviewed": false,
+    "boundary": "Ruminant one stomach with four compartments; foregut microbial food processing; rumination returns food for chewing, not necessarily story sneezing. Primary story numbered route is not a full anatomical chart.",
+    "otherTwoPublicFetchesFailed403": true,
+    "noChallengeInteraction": true
+  },
+  "preservedFailures": {
+    "firstDraftPreflight400": true,
+    "firstMaterialPreflight400": true,
+    "nineTargetInputSnapshot": "checks/fairy-next-nine-targets-first-sources.json.gz",
+    "existingLimitNotRelaxed": true,
+    "original98NotCountedAsDelivered": true,
+    "sevenStandaloneCommonMeaningSamplesRemoved": true,
+    "commonMeaningMethodRemainsInEvidenceTeaching": true,
+    "duplicateAlreadyEndedBeforeStopAttempt": true,
+    "noProcessActuallyStopped": true
+  },
+  "actualChecks": {
+    "materialsHttpColdRead": "checks/fairy-next-materials-http-second.json",
+    "exactSourceCitationsAndMetadata": true,
+    "originalCommandReplayed": true,
+    "incompletePublicationRejected": true,
+    "allQuestionTextsModesRubricsSourcesMappingsPreserved": true,
+    "oldNineGoalContractRejectedAndCurrent8And5Valid": true,
+    "qaPrecheckBeforePerQuestionWrites": true,
+    "finalGapCounts": [
+      {
+        "file": "chinese-g3-cow-journey-v1.json",
+        "gaps": 103,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-cheese-v1.json",
+        "gaps": 63,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "sourceCommit": "4d26c399",
+    "applicationContractsAndTestsUnchanged": true,
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "browser": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0
+    },
+    "evidence": "../block-four-retention-feedback-and-autumn/receipt.json",
+    "countsNotAddedToContentBatch": true,
+    "newContentAndQaScriptUseIndependentVerification": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringGoldExamplesAreAuthoredNotLearnerSamples": true,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "publishedPackages": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "entriesWithDrafts": 16,
+    "entriesWithoutDraftsInSelectedInputs": 3496,
+    "authoredFollowingCandidates": 658,
+    "firstLesson44FollowupsNotIncludedIn658": true,
+    "next": "Continue exact-source unit3 writing, garden and reading activity, remaining textbook/GESP content and sufficient independent stocks; then block5 and teacher/device/time acceptance."
+  }
+}

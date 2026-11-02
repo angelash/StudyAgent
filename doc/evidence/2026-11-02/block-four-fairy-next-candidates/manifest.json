@@ -1,0 +1,90 @@
+{
+  "files": [
+    {
+      "path": "checks/content-worklist-fairy-next.json",
+      "bytes": 2750060,
+      "sha256": "052b1c55b187fa60640b6b35b07995c8d9f6094335c7fd1ef468830063b6a8d8"
+    },
+    {
+      "path": "checks/fairy-next-contract-boundary.json",
+      "bytes": 982,
+      "sha256": "5b3e6e42e4d37b66ffec53fb9235357ba260f14fe8eded18ff61396c137a4a20"
+    },
+    {
+      "path": "checks/fairy-next-drafts-http-first.json",
+      "bytes": 336,
+      "sha256": "62c62a504a75a3ecf7f61928e91c14affaff80b02743cc538fd6c3b92ec78c76"
+    },
+    {
+      "path": "checks/fairy-next-materials-http-first.json",
+      "bytes": 336,
+      "sha256": "1172760251f2ac750183f20fba1a9df04a92f5d0b3c44d2eb02954bb44a089c7"
+    },
+    {
+      "path": "checks/fairy-next-materials-http-second.json",
+      "bytes": 2276,
+      "sha256": "39428eddcd8f84c2773a9b9f55654d4491eb5acf7a8649a895621fae24cbf647"
+    },
+    {
+      "path": "checks/fairy-next-materials-static-review.json",
+      "bytes": 1096,
+      "sha256": "0c9baa548a691366797acc548397dab90e78489bc03692f92a7f07d6fc68e1a0"
+    },
+    {
+      "path": "checks/fairy-next-nine-targets-first-sources.json.gz",
+      "bytes": 65424,
+      "sha256": "7ee1386d00ae4807789f009abc3d694147290f2998fdad7f437fc6dbab0807e6"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 4562,
+      "sha256": "456beca9e5c8ccda0bc4e43c62e22cd0dfda12d96db35ba024ff54482f99d7b6"
+    },
+    {
+      "path": "source-intake/reviewed-receipt.json",
+      "bytes": 2031,
+      "sha256": "c783c4677e79fb360676f9b084e8d0bcc55d021acc03d94beae8f4c5f461bc41"
+    },
+    {
+      "path": "source-intake/science-fetch-receipt.json",
+      "bytes": 1113,
+      "sha256": "93bacb752fafae5f333d94a31c631daed395d9364809237878479b3bc8391a33"
+    },
+    {
+      "path": "sources.json.gz",
+      "bytes": 69050,
+      "sha256": "08514e91b7930595930c335a191e586f448b57e9661d697ebcf4a3c4c416df59"
+    },
+    {
+      "path": "tools/archive-fairy-next.cjs",
+      "bytes": 7576,
+      "sha256": "9c748c8e83c29e2830bf1abe64193adc39e4a59bb374e821eddf38a7d299c51b"
+    },
+    {
+      "path": "tools/intake-fairy-next.cjs",
+      "bytes": 1482,
+      "sha256": "b62da7b7efe49c96902980dd0995a52622c5caef10af51ee60b2b2a3b2a684a0"
+    },
+    {
+      "path": "tools/read-ruminant-source.py",
+      "bytes": 2531,
+      "sha256": "5b6987058acfacc34294ac00d748698c82b2b756c7d56a40935c0a7b9f3ba4dd"
+    },
+    {
+      "path": "tools/record-ruminant-review.cjs",
+      "bytes": 2569,
+      "sha256": "542841441b87cb78e7069fafcf347565d2e55850a68471f7b9ab260fce3095ca"
+    },
+    {
+      "path": "tools/review-fairy-next.cjs",
+      "bytes": 5794,
+      "sha256": "343e918fe1dac02f78a16d78b5406070cc2a28e1c07409cb2361247935984b84"
+    },
+    {
+      "path": "tools/verify-fairy-next.cjs",
+      "bytes": 6019,
+      "sha256": "4d31bc8b0346c1b3dae4232aba0b975a216c0dea29f2a4aad36890f6f4276ff9"
+    }
+  ],
+  "manifestExcludedFromOwnHash": true
+}

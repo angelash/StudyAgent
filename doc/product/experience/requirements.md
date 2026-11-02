@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 第4块内容继续：牛肚子/奶酪2稿与91未审候选，13目标绑定、10新定义；8目标门槛首败与科学来源见[195](../195-cow-route-science-boundary-and-cheese-judgment.md)。当前16条有稿、3496条无稿、336册缺目录，658后续候选不等已审或充分库存。72项仍11 implemented/52 in_progress/9 planned/0 verified，教师/结构/评分/库存、第5块与真实验收继续。
+
 2026-11-02 第4块内容继续：第三单元前两课新增2稿/98题、14目标绑定和10新定义，均未审候选，证据见[194](../194-fairy-tale-reality-wishes-and-retelling-candidates.md)。严格内容HTTP/冷读与4d26c399既有工程回归分别记账，当前14项有稿、3498项无稿、336册缺目录；72项仍11 implemented/52 in_progress/9 planned/0 verified，教师/结构/评分/库存、第5块及真实验收继续。
 
 2026-11-02 当前第4块：GESP完整反馈锚点与最近反馈等待进入schema36；完整API3051/0/131、2154输入保持，专项37/0/0、实际PG读取5/0/0、双库重启与当前浏览器13/13分列通过。第二单元六项新增252道未审候选，引用首败与补验见[193](../193-gesp-retention-feedback-and-autumn-source-drafts.md)。当前12项关联原创稿、其余3500与336册目录缺口继续。72项仍11 implemented/52 in_progress/9 planned/0 verified；教师/独立结构/评分/库存、设备与真人以及第5块未完成，正式24/revision188保持，仅本地提交。
