@@ -1,0 +1,1856 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "golden-grass",
+      "path": "resources/curriculum/source-lessons/chinese-g3-golden-grass-v1.json",
+      "sha256": "91a81a264da82de66e12f555e3495009c35c4cbfe8d19017b1d628e0770ccab9",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry2",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 71,
+        "pageEnd": 73,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "observation-examples",
+      "path": "resources/curriculum/source-lessons/chinese-g3-observation-examples-v1.json",
+      "sha256": "8526eaab588b98f912691fd0d95ec176cc28dcf245414c7ae033524fd535bd38",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry3",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 74,
+        "pageEnd": 76,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "path": "resources/curriculum/source-lessons/chinese-g3-colorful-observation-writing-v1.json",
+      "sha256": "36297091766a7154ce73f60ac98ec1f0fe71f33a8229f718b4b83a53ebc8c018",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry4",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 77,
+        "pageEnd": 77,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔只有一份拟议样题，原例与帮助曝光不恢复未见资格。本人实际观察、原稿、同伴活动和示例解释分别留证，不构成充分四维库存。",
+  "groups": [
+    {
+      "lesson": "golden-grass",
+      "atomId": "source:chinese:g3:02915a7d:golden-reading",
+      "structure": "golden-six-contextual-reading",
+      "familyProposal": "following-golden-six-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖六字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词语与当前读法相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "五词含六目标，不以文字选择代声音",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "蒲pú、英yīng、耍shuǎ、欠qiàn、钓diào、拢lǒng依当前词核对，蒲公英含蒲英两目标，五词不等五字。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-six-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读“蒲公英、玩耍、哈欠、钓鱼、合拢”，指出六个目标字分别在哪里。",
+          "answer": "蒲pú、英yīng、耍shuǎ、欠qiàn、钓diào、拢lǒng依当前词核对，蒲公英含蒲英两目标，五词不等五字。",
+          "analysis": "蒲pú、英yīng、耍shuǎ、欠qiàn、钓diào、拢lǒng依当前词核对，蒲公英含蒲英两目标，五词不等五字。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读蒲公英中的两个目标字，再补其余目标词，说明一字仍需怎样核对。",
+          "answer": "六字实际音频分别听，不以读出一个词推其他未读字已会，非目标字另记。",
+          "analysis": "六字实际音频分别听，不以读出一个词推其他未读字已会，非目标字另记。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“他们玩耍后打了哈欠，准备去钓鱼”。录音后补蒲公英和合拢，说明覆盖。",
+          "answer": "新句与补词共同覆盖六目标，当前语境读法准确，句子流畅不代未覆盖字表现。",
+          "analysis": "新句与补词共同覆盖六目标，当前语境读法准确，句子流畅不代未覆盖字表现。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次给六字各配合理词语录音读出，标明是否刚看原页或听示范。",
+          "answer": "本人本次声音与语境相容，实际帮助保留，旧音或参考声不代当前本人。",
+          "analysis": "本人本次声音与语境相容，实际帮助保留，旧音或参考声不代当前本人。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读玩耍、哈欠、合拢，再补另外目标词，指出一处实际订正。",
+          "answer": "耍欠拢当前声音可核，补蒲英钓，订正前后分开，不能把改后当原先已对。",
+          "analysis": "耍欠拢当前声音可核，补蒲英钓，订正前后分开，不能把改后当原先已对。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "从六字中选仍不稳的一字查证，再读全表并说明查证依据。",
+          "answer": "工具结果回当前词语，方法说明不代实际声音或全表覆盖。",
+          "analysis": "工具结果回当前词语，方法说明不代实际声音或全表覆盖。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-six-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "录音核对全六目标，说明本次仍未完成哪项；若无音频则如实留缺。",
+          "answer": "逐字实际声音与帮助清楚，原词重复和看过示例不自动成为新未见保持材料。",
+          "analysis": "逐字实际声音与帮助清楚，原词重复和看过示例不自动成为新未见保持材料。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "source:chinese:g3:02915a7d:golden-handwriting",
+      "structure": "golden-thirteen-actual-handwriting",
+      "familyProposal": "following-golden-thirteen-actual-handwriting",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖十三字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "结构部件与实际订正可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "旧图范字和朗读不代本次书写",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "全表逐字看本人原件，部件和实际字形分别核对，读音或范字图不能代本次书写。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写蒲英盛耍喊欠钓而察拢掌趣喜13字并上传，标一处还想核对的结构。",
+          "answer": "全表逐字看本人原件，部件和实际字形分别核对，读音或范字图不能代本次书写。",
+          "analysis": "全表逐字看本人原件，部件和实际字形分别核对，读音或范字图不能代本次书写。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先写蒲英盛耍喊欠钓，再补而察拢掌趣喜，上传完整原稿与实际订正。",
+          "answer": "七字与六字合为十三，前一部分完成不推后一部分已经会，原改对应。",
+          "analysis": "七字与六字合为十三，前一部分完成不推后一部分已经会，原改对应。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在本人新观察短句里真实书写目标字，再补未出现的目标上传说明覆盖。",
+          "answer": "句内与补写逐字核查，短句图不证明没写到的目标已会，不能用旧字库图补本人。",
+          "analysis": "句内与补写逐字核查，短句图不证明没写到的目标已会，不能用旧字库图补本人。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次手写而察拢掌趣喜并上传，报告其他七字实际是否完成。",
+          "answer": "当前六字有本次原件，另七字未做保留，不由旧稿自动推当前全表保持。",
+          "analysis": "当前六字有本次原件，另七字未做保留，不由旧稿自动推当前全表保持。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "上传本人一处真有问题的字形原改对照，说明所用依据；无问题不故意造错。",
+          "answer": "问题和改动真实对应，清稿不能倒造过去修改，数量不代订正质量。",
+          "analysis": "问题和改动真实对应，清稿不能倒造过去修改，数量不代订正质量。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "观察掌、察等字的部件关系，实际写出并补齐全表，上传时说明所用帮助。",
+          "answer": "部件说明支持实际写字，方法不能替字形，帮助与未稳字如实记录。",
+          "analysis": "部件说明支持实际写字，方法不能替字形，帮助与未稳字如实记录。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "golden-grass-golden-thirteen-actual-handwriting-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分两次短书写覆盖十三字，上传本人完整原件并保留未完成部分。",
+          "answer": "分次可接受，实际全表才有对应信息，不要求机械大量抄写，未完成不伪造。",
+          "analysis": "分次可接受，实际全表才有对应信息，不要求机械大量抄写，未完成不伪造。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "source:chinese:g3:02915a7d:golden-change-explanation",
+      "structure": "golden-time-color-and-opening",
+      "familyProposal": "following-golden-time-color-and-opening",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "三时所见与原因对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "显露遮住和比喻范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不推所有植物固定钟点或完整机制",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "早绿与合拢、午金与张开显金、傍晚绿与合拢包住金色对应，按该段场景，不强推所有地点固定钟点。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-time-color-and-opening-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按原段分别写早上、中午、傍晚草地的颜色及与蒲公英开合有关的原因。",
+          "answer": "早绿与合拢、午金与张开显金、傍晚绿与合拢包住金色对应，按该段场景，不强推所有地点固定钟点。",
+          "analysis": "早绿与合拢、午金与张开显金、傍晚绿与合拢包住金色对应，按该段场景，不强推所有地点固定钟点。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "只写三个颜色不足在哪里？补出一项颜色变化与显露遮住的联系。",
+          "answer": "需要原因支持，如张开显露金色、合拢包住金色；不是草地材料被染成不同颜色。",
+          "analysis": "需要原因支持，如张开显露金色、合拢包住金色；不是草地材料被染成不同颜色。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创纸片卡合起见绿色底、展开见金色片、再合起见绿。说明变化原因并标明不是植物实验。",
+          "answer": "当前可用显露遮挡解释所见，材料为模型，不能据此确定真实植物所有开合机制和时间。",
+          "analysis": "当前可用显露遮挡解释所见，材料为模型，不能据此确定真实植物所有开合机制和时间。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原文把花朵比作手掌，有何帮助，又不能直接证明什么？",
+          "answer": "帮助想象张开合拢，不是完整植物解剖图，也不证明花朵像人的手有相同结构和意图。",
+          "analysis": "帮助想象张开合拢，不是完整植物解剖图，也不证明花朵像人的手有相同结构和意图。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "另一地实际观察时间与课文不一样，是否必须改记录成课文的固定时刻？说明。",
+          "answer": "不必，保留真实阶段环境与所见，原段叙述有条件，不为对齐模板篡改实际记录。",
+          "analysis": "不必，保留真实阶段环境与所见，原段叙述有条件，不为对齐模板篡改实际记录。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把“早上一定所有蒲公英都一样”改成有范围的解释，并指出需要进一步观察什么。",
+          "answer": "可说文中这次早上草地绿与花合拢相连，其他对象阶段环境和实际开合另核。",
+          "analysis": "可说文中这次早上草地绿与花合拢相连，其他对象阶段环境和实际开合另核。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-time-color-and-opening-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "根据本人实际记录或明确图卡，列一次变化、条件与可能原因；没有记录不填真实已观察。",
+          "answer": "来源身份准确，所见支持解释，未知仍可提问，不用原段表格代本人经历或新未见保持。",
+          "analysis": "来源身份准确，所见支持解释，未知仍可提问，不用原段表格代本人经历或新未见保持。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "source:chinese:g3:02915a7d:golden-interest-and-feeling",
+      "structure": "golden-feeling-supported-by-detail",
+      "familyProposal": "following-golden-feeling-supported-by-detail",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "感受联系具体叙述",
+          "weight": 0.4
+        },
+        {
+          "criterion": "玩耍与发现两个阶段可分",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不同合理感受可有依据，情节不强制照做",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "玩耍带来快乐、颜色开合新发现增添趣味可支持喜爱，不能只背可爱有趣标签。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "为什么作者觉得草地可爱、蒲公英有趣？联系一处玩耍和一处观察发现说明。",
+          "answer": "玩耍带来快乐、颜色开合新发现增添趣味可支持喜爱，不能只背可爱有趣标签。",
+          "analysis": "玩耍带来快乐、颜色开合新发现增添趣味可支持喜爱，不能只背可爱有趣标签。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“因为它很好”补成有具体片段支持的看法，说明片段怎样起作用。",
+          "answer": "指出兄弟玩耍或细致观察开合的实际信息，解释与喜爱关系，评价不代证据。",
+          "analysis": "指出兄弟玩耍或细致观察开合的实际信息，解释与喜爱关系，评价不代证据。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：孩子发现纸窗转动会显出不同图案，觉得有趣。用当前细节说明感受，不搬蒲公英事实。",
+          "answer": "感受由纸窗图案变化支持，当前卡和原文身份分清，不补成真实植物观察。",
+          "analysis": "感受由纸窗图案变化支持，当前卡和原文身份分清，不补成真实植物观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "能否把吹绒毛到对方脸上的叙述，变成每个学生都必须照做的任务？说明学习重点。",
+          "answer": "不能，阅读理解玩耍的趣味与作者感受即可，实际任务可换合适对象，不用模仿动作证明理解。",
+          "analysis": "不能，阅读理解玩耍的趣味与作者感受即可，实际任务可换合适对象，不用模仿动作证明理解。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "发现颜色变化前后，作者对熟悉草地的认识有什么增加？联系原段说明。",
+          "answer": "熟悉玩耍处又发现花开合与颜色关系，细致观察让认识更深，不把喜爱当最初就知道一切。",
+          "analysis": "熟悉玩耍处又发现花开合与颜色关系，细致观察让认识更深，不把喜爱当最初就知道一切。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "同伴更喜欢作者仔细观察的部分，你更喜欢玩耍描写，怎样交流各自依据？",
+          "answer": "各联系具体片段解释，合理感受可不同，不以必须同一偏好或同一句参考评全部能力。",
+          "analysis": "各联系具体片段解释，合理感受可不同，不以必须同一偏好或同一句参考评全部能力。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-feeling-supported-by-detail-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择一处实际读过的片段说明印象，再标这属于原文回顾还是本人真实观察感受。",
+          "answer": "文本评价与个人观察身份清楚，后知或重复回顾不充陌生首答和真实经历。",
+          "analysis": "文本评价与个人观察身份清楚，后知或重复回顾不充陌生首答和真实经历。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "source:chinese:g3:02915a7d:golden-unit-observation-practice",
+      "structure": "unit-platform-real-observation-not-template",
+      "familyProposal": "following-unit-platform-real-observation-not-template",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "真实对象和具体所见明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "方法与对象条件相配",
+          "weight": 0.4
+        },
+        {
+          "criterion": "正文平台示例和本人经历不混",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "方法有原例支持，本人对象与细节另留来源，不把蜗牛芒果例抄为自己的经历。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "结合73页平台，说留心和细致观察各怎样帮助认识鸟或草，再写一项本人真正观察到的细节；没有记录就标准备。",
+          "answer": "方法有原例支持，本人对象与细节另留来源，不把蜗牛芒果例抄为自己的经历。",
+          "analysis": "方法有原例支持，本人对象与细节另留来源，不把蜗牛芒果例抄为自己的经历。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把只有“东西很好看”的观察记句改具体，注明新增细节确实来自哪次实际观察或哪张给定卡。",
+          "answer": "细节与当前对象条件相容，实际与示例分开，不靠想象填本人已经看到。",
+          "analysis": "细节与当前对象条件相容，实际与示例分开，不靠想象填本人已经看到。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只给纸盒蓝色、表面有细纹。写几句观察并说明哪些感官信息仍未提供。",
+          "answer": "可写当前颜色纹理，气味味道等未知，不能套五感清单补造成实际尝过。",
+          "analysis": "可写当前颜色纹理，气味味道等未知，不能套五感清单补造成实际尝过。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "为什么芒果示例用了摸闻尝，不等所有观察都必须五种感官全用？",
+          "answer": "方法随对象条件，品尝只是合适时可选，未知或不适合对象不能要求入口，未用不合适感官不判不会观察。",
+          "analysis": "方法随对象条件，品尝只是合适时可选，未知或不适合对象不能要求入口，未用不合适感官不判不会观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择本人近期合适对象写两项具体所得和一项仍想知道的问题，说明是否已实际与同伴交流。",
+          "answer": "真实记录支持文字，疑问和计划保留；没有同伴响应不补造已完成交流。",
+          "analysis": "真实记录支持文字，疑问和计划保留；没有同伴响应不补造已完成交流。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "73页的交流平台和初试身手属于什么材料？能把其中两例当《金色的草地》正文或本人过去经历吗？",
+          "answer": "它们是单元活动和示例，不是正文叙述或学生记录，身份与范围分清才能借方法。",
+          "analysis": "它们是单元活动和示例，不是正文叙述或学生记录，身份与范围分清才能借方法。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-unit-platform-real-observation-not-template-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回顾一次真实练笔，用几句话说观察方法怎样增加一项认识；没有实际过程则只分析明确示例。",
+          "answer": "方法与新信息有具体联系，真实与示例回顾分开，原例重复不当新未见观察任务。",
+          "analysis": "方法与新信息有具体联系，真实与示例回顾分开，原例重复不当新未见观察任务。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "golden-current-context-and-figurative-meaning",
+      "familyProposal": "following-golden-current-context-and-figurative-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前含义与具体语境相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明线索或词句怎样支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟人比喻、另一义项和科学事实不机械混同",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "在原段分别联系包住和显露金色，词义支持解释当前所见，不推所有对象同样条件。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "“合拢”和“张开”怎样与草地看起来的颜色相连？不要只抄两个词义。",
+          "answer": "在原段分别联系包住和显露金色，词义支持解释当前所见，不推所有对象同样条件。",
+          "analysis": "在原段分别联系包住和显露金色，词义支持解释当前所见，不推所有对象同样条件。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“一本正经”在兄弟玩耍处怎样理解，是否证明那一刻是在进行正式科学实验？",
+          "answer": "表面认真严肃与玩耍情境相连，不等正式实验或所有内心信息，语境限定解释。",
+          "analysis": "表面认真严肃与玩耍情境相连，不等正式实验或所有内心信息，语境限定解释。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“纸片窗一合拢，金色画面就被遮住”。联系对象解释合拢，而非搬真实植物全部机制。",
+          "answer": "靠近闭合使画面被挡是当前模型关系，不由相似词语认定物理生理结构相同。",
+          "analysis": "靠近闭合使画面被挡是当前模型关系，不由相似词语认定物理生理结构相同。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“并不引人注目”和后来最喜爱矛盾吗？联系认识变化说明。",
+          "answer": "起初不显眼与后来发现趣味、产生喜爱是不同认识阶段，可以并存，不能忽略时间与视角。",
+          "analysis": "起初不显眼与后来发现趣味、产生喜爱是不同认识阶段，可以并存，不能忽略时间与视角。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "花像手掌的表达是怎样帮助想象的？为什么不等花真的有人的手掌？",
+          "answer": "借熟悉张合帮助理解当前动作，比喻不是结构完全同一或植物有人的意图。",
+          "analysis": "借熟悉张合帮助理解当前动作，比喻不是结构完全同一或植物有人的意图。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“有时还可以尝一尝”中的有时和可以，对观察方法限制了什么？",
+          "answer": "表示条件允许时可选，非所有对象和所有观察者必须尝；限定词不能删成强制清单。",
+          "analysis": "表示条件允许时可选，非所有对象和所有观察者必须尝；限定词不能删成强制清单。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-current-context-and-figurative-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选当前一词句，写含义、所用线索和一个不适合本句的解释。",
+          "answer": "解释有具体语境支持，方法不只口号，未知义项和拟人感受不强填科学事实。",
+          "analysis": "解释有具体语境支持，方法不只口号，未知义项和拟人感受不强填科学事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "golden-grass",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "golden-observation-conditions-and-source-range",
+      "familyProposal": "following-golden-observation-conditions-and-source-range",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断有具体来源与条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原叙述推测和本人记录身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知、帮助和未发生过程不由示例或改后答案替代",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，原叙述有对象与条件，其他阶段环境和实际观察另核，不把单次表格当普遍固定时间。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "课文一次早中晚观察，能证明所有蒲公英在任何地方都按同钟点变化吗？",
+          "answer": "不能，原叙述有对象与条件，其他阶段环境和实际观察另核，不把单次表格当普遍固定时间。",
+          "analysis": "不能，原叙述有对象与条件，其他阶段环境和实际观察另核，不把单次表格当普遍固定时间。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "向日葵会随着太阳转动这句话，应如何保留生长阶段条件？",
+          "answer": "区分幼株与花成熟开放后的朝向，已读摘要支持成熟花朝向稳定于东，不能扩大成所有成熟花盘一直跟随。",
+          "analysis": "区分幼株与花成熟开放后的朝向，已读摘要支持成熟花朝向稳定于东，不能扩大成所有成熟花盘一直跟随。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只写早上见绿色，未给花朵开合，能直接说已观察到具体原因吗？",
+          "answer": "不能，颜色已给，开合原因仍待观察或资料支持，可提出假设但不改成已见事实。",
+          "analysis": "不能，颜色已给，开合原因仍待观察或资料支持，可提出假设但不改成已见事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读过一本书的简短介绍，就能说整本内容都已读过吗？怎样准确说明当前范围？",
+          "answer": "不能，只看介绍与实际读到的正文范围分开，不能由熟悉标题或一段说明补成整本已读。",
+          "analysis": "不能，只看介绍与实际读到的正文范围分开，不能由熟悉标题或一段说明补成整本已读。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "根据芒果范例写一份相同记录，能证明本人实际用了摸闻尝吗？",
+          "answer": "不能，需要本人真实对象和过程，示例借方法不借身份，条件不适合的感官无需强做。",
+          "analysis": "不能，需要本人真实对象和过程，示例借方法不借身份，条件不适合的感官无需强做。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读完解释后把最初疑问改成早就知道，丢掉了什么？应怎样保存？",
+          "answer": "会丢原思路与后知区别，应保留原答、帮助和更新，改后不倒改最初未见表现。",
+          "analysis": "会丢原思路与后知区别，应保留原答、帮助和更新，改后不倒改最初未见表现。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "golden-grass-golden-observation-conditions-and-source-range-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列当前一项已给所见、一项解释与一项未完成的真实观察或交流，说明怎样核对。",
+          "answer": "来源条件对应，解释有支持，未完成不由模板、模拟日期或范例填满。",
+          "analysis": "来源条件对应，解释有支持，未完成不由模板、模拟日期或范例填满。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "source:chinese:g3:02915a7d:examples-dog-details",
+      "structure": "example-dog-impression-supported-by-actions",
+      "familyProposal": "following-example-dog-impression-supported-by-actions",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "感受联系具体行为",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明行为怎样支持印象",
+          "weight": 0.4
+        },
+        {
+          "criterion": "旁批与本人观点分清，允许有据不同",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可由跑快却等人、叫声交流或赛跑叙述说明感受，具体片段可定位，不能只背可爱标签。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音说明王子哪里让你觉得淘气可爱，给两项具体行为和各自理由。",
+          "answer": "可由跑快却等人、叫声交流或赛跑叙述说明感受，具体片段可定位，不能只背可爱标签。",
+          "analysis": "可由跑快却等人、叫声交流或赛跑叙述说明感受，具体片段可定位，不能只背可爱标签。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“王子很有趣”补成有具体内容支持的口头说明，注明观点是自己的还是旁批提供。",
+          "answer": "行为与感受关系清楚，旁批为编者提示不冒充本人首答；已有示范曝光另记。",
+          "analysis": "行为与感受关系清楚，旁批为编者提示不冒充本人首答；已有示范曝光另记。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：木偶走得快，却停下等伙伴。录音用当前动作说明一种印象，不搬王子的原经历。",
+          "answer": "当前动作可支持体贴或愿意一起等合理感受，不从一句描写推所有时候性格或真实动物心理。",
+          "analysis": "当前动作可支持体贴或愿意一起等合理感受，不从一句描写推所有时候性格或真实动物心理。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次读一处自己喜欢的小狗行为并解释它怎样写具体，说明是否刚看旁批。",
+          "answer": "实际读到片段和理由对应，原文回顾与未见首答资格分清，参考声不代本人表达。",
+          "analysis": "实际读到片段和理由对应，原文回顾与未见首答资格分清，参考声不代本人表达。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "作者说王子淘气可爱，是否表示学生也必须模仿它追火车？录音说明阅读重点。",
+          "answer": "不需要也不应转成追车任务，理解行为细节与文学趣味即可，实际活动可换合适情境。",
+          "analysis": "不需要也不应转成追车任务，理解行为细节与文学趣味即可，实际活动可换合适情境。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较跑快和仍等我两个信息，录音说明为何不能只取前一个就认定它不理人。",
+          "answer": "完整联系两项行为，保留上下文限制，不用单一片段断定全部关系。",
+          "analysis": "完整联系两项行为，保留上下文限制，不用单一片段断定全部关系。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-dog-impression-supported-by-actions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "录音交流一项有依据的不同感受，再说哪些原文信息支持；没有真实同伴时标为个人练习。",
+          "answer": "感受可不同，具体来源与实际过程明确，不编同伴反应或按与旁批相同程度评全部阅读。",
+          "analysis": "感受可不同，具体来源与实际过程明确，不编同伴反应或按与旁批相同程度评全部阅读。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "source:chinese:g3:02915a7d:examples-animal-interpretation",
+      "structure": "animal-action-versus-narrator-interpretation",
+      "familyProposal": "following-animal-action-versus-narrator-interpretation",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "可见动作与作者想法分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "推测措辞和证据关系明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把文学口吻作动物能力实验或操作任务",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "保留故事中的有趣解释与叫声信息，不能由文学叙述单独认定真实动物算术或识字能力。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "作者说王子会数到二，怎样联系汪汪一声两声理解？能单凭这段证明真实动物算术吗？",
+          "answer": "保留故事中的有趣解释与叫声信息，不能由文学叙述单独认定真实动物算术或识字能力。",
+          "analysis": "保留故事中的有趣解释与叫声信息，不能由文学叙述单独认定真实动物算术或识字能力。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "找一项王子实际动作和一项作者猜它在想什么，分别标出材料身份。",
+          "answer": "实际跑、停、叫等与准是在想、允许或骂等推测区分，不把叙述者解释当直接读到动物内心。",
+          "analysis": "实际跑、停、叫等与准是在想、允许或骂等推测区分，不把叙述者解释当直接读到动物内心。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：玩具亮两下灯，旁白说它在答应朋友。分别写给定动作和旁白想象。",
+          "answer": "亮两下是卡片动作，答应是拟人解释，不能据此证明玩具真实理解对话。",
+          "analysis": "亮两下是卡片动作，答应是拟人解释，不能据此证明玩具真实理解对话。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "作者问王子为什么叫，王子叫两声后朝铁路跑，能否确定它用人类语言完整解释了计划？",
+          "answer": "不能，行为与作者的有趣解释有范围，不能把两声等同人类完整语言证据。",
+          "analysis": "不能，行为与作者的有趣解释有范围，不能把两声等同人类完整语言证据。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "不知是允许火车开走还是骂火车，这种表达为什么保留不确定？",
+          "answer": "作者提出有趣的不同解释而未确认，不能删不知改成已证实唯一心理。",
+          "analysis": "作者提出有趣的不同解释而未确认，不能删不知改成已证实唯一心理。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果要学习动物行为观察，为什么不能把追火车当必须验证步骤？改成一种合适的阅读或静物活动。",
+          "answer": "文学情节不变危险操作要求，可分析文本动作和解释或观察合适静物，真实经历与阅读分开。",
+          "analysis": "文学情节不变危险操作要求，可分析文本动作和解释或观察合适静物，真实经历与阅读分开。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-animal-action-versus-narrator-interpretation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选一处拟人解释，写可见信息、作者猜想和仍不能确定什么。",
+          "answer": "三项身份清楚，有依据的文学欣赏不代实验结论，未知不靠参考或重复记忆补成事实。",
+          "analysis": "三项身份清楚，有依据的文学欣赏不代实验结论，未知不靠参考或重复记忆补成事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "source:chinese:g3:02915a7d:examples-fruit-details",
+      "structure": "fruit-appearance-color-taste-and-ripeness",
+      "familyProposal": "following-fruit-appearance-color-taste-and-ripeness",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "外形颜色味道分类准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "成熟与先后程度限制保留",
+          "weight": 0.4
+        },
+        {
+          "criterion": "个人经历和比喻不推广精确规律或过量任务",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "圆形与刺随熟变软，颜色淡红深红近黑但非真黑，未熟透又酸又甜而熟透甜仍有酸，不能漏限制。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按外形、颜色、味道三方面整理杨梅特点，各保留一项成熟或程度条件。",
+          "answer": "圆形与刺随熟变软，颜色淡红深红近黑但非真黑，未熟透又酸又甜而熟透甜仍有酸，不能漏限制。",
+          "analysis": "圆形与刺随熟变软，颜色淡红深红近黑但非真黑，未熟透又酸又甜而熟透甜仍有酸，不能漏限制。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“几乎变成黑的”和“真的变黑”是否相同？用原文说明怎样写准确。",
+          "answer": "不同，原文说太红看上去像黑，保留几乎和不是真的，不能只背黑色作为全部信息。",
+          "analysis": "不同，原文说太红看上去像黑，保留几乎和不是真的，不能只背黑色作为全部信息。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡给纸果由浅红卡换深红卡，未提供味道。按方面写已知与未知，不搬杨梅味道。",
+          "answer": "当前只支持颜色先后，味道和真实成熟未知，卡片示意不冒充果实实验。",
+          "analysis": "当前只支持颜色先后，味道和真实成熟未知，卡片示意不冒充果实实验。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "熟透甜津津能改成完全没有酸味吗？说明文本怎样限制这一结论。",
+          "answer": "不能，原文明确仍有酸，只因甜而吃时不觉，成熟程度与感受分清。",
+          "analysis": "不能，原文明确仍有酸，只因甜而吃时不觉，成熟程度与感受分清。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "和桂圆一样大小是否给出了所有杨梅固定多少厘米的测量结果？怎样保留比较范围？",
+          "answer": "没有，是当前文学比较，未给统一数值，不推所有品种尺寸；真实测量需实际对象。",
+          "analysis": "没有，是当前文学比较，未给统一数值，不推所有品种尺寸；真实测量需实际对象。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "作者小时候吃多牙酸软，能作为让学生过量吃杨梅来验证的任务吗？为什么？",
+          "answer": "不能，个人叙述不是实际过量任务或医学证明，学习文本观察表达不需要照做。",
+          "analysis": "不能，个人叙述不是实际过量任务或医学证明，学习文本观察表达不需要照做。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-fruit-appearance-color-taste-and-ripeness-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新整理一项杨梅变化，写先前状态、后来状态和文本依据，再说未能确定什么。",
+          "answer": "状态先后与成熟相连，具体引用范围可核，不能由一个果实描写推出全部果实永远相同。",
+          "analysis": "状态先后与成熟相连，具体引用范围可核，不能由一个果实描写推出全部果实永远相同。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "source:chinese:g3:02915a7d:examples-observation-writing-method",
+      "structure": "transfer-observation-expression-method",
+      "familyProposal": "following-transfer-observation-expression-method",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "方法来自具体片段",
+          "weight": 0.4
+        },
+        {
+          "criterion": "行为或方面变化按对象选择",
+          "weight": 0.4
+        },
+        {
+          "criterion": "借方法不抄身份和本人经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "小狗可用相连行为支持印象，杨梅可按外形颜色味道及成熟变化整理，方法有实际片段，不只写观察细致。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-transfer-observation-expression-method-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "比较小狗与杨梅例文各怎样把观察写具体，给各一处方法和依据。",
+          "answer": "小狗可用相连行为支持印象，杨梅可按外形颜色味道及成熟变化整理，方法有实际片段，不只写观察细致。",
+          "analysis": "小狗可用相连行为支持印象，杨梅可按外形颜色味道及成熟变化整理，方法有实际片段，不只写观察细致。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给“物件很漂亮”补写前，应该从真实记录寻找什么？说明怎样借例文方法。",
+          "answer": "找合适部位颜色形状等具体信息，再解释感受；借归类和细节方法，不照抄原果实经历。",
+          "analysis": "找合适部位颜色形状等具体信息，再解释感受；借归类和细节方法，不照抄原果实经历。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡：纸风车转动后停下，叶片一面红一面白。选行为顺序或方面归类写两句，并标材料身份。",
+          "answer": "按当前卡片信息组织，不把纸风车说成自己已真实观察或搬小狗和杨梅事实。",
+          "analysis": "按当前卡片信息组织，不把纸风车说成自己已真实观察或搬小狗和杨梅事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同样写具体，是否每个对象都必须外形颜色味道三项全写？举一项不适合的情况。",
+          "answer": "不必，方法按对象与条件选择，不能要求未知物品品尝或编出无记录味道来凑模板。",
+          "analysis": "不必，方法按对象与条件选择，不能要求未知物品品尝或编出无记录味道来凑模板。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "怎样借王子行为描写表达一项本人真实对象的特点，又不补造内心？",
+          "answer": "选择实际动作与反应支持特点，猜想如有需标明，不能直接给未证实心理当观察事实。",
+          "analysis": "选择实际动作与反应支持特点，猜想如有需标明，不能直接给未证实心理当观察事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "对照本人记录和一段习作，指出一处借到的方法以及一句不应照搬的原例经历。",
+          "answer": "方法与具体句段可定位，作者经历和本人身份不混，没原记录则明确为示例分析。",
+          "analysis": "方法与具体句段可定位，作者经历和本人身份不混，没原记录则明确为示例分析。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-transfer-observation-expression-method-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用真正新对象的实际记录写几句具体表达，报告帮助与仍未观察部分。",
+          "answer": "信息对应真实原记录，帮助和未知清楚，原例重复改词不自动认定新独立结构或保持通过。",
+          "analysis": "信息对应真实原记录，帮助和未知清楚，原例重复改词不自动认定新独立结构或保持通过。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "example-context-figurative-and-qualifying-language",
+      "familyProposal": "following-example-context-figurative-and-qualifying-language",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前含义与具体语境相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明线索或词句怎样支持解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟人比喻、另一义项和科学事实不机械混同",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "是拟人表达生长与生机等感受，不能把文学措辞单独当植物拥有人的具体内心。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "“贪婪地吮吸”“欢笑着”怎样联系杨梅树在春雨中的描写理解？是否已经证明树有人类心情？",
+          "answer": "是拟人表达生长与生机等感受，不能把文学措辞单独当植物拥有人的具体内心。",
+          "analysis": "是拟人表达生长与生机等感受，不能把文学措辞单独当植物拥有人的具体内心。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“每次都是它输，可它从不在乎”怎样联系王子赛跑描写，而非作为所有动物永远不在乎的规律？",
+          "answer": "限定当前文学叙述对象与作者解释，表达趣味，不从一句话推全部动物心理。",
+          "analysis": "限定当前文学叙述对象与作者解释，表达趣味，不从一句话推全部动物心理。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“纸花像在向来人微笑”。写当前表达作用与一项不能据此认定的事实。",
+          "answer": "可形容纸花外观给人的感受，不证明纸花真有情绪、认出人或实际微笑。",
+          "analysis": "可形容纸花外观给人的感受，不证明纸花真有情绪、认出人或实际微笑。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“渐渐”在刺变软、颜色变化里起什么作用？能改成所有变化同一瞬间完成吗？",
+          "answer": "表现逐步变化，不能删成瞬间或给未测精确时长，语境保留过程。",
+          "analysis": "表现逐步变化，不能删成瞬间或给未测精确时长，语境保留过程。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“几乎”和“看上去像”怎样限制颜色判断？",
+          "answer": "表示接近与视觉感受，不能当真的完全变黑，程度和观感需保留。",
+          "analysis": "表示接近与视觉感受，不能当真的完全变黑，程度和观感需保留。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“甜津津”与“酸味还是有的”为什么可同时存在？",
+          "answer": "甜的感受不等酸成分或酸味绝对不存在，按原文成熟与感觉条件理解，不强做化学或医学推断。",
+          "analysis": "甜的感受不等酸成分或酸味绝对不存在，按原文成熟与感觉条件理解，不强做化学或医学推断。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-context-figurative-and-qualifying-language-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选一处例文词句，给当前含义、具体线索与一个过度字面化的误解。",
+          "answer": "解释有上下文支持，拟人比较和程度限制分清，不只列工具口号或扩大所有情况。",
+          "analysis": "解释有上下文支持，拟人比较和程度限制分清，不只列工具口号或扩大所有情况。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "observation-examples",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "example-source-viewpoint-and-evidence-range",
+      "familyProposal": "following-example-source-viewpoint-and-evidence-range",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断有具体来源与条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原叙述推测和本人记录身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知、帮助和未发生过程不由示例或改后答案替代",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，是叙述者拟人猜想或有趣解释，实际行为可列但内心未由文字直接测定。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "作者说王子准是在想，能改成已经直接测到它的想法吗？写准确的材料身份。",
+          "answer": "不能，是叙述者拟人猜想或有趣解释，实际行为可列但内心未由文字直接测定。",
+          "analysis": "不能，是叙述者拟人猜想或有趣解释，实际行为可列但内心未由文字直接测定。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "杨梅文中作者我与学生本人能否直接当同一个人？抄写段落能否证明本人经历过？",
+          "answer": "不能，作者叙述和本人实际观察不同，抄写可学习但不能代本人过程和经历证明。",
+          "analysis": "不能，作者叙述和本人实际观察不同，抄写可学习但不能代本人过程和经历证明。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡仅给物件颜色变深，没有给原因，分别列已知与仍待核实。",
+          "answer": "颜色变化已给，原因和其他感官未知，可提出假设但不写成已实测事实。",
+          "analysis": "颜色变化已给，原因和其他感官未知，可提出假设但不写成已实测事实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读过杨梅外形一段，是否可填写味道全部已经读过并实际尝过？",
+          "answer": "不能，实际已读范围与亲身感官经历分别核对，未读未尝不由目录或熟悉印象补完成。",
+          "analysis": "不能，实际已读范围与亲身感官经历分别核对，未读未尝不由目录或熟悉印象补完成。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "旁批说王子有趣，照抄旁批能当本人没有帮助的第一次判断吗？",
+          "answer": "不能，旁批为已给提示，实际曝光与原答保留，观点对错不恢复未见资格。",
+          "analysis": "不能，旁批为已给提示，实际曝光与原答保留，观点对错不恢复未见资格。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给出当前一项原文事实、一项作者推测和一项个人叙述，说明为什么不能混作普遍实验结论。",
+          "answer": "各有来源与范围，行为、拟人和童年吃多等身份不同，不以生动表达代科学验证。",
+          "analysis": "各有来源与范围，行为、拟人和童年吃多等身份不同，不以生动表达代科学验证。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "observation-examples-example-source-viewpoint-and-evidence-range-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "比较本人原回答和读例文后的修订，说明新增了哪项信息；没有原答则保留无法核查。",
+          "answer": "原答、后文帮助和改后分别留，未记录不倒造本人起初已知或独立保持成功。",
+          "analysis": "原答、后文帮助和改后分别留，未记录不倒造本人起初已知或独立保持成功。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "atomId": "source:chinese:g3:02915a7d:colorful-own-observation",
+      "structure": "own-recent-observation-record",
+      "familyProposal": "following-own-recent-observation-record",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人近期记录有具体对象细节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "方法条件与未知清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "只上传愿分享的本人记录，范文图不代经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人记录与真实对象条件对应，可拍记录而非私密地点，示例图或别人的笔记不代本人经历。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选本人近期印象深的一种事物或场景，上传愿意分享的观察笔记或线稿，标具体细节和仍未知什么。没有实际观察就标准备。",
+          "answer": "本人记录与真实对象条件对应，可拍记录而非私密地点，示例图或别人的笔记不代本人经历。",
+          "analysis": "本人记录与真实对象条件对应，可拍记录而非私密地点，示例图或别人的笔记不代本人经历。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "上传本人记录中一处具体细节，说明用了什么合适方法，未用哪种不适合的方法。",
+          "answer": "方法与对象条件相符，不强求五感全用，未有声音味道不能靠模板补成已经体验。",
+          "analysis": "方法与对象条件相符，不强求五感全用，未有声音味道不能靠模板补成已经体验。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "实际观察一个合适的新静物，画或记两项可见细节再上传，不需要拍私人环境。无条件则说明待做。",
+          "answer": "本次本人记录可核，合适方法与新对象对应；不能用给定卡片假冒真实观察。",
+          "analysis": "本次本人记录可核，合适方法与新对象对应；不能用给定卡片假冒真实观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次上传一次观察变化的原记录，标先后条件；没有变化也可以说明实际看到了什么。",
+          "answer": "真实先后和条件保留，不为凑变化编完整一天，不以模拟日期代实际记录。",
+          "analysis": "真实先后和条件保留，不为凑变化编完整一天，不以模拟日期代实际记录。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "核对本人笔记里一项猜测，标为问题或待核后上传，说明与实际所见的区别。",
+          "answer": "所见与推测分别写，记录的真实性不靠字多或照片数代，未知不强填。",
+          "analysis": "所见与推测分别写，记录的真实性不靠字多或照片数代，未知不强填。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "上传本人原记录及实际补充的一处信息，解释补充来自哪次新观察，而不是范文。",
+          "answer": "原记录和后来所得可追溯，新信息不倒改起初所见；无新观察不伪造补全。",
+          "analysis": "原记录和后来所得可追溯，新信息不倒改起初所见；无新观察不伪造补全。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "colorful-observation-writing-own-recent-observation-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新核对愿意分享的本人近期记录，列已完成与待观察部分上传；无原记录就如实留缺。",
+          "answer": "来源条件范围真实，不要求暴露私人信息，旧图、字库图或角色示范不能补成新本人观察。",
+          "analysis": "来源条件范围真实，不要求暴露私人信息，旧图、字库图或角色示范不能补成新本人观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "atomId": "source:chinese:g3:02915a7d:colorful-observation-paragraph",
+      "structure": "specific-observation-paragraph-from-record",
+      "familyProposal": "following-specific-observation-paragraph-from-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "具体文字与本人记录对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "顺序方面适合对象且可跟随",
+          "weight": 0.4
+        },
+        {
+          "criterion": "感受有细节，不强凑字数或全部感官",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "一个对象即可，真实细节支持印象，组织清楚，不强制统一字数、题目或五感全用，示例不充本人已观察。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "依据本人实际记录，写最近印象深的一种事物或一处场景，突出具体细节。没有记录则用明确示例并标身份。",
+          "answer": "一个对象即可，真实细节支持印象，组织清楚，不强制统一字数、题目或五感全用，示例不充本人已观察。",
+          "analysis": "一个对象即可，真实细节支持印象，组织清楚，不强制统一字数、题目或五感全用，示例不充本人已观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“东西很好看，非常有趣”改成有具体信息的两句，注明细节来自哪里。",
+          "answer": "具体部位颜色动作或变化可定位到记录，增加准确信息而非堆空泛形容词。",
+          "analysis": "具体部位颜色动作或变化可定位到记录，增加准确信息而非堆空泛形容词。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只给浅蓝水杯白线在窗边显亮、书旁较暗。写几句并标明是卡片分析，不补味道声音。",
+          "answer": "按当前对象条件写差别，未给感官保持未知，图卡不等本人真实观察。",
+          "analysis": "按当前对象条件写差别，未给感官保持未知，图卡不等本人真实观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "回看本人段落，列所写对象、组织顺序和最支持印象的一处细节，找不清楚处改一句。",
+          "answer": "修改有原记录与原稿依据，原说法改后分别留，不只抄范文或用字数判完成。",
+          "analysis": "修改有原记录与原稿依据，原说法改后分别留，不只抄范文或用字数判完成。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果对象没有观察到变化，能按部位或方面写具体吗？用实际记录说明。",
+          "answer": "可以，组织按对象而定，没有变化不编造；真实细节和可读联系比模板形式重要。",
+          "analysis": "可以，组织按对象而定，没有变化不编造；真实细节和可读联系比模板形式重要。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "逐句核对本人记录，删改一项没有实际依据却被写成已知的细节，保留原改。",
+          "answer": "改动对应具体越界信息，合理推测可标为猜想，不能倒改成起初已经真实观察。",
+          "analysis": "改动对应具体越界信息，合理推测可标为猜想，不能倒改成起初已经真实观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-specific-observation-paragraph-from-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "换真正新对象的本人近期记录写几句，说明实际帮助；没有新记录则报告原稿修订。",
+          "answer": "新材料与表达对应，原例重复换词不自动成为新未见结构，真实观察和文本修订分清。",
+          "analysis": "新材料与表达对应，原例重复换词不自动成为新未见结构，真实观察和文本修订分清。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "atomId": "source:chinese:g3:02915a7d:colorful-selected-sharing",
+      "structure": "own-selected-passage-real-peer-sharing",
+      "familyProposal": "following-own-selected-passage-real-peer-sharing",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "所读片段属于本人习作",
+          "weight": 0.4
+        },
+        {
+          "criterion": "选择理由联系具体所得",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实听众与准备示范不混，不编反馈",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "片段与本人稿对应，理由联系具体细节，录音准备不自动变真实小组交流已完成。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "从本人习作选自认写得好的一处录音读出，说明为何选择；是否已读给真实小组听另报告。",
+          "answer": "片段与本人稿对应，理由联系具体细节，录音准备不自动变真实小组交流已完成。",
+          "analysis": "片段与本人稿对应，理由联系具体细节，录音准备不自动变真实小组交流已完成。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把只说“这一段最好”补成一个具体选择理由，再录音读该片段。",
+          "answer": "指出写清对象、变化或观察条件的一项效果，评价有稿件依据，不按最长最像范文决定。",
+          "analysis": "指出写清对象、变化或观察条件的一项效果，评价有稿件依据，不按最长最像范文决定。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "若有愿意参与的真实同伴，读给其听并保留愿意公开的过程；没有条件则录明确练读并标待交流。",
+          "answer": "真实听众和实际所读范围可核，对方可不录，缺条件不由自己配两人声音补真人回应。",
+          "analysis": "真实听众和实际所读范围可核，对方可不录，缺条件不由自己配两人声音补真人回应。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读本人一个有具体所得的片段，说明其来自哪条观察记录和哪一版稿。",
+          "answer": "所读与原稿记录对应，不把下载范例当本人作品，版本与帮助如实。",
+          "analysis": "所读与原稿记录对应，不把下载范例当本人作品，版本与帮助如实。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "同伴喜欢另一处时，怎样倾听并交流理由？录一段真实对话或明确角色示范。",
+          "answer": "回应联系实际文本，合理偏好可不同，角色示范不冒充真实反馈或已完成小组活动。",
+          "analysis": "回应联系实际文本，合理偏好可不同，角色示范不冒充真实反馈或已完成小组活动。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "回顾一次实际分享，录音说读了哪里、听众是否真实、哪项信息得到交流；无过程则说明限制。",
+          "answer": "实际范围和记录清楚，不编同伴原话，也不以重复练读次数当真人交流次数。",
+          "analysis": "实际范围和记录清楚，不编同伴原话，也不以重复练读次数当真人交流次数。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-own-selected-passage-real-peer-sharing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择修订后更清楚的一处录音，说明原稿与改进；若尚未给同伴读就保留待做。",
+          "answer": "原改与选择理由对应，改后表达不倒改原首答，录音与真实交流两个状态分开。",
+          "analysis": "原改与选择理由对应，改后表达不倒改原首答，录音与真实交流两个状态分开。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "atomId": "source:chinese:g3:02915a7d:colorful-one-sentence-reflection",
+      "structure": "one-sentence-reflection-from-actual-process",
+      "familyProposal": "following-one-sentence-reflection-from-actual-process",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "一句心得对应具体过程",
+          "weight": 0.4
+        },
+        {
+          "criterion": "方法与新发现有联系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实交流后反思与准备示例回顾分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "心得可联系多看细节、合适感官或变化，具体过程支持，不只照抄教材口号或补交流完成。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实交流之后，用一句话说最近的观察感受，再指出支撑这句话的一项实际过程；未交流则标个人回顾。",
+          "answer": "心得可联系多看细节、合适感官或变化，具体过程支持，不只照抄教材口号或补交流完成。",
+          "analysis": "心得可联系多看细节、合适感官或变化，具体过程支持，不只照抄教材口号或补交流完成。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“要仔细观察”补成一句能看出本人学到什么的心得，注明实际依据。",
+          "answer": "如多看杯沿才发现细纹，方法和新信息有关；例子若非本人需标示范。",
+          "analysis": "如多看杯沿才发现细纹，方法和新信息有关；例子若非本人需标示范。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡两次观察纸片窗显露不同图案。写一句示例心得，并说明不能充本人真实交流后反思。",
+          "answer": "可说说明开合条件能把变化写清，来源卡片身份明确，未有真实过程不补造。",
+          "analysis": "可说说明开合条件能把变化写清，来源卡片身份明确，未有真实过程不补造。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "回看本人一次实际观察，写一句方法感受与一件仍不确定的事，不为完整编结论。",
+          "answer": "感受有原记录支持，未知可并存，承认不确定不等没学会观察。",
+          "analysis": "感受有原记录支持，未知可并存，承认不确定不等没学会观察。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "观察只适合看与听，没尝没摸就不合格吗？用一句有条件的心得说明。",
+          "answer": "方法按对象条件选择，合适而非全部感官齐全，不强迫不适合动作或虚构体验。",
+          "analysis": "方法按对象条件选择，合适而非全部感官齐全，不强迫不适合动作或虚构体验。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较本人原心得与新理解，用一句修订说明哪项实际信息使认识改变。",
+          "answer": "原句、新信息、修订可对应，不倒改最初记录；没有新过程则标文本回顾。",
+          "analysis": "原句、新信息、修订可对应，不倒改最初记录；没有新过程则标文本回顾。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-one-sentence-reflection-from-actual-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "完成一项真实分享或明确个人回顾后写一句心得，报告活动实际到哪一步。",
+          "answer": "反思身份和过程状态准确，计划、示范、个人回顾与交流后心得不互相替代。",
+          "analysis": "反思身份和过程状态准确，计划、示范、个人回顾与交流后心得不互相替代。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "colorful-observation-writing",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "writing-real-observation-and-activity-evidence",
+      "familyProposal": "following-writing-real-observation-and-activity-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断有具体来源与条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原叙述推测和本人记录身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知、帮助和未发生过程不由示例或改后答案替代",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，计划、所见和交流分别记录，未发生不由任务名称补齐。",
+        "insufficientExample": "我全部观察过了，和例文一样，任何时候都一样。",
+        "insufficientReason": "没有具体材料、本人原记录或当前条件，不能由范例、模板和单次结果补造真实过程或普遍规律。",
+        "alternativeAnswers": "原创人工核对参考，允许有依据的不同表达；真实声音、原稿、帮助、未知和未发生环节分别留证。"
+      },
+      "exercises": [
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "只有“我打算明天看一看”的计划，能今天把实际观察和同伴交流都勾成完成吗？",
+          "answer": "不能，计划、所见和交流分别记录，未发生不由任务名称补齐。",
+          "analysis": "不能，计划、所见和交流分别记录，未发生不由任务名称补齐。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把别人的芒果观察改成自己的名字，能证明本人实际摸闻尝过吗？",
+          "answer": "不能，观察者和来源不同，借写法不借经历；本人实际记录另核。",
+          "analysis": "不能，观察者和来源不同，借写法不借经历；本人实际记录另核。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只给颜色和位置，列一项已知、一项猜测和一项未知，不能填真实亲历。",
+          "answer": "颜色位置已给，原因或未给感官若猜需标，卡片分析与本人实际观察分开。",
+          "analysis": "颜色位置已给，原因或未给感官若猜需标，卡片分析与本人实际观察分开。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一份习作写得很长，却没有原记录或具体细节，能仅凭字数证明观察充分吗？",
+          "answer": "不能，需对象、条件和细节支持，篇幅不代真实性、方法质量或全面覆盖。",
+          "analysis": "不能，需对象、条件和细节支持，篇幅不代真实性、方法质量或全面覆盖。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只有本人练读录音，能证明真实小组同伴都听过并给了反馈吗？",
+          "answer": "不能，练读是准备，真实听众与反馈须实际过程，不能编原话或完成次数。",
+          "analysis": "不能，练读是准备，真实听众与反馈须实际过程，不能编原话或完成次数。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "后来补看一次得到新细节，怎样保留原记录与新增信息，避免把后知写成早知？",
+          "answer": "原记录不覆盖，另记新观察和修订，帮助或示例曝光保留，改后不恢复未见首答资格。",
+          "analysis": "原记录不覆盖，另记新观察和修订，帮助或示例曝光保留，改后不恢复未见首答资格。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "colorful-observation-writing-writing-real-observation-and-activity-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分别写一项真实已有材料、一项后来修订和一件仍待做的环节，说明各自依据。",
+          "answer": "原记录稿件与实际过程对应，未知或未完成保持，模板和模拟日期不代真人证据。",
+          "analysis": "原记录稿件与实际过程对应，未知或未完成保持，模板和模拟日期不代真人证据。 仅供未审候选人工核对，不自动评分、批准独立题族或代填真实观察与同伴回应。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

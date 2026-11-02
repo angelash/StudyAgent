@@ -1,0 +1,341 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit5:entry3",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 74,
+    "pageEnd": 76,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:examples-dog-details",
+      "version": 1,
+      "name": "用行为细节说明王子淘气可爱",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学观察与表达",
+      "objective": "从组合例文的小狗具体行为中提出有依据的阅读感受",
+      "successCriterion": "跑快又等人、叫声与赛跑等叙述可支持感受，旁批与本人观点分开，不由评价推全部动物性质",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:examples-animal-interpretation",
+      "version": 1,
+      "name": "区分动物行为与作者拟人解释",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与推断",
+      "objective": "比较小狗实际动作叫声与叙述者猜想的想法",
+      "successCriterion": "会数到二、理解狗字、允许或骂火车等保留为叙述解释，不单由这些文字认定真实动物算术与内心，不安排追火车验证",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:examples-fruit-details",
+      "version": 1,
+      "name": "按外形颜色味道整理杨梅观察",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "观察与说明",
+      "objective": "把杨梅的部位、成熟变化与味道按文本归类说明",
+      "successCriterion": "外形触感、颜色先后和成熟仍有酸分别有依据，几乎黑不改成真黑，大小比喻不定所有果实精确尺寸",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:examples-observation-writing-method",
+      "version": 1,
+      "name": "从两篇例文提取具体观察表达方法",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与习作",
+      "objective": "比较动物行为与果实多方面变化怎样写具体，再用于新表达",
+      "successCriterion": "方法有可定位片段，不照抄例文充本人观察；夸张拟人、个人吃多经历和真实测量各自有范围",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:examples-dog-details",
+    "source:chinese:g3:02915a7d:examples-animal-interpretation",
+    "source:chinese:g3:02915a7d:examples-fruit-details",
+    "source:chinese:g3:02915a7d:examples-observation-writing-method",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "选定准确原件每页正文、作者译者、表格、旁批和活动任务已逐张查看，教材范围与单元附属活动分别标明；来源核对不代教师审核或学生实际观察完成。",
+    "pages": [
+      {
+        "page": 74,
+        "visualChecked": true,
+        "statement": "物理74印69小狗例文作者捷克博·日哈、刘星灿译，有改动；跑快却等人、狗字叫欢与数二、旁白动物心理须分身份，本页未完。"
+      },
+      {
+        "page": 75,
+        "visualChecked": true,
+        "statement": "物理75印70上接王子赛火车和交流淘气可爱任务，下起王鲁彦杨梅例文，树枝叶、端午后挂果与外形刺随成熟变化；组合课两篇分清。"
+      },
+      {
+        "page": 76,
+        "visualChecked": true,
+        "statement": "物理76印71杨梅续文外形颜色味道，几乎黑非真黑，熟透甜但仍有酸，童年吃多经历不作实际过量任务；表格三方面有具体文本依据。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "习作例文：我家的小狗、我爱故乡的杨梅",
+    "activity": true,
+    "combinedExamples": true,
+    "parts": [
+      {
+        "title": "我家的小狗",
+        "author": "捷克博·日哈",
+        "translator": "刘星灿",
+        "textbookAdapted": true,
+        "physicalPages": [
+          74,
+          75
+        ]
+      },
+      {
+        "title": "我爱故乡的杨梅",
+        "author": "王鲁彦",
+        "textbookAdapted": true,
+        "physicalPages": [
+          75,
+          76
+        ]
+      }
+    ],
+    "recognitionCharacters": [],
+    "writingCharacters": [],
+    "animalThoughtsAreNarratorInterpretations": true,
+    "requiredTastingOrRailwayActivity": false,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "习作例文：行为与变化写具体，感受与猜想说明来源",
+    "activation": {
+      "prompt": "原创两卡：一张写玩具小狗走两步又停下，旁白猜它在等朋友；另一张写同一纸果由浅红卡换成深红卡。分别说实际给了什么、旁白想了什么。",
+      "expectedObservation": "能区分动作、颜色与附加心理解释，知道两种对象可以用不同方面写具体。",
+      "bridge": "小狗例文侧重行为和有趣解释，杨梅例文按外形、颜色、味道和成熟变化写观察。"
+    },
+    "concept": {
+      "explanation": "这项组合例文跨三页，含两位作者的作品。《我家的小狗》写王子跑得快却在前面等人、学“狗”时叫得欢、用一声两声汪汪与人交流，还写它和火车赛跑。说淘气可爱要找这些具体内容，旁批是编者提示，不是学生本人首答。作者用有趣口吻说它会数到二、猜它理解狗字、允许火车开走或骂火车，不能只凭叙述就当动物识字算术与心理已被实验确认；阅读也不要求人或动物追火车验证。《我爱故乡的杨梅》从圆形、表面小刺及成熟时刺变软、颜色由淡红到深红近黑、味道与成熟的关系写具体。原文特意说不是真的变黑，熟透仍有酸味，只因甜而不觉得酸，不能改成成熟完全没酸。和桂圆一样大小是当前比较，不给所有品种统一精确尺寸。作者小时候吃多牙酸软是个人叙述，不能当学生要照做的过量品尝实验或医学诊断。两篇都以细节支持感受，但观察方面不同；学方法后用自己的真实对象和记录表达，不抄例文代本人经历。",
+      "points": [
+        "组合课两位作者和作品范围清楚",
+        "可爱淘气有具体行为支持",
+        "动物心理推测与可见行为分开",
+        "杨梅按外形颜色味道与成熟归类",
+        "近黑不是真黑，熟透仍有酸",
+        "文学比较与个人经历不代普遍实验",
+        "从例文借方法，自己的记录需真实"
+      ]
+    },
+    "example": {
+      "situation": "明确原创观察卡：小木偶停下等同伴，旁白说也许它在担心；三张纸果卡由浅红变深红，作者觉得颜色鲜明。不是原文动物或果实实验。",
+      "steps": [
+        {
+          "explanation": "先给小木偶的可见动作再给感受依据，旁白也许担心为推测，不加成已测到真实内心。",
+          "board": [
+            "动作：停下等",
+            "感受有动作支持",
+            "也许为旁白解释"
+          ]
+        },
+        {
+          "explanation": "按纸果卡浅红深红顺序说明颜色信息，不说纸果真的经历生长成熟，更不由图卡判断真实味道。",
+          "board": [
+            "对象：纸果卡",
+            "颜色先后明确",
+            "味道未给仍未知"
+          ]
+        },
+        {
+          "explanation": "总结行为与变化两种表达方法，再为本人实际观察另记对象条件，不把这段示例写成自己的既往经历。",
+          "board": [
+            "行为可支持感受",
+            "变化按方面整理",
+            "真实本人记录另留"
+          ]
+        }
+      ],
+      "conclusion": "细节、解释和感受各有来源；比较方法可以迁移，材料身份与未知不能省略。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "两篇例文的具体信息与解释范围",
+        "headers": [
+          "例文材料",
+          "可以提取的方法或信息",
+          "不能直接推广"
+        ],
+        "rows": [
+          [
+            "王子跑快又等我",
+            "动作细节支持亲近可爱等感受",
+            "不能仅凭评价证明所有时候的动物性格"
+          ],
+          [
+            "叫一声两声与旁白心理",
+            "行为和有趣拟人解释分开",
+            "不能据此证明识字算术或真实内心"
+          ],
+          [
+            "杨梅外形触感与成熟",
+            "按形状表面及变化写具体",
+            "比较大小不定全部品种精确尺寸"
+          ],
+          [
+            "淡红深红几乎黑",
+            "颜色按先后和程度表达",
+            "原文说并非真黑，不能删掉限制"
+          ],
+          [
+            "熟透甜津津仍有酸",
+            "成熟程度与味道条件相连",
+            "个人吃多经历不作过量验证任务"
+          ],
+          [
+            "学例文再观察自己的对象",
+            "借用观察和归类方法",
+            "范文、图卡或想象不代本人真实观察"
+          ]
+        ],
+        "explanation": "例文帮助看表达方法，具体事实、文学口吻和个人经历各有边界；不把有趣叙述当已完成科学实验或学生经历。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "由会数到二和汪汪两声，直接给真实狗填上识字算术能力。",
+        "alternatives": [
+          "可能把文学口吻当实验结论，也可能没分动作和旁白解释。"
+        ],
+        "verification": "分别列实际叫声动作与作者准是在想、不知等推测措辞。",
+        "correctiveFeedback": "可以欣赏有趣解释，不能由一段文学叙述确认全部动物认知，也不把追车情节转成实际操作。"
+      },
+      {
+        "observation": "把杨梅几乎黑改成真黑，或把熟透很甜改成完全没有酸。",
+        "alternatives": [
+          "可能忽略程度与转折，也可能只选最醒目的一个感受词。"
+        ],
+        "verification": "对照原文限制句和成熟条件，分别整理颜色与味道，不混两个方面。",
+        "correctiveFeedback": "保留近似、成熟和仍有酸等条件，细节准确比只背甜黑两个词更重要。"
+      },
+      {
+        "observation": "拿例文的童年吃多经历或对小狗的想象，作为自己已经观察验证的记录。",
+        "alternatives": [
+          "可能抄模板，也可能把作者我和本人混为一人。"
+        ],
+        "verification": "标作者、实际对象和本人原记录，未发生经历保持未完成。",
+        "correctiveFeedback": "借方法不借身份，原文个人经历不是学生应照做实验或本人事实。"
+      }
+    ],
+    "transfer": {
+      "scenario": "选择真实身边物件或明确原创图卡，分别练行为细节和按方面变化说明；没有真实观察时只做给定材料分析。",
+      "prompt": "用一项具体信息支持感受，分清可见信息与推测，再按合适方面写变化。说明来源与仍未知什么。",
+      "expectedStrategy": "方法可定位可迁移，拟人、个人叙述和真实记录身份清楚，未知不靠熟悉范文补足。"
+    },
+    "summary": {
+      "synthesis": "行为与变化写具体，感受才有依据。欣赏拟人与比较，也保留原文的程度、条件和信息来源。",
+      "takeaways": [
+        "两篇材料范围清楚",
+        "动作支持印象而非全部心理事实",
+        "外形颜色味道各自核对",
+        "近似和成熟等限制不能删",
+        "借方法不冒充作者经历"
+      ]
+    },
+    "citations": [
+      {
+        "page": 75,
+        "quote": "作者发现了“王子”的淘气可爱",
+        "usedFor": "concept"
+      },
+      {
+        "page": 76,
+        "quote": "它不是真的变黑，而是因为太红了",
+        "usedFor": "example"
+      },
+      {
+        "page": 76,
+        "quote": "认真读课文，填写下面的表格，体会作者观察的细致。",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:examples-dog-details",
+        "objective": "从组合例文的小狗具体行为中提出有依据的阅读感受",
+        "successCriterion": "跑快又等人、叫声与赛跑等叙述可支持感受，旁批与本人观点分开，不由评价推全部动物性质"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:examples-animal-interpretation",
+        "objective": "比较小狗实际动作叫声与叙述者猜想的想法",
+        "successCriterion": "会数到二、理解狗字、允许或骂火车等保留为叙述解释，不单由这些文字认定真实动物算术与内心，不安排追火车验证"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:examples-fruit-details",
+        "objective": "把杨梅的部位、成熟变化与味道按文本归类说明",
+        "successCriterion": "外形触感、颜色先后和成熟仍有酸分别有依据，几乎黑不改成真黑，大小比喻不定所有果实精确尺寸"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:examples-observation-writing-method",
+        "objective": "比较动物行为与果实多方面变化怎样写具体，再用于新表达",
+        "successCriterion": "方法有可定位片段，不照抄例文充本人观察；夸张拟人、个人吃多经历和真实测量各自有范围"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "结合具体词句解释当前含义和表达作用",
+        "successCriterion": "词义与当前对象和语境相容，拟人比喻与实际动作不混，不用字面词义推未给的心理或科学结论"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用具体图文或本人实际记录支持判断，保留来源和当前范围",
+        "successCriterion": "原叙述、拟人猜想、读后理解与真实观察分别核对，不由模板、示范或单次观察补造全部规律和已完成过程"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "目标、量规、未见结构与充分库存审核后按真实日期安排。已看原篇、旁批、示例或得到帮助需保留曝光；拟议间隔、模拟日期、示范观察与后改内容不能代本人未见首答或真人保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "observation-examples",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "具体原创讲解与未审材料，教师对齐、独立结构、评分和充分保持库存仍待审。",
+    "sourceBoundary": "原文、旁批、实际原稿与本人观察分别标明，不把教研者已读或模板示例记成学生真实经历。"
+  }
+}

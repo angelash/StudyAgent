@@ -1,0 +1,139 @@
+{
+  "format": "study-block-four-observation-final-candidates-v1",
+  "at": "2026-11-02T12:25:50.284Z",
+  "baseCommit": "1f1b04c6d7ec766ed4acaf1d3b51b75dc571aaf8",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 3,
+  "targetCounts": [
+    7,
+    6,
+    5
+  ],
+  "targetGroups": 18,
+  "newDefinitionCandidates": 13,
+  "newCandidateQuestions": 126,
+  "purposeCounts": {
+    "immediate": 54,
+    "proposedRetention": 72
+  },
+  "modes": {
+    "audio_record": 21,
+    "image_upload": 14,
+    "short_answer": 91
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPages": [
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77
+    ],
+    "allSelectedPagesPreviouslyVisuallyReviewed": true,
+    "mainTextAndAncillaryUnitActivitySeparated": true,
+    "combinedExampleAuthorsSeparated": true,
+    "originalImagesCommitted": false,
+    "scientificSupportReadScope": "Publisher-deposited abstract supplied by Crossref; not the full research paper",
+    "fullResearchArticleRead": false
+  },
+  "validation": {
+    "draftHttp": "checks/observation-final-drafts-http-first.json",
+    "materialHttp": "checks/observation-final-materials-http-first.json",
+    "exactSourceCitationsAndMetadataPreserved": true,
+    "originalCommandsReplayed": true,
+    "incompletePublicationRejected": true,
+    "generationByteReadback": "checks/observation-final-generation-readback.json",
+    "privateQaInputsRequiredForRegeneration": false,
+    "browser": {
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 5,
+      "failed": 0,
+      "report": "browser/receipt.json",
+      "screenshotsVisuallyReviewed": 7
+    },
+    "gapCounts": [
+      {
+        "file": "chinese-g3-golden-grass-v1.json",
+        "gaps": 89,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-observation-examples-v1.json",
+        "gaps": 76,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      },
+      {
+        "file": "chinese-g3-colorful-observation-writing-v1.json",
+        "gaps": 64,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "applicationContractsAndTestsUnchangedSince": "1f1b04c6",
+    "apiSourceUnchangedSince": "4d26c399",
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "actualStudentObservationsCreated": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 29,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3483,
+    "authoredFollowingMaterialCandidates": 1211,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn1211": true,
+    "next": "Continue unit6 and all exact-source lesson/GESP content, missing author originals and teacher/scoring/family/stock reviews, then block5 engineering and real acceptance."
+  }
+}

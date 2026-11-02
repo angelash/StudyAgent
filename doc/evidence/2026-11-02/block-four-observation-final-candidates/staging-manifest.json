@@ -1,0 +1,246 @@
+{
+  "at": "2026-11-02T12:26:32.394Z",
+  "baseCommit": "1f1b04c6d7ec766ed4acaf1d3b51b75dc571aaf8",
+  "branch": "main",
+  "localBranches": [
+    "main"
+  ],
+  "worktreeInventory": "worktree F:/workspace/github/StudyAgent\nHEAD 1f1b04c6d7ec766ed4acaf1d3b51b75dc571aaf8\nbranch refs/heads/main\n\n",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-observation-final-v1.json",
+      "bytes": 120087,
+      "sha256": "51f1b3e9e67f8f3fcb93cf7b1c270d36e91d0b197b4af40bffe6aaae9131ea19",
+      "gitNormalizedSha256": "51f1b3e9e67f8f3fcb93cf7b1c270d36e91d0b197b4af40bffe6aaae9131ea19"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-colorful-observation-writing-v1.json",
+      "bytes": 14753,
+      "sha256": "36297091766a7154ce73f60ac98ec1f0fe71f33a8229f718b4b83a53ebc8c018",
+      "gitNormalizedSha256": "36297091766a7154ce73f60ac98ec1f0fe71f33a8229f718b4b83a53ebc8c018"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-golden-grass-v1.json",
+      "bytes": 17536,
+      "sha256": "91a81a264da82de66e12f555e3495009c35c4cbfe8d19017b1d628e0770ccab9",
+      "gitNormalizedSha256": "91a81a264da82de66e12f555e3495009c35c4cbfe8d19017b1d628e0770ccab9"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g3-observation-examples-v1.json",
+      "bytes": 16150,
+      "sha256": "8526eaab588b98f912691fd0d95ec176cc28dcf245414c7ae033524fd535bd38",
+      "gitNormalizedSha256": "8526eaab588b98f912691fd0d95ec176cc28dcf245414c7ae033524fd535bd38"
+    },
+    {
+      "path": "resources/curriculum/source-reviews/sunflower-abstract-crossref-v1.json",
+      "bytes": 1688,
+      "sha256": "33cf1a19b1de32d58b73290423096e8d0675cd340765c21edc68f0a7d6671c4d",
+      "gitNormalizedSha256": "33cf1a19b1de32d58b73290423096e8d0675cd340765c21edc68f0a7d6671c4d"
+    },
+    {
+      "path": "scripts/content/build-chinese-observation-final-lessons.cjs",
+      "bytes": 29865,
+      "sha256": "8e3587734a107f0a6a7b983d069914805d2692d1b5db67fd0ef178c882974bb9",
+      "gitNormalizedSha256": "8e3587734a107f0a6a7b983d069914805d2692d1b5db67fd0ef178c882974bb9"
+    },
+    {
+      "path": "scripts/content/build-chinese-observation-final-materials.cjs",
+      "bytes": 34730,
+      "sha256": "6ee486d5b0531f767115d281aa8eb192942da550c54275a7ec2564e0d0f75caa",
+      "gitNormalizedSha256": "6ee486d5b0531f767115d281aa8eb192942da550c54275a7ec2564e0d0f75caa"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 13298,
+      "sha256": "820b421ca692f020c5c420dae1a5d2bb1d20a1f79eb8d1ca17160e1a08c46322",
+      "gitNormalizedSha256": "aa692de39d11c10fed89cd57cf0b8d530239488029b22591afd646913d35cc8d"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 173486,
+      "sha256": "6c032cedcd9ae3c88ceccee7b7dcd01bde47c457ceaef7a69cf28f0117962611",
+      "gitNormalizedSha256": "f691ccb1f6e370e30f9ad5beb3bb5d93b8835323c80a57ddb55003ef6bde059a"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 99534,
+      "sha256": "2f306877299580fedc8b74307605a82d123f84a976ed62a7904384220fe5a58d",
+      "gitNormalizedSha256": "22449ed86b95a98c0c060908a4e4300ac0bd8a4f7e4203ea61ef34bf535fee70"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 104949,
+      "sha256": "252bb06d27fbbff481c5466a3d618a3bc92d5f54cb07c1b122a6fa34ca2f9b7d",
+      "gitNormalizedSha256": "59b7cd936893d723a9f5de5995ce1fad8b1f9dd4bb87ffb54b318756842283e4"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 14484,
+      "sha256": "456a3dcdee8d04822d4895a9f0ac9e045a958ef32073d84679ee2ee0301cbe13",
+      "gitNormalizedSha256": "a24689317e16dc05364d30e14d7ba221d53ff437633a00daeafecb7104d9a7d2"
+    },
+    {
+      "path": "doc/product/202-observation-conditions-example-scope-and-real-writing-candidates.md",
+      "bytes": 4225,
+      "sha256": "90102f4452be73c6a2fbe3d405d8d6ddc6eb341d0ff65f04e665f65392894424",
+      "gitNormalizedSha256": "90102f4452be73c6a2fbe3d405d8d6ddc6eb341d0ff65f04e665f65392894424"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 33652,
+      "sha256": "441cc6a83c0b8544e12e11f4a42f309764bb02a5fc4af84b154120b732fa0698",
+      "gitNormalizedSha256": "847e58176a5f38b060950a332677ac83a82bdc580dc1ccebc20509f4d2be6007"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-colorful-observation-writing-v1-desktop.png",
+      "bytes": 259141,
+      "sha256": "5156306cf67114a6a7c686e3cd19bfca1bfe9b734783b963d29edd4b23f20768",
+      "gitNormalizedSha256": "4d539b192259d2e3bdee3f6e26f888fd478867dffbbaf5bc0f7d00b4e24ea425"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-colorful-observation-writing-v1-mobile-table.png",
+      "bytes": 79542,
+      "sha256": "642a43997cfaa84b9343bf43148728fb2736d4fea8ae848cff28b2e1d6b56675",
+      "gitNormalizedSha256": "c4ee45393e7e60ab23ff9cd33944144f67d71117cb7ffc1e7db045758572630b"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-colorful-observation-writing-v1-table.png",
+      "bytes": 59952,
+      "sha256": "40d9fb17ed345b40143bea4bb60963411d03ba8bae66d6c6c2bdc694f94af81b",
+      "gitNormalizedSha256": "a0a0a35af4671ce8277467b6a020d59c0f20a14b2c2971bfe9b9122937b099e5"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-golden-grass-v1-desktop.png",
+      "bytes": 273336,
+      "sha256": "2ef23fecacd7bebce2d44a2a390fc307891e62492ff25560cff9aee346fcb321",
+      "gitNormalizedSha256": "9885b10f9e56052df289496199ea0ca878f00ca088839614957cdef7bcfca668"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-golden-grass-v1-table.png",
+      "bytes": 57364,
+      "sha256": "f899098bcbcd5ec3372e34254cab4934aed56c11ee63e98fbc8221337e579ea5",
+      "gitNormalizedSha256": "2db59763c0049663ba7bcebcc15afc68d74a8f6e560b4ba52baf74156c70a449"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-observation-examples-v1-desktop.png",
+      "bytes": 258140,
+      "sha256": "986c53234c6cdd2475d3396c44599ff048cc81be7466b3b376f21cc8fb51c61b",
+      "gitNormalizedSha256": "1abcee9474db75959c09e7c62c9901b0a72d6b152e419b4dd6f1256a4b4565e7"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/chinese-g3-observation-examples-v1-table.png",
+      "bytes": 77564,
+      "sha256": "27c8e6dc35c2bb3e6050600a4500d22782e7dd8793ac8d869a638f1c8a0f595c",
+      "gitNormalizedSha256": "2ab5537a53c1762814ee5a4901f70129089dcae7e93dd60a772db40bbea2b985"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/receipt.json",
+      "bytes": 1303,
+      "sha256": "ccb6ebf6e18ceea9516a575a20a61b8dff05cc285a30e147e104ca5d8dce00ce",
+      "gitNormalizedSha256": "ccb6ebf6e18ceea9516a575a20a61b8dff05cc285a30e147e104ca5d8dce00ce"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/browser/runner.cjs",
+      "bytes": 16592,
+      "sha256": "280c5fe82ae437d3ca20942001f84da56722a4cc7028a1c8ca0083facd82bd5d",
+      "gitNormalizedSha256": "280c5fe82ae437d3ca20942001f84da56722a4cc7028a1c8ca0083facd82bd5d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/b4-observation-final-archive-scan.json",
+      "bytes": 996,
+      "sha256": "e4b94bd4cdf6dcb40f8d5f35ce1cbfce4aae3884372da99f72ebd5e06231c999",
+      "gitNormalizedSha256": "e4b94bd4cdf6dcb40f8d5f35ce1cbfce4aae3884372da99f72ebd5e06231c999"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/content-worklist-observation-final.json.gz",
+      "bytes": 113710,
+      "sha256": "df6d55a7d6a3bffad2ba683622e8e8e052fb37a64b542bad217cc6786f34ff93",
+      "gitNormalizedSha256": "9ddc5aabb4be2e4bb3b812a3173d5ca3c22e455b747379b627eca6a4393b528a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/observation-final-drafts-http-first.json",
+      "bytes": 2521,
+      "sha256": "a02f04c2bcb6c61a244d2f4ffad68d2690e5592c7b944519ca0f5fd03c4e7cf2",
+      "gitNormalizedSha256": "a02f04c2bcb6c61a244d2f4ffad68d2690e5592c7b944519ca0f5fd03c4e7cf2"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/observation-final-generation-readback.json",
+      "bytes": 1090,
+      "sha256": "26b257adcfbbd17b81ab1d29c580a29cc619482f0a5aeb40900cf3823908da2f",
+      "gitNormalizedSha256": "26b257adcfbbd17b81ab1d29c580a29cc619482f0a5aeb40900cf3823908da2f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/observation-final-materials-http-first.json",
+      "bytes": 2976,
+      "sha256": "771213b3a7b7ddcd13a19156e38d0dae311831a3b133bde1a71a70c32dbd2026",
+      "gitNormalizedSha256": "771213b3a7b7ddcd13a19156e38d0dae311831a3b133bde1a71a70c32dbd2026"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/checks/observation-final-materials-static-review.json",
+      "bytes": 623,
+      "sha256": "9e952c45fecb4477755e73afaa875b5d890b43c1cdc23e001b63607e714ec24f",
+      "gitNormalizedSha256": "9e952c45fecb4477755e73afaa875b5d890b43c1cdc23e001b63607e714ec24f"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/manifest.json",
+      "bytes": 3801,
+      "sha256": "f893b5c1d15a20726b576cbbaa44ad747537befe392943d8fb27f5377949cc81",
+      "gitNormalizedSha256": "f893b5c1d15a20726b576cbbaa44ad747537befe392943d8fb27f5377949cc81"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/receipt.json",
+      "bytes": 4100,
+      "sha256": "d8590ee471e9892dcbf62c3c3ea0d8b1f0d92ca9a8d2ed26dbb2d905d67b3c9a",
+      "gitNormalizedSha256": "d8590ee471e9892dcbf62c3c3ea0d8b1f0d92ca9a8d2ed26dbb2d905d67b3c9a"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/source-intake/crossref-bounded-record-review.json",
+      "bytes": 1118,
+      "sha256": "83a96e556a04a0e9cf00d645e8bb67e0f396123e2748347e42c5cafcff06fb2d",
+      "gitNormalizedSha256": "83a96e556a04a0e9cf00d645e8bb67e0f396123e2748347e42c5cafcff06fb2d"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/source-intake/pubmed-search.json",
+      "bytes": 269,
+      "sha256": "2228c95a766b55ee7691f285aacc95cd82dceb67dc265e9bc56cc9b3bcd0954a",
+      "gitNormalizedSha256": "f606163f4583acfd4551949a27e9ca3749fb2b906158130111a1b05a43051afa"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/source-intake/reviewed-receipt.json",
+      "bytes": 5089,
+      "sha256": "e7ef64f16e515aa5266e47274d860471966faee0e7b626cccc45a8bf4cff06d6",
+      "gitNormalizedSha256": "e7ef64f16e515aa5266e47274d860471966faee0e7b626cccc45a8bf4cff06d6"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/source-intake/ucdavis-content-verification.json",
+      "bytes": 372,
+      "sha256": "e2609ed91c1d72d23643395e421c62d0e73d789dca12ed209fb8ee01f7b27db4",
+      "gitNormalizedSha256": "e2609ed91c1d72d23643395e421c62d0e73d789dca12ed209fb8ee01f7b27db4"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/sources.json.gz",
+      "bytes": 88061,
+      "sha256": "a30d406519c3094ddc0a3a8e2184d84abf12815d1768be70193b1eadb97905ef",
+      "gitNormalizedSha256": "a30d406519c3094ddc0a3a8e2184d84abf12815d1768be70193b1eadb97905ef"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/tools/archive-observation-final.cjs",
+      "bytes": 7317,
+      "sha256": "eca8c0946df08329a784720915369a8f1837156ef65db97d3d432502a876a978",
+      "gitNormalizedSha256": "eca8c0946df08329a784720915369a8f1837156ef65db97d3d432502a876a978"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/tools/stage-observation-final.cjs",
+      "bytes": 3454,
+      "sha256": "9e7f03f0828f4f320ef7bbcacdf05340948b6e635b3ec652ee730f4ea15d6376",
+      "gitNormalizedSha256": "9e7f03f0828f4f320ef7bbcacdf05340948b6e635b3ec652ee730f4ea15d6376"
+    },
+    {
+      "path": "doc/evidence/2026-11-02/block-four-observation-final-candidates/tools/verify-observation-final.cjs",
+      "bytes": 6026,
+      "sha256": "201c49a740bd468a7245098756e01cabf56260e6b1b59c2bcbb81e2913aa85bc",
+      "gitNormalizedSha256": "d9f3b71d46a9a521c60c9932724d8b4dd0b88d9eb4e91ce0326cdb2adee1f155"
+    }
+  ]
+}
