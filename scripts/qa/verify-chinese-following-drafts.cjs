@@ -19,7 +19,7 @@ const candidateBytes=candidateFile?fs.readFileSync(candidateFile):null,candidate
 if(candidates&&(candidates.format!=='source-following-original-materials-v1'||candidates.teacherReviewed||candidates.automaticPublication))throw Error('Unapproved editorial materials only');
 const lessonNames=options['--lessons']?options['--lessons'].split(','):['chinese-g3-flowers-v1.json','chinese-g3-asking-v1.json'];
 if(!lessonNames.length||lessonNames.length>10||new Set(lessonNames).size!==lessonNames.length||lessonNames.some(name=>!/^chinese-g3-[a-z-]+-v1\.json$/.test(name)))throw Error('One to ten unique, versioned grade3 draft filenames required');
-if(candidates&&lessonNames.some(name=>!['chinese-g3-flowers-v1.json','chinese-g3-asking-v1.json'].includes(name)))throw Error('This material bundle supports only its two explicitly bound source drafts');
+if(candidates&&(!Array.isArray(candidates.sourceLessons)||lessonNames.some(name=>!candidates.sourceLessons.some(entry=>entry.path==='resources/curriculum/source-lessons/'+name))))throw Error('Every selected draft must be explicitly bound by this material bundle');
 const definitions=new Map(fs.readdirSync(path.join(root,'resources/curriculum/source-lessons')).filter(name=>name.endsWith('.json'))
   .flatMap(name=>JSON.parse(fs.readFileSync(path.join(root,'resources/curriculum/source-lessons',name))).definitionCandidates??[]).map(row=>[row.id,row]));
 let app,base,actor;const result={at:new Date().toISOString(),passed:false,scope:'Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.',drafts:[]};
@@ -50,7 +50,7 @@ async function call(method,url,body,expected=method==='POST'?201:200){
     const targets=await store.requestContext(()=>draft.targetIds.map(id=>{const atom=store.find('knowledgeAtoms',{id});assert(atom);return{atomId:id,version:atom.version,definitionFingerprint:atomDefinitionFingerprint(atom)};}));
     const checks=[];
     if(candidates){
-      const slug=name.includes('flowers')?'flowers':'asking',entry=candidates.sourceLessons.find(row=>row.lesson===slug);
+      const entry=candidates.sourceLessons.find(row=>row.path==='resources/curriculum/source-lessons/'+name),slug=entry.lesson;
       assert(entry&&entry.sha256===sha(bytes),'Candidate material source draft identity');
       const groups=candidates.groups.filter(row=>row.lesson===slug);assert.deepEqual(groups.map(row=>row.atomId).sort(),[...draft.targetIds].sort());
       for(const group of groups){
@@ -73,7 +73,7 @@ async function call(method,url,body,expected=method==='POST'?201:200){
           if(!savedQuestions.length)await call('POST','/admin/measurement-items',{...mapping,reviewStatus:'approved'},400);
           const reference=await store.requestContext(()=>({measurementId:mapping.id,version:1,questionId:question.id,questionVersion:1,
             definitionFingerprint:atomDefinitionFingerprint(store.find('knowledgeAtoms',{id:group.atomId})),contentFingerprint:questionContentFingerprint(store,question.id)}));
-          refs.push({purpose:exercise.purpose,reference});savedQuestions.push({questionId:question.id,mappingId:mapping.id,stem:exercise.stem,answer:exercise.answer,answerSchema,family:group.familyProposal});
+          refs.push({purpose:exercise.purpose,reference});savedQuestions.push({questionId:question.id,mappingId:mapping.id,stem:exercise.stem,answer:exercise.answer,analysis:exercise.analysis,answerSchema,family:group.familyProposal});
         }
         for(const purpose of ['understanding','procedure','transfer','retention'])checks.push({id:slug+'-'+(checks.length+1),atomId:group.atomId,purpose,
           instructions:purpose==='retention'?'仅是四个间隔的拟议样题，审核、独立性与充分库存未通过前不能发布或安排实际复测。':'使用实际题面与人工量规核对目标表现；未审核候选不能用于正式诊断或自动评分。',
@@ -97,7 +97,7 @@ async function call(method,url,body,expected=method==='POST'?201:200){
     for(const expected of saved){const header=state.textbookTeachingPackages.find(row=>row.id===expected.packageId);assert.equal(header.status,'draft');assert.equal(header.published,null);const version=state.textbookTeachingVersions.find(row=>row.packageId===expected.packageId);assert.equal(teachingHash(version.body.content),teachingHash(expected.content));assert.equal(version.body.sourceFingerprint,expected.sourceFingerprint);}
     for(const item of savedQuestions){
       const question=state.questions.find(row=>row.id===item.questionId),mapping=state.measurementItems.find(row=>row.id===item.mappingId);
-      assert.equal(question.stem,item.stem);assert.deepEqual(question.answer,item.answer);assert.equal(question.status,'draft');
+      assert.equal(question.stem,item.stem);assert.deepEqual(question.answer,item.answer);assert.equal(question.analysis,item.analysis);assert.equal(question.status,'draft');
       assert.equal(mapping.reviewStatus,'draft');assert.equal(mapping.family,item.family);
       assert.equal(state.questionSources.find(row=>row.questionId===item.questionId).reviewStatus,'pending');
       const schema=state.questionAnswerSchemas.find(row=>row.questionId===item.questionId);

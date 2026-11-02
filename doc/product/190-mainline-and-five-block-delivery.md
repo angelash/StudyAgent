@@ -1,5 +1,8 @@
 # 190 主干开发与五块交付
 
+2026-11-02 第4块续批：口语/习作/园地新增112道候选，连同前两课共217道；实际编辑HTTP、原请求及冷开逐项核对通过，未发布/采用/写学生响应，独立结构、评分和充分保持库存仍待审。实际测评/练习浏览器2/2及独立SQLite冷读证实段首两格、换行与空格原样保持；应用字节不变，完整3046与旧13项浏览器分别复用，不拼批。详见[192](192-textbook-followups-gesp-teaching-and-first-response-evidence.md)；原72状态与整体未完成范围保持。
+
+
 日期：2026-11-02。用户要求后续直接使用主干、合并现有分支、提高效率，剩余开发最多五块，每块完成并自测通过后本地提交，再连续推进。
 
 本计划替代 [150](150-integrated-delivery-plan-and-work-ledger.md)原 R1～R8 的开发分批方式；原编号、[149整改要求](149-workspace-centered-interaction-restructuring-proposal.md)、[147学习闭环](147-conversation-practice-guidance-and-review.md)、[72项需求](experience/requirements.md)与 WS01～WS12 全部保留。原 R0 计划提交已完成。

@@ -1,0 +1,65 @@
+{
+  "files": [
+    {
+      "path": "browser-index.json",
+      "bytes": 900,
+      "sha256": "8388e5624ad018b08d8cb188f61c206196f5a4a896f83044e47bd51298bfe339"
+    },
+    {
+      "path": "checks/b4-paragraph-browser-first-inputs.json.gz",
+      "bytes": 97718,
+      "sha256": "58c49cc4c21fb51804093420ffced2e6ec8b2141c9d907418b80f2b835872ab0"
+    },
+    {
+      "path": "checks/b4-paragraph-browser-first.json",
+      "bytes": 166,
+      "sha256": "7b6da84fbc8b0ae27a84275f48c8a1e99081d6d8d5bbdcb672ed2600bfbcb684"
+    },
+    {
+      "path": "checks/content-worklist-activities-materials-first.json",
+      "bytes": 2743102,
+      "sha256": "040f1a6d1026dd65cfe50a9942a9b0370a40cbe8fbf6de4306719fe1cd57b771"
+    },
+    {
+      "path": "checks/following-materials-feedback-final.json",
+      "bytes": 2211,
+      "sha256": "0597dabb0cf1771a28e9a1afb4b6b93c005b03d59f77e99f2ba3bcaa00760474"
+    },
+    {
+      "path": "checks/paragraph-cold-read-first.json",
+      "bytes": 480,
+      "sha256": "60dc1766ecb099d224d9e54eab8651a6c9bfd7121cbac41eaaf9314bb8c21765"
+    },
+    {
+      "path": "checks/unit-activity-materials-http-first.json",
+      "bytes": 2848,
+      "sha256": "732c6f37468f6834b613dc6175781f1b27b7622e11f46734031325686ac7159a"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 2270,
+      "sha256": "6ebfa5b4e1a6f02ae8f368d3552c054895b9ffd7028b83ed0c90c58438715294"
+    },
+    {
+      "path": "sources.json.gz",
+      "bytes": 123724,
+      "sha256": "310cb3b859b07c1f1739b2ff0d3bd770d1db73f1ccde7d8273527e1d6d0d70ac"
+    },
+    {
+      "path": "tools/archive-unit-materials.cjs",
+      "bytes": 6382,
+      "sha256": "c3ec8e95726427e7f5c7a333c5eb3b85e5b3cd76391158a5f2b33dc26cc64e45"
+    },
+    {
+      "path": "tools/paragraph-browser.cjs",
+      "bytes": 3061,
+      "sha256": "a147021a8880e5a0c733601f8078535cb244d1496bdf2fe5064aa1a0138b23e0"
+    },
+    {
+      "path": "tools/verify.cjs",
+      "bytes": 6027,
+      "sha256": "6cd9ba925ec1d6a1e68909aacac793820cf4127d20f009090f0b6e377465445f"
+    }
+  ],
+  "manifestExcludedFromOwnHash": true
+}

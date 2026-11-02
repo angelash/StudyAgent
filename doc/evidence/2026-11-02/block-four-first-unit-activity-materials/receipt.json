@@ -1,0 +1,68 @@
+{
+  "format": "study-block-four-unit-activity-materials-v1",
+  "at": "2026-11-02T08:01:19.886Z",
+  "baseCommit": "abb2c5ac362d0987a8307412f8807b6a230232d6",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "newCandidateQuestions": 112,
+  "prior105QuestionsAreRevisedFeedbackNot105AdditionalQuestions": true,
+  "materialGroups": 31,
+  "totalCandidateQuestions": 217,
+  "purposeCounts": {
+    "immediate": 93,
+    "proposedRetention": 124
+  },
+  "modes": {
+    "audio_record": 35,
+    "image_upload": 14,
+    "short_answer": 168
+  },
+  "bundles": [
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-following-v1.json",
+      "sha256": "a5571d7c2b0ddd680b0b322437751bff9276fb3b2dafd08a50fdbbcba9ffd458"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json",
+      "sha256": "65793c908790c5b6739e4b7b46b7e332fcf78b464e474d8eb14e9fee1aa7ba31"
+    }
+  ],
+  "actualChecks": {
+    "httpDraftAndColdRead": [
+      "unit-activity-materials-http-first.json",
+      "following-materials-feedback-final.json"
+    ],
+    "paragraphBrowser": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "buildId": "pwEjykKsqWUJsQO10qXe0"
+    },
+    "paragraphReadOnlyNativeColdRead": "checks/paragraph-cold-read-first.json"
+  },
+  "reuse": {
+    "applicationAndContractsUnchanged": true,
+    "fullApiPassed": 3046,
+    "fullApiFailed": 0,
+    "fullApiConditionalSkipped": 131,
+    "previousEvidence": "../block-four-content-and-gesp-first-response/receipt.json",
+    "newBrowserCasesNotAddedToEarlier13CaseBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringGoldSamplesAreAuthoredNotLearnerEvidence": true,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "publishedPackages": 0,
+    "adoptions": 0,
+    "learnerResponsesFromContentJourney": 0,
+    "paragraphJourneyIsSyntheticProtocolEvidence": true,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": "Target/scoring/family teacher reviews, additional independent structures and sufficient interval stocks, actual teaching and learner evidence, remaining textbook drafts and block5."
+}

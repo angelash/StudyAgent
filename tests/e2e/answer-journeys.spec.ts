@@ -148,6 +148,38 @@ async function values(page: Page) {
   }));
 }
 test.afterEach(async ({ page }) => { await page.unrouteAll({ behavior: 'wait' }); });
+for (const kind of ['diagnostic', 'practice']) {
+  test(`paragraph evidence: ${kind} preserves full-width indentation, line breaks and original text`, async ({ page }) => {
+    test.setTimeout(90000); await page.setViewportSize({ width: 390, height: 900 });
+    const f = await setup(page, kind, 'short_answer');
+    // Generated paragraph for protocol verification, never a real learner composition or content approval.
+    const raw = '　　这是虚构人物资料：她喜欢做纸模型，连边角纸也留作零件。\n　　原稿保留两格段首和换行；甲  乙之间还有两个普通空格。';
+    await page.getByLabel('文字作答', { exact: true }).fill(raw);
+    await expect(page.locator('.studio-question-top')).toContainText('草稿已保存');
+    const saved = await call(f.actor, f.itemPath), draft = kind === 'diagnostic' ? saved.draft : saved.draft.answer;
+    expect(draft.response.value).toBe(raw);
+    await page.reload(); await expect(page.getByLabel('文字作答', { exact: true })).toHaveValue(raw);
+    const sending = page.waitForResponse(response => response.url().endsWith(f.responsesPath) && response.request().method() === 'POST');
+    await page.getByRole('button', { name: kind === 'diagnostic' ? '提交，下一步 →' : '完成这一题 →', exact: true }).click();
+    const response = await sending; expect(response.status()).toBe(201);
+    expect(response.request().postDataJSON().answer.response.value).toBe(raw);
+    const receipt = (await response.json()).data;
+    if (kind === 'diagnostic') {
+      for (let n = 0; n < 3; n++) {
+        const skip = page.getByRole('button', { name: '题目显示不清或有问题，先跳过', exact: true });
+        await expect(skip).toBeEnabled(); await skip.click();
+      }
+      await expect(page.getByRole('heading', { name: '从知识点看清下一步。' })).toBeVisible();
+      const history = await call(f.actor, '/diagnostics/students/' + f.studentId + '/evidence/' + encodeURIComponent(receipt.responseId));
+      expect(history.originalResponse.answer.response.value).toBe(raw); expect(history.originalResponse.status).toBe('pending_review');
+    } else {
+      await expect(page.locator('.daily-feedback')).toBeVisible();
+      const history = await call(f.actor, f.itemPath);
+      expect(history.feedback.attempt.answer.response.value).toBe(raw); expect(history.feedback.attempt.status).toBe('pending_review');
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  });
+}
 for (const kind of ['diagnostic', 'practice']) for (const [index, mode] of modes.entries()) {
   test(`${kind} ${mode}: incomplete input, reload, continued editing, first submit and historical read`, async ({ page }) => {
     test.setTimeout(90000); await page.setViewportSize({ width: [390,768,1440][index % 3], height: 1000 }); const f = await setup(page, kind, mode);

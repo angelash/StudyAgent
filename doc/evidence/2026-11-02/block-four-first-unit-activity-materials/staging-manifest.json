@@ -1,0 +1,76 @@
+{
+  "files": [
+    {
+      "path": "browser-index.json",
+      "sha256": "8388e5624ad018b08d8cb188f61c206196f5a4a896f83044e47bd51298bfe339",
+      "bytes": 900
+    },
+    {
+      "path": "checks/b4-paragraph-browser-first-inputs.json.gz",
+      "sha256": "58c49cc4c21fb51804093420ffced2e6ec8b2141c9d907418b80f2b835872ab0",
+      "bytes": 97718
+    },
+    {
+      "path": "checks/b4-paragraph-browser-first.json",
+      "sha256": "7b6da84fbc8b0ae27a84275f48c8a1e99081d6d8d5bbdcb672ed2600bfbcb684",
+      "bytes": 166
+    },
+    {
+      "path": "checks/content-worklist-activities-materials-first.json",
+      "sha256": "040f1a6d1026dd65cfe50a9942a9b0370a40cbe8fbf6de4306719fe1cd57b771",
+      "bytes": 2743102
+    },
+    {
+      "path": "checks/following-materials-feedback-final.json",
+      "sha256": "0597dabb0cf1771a28e9a1afb4b6b93c005b03d59f77e99f2ba3bcaa00760474",
+      "bytes": 2211
+    },
+    {
+      "path": "checks/paragraph-cold-read-first.json",
+      "sha256": "60dc1766ecb099d224d9e54eab8651a6c9bfd7121cbac41eaaf9314bb8c21765",
+      "bytes": 480
+    },
+    {
+      "path": "checks/staged-readback.json",
+      "sha256": "709b998819b7cbca56b6dc2b572c858c5f7fc16bbcb857d496dee69dbf8cddeb",
+      "bytes": 995
+    },
+    {
+      "path": "checks/unit-activity-materials-http-first.json",
+      "sha256": "732c6f37468f6834b613dc6175781f1b27b7622e11f46734031325686ac7159a",
+      "bytes": 2848
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "df3028143f29476ce040715ffb22cf6e472a0d098c0d681a5ed1f46401ec1f0a",
+      "bytes": 2072
+    },
+    {
+      "path": "receipt.json",
+      "sha256": "6ebfa5b4e1a6f02ae8f368d3552c054895b9ffd7028b83ed0c90c58438715294",
+      "bytes": 2270
+    },
+    {
+      "path": "sources.json.gz",
+      "sha256": "310cb3b859b07c1f1739b2ff0d3bd770d1db73f1ccde7d8273527e1d6d0d70ac",
+      "bytes": 123724
+    },
+    {
+      "path": "tools/archive-unit-materials.cjs",
+      "sha256": "c3ec8e95726427e7f5c7a333c5eb3b85e5b3cd76391158a5f2b33dc26cc64e45",
+      "bytes": 6382
+    },
+    {
+      "path": "tools/paragraph-browser.cjs",
+      "sha256": "a147021a8880e5a0c733601f8078535cb244d1496bdf2fe5064aa1a0138b23e0",
+      "bytes": 3061
+    },
+    {
+      "path": "tools/verify.cjs",
+      "sha256": "6cd9ba925ec1d6a1e68909aacac793820cf4127d20f009090f0b6e377465445f",
+      "bytes": 6027
+    }
+  ],
+  "priorManifestPreserved": true,
+  "manifestExcludedFromOwnHash": true
+}

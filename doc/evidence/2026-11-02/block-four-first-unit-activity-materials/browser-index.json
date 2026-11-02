@@ -1,0 +1,36 @@
+{
+  "stats": {
+    "startTime": "2026-11-02T07:42:44.355Z",
+    "duration": 30572.715,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "rawReportSha256": "efcb23623467b71283a5db00c0fc7f482acddfb4051954348e28186760edf61a",
+  "rawReportLocalOnly": true,
+  "cases": [
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "paragraph evidence: diagnostic preserves full-width indentation, line breaks and original text",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 4715
+        }
+      ]
+    },
+    {
+      "file": "answer-journeys.spec.ts",
+      "title": "paragraph evidence: practice preserves full-width indentation, line breaks and original text",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration": 3831
+        }
+      ]
+    }
+  ]
+}

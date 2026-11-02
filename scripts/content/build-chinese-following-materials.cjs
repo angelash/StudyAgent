@@ -14,7 +14,7 @@ function add(lesson,atomId,structure,mode,criteria,rows){
       purpose:index<3?['understanding','procedure','transfer'][index]:'retention',
       dimension:index<3?['understanding','procedure','transfer'][index]:['understanding','procedure','transfer','understanding'][index-3],
       proposedIntervalDays:index<3?null:[1,3,7,14][index-3],stem:stem.replace(/^拟议第(?:1|3|7|14)日(?:新卡|储备)[:：]/,''),answer,
-      analysis:'按本目标量规核对材料、条件与支持关系。拟议保持储备不代表到期结果；题面若已讲解、答过或得到帮助，需要保留曝光并另核独立材料。',
+      analysis:answer+' 你可以用不同的合理表达；请对照题目条件和具体材料说明，不必照抄参考措辞。',
       expectedSeconds:mode==='image_upload'?240:mode==='audio_record'?180:160}))});
 }
 const meaning=['解释与所给具体语境相容，不套用另一词义','指出限制这一含义的前后信息','不补写材料没有证明的事实'];

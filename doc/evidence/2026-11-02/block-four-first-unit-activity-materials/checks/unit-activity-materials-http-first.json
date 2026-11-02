@@ -1,0 +1,90 @@
+{
+  "at": "2026-11-02T07:52:31.621Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-summer-v1.json",
+      "sha256": "aa9a512bbb66a72a15c4786715a4de52b3a6f995514b2255c4215b4e1bcf9c91",
+      "physicalPages": [
+        14
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 64,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-portrait-v1.json",
+      "sha256": "4301a1c55a272d5fdcbb29bc6c2ac289e83435633e1a3d386d1a5013d1f49cd0",
+      "physicalPages": [
+        15
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 64,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-garden-v1.json",
+      "sha256": "cdcd1af98d1125ac7fe02de43c0b5d42dfa29d7753ef733ff4f2ed14e3200f93",
+      "physicalPages": [
+        16,
+        17
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 78,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 3,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 112,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-unit-activities-v1.json",
+    "sha256": "65793c908790c5b6739e4b7b46b7e332fcf78b464e474d8eb14e9fee1aa7ba31",
+    "groups": 16,
+    "questions": 112,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

@@ -1,0 +1,1656 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "summer",
+      "path": "resources/curriculum/source-lessons/chinese-g3-summer-v1.json",
+      "sha256": "aa9a512bbb66a72a15c4786715a4de52b3a6f995514b2255c4215b4e1bcf9c91",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry4",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 14,
+        "pageEnd": 14,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "portrait",
+      "path": "resources/curriculum/source-lessons/chinese-g3-portrait-v1.json",
+      "sha256": "4301a1c55a272d5fdcbb29bc6c2ac289e83435633e1a3d386d1a5013d1f49cd0",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry5",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 15,
+        "pageEnd": 15,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    },
+    {
+      "lesson": "garden",
+      "path": "resources/curriculum/source-lessons/chinese-g3-garden-v1.json",
+      "sha256": "cdcd1af98d1125ac7fe02de43c0b5d42dfa29d7753ef733ff4f2ed14e3200f93",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit1:entry6",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 16,
+        "pageEnd": 17,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔只一份拟议样题；尚不是充分四维库存。同结构换情境或原诗重复不成为新独立题族。真实听众、口语、图物与本人习作不能由夹具或文字参考替代。",
+  "groups": [
+    {
+      "lesson": "summer",
+      "atomId": "source:chinese:g3:02915a7d:summer-interest-selection",
+      "structure": "experience-content-selection",
+      "familyProposal": "following-experience-content-selection",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "选出一件具体、可回忆或明确标为虚构的事情",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明值得让听众了解的细节或变化",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以消费、旅行远近或夸张程度评内容好坏",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能由地点或出行判断；可想听甲怎样观察变化，或乙看到什么新鲜事。具体细节有交流价值，不能编成自己的经历。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "summer-experience-content-selection-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构资料卡：甲暑假在家发现绿豆发芽；乙乘火车旅行。只凭这两条，能说乙的内容一定更值得讲吗？任选一项说明你还想听的具体细节。",
+          "answer": "不能由地点或出行判断；可想听甲怎样观察变化，或乙看到什么新鲜事。具体细节有交流价值，不能编成自己的经历。",
+          "analysis": "不能由地点或出行判断；可想听甲怎样观察变化，或乙看到什么新鲜事。具体细节有交流价值，不能编成自己的经历。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "从“每天发生很多事”和“有一次旧书按大小摆不好找，后来改按内容分类”中选一个更容易短讲的中心，说明理由。",
+          "answer": "后者有具体事情与变化，较容易围绕中心讲清；前者太宽，可继续选其中一事，不要求必须选整理旧书这个生活主题。",
+          "analysis": "后者有具体事情与变化，较容易围绕中心讲清；前者太宽，可继续选其中一事，不要求必须选整理旧书这个生活主题。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换成一次普通的在家活动，写出你准备讲的一件事和一个听众可能感兴趣的细节。若是练习构思，请明确标注虚构。",
+          "answer": "事情具体、细节与中心有关即可，如虚构角色怎样改进纸飞机。不能要求有旅行经历，也不能把构思标成已经发生。",
+          "analysis": "事情具体、细节与中心有关即可，如虚构角色怎样改进纸飞机。不能要求有旅行经历，也不能把构思标成已经发生。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "虚构选择卡：“看过一本有趣的书”“第一次自己整理书包”。任选一件，补充你想向讲述者追问的一处细节，不代他编造答案。",
+          "answer": "可追问书中哪一处引起注意或整理方法怎样改变；问题具体，不直接断言实际情节或完成结果。",
+          "analysis": "可追问书中哪一处引起注意或整理方法怎样改变；问题具体，不直接断言实际情节或完成结果。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "有人准备把暑假每一天全部讲一遍。请帮他缩成一次短分享的中心，再说明还需问清什么。",
+          "answer": "先选择一件或一个变化，问清必要经过和发现；不凭几句话代写他的真实经历。",
+          "analysis": "先选择一件或一个变化，问清必要经过和发现；不凭几句话代写他的真实经历。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两份提纲分别写“去了很远的地方”和“发现怎样把容易倒的积木底座改稳”。哪份目前提供的具体线索更多？说明范围。",
+          "answer": "后者有对象、问题和变化线索，前者还需具体内容；不能由此断言旅行本身没有可讲之处。",
+          "analysis": "后者有对象、问题和变化线索，前者还需具体内容；不能由此断言旅行本身没有可讲之处。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-experience-content-selection-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为一次小型分享设计两个可选中心：一个来自真实回忆，另一个明确标为虚构练习。分别说明一个值得讲的细节。",
+          "answer": "真实项由本人回忆，不替学生编造；虚构项清楚标记，两项都需具体细节，未能回忆真实项时保持该项未完成。",
+          "analysis": "真实项由本人回忆，不替学生编造；虚构项清楚标记，两项都需具体细节，未能回忆真实项时保持该项未完成。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "summer",
+      "atomId": "source:chinese:g3:02915a7d:summer-narrative-clarity",
+      "structure": "focused-oral-account",
+      "familyProposal": "following-focused-oral-account",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "有实际完整录音并围绕一件事",
+          "weight": 0.4
+        },
+        {
+          "criterion": "交代听众需要的背景、主要经过和具体发现",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把虚构练习或未经核实的细节当本人事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "录音需有原来办法、问题、修改与发现，顺序清楚。没有声音不能由参考文字推断已讲清；虚构性质保留。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "summer-focused-oral-account-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音讲一个明确虚构的小故事：角色先按大小整理书，找书不方便，后来改按内容分类。让听众听清变化与原因；不要说这是自己的真实经历。",
+          "answer": "录音需有原来办法、问题、修改与发现，顺序清楚。没有声音不能由参考文字推断已讲清；虚构性质保留。",
+          "analysis": "录音需有原来办法、问题、修改与发现，顺序清楚。没有声音不能由参考文字推断已讲清；虚构性质保留。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "用真实录音介绍一件自己记得的小事，先说明听众需要的背景，再讲一个主要变化。想不起来时可用标明虚构的故事练习。",
+          "answer": "根据实际声音核对中心和经过，普通小事可接受；真实项由本人回忆，参考不提供可冒充的本人经历。",
+          "analysis": "根据实际声音核对中心和经过，普通小事可接受；真实项由本人回忆，参考不提供可冒充的本人经历。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：小安折纸时总漏一步，他在图上做记号，后来能按顺序说清。请录音让没看过卡片的人听懂发生了什么。",
+          "answer": "有问题、做记号的行动及能说明顺序的结果；材料没有说成品成功，不能自动补成做出了最好的作品。",
+          "analysis": "有问题、做记号的行动及能说明顺序的结果；材料没有说成品成功，不能自动补成做出了最好的作品。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "请录音给第一次听的人讲清“有一次改变做法的小事”，内容由你真实回忆或明确标为虚构。说明为什么改变。",
+          "answer": "中心、变化、原因可听懂，声音实际存在；不以故事长短或是否热闹自动评优。",
+          "analysis": "中心、变化、原因可听懂，声音实际存在；不以故事长短或是否热闹自动评优。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构卡：小秋先把阅读卡堆在盒里，找不到某一张，于是用颜色标签分组。请录音讲清前后变化，不增加获奖情节。",
+          "answer": "应保留原来堆放、查找困难、改用标签的顺序；是否完全解决或获奖未给，不能补造。",
+          "analysis": "应保留原来堆放、查找困难、改用标签的顺序；是否完全解决或获奖未给，不能补造。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请真实录音介绍一次你观察到的变化，给听众补一个原先容易漏掉的背景。可先说明是实际回忆还是虚构练习。",
+          "answer": "变化与背景相连，声音清楚可核对；不因加了很多修饰语就认定讲清，未知细节可明确不知道。",
+          "analysis": "变化与背景相连，声音清楚可核对；不因加了很多修饰语就认定讲清，未知细节可明确不知道。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "summer-focused-oral-account-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择另一件小事，录一段短讲述，再用一句话说你最想让听众记住什么。不是必须讲旅行。",
+          "answer": "讲述中心与总结相符，有具体经过；参考不替本人提供经历，未录音或未完成部分分别保留。",
+          "analysis": "讲述中心与总结相符，有具体经过；参考不替本人提供经历，未录音或未完成部分分别保留。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "summer",
+      "atomId": "source:chinese:g3:02915a7d:summer-visual-support",
+      "structure": "visual-support-for-account",
+      "familyProposal": "following-visual-support-for-account",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "提供实际相关图画、图片或实物图像",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明图物具体帮助理解讲述哪一处",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图物与内容一致，数量或装饰不能替代信息",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际图应呈现两种分类办法，说明找书或类别的变化；可用简单方框，不要求照片或精美绘画。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "summer-visual-support-for-account-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "为虚构“旧书由按大小改为按内容分类”的讲述，自己画一张前后比较示意图并上传，在说明中指出图帮助听懂哪里。",
+          "answer": "实际图应呈现两种分类办法，说明找书或类别的变化；可用简单方框，不要求照片或精美绘画。",
+          "analysis": "实际图应呈现两种分类办法，说明找书或类别的变化；可用简单方框，不要求照片或精美绘画。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "为自己准备讲的一件事选择一张相关图或实物，上传图像并说明它与哪一句讲述直接对应。若用虚构例子，先标明。",
+          "answer": "图与具体信息对应，说明不是只写好看；没有合适照片时自己的示意图可用，不由图片反推故事真实。",
+          "analysis": "图与具体信息对应，说明不是只写好看；没有合适照片时自己的示意图可用，不由图片反推故事真实。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构卡：角色把找不到的阅读卡改用标签归类。请画一个帮助听众看懂改变的小图上传，并写明不需要从图中猜什么。",
+          "answer": "图可对比杂放与标签分类，未知卡片内容、数量不需要编造；示意图不当成真实现场照片。",
+          "analysis": "图可对比杂放与标签分类，未知卡片内容、数量不需要编造；示意图不当成真实现场照片。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "选一件普通活动，用自己画的简单图说明一个位置或顺序，上传并写一句它怎样帮助讲述。",
+          "answer": "位置或顺序与所说内容一致；图再漂亮也不能替代对帮助作用的说明。",
+          "analysis": "位置或顺序与所说内容一致；图再漂亮也不能替代对帮助作用的说明。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "为虚构“纸飞机先容易偏向一侧，后来调整两翼”的故事画相关示意图，上传并说明图上能看出的变化。",
+          "answer": "两翼或调整点可看清，不必实际放飞；图不证明调整一定成功，不能补造实验结果。",
+          "analysis": "两翼或调整点可看清，不必实际放飞；图不证明调整一定成功，不能补造实验结果。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "假设一张风景照片与所讲的整理书包过程无关。请另画一张更相关的示意图上传，解释换图理由。",
+          "answer": "可画物品摆放或步骤，理由指向帮助理解过程；不以风景美不美判断相关性。",
+          "analysis": "可画物品摆放或步骤，理由指向帮助理解过程；不以风景美不美判断相关性。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "summer-visual-support-for-account-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为一次新的短分享准备一张相关图，上传后说明：没有这张图时听众哪一处可能难理解？",
+          "answer": "能对应具体信息并解释帮助即可；没有必要图物时可说明口头已清楚，不编造听众一定不懂的反馈。",
+          "analysis": "能对应具体信息并解释帮助即可；没有必要图物时可说明口头已清楚，不编造听众一定不懂的反馈。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "summer",
+      "atomId": "source:chinese:g3:02915a7d:summer-audience-revision",
+      "structure": "revision-from-actual-listener",
+      "familyProposal": "following-revision-from-actual-listener",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "保留原表达与实际听众意见，未参与时明确未验证",
+          "weight": 0.4
+        },
+        {
+          "criterion": "修订针对一个具体不清楚的地方",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明修改与意见的联系，不替听众编造反应",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "应明确换了什么及相关结果，但材料未给具体内容，只能提出待核对问题或给明确标为假设的版本，不能冒充真实修改事实。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "summer-revision-from-actual-listener-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构练习：原话“后来我换了一下就好了”，听众问“换了什么？”请写更清楚的版本，并说明还需向原讲述者核对的内容。",
+          "answer": "应明确换了什么及相关结果，但材料未给具体内容，只能提出待核对问题或给明确标为假设的版本，不能冒充真实修改事实。",
+          "analysis": "应明确换了什么及相关结果，但材料未给具体内容，只能提出待核对问题或给明确标为假设的版本，不能冒充真实修改事实。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际试讲后，写下听众的一条真实建议和你准备修改的一句话。当前没有听众时，只写待验证计划，不编造建议。",
+          "answer": "能对应真实原话、真实意见和修改；未有听众时该表现保持未验证，不能由计划自动评实际互动通过。",
+          "analysis": "能对应真实原话、真实意见和修改；未有听众时该表现保持未验证，不能由计划自动评实际互动通过。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "虚构材料：角色说“那个东西在那里”，听众不知对象和位置。请设计具体的追问，再说明补清后应怎样修订。",
+          "answer": "追问哪个物品、什么位置或听众需要的背景；修订应补指代对象，不擅自指定原材料没有提供的真实物品。",
+          "analysis": "追问哪个物品、什么位置或听众需要的背景；修订应补指代对象，不擅自指定原材料没有提供的真实物品。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "找一位愿意听的实际听众，保留原表达、一个具体不明白处与修改。没有实际参与时标记未验证。",
+          "answer": "实际意见与修改相连，不能只写大家都说很好，也不能用虚构反馈代替真实听众。",
+          "analysis": "实际意见与修改相连，不能只写大家都说很好，也不能用虚构反馈代替真实听众。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构练习：听众说没听明白为什么先后办法不同。请写你会向讲述者问什么，再给一个清楚标为示例的修订句。",
+          "answer": "先问变化的原因与具体办法，示例可展示表达结构但须标为示例，不补造成讲述者经历。",
+          "analysis": "先问变化的原因与具体办法，示例可展示表达结构但须标为示例，不补造成讲述者经历。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "听众真的提出建议后，比较原稿与修改稿，解释你采纳或未采纳某一意见的理由。无人提出建议时不要模拟成实际记录。",
+          "answer": "理由联系讲述目的和听众理解，允许有据地保留原说法；不要求所有意见一律照改。",
+          "analysis": "理由联系讲述目的和听众理解，允许有据地保留原说法；不要求所有意见一律照改。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-revision-from-actual-listener-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "一次新试讲后，保留一句原表达和真实听众问题，作一次有针对性的修改，并说还有什么未解决。",
+          "answer": "修改对应问题，未解决处保留；不能因为写出修改计划就认定实际听众已经听懂。",
+          "analysis": "修改对应问题，未解决处保留；不能因为写出修改计划就认定实际听众已经听懂。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "summer",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "说法与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "保留尚不知道的事，不把虚构材料写成本人经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，整理与找书方便不证明全部读完；可保留整理和查找变化，不能扩大结果。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "summer-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构记录：“小宁说暑假整理过书，后来找书方便些。”能否据此说他把每一本书都读完了？指出依据边界。",
+          "answer": "不能，整理与找书方便不证明全部读完；可保留整理和查找变化，不能扩大结果。",
+          "analysis": "不能，整理与找书方便不证明全部读完；可保留整理和查找变化，不能扩大结果。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "一张示意图画出两个分类盒，没有拍摄时间或人物。它能独自证明是谁在暑假整理过这些书吗？",
+          "answer": "不能，图可说明结构，不能独自证明时间和人物。要分别核对图的用途与真实经历来源。",
+          "analysis": "不能，图可说明结构，不能独自证明时间和人物。要分别核对图的用途与真实经历来源。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "陌生记录：“角色第一次试做纸船没有成功，第二次改变折法。”请写一句准确概括，再指出结果仍未知。",
+          "answer": "试做未成功后改折法；材料没有第二次结果，不能概括为终于成功或比赛获胜。",
+          "analysis": "试做未成功后改折法；材料没有第二次结果，不能概括为终于成功或比赛获胜。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "记录只写“有一天看见云变了形”。有人加成“每天都这样，大家都看见了”。哪些地方没有依据？",
+          "answer": "每天和大家都看见未给；一次记录不能支持频率与所有人，保留实际范围。",
+          "analysis": "每天和大家都看见未给；一次记录不能支持频率与所有人，保留实际范围。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构讲述：“我先给物品贴标签，接着把它们装盒。”能否把先后顺序写成先装盒再贴标签？",
+          "answer": "不能，改变了给定顺序；若想说别的方法也可行，应作为新建议，不说成原过程。",
+          "analysis": "不能，改变了给定顺序；若想说别的方法也可行，应作为新建议，不说成原过程。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "材料写“同伴问了一个问题”，没有给问题内容。请指出能记录和不能代填的部分。",
+          "answer": "能记录有人提问，问题内容和情绪未知；不能为了让讲述完整就编成真实问话。",
+          "analysis": "能记录有人提问，问题内容和情绪未知；不能为了让讲述完整就编成真实问话。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "summer-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "两位听众分别说“背景清楚”和“还不知道最后怎样”。能否概括为所有听众都完全听懂？",
+          "answer": "不能，两条意见有不同范围；至少结果仍有疑问，不能由一条肯定意见覆盖全部。",
+          "analysis": "不能，两条意见有不同范围；至少结果仍有疑问，不能由一条肯定意见覆盖全部。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "portrait",
+      "atomId": "source:chinese:g3:02915a7d:portrait-feature-selection",
+      "structure": "distinguishing-feature-selection",
+      "familyProposal": "following-distinguishing-feature-selection",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "从给定信息中选一两处特点",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明线索怎样帮助区分人物",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不靠贬损、空泛赞美或材料外事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "选留边角纸做模型，具体且可与乙区分；很棒过于空泛，不把乙的朗读习惯混入甲。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "portrait-distinguishing-feature-selection-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构人物卡：甲常留边角纸做模型；乙常比较同一句话的读法。要写甲，选哪一点比“很棒”更有帮助？为什么？",
+          "answer": "选留边角纸做模型，具体且可与乙区分；很棒过于空泛，不把乙的朗读习惯混入甲。",
+          "analysis": "选留边角纸做模型，具体且可与乙区分；很棒过于空泛，不把乙的朗读习惯混入甲。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给定人物信息“爱画地图、每次看书会画路线、也穿校服”。短文只选一两点，你会怎样取舍？",
+          "answer": "可选画地图和画路线并合为有联系特点；穿校服区分作用弱。其他有据取舍需解释，不强求固定句。",
+          "analysis": "可选画地图和画路线并合为有联系特点；穿校服区分作用弱。其他有据取舍需解释，不强求固定句。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新人物卡：甲爱足球，乙爱围棋，两人都戴同色帽子。写一段猜人线索时，哪一类信息更有区分作用？",
+          "answer": "兴趣差别比共同帽色更能区分，可选择一个具体有据行为；不能说戴帽子的人一定爱足球。",
+          "analysis": "兴趣差别比共同帽色更能区分，可选择一个具体有据行为；不能说戴帽子的人一定爱足球。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "人物材料很多，作文逐条列十种爱好却没有展开。请选一两点的方法，并解释为什么不必全写。",
+          "answer": "选择有依据且有区分作用的点，留空间写具体表现；多不等于清楚，不额外规定固定字数。",
+          "analysis": "选择有依据且有区分作用的点，留空间写具体表现；多不等于清楚，不额外规定固定字数。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构卡写“看到同伴找不到书，会先问书名再帮忙找”。你会提炼哪一点特点？注意不能由一次行为写成永远。",
+          "answer": "可说这次帮助有耐心或留意具体需要，并用行为支持；不能无依据写永远帮助所有人。",
+          "analysis": "可说这次帮助有耐心或留意具体需要，并用行为支持；不能无依据写永远帮助所有人。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "甲乙都喜欢阅读，甲记问题，乙画场景。怎样选择能让读者区分的一两处特点？",
+          "answer": "比较各自阅读时的具体习惯，不只重复两人都喜欢读书；不补造谁读得更好。",
+          "analysis": "比较各自阅读时的具体习惯，不只重复两人都喜欢读书；不补造谁读得更好。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-distinguishing-feature-selection-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为一个熟悉人物或明确虚构的资料卡选一两处特点，分别说明依据和区分作用。",
+          "answer": "真实观察由本人提供，虚构性质标记；特点具体有据，不能用标签或参考人物冒充真实同伴。",
+          "analysis": "真实观察由本人提供，虚构性质标记；特点具体有据，不能用标签或参考人物冒充真实同伴。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "portrait",
+      "atomId": "source:chinese:g3:02915a7d:portrait-specific-description",
+      "structure": "feature-supported-by-action",
+      "familyProposal": "following-feature-supported-by-action",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "用具体动作、习惯或小例子写特点",
+          "weight": 0.4
+        },
+        {
+          "criterion": "细节来自材料或真实观察，限定频率和范围",
+          "weight": 0.4
+        },
+        {
+          "criterion": "句子连贯，不用评价词堆叠代替表现",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可写他做模型时连小纸片也留下，想着能变成哪个零件；原卡只给留作零件，不得补造成已获奖。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "portrait-feature-supported-by-action-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构卡：角色喜欢做模型，会把边角纸留作小零件。请写两句具体描写，不加获奖或最好等材料外结论。",
+          "answer": "可写他做模型时连小纸片也留下，想着能变成哪个零件；原卡只给留作零件，不得补造成已获奖。",
+          "analysis": "可写他做模型时连小纸片也留下，想着能变成哪个零件；原卡只给留作零件，不得补造成已获奖。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把“他很热心，很好，非常棒”改得有依据。材料只说有一次他帮同学把散落的阅读卡收好。",
+          "answer": "可写有一次阅读卡掉地上，他帮着收好，再说这件事让我看到关心；不能改成每次都帮助全班。",
+          "analysis": "可写有一次阅读卡掉地上，他帮着收好，再说这件事让我看到关心；不能改成每次都帮助全班。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡：角色练习朗读时，会把同一句换两种语气再比较。请写具体表现，让读者看见特点。",
+          "answer": "说明怎样换语气、比较或留意表达，但不补造已经成为朗读冠军；接受其他紧扣给定动作的句子。",
+          "analysis": "说明怎样换语气、比较或留意表达，但不补造已经成为朗读冠军；接受其他紧扣给定动作的句子。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "虚构资料：“课间角色把棋子按颜色放回盒里。”写一句具体描写，再说明它能支持哪种有限判断。",
+          "answer": "可描述按颜色放回的动作，支持这次整理有条理；不由一次行为断言所有生活都整齐。",
+          "analysis": "可描述按颜色放回的动作，支持这次整理有条理；不由一次行为断言所有生活都整齐。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "材料：“他听到不懂的地方会记问号，交流时再问。”请写一两句，避免只说他很聪明。",
+          "answer": "具体呈现记问号与交流提问，表现留意问题；聪明不是必须评价词，也不能推断所有问题已解决。",
+          "analysis": "具体呈现记问号与交流提问，表现留意问题；聪明不是必须评价词，也不能推断所有问题已解决。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "资料卡：“她常在画旁加箭头，提醒观看的人先看哪一处。”请围绕这一点写一小段，不混写其他人的爱好。",
+          "answer": "用加箭头、说明观看次序支持表达习惯，段落围绕中心；不必补外貌和所有兴趣。",
+          "analysis": "用加箭头、说明观看次序支持表达习惯，段落围绕中心；不必补外貌和所有兴趣。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-feature-supported-by-action-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一处可核对特点，用一个实际观察或明确虚构的小例子写具体，再划分细节与自己的评价。",
+          "answer": "细节有来源，评价与细节相容；没有实际观察时不得说成真实同学做过的事。",
+          "analysis": "细节有来源，评价与细节相容；没有实际观察时不得说成真实同学做过的事。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "portrait",
+      "atomId": "source:chinese:g3:02915a7d:portrait-name-free-clues",
+      "structure": "name-free-consistent-clues",
+      "familyProposal": "following-name-free-consistent-clues",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "正文不出现姓名，保留一两处具体线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "线索互相一致且能对应所选资料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不靠猜中人数或泄露姓名替代内容判断",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可写他喜欢把小纸片变成模型零件，整理材料也舍不得丢边角纸；不混入乙的朗读习惯，不靠直接点名。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "portrait-name-free-consistent-clues-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构甲喜欢模型并保留边角纸，乙爱朗读。请用几句话写甲，不出现甲、乙或姓名，让线索彼此一致。",
+          "answer": "可写他喜欢把小纸片变成模型零件，整理材料也舍不得丢边角纸；不混入乙的朗读习惯，不靠直接点名。",
+          "analysis": "可写他喜欢把小纸片变成模型零件，整理材料也舍不得丢边角纸；不混入乙的朗读习惯，不靠直接点名。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "一段话前面说角色爱踢球，后面却抄进另一个人物的围棋习惯。即使有人猜中，文本仍需改什么？",
+          "answer": "需核对同一对象，删除或纠正混写的资料；猜中不能使矛盾自动合理。",
+          "analysis": "需核对同一对象，删除或纠正混写的资料；猜中不能使矛盾自动合理。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡：角色经常给自己画的地图加说明。请写一两句不点名的线索，并说明读者依据什么辨认。",
+          "answer": "地图和说明的具体习惯构成线索；不能直接写姓名或把另一个角色的活动混来。",
+          "analysis": "地图和说明的具体习惯构成线索；不能直接写姓名或把另一个角色的活动混来。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“这个同学就是某某，他非常好。”怎样修订才符合不点名且有线索的要求？先说明还需取得哪些资料。",
+          "answer": "删去姓名只是一步，还需具体、有依据的特点；没有资料时不能替人物编造经历。",
+          "analysis": "删去姓名只是一步，还需具体、有依据的特点；没有资料时不能替人物编造经历。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定两人都爱画画，一人常画路线，另一人常画花草。请写不点名的线索，帮助读者区分你选的一位。",
+          "answer": "选择路线或花草等差异并写具体，不能只有两人共有的爱画画；不要求保证所有听众立即猜中。",
+          "analysis": "选择路线或花草等差异并写具体，不能只有两人共有的爱画画；不要求保证所有听众立即猜中。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "听众猜了另一个人。你准备怎样核对线索，而不直接在作文中加上真实姓名？",
+          "answer": "检查是否过于共同、是否遗漏关键细节、听众是否知道资料；可修订具体线索，不把猜错等同于人不好或文章全错。",
+          "analysis": "检查是否过于共同、是否遗漏关键细节、听众是否知道资料；可修订具体线索，不把猜错等同于人不好或文章全错。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-name-free-consistent-clues-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择另一份虚构人物卡，写几句不点名的描写。逐句检查是否都属于同一对象，说明哪一处最有用。",
+          "answer": "正文无姓名，对象一致，线索有据；可接受不同措辞，不由单一猜认结果自动评分。",
+          "analysis": "正文无姓名，对象一致，线索有据；可接受不同措辞，不由单一猜认结果自动评分。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "portrait",
+      "atomId": "source:chinese:g3:02915a7d:portrait-paragraph-revision",
+      "structure": "original-paragraph-and-revision",
+      "familyProposal": "following-original-paragraph-and-revision",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "保留本人完整原稿、段首两格和换行，格式与内容分开核查",
+          "weight": 0.4
+        },
+        {
+          "criterion": "修改针对具体问题并能比较前后",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际听众意见与自我修订分别标明，不伪造反馈",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际原稿应保留全角两格或等效排版与换行，内容具体。自我修改与真实听众意见分开；参考不能替本人写作。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "portrait-original-paragraph-and-revision-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "用两格段首写一小段明确虚构的人物描写，不出现姓名。另起一段说明你自己修改过哪一处；当前无听众时不要编造同伴意见。",
+          "answer": "实际原稿应保留全角两格或等效排版与换行，内容具体。自我修改与真实听众意见分开；参考不能替本人写作。",
+          "analysis": "实际原稿应保留全角两格或等效排版与换行，内容具体。自我修改与真实听众意见分开；参考不能替本人写作。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原稿：“他爱模型他留小纸片用来做零件。”请保留原稿，另写一个开头空两格的修改稿，说明为什么修改停顿或连接。",
+          "answer": "可将句子断开或用连接词使关系清楚，原稿与修改稿均保留；段首格式正确不自动代表内容已准确。",
+          "analysis": "可将句子断开或用连接词使关系清楚，原稿与修改稿均保留；段首格式正确不自动代表内容已准确。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一个虚构人物资料，写几句话或一段话，段首空两格；读给实际听众后有意见再记录，无人参与则标为未验证。",
+          "answer": "原稿有具体线索、无姓名、格式可核对；不能由输入一个固定模板判真实听众已经猜认。",
+          "analysis": "原稿有具体线索、无姓名、格式可核对；不能由输入一个固定模板判真实听众已经猜认。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "取一份自己的练习原稿，保留原文，再修订一处含糊的指代。两份文字都保留原来的段落和段首位置。",
+          "answer": "修订明确指代对象，段落原文完整；若原稿不存在不能补写成历史原稿，可新建并如实标记。",
+          "analysis": "修订明确指代对象，段落原文完整；若原稿不存在不能补写成历史原稿，可新建并如实标记。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "为“特点很多但没有重点”的虚构稿提出一次删改，保留删改前后文字并检查段首空两格。",
+          "answer": "删改使一两点更集中，不能删除后留下自相矛盾句；格式与内容分别看，不按是否变短独自判好坏。",
+          "analysis": "删改使一两点更集中，不能删除后留下自相矛盾句；格式与内容分别看，不按是否变短独自判好坏。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "选择一份明确的原稿，检查姓名、线索一致性、句子和段首格式，保留一处真实修改以及仍待核对处。",
+          "answer": "检查有对应位置，真实修改前后可比较；没有听众意见不假造，未解决处保留。",
+          "analysis": "检查有对应位置，真实修改前后可比较；没有听众意见不假造，未解决处保留。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-original-paragraph-and-revision-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "写一个新的不点名人物片段，保留两格段首及换行，再说明你为什么选择其中一处具体细节。",
+          "answer": "正文由本人完成，格式和细节理由分别核对；参考是量规说明而非供复制后自动通过的标准段落。",
+          "analysis": "正文由本人完成，格式和细节理由分别核对；参考是量规说明而非供复制后自动通过的标准段落。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "portrait",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "claim-supported-by-record",
+      "familyProposal": "following-claim-supported-by-record",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "说法与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "保留尚不知道的事，不把虚构材料写成本人经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "一次不支持每次、所有人、从不着急；可写该次具体帮助，不因评价好听而接受无据扩展。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "portrait-claim-supported-by-record-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "虚构记录：“有一次小宁帮同伴捡起阅读卡。”作文写“他每次都帮助所有人，从不会着急”。哪些地方超出依据？",
+          "answer": "一次不支持每次、所有人、从不着急；可写该次具体帮助，不因评价好听而接受无据扩展。",
+          "analysis": "一次不支持每次、所有人、从不着急；可写该次具体帮助，不因评价好听而接受无据扩展。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "人物卡只写爱画地图。作者加了“因此他去过地图上的所有地方”。这个推断充分吗？",
+          "answer": "不充分，画地图不等于实际到过，地点经历需要独立依据；不能由爱好补造行程。",
+          "analysis": "不充分，画地图不等于实际到过，地点经历需要独立依据；不能由爱好补造行程。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡：“角色爱足球，也喜欢看球赛。”写作时能否把它换成已经赢过比赛？说明信息差别。",
+          "answer": "不能，爱好与观看不证明比赛或获胜；可表达兴趣，不补结果。",
+          "analysis": "不能，爱好与观看不证明比赛或获胜；可表达兴趣，不补结果。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "两位人物都穿校服，一位爱围棋。能否仅凭校服辨认谁爱围棋？",
+          "answer": "不能，共同外观不足以区分兴趣，需要与所选对象直接相关的信息。",
+          "analysis": "不能，共同外观不足以区分兴趣，需要与所选对象直接相关的信息。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "资料写“这次他把纸片整理好”，作文改成“他的东西永远整整齐齐”。请给一个保留依据的修订。",
+          "answer": "可改这次他把纸片分好或放整齐，不把一次行为变成永远，也不编造其余物品情况。",
+          "analysis": "可改这次他把纸片分好或放整齐，不把一次行为变成永远，也不编造其余物品情况。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "听众说猜到了，但原稿混用了两个人的特点。猜到能否证明每句都准确？",
+          "answer": "不能，还需逐句核对对象和依据；结果恰好猜中不纠正混写。",
+          "analysis": "不能，还需逐句核对对象和依据；结果恰好猜中不纠正混写。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "portrait-claim-supported-by-record-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "写作素材里有一条实际观察和一条作者想象。准备人物片段时怎样标记，才能不把想象当成真人经历？",
+          "answer": "区分来源，实际描写只用可核对观察；想象可做明确虚构练习，不冒充对真实同伴的记录。",
+          "analysis": "区分来源，实际描写只用可核对观察；想象可做明确虚构练习，不冒充对真实同伴的记录。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:garden-body-idioms",
+      "structure": "body-idiom-context-comparison",
+      "familyProposal": "following-body-idiom-context-comparison",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "能指出成语用字中的具体共同线索",
+          "weight": 0.4
+        },
+        {
+          "criterion": "结合语境区分各词含义，不机械按字面解释",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把含身体字当作词义完全相同的依据",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "前者忙乱缺条理，后者反应敏捷动作快；共同身体字不抹平语义差别，情境应相容。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-body-idiom-context-comparison-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "比较“手忙脚乱”和“眼疾手快”：都含身体部位的字，但能否说它们意思相同？请用两种动作情境说明。",
+          "answer": "前者忙乱缺条理，后者反应敏捷动作快；共同身体字不抹平语义差别，情境应相容。",
+          "analysis": "前者忙乱缺条理，后者反应敏捷动作快；共同身体字不抹平语义差别，情境应相容。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原页词语中有“摇头晃脑、披头散发、面红耳赤、口干舌燥”。请指出一种共同用字线索，再说不能由此推出什么。",
+          "answer": "可指出头脑、头发、面耳、口舌等身体部位；不能推出都描述同一种动作或心情。",
+          "analysis": "可指出头脑、头发、面耳、口舌等身体部位；不能推出都描述同一种动作或心情。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新虚构场景：角色同时拿很多材料，越急越乱；另一角色及时扶住快掉的纸杯。分别选“手忙脚乱”或“眼疾手快”并说明依据。",
+          "answer": "前者动作忙乱，后者及时反应；须对照场景，不因两者都有手就随意互换。",
+          "analysis": "前者动作忙乱，后者及时反应；须对照场景，不因两者都有手就随意互换。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "“提心吊胆”是要真的把心拿出来吗？结合担心、害怕的虚构阅读语境解释，不把词中形象当实际身体事件。",
+          "answer": "通常写十分担心害怕，不能按字面说心被拿出；解释受语境约束，不据此诊断真实身体情况。",
+          "analysis": "通常写十分担心害怕，不能按字面说心被拿出；解释受语境约束，不据此诊断真实身体情况。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "虚构句：“故事里的角色装扮成怪兽，张牙舞爪。”请说明动作形象，与普通轻轻挥手有什么差别。",
+          "answer": "可说张嘴露牙、挥舞爪状动作，形象强烈；普通挥手未必符合，不能只凭一个动词判断。",
+          "analysis": "可说张嘴露牙、挥舞爪状动作，形象强烈；普通挥手未必符合，不能只凭一个动词判断。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "比较“面红耳赤”和“口干舌燥”，指出词中的身体部位，再说明还需要什么才能解释具体原因。",
+          "answer": "前者面耳发红，后者口舌干燥；原因需结合实际文中情境，不能只凭词推出一定争吵或某种疾病。",
+          "analysis": "前者面耳发红，后者口舌干燥；原因需结合实际文中情境，不能只凭词推出一定争吵或某种疾病。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-body-idiom-context-comparison-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "有人说“八组成语都写身体，所以互换到任何句子都行”。请选两词，用不同语境反驳。",
+          "answer": "用如手忙脚乱与眼疾手快等区分动作状态，词义与条件不能任意互换；反例应具体，不只说不对。",
+          "analysis": "用如手忙脚乱与眼疾手快等区分动作状态，词义与条件不能任意互换；反例应具体，不只说不对。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:garden-oral-meaning",
+      "structure": "meaning-supported-oral-prosody",
+      "familyProposal": "following-meaning-supported-oral-prosody",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "保留实际录音，不把书面标记替代声音",
+          "weight": 0.4
+        },
+        {
+          "criterion": "重音、停顿和语气与所给句意相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "解释一种选择，接受有依据的不同读法",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "声音中两层意思可区分且不把可是前后混成相反含义；不同合理停顿可接受，须听实际录音。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-meaning-supported-oral-prosody-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“我想明白了，可是还想再问一个问题。”请真实录音试两种停顿，说明哪种更清楚保留“已经明白”和“仍有问题”的关系。",
+          "answer": "声音中两层意思可区分且不把可是前后混成相反含义；不同合理停顿可接受，须听实际录音。",
+          "analysis": "声音中两层意思可区分且不把可是前后混成相反含义；不同合理停顿可接受，须听实际录音。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“不是他不愿意帮忙，是他还没听清需要做什么。”请录音朗读，再说明怎样避免把角色读成不愿帮助。",
+          "answer": "保留否定和后半句原因，可在不是、还没听清等处作合适强调；不要求唯一声调，实际声音与理由分别核对。",
+          "analysis": "保留否定和后半句原因，可在不是、还没听清等处作合适强调；不要求唯一声调，实际声音与理由分别核对。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新句：“我以为问题结束了，原来还有一个条件。”请真实录音，用停顿或语气表现认识的变化，并说明依据。",
+          "answer": "以为与原来形成变化，停顿不删去条件；实际录音可核对，文字答案不能代声音。",
+          "analysis": "以为与原来形成变化，停顿不删去条件；实际录音可核对，文字答案不能代声音。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "录音读“我不是没有想过，我是还想再核对。”说明怎样使听众不漏掉两个否定词。",
+          "answer": "保留不是、没有等原词与句意，可适当停顿或强调，不把双重否定读成完全未想过。",
+          "analysis": "保留不是、没有等原词与句意，可适当停顿或强调，不把双重否定读成完全未想过。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "录音比较“先问清楚，再动笔”和“先问清楚再动笔”的两种自然读法，说明两者是否一定意思相反。",
+          "answer": "合理停顿差异不必导致相反意思，仍保留先后关系；不能仅凭是否有停顿自动判对错。",
+          "analysis": "合理停顿差异不必导致相反意思，仍保留先后关系；不能仅凭是否有停顿自动判对错。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原创句：“她说的是这一次，不是每一次。”请真实录音，表现范围差别并说明选择。",
+          "answer": "强调一次与每一次的范围，原词完整；不得扩展成角色永远如此，实际声音须听原音。",
+          "analysis": "强调一次与每一次的范围，原词完整；不得扩展成角色永远如此，实际声音须听原音。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-meaning-supported-oral-prosody-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为“他想去看看，却还没有出发”设计并真实录音一个读法，说明如何保留想做与已经做的差别。",
+          "answer": "却、还没有与前半意图区分清楚；读法多样但不能把未出发读成已完成。",
+          "analysis": "却、还没有与前半意图区分清楚；读法多样但不能把未出发读成已完成。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:garden-group-naming",
+      "structure": "activity-linked-group-naming",
+      "familyProposal": "following-activity-linked-group-naming",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "名称与给定兴趣活动相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明能体现活动的词和易记特点",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不只套原页名字或以响亮替代贴合",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "投篮与纸模型活动不符；如纸上造物团等名字能联系材料与制作，其他贴合、易记的名称也可。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-activity-linked-group-naming-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "一组同学主要做纸模型，不做篮球活动。有人取名“投篮高手队”。请说明问题，再给一个更贴合的新名字与理由。",
+          "answer": "投篮与纸模型活动不符；如纸上造物团等名字能联系材料与制作，其他贴合、易记的名称也可。",
+          "analysis": "投篮与纸模型活动不符；如纸上造物团等名字能联系材料与制作，其他贴合、易记的名称也可。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "为读书交流小组取一个名字，说明哪几个字体现活动，哪一处让你觉得容易记住。",
+          "answer": "名称与读书或交流有联系，理由具体；不要求复制书页探路团等参考名字。",
+          "analysis": "名称与读书或交流有联系，理由具体；不要求复制书页探路团等参考名字。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新活动是观察植物并做记录。请设计名称，比较它与“什么都最强队”哪一个更能让新同学知道活动。",
+          "answer": "活动相关名称提供线索，什么都最强过泛；不能仅因有个性就判与活动相符。",
+          "analysis": "活动相关名称提供线索，什么都最强过泛；不能仅因有个性就判与活动相符。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "围棋小组和剪纸小组想使用同一个含糊名字。任选一组，补上体现它活动的名称并解释。",
+          "answer": "含围棋、黑白棋子或剪纸纸艺等相容线索即可；不能把两种不同活动说成必然相同。",
+          "analysis": "含围棋、黑白棋子或剪纸纸艺等相容线索即可；不能把两种不同活动说成必然相同。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "为讲故事小组取名，不准只加“最棒”两个字。说说活动与名字的联系。",
+          "answer": "可联系故事、讲述、声音、分享等具体线索；其他有据名字可接受，是否好听不是唯一标准。",
+          "analysis": "可联系故事、讲述、声音、分享等具体线索；其他有据名字可接受，是否好听不是唯一标准。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "小组原先踢球，后来主要讨论足球战术。原名是否一定要换？请结合名字实际含义说明，再提出一个可选方案。",
+          "answer": "不一定，若仍贴合足球可保留；若暗示的活动不合可调整，判断须基于实际名称，不能一律换名。",
+          "analysis": "不一定，若仍贴合足球可保留；若暗示的活动不合可调整，判断须基于实际名称，不能一律换名。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-activity-linked-group-naming-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给一种新的兴趣活动写出两个候选组名，比较哪个更能体现活动并容易记住。",
+          "answer": "两名均需与活动有联系，比较理由具体；不把名称写成真实小组已经成立或成员已同意。",
+          "analysis": "两名均需与活动有联系，比较理由具体；不把名称写成真实小组已经成立或成员已同意。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:garden-poem-scene",
+      "structure": "poem-intention-action-boundary",
+      "familyProposal": "following-poem-intention-action-boundary",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "说法与材料实际信息相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指出依据并说明支持关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "保留尚不知道的事，不把虚构材料写成本人经历",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "开始骑黄牛唱歌，后来想捕鸣蝉，忽然闭口站立；意欲是想要，诗未写捕获结果。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-poem-intention-action-boundary-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "读《所见》，说说牧童前后声音与动作怎样变化。诗里有没有说他已经捉到蝉？指出依据。",
+          "answer": "开始骑黄牛唱歌，后来想捕鸣蝉，忽然闭口站立；意欲是想要，诗未写捕获结果。",
+          "analysis": "开始骑黄牛唱歌，后来想捕鸣蝉，忽然闭口站立；意欲是想要，诗未写捕获结果。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "比较“想要捕蝉”和“已经捕到蝉”。《所见》的“意欲”支持哪一种？再说实际写出的动作。",
+          "answer": "支持想要，实际写闭口立；不能将意图替换成完成结果，解释须回到诗句。",
+          "analysis": "支持想要，实际写闭口立；不能将意图替换成完成结果，解释须回到诗句。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "陌生原创句：“小禾想看清鸟，忽然停住脚步。”它与《所见》哪些信息组织相似？哪些具体事情不同？",
+          "answer": "都有意图与停下动作，鸟与鸣蝉等对象不同；不能因相似就说都已成功抓住动物。只比较阅读材料。",
+          "analysis": "都有意图与停下动作，鸟与鸣蝉等对象不同；不能因相似就说都已成功抓住动物。只比较阅读材料。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "有人把《所见》概括为“牧童骑马，捉到蝉后唱歌”。请指出与诗不符的地方。",
+          "answer": "黄牛不能改成马，先有歌声后闭口，未写捉到蝉；逐项核对，不用画面印象替换文本。",
+          "analysis": "黄牛不能改成马，先有歌声后闭口，未写捉到蝉；逐项核对，不用画面印象替换文本。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "《所见》中的歌声与后来的闭口，能帮助我们读出什么变化？能否据此知道牧童后来回家了吗？",
+          "answer": "声音由歌唱到停止，配合意欲捕蝉的动作变化；回家未写，不能补造后续。",
+          "analysis": "声音由歌唱到停止，配合意欲捕蝉的动作变化；回家未写，不能补造后续。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "诗的插图能帮助想象画面，但若图中细节在诗句没有写，概括时应怎样区分？用“是否已经捕到蝉”说明。",
+          "answer": "文本未给的图中细节须标为插图信息，诗未说捕到，不能让插图推断替代诗句结论。",
+          "analysis": "文本未给的图中细节须标为插图信息，诗未说捕到，不能让插图推断替代诗句结论。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-poem-intention-action-boundary-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话讲清《所见》的主要画面，分别标出人物、声音、意图、动作与诗中未给的结果。",
+          "answer": "牧童、骑黄牛与歌声、欲捕鸣蝉、闭口立等有据；捕获或回家等结果仍未知，参考措辞不是唯一标准。",
+          "analysis": "牧童、骑黄牛与歌声、欲捕鸣蝉、闭口立等有据；捕获或回家等结果仍未知，参考措辞不是唯一标准。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:garden-poem-reading",
+      "structure": "original-poem-oral-reading",
+      "familyProposal": "following-original-poem-oral-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "真实完整录音，听原音核对字音与原诗",
+          "weight": 0.4
+        },
+        {
+          "criterion": "朗读、看文、提示后表达与脱离文本背诵分别说明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原诗重复不称新的独立结构或陌生迁移",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原诗为“牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。”须听原音核对樾等字音与完整性，看文朗读不冒充背诵。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-original-poem-oral-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "请真实录音朗读袁枚《所见》，保留原诗内容；说明是否正在看文本。没有实际声音时保持未测。",
+          "answer": "原诗为“牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。”须听原音核对樾等字音与完整性，看文朗读不冒充背诵。",
+          "analysis": "原诗为“牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。”须听原音核对樾等字音与完整性，看文朗读不冒充背诵。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "练习后录音尝试不看文本说出《所见》，如需看文或提示请如实说明，不把漏句隐藏。",
+          "answer": "实际声音与原诗逐句比较，未完成处保留；提示后完成是相应学习表现，不能把参考文字当实际声音。",
+          "analysis": "实际声音与原诗逐句比较，未完成处保留；提示后完成是相应学习表现，不能把参考文字当实际声音。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "向一个没听过诗题的人真实录音朗读《所见》，再用一句话区分朗读和说明诗意是两个任务。",
+          "answer": "朗读核对原诗与声音，诗意说明另核对依据；不能用解释正确替代实际读音，也不把原诗重复当陌生迁移。",
+          "analysis": "朗读核对原诗与声音，诗意说明另核对依据；不能用解释正确替代实际读音，也不把原诗重复当陌生迁移。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "请真实录音再读《所见》，说明是否看文、得到提示或中途停顿。原记录保留。",
+          "answer": "核对本次实际声音及帮助条件，不因间隔了一天就抹掉原诗曝光；这是原诗积累表现，不是新独立题族。",
+          "analysis": "核对本次实际声音及帮助条件，不因间隔了一天就抹掉原诗曝光；这是原诗积累表现，不是新独立题族。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "再次尝试录音背诵《所见》，未能完整时可说明哪里需要返回文本，不能用先前录音冒充本次。",
+          "answer": "使用本次真实声音，原诗内容与援助情况分别核查；不将重复诗题当未见材料。",
+          "analysis": "使用本次真实声音，原诗内容与援助情况分别核查；不将重复诗题当未见材料。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "录音读《所见》，特别留意自己此前不确定的字；如果先听过示范，应说明这次帮助。",
+          "answer": "字音须听本次原音，帮助记录保留；听示范后读准不直接证明首次独立或长期保持。",
+          "analysis": "字音须听本次原音，帮助记录保留；听示范后读准不直接证明首次独立或长期保持。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "garden-original-poem-oral-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "真实录音完成本次《所见》朗读或背诵，清楚说明是哪一种，再说仍想核对的字词。",
+          "answer": "完整度、字音与看文/提示分别核对，朗读与背诵不能混标；这不证明任何陌生诗都能理解。",
+          "analysis": "完整度、字音与看文/提示分别核对，朗读与背诵不能混标；这不证明任何陌生诗都能理解。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden",
+      "atomId": "source:chinese:g3:02915a7d:asking-fresh-language",
+      "structure": "reader-selected-language",
+      "familyProposal": "following-reader-selected-language",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "所选词句确在给定材料中",
+          "weight": 0.4
+        },
+        {
+          "criterion": "具体说明注意到的表达与个人感受",
+          "weight": 0.4
+        },
+        {
+          "criterion": "选择和感受可不同，不规定唯一术语",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可选照开，将光亮与打开空间联系；其他确在句中的选择也可，解释具体，不要求固定感受。",
+        "insufficientExample": "我觉得挺好。",
+        "insufficientReason": "没有完成指定的表现或说明依据；实际口语、图物、原稿和听众意见不能由一句评价词代替。",
+        "alternativeAnswers": "这些是原创量规参考，不是学生金样本。接受有依据的不同表达；缺实际声音、图物或听众时保留相应未验证项，不自动评分。"
+      },
+      "exercises": [
+        {
+          "id": "garden-reader-selected-language-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“小灯把一角夜色轻轻照开。”选择你觉得新鲜的一处，说说哪几个字使你注意，不只写很美。",
+          "answer": "可选照开，将光亮与打开空间联系；其他确在句中的选择也可，解释具体，不要求固定感受。",
+          "analysis": "可选照开，将光亮与打开空间联系；其他确在句中的选择也可，解释具体，不要求固定感受。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创句：“书签像一只小船，停在昨天读到的岸边。”选一处说明新鲜感，再区分原句与自己的追加想象。",
+          "answer": "小船、岸边把书签定位与行船相联，追加人物或故事须标为联想，不能说原文已经写出。",
+          "analysis": "小船、岸边把书签定位与行船相联，追加人物或故事须标为联想，不能说原文已经写出。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新句：“问号在纸边排队，等着下一轮讨论。”请选择词句并说明表达怎样联系学习场景。",
+          "answer": "排队、等待把问题人格化，与保留问题等讨论联系；其他有据感受可接受，不把问号当有真实意图。",
+          "analysis": "排队、等待把问题人格化，与保留问题等讨论联系；其他有据感受可接受，不把问号当有真实意图。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原创句：“秋风把树叶的信送到小路上。”选一个值得积累的片段，准确写出并解释理由。",
+          "answer": "如树叶的信、送到小路等，理由联系落叶与信的联想；不能引用句中没有的字或只写漂亮。",
+          "analysis": "如树叶的信、送到小路等，理由联系落叶与信的联想；不能引用句中没有的字或只写漂亮。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "原创句：“小溪把石子旁的影子揉碎，又轻轻拼起来。”选一处交流感受，不要求和同伴完全相同。",
+          "answer": "揉碎与拼起可联到水波使倒影变化，解释受原句约束；不当成石子真的被水揉碎。",
+          "analysis": "揉碎与拼起可联到水波使倒影变化，解释受原句约束；不当成石子真的被水揉碎。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两人分别关注“星光落进窗里”和“夜晚安静地坐下”。可以有不同新鲜感吗？各选一处具体说明。",
+          "answer": "关注点和感受可不同，但须与实际词句联系，不能凭统一标准词替读者决定感受。",
+          "analysis": "关注点和感受可不同，但须与实际词句联系，不能凭统一标准词替读者决定感受。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        },
+        {
+          "id": "garden-reader-selected-language-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "原创句：“翻开的书像一座小桥，把今天连到远方。”选你觉得新鲜的词句，再说明哪些是文学想象。",
+          "answer": "桥与连接远方体现阅读联想，不证明实际空间道路；选择有据即可，不把照抄参考当个人阅读表现。",
+          "analysis": "桥与连接远方体现阅读联想，不证明实际空间道路；选择有据即可，不把照抄参考当个人阅读表现。 可以用自己的合理表达；把题目提供的信息、自己的想象与还不知道的事分清。",
+          "expectedSeconds": 160
+        }
+      ]
+    }
+  ]
+}
