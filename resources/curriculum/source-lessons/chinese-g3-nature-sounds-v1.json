@@ -1,0 +1,411 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 93,
+    "pageEnd": 95,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-reading",
+      "version": 1,
+      "name": "自然声音十字语境识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "在本课声音词语中识读妙奏呢喃伟击汇喳唧哩十字",
+      "successCriterion": "本人声音覆盖十字，呢喃ní nán、唧哩jī lī等按当前词核，不由常用另义替换",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-handwriting",
+      "version": 1,
+      "name": "自然声音十三字实际书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "本人实际书写妙演奏琴感受激击器滴敲鸣诉十三字",
+      "successCriterion": "本人本次原稿逐字核部件与完整性，识读表和字体图不代书写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-oral",
+      "version": 1,
+      "name": "自然声音课实际朗读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "朗读与表达",
+      "objective": "朗读所选原文，用停顿轻重表现具体声音变化",
+      "successCriterion": "本人本次声音与句意对应，允许有据不同读法，选段不冒充全部朗读",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-recall",
+      "version": 1,
+      "name": "第二三自然段实际积累",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "朗读与积累",
+      "objective": "尝试脱稿背诵本课第2至3自然段",
+      "successCriterion": "两段分别核当前原文与本人声音，看稿提示分别记，不强制额外全文背诵",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-structure",
+      "version": 1,
+      "name": "风水动物的分方面组织",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "阅读与组织",
+      "objective": "概括风水动物三类声音并用各类具体信息支持",
+      "successCriterion": "总写和分类对应，水段雨滴溪河海的顺序不串位，不把一类代全部",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-language",
+      "version": 1,
+      "name": "声音词句与文学联想",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "比较微风狂风与水声变化，说明拟声拟人和音乐比喻的具体作用",
+      "successCriterion": "声音强弱画面有词句依据，音乐家歌手是文学表达，不当自然物真实乐器或动物语言实验",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:nature-sounds-writing",
+      "version": 1,
+      "name": "本人听闻声音的小练笔",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "观察与表达",
+      "objective": "选择确实听过的一种声音写几句话并实际交流",
+      "successCriterion": "听闻条件和声音特点具体，原创卡与本人经历分开，厨房鸟声示例不强制全写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:nature-sounds-reading",
+    "source:chinese:g3:02915a7d:nature-sounds-handwriting",
+    "source:chinese:g3:02915a7d:nature-sounds-oral",
+    "source:chinese:g3:02915a7d:nature-sounds-recall",
+    "source:chinese:g3:02915a7d:nature-sounds-structure",
+    "source:chinese:g3:02915a7d:nature-sounds-language",
+    "source:chinese:g3:02915a7d:nature-sounds-writing",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "准确原件所选物理页已逐张核查正文、脚注、字表和任务范围；AI来源核对不等教师、评分或独立题族审核。",
+    "pages": [
+      {
+        "page": 93,
+        "visualChecked": true,
+        "statement": "已看全文总写、风水两段与动物段起句、湖北出版社来源无具名作者，音乐联想与自然事实分清。"
+      },
+      {
+        "page": 94,
+        "visualChecked": true,
+        "statement": "已看动物段结尾、10识13写、朗读与明确背第2至3自然段及三类声音图框。"
+      },
+      {
+        "page": 95,
+        "visualChecked": true,
+        "statement": "已看词语声音与听闻交流、小练笔示例和叶圣陶瀑布完整阅读链接，不复制现代诗全文或增加背诵要求。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "大自然的声音",
+    "author": null,
+    "attribution": "选自湖北教育出版社义务教育课程标准实验教科书语文三年级上册",
+    "recognitionCharacters": [
+      "妙",
+      "奏",
+      "呢",
+      "喃",
+      "伟",
+      "击",
+      "汇",
+      "喳",
+      "唧",
+      "哩"
+    ],
+    "writingCharacters": [
+      "妙",
+      "演",
+      "奏",
+      "琴",
+      "感",
+      "受",
+      "激",
+      "击",
+      "器",
+      "滴",
+      "敲",
+      "鸣",
+      "诉"
+    ],
+    "requiredRecitationParagraphs": [
+      2,
+      3
+    ],
+    "fullTextRecitationRequired": false,
+    "soundCategories": [
+      "风",
+      "水",
+      "动物"
+    ],
+    "readingLink": {
+      "title": "瀑布",
+      "author": "叶圣陶",
+      "modernFullPoemNotReproduced": true,
+      "extraRecitationAdded": false
+    },
+    "heardSoundWritingExamplesOptional": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "大自然的声音：分清声音来源，用词句听出变化",
+    "activation": {
+      "prompt": "原创材料卡：轻风过叶沙沙，雨点落在窗上滴答，远处传来鸟叫。先按声音来源分组，再说卡片没有给出的实际音量或鸟种。",
+      "expectedObservation": "能区分风水动物的来源，模拟词和个人感受不代实际测量。",
+      "bridge": "课文用音乐联想串起三类声音，读时既看分类，也比较每类具体声音怎样变化。"
+    },
+    "concept": {
+      "explanation": "先读总写，再整理风、水、动物三个方面。风段比较微风的轻柔与狂风的雄伟有力，相关词语使读者感到不同强弱；树叶像歌手、风像音乐家是文学联想，不证明树风真的懂人类音乐或拿着乐器。水段先写雨滴落在不同地方带来的声音，再从小溪、河流到大海逐层展开，声音词和山中小曲到海洋合唱的比较互相呼应；这是当前文章的表达组织，不能据此宣称所有水声都按同样音高音量增长。动物段给鸟、虫、蛙的声音例子，快乐歌声是作者拟人表达，不等已经翻译出动物真实话语或完成心理实验。朗读可依据具体画面选择停顿、轻重，合理读法允许不同，不凭音色快慢统一判情感。课后明确背第2至3自然段，不扩大为全文；十字识读、十三字实际书写与背诵分别留证。小练笔选择本人确实听过的美妙声音，写清哪里、什么条件、声音怎样并交流，厨房和鸟儿是可用示例，不能代本人听闻事实。阅读链接叶圣陶瀑布可比较先听后见及声音画面的表达，不复制完整现代诗或增设原页没有的背诵任务。",
+      "points": [
+        "总写后分风水动物三方面",
+        "微风狂风词语表现不同感受",
+        "雨滴溪河海的表达顺序",
+        "拟声比喻拟人有文学身份",
+        "背第2至3段，实际任务范围分清",
+        "本人听闻写具体，示例不代经历"
+      ]
+    },
+    "example": {
+      "situation": "原创虚构片段：“细雨敲着铁棚，叮叮嗒嗒；落到软草上，又轻了许多。院边的小鸟偶尔鸣一声。”不是教材原文，也不是学生观察记录。",
+      "steps": [
+        {
+          "explanation": "雨与鸟先按来源分开，棚和草是雨声不同条件，不把它们再算成两种动物声。",
+          "board": [
+            "水声：雨点",
+            "不同表面：棚、草",
+            "动物声：鸟鸣"
+          ]
+        },
+        {
+          "explanation": "拟声词与轻重比较帮助想象，但没有真实音频与测量，不能据文字填分贝。",
+          "board": [
+            "文字可支持画面",
+            "条件影响当前描写",
+            "没有数据不编数值"
+          ]
+        },
+        {
+          "explanation": "练习方法后返回原课找三类依据，再用本人实际听闻完成小练笔。",
+          "board": [
+            "原创例与原课分清",
+            "分类接具体信息",
+            "本人经历需本人提供"
+          ]
+        }
+      ],
+      "conclusion": "来源分类与具体声音特点相连，文学感受和实际听闻测量各有范围。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "三类声音与变化依据",
+        "headers": [
+          "声音方面",
+          "当前表达线索",
+          "保留什么边界"
+        ],
+        "rows": [
+          [
+            "风",
+            "微风轻柔、狂风有力的比较",
+            "音乐家手风琴是联想，不是真实人类演奏"
+          ],
+          [
+            "水",
+            "雨滴敲打与溪河海逐层展开",
+            "表达顺序不等所有水声统一测量规律"
+          ],
+          [
+            "动物",
+            "鸟、虫、蛙的拟声与歌手联想",
+            "拟人快乐不等已验证真实语言心理"
+          ],
+          [
+            "背诵和写字",
+            "第2至3段、十识十三写分别核",
+            "选段朗读不代脱稿背诵或实际字形"
+          ],
+          [
+            "小练笔与链接",
+            "本人听闻写几句、瀑布比较方法",
+            "示例不充本人经历，现代诗全文不复制"
+          ]
+        ],
+        "explanation": "分类、表达与本人表现分别核查，不以表格填满代真实声音原稿或整课已会。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "说风树真的会奏乐，青蛙已用人类句子自述快乐。",
+        "alternatives": [
+          "可能把拟人比喻当自然或心理实验事实。"
+        ],
+        "verification": "指出真实声源、文学比较和作者联想分别是什么，找是否有实验数据。",
+        "correctiveFeedback": "表达帮助读者想象声音，不等物体实际会人类音乐或我们已验证动物心理。"
+      },
+      {
+        "observation": "按水声一律越来越响，或把朗读一段记成两段脱稿背完。",
+        "alternatives": [
+          "可能把表达顺序扩大成规律，也可能混任务状态。"
+        ],
+        "verification": "核当前具体条件与是否给数据，再分第2、第3段本人实际声音和帮助。",
+        "correctiveFeedback": "先保留当前材料范围；分类、朗读、背诵与写字不能互相代替。"
+      },
+      {
+        "observation": "照抄厨房例子记本人听过并已与同伴交流。",
+        "alternatives": [
+          "可能混示例、准备和实际活动。"
+        ],
+        "verification": "由本人说明听闻条件和真实交流，没有则留待做。",
+        "correctiveFeedback": "可用原创卡练习，但不能把示例换名充个人生活记录。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新的原创声景卡给风过纸页、滴水入杯和猫叫，不沿用旧叶雨鸟示例；或本人新的实际听闻。",
+      "prompt": "按来源分类，比较一项具体声音特点，写清材料性质；实际声音未提供时不编精确音量。",
+      "expectedStrategy": "分类随当前材料，感受有细节，未知与本人实际活动如实，重复原例不充未见迁移。"
+    },
+    "summary": {
+      "synthesis": "分清声源，借具体词句想象变化；文学音乐联想与实际测量分开。朗读、两段背诵、写字和本人听闻写作各自核对。",
+      "takeaways": [
+        "风水动物分类有据",
+        "表达轻重接具体词句",
+        "文学拟人不代真实实验",
+        "背第2至3段不扩全文",
+        "本人听闻和实际交流如实留证"
+      ]
+    },
+    "citations": [
+      {
+        "page": 93,
+        "quote": "不一样的树叶，有不一样的声音；不一样的季节，",
+        "usedFor": "concept"
+      },
+      {
+        "page": 94,
+        "quote": "朗读课文，体会大自然声音的美妙。背诵第2〜3自然段。",
+        "usedFor": "summary"
+      },
+      {
+        "page": 95,
+        "quote": "你听到过哪些“美妙的声音”？试着写几句话和同学交流，",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-reading",
+        "objective": "在本课声音词语中识读妙奏呢喃伟击汇喳唧哩十字",
+        "successCriterion": "本人声音覆盖十字，呢喃ní nán、唧哩jī lī等按当前词核，不由常用另义替换"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-handwriting",
+        "objective": "本人实际书写妙演奏琴感受激击器滴敲鸣诉十三字",
+        "successCriterion": "本人本次原稿逐字核部件与完整性，识读表和字体图不代书写"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-oral",
+        "objective": "朗读所选原文，用停顿轻重表现具体声音变化",
+        "successCriterion": "本人本次声音与句意对应，允许有据不同读法，选段不冒充全部朗读"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-recall",
+        "objective": "尝试脱稿背诵本课第2至3自然段",
+        "successCriterion": "两段分别核当前原文与本人声音，看稿提示分别记，不强制额外全文背诵"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-structure",
+        "objective": "概括风水动物三类声音并用各类具体信息支持",
+        "successCriterion": "总写和分类对应，水段雨滴溪河海的顺序不串位，不把一类代全部"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-language",
+        "objective": "比较微风狂风与水声变化，说明拟声拟人和音乐比喻的具体作用",
+        "successCriterion": "声音强弱画面有词句依据，音乐家歌手是文学表达，不当自然物真实乐器或动物语言实验"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "source:chinese:g3:02915a7d:nature-sounds-writing",
+        "objective": "选择确实听过的一种声音写几句话并实际交流",
+        "successCriterion": "听闻条件和声音特点具体，原创卡与本人经历分开，厨房鸟声示例不强制全写"
+      },
+      {
+        "id": "goal-8",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用当前材料具体信息支持判断，分原文、表达与本人实际表现",
+        "successCriterion": "依据和判断关系清楚，声音原稿与帮助保留；未知和未完成不由范例代填"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先审核目标、评分、独立结构与充分未见材料，再按真实日期安排。每间隔一份样题不当充分库存；原篇已学、帮助和曝光保留，参考与模拟日期不当本人长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "nature-sounds",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "现代原页、完整现代课文和现代注释全文不复制进候选；原创讲解配必要短引核对。",
+    "materialStatus": "候选讲解、检查和量规；教师、目标对齐、独立结构、评分金样本和充分保持库存仍待。",
+    "pacing": "识读、写字、朗读、积累和理解表达分次完成，不能由一次短练习推整课全部目标。"
+  }
+}

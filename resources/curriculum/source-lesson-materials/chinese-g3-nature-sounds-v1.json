@@ -1,0 +1,828 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "nature-sounds",
+      "path": "resources/curriculum/source-lessons/chinese-g3-nature-sounds-v1.json",
+      "sha256": "184b38af03a88c16d658b1d96512799fa1160343270aaab786057c5cbb983e05",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit7:entry1",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 93,
+        "pageEnd": 95,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "八目标各三个即时与四个拟议间隔样题，不等充分库存或独立题族。第2至3段背诵与原篇已学、提示曝光保留，实际声音原稿和听闻交流由本人完成，不制造学习表现。",
+  "groups": [
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-reading",
+      "structure": "sounds-ten-contextual-reading",
+      "familyProposal": "following-sounds-ten-contextual-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人本次声音覆盖十字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前语境读音正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助原改与缺项真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "妙miào奏zòu呢ní喃nán伟wěi击jī汇huì喳zhā唧jī哩lī逐字核，词数不等目标字数。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音读美妙、演奏、呢喃、雄伟、打击、汇聚、叽叽喳喳、唧哩哩，指出十个目标字。",
+          "answer": "妙miào奏zòu呢ní喃nán伟wěi击jī汇huì喳zhā唧jī哩lī逐字核，词数不等目标字数。",
+          "analysis": "妙miào奏zòu呢ní喃nán伟wěi击jī汇huì喳zhā唧jī哩lī逐字核，词数不等目标字数。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先读呢喃和唧哩哩，再读其余目标词，实际录音并标需核处。",
+          "answer": "当前呢ní、哩lī等依词语核，不能用呢ne或里lǐ的熟悉读法替本词；文字说明不代声音。",
+          "analysis": "当前呢ní、哩lī等依词语核，不能用呢ne或里lǐ的熟悉读法替本词；文字说明不代声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给妙奏伟击等目标配新的合理词实际读，再补未覆盖目标。",
+          "answer": "新词与读音语义相容，全部十字按实际声音覆盖；新词身份与原词分清。",
+          "analysis": "新词与读音语义相容，全部十字按实际声音覆盖；新词身份与原词分清。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次录音读全当前十字，说明是否刚看原页或听过示范。",
+          "answer": "本人当前声音可核，帮助保留，旧示范不充本人无帮助首次表现。",
+          "analysis": "本人当前声音可核，帮助保留，旧示范不充本人无帮助首次表现。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "选择确实不稳的一字查证后重新录音，原音与后改分开。",
+          "answer": "查证依据与实际发音分别看，没问题不故意造错，未覆盖字不自动补齐。",
+          "analysis": "查证依据与实际发音分别看，没问题不故意造错，未覆盖字不自动补齐。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "分两次短录音覆盖目标，列两次合起来仍未读到的字。",
+          "answer": "实际覆盖合并核，漏字留缺，不拿教师声音或键盘拼音补本人。",
+          "analysis": "实际覆盖合并核，漏字留缺，不拿教师声音或键盘拼音补本人。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-ten-contextual-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际读十字并解释一处词义怎样帮助选读音。",
+          "answer": "当前词义与本人声音对应，方法说明不代实际发音或新未见保持。",
+          "analysis": "当前词义与本人声音对应，方法说明不代实际发音或新未见保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-handwriting",
+      "structure": "sounds-thirteen-own-writing",
+      "familyProposal": "following-sounds-thirteen-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖十三字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前字形部件可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原改帮助缺项保留",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "逐字看本人本次字形与完整性，识读表十字不代写字表，范字图片不代原稿。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际书写妙演奏琴感受激击器滴敲鸣诉13字并上传原稿，指出一处部件需核。",
+          "answer": "逐字看本人本次字形与完整性，识读表十字不代写字表，范字图片不代原稿。",
+          "analysis": "逐字看本人本次字形与完整性，识读表十字不代写字表，范字图片不代原稿。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把十三字分两次短写并上传，说明各覆盖哪些字与帮助。",
+          "answer": "两份原稿合并逐字核，不要求反复长抄；少写留缺，不由一部分正确推全部。",
+          "analysis": "两份原稿合并逐字核，不要求反复长抄；少写留缺，不由一部分正确推全部。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "在新原创声音短句中写出部分目标，再补其余字上传。",
+          "answer": "句内与补写覆盖合并核，原创句不冒充教材原句，仍需本人实际字形。",
+          "analysis": "句内与补写覆盖合并核，原创句不冒充教材原句，仍需本人实际字形。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "上传本人本次写字与实际订正，没错就说明检查结果。",
+          "answer": "原改可追溯，不为数量造错，清稿不能倒造修改历史。",
+          "analysis": "原改可追溯，不为数量造错，清稿不能倒造修改历史。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较奏琴敲等字部件后实际书写，上传并补全字表。",
+          "answer": "部件说明与本人字形各自核，能说结构不等写得出，未做不代填。",
+          "analysis": "部件说明与本人字形各自核，能说结构不等写得出，未做不代填。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次只完成部分时上传真实部分并报告其余状态。",
+          "answer": "当前完成范围真实，旧稿教师稿不自动充本人本次完整覆盖。",
+          "analysis": "当前完成范围真实，旧稿教师稿不自动充本人本次完整覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        },
+        {
+          "id": "nature-sounds-sounds-thirteen-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际写全表并上传，注明看范字与其他帮助。",
+          "answer": "本人原件与目标相符，已学字重复不自动成为陌生迁移或长期保持。",
+          "analysis": "本人原件与目标相符，已学字重复不自动成为陌生迁移或长期保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 300
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-oral",
+      "structure": "sounds-actual-expressive-reading",
+      "familyProposal": "following-sounds-actual-expressive-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人声音与所选原文对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "停连轻重服务句意",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范围与看稿提示清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "轻柔与有力有词句依据，允许有据不同处理，选段不充全部朗读完成。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人朗读风段所选内容，用声音区别微风与狂风，再说明选段范围。",
+          "answer": "轻柔与有力有词句依据，允许有据不同处理，选段不充全部朗读完成。",
+          "analysis": "轻柔与有力有词句依据，允许有据不同处理，选段不充全部朗读完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际读水段一处长句，停顿连接雨滴与不同地方声音，说明理由。",
+          "answer": "停连帮助理解当前关系，不强制唯一划分，书面标记不代本人声音。",
+          "analysis": "停连帮助理解当前关系，不强制唯一划分，书面标记不代本人声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读明确原创声景句再回课文选段，说明两份材料的身份。",
+          "answer": "新句练方法与本课实际朗读分别留，不能用原创短句替原文范围。",
+          "analysis": "新句练方法与本课实际朗读分别留，不能用原创短句替原文范围。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次朗读动物段，说明是否看稿或听过示范，不声称自动完成两段背诵。",
+          "answer": "本人当前声音与原句对应，看稿朗读、脱稿背诵和理解分别记录。",
+          "analysis": "本人当前声音与原句对应，看稿朗读、脱稿背诵和理解分别记录。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "比较本人两次读法中一处停顿，说明怎样让听众听清声源变化。",
+          "answer": "依据是句意和对象转换，可有不同合理读法，不单靠快慢音色评分。",
+          "analysis": "依据是句意和对象转换，可有不同合理读法，不单靠快慢音色评分。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如当前只读了局部，录音读该部分并报告剩余，别用参考音补全。",
+          "answer": "本人范围和帮助真实，没读部分保留未做。",
+          "analysis": "本人范围和帮助真实，没读部分保留未做。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-actual-expressive-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新实际朗读所选原文，说明仍需核对的一处；没问题不造错。",
+          "answer": "当前声音版本与范围可核，重复原段不自动成为未见理解或保持。",
+          "analysis": "当前声音版本与范围可核，重复原段不自动成为未见理解或保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-recall",
+      "structure": "sounds-paragraph-two-three-recall",
+      "familyProposal": "following-sounds-paragraph-two-three-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "两段分别按当前原文核查",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人脱稿与看稿条件分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未完成不补成全文已背",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "风段和水段逐段核当前原文和本人声音，朗读不自动充背诵，不加全文必背。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人尝试背第2至3自然段，分别注明看稿、提示与脱稿范围。",
+          "answer": "风段和水段逐段核当前原文和本人声音，朗读不自动充背诵，不加全文必背。",
+          "analysis": "风段和水段逐段核当前原文和本人声音，朗读不自动充背诵，不加全文必背。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先脱稿背自己实际会的一段，再报告另一段状态与所用帮助。",
+          "answer": "局部本人声音可核，另一段未做留缺，一段流畅不推两段完成。",
+          "analysis": "局部本人声音可核，另一段未做留缺，一段流畅不推两段完成。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "先读一段明确原创短声景练停连，再回原课实际尝试第2至3段积累。",
+          "answer": "原创练习不替指定两段，实际本人声音与帮助分别留。",
+          "analysis": "原创练习不替指定两段，实际本人声音与帮助分别留。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次实际背两段并保留卡顿订正，说明刚看过的部分。",
+          "answer": "当前原错和后改分开，提示后正确不倒改起初，帮助曝光真实保留。",
+          "analysis": "当前原错和后改分开，提示后正确不倒改起初，帮助曝光真实保留。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只有动物段看稿朗读，能否记教材指定两段背诵完成？本人录音说明并尝试。",
+          "answer": "不能，指定第2至3段与朗读背诵方式均不同，需相应本人实际声音。",
+          "analysis": "不能，指定第2至3段与朗读背诵方式均不同，需相应本人实际声音。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原页是否要求全文或阅读链接瀑布也全部背诵？实际背一段后说明范围。",
+          "answer": "当前明确仅第2至3段，阅读链接未加背诵要求，不自行强制扩大。",
+          "analysis": "当前明确仅第2至3段，阅读链接未加背诵要求，不自行强制扩大。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sounds-paragraph-two-three-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重新本人尝试两段积累，标熟悉原篇与帮助，不把重复当陌生首答。",
+          "answer": "本人当前声音与范围真实，两段背熟仍不单独证明全部理解与长期保持。",
+          "analysis": "本人当前声音与范围真实，两段背熟仍不单独证明全部理解与长期保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-structure",
+      "structure": "wind-water-animals-organization",
+      "familyProposal": "following-wind-water-animals-organization",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "三类与具体信息对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "总分与水段顺序清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不以单类代全篇或泛化声学规律",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "风水动物三类分别有风过树叶、雨滴溪河海、鸟虫蛙等信息，总写统领分方面。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-wind-water-animals-organization-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "课文写哪三类声音？每类给一项具体信息支持，再说总写句作用。",
+          "answer": "风水动物三类分别有风过树叶、雨滴溪河海、鸟虫蛙等信息，总写统领分方面。",
+          "analysis": "风水动物三类分别有风过树叶、雨滴溪河海、鸟虫蛙等信息，总写统领分方面。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把水段按雨滴及溪河海的顺序整理，说明文字怎样逐层展开。",
+          "answer": "从雨滴不同落点到汇聚溪河海，与小曲到合唱联想相接，是文章组织，不当所有水声必增大定律。",
+          "analysis": "从雨滴不同落点到汇聚溪河海，与小曲到合唱联想相接，是文章组织，不当所有水声必增大定律。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡给风翻纸页、滴水入杯与猫叫。按声源分类，哪些不能照搬原课叶雨鸟？",
+          "answer": "风水动物仍可作方向，具体对象按新卡替换，不能把原例抄成卡内事实。",
+          "analysis": "风水动物仍可作方向，具体对象按新卡替换，不能把原例抄成卡内事实。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "若只列鸟虫蛙就说已概括全篇，漏了什么？",
+          "answer": "漏风与水两大方面，部分丰富不代表全篇范围已覆盖。",
+          "analysis": "漏风与水两大方面，部分丰富不代表全篇范围已覆盖。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把手风琴单列为原课真实人类演出声源，当前哪里超出材料？",
+          "answer": "手风琴是风段文学联想，不是原文有真人带乐器演奏，不混分类层级。",
+          "analysis": "手风琴是风段文学联想，不是原文有真人带乐器演奏，不混分类层级。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "三类声音是否每类都必须有相同数量对象、同样字数？",
+          "answer": "文章分类靠内容关系，原文各类展开不同，不强行凑同数同长度。",
+          "analysis": "文章分类靠内容关系，原文各类展开不同，不强行凑同数同长度。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-wind-water-animals-organization-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话概括三类声音，说明每项依据和一项未给的测量信息。",
+          "answer": "分类具体且范围全，未给音量频率数据保留未知，表框填满不代全部理解。",
+          "analysis": "分类具体且范围全，未给音量频率数据保留未知，表框填满不代全部理解。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-language",
+      "structure": "sound-words-and-literary-comparison",
+      "familyProposal": "following-sound-words-and-literary-comparison",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "词句与具体画面对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比较关系和拟声作用清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把文学表达当科学实验事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "词句支持不同强弱感受，音乐家与合奏便于想象，不证明风树实际具人类演奏能力。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "用轻柔与有力等当前词句比较微风狂风，说明音乐比喻帮助什么。",
+          "answer": "词句支持不同强弱感受，音乐家与合奏便于想象，不证明风树实际具人类演奏能力。",
+          "analysis": "词句支持不同强弱感受，音乐家与合奏便于想象，不证明风树实际具人类演奏能力。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "水段山中小曲到海洋合唱怎样与溪河海的信息呼应？",
+          "answer": "不同范围声景的联想逐层展开，不直接提供所有场景音量音高的实测递增规律。",
+          "analysis": "不同范围声景的联想逐层展开，不直接提供所有场景音量音高的实测递增规律。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句“滴水敲杯像轻轻击钟”。说真实声源、相似感觉与不能当真的对象。",
+          "answer": "声源滴水入杯，比钟声是联想，不证明存在钟或精确音高测量，新卡身份明确。",
+          "analysis": "声源滴水入杯，比钟声是联想，不证明存在钟或精确音高测量，新卡身份明确。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "动物快乐歌声能否证明我们已翻译它们真实语言并测得心理？",
+          "answer": "不能，作者拟人表达感受，不等心理语言实验结果。",
+          "analysis": "不能，作者拟人表达感受，不等心理语言实验结果。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "所有拟声词是否能唯一确定鸟种或精确分贝？还需什么信息？",
+          "answer": "不能，文字模拟不代物种资料或真实音频测量，缺条件不编。",
+          "analysis": "不能，文字模拟不代物种资料或真实音频测量，缺条件不编。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "两位同学对同一声景想象不同音乐画面，是否一定只一人对？",
+          "answer": "有具体词句依据的联想可不同，不能以与教师同一标签作唯一判断。",
+          "analysis": "有具体词句依据的联想可不同，不能以与教师同一标签作唯一判断。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-words-and-literary-comparison-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一处原文声音表达，说对象、词句作用和一项不应推出的事实。",
+          "answer": "解释与当前词句相容，文学与测量身份清楚，标签生动不代具体关系。",
+          "analysis": "解释与当前词句相容，文学与测量身份清楚，标签生动不代具体关系。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "source:chinese:g3:02915a7d:nature-sounds-writing",
+      "structure": "own-heard-sound-short-writing",
+      "familyProposal": "following-own-heard-sound-short-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "本人听闻与条件具体",
+          "weight": 0.4
+        },
+        {
+          "criterion": "声音特点和几句表达相关",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例交流与实际状态分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "本人来源与具体声音相连，不公开详细行程地址；未实际听过则用明确原创卡练习，保留本人任务待做。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "选择本人确实听过的一种声音写几句话，说明何种普通条件下听到及声音特点。",
+          "answer": "本人来源与具体声音相连，不公开详细行程地址；未实际听过则用明确原创卡练习，保留本人任务待做。",
+          "analysis": "本人来源与具体声音相连，不公开详细行程地址；未实际听过则用明确原创卡练习，保留本人任务待做。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先列声源条件特点，再连几句话，报告是否实际和同学交流。",
+          "answer": "组织与真实听闻对应，准备稿和实际交流分开，不编他人回应。",
+          "analysis": "组织与真实听闻对应，准备稿和实际交流分开，不编他人回应。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡只给雨点敲窗滴答。写两句，并列一项未给信息。",
+          "answer": "可描述给定声源与拟声，不能编本人昨夜听到、雨量或精确分贝，卡片是训练。",
+          "analysis": "可描述给定声源与拟声，不能编本人昨夜听到、雨量或精确分贝，卡片是训练。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "原页鸟儿与厨房示例是否要求每人两种都写？按自己材料完成一项。",
+          "answer": "示例可选，不强制全写，选本人实际声景或标明原创练习，细节具体。",
+          "analysis": "示例可选，不强制全写，选本人实际声景或标明原创练习，细节具体。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "不记得当时声音强弱，怎样记录而不填成确定测量？",
+          "answer": "保留不确定，可描述确记内容或另次正常观察，不能借文字想象编数据。",
+          "analysis": "保留不确定，可描述确记内容或另次正常观察，不能借文字想象编数据。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "若稿已写但未交流，怎样保留状态？有实际回应时才记什么？",
+          "answer": "成稿已做，交流待做；真实回应按实际范围记录，不生成同伴赞美。",
+          "analysis": "成稿已做，交流待做；真实回应按实际范围记录，不生成同伴赞美。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-own-heard-sound-short-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "回看本人当前小练笔，改一处空泛或无据说法；没有问题不造错。",
+          "answer": "原改与材料身份可核，范文不代本人经历，重复旧声景不自动成新未见保持。",
+          "analysis": "原改与材料身份可核，范文不代本人经历，重复旧声景不自动成新未见保持。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "nature-sounds",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "sound-source-performance-and-boundaries",
+      "familyProposal": "following-sound-source-performance-and-boundaries",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断与当前信息有具体关系",
+          "weight": 0.4
+        },
+        {
+          "criterion": "现代链接与本人实际表现分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未知任务和条件不扩造",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "分类说明、本人脱稿声音和实际字形不同，需要各自当前原件，不能互代。",
+        "insufficientExample": "都一样，例子背过了就全部完成。",
+        "insufficientReason": "缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。",
+        "alternativeAnswers": "候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。"
+      },
+      "exercises": [
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "风水动物分类正确是否就证明两段背诵、十三字写字都完成？列不同证据。",
+          "answer": "分类说明、本人脱稿声音和实际字形不同，需要各自当前原件，不能互代。",
+          "analysis": "分类说明、本人脱稿声音和实际字形不同，需要各自当前原件，不能互代。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本课原件署名是什么？能凭网上常见版本补具名作者吗？",
+          "answer": "当前选自湖北教育出版社对应课本，无具名作者，不把未经当前来源核对的姓名冒充本页署名。",
+          "analysis": "当前选自湖北教育出版社对应课本，无具名作者，不把未经当前来源核对的姓名冒充本页署名。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创卡用会唱歌形容水壶声，可否当机器有人的情绪意识？",
+          "answer": "不能，拟人表达与真实机制心理分清，新卡不给实验结论。",
+          "analysis": "不能，拟人表达与真实机制心理分清，新卡不给实验结论。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "阅读链接瀑布先听后见的顺序可比较什么，是否自动成为整首必背任务？",
+          "answer": "可比较声音与画面观察组织，原页没有新增背诵要求，现代完整诗不复制充本课正文。",
+          "analysis": "可比较声音与画面观察组织，原页没有新增背诵要求，现代完整诗不复制充本课正文。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "没有实际音频，仅拟声文字，能精确给出音量并说本人听闻已验证吗？",
+          "answer": "不能，材料没给测量且非本人实际听闻，未知与未完成如实。",
+          "analysis": "不能，材料没给测量且非本人实际听闻，未知与未完成如实。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "听过示范才补对背诵，怎样保留起初声音和帮助？",
+          "answer": "原音、示范曝光与后改分别留，不倒改首答或恢复未见资格。",
+          "analysis": "原音、示范曝光与后改分别留，不倒改首答或恢复未见资格。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "nature-sounds-sound-source-performance-and-boundaries-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "分别列一项课内信息、一项文学联想和一项本人仍未完成的听闻交流，注明依据。",
+          "answer": "材料与本人状态身份清楚，模板不补真实活动，未知不编。",
+          "analysis": "材料与本人状态身份清楚，模板不补真实活动，未知不编。 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "at": "2026-11-02T13:28:15.746Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-nature-sounds-v1.json",
+      "sha256": "184b38af03a88c16d658b1d96512799fa1160343270aaab786057c5cbb983e05",
+      "physicalPages": [
+        93,
+        94,
+        95
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 8,
+      "preflightPublishable": false,
+      "gapCount": 103,
+      "linkedDraftMaterialReferences": 56,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 56,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-nature-sounds-v1.json",
+    "sha256": "7848eaa6c7adf096cc289736b2236d9bbc199f22c5b72f51b90f6e22e8f840e6",
+    "groups": 8,
+    "questions": 56,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

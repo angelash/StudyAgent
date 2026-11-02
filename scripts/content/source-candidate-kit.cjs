@@ -1,0 +1,23 @@
+// Assembly and integrity rules shared by authored exact-source candidates.
+// This module never writes a database, approves a review, or invents lesson content.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../..'),prefix='source:chinese:g3:02915a7d:',bookId='archive-book:chinese-g3-upper-02915a7db6517258',sourceSha256='02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+function draft({slug,unit,entry,start,end,scope,definitions,content,pageNotes}){
+ assert.equal(pageNotes.length,end-start+1);
+ const defs=definitions.map(([suffix,name,objective,successCriterion,strand])=>({id:prefix+suffix,version:1,name,subject:'chinese',grade:3,term:'upper',strand,objective,successCriterion,prerequisiteIds:[],curriculumVersion:'source-original-02915a7d-v1',status:'draft'}));
+ const goals=[...defs.map(d=>({atomId:d.id,objective:d.objective,successCriterion:d.successCriterion})),{atomId:'core:chinese:detail-evidence',objective:'用当前材料具体信息支持判断，分原文、表达与本人实际表现',successCriterion:'依据和判断关系清楚，声音原稿与帮助保留；未知和未完成不由范例代填'}].map((g,i)=>({id:'goal-'+(i+1),...g}));assert(goals.length<=8);
+ return{format:'source-original-lesson-draft-v1',status:'draft_needs_materials_and_review',source:{bookId,lessonId:bookId+':unit'+unit+':entry'+entry,sourceSha256,pageStart:start,pageEnd:end,publicationYear:null,curriculumStandardYear:null},definitionCandidates:defs,targetIds:goals.map(g=>g.atomId),sourceReview:{confirmedRange:true,statement:'准确原件所选物理页已逐张核查正文、脚注、字表和任务范围；AI来源核对不等教师、评分或独立题族审核。',pages:pageNotes.map((statement,i)=>({page:start+i,visualChecked:true,statement}))},scope:{...scope,teacherReviewed:false,published:false},content:{...content,goals,prerequisites:[],retention:{intervalDays:[1,3,7,14],anchor:'last_relevant_teaching_or_help',instructions:'先审核目标、评分、独立结构与充分未见材料，再按真实日期安排。每间隔一份样题不当充分库存；原篇已学、帮助和曝光保留，参考与模拟日期不当本人长期效果。'}},editorNotes:{slug,teacherReviewed:false,automaticPublication:false,realLearnerEvidence:false,sourceBoundary:'现代原页、完整现代课文和现代注释全文不复制进候选；原创讲解配必要短引核对。',materialStatus:'候选讲解、检查和量规；教师、目标对齐、独立结构、评分金样本和充分保持库存仍待。',pacing:'识读、写字、朗读、积累和理解表达分次完成，不能由一次短练习推整课全部目标。'}};
+}
+function group(lesson,suffix,structure,mode,criteria,rows){
+ assert.equal(rows.length,7);assert.equal(criteria.length,3);
+ return{lesson,atomId:suffix.startsWith('core:')?suffix:prefix+suffix,structure,familyProposal:'following-'+structure,familyIndependenceReviewed:false,mode,rubric:criteria.map((criterion,i)=>({criterion,weight:[0.4,0.4,0.2][i]})),goldAnchors:{acceptedExample:rows[0][1],insufficientExample:'都一样，例子背过了就全部完成。',insufficientReason:'缺当前具体信息与支持关系，或未给本人本次实际声音原稿；示例和实际表现混同。',alternativeAnswers:'候选人工核对参考，允许有依据的不同表达。原答、帮助与未知保留，不自动评分或批准独立题族和库存。'},exercises:rows.map(([stem,answer],i)=>({id:lesson+'-'+structure+'-'+(i+1),purpose:i<3?['understanding','procedure','transfer'][i]:'retention',dimension:i<3?['understanding','procedure','transfer'][i]:['understanding','procedure','transfer','understanding'][i-3],proposedIntervalDays:i<3?null:[1,3,7,14][i-3],stem,answer,analysis:answer+' 仅供候选人工核查，不自动评分；示例、帮助或重复原篇不当本人未见首答。',expectedSeconds:mode==='image_upload'?300:240}))};
+}
+function write(basename,lessons,groups,reservePolicy){
+ const sourceLessons=lessons.map(d=>{const file='resources/curriculum/source-lessons/chinese-g3-'+d.editorNotes.slug+'-v1.json',bytes=Buffer.from(JSON.stringify(d,null,2)+'\n');fs.writeFileSync(path.join(root,file),bytes);assert.deepEqual(groups.filter(g=>g.lesson===d.editorNotes.slug).map(g=>g.atomId).sort(),[...d.targetIds].sort());return{lesson:d.editorNotes.slug,path:file,sha256:sha(bytes),source:d.source};});
+ const ids=groups.flatMap(g=>g.exercises.map(q=>q.id));assert.equal(new Set(ids).size,ids.length);
+ const bundle={format:'source-following-original-materials-v1',status:'editorial_candidate',sourceLessons,teacherReviewed:false,targetAlignmentReviewed:false,scoringReviewed:false,familyIndependenceReviewed:false,automaticPublication:false,reservePolicy,groups};fs.writeFileSync(path.join(root,'resources/curriculum/source-lesson-materials/'+basename+'.json'),JSON.stringify(bundle,null,2)+'\n');
+ const modes={};for(const g of groups)modes[g.mode]=(modes[g.mode]||0)+g.exercises.length;
+ console.log(JSON.stringify({drafts:lessons.length,targets:lessons.map(d=>d.targetIds.length),newDefinitions:lessons.reduce((n,d)=>n+d.definitionCandidates.length,0),groups:groups.length,questions:ids.length,modes,teacherReviewed:false,published:false,learnerEvidenceCreated:false}));
+}
+module.exports={draft,group,write};
