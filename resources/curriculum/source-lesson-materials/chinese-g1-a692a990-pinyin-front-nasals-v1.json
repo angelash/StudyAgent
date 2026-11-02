@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-front-nasals",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "sha256": "926a1980a99ec341572d340c0be26277d4a7f87a344258cfe2e1a986a6215f4d",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry13",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 51,
+        "pageEnd": 53,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-frontnasal-voice",
+      "structure": "pinyin-five-front-nasals-real-voice",
+      "familyProposal": "a692a990-pinyin-five-front-nasals-real-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人连贯读五韵母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "鼻音收尾与当前音值对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范和真实范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五项连贯音值与当前形式对应，收尾按本人真实声音核，不报字母名称串。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读an en in un ün并录音，说明是否先听过准确示范。",
+          "answer": "五项连贯音值与当前形式对应，收尾按本人真实声音核，不报字母名称串。",
+          "analysis": "五项连贯音值与当前形式对应，收尾按本人真实声音核，不报字母名称串。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较an与en，补读in un ün。",
+          "answer": "当前起始音与鼻音收尾分别听核，un按完整音值，字形提示不代声音。",
+          "analysis": "当前起始音与鼻音收尾分别听核，un按完整音值，字形提示不代声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给ün、in、an、un、en，本人看清后逐项实际读。",
+          "answer": "按当前形式与顺序听核，不背原来的五音串代辨认。",
+          "analysis": "按当前形式与顺序听核，不背原来的五音串代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读清三项，录音后怎样说明其余两项？",
+          "answer": "保留真实已读和卡顿，未覆盖项待帮助后练，不用他人声音或熟悉感补齐。",
+          "analysis": "保留真实已读和卡顿，未覆盖项待帮助后练，不用他人声音或熟悉感补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看到末尾n就能说明本人已发出合适鼻音收尾吗？本人实际试两项。",
+          "answer": "不能只凭字形，需要本人真实声音；文字观察和实际发音分别核。",
+          "analysis": "不能只凭字形，需要本人真实声音；文字观察和实际发音分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请准确示范者另选an或en不先显示目标，发声后本人回应。",
+          "answer": "当前原声与本人回应对应才核听辨，提示和重复条件如实。",
+          "analysis": "当前原声与本人回应对应才核听辨，提示和重复条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-five-front-nasals-real-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读五项，选一个当前想练的音说明得到的帮助。",
+          "answer": "具体目标接本人原音，原试与后改保留，不要求编造错误或进步。",
+          "analysis": "具体目标接本人原音，原试与后改保留，不要求编造错误或进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-yuan-yin-yun",
+      "structure": "pinyin-yuan-yin-yun-whole-voice",
+      "familyProposal": "a692a990-pinyin-yuan-yin-yun-whole-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人整体读三音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前完整形式音值准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "省点与帮助条件分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三个完整音节声音可核，不用英语名称逐个串读，帮助真实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人整体认读yuan yin yun，再说明是否先听过准确示范。",
+          "answer": "三个完整音节声音可核，不用英语名称逐个串读，帮助真实。",
+          "analysis": "三个完整音节声音可核，不用英语名称逐个串读，帮助真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人分别读yun与yin，最后补读yuan。",
+          "answer": "当前形式与真实声音对应，yun的省点不硬换成un音值。",
+          "analysis": "当前形式与真实声音对应，yun的省点不硬换成un音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给yin、yuan、yun，本人看清整体形式后实际读。",
+          "answer": "按当前顺序与声音核，不背原三项顺串代辨认。",
+          "analysis": "按当前顺序与声音核，不背原三项顺串代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读会yin时，录音怎样说明另两项？",
+          "answer": "实际一项范围清楚，yuan yun待帮助后练，不用参考声音补本人。",
+          "analysis": "实际一项范围清楚，yuan yun待帮助后练，不用参考声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "yun里写成u，可以不看整体条件就按任何un形式读吗？本人再读说明。",
+          "answer": "不能，按本课整体音节及ün音值联系核，不由表面u机械替换声音。",
+          "analysis": "不能，按本课整体音节及ün音值联系核，不由表面u机械替换声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读三整体音节，说明是否跟读或刚看过提示。",
+          "answer": "声音与帮助条件清楚，跟读后的表现不倒作无帮助初次认读。",
+          "analysis": "声音与帮助条件清楚，跟读后的表现不倒作无帮助初次认读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-yuan-yin-yun-whole-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选择最需要练的一项整体音节再读，比较前后真实尝试。",
+          "answer": "比较接本人原音，没有明显变化可如实说，不要求为了任务编进步。",
+          "analysis": "比较接本人原音，没有明显变化可如实说，不要求为了任务编进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-frontnasal-blend",
+      "structure": "pinyin-frontnasal-current-parts",
+      "familyProposal": "a692a990-pinyin-frontnasal-current-parts",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前声母介母鼻韵母完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "省点和标调条件准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人连成当前音节",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前g k h组合介母u保留并连成音节，组成说明不代真实声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读guān、kuān、huān，再说明中间的介母。",
+          "answer": "当前g k h组合介母u保留并连成音节，组成说明不代真实声音。",
+          "analysis": "当前g k h组合介母u保留并连成音节，组成说明不代真实声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读juān、quān、xuān，说明省点条件。",
+          "answer": "当前j q x组合介母ü按条件省点，不能按表面uan一律换成u音。",
+          "analysis": "当前j q x组合介母ü按条件省点，不能按表面uan一律换成u音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给jūn、lún、pīn、chén，本人看清后实际拼读。",
+          "answer": "当前鼻韵母、省点条件与标调逐项核，不能只看同样写u就换成同音。",
+          "analysis": "当前鼻韵母、省点条件与标调逐项核，不能只看同样写u就换成同音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "把guān与juān读成介母完全一样后，本人怎样保留原音再试？",
+          "answer": "先保留真实尝试，再看两组组合图听准确示范，后改不覆盖初次。",
+          "analysis": "先保留真实尝试，再看两组组合图听准确示范，后改不覆盖初次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只指出声母和韵母还没有连读，本次已做哪一步？",
+          "answer": "已辨当前组成，完整音节还待本人实际连读，不把准备当全部完成。",
+          "analysis": "已辨当前组成，完整音节还待本人实际连读，不把准备当全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人从本件两拼和三拼各选一项重读，说明所用帮助。",
+          "answer": "两种当前形式各有真实声音，标调和条件准确，帮助后表现与初答分开。",
+          "analysis": "两种当前形式各有真实声音，标调和条件准确，帮助后表现与初答分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-frontnasal-current-parts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两个当前鼻韵母音节实际读，再说已覆盖与仍待练的范围。",
+          "answer": "范围按本人原音，介母和省点逐项核，不从部分成功推所有组合都会。",
+          "analysis": "范围按本人原音，介母和省点逐项核，不从部分成功推所有组合都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ship-writing",
+      "structure": "pinyin-lunchuan-own-writing",
+      "familyProposal": "a692a990-pinyin-lunchuan-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖lún chuán",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母次序格位标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范例和真实乘船经历分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两音节实际覆盖，调号分别在u和a，ch组合与各字母格位按完整范形核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件范例在四线格写lún chuán，上传原稿。",
+          "answer": "两音节实际覆盖，调号分别在u和a，ch组合与各字母格位按完整范形核。",
+          "analysis": "两音节实际覆盖，调号分别在u和a，ch组合与各字母格位按完整范形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察范写，再本人写两项并指出每个音节的标调位置。",
+          "answer": "原稿由本人实际写，字母次序与调号清楚，不用键入字代手写。",
+          "analysis": "原稿由本人实际写，字母次序与调号清楚，不用键入字代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸实际写范例，选ch组合或下伸字母说明一处位置。",
+          "answer": "具体说明对应本人当前作品，格线只是参照，不增加成字母笔画。",
+          "analysis": "具体说明对应本人当前作品，格线只是参照，不增加成字母笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写lún还没写chuán，上传如何说明？",
+          "answer": "只核实际一项，后一音节待写，不用范字图补为本人已完成。",
+          "analysis": "只核实际一项，后一音节待写，不用范字图补为本人已完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若chuán漏了u或调号位置不对，怎样留原稿再订正？",
+          "answer": "保留原写，按当前完整组成和a上标调重写，后改不倒作初稿。",
+          "analysis": "保留原写，按当前完整组成和a上标调重写，后改不倒作初稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写出lún chuán就能说本人真实乘过轮船吗？上传后说明。",
+          "answer": "不能，当前是拼音书写范例，真实乘船经历另看实际过程与本人说明。",
+          "analysis": "不能，当前是拼音书写范例，真实乘船经历另看实际过程与本人说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-lunchuan-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传两音节原稿，另说真实笔顺和范写帮助怎样核。",
+          "answer": "字形看原稿，先后依实际书写过程，帮助和原写后改分开，静图不独证全部。",
+          "analysis": "字形看原稿，先后依实际书写过程，帮助和原写后改分开，静图不独证全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-white-grass-home-is",
+      "structure": "pinyin-bai-cao-jia-shi-reading",
+      "familyProposal": "a692a990-pinyin-bai-cao-jia-shi-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语声音和意义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与识字行范围分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四识字目标实际声音可核，词语帮助和范围如实，不把所有词中字升必写。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读白草家是四字，再在成人帮助下读蓝天白云等本件词语。",
+          "answer": "四识字目标实际声音可核，词语帮助和范围如实，不把所有词中字升必写。",
+          "analysis": "四识字目标实际声音可核，词语帮助和范围如实，不把所有词中字升必写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人按家白是草的新顺序逐字认读。",
+          "answer": "当前字形与真实读音对应，不顺背旧排列代辨认。",
+          "analysis": "当前字形与真实读音对应，不顺背旧排列代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色图给白云与草地，本人读相关字词并说明一处所指。",
+          "answer": "字音字义接当前给定材料，角色图景不证明本人现在实地观察过。",
+          "analysis": "字音字义接当前给定材料，角色图景不证明本人现在实地观察过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读出三字，录音怎样说明第四字？",
+          "answer": "保留实际已读和卡住处，未覆盖项待帮助后练，不用参考音补齐。",
+          "analysis": "保留实际已读和卡住处，未覆盖项待帮助后练，不用参考音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "诗里出现家字，就能直接填成本人住址或家庭情况吗？本人读字后说明。",
+          "answer": "不能，当前是指定识字与诗意理解，本人真实资料不能由文学例子替填。",
+          "analysis": "不能，当前是指定识字与诗意理解，本人真实资料不能由文学例子替填。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际读草原或森林等本件词语，说明成人帮助了哪部分。",
+          "answer": "本人声音与示范分明，未独立读到如实，词语全部字不自动成为识字行新增目标。",
+          "analysis": "本人声音与示范分明，未独立读到如实，词语全部字不自动成为识字行新增目标。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-bai-cao-jia-shi-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读四字与一个给定词，说明读字、词义与手写实际做过哪些。",
+          "answer": "任务范围真实，识读不自动变成四汉字已本人写过，未做部分如实。",
+          "analysis": "任务范围真实，识读不自动变成四汉字已本人写过，未做部分如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-front-nasals",
+      "atomId": "source:chinese:g1:a692a990:pinyin-home-reading",
+      "structure": "pinyin-home-poem-metaphors",
+      "familyProposal": "a692a990-pinyin-home-poem-metaphors",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接本件实际阅读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "家与花朵比喻范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色资料与本人事实分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "概述对应本件实际读到内容，帮助与范围清楚，现代全文回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件家后，本人用自己的话说一组事物与家怎样联系。",
+          "answer": "概述对应本件实际读到内容，帮助与范围清楚，现代全文回原件。",
+          "analysis": "概述对应本件实际读到内容，帮助与范围清楚，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际读过一部分后，本人解释诗中把孩子比作花朵的一处意思。",
+          "answer": "可联系成长或关怀等当前比喻，不能说人真的变成植物，解释接本件范围。",
+          "analysis": "可联系成长或关怀等当前比喻，不能说人真的变成植物，解释接本件范围。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创句说书柜是书的家，这与真实人的住址信息一样吗？本人说明。",
+          "answer": "不一样，这是形象联系，原创比喻与本人住址或真实家庭资料分开。",
+          "analysis": "不一样，这是形象联系，原创比喻与本人住址或真实家庭资料分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有看过插图还没实际共读，本次阅读进度怎样说明？",
+          "answer": "如实说看过图或准备问题，完整读篇仍待发生，不补造成人和本人已读完。",
+          "analysis": "如实说看过图或准备问题，完整读篇仍待发生，不补造成人和本人已读完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "诗中第一人称关于祖国的话能直接当任何学生的国籍记录吗？",
+          "answer": "不能，文学角色与本人资料分开，本次可以解释诗意，不强制披露或代填身份。",
+          "analysis": "不能，文学角色与本人资料分开，本次可以解释诗意，不强制披露或代填身份。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后提一个当前问题，录本人回应与得到的帮助。",
+          "answer": "问题回应对应本件，未知细节回原篇，成人解释和本人表达分别留。",
+          "analysis": "问题回应对应本件，未知细节回原篇，成人解释和本人表达分别留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-front-nasals-pinyin-home-poem-metaphors-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次概述一处已读内容，再说下一步愿意继续读或问什么。",
+          "answer": "已读按真实范围，后续计划不提前算完成，不由角色或参考句补本人事实。",
+          "analysis": "已读按真实范围，后续计划不提前算完成，不由角色或参考句补本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

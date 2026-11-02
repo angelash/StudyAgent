@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "sha256": "c07b4aecb3474251185bd1e4d2751d619de0807fc89c1e8e645eda4ba736efdb",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry12",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 49,
+        "pageEnd": 50,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ieueer-voice",
+      "structure": "pinyin-ieue-er-real-voice",
+      "familyProposal": "a692a990-pinyin-ieue-er-real-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读当前三韵母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "ie üe连贯 er特殊音值清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范与范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三项当前声音分别听核，ie üe连贯，er按特殊韵母，不报字母名称串替音值。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读ie üe er，录音说明是否先听过准确示范。",
+          "answer": "三项当前声音分别听核，ie üe连贯，er按特殊韵母，不报字母名称串替音值。",
+          "analysis": "三项当前声音分别听核，ie üe连贯，er按特殊韵母，不报字母名称串替音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较ie与üe，最后读er。",
+          "answer": "起始音和当前完整音值有真实声音，口形或字形说明不能代发音。",
+          "analysis": "起始音和当前完整音值有真实声音，口形或字形说明不能代发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给er、üe、ie，本人看清后逐项实际认读。",
+          "answer": "当前对象与声音对应，不背旧顺串替逐项辨认。",
+          "analysis": "当前对象与声音对应，不背旧顺串替逐项辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会读ie时，录音怎样说明另外两项？",
+          "answer": "实际一项范围清楚，üe与er待帮助后练，不用参考声音补本人。",
+          "analysis": "实际一项范围清楚，üe与er待帮助后练，不用参考声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "er写两个字母就一定能加任意声母吗？本人读er后说明。",
+          "answer": "不能，er是本课特殊韵母、可自成音节，不与声母相拼，声音仍核本人实际读。",
+          "analysis": "不能，er是本课特殊韵母、可自成音节，不与声母相拼，声音仍核本人实际读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请准确示范者另选ie或üe不先显示目标，发声后本人回应。",
+          "answer": "当前原声与本人回应对应，目标可见和重复提示如实，未给声音不算听辨。",
+          "analysis": "当前原声与本人回应对应，目标可见和重复提示如实，未给声音不算听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-er-real-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读三项，选一处实际想练的声音说明所获帮助。",
+          "answer": "目标接本人当前原音，前后尝试分清，不要求故意造错或编进步。",
+          "analysis": "目标接本人当前原音，前后尝试分清，不要求故意造错或编进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ye-yue",
+      "structure": "pinyin-ye-yue-conditional-spelling",
+      "familyProposal": "a692a990-pinyin-ye-yue-conditional-spelling",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人整体读ye yue",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前省点条件准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "整体认读与机械拆拼分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "ye联系ie、yue联系üe，按完整音节实际听核，不用英语名称串代替。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人整体认读ye与yue，再说它们本课分别联系哪种韵母。",
+          "answer": "ye联系ie、yue联系üe，按完整音节实际听核，不用英语名称串代替。",
+          "analysis": "ye联系ie、yue联系üe，按完整音节实际听核，不用英语名称串代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确yue示范，再本人读nüè与jué，说明两点处理不同。",
+          "answer": "n组合保点、j组合省点，韵母音值仍按当前üe核，不能看到u就换音。",
+          "analysis": "n组合保点、j组合省点，韵母音值仍按当前üe核，不能看到u就换音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给yue、ye、lüè、xué，本人看清完整形式后实际读。",
+          "answer": "整体音节与具体拼读分别核，l留点、x省点条件清楚。",
+          "analysis": "整体音节与具体拼读分别核，l留点、x省点条件清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看见带u的拼写，就能把yue和任何含u形式读成同一种音吗？",
+          "answer": "不能，先看整体形式或声母条件，再按准确示范核真实音值，不凭表面字母猜。",
+          "analysis": "不能，先看整体形式或声母条件，再按准确示范核真实音值，不凭表面字母猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把lüè误去点后，本人应怎样保留原写说明并重新尝试声音？",
+          "answer": "保留原误与当前条件，按l组合留两点，再由本人实际读，后改不覆盖原答。",
+          "analysis": "保留原误与当前条件，按l组合留两点，再由本人实际读，后改不覆盖原答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读ye yue，说明本次是否跟读或先看过提示。",
+          "answer": "本人声音与帮助真实，跟读后表现不倒作无帮助初次认读。",
+          "analysis": "本人声音与帮助真实，跟读后表现不倒作无帮助初次认读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ye-yue-conditional-spelling-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选一个整体音节和一个本件üe拼读形式，实际读后说明条件。",
+          "answer": "当前对象与声音对应，整体形式和n l或j q x条件分清，不推出无条件省点。",
+          "analysis": "当前对象与声音对应，整体形式和n l或j q x条件分清，不推出无条件省点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ieue-blend",
+      "structure": "pinyin-ieue-current-blending",
+      "familyProposal": "a692a990-pinyin-ieue-current-blending",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前声母韵母标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人连成当前音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "er特殊规则不混套",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五项组成与声调逐项听核，n l与j q x后的书写条件不同但韵母音值不硬换。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读piě、dié、lüè、jué、xué并录音。",
+          "answer": "五项组成与声调逐项听核，n l与j q x后的书写条件不同但韵母音值不硬换。",
+          "analysis": "五项组成与声调逐项听核，n l与j q x后的书写条件不同但韵母音值不硬换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读bié与qiē，分别指出当前标调。",
+          "answer": "当前ie组合与声调对应，组成说明之后仍核本人真实声音。",
+          "analysis": "当前ie组合与声调对应，组成说明之后仍核本人真实声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给quē、jiě、nüè、xié，本人看清后实际拼读。",
+          "answer": "声母韵母和标调按新条件更新，不照背旧序列或只认开头猜。",
+          "analysis": "声母韵母和标调按新条件更新，不照背旧序列或只认开头猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "把er也随意接在本课每个声母后练，符合本课规则吗？本人读er说明。",
+          "answer": "不符合，er是特殊韵母不与声母相拼，不能由ie的例子推任意接法。",
+          "analysis": "不符合，er是特殊韵母不与声母相拼，不能由ie的例子推任意接法。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只指出piě有p和ie还没连读，当前完成了哪一步？",
+          "answer": "可说明已辨组成，完整音节仍待本人实际连读，不把准备说成完整拼读。",
+          "analysis": "可说明已辨组成，完整音节仍待本人实际连读，不把准备说成完整拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读一个本件ie与一个üe音节，说明看过或听过什么帮助。",
+          "answer": "当前两项声音与条件清楚，帮助后流畅不覆盖原先卡顿。",
+          "analysis": "当前两项声音与条件清楚，帮助后流畅不覆盖原先卡顿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-ieue-current-blending-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两项当前拼读实际读，再说已覆盖和仍待练的范围。",
+          "answer": "范围依据本人真实声音，特殊规则和省点条件分别核，不从部分推全部都会。",
+          "analysis": "范围依据本人真实声音，特殊规则和省点条件分别核，不从部分推全部都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-homework-writing",
+      "structure": "pinyin-xiezuoye-own-writing",
+      "familyProposal": "a692a990-pinyin-xiezuoye-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖三音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母次序格位与e o e标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范例词与真实作业完成分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三音节实际覆盖，调号分别在e o e，字母次序和格位按完整范形核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件范例在四线格写xiě zuò yè，上传原稿。",
+          "answer": "三音节实际覆盖，调号分别在e o e，字母次序和格位按完整范形核。",
+          "analysis": "三音节实际覆盖，调号分别在e o e，字母次序和格位按完整范形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察本件范写，再本人逐项写三个音节并指出调号。",
+          "answer": "本人原稿可辨，当前标调位置正确，不用键入文字代实际手写。",
+          "analysis": "本人原稿可辨，当前标调位置正确，不用键入文字代实际手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸实际写三项，选一处格位或笔画位置作说明。",
+          "answer": "说明接本人当前原稿，格线是参照，声音或愿望不代本人写过。",
+          "analysis": "说明接本人当前原稿，格线是参照，声音或愿望不代本人写过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写xiě与yè还没写zuò，上传怎样说明？",
+          "answer": "按实际两项保留范围，zuò待写，不用范字图片补为已经完成。",
+          "analysis": "按实际两项保留范围，zuò待写，不用范字图片补为已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若xiě调号写错位置，怎样保留原稿再订正上传？",
+          "answer": "保留原写，按ie标e的当前条件重写，后改不倒作初稿。",
+          "analysis": "保留原写，按ie标e的当前条件重写，后改不倒作初稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写出xiě zuò yè就能登记本人已经做完真实作业吗？上传后说明。",
+          "answer": "不能，当前是拼音范写任务，真实作业完成另需本人实际材料与过程。",
+          "analysis": "不能，当前是拼音范写任务，真实作业完成另需本人实际材料与过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xiezuoye-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三音节原稿，另说范写帮助和真实笔顺怎样核。",
+          "answer": "字形看原稿，先后依本人过程，提示与原写后改分别说明，静图不独证全部。",
+          "analysis": "字形看原稿，先后依本人过程，提示与原写后改分别说明，静图不独证全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-snow-child",
+      "structure": "pinyin-xue-er-context-reading",
+      "familyProposal": "a692a990-pinyin-xue-er-context-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读雪儿",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本件儿独立标音条件清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词语帮助与识字范围分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两识字目标实际声音对应，词语帮助和范围如实，不把所有词中字都升必写。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读雪与儿，再在成人帮助下读本件雪花夜色等词。",
+          "answer": "两识字目标实际声音对应，词语帮助和范围如实，不把所有词中字都升必写。",
+          "analysis": "两识字目标实际声音对应，词语帮助和范围如实，不把所有词中字都升必写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听本件儿ér独立标音示范，再本人读儿并回当前读篇。",
+          "answer": "本页按独立ér核，其他儿化语境另看条件，不一律把所有儿都独立或都并入前音。",
+          "analysis": "本页按独立ér核，其他儿化语境另看条件，不一律把所有儿都独立或都并入前音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片先放儿再放雪，本人看字实际认读并说一个当前词义。",
+          "answer": "字形声音与当前词义对应，不背原顺串代辨认，解释不代真实声音。",
+          "analysis": "字形声音与当前词义对应，不背原顺串代辨认，解释不代真实声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读出雪时，录音后怎样说明儿字？",
+          "answer": "实际一字范围清楚，另一字待帮助后练，不用词语熟悉或参考声音补齐。",
+          "analysis": "实际一字范围清楚，另一字待帮助后练，不用词语熟悉或参考声音补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材雪景就能说明本人现在实际看到了雪吗？本人读雪字后说明。",
+          "answer": "不能，当前词义或文学图景与本人真实观察分开，不由插图补经历。",
+          "analysis": "不能，当前词义或文学图景与本人真实观察分开，不由插图补经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际读本件一个词语，说明成人帮助过哪部分。",
+          "answer": "本人声音与成人示范分明，未独立读到的部分如实，不把提示隐藏。",
+          "analysis": "本人声音与成人示范分明，未独立读到的部分如实，不把提示隐藏。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-xue-er-context-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读两字和选定词语，分别说读字、读词与书写完成哪些。",
+          "answer": "任务范围按真实过程，本课识字不自动成为两汉字已手写，未做部分如实。",
+          "analysis": "任务范围按真实过程，本课识字不自动成为两汉字已手写，未做部分如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ie-ue-er",
+      "atomId": "source:chinese:g1:a692a990:pinyin-moon-reading",
+      "structure": "pinyin-moon-curves-text-and-observation",
+      "familyProposal": "a692a990-pinyin-moon-curves-text-and-observation",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接本件实际读篇",
+          "weight": 0.4
+        },
+        {
+          "criterion": "弯曲景物与文学范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人共读观察和帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "解释对应本件实际内容，帮助与本人读到范围清楚，现代全文回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件月儿弯弯后，本人概述一处弯曲景物。",
+          "answer": "解释对应本件实际内容，帮助与本人读到范围清楚，现代全文回原件。",
+          "analysis": "解释对应本件实际内容，帮助与本人读到范围清楚，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际读过一部分后，本人说诗中两处弯曲形象怎样连起来。",
+          "answer": "说明接当前本件景物，不把未读后文凭常识补成原篇内容。",
+          "analysis": "说明接当前本件景物，不把未读后文凭常识补成原篇内容。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "诗里写弯月，就能说每次真实看到的月亮都固定同样弯吗？",
+          "answer": "不能，文学当前图景不代表每次真实观察都相同，实际形状和观察条件另核。",
+          "analysis": "不能，文学当前图景不代表每次真实观察都相同，实际形状和观察条件另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "还没实际共读、只看过插图时，本次阅读怎样说明？",
+          "answer": "如实说看过图或准备问题，完整读篇仍待发生，不补造本人或成人已经读完。",
+          "analysis": "如实说看过图或准备问题，完整读篇仍待发生，不补造本人或成人已经读完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色所见景色可以直接当本人现在的真实观察记录吗？",
+          "answer": "不可以，文本角色、插图和本人实际观察分别说明，不能互相替代。",
+          "analysis": "不可以，文本角色、插图和本人实际观察分别说明，不能互相替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后问一处当前词义，录本人回应及得到的帮助。",
+          "answer": "问题回应对应本件，未知细节回原页，成人解释与本人表达分开。",
+          "analysis": "问题回应对应本件，未知细节回原页，成人解释与本人表达分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ie-ue-er-pinyin-moon-curves-text-and-observation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次概述读到的一处内容，再说下一步愿意读或问什么。",
+          "answer": "已读真实范围与后续计划分清，不以愿望或参考句补成已经完成的过程。",
+          "analysis": "已读真实范围与后续计划分清，不以愿望或参考句补成已经完成的过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

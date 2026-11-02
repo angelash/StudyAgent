@@ -1,0 +1,326 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry10",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 45,
+    "pageEnd": 46,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aieiui-voice",
+      "version": 1,
+      "name": "三复韵母的实际连读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "复韵母发音",
+      "objective": "本人实际读ai ei ui并依准确示范读四声",
+      "successCriterion": "发音连贯，字形顺序与当前声音对应，不把两个字母名称分别报读当韵母",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aieiui-tones",
+      "version": 1,
+      "name": "三复韵母的标调辨认",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音标调",
+      "objective": "分清ai ei ui当前字母顺序和标调位置",
+      "successCriterion": "ai标a、ei标e、ui标i，i标调不另加点，观察不代本人声音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-aieiui-blend",
+      "version": 1,
+      "name": "当前两拼三拼音节",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "音节拼读",
+      "objective": "本人拼读本件gāi guāi lèi tuǐ等音节",
+      "successCriterion": "声母介母复韵母和标调完整，实际连读按当前组合核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-lineup-writing",
+      "version": 1,
+      "name": "pái duì的本人书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人按本件范例在四线格写pái duì并核标调",
+      "successCriterion": "两音节原稿可辨，字母次序、a和i上的调号与格位对应",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-sister-grandma",
+      "version": 1,
+      "name": "妹奶识读与词语轻声",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与词语",
+      "objective": "本人识读妹奶并读本件妹妹奶奶等词语",
+      "successCriterion": "单字与词中后音节轻声按当前条件核，不强制披露本人家庭关系",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-washing-reading",
+      "version": 1,
+      "name": "洗手歌读篇与实际过程",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "阅读与表达",
+      "objective": "成人帮助读本件后概述一处词语或动作顺序",
+      "successCriterion": "解释接本件实际阅读，角色洗手与本人真实清洁过程分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-aieiui-voice",
+    "source:chinese:g1:a692a990:pinyin-aieiui-tones",
+    "source:chinese:g1:a692a990:pinyin-aieiui-blend",
+    "source:chinese:g1:a692a990:pinyin-lineup-writing",
+    "source:chinese:g1:a692a990:pinyin-sister-grandma",
+    "source:chinese:g1:a692a990:pinyin-washing-reading"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课选定页段已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 45,
+        "visualChecked": true,
+        "statement": "已看三复韵母四声、两拼三拼及具体组合，标调位置和u介母按原图与规范化文字核。"
+      },
+      {
+        "page": 46,
+        "visualChecked": true,
+        "statement": "已看妹妹奶奶、洗手歌、妹奶识字行与pái duì范写；词中轻声、本人手写和真实洗手过程分开，现代全文仅本地。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "ai ei ui：连贯发音与标调",
+    "pinyinFinals": [
+      "ai",
+      "ei",
+      "ui"
+    ],
+    "recognitionCharacters": [
+      "妹",
+      "奶"
+    ],
+    "writingCharacters": [],
+    "sourceWritingExamples": [
+      "pái duì"
+    ],
+    "authoredToneMarkComparisonsAdditional": true,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "ai ei ui：连贯发音与标调",
+    "activation": {
+      "prompt": "把ai与ui的标调形式摆在一起看，调号总在第一个写出的字母上吗？先看原表，再听准确声音。",
+      "expectedObservation": "能发现不同组合标调位置不同，字形观察与本人实际读音各要核。",
+      "bridge": "从连贯发音进入当前标调，再拼读音节并按范例实际写。"
+    },
+    "concept": {
+      "explanation": "ai、ei、ui是本课的三个复韵母。发音时要连贯地滑动，不把两个字母的名称停开报读。ai从a向i滑动，ei从e向i滑动；ui是uei的省写形式，实际发音按准确示范连贯读，不只是把u和单独i两个音硬接起来。先听一项，再由本人尝试，口形提示不代真实声音。\n声调要看当前韵母。ai的调号放在a上，写āi、ái、ǎi、ài；ei放在e上，写ēi、éi、ěi、èi；ui放在i上，写uī、uí、uǐ、uì。i已经标调时不再另加原来的点。这里可以用字形比较认识规则，是否实际读准四声仍要听本人声音，不能以写对标调代发音正确。\n本件把g和āi拼成gāi，把g、u、āi连成guāi；两者是否有介母u要分别看。再看lèi与tuǐ，声母、复韵母与调号也都按当前形式更新。先认清组成，再连成当前音节，不把复韵母内部两个字母硬拆成两个独立音节，也不只数书写字符判拼读步骤。\n本课范写是pái duì。先看两个音节的字母次序与声调，再由本人在四线格实际写：pái调号在a，duì调号在i，标调后的i不另加点。格线帮助安排上下位置，先看本件完整范形，再看本人原稿；书写与真实排队活动分开。\n识字行是妹、奶，本件词语是妹妹、奶奶。单字与词中读音有条件，词语后一个音节按本件轻声读。可以只谈教材角色或明确原创人物，不要求学生说明本人是否有妹妹或由谁照顾。读洗手歌时，先在成人帮助下看原篇，再概述本次实际读到的一处动作或顺序；文字中的角色洗手不直接登记成本人已经完成清洁。",
+      "points": [
+        "复韵母发音连贯",
+        "ui按uei省写形式听读",
+        "ai ei ui标调位置不同",
+        "i标调不另加点",
+        "gāi guāi介母分别看",
+        "范写pái duì按本人原稿",
+        "家庭角色与本人经历分开"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾先比较gāi与guāi，再写pái duì，最后读角色卡上的妹妹。",
+      "steps": [
+        {
+          "explanation": "gāi是g与āi，guāi还含介母u，按当前组成实际连读。",
+          "board": [
+            "g＋āi",
+            "g＋u＋āi",
+            "介母有无分别核"
+          ]
+        },
+        {
+          "explanation": "本人写pái duì，核调号分别在a和i，i不另加点。",
+          "board": [
+            "pái：调在a",
+            "duì：调在i",
+            "本人实际写"
+          ]
+        },
+        {
+          "explanation": "词语妹妹后音节按当前轻声读，角色关系不替本人资料。",
+          "board": [
+            "识字目标：妹",
+            "词语：妹妹",
+            "给定角色与本人分清"
+          ]
+        }
+      ],
+      "conclusion": "声音组成、标调、本人书写与词语条件逐项核，不只看字母个数。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "ai ei ui的四声形式",
+        "headers": [
+          "当前韵母",
+          "四声形式",
+          "标调观察"
+        ],
+        "rows": [
+          [
+            "ai",
+            "āi ái ǎi ài",
+            "调号在a上"
+          ],
+          [
+            "ei",
+            "ēi éi ěi èi",
+            "调号在e上"
+          ],
+          [
+            "ui",
+            "uī uí uǐ uì",
+            "调号在i上，i不另加点"
+          ]
+        ],
+        "explanation": "文字表帮助辨形，十二项实际声音和本人范例书写仍分别核，ui的声音不按字母名称串代替。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "认为所有复韵母都把调号写在第一个字母上。",
+        "alternatives": [
+          "没有按当前组合观察标调条件。"
+        ],
+        "verification": "将āi与uī并排，分别指出调号位置。",
+        "correctiveFeedback": "ai标a、ei标e、ui标i，当前组合分别核，i标调不另加点。"
+      },
+      {
+        "observation": "把guāi中的u漏掉，或按四个字符读成四个独立音。",
+        "alternatives": [
+          "没有区分声母介母与复韵母的连贯组成。"
+        ],
+        "verification": "先指出g、u、āi，再听准确完整示范由本人读。",
+        "correctiveFeedback": "拼读步骤看当前声音组成，复韵母连贯读，不能漏介母也不数字母硬拆。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新卡片打乱给shuǐ、kāi、lèi、guāi，另给pái duì范写要求。",
+      "prompt": "先看当前组成和标调，再本人实际读两项并写指定范例。",
+      "expectedStrategy": "韵母和介母按新形式核，标调位置不沿用旧项，本人声音与手写分别提供。"
+    },
+    "summary": {
+      "synthesis": "三复韵母先连贯读，标调按当前组合看；两拼三拼核介母，pái duì亲手写，词语与角色活动按实际条件理解。",
+      "takeaways": [
+        "ai标a ei标e ui标i",
+        "ui发音按准确连读示范",
+        "介母不省漏",
+        "pái duì实际写"
+      ]
+    },
+    "citations": [
+      {
+        "page": 45,
+        "quote": "āi ái ǎi ài\nēi éi ěi èi",
+        "usedFor": "visual"
+      },
+      {
+        "page": 45,
+        "quote": "g  u āi    guāi",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aieiui-voice",
+        "objective": "本人实际读ai ei ui并依准确示范读四声",
+        "successCriterion": "发音连贯，字形顺序与当前声音对应，不把两个字母名称分别报读当韵母"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aieiui-tones",
+        "objective": "分清ai ei ui当前字母顺序和标调位置",
+        "successCriterion": "ai标a、ei标e、ui标i，i标调不另加点，观察不代本人声音"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-aieiui-blend",
+        "objective": "本人拼读本件gāi guāi lèi tuǐ等音节",
+        "successCriterion": "声母介母复韵母和标调完整，实际连读按当前组合核"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-lineup-writing",
+        "objective": "本人按本件范例在四线格写pái duì并核标调",
+        "successCriterion": "两音节原稿可辨，字母次序、a和i上的调号与格位对应"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-sister-grandma",
+        "objective": "本人识读妹奶并读本件妹妹奶奶等词语",
+        "successCriterion": "单字与词中后音节轻声按当前条件核，不强制披露本人家庭关系"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g1:a692a990:pinyin-washing-reading",
+        "objective": "成人帮助读本件后概述一处词语或动作顺序",
+        "successCriterion": "解释接本件实际阅读，角色洗手与本人真实清洁过程分开"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-ai-ei-ui",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

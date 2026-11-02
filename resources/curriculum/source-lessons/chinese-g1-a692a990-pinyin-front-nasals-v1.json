@@ -1,0 +1,351 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry13",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 51,
+    "pageEnd": 53,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-frontnasal-voice",
+      "version": 1,
+      "name": "五前鼻韵母实际发音",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "鼻韵母发音",
+      "objective": "本人实际读an en in un ün并听核鼻音收尾",
+      "successCriterion": "五项连贯音值与当前形式对应，不报字母名称串，字形与本人声音分清",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-yuan-yin-yun",
+      "version": 1,
+      "name": "三整体音节实际认读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "整体认读",
+      "objective": "本人整体读yuan yin yun并联系当前声音",
+      "successCriterion": "整体音节与标调按具体形式核，字面字母不机械逐个报读，yun音值不硬换成un",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-frontnasal-blend",
+      "version": 1,
+      "name": "当前鼻韵母两拼三拼",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "音节拼读",
+      "objective": "本人拼读本件ān等组合、guān juān及jūn lún等形式",
+      "successCriterion": "声母介母鼻韵母与省点条件准确，当前声音连成音节",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-ship-writing",
+      "version": 1,
+      "name": "lún chuán的本人书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人按本件范例在四线格写lún chuán",
+      "successCriterion": "两音节原稿可辨，字母次序、标调和声母组合格位准确",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-white-grass-home-is",
+      "version": 1,
+      "name": "白草家是识读与当前词语",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与词语",
+      "objective": "本人识读四字并联系蓝天白云草原森林等给定词",
+      "successCriterion": "字音与当前词义对应，词语帮助和识字行范围分别核",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-home-reading",
+      "version": 1,
+      "name": "家读篇的比喻与真实条件",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "阅读与理解",
+      "objective": "成人帮助读本件后概述一处家或花朵的比喻",
+      "successCriterion": "解释接实际阅读，不把诗中角色国籍住址或比喻填成本人资料",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-frontnasal-voice",
+    "source:chinese:g1:a692a990:pinyin-yuan-yin-yun",
+    "source:chinese:g1:a692a990:pinyin-frontnasal-blend",
+    "source:chinese:g1:a692a990:pinyin-ship-writing",
+    "source:chinese:g1:a692a990:pinyin-white-grass-home-is",
+    "source:chinese:g1:a692a990:pinyin-home-reading"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课选定页段已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 51,
+        "visualChecked": true,
+        "statement": "已看五前鼻韵母、三整体认读、g k h与j q x三拼图，介母和省点条件分别核。"
+      },
+      {
+        "page": 52,
+        "visualChecked": true,
+        "statement": "已看五组具体拼读花盘及蓝天白云草原森林词语，拼音顺序与声音仍按原图核。"
+      },
+      {
+        "page": 53,
+        "visualChecked": true,
+        "statement": "已看家完整读篇、白草家是识字行与lún chuán范写，现代全文仅本地，诗中比喻和第一人称不替学生资料。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "an en in un ün：前鼻韵母与整体认读",
+    "pinyinFinals": [
+      "an",
+      "en",
+      "in",
+      "un",
+      "ün"
+    ],
+    "wholeSyllables": [
+      "yuan",
+      "yin",
+      "yun"
+    ],
+    "recognitionCharacters": [
+      "白",
+      "草",
+      "家",
+      "是"
+    ],
+    "writingCharacters": [],
+    "sourceWritingExamples": [
+      "lún chuán"
+    ],
+    "personalNationalityOrAddressDisclosureRequired": false,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "an en in un ün：前鼻韵母与整体认读",
+    "activation": {
+      "prompt": "an和ang看起来只差一个g，发音时能只凭字形猜吗？先听当前an等五种声音，再由本人实际试读。",
+      "expectedObservation": "能知道字母能提示当前对象，真实音值和收尾仍要听核，不报名称代声音。",
+      "bridge": "先练五前鼻韵母，再看整体音节与具体拼读条件。"
+    },
+    "concept": {
+      "explanation": "本课学习an、en、in、un、ün五个前鼻韵母。发音要连贯，收尾有鼻音n，不能把几个字母名称停开报读。先听准确示范，再由本人分别尝试；观察嘴形或看到n可以帮助认识，是否真正发出当前声音仍要听本人录音。un是uen的省写形式，按准确完整音值练，不把字面u与n硬拆成两个独立音节。\nyuan、yin、yun是本课整体认读音节。看到完整形式按当前声音整体读，不把英语字母名称逐个连起来。yun与ün的音值联系按本课整体写法核，省去两点不等把它的韵母改成un；yuan、yin的当前形式也不能只按写出几个字符来猜拼读步骤。\n本件用guān、kuān、huān练g k h与u、ān的组合，用juān、quān、xuān练j q x与ü、ān的组合。介母分别是u和ü，后组按当前条件省两点，不能因为表面都写uan就一律读成同样的介母。先看本件组合图，再听准确完整示范由本人实际连读。\n其他具体形式有wǎn、chén、pīn、lún、jūn等。每次看当前声母、鼻韵母和声调，jūn的书写省点与lún等不同，不能只抓u这个字母来替换音值。拼读步骤看完整当前声音组成，不以字母数量硬拆。\n范写是lún chuán。按本件完整范形在四线格实际写，lún的调号在u、chuán的调号在a；ch作为一个声母组合，字母笔画和格位仍分别核。本人作品、实际笔顺与帮助分清，写出范例不说明本人真实乘过轮船。\n识字行是白、草、家、是。词语有蓝天、白云、草原、森林，可在成人帮助下读，不能把所有词中字自动列为本课必写。家读篇把不同事物和它们的所在连起来，并用花朵比喻孩子成长。这是诗中形象表达，不把天空想成真正房屋，也不把诗中第一人称资料写成本人国籍或住址。本人实际读到哪些部分、得到哪些帮助，都按真实过程说明。",
+      "points": [
+        "五前鼻韵母连贯实际读",
+        "un按完整省写音值听核",
+        "yuan yin yun整体认读",
+        "guān juān介母条件不同",
+        "lún chuán本人实际写",
+        "识四字与词语范围分开",
+        "诗中比喻与本人资料分清"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾比较guān与juān，再整体读yun，最后写lún chuán。",
+      "steps": [
+        {
+          "explanation": "guān中介母u，juān中按j组合使用ü并省点，不能按相同字面uan换音。",
+          "board": [
+            "g＋u＋ān",
+            "j＋ü＋ān",
+            "介母条件分别核"
+          ]
+        },
+        {
+          "explanation": "yun按本课整体音节实际认读，书写省点不换成un的音值。",
+          "board": [
+            "整体形式：yun",
+            "联系当前ün音值",
+            "本人实际读"
+          ]
+        },
+        {
+          "explanation": "本人写lún chuán，核调号和ch组合格位，作品与乘船经历分开。",
+          "board": [
+            "lún：u上标调",
+            "chuán：a上标调",
+            "本人原稿核格位"
+          ]
+        }
+      ],
+      "conclusion": "完整组合与声音条件一起看，整体认读和手写都由本人实际完成。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "前鼻韵母与整体形式",
+        "headers": [
+          "当前对象",
+          "本件相关形式",
+          "核对重点"
+        ],
+        "rows": [
+          [
+            "an、en、in",
+            "wǎn、chén、pīn等",
+            "连贯发音与鼻音收尾"
+          ],
+          [
+            "un",
+            "lún等",
+            "按uen省写的完整音值练"
+          ],
+          [
+            "ün",
+            "jūn、qún、xún等",
+            "省点条件按当前组合核"
+          ],
+          [
+            "整体认读",
+            "yuan、yin、yun",
+            "完整认读，不机械拆字符"
+          ]
+        ],
+        "explanation": "文字表说明当前形式，实际声音仍靠准确示范与本人尝试，不以标记相像代声音相同。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把guān和juān中表面uan都按同一种介母读。",
+        "alternatives": [
+          "只看书写表面，没核当前声母与省点条件。"
+        ],
+        "verification": "先看本件两组组合图，再分别听准确示范。",
+        "correctiveFeedback": "g k h组用u，j q x组的ü按当前条件省点，音值仍分别核。"
+      },
+      {
+        "observation": "从诗中家或第一人称句子直接填学生地址与国籍。",
+        "alternatives": [
+          "把文学角色和比喻当成本人资料。"
+        ],
+        "verification": "分别说诗中怎样表达、本人本次实际做过什么阅读。",
+        "correctiveFeedback": "诗意按本件理解，个人资料与真实经历不能由角色台词替填。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新卡片打乱给pīn、jūn、lún、juān、yin，另给lún chuán范写要求。",
+      "prompt": "先看当前对象和省点条件，再本人实际读两项并写指定范例。",
+      "expectedStrategy": "整体形式、声母介母鼻韵母和标调分别核，字面相同不直接替换音值，实际过程如实。"
+    },
+    "summary": {
+      "synthesis": "五前鼻韵母先听读，三整体音节完整认；拼读看介母与省点条件，范例亲手写，字词与诗中比喻回当前材料理解。",
+      "takeaways": [
+        "前鼻音核真实收尾",
+        "yuan yin yun整体认",
+        "u与ü条件分别看",
+        "lún chuán实际写",
+        "角色资料不代本人事实"
+      ]
+    },
+    "citations": [
+      {
+        "page": 51,
+        "quote": "an en in un ün",
+        "usedFor": "concept"
+      },
+      {
+        "page": 51,
+        "quote": "guān\nkuān\nhuān",
+        "usedFor": "example"
+      },
+      {
+        "page": 51,
+        "quote": "juān\nquān\nxuān",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-frontnasal-voice",
+        "objective": "本人实际读an en in un ün并听核鼻音收尾",
+        "successCriterion": "五项连贯音值与当前形式对应，不报字母名称串，字形与本人声音分清"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-yuan-yin-yun",
+        "objective": "本人整体读yuan yin yun并联系当前声音",
+        "successCriterion": "整体音节与标调按具体形式核，字面字母不机械逐个报读，yun音值不硬换成un"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-frontnasal-blend",
+        "objective": "本人拼读本件ān等组合、guān juān及jūn lún等形式",
+        "successCriterion": "声母介母鼻韵母与省点条件准确，当前声音连成音节"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-ship-writing",
+        "objective": "本人按本件范例在四线格写lún chuán",
+        "successCriterion": "两音节原稿可辨，字母次序、标调和声母组合格位准确"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-white-grass-home-is",
+        "objective": "本人识读四字并联系蓝天白云草原森林等给定词",
+        "successCriterion": "字音与当前词义对应，词语帮助和识字行范围分别核"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g1:a692a990:pinyin-home-reading",
+        "objective": "成人帮助读本件后概述一处家或花朵的比喻",
+        "successCriterion": "解释接实际阅读，不把诗中角色国籍住址或比喻填成本人资料"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-front-nasals",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

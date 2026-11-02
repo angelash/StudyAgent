@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "sha256": "0934749c0614f7129c98e7ea4ca8904d512c910a8df2b61a0571b2073b4769db",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry11",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 47,
+        "pageEnd": 48,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoouiu-voice",
+      "structure": "pinyin-aoouiu-real-gliding-voice",
+      "familyProposal": "a692a990-pinyin-aoouiu-real-gliding-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人连贯读三韵母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前四声和字母顺序对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示范与本人原音分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三韵母发音连贯，声调与范围按本人声音核，不报字母名称串代韵母。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读ao ou iu，再按本件四声表录自己当前会的形式。",
+          "answer": "三韵母发音连贯，声调与范围按本人声音核，不报字母名称串代韵母。",
+          "analysis": "三韵母发音连贯，声调与范围按本人声音核，不报字母名称串代韵母。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较ao与ou，最后补读iu。",
+          "answer": "起始音与连贯滑动有实际声音，iu按iou省写形式的完整音值听核。",
+          "analysis": "起始音与连贯滑动有实际声音，iu按iou省写形式的完整音值听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给iù、áo、ǒu，本人看清后实际认读。",
+          "answer": "当前韵母与声调对应，不背原表顺序代逐项辨读。",
+          "analysis": "当前韵母与声调对应，不背原表顺序代逐项辨读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只会ao四声，录音后怎样说明另外两组？",
+          "answer": "保留实际一组与未读范围，ou iu待帮助后练，不把熟悉感补成声音。",
+          "analysis": "保留实际一组与未读范围，ou iu待帮助后练，不把熟悉感补成声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把iu两个字母停开读过，就说明已经连贯发出这个韵母吗？本人再试。",
+          "answer": "还需完整连贯音值，听准确示范后由本人试读，原尝试与后改分别保留。",
+          "analysis": "还需完整连贯音值，听准确示范后由本人试读，原尝试与后改分别保留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请准确示范者另选ao或ou不先亮字，发声后本人回应。",
+          "answer": "有当前原声和本人回应才核听辨，文字目标可见或重复帮助条件如实。",
+          "analysis": "有当前原声和本人回应才核听辨，文字目标可见或重复帮助条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-real-gliding-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次读三韵母，选一处还想练的声音说明下一步。",
+          "answer": "目标依据本人原音，变化和未稳处如实，不强求编出错误或进步。",
+          "analysis": "目标依据本人原音，变化和未稳处如实，不强求编出错误或进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-ui-iu-order",
+      "structure": "pinyin-ui-iu-order-and-mark",
+      "familyProposal": "a692a990-pinyin-ui-iu-order-and-mark",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "ui iu顺序辨清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前标调位置准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文字和真实音值分别核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "ui先u后i、调号在i；iu先i后u、调号在u，声音也要按当前形式实际听核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "把ui和iu并排看，字母顺序与调号位置各有什么不同？",
+          "answer": "ui先u后i、调号在i；iu先i后u、调号在u，声音也要按当前形式实际听核。",
+          "analysis": "ui先u后i、调号在i；iu先i后u、调号在u，声音也要按当前形式实际听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给iu标二声应写怎样，为什么不能照ui把调号标i？",
+          "answer": "写iú，当前是iu而不是ui，应调在u，不机械搬另一项规则。",
+          "analysis": "写iú，当前是iu而不是ui，应调在u，不机械搬另一项规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给uì与iǔ，分别指出韵母、标调字母和当前声调。",
+          "answer": "uì为ui四声、标i，iǔ为iu三声、标u，按完整形式逐项核。",
+          "analysis": "uì为ui四声、标i，iǔ为iu三声、标u，按完整形式逐项核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只知道一项含i和u两个字母，能唯一确定是ui还是iu吗？",
+          "answer": "还需顺序信息，不能只按有哪些字母就当同一韵母。",
+          "analysis": "还需顺序信息，不能只按有哪些字母就当同一韵母。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "niú与shuǐ分别含哪一个当前韵母，调号放哪里？",
+          "answer": "niú含iu、标u；shuǐ含ui、标i，字母顺序和标调分别看。",
+          "analysis": "niú含iu、标u；shuǐ含ui、标i，字母顺序和标调分别看。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写对ui iu标调就能证明本人已实际听辨两种声音吗？",
+          "answer": "还需真实原声与本人回应，字形规则与声音判断分别核。",
+          "analysis": "还需真实原声与本人回应，字形规则与声音判断分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-ui-iu-order-and-mark-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从ui和iu各选一项带调形式，说明字形与声音下一步怎样分别练。",
+          "answer": "两种顺序和标调各准确，真实读音由本人实际发声或回应原声核，不以解释替声音。",
+          "analysis": "两种顺序和标调各准确，真实读音由本人实际发声或回应原声核，不以解释替声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-aoouiu-blend",
+      "structure": "pinyin-aoouiu-current-syllables",
+      "familyProposal": "a692a990-pinyin-aoouiu-current-syllables",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前声母介母韵母完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "标调和连贯声音准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "ui iu不混套",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前组成和标调逐项听核，niǎo保留介母i，iu组合不读成ui。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读niǎo、tóu、qiú、niú并录音。",
+          "answer": "当前组成和标调逐项听核，niǎo保留介母i，iu组合不读成ui。",
+          "analysis": "当前组成和标调逐项听核，niǎo保留介母i，iu组合不读成ui。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读tiào与kǒu，分别指出韵母。",
+          "answer": "tiào按当前i与ao组合，kǒu按ou，标调与实际声音对应。",
+          "analysis": "tiào按当前i与ao组合，kǒu按ou，标调与实际声音对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给liù、shōu、xiū、zǎo，本人看清后实际读出。",
+          "answer": "按新声母、韵母和标调更新，不沿用旧序列或首字母猜。",
+          "analysis": "按新声母、韵母和标调更新，不沿用旧序列或首字母猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只说明字母组成还没有实际连读，本次进度怎样说？",
+          "answer": "已辨组成与本人完整音节发声分开，连读未做仍待实际尝试。",
+          "analysis": "已辨组成与本人完整音节发声分开，连读未做仍待实际尝试。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果把niú读成含ui的音，怎样保留原音后重新核？",
+          "answer": "先看当前iu次序与标调，听准确示范后本人再读，不覆盖原混读。",
+          "analysis": "先看当前iu次序与标调，听准确示范后本人再读，不覆盖原混读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人从本课含ao与含iu的形式各选一项重读，说明帮助。",
+          "answer": "两项组成与真实声音对应，帮助如实，不由一项正确推全部组合。",
+          "analysis": "两项组成与真实声音对应，帮助如实，不由一项正确推全部组合。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-aoouiu-current-syllables-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两个当前音节本人实际读，再说已读和仍待练的范围。",
+          "answer": "范围接本人原音，字母顺序、介母和声调分别核，未读部分不补造。",
+          "analysis": "范围接本人原音，字母顺序、介母和声调分别核，未读部分不补造。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-calf-writing",
+      "structure": "pinyin-xiaoniu-own-writing",
+      "familyProposal": "a692a990-pinyin-xiaoniu-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖xiǎo niú",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字母次序格位标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词语和真实活动分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两音节实际覆盖，xiǎo标a、niú标u，字母次序和格位按完整范形核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件范例在四线格写xiǎo niú并上传原稿。",
+          "answer": "两音节实际覆盖，xiǎo标a、niú标u，字母次序和格位按完整范形核。",
+          "analysis": "两音节实际覆盖，xiǎo标a、niú标u，字母次序和格位按完整范形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "观察范写后，本人先写xiǎo再写niú，指出两个调号。",
+          "answer": "当前原稿可辨，标调位置对应两韵母，不以键入字替本人手写。",
+          "analysis": "当前原稿可辨，标调位置对应两韵母，不以键入字替本人手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸实际写范例两项，选一处笔画或格位说明。",
+          "answer": "位置说明接本人当前作品，格线是参照，不增加成字母笔画。",
+          "analysis": "位置说明接本人当前作品，格线是参照，不增加成字母笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写了niú还没有xiǎo，上传如何说明当前范围？",
+          "answer": "只核实际一项，另一项待写，不用范字图补成本人完成。",
+          "analysis": "只核实际一项，另一项待写，不用范字图补成本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若niú的调号错标到i，怎样留原稿再订正上传？",
+          "answer": "保留原写，按iu标u的条件重写，后改不倒作第一次作品。",
+          "analysis": "保留原写，按iu标u的条件重写，后改不倒作第一次作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写过xiǎo niú就能登记本人实际照料过小牛吗？上传后说明。",
+          "answer": "不能，当前是拼音书写范例，真实活动和本人经历另看实际过程。",
+          "analysis": "不能，当前是拼音书写范例，真实活动和本人经历另看实际过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiaoniu-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传两音节原稿，说明真实笔顺和范写帮助怎样核。",
+          "answer": "字形看原稿，先后依本人实际过程，帮助和原写后改分别留，静图不独证全部。",
+          "analysis": "字形看原稿，先后依本人实际过程，帮助和原写后改分别留，静图不独证全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-small-bridge-tai",
+      "structure": "pinyin-xiao-qiao-tai-words",
+      "familyProposal": "a692a990-pinyin-xiao-qiao-tai-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读小桥台",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语声音与意义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色籍贯经历不代本人资料",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三字与当前实际声音对应，词语帮助和范围如实，不自动扩大为全部必写。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读小桥台三个字，再在成人帮助下读小桥等本件词语。",
+          "answer": "三字与当前实际声音对应，词语帮助和范围如实，不自动扩大为全部必写。",
+          "analysis": "三字与当前实际声音对应，词语帮助和范围如实，不自动扩大为全部必写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人按桥台小的新顺序认读。",
+          "answer": "当前字形与真实读音对应，不背旧三字顺串代辨认。",
+          "analysis": "当前字形与真实读音对应，不背旧三字顺串代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色卡给一座小桥，本人读对应词语并说明是哪两个字。",
+          "answer": "小桥字音与当前对象相符，角色场景不证明本人实际去过该地。",
+          "analysis": "小桥字音与当前对象相符，角色场景不证明本人实际去过该地。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只认出小与桥，录音后怎样说明台字？",
+          "answer": "实际两字范围清楚，台待帮助后练，不由词语熟悉补全。",
+          "analysis": "实际两字范围清楚，台待帮助后练，不由词语熟悉补全。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材儿歌角色来自台湾，可以直接填作本人籍贯吗？本人读台字后说明。",
+          "answer": "不能，角色资料与本人真实资料分开，当前只核指定字词读音和意思。",
+          "analysis": "不能，角色资料与本人真实资料分开，当前只核指定字词读音和意思。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人读本件一个新词并说明成人读过哪些部分。",
+          "answer": "帮助和本人声音分别核，未独立读到的部分如实，不用成人声音补本人。",
+          "analysis": "帮助和本人声音分别核，未独立读到的部分如实，不用成人声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-xiao-qiao-tai-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读三字与一个给定词，说明识字、读词、手写实际做过哪些。",
+          "answer": "三任务范围分明，识字行不自动变成三汉字已实际书写，未做部分如实。",
+          "analysis": "三任务范围分明，识字行不自动变成三汉字已实际书写，未做部分如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-ao-ou-iu",
+      "atomId": "source:chinese:g1:a692a990:pinyin-welcome-reading",
+      "structure": "pinyin-welcome-poem-role-boundary",
+      "familyProposal": "a692a990-pinyin-welcome-poem-role-boundary",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述对应本件实际阅读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "邀请出行和交流身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实共读范围帮助如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "概述接本件实际内容，帮助与本人读到范围清楚，现代全文回原件阅读。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件欢迎台湾小朋友后，本人概述一处欢迎情境。",
+          "answer": "概述接本件实际内容，帮助与本人读到范围清楚，现代全文回原件阅读。",
+          "analysis": "概述接本件实际内容，帮助与本人读到范围清楚，现代全文回原件阅读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际读过一部分后，本人录音说明诗里怎样表达想一起交流。",
+          "answer": "解释接具体读到内容，不把角色邀请当已经发生的本人真实交流。",
+          "analysis": "解释接具体读到内容，不把角色邀请当已经发生的本人真实交流。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色邀请新朋友看图书，和本件欢迎情境有怎样的联系？",
+          "answer": "可说热情邀请或共同活动的联系，原创角色与本件原篇分清。",
+          "analysis": "可说热情邀请或共同活动的联系，原创角色与本件原篇分清。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "尚未实际共读，只知道题目时，这次怎样说明阅读进度？",
+          "answer": "如实说知道题目或已准备问题，具体共读仍待发生，不补造读篇过程。",
+          "analysis": "如实说知道题目或已准备问题，具体共读仍待发生，不补造读篇过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "诗里有乘船出行与握手，能登记本人已旅游或已与人握手吗？",
+          "answer": "不能，文学情境和本人实际经历分别核，真实交流需双方实际参加。",
+          "analysis": "不能，文学情境和本人实际经历分别核，真实交流需双方实际参加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后提一个当前问题，录本人回应和得到的帮助。",
+          "answer": "问题回应对应本件，未核细节回原篇，成人解释与本人表达分别说明。",
+          "analysis": "问题回应对应本件，未核细节回原篇，成人解释与本人表达分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-ao-ou-iu-pinyin-welcome-poem-role-boundary-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次概述一处已读内容，再说下一步愿意实际读或讲什么。",
+          "answer": "已读按真实范围，愿望和完成分清，不由角色情节补本人资料或行动。",
+          "analysis": "已读按真实范围，愿望和完成分清，不由角色情节补本人资料或行动。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

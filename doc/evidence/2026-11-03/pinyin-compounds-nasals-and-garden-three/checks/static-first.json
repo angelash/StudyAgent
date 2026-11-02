@@ -1,0 +1,158 @@
+{
+  "at": "2026-11-02T23:31:16.436Z",
+  "passed": true,
+  "generationByteStable": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-final.cjs",
+      "sha256": "6c1698f7cb9663ccc8ea9acd4bf20f4bff50dfb1a3cdfb4859fe35ac0272e7e6"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-compounds.cjs",
+      "sha256": "219b60aea45e75e60942c56127ad8c5f0cf585fd49e34d1f4cefb8c7c48cb1a8"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-nasals.cjs",
+      "sha256": "6dc2ba2b2dcaea69eb78165ee686fc01f20161bc718fc226aa7b2cabff86c06e"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-garden-three.cjs",
+      "sha256": "51568ce261be11664f7533781ed2ccd97584063b4a01482d28c9a707e6d61eaf"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "sha256": "5aa401d9cb3147cb2aed2065502098bba6c2c51403974f1ca61c0208f1d5dd91"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "sha256": "894dd1de8c76f11cb66b9030502db62368bf179e1edce9d6a5b44b5237023a7b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "sha256": "0934749c0614f7129c98e7ea4ca8904d512c910a8df2b61a0571b2073b4769db"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "sha256": "6b278c5a7dac67c3350d0a408cea8bebcf612d771815ed0e4efcafd3dccdb427"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "sha256": "7b51dd70799dbd0a3fe60f854a8ce73888ac47a0188de21f56cc88e12ad02cb4"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "sha256": "c84d3889a43e01ed79ffd2dd576648f47b5de4965101b6d9b402a38f43e4c61c"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "sha256": "926a1980a99ec341572d340c0be26277d4a7f87a344258cfe2e1a986a6215f4d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "sha256": "22fdafbefb623356f11e0ad3c9290a5ffbc0e3439d58b59d083cd65ce5fcd313"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "sha256": "50f615996d92498426868252d517ae4b845c5b17c8179f32c5540193dbc4eec2"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "sha256": "29586be7f84d07acd2cd30ee3e20142f72faf05f1d3d78c169b84f6254dd9da7"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "sha256": "c07b4aecb3474251185bd1e4d2751d619de0807fc89c1e8e645eda4ba736efdb"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "sha256": "c29ab3bf87daf70fc500af2308356b018dc8671211e794621d1f2d8dd73179ca"
+    }
+  ],
+  "rows": [
+    {
+      "name": "chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        45,
+        46
+      ],
+      "bodyCharacters": 620,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        47,
+        48
+      ],
+      "bodyCharacters": 618,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        54,
+        55
+      ],
+      "bodyCharacters": 662,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        51,
+        52,
+        53
+      ],
+      "bodyCharacters": 740,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "targets": 8,
+      "questions": 56,
+      "pages": [
+        56,
+        57,
+        58
+      ],
+      "bodyCharacters": 1203,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        49,
+        50
+      ],
+      "bodyCharacters": 656,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    }
+  ],
+  "modes": {
+    "audio_record": 210,
+    "short_answer": 14,
+    "image_upload": 42
+  },
+  "targets": 38,
+  "questions": 266,
+  "failures": [],
+  "authenticSoundFilesIncluded": false,
+  "teacherReviewed": false,
+  "published": false
+}

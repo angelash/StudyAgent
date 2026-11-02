@@ -1,0 +1,332 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry12",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 49,
+    "pageEnd": 50,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-ieueer-voice",
+      "version": 1,
+      "name": "ie üe与er实际发音",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "韵母发音",
+      "objective": "本人实际读ie üe er并区分当前形式",
+      "successCriterion": "ie üe连贯，er按本课特殊韵母读，不把两个字符一律当可任意拼接的形式",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-ye-yue",
+      "version": 1,
+      "name": "ye yue整体认读与省点条件",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "整体认读与书写条件",
+      "objective": "本人整体读ye yue并比较n l与j q x后的üe写法",
+      "successCriterion": "整体音值和拼写条件准确，n l后留两点、j q x后省点仍保持原音值",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-ieue-blend",
+      "version": 1,
+      "name": "当前ie üe音节拼读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "音节拼读",
+      "objective": "本人拼读piě dié lüè jué xué等本件形式",
+      "successCriterion": "当前声母韵母与标调对应，er不硬套成可与任意声母相拼",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-homework-writing",
+      "version": 1,
+      "name": "xiě zuò yè的本人书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人按本件范例在四线格写xiě zuò yè",
+      "successCriterion": "三音节原稿可核，字母次序格位与调号位置准确",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-snow-child",
+      "version": 1,
+      "name": "雪儿识读与当前词语",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与词语",
+      "objective": "本人识读雪儿并联系本件夜色雪花等词语",
+      "successCriterion": "字音与当前材料对应，儿本件独立标音与其他儿化条件分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-moon-reading",
+      "version": 1,
+      "name": "月儿弯弯读篇与描写范围",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "阅读与理解",
+      "objective": "成人帮助读本件后解释一处形状或景色描写",
+      "successCriterion": "概述接实际阅读，诗中弯曲形象不扩大为每次真实观察都相同",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-ieueer-voice",
+    "source:chinese:g1:a692a990:pinyin-ye-yue",
+    "source:chinese:g1:a692a990:pinyin-ieue-blend",
+    "source:chinese:g1:a692a990:pinyin-homework-writing",
+    "source:chinese:g1:a692a990:pinyin-snow-child",
+    "source:chinese:g1:a692a990:pinyin-moon-reading"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课选定页段已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 49,
+        "visualChecked": true,
+        "statement": "已看ie üe er、ye yue整体认读及两组具体拼读，n l保点与j q x省点分别核，er特殊用法不凭字符数判断。"
+      },
+      {
+        "page": 50,
+        "visualChecked": true,
+        "statement": "已看夜色雪花、月儿弯弯、雪儿识字行与xiě zuò yè范写；儿本件独立标音、真实观察和文学描写分开，现代全文仅本地。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "ie üe er：整体认读与特殊韵母",
+    "pinyinFinals": [
+      "ie",
+      "üe"
+    ],
+    "specialFinals": [
+      "er"
+    ],
+    "wholeSyllables": [
+      "ye",
+      "yue"
+    ],
+    "recognitionCharacters": [
+      "雪",
+      "儿"
+    ],
+    "writingCharacters": [],
+    "sourceWritingExamples": [
+      "xiě zuò yè"
+    ],
+    "erhuaNotRequired": true,
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "ie üe er：整体认读与特殊韵母",
+    "activation": {
+      "prompt": "看lüè和jué，两者的u写法一样吗？再看er，它写两个字母，就一定可以随意加在任何声母后面吗？",
+      "expectedObservation": "能发现省点有条件，也能知道字符数不直接决定拼读用法，需要看当前规则与声音。",
+      "bridge": "先听读两种复韵母和特殊韵母，再比较整体音节与当前拼写条件。"
+    },
+    "concept": {
+      "explanation": "本课学习ie、üe，并认识特殊韵母er。ie和üe要按准确示范连贯发音，不把两个字母名称拆开报。er按本课特殊韵母学习，可以自成音节，不与声母相拼；不能因为写成两个字符就认为所有这样的形式都能任意加声母。声音怎么发仍要听准确示范并核本人实际尝试。\nye、yue是本课的整体认读音节。ye联系ie，yue联系üe，看到完整形式按当前声音整体读，不用英语名称串或机械拆字母代替。yue中的两点按当前拼写省去，但不能因此把原音值换成u。\n看nüè、lüè，n和l后的üe保留两点；看jué、quē、xué，j q x后的üe按条件省点，实际声音仍联系üe。先认声母和当前条件，再看调号，不能从表面有u就一律读成相同形式，也不把省点推广到n l。\n本件还给piě、jiě、dié、bié、qiē、xié等当前组合。先看韵母ie、声母与标调，再本人连成音节。韵母中的i和e不是两个独立音节；er则按特殊用法自成音节，拼读方法看具体对象。\n范写是xiě zuò yè。三个音节按当前字母次序与调号在四线格实际写，xiě的调号在e，zuò在o，yè在e。范写词语与本人真实作业完成分开，不能因为写出了这三个音节就登记本人已经做完作业。\n识字行是雪、儿，词语有夜色、雪花。本件儿独立标ér，月儿的当前读法按本页说明；其他语境的儿化另核，不把所有儿都一律独立读，也不都并到前音节。月儿弯弯用多处弯曲的景物组织画面，先读本件再概述一处意思。诗中的弯月与当前文学图景不表示每次真实月亮观察都固定相同，角色所见与本人实际观察也分别说明。",
+      "points": [
+        "ie üe按真实声音连贯读",
+        "er特殊韵母不与声母拼",
+        "ye yue整体认读",
+        "n l后üe留点 j q x后按条件省点",
+        "xiě zuò yè本人实际写",
+        "雪儿识读和儿化条件分开",
+        "诗中景物不代每次真实观察"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾比较lüè与jué，再整体读yue，最后写xiě zuò yè。",
+      "steps": [
+        {
+          "explanation": "先看声母条件，lüè留两点，jué按j组合省点，声音仍核当前üe。",
+          "board": [
+            "l＋üe：留两点",
+            "j＋üe：按条件省点",
+            "当前音值不硬换"
+          ]
+        },
+        {
+          "explanation": "yue按本课整体音节认读，er则按特殊韵母独立看。",
+          "board": [
+            "yue：整体认读",
+            "er：可自成音节",
+            "不任意加声母"
+          ]
+        },
+        {
+          "explanation": "本人写三个范例音节，核调号在e、o、e，作品与作业事实分开。",
+          "board": [
+            "xiě：e上标调",
+            "zuò：o上标调",
+            "yè：e上标调"
+          ]
+        }
+      ],
+      "conclusion": "韵母、整体音节和特殊用法各看当前条件，声音与本人手写分别核。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "ie üe er与整体音节",
+        "headers": [
+          "当前对象",
+          "本件相关形式",
+          "使用条件"
+        ],
+        "rows": [
+          [
+            "ie",
+            "ye、piě、dié等",
+            "当前整体音节与具体拼读分别练"
+          ],
+          [
+            "üe",
+            "yue、nüè、lüè、jué等",
+            "省点条件按声母或整体形式核"
+          ],
+          [
+            "er",
+            "儿ér等当前独立音节",
+            "特殊韵母，不与声母相拼"
+          ]
+        ],
+        "explanation": "表中只是明确形式的对照，发音仍需本人实际声音，不能从字母个数推出任意拼接规则。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把lüè两点也去掉，因为jué没有两点。",
+        "alternatives": [
+          "没有先看n l与j q x不同的拼写条件。"
+        ],
+        "verification": "并排指出当前声母，再核üe省点与保留规则。",
+        "correctiveFeedback": "n l后保留两点，j q x后按条件省点，音值不能由表面u一概替换。"
+      },
+      {
+        "observation": "认为er有两个字符所以和ie一样可任意拼接声母。",
+        "alternatives": [
+          "把字符数量当成韵母用法的规则。"
+        ],
+        "verification": "分别说本课er特殊用法与ie当前拼读例子。",
+        "correctiveFeedback": "er按特殊韵母自成音节，不与声母相拼；具体对象的规则不能互相套用。"
+      }
+    ],
+    "transfer": {
+      "scenario": "新卡片打乱给xué、lüè、ye、er、dié，另给xiě zuò yè范写。",
+      "prompt": "按当前对象认读或拼读，说明省点与特殊用法，再本人写指定范例。",
+      "expectedStrategy": "先认完整形式与声母条件，整体音节、韵母和特殊er不混类，声音与作品分别核。"
+    },
+    "summary": {
+      "synthesis": "两复韵母连贯读，er按特殊用法看；ye yue整体认，省点看当前条件，范例实际写，雪儿和读篇景色回本件理解。",
+      "takeaways": [
+        "er不与声母拼",
+        "ye yue整体认",
+        "üe两点按当前条件",
+        "xiě zuò yè不代真实作业完成"
+      ]
+    },
+    "citations": [
+      {
+        "page": 49,
+        "quote": "ie üe er",
+        "usedFor": "concept"
+      },
+      {
+        "page": 49,
+        "quote": "lüè\nnüè\nxué\njué\nquē",
+        "usedFor": "example"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-ieueer-voice",
+        "objective": "本人实际读ie üe er并区分当前形式",
+        "successCriterion": "ie üe连贯，er按本课特殊韵母读，不把两个字符一律当可任意拼接的形式"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-ye-yue",
+        "objective": "本人整体读ye yue并比较n l与j q x后的üe写法",
+        "successCriterion": "整体音值和拼写条件准确，n l后留两点、j q x后省点仍保持原音值"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-ieue-blend",
+        "objective": "本人拼读piě dié lüè jué xué等本件形式",
+        "successCriterion": "当前声母韵母与标调对应，er不硬套成可与任意声母相拼"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-homework-writing",
+        "objective": "本人按本件范例在四线格写xiě zuò yè",
+        "successCriterion": "三音节原稿可核，字母次序格位与调号位置准确"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-snow-child",
+        "objective": "本人识读雪儿并联系本件夜色雪花等词语",
+        "successCriterion": "字音与当前材料对应，儿本件独立标音与其他儿化条件分开"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "source:chinese:g1:a692a990:pinyin-moon-reading",
+        "objective": "成人帮助读本件后解释一处形状或景色描写",
+        "successCriterion": "概述接实际阅读，诗中弯曲形象不扩大为每次真实观察都相同"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-ie-ue-er",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

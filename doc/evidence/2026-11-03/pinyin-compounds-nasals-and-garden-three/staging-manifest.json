@@ -1,0 +1,548 @@
+{
+  "at": "2026-11-02T23:40:02.930Z",
+  "branch": "main",
+  "baseCommit": "85ec5cee5567221c80b69e467abea503ef4bf223",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-final.cjs",
+      "bytes": 2322,
+      "sha256": "6c1698f7cb9663ccc8ea9acd4bf20f4bff50dfb1a3cdfb4859fe35ac0272e7e6",
+      "gitNormalizedSha256": "6c1698f7cb9663ccc8ea9acd4bf20f4bff50dfb1a3cdfb4859fe35ac0272e7e6"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-compounds.cjs",
+      "bytes": 43875,
+      "sha256": "219b60aea45e75e60942c56127ad8c5f0cf585fd49e34d1f4cefb8c7c48cb1a8",
+      "gitNormalizedSha256": "219b60aea45e75e60942c56127ad8c5f0cf585fd49e34d1f4cefb8c7c48cb1a8"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-nasals.cjs",
+      "bytes": 30546,
+      "sha256": "6dc2ba2b2dcaea69eb78165ee686fc01f20161bc718fc226aa7b2cabff86c06e",
+      "gitNormalizedSha256": "6dc2ba2b2dcaea69eb78165ee686fc01f20161bc718fc226aa7b2cabff86c06e"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-garden-three.cjs",
+      "bytes": 21218,
+      "sha256": "1fcfe87e0cf44eac1127c78a4833972e97d8d6b9956bb86859f768121d146535",
+      "gitNormalizedSha256": "1fcfe87e0cf44eac1127c78a4833972e97d8d6b9956bb86859f768121d146535"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "bytes": 13946,
+      "sha256": "5aa401d9cb3147cb2aed2065502098bba6c2c51403974f1ca61c0208f1d5dd91",
+      "gitNormalizedSha256": "5aa401d9cb3147cb2aed2065502098bba6c2c51403974f1ca61c0208f1d5dd91"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "bytes": 37508,
+      "sha256": "894dd1de8c76f11cb66b9030502db62368bf179e1edce9d6a5b44b5237023a7b",
+      "gitNormalizedSha256": "894dd1de8c76f11cb66b9030502db62368bf179e1edce9d6a5b44b5237023a7b"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "bytes": 13914,
+      "sha256": "0934749c0614f7129c98e7ea4ca8904d512c910a8df2b61a0571b2073b4769db",
+      "gitNormalizedSha256": "0934749c0614f7129c98e7ea4ca8904d512c910a8df2b61a0571b2073b4769db"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "bytes": 37320,
+      "sha256": "6b278c5a7dac67c3350d0a408cea8bebcf612d771815ed0e4efcafd3dccdb427",
+      "gitNormalizedSha256": "6b278c5a7dac67c3350d0a408cea8bebcf612d771815ed0e4efcafd3dccdb427"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "bytes": 14367,
+      "sha256": "7b51dd70799dbd0a3fe60f854a8ce73888ac47a0188de21f56cc88e12ad02cb4",
+      "gitNormalizedSha256": "7b51dd70799dbd0a3fe60f854a8ce73888ac47a0188de21f56cc88e12ad02cb4"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "bytes": 38280,
+      "sha256": "c84d3889a43e01ed79ffd2dd576648f47b5de4965101b6d9b402a38f43e4c61c",
+      "gitNormalizedSha256": "c84d3889a43e01ed79ffd2dd576648f47b5de4965101b6d9b402a38f43e4c61c"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "bytes": 15102,
+      "sha256": "926a1980a99ec341572d340c0be26277d4a7f87a344258cfe2e1a986a6215f4d",
+      "gitNormalizedSha256": "926a1980a99ec341572d340c0be26277d4a7f87a344258cfe2e1a986a6215f4d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "bytes": 37926,
+      "sha256": "22fdafbefb623356f11e0ad3c9290a5ffbc0e3439d58b59d083cd65ce5fcd313",
+      "gitNormalizedSha256": "22fdafbefb623356f11e0ad3c9290a5ffbc0e3439d58b59d083cd65ce5fcd313"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "bytes": 18644,
+      "sha256": "93151cdec5199d8dc1b07e07e7624d4b92cafab9c417621d09683b00bb55c921",
+      "gitNormalizedSha256": "93151cdec5199d8dc1b07e07e7624d4b92cafab9c417621d09683b00bb55c921"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "bytes": 52081,
+      "sha256": "fa9dbcc6373217a8daa3cfde0519bfd2e9720d9d4f3c17fec2e611364f8d2eb4",
+      "gitNormalizedSha256": "fa9dbcc6373217a8daa3cfde0519bfd2e9720d9d4f3c17fec2e611364f8d2eb4"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "bytes": 14382,
+      "sha256": "c07b4aecb3474251185bd1e4d2751d619de0807fc89c1e8e645eda4ba736efdb",
+      "gitNormalizedSha256": "c07b4aecb3474251185bd1e4d2751d619de0807fc89c1e8e645eda4ba736efdb"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "bytes": 37859,
+      "sha256": "c29ab3bf87daf70fc500af2308356b018dc8671211e794621d1f2d8dd73179ca",
+      "gitNormalizedSha256": "c29ab3bf87daf70fc500af2308356b018dc8671211e794621d1f2d8dd73179ca"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 16424,
+      "sha256": "86dc60b212b1aad01decdc26ce1d2bd6c89fca55ef8333cf7ff7bc5ce012d479",
+      "gitNormalizedSha256": "056e801e117ce5b2444b1cf13af01f5229fec13b0293905ff2fb8980bfb8a0ed"
+    },
+    {
+      "path": "doc/product/223-pinyin-remaining-lessons-and-gardens.md",
+      "bytes": 8997,
+      "sha256": "387c8580e4114a35e21e120e05a2de1fb971b939faa6a9f8e5597100927b43c4",
+      "gitNormalizedSha256": "387c8580e4114a35e21e120e05a2de1fb971b939faa6a9f8e5597100927b43c4"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 21650,
+      "sha256": "5647d62f36af7a286c40203cae1f0682ad756daab4ab31ec37ff24c0b05e52cb",
+      "gitNormalizedSha256": "5647d62f36af7a286c40203cae1f0682ad756daab4ab31ec37ff24c0b05e52cb"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 37319,
+      "sha256": "74b212bb968d5c54afd7dafb9f2de8589e6309fbeaacd95cf4fde1f2f3a4a056",
+      "gitNormalizedSha256": "ee5de9421c832364fc6672d414dd729561f8ac760fa8c5a4e89a09fb618ff9bf"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 189200,
+      "sha256": "891ca7cc00583348efec79b33b46ff3a2289a5632e89c05e1bae1435b5301a2b",
+      "gitNormalizedSha256": "fa3d142cc2a0a1b9e717424899b71a23ed34017f83b34d9141de9f4cbe270e20"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 115584,
+      "sha256": "b7e236c81549ddd14ba301d2029e68c5cb8fa791f658e5c46b907dce162a7e08",
+      "gitNormalizedSha256": "f9acce6ab05676dff668fb9097f85da4e5096c8cd9c74d7df8d4d77635d93839"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 120663,
+      "sha256": "204762f6d52a59570138024526ebd9674d5ab1aa5a5b7a5dfae18e11d4853d71",
+      "gitNormalizedSha256": "bcc4c582967d18cd969cc1ff7edd48dd3cb581b8b1103f3f342d0346e925b5f4"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 30601,
+      "sha256": "959e73e8b332673f12b1cc45660850b660dadd97dd77e80ca699514bed2d6013",
+      "gitNormalizedSha256": "12b22c3ca75f1434ea9e6af813ec0e04cba5ae7fa3f6779ea85ae7356a09f37e"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 49879,
+      "sha256": "6c8237395041ebb20cdf03c1af2aeb775bfd0fb8ef50bdfb96fdcadd1965f6d6",
+      "gitNormalizedSha256": "e46c801e2f957453d66ec0c6a5cdba3db27ce8009881c3afa34df4e535f3e6d6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ai-ei-ui-v1-desktop.png",
+      "bytes": 253420,
+      "sha256": "85619b821d8f177dca2eccb9e4fb026852292b4171ad53a714c2161f7e5783e2",
+      "gitNormalizedSha256": "8c4f87615ae7252002b9ad7f52c28bc235a8fc3d82dd3f1cb40e74150d0cf7aa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ai-ei-ui-v1-mobile-table.png",
+      "bytes": 69565,
+      "sha256": "21707089ce6eb91e3fb404ffd5d8a8684b0f01c1c6484807530343ac2de365e7",
+      "gitNormalizedSha256": "82607b477588486e669ab94fe157e192fbb956b60a426460e1639b089744fe19"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ai-ei-ui-v1-mobile.png",
+      "bytes": 70955,
+      "sha256": "e89f38ae3fbf8abd9cc5a233ee5860d24abef15513b2a310f93e5b570772b518",
+      "gitNormalizedSha256": "bd43aa9f5da7a11e617295bf0ae750da2c2f8e75bfd98b5b0d326e818de121b3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ai-ei-ui-v1-table.png",
+      "bytes": 16612,
+      "sha256": "c40bb78ee42f35a320814ef174cbfaef7879555c2d77f070b658fc12bff96390",
+      "gitNormalizedSha256": "2e116ed9183fd2ad0430d79820043a3e229a801bf46744e92ae2573bb183221e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ao-ou-iu-v1-desktop.png",
+      "bytes": 250400,
+      "sha256": "2398e811b73f5ffc59ce083b4ee3214a26383bb9c3596a727dfb84e9ce3133a8",
+      "gitNormalizedSha256": "acdccf3936021a0f6b8d5ff4742e2a0be0326d0ff6053b1a01af92daf8f3f433"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ao-ou-iu-v1-mobile.png",
+      "bytes": 72151,
+      "sha256": "f0db1ef11dffe5849eebd06f831eb8d2c5403832a8c52f914f3b8596661c2896",
+      "gitNormalizedSha256": "c10a7c2227be4ea91384d0f4402043aee799326e6d5df03e1a22bacbfbf19c59"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ao-ou-iu-v1-table.png",
+      "bytes": 21109,
+      "sha256": "06eec5a7109188e4ec11a533e0eedcf022aca94054d38086e62fe333c155b6d8",
+      "gitNormalizedSha256": "ce6826e8ac54efd2a984f5e904c8dd7d35f9d1eabb9b9bcb8434a0a397e174e6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-back-nasals-v1-desktop.png",
+      "bytes": 256507,
+      "sha256": "41cc3b1eacdd302bf7e2fba71ab43a20af148480b6a66341f70f8a8f8208ca7f",
+      "gitNormalizedSha256": "d3c65b4039214f0eab213b48613b419afb235e614f38dceb0c0fb91703133ba4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-back-nasals-v1-mobile.png",
+      "bytes": 76191,
+      "sha256": "d6c26915db1d77af8964077434d8da627b07e9c6ccdc9697b112525646b68830",
+      "gitNormalizedSha256": "39eab2aa99cbd29e04faa13a66eebb311c886dbe7f9099f79fc9dcbecfd7c561"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-back-nasals-v1-table.png",
+      "bytes": 27266,
+      "sha256": "8cbe7ac4fde253d7306ef4db508bc4ebb079c565633458540af08fa448672794",
+      "gitNormalizedSha256": "6be7256cecea9e01bcdcd15be9fb1ec71faf18bf3a0afbd5c0030c98df01ad9f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-front-nasals-v1-desktop.png",
+      "bytes": 271240,
+      "sha256": "e3a714e43765f30f14ca4b8f68255607b587960fe233fe4050502c335e732bdc",
+      "gitNormalizedSha256": "166976874e79d1355372ee2e32e45f3a7281f3857ba8eaf56855b15c51f42a25"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-front-nasals-v1-mobile.png",
+      "bytes": 71882,
+      "sha256": "2cd85328efc4971fbecbfba211cb7fb3de355718dde4331ea688c4c0fb6408a4",
+      "gitNormalizedSha256": "f06000e8ad61efa08d6b82ee89f8fbdb851afe2b18d2f4b56575cda2a6e69ff8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-front-nasals-v1-table.png",
+      "bytes": 31966,
+      "sha256": "1053b11cfcec3e5bb636e29d610635e1969196f06efb2f0f4f8179876bb6c106",
+      "gitNormalizedSha256": "26553542b614d443afded4536c9b9099a81cbbb8bd41de834e524a98cdbe7fe2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-garden-three-v1-desktop.png",
+      "bytes": 346833,
+      "sha256": "85fe62b6b5cf1ea528b526fa3f8b02446891f8d652956970dc87b00edcf9df6b",
+      "gitNormalizedSha256": "be0d64b4c33272b3fb6d490c8d6e3524f67d6e2e9f02abfcde943d085327f31d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-garden-three-v1-mobile.png",
+      "bytes": 62189,
+      "sha256": "5123ce3e008008a54c679a66acfbd41978e59e6447e386b626f6c6102378a375",
+      "gitNormalizedSha256": "22904b306cce638e91ed9cf8ccaa2d52f2e7285d392decf79300767165d79233"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-garden-three-v1-table.png",
+      "bytes": 46195,
+      "sha256": "c872c0aeb91b3ba6d5176a6e3ce09bebc4926a1b0bfe37044a629cb02044a936",
+      "gitNormalizedSha256": "50cd46cfe8598088f6fcb42b02170a1d3e6d8d9154e08e8d984854ced9210e1a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ie-ue-er-v1-desktop.png",
+      "bytes": 255767,
+      "sha256": "d111cb9b0c7305074c8b209f0a2ef2317b68f98ac44fdf747daaf416f445b7f2",
+      "gitNormalizedSha256": "176eccae0031af26233febfc5d3c7259ed2437dd763d3a5d18f4537f7901ff01"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ie-ue-er-v1-mobile.png",
+      "bytes": 77354,
+      "sha256": "54b9b5c2c21f1025fc69cf44c6b965d0576a311dbb2e7608dac0fb671db81391",
+      "gitNormalizedSha256": "63fbb94af9149338bffbb66836f9d9d10161dc7cc7b91365923555059c8b0eb8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/chinese-g1-a692a990-pinyin-ie-ue-er-v1-table.png",
+      "bytes": 28072,
+      "sha256": "edeb983a8ef700dc5a2994d7702dfdcbf21636953df0a5b107d401cfc3d39a7f",
+      "gitNormalizedSha256": "cdddeae06bae1f6d0024294abaddf98f705f3f3cb40e251cf30b6dd733bbdd43"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/derived/manifest.json",
+      "bytes": 4690,
+      "sha256": "fd61d06220cefd20ea19f021b631302acba20429a8ed69e7994e1126c45a6243",
+      "gitNormalizedSha256": "c0a9fea0d4d9ff5939da586ffe1f269ae4fba5c3b2dc50f6c791793048f85b38"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/derived/mobile-1.png",
+      "bytes": 222051,
+      "sha256": "ece4e8076ee92c19451ad72449293e5892f0c84787fda8b8570450cc8832717a",
+      "gitNormalizedSha256": "ce2ec6aca758dfe917027739f56e9353cf181e49d2e9d7665b1b949bf73d3527"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/derived/mobile-2.png",
+      "bytes": 210867,
+      "sha256": "4857c9dd323f8a991158bb1f8ec3ec3ba9f495de78c4171322c2bffd555b76b6",
+      "gitNormalizedSha256": "09131c20215b69151f6aa16874fd510942b9836036cf03a0c81a89e182029149"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/derived/table-1.png",
+      "bytes": 74856,
+      "sha256": "221f5acc234ded6d0b5f2518000f523b16119e9b98f7caf47457327e002ff783",
+      "gitNormalizedSha256": "11844bf198eb311aa139834fef645e80c4f8bdf5a3440a3376ba4cb74328b2a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/derived/table-2.png",
+      "bytes": 117118,
+      "sha256": "5c7fc03f4e64dfc4724228caf694b8695faa43dac95aa39da563cc1c38708ae8",
+      "gitNormalizedSha256": "7e3927122b003a4b95f12dc1a4573f8fd504e80b04aa032dd6ec0f6ac5d7cd24"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/receipt.json",
+      "bytes": 2423,
+      "sha256": "d1fd10275b7c1a89bda30ba5346db856aafe019a78b9413b46cc5d64290492fe",
+      "gitNormalizedSha256": "d1fd10275b7c1a89bda30ba5346db856aafe019a78b9413b46cc5d64290492fe"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-first/runner.cjs",
+      "bytes": 17793,
+      "sha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557",
+      "gitNormalizedSha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/chinese-g1-a692a990-pinyin-garden-three-v1-desktop.png",
+      "bytes": 343342,
+      "sha256": "515b77c3aae510d1287c23b75e6d956bfc5890e0d1fcae89cfc14eaf5bead2af",
+      "gitNormalizedSha256": "aa9eb2dd0e5577332a4cb7e00a0a59ab3588fbead1a14e5b3db34b2f98e35809"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/chinese-g1-a692a990-pinyin-garden-three-v1-mobile-table.png",
+      "bytes": 65643,
+      "sha256": "f175abb605658cc2dac1292bc224a3a176843af958131d6d7bde137b8c51b7be",
+      "gitNormalizedSha256": "f2e5d619b6cb152cfd4f7879ec901e7820b22387c663228a2cf39b0a00029ba4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/chinese-g1-a692a990-pinyin-garden-three-v1-mobile.png",
+      "bytes": 62189,
+      "sha256": "5123ce3e008008a54c679a66acfbd41978e59e6447e386b626f6c6102378a375",
+      "gitNormalizedSha256": "22904b306cce638e91ed9cf8ccaa2d52f2e7285d392decf79300767165d79233"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/chinese-g1-a692a990-pinyin-garden-three-v1-table.png",
+      "bytes": 46195,
+      "sha256": "c872c0aeb91b3ba6d5176a6e3ce09bebc4926a1b0bfe37044a629cb02044a936",
+      "gitNormalizedSha256": "50cd46cfe8598088f6fcb42b02170a1d3e6d8d9154e08e8d984854ced9210e1a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/receipt.json",
+      "bytes": 944,
+      "sha256": "91c887ad2d92863827639a2e3e8e9ca2500ffa7788180adea13955419e7dc7aa",
+      "gitNormalizedSha256": "91c887ad2d92863827639a2e3e8e9ca2500ffa7788180adea13955419e7dc7aa"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/browser-second/runner.cjs",
+      "bytes": 17793,
+      "sha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557",
+      "gitNormalizedSha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/book-progress-first.json",
+      "bytes": 745,
+      "sha256": "e6ca209fb79a178684a65e4b3cbdacbaa42a2ea6a3c04465fa54358258927825",
+      "gitNormalizedSha256": "e6ca209fb79a178684a65e4b3cbdacbaa42a2ea6a3c04465fa54358258927825"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/browser-second-visual-review.json",
+      "bytes": 195,
+      "sha256": "73dac3f876c6b8517394014fc8e9df7cd4d92b76854d919006ec73ed9da5f0b1",
+      "gitNormalizedSha256": "73dac3f876c6b8517394014fc8e9df7cd4d92b76854d919006ec73ed9da5f0b1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/browser-visual-review.json",
+      "bytes": 422,
+      "sha256": "e6e2c4451db6ddd5e51ddc0a411be569e8843dd9935e714539ecce2020e53fd8",
+      "gitNormalizedSha256": "e6e2c4451db6ddd5e51ddc0a411be569e8843dd9935e714539ecce2020e53fd8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/content-worklist-first.json.gz",
+      "bytes": 123338,
+      "sha256": "c0b198433c9d08e7942991d269511056654e7dd38fbf648b87f2af9223f4e788",
+      "gitNormalizedSha256": "64776806322dc60fd4c94a386f319ccea314d8ccec4bd10ffc200cbb9683e06d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/first-source-snapshot.json.gz",
+      "bytes": 142345,
+      "sha256": "d2a939021b1541c1f3374f353e0a18c584a163b663e1f84d59c020f5e3ddea7c",
+      "gitNormalizedSha256": "a1b058f8f4ec45eea81fdc550de849bc81dd6a6f497629d2d6277f7fdfc8a72b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "c6970773acbd2b7f8baf3907e419c7cf537bf272340502650b6ad7e879bd9420",
+      "gitNormalizedSha256": "c6970773acbd2b7f8baf3907e419c7cf537bf272340502650b6ad7e879bd9420"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/source-visual-next-six.json",
+      "bytes": 37698,
+      "sha256": "f3e3d1d3bf408e46550f01545131b3ee8e35cafa14074073d098892d305db5d7",
+      "gitNormalizedSha256": "f3e3d1d3bf408e46550f01545131b3ee8e35cafa14074073d098892d305db5d7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/static-first-inputs.json.gz",
+      "bytes": 103359,
+      "sha256": "84c0b56918a83cf40fa6f383eac4cda368a74d987e45fb3d96afb867baf2bff4",
+      "gitNormalizedSha256": "18e4a1666130f65d26df2b624952ab71e54ca13a740cb9a1587a0345b91049f5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/static-first.json",
+      "bytes": 5015,
+      "sha256": "30a35f6eb164eb5e1d81c1eacef84d41f039b869510c943dd706994ed2fca5cd",
+      "gitNormalizedSha256": "30a35f6eb164eb5e1d81c1eacef84d41f039b869510c943dd706994ed2fca5cd"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/static-second-inputs.json.gz",
+      "bytes": 103361,
+      "sha256": "c04264c1447f899eac4c9a3c7e743bdc06b5aa385e72b24be63445ec7561c538",
+      "gitNormalizedSha256": "388d6d7645a9a8124ecfa065f407e757210328668fe04ba422f9b55f214ee02d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/static-second.json",
+      "bytes": 5015,
+      "sha256": "4a94820d3eae5bfa78a147a317ade67c780ea65842821cbc4ce7d147aab2f0dc",
+      "gitNormalizedSha256": "4a94820d3eae5bfa78a147a317ade67c780ea65842821cbc4ce7d147aab2f0dc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/wording-correction.json",
+      "bytes": 624,
+      "sha256": "08b6b4eac4142ce040a5dde26e49915a5d5ec7c048993dd25e509441280ac0bd",
+      "gitNormalizedSha256": "08b6b4eac4142ce040a5dde26e49915a5d5ec7c048993dd25e509441280ac0bd"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-ai-ei-ui-v1.json",
+      "bytes": 2193,
+      "sha256": "c1882d15731159f7dbf59badf5d1edeb14daeffe5afb5c27a5e3d39a82d63c68",
+      "gitNormalizedSha256": "c1882d15731159f7dbf59badf5d1edeb14daeffe5afb5c27a5e3d39a82d63c68"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-ao-ou-iu-v1.json",
+      "bytes": 2193,
+      "sha256": "3c965361072bcdf7bee0791a9263a332266c8f392654456db985582b5a75eb1a",
+      "gitNormalizedSha256": "3c965361072bcdf7bee0791a9263a332266c8f392654456db985582b5a75eb1a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-back-nasals-v1.json",
+      "bytes": 2199,
+      "sha256": "7224ac5114c77e636e665c7e3e3db176670de64b3931d17e69caa01a32f67801",
+      "gitNormalizedSha256": "7224ac5114c77e636e665c7e3e3db176670de64b3931d17e69caa01a32f67801"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-front-nasals-v1.json",
+      "bytes": 2213,
+      "sha256": "726993a8931637e1d12db90217087e9f1476434aaad694680af198f3891aa499",
+      "gitNormalizedSha256": "726993a8931637e1d12db90217087e9f1476434aaad694680af198f3891aa499"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-garden-three-v1.json",
+      "bytes": 2214,
+      "sha256": "60cd59f24be49902b71fff4f681f51d74f95ac7f4bfc47925deb39dc51ff530c",
+      "gitNormalizedSha256": "60cd59f24be49902b71fff4f681f51d74f95ac7f4bfc47925deb39dc51ff530c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/chinese-g1-a692a990-pinyin-ie-ue-er-v1.json",
+      "bytes": 2193,
+      "sha256": "2e16b450bb1a2c82bcbfe85f035b730a064f2bce60c90843af93516d23c04c9e",
+      "gitNormalizedSha256": "2e16b450bb1a2c82bcbfe85f035b730a064f2bce60c90843af93516d23c04c9e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-first/summary.json",
+      "bytes": 789,
+      "sha256": "95c73a34105e46f85b1d1f48fe36afdd2bb930f7bf161dd40423db2368cf8917",
+      "gitNormalizedSha256": "95c73a34105e46f85b1d1f48fe36afdd2bb930f7bf161dd40423db2368cf8917"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/http-second/garden-three.json",
+      "bytes": 2214,
+      "sha256": "719548a0ef0dedfa72c1e5eeac5d451d2bc7509e6bfffaa1a2c43b71284fec63",
+      "gitNormalizedSha256": "719548a0ef0dedfa72c1e5eeac5d451d2bc7509e6bfffaa1a2c43b71284fec63"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/manifest.json",
+      "bytes": 11226,
+      "sha256": "bdeb677dfa62799efaa9d587036a37834c66591848cdaf9b7d75d77495d8954f",
+      "gitNormalizedSha256": "bdeb677dfa62799efaa9d587036a37834c66591848cdaf9b7d75d77495d8954f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/receipt.json",
+      "bytes": 27243,
+      "sha256": "1d9d3b74303edd3c47c0cd60d73cd1f3e214637c61507e01c24d141804f066e0",
+      "gitNormalizedSha256": "1d9d3b74303edd3c47c0cd60d73cd1f3e214637c61507e01c24d141804f066e0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/sources.json.gz",
+      "bytes": 142855,
+      "sha256": "ed831be889088e18cce513fa690dbbe47ad1b28072817aedcad47a9c70a34678",
+      "gitNormalizedSha256": "ddf817276f620e8c23e2083cd1af036622fe49946fe3b3a71cf58c6996ac5b23"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/archive.cjs",
+      "bytes": 7125,
+      "sha256": "3570c29fb581320047f7ca4f502c16b5ded7ddd92d0f4b5a815fea1bf65d68a0",
+      "gitNormalizedSha256": "3570c29fb581320047f7ca4f502c16b5ded7ddd92d0f4b5a815fea1bf65d68a0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/book-progress.cjs",
+      "bytes": 3291,
+      "sha256": "ecdc4fe0302f8905d4957de377009a39369ea5de1014c3562ee3c39a118f95ff",
+      "gitNormalizedSha256": "ecdc4fe0302f8905d4957de377009a39369ea5de1014c3562ee3c39a118f95ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/browser-run.cjs",
+      "bytes": 17793,
+      "sha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557",
+      "gitNormalizedSha256": "421060367a93f64af1d6bbe48b4561b06addbf2aed1cb586d1d18d4066fbb557"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/correct-and-sync.cjs",
+      "bytes": 2272,
+      "sha256": "32448cd48887bfbe5a62f641de68d04e79e74f5ca3fb6e52da255c77f4424c46",
+      "gitNormalizedSha256": "32448cd48887bfbe5a62f641de68d04e79e74f5ca3fb6e52da255c77f4424c46"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/prepare.cjs",
+      "bytes": 3574,
+      "sha256": "896309c52e146a91455939c1d02411cd08a7127bfce43fd118c44ba4064e66ab",
+      "gitNormalizedSha256": "896309c52e146a91455939c1d02411cd08a7127bfce43fd118c44ba4064e66ab"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/run-http.cjs",
+      "bytes": 1798,
+      "sha256": "b05a4bddf1160810517b5296780486916910a4b10c1939ddaddc03333dd4bd8c",
+      "gitNormalizedSha256": "b05a4bddf1160810517b5296780486916910a4b10c1939ddaddc03333dd4bd8c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/update-plans.cjs",
+      "bytes": 5699,
+      "sha256": "0c8cd1a5fbaaab86c072134afedd645ac341e0e4c19a4fee9391543c743c4e2b",
+      "gitNormalizedSha256": "0c8cd1a5fbaaab86c072134afedd645ac341e0e4c19a4fee9391543c743c4e2b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/visual-sheets.py",
+      "bytes": 1395,
+      "sha256": "394eee252b5ced1e3db270ef6a6b65f949a9ac02eaa0d8a54eec37612c4926db",
+      "gitNormalizedSha256": "394eee252b5ced1e3db270ef6a6b65f949a9ac02eaa0d8a54eec37612c4926db"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "59820b854889777ebba8e927a0d256bac38d964e51ce3bbc9a9e933280bc7780",
+      "gitNormalizedSha256": "59820b854889777ebba8e927a0d256bac38d964e51ce3bbc9a9e933280bc7780"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-compounds-nasals-and-garden-three/tools/stage.cjs",
+      "bytes": 4330,
+      "sha256": "c7100f1ad51d2a9c3a8fbcb5a322f1be074d7f8514e0737e30f8a6466a922a3d",
+      "gitNormalizedSha256": "c7100f1ad51d2a9c3a8fbcb5a322f1be074d7f8514e0737e30f8a6466a922a3d"
+    }
+  ]
+}
