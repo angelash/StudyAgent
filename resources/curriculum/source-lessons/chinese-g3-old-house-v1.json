@@ -1,0 +1,359 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry1",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 51,
+    "pageEnd": 54,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:old-house-word-reading",
+      "version": 1,
+      "name": "老屋课六字识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "结合词语识读暴喵孵叽偶尔六字",
+      "successCriterion": "真实声音覆盖六字，按当前词语和原页注音核对，文字或拼音选择不代发音",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:old-house-handwriting",
+      "version": 1,
+      "name": "老屋课13字实际书写",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与写字",
+      "objective": "观察并真实书写准备等暴睡壁砍蜘蛛漂撞饱晒13字",
+      "successCriterion": "逐字核对本人原稿和部件完整性，识读与写字表不混算，原稿订正分别保留",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:old-house-prediction-clues",
+      "version": 1,
+      "name": "用题目插图与前文作预测",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "预测阅读",
+      "objective": "在明确当前已读范围下提出后续可能并说明线索",
+      "successCriterion": "至少指出一项已给线索并说明联系，允许不同有据预测，后文或旁批已看需保留曝光",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:old-house-prediction-revision",
+      "version": 1,
+      "name": "核对后文并保留原预测修订",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "预测阅读",
+      "objective": "读到后续后比较原预测与实际叙述，说明怎样更新想法",
+      "successCriterion": "原猜测和依据不被新答案覆盖，未猜中但有据与无据乱猜分别看，不把改对当最初已对",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:old-house-impression",
+      "version": 1,
+      "name": "联系图文说明老屋印象",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "用具体课文行动和插图说明对老屋的印象",
+      "successCriterion": "图像与文字来源各自清楚，印象有依据，不由外貌或一次行为推断永远完美或必然不倒",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:old-house-word-reading",
+    "source:chinese:g3:02915a7d:old-house-handwriting",
+    "source:chinese:g3:02915a7d:old-house-prediction-clues",
+    "source:chinese:g3:02915a7d:old-house-prediction-revision",
+    "source:chinese:g3:02915a7d:old-house-impression",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "选定原件所有正文、旁批、作者、识写表、插图和任务已逐张查看；此为当前教材范围核对，不是教师审核或教材外全文已读。",
+    "pages": [
+      {
+        "page": 51,
+        "visualChecked": true,
+        "statement": "已查看作者慈琪、标题、老屋处境与小猫请求、插图和旁批初猜，旁批不是学生原首答。"
+      },
+      {
+        "page": 52,
+        "visualChecked": true,
+        "statement": "已查看答应小猫、老母鸡二十几天孵鸡、九只小鸡和旁批不同预测。"
+      },
+      {
+        "page": 53,
+        "visualChecked": true,
+        "statement": "已查看小蜘蛛请求结网、讲故事与到现在仍站的结尾及旁批，不推现实建筑永不倒。"
+      },
+      {
+        "page": 54,
+        "visualChecked": true,
+        "statement": "已查看六字识读、13字书写、预测交流示例与图文印象任务，预测有同有异，不加全文背诵。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "总也倒不了的老屋",
+    "author": "慈琪",
+    "recognitionCharacters": [
+      "暴",
+      "喵",
+      "孵",
+      "叽",
+      "偶",
+      "尔"
+    ],
+    "writingCharacters": [
+      "准",
+      "备",
+      "等",
+      "暴",
+      "睡",
+      "壁",
+      "砍",
+      "蜘",
+      "蛛",
+      "漂",
+      "撞",
+      "饱",
+      "晒"
+    ],
+    "fullTextRecitationRequired": false,
+    "predictionSideNotesAreExamplesNotStudentFirstAnswers": true,
+    "requiredTasks": [
+      "边读边预测并交流",
+      "联系插图课文说明印象"
+    ],
+    "requests": [
+      {
+        "character": "小猫",
+        "duration": "一个晚上"
+      },
+      {
+        "character": "老母鸡",
+        "duration": "二十几天"
+      },
+      {
+        "character": "小蜘蛛",
+        "duration": "一会儿，后续听故事仍未结束"
+      }
+    ],
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "总也倒不了的老屋：先说明猜测依据，再读后文核查",
+    "activation": {
+      "prompt": "只看原创题目“总也收不起来的小伞”，你能提出什么可能？先说这只是猜测，再指出题目给了什么、没给什么。",
+      "expectedObservation": "孩子能把题目线索与自己猜测分开，不把猜到的结局当已经读到的事实。",
+      "bridge": "读老屋时也先保留当前线索与想法，读到下一段再核对。"
+    },
+    "concept": {
+      "explanation": "老屋准备倒下，先后听到小猫、老母鸡、小蜘蛛请求，分别因避暴风雨、孵小鸡和结网抓虫而继续站着。预测可联系题目总也倒不了、插图外貌、前文答应帮助的重复方式，也可联系已有经验提出另一种合理可能。旁批和课后示例有猜中，也有与后文不同，说明合理预测不是必须与作者唯一结局相同。记录当时读到哪里、猜什么、为什么，再读后文核对，不能看完后把原猜测改成早就知道。印象用具体行动和图文支持；正文写到现在仍站着，不证明现实旧房永不倒，不能把文学拟人作为危房判断或实际观察任务。",
+      "points": [
+        "预测基于当前已给线索",
+        "不同有据可能可以并存",
+        "旁批是示范不是本人首答",
+        "原预测与后文核对分别保留",
+        "老屋印象用图文具体支持"
+      ]
+    },
+    "example": {
+      "situation": "明确原创分步卡：先只给“旧纸伞正要收起，一只湿小鸟请求再挡一会儿雨，伞刚才帮助过别人”。预测之后，才读核对卡“伞答应再挡一会儿”。两卡为示例，不是老屋原文。",
+      "steps": [
+        {
+          "explanation": "先列当前线索：小鸟有需要、纸伞先前帮助过别人；可猜会答应，也可有据提出疲劳而商量办法。",
+          "board": [
+            "已给：请求与先前行动",
+            "预测：一种或多种可能",
+            "理由：把线索连起来"
+          ]
+        },
+        {
+          "explanation": "保留原想法后读第二卡，比较实际答应与自己原预测的关系，不能倒改原记录。",
+          "board": [
+            "原预测保留",
+            "后文：答应",
+            "一致或不同分别说"
+          ]
+        },
+        {
+          "explanation": "若原先猜别的，说明新信息怎样使想法更新，不把没猜中直接判成不会预测。",
+          "board": [
+            "新信息起作用",
+            "更新理由",
+            "合理性与猜中分开"
+          ]
+        }
+      ],
+      "conclusion": "示范展示预测方法；已经看过核对卡后再做同题，不算新的未见独立预测。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "线索、预测与核对分三栏",
+        "headers": [
+          "当前线索",
+          "可以提出的猜测",
+          "读后怎样检查"
+        ],
+        "rows": [
+          [
+            "题目总也倒不了",
+            "可能总有事情使老屋继续站着",
+            "后文是否反复出现请求"
+          ],
+          [
+            "老屋先前答应帮助",
+            "可能继续帮助新来者",
+            "核对具体回答与原因"
+          ],
+          [
+            "不断被打扰的一般经验",
+            "也可能不耐烦或有别的安排",
+            "原猜测有据仍可与后文不同"
+          ],
+          [
+            "插图的神情",
+            "可形成对角色的初步印象",
+            "图像来源与正文行动分别看"
+          ]
+        ],
+        "explanation": "表格保留思路来源，不把老师旁批、结局记忆或看过示范后的答案当本人原预测。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "读完后把自己的原猜测全部改成与作者相同，称早就猜中。",
+        "alternatives": [
+          "可能把猜中当唯一目标，也可能未分别记录原想法与核对。"
+        ],
+        "verification": "对照原记录和当时已读范围，说出哪项新信息后来才得到。",
+        "correctiveFeedback": "保留原猜测，合理的不同也有价值，改后理解不倒改首答。"
+      },
+      {
+        "observation": "只说老屋善良，却没有行动或把插图当正文事实。",
+        "alternatives": [
+          "可能只记评价词，也可能混来源。"
+        ],
+        "verification": "分别给一处正文帮助与一项图像印象，解释支持关系。",
+        "correctiveFeedback": "印象有具体依据，图文身份分清，不把一个表情推成所有行为。"
+      }
+    ],
+    "transfer": {
+      "scenario": "换一段未见的原创请求故事，先给前半并在真正记录预测后另给核对材料；已有曝光时标明。",
+      "prompt": "指出已知线索，写一个可能与理由，读到后续后保留原答并说明更新。再用一项行动说明角色印象。",
+      "expectedStrategy": "先答后核对，合理性、猜中与已有曝光分别记录，不把重复原篇当新独立结构。"
+    },
+    "summary": {
+      "synthesis": "边读边想，线索支持猜测；读后核查，原思路不抹去。印象由具体图文支持，不以猜中次数代全部阅读能力。",
+      "takeaways": [
+        "题目插图前文都可给线索",
+        "合理不等必须猜中",
+        "原预测和核对结果分开",
+        "角色印象有具体依据"
+      ]
+    },
+    "citations": [
+      {
+        "page": 54,
+        "quote": "读课文的过程中，你有没有猜到后面会发生什么",
+        "usedFor": "concept"
+      },
+      {
+        "page": 54,
+        "quote": "老屋给你留下了什么样的印象",
+        "usedFor": "transfer"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:old-house-word-reading",
+        "objective": "结合词语识读暴喵孵叽偶尔六字",
+        "successCriterion": "真实声音覆盖六字，按当前词语和原页注音核对，文字或拼音选择不代发音"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:old-house-handwriting",
+        "objective": "观察并真实书写准备等暴睡壁砍蜘蛛漂撞饱晒13字",
+        "successCriterion": "逐字核对本人原稿和部件完整性，识读与写字表不混算，原稿订正分别保留"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:old-house-prediction-clues",
+        "objective": "在明确当前已读范围下提出后续可能并说明线索",
+        "successCriterion": "至少指出一项已给线索并说明联系，允许不同有据预测，后文或旁批已看需保留曝光"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:old-house-prediction-revision",
+        "objective": "读到后续后比较原预测与实际叙述，说明怎样更新想法",
+        "successCriterion": "原猜测和依据不被新答案覆盖，未猜中但有据与无据乱猜分别看，不把改对当最初已对"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:old-house-impression",
+        "objective": "用具体课文行动和插图说明对老屋的印象",
+        "successCriterion": "图像与文字来源各自清楚，印象有依据，不由外貌或一次行为推断永远完美或必然不倒"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "联系当前语境解释词句并说明方法",
+        "successCriterion": "具体线索支持解释，不把标题插图提供的联想当全部原文或真实规律"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "用已提供的线索支持预测和判断，分清后文核对结果",
+        "successCriterion": "原线索、预测与后文信息各自明确，未读部分保持未知，预测合理不等于必须猜中唯一结果"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "先核对已读与已给反馈，审核结构评分和充分未见库存，再按真实日期安排。看过后文或示范的原篇不计陌生独立预测；模拟日期不当真人保持。"
+    }
+  },
+  "editorNotes": {
+    "slug": "old-house",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "具体原创讲解、预测示例、错因与核对方法已写；检查材料、独立结构、评分及充分保持库存仍待补齐审核。",
+    "reuseBoundary": "复用词义与依据定义；新目标保持候选，等价先修和独立题族不自动批准。",
+    "predictionBoundary": "当前完整原页与旁批已经由编写者读取，只有教学候选资格；学生先前曝光必须另核，不能把看过答案后的复述或修改当原始未见预测。"
+  }
+}

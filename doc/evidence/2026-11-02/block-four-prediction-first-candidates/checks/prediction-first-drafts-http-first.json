@@ -1,0 +1,64 @@
+{
+  "at": "2026-11-02T10:33:13.227Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-old-house-v1.json",
+      "sha256": "5be6862e67b6d52f05bad540373af7f9bee1523159b4fc8ea5e38edc1b35a835",
+      "physicalPages": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 7,
+      "preflightPublishable": false,
+      "gapCount": 69,
+      "linkedDraftMaterialReferences": 0,
+      "gapCodes": [
+        "target_not_published",
+        "content_incomplete",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    },
+    {
+      "file": "chinese-g3-carrot-v1.json",
+      "sha256": "06a3f5adc79bf85034943f029624d81e3ea80442bdf1bccda5da30e19bf5d410",
+      "physicalPages": [
+        55,
+        56,
+        57
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 59,
+      "linkedDraftMaterialReferences": 0,
+      "gapCodes": [
+        "target_not_published",
+        "content_incomplete",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 2,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 0,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  }
+}
