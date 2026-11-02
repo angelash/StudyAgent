@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-02T11:24:13.842Z",
+  "passed": true,
+  "scope": "Original drafts, manual exact-source ranges, real SQLite HTTP and cold read. No teacher approval, material release, adoption or learner evidence.",
+  "drafts": [
+    {
+      "file": "chinese-g3-name-story-v1.json",
+      "sha256": "4d6180c855581e3e733cea0a1aed86482d83ace18ad81dcad56d9975ce40e478",
+      "physicalPages": [
+        64
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 63,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 35,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g3-name-story-v1.json",
+    "sha256": "80a3367122c9a17bf9b8720fdcb0e5831af3f9d059b94ffa64cee853c18cbb5c",
+    "groups": 5,
+    "questions": 35,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

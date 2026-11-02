@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "name-story",
+      "path": "resources/curriculum/source-lessons/chinese-g3-name-story-v1.json",
+      "sha256": "4d6180c855581e3e733cea0a1aed86482d83ace18ad81dcad56d9975ce40e478",
+      "source": {
+        "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+        "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry4",
+        "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+        "pageStart": 64,
+        "pageEnd": 64,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标每间隔仅一份拟议样题。名字字义与实际来历、准备/示范/真实采访/同伴回应/转述分别记录，保护不披露选择。未见结构、评分与充分库存仍待审。",
+  "groups": [
+    {
+      "lesson": "name-story",
+      "atomId": "source:chinese:g3:02915a7d:name-clear-sharing",
+      "structure": "name-information-and-source-clear-sharing",
+      "familyProposal": "following-name-information-and-source-clear-sharing",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "对象和具体信息清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "交代真实来源或明确原创身份",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不把字义猜测变家庭事实，尊重不披露",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "具体信息有来源，未知说未知；不要求全名或私事，不由字面猜测编成家庭事实。",
+        "insufficientExample": "名字好听，我已经问过大家，所有故事都是这样。",
+        "insufficientReason": "缺具体信息与来源，也没有实际交流记录，不能由任务要求补成已经发生。",
+        "alternativeAnswers": "人工核对参考；允许不同内容和不披露选择，真实过程和未完成单列。"
+      },
+      "exercises": [
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "录音介绍一条你愿意分享的名字含义或来历，说清对象、了解到什么和从哪里了解。可以选其他人的名字。",
+          "answer": "具体信息有来源，未知说未知；不要求全名或私事，不由字面猜测编成家庭事实。",
+          "analysis": "具体信息有来源，未知说未知；不要求全名或私事，不由字面猜测编成家庭事实。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "把只有“名字很好听”的介绍补清楚：具体哪一条信息、谁提供的、什么还未核实。录音说出。",
+          "answer": "补充对象、内容和来源，未核来历不填成确定；评价词不能代具体信息。",
+          "analysis": "补充对象、内容和来源，未核来历不填成确定；评价词不能代具体信息。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "为原创角色取一个名字，录音说明自己的创作理由，并明确这不是现实人物的家庭历史。",
+          "answer": "原创身份和取名理由清楚，可以练表达但不作真实采访完成。",
+          "analysis": "原创身份和取名理由清楚，可以练表达但不作真实采访完成。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次重新介绍一条已核实且愿意公开的信息，注明是否刚看过笔记或得到帮助。",
+          "answer": "本人本次声音与具体信息对应，帮助保留，旧音频和背示范不代新的独立交流证据。",
+          "analysis": "本人本次声音与具体信息对应，帮助保留，旧音频和背示范不代新的独立交流证据。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果暂时不知道本人名字来历，怎样仍清楚表达目前已知与下一步？录音说明。",
+          "answer": "如实说未知，可选择其他有来源且愿分享的对象，不能为完成编造父母故事或认定能力低。",
+          "analysis": "如实说未知，可选择其他有来源且愿分享的对象，不能为完成编造父母故事或认定能力低。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "给一段明确虚构的介绍：“角色雨航由我创作，希望他敢于探索”。用自己的话说清对象和来源。",
+          "answer": "说创作者本人赋予愿望，不变成现实家长真实期待；给定示例练习不当实际家庭采访。",
+          "analysis": "说创作者本人赋予愿望，不变成现实家长真实期待；给定示例练习不当实际家庭采访。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-information-and-source-clear-sharing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "核对自己一次真实介绍，录音改进一处缺对象、缺来源或说得不清楚之处；没有原介绍则标准备。",
+          "answer": "原问题与改进对应，真实与准备分清，内容可信度不由表达流畅单独保证。",
+          "analysis": "原问题与改进对应，真实与准备分清，内容可信度不由表达流畅单独保证。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "name-story",
+      "atomId": "source:chinese:g3:02915a7d:name-polite-listening",
+      "structure": "name-related-polite-response-and-question",
+      "familyProposal": "following-name-related-polite-response-and-question",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "回应对应真实听到的信息",
+          "weight": 0.4
+        },
+        {
+          "criterion": "问题具体而礼貌",
+          "weight": 0.4
+        },
+        {
+          "criterion": "尊重选择，角色示范和真实同伴分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可先确认听到自己创作，再问愿望怎样与角色联系；不追问现实家事，示范不算真实交流。",
+        "insufficientExample": "名字好听，我已经问过大家，所有故事都是这样。",
+        "insufficientReason": "缺具体信息与来源，也没有实际交流记录，不能由任务要求补成已经发生。",
+        "alternativeAnswers": "人工核对参考；允许不同内容和不披露选择，真实过程和未完成单列。"
+      },
+      "exercises": [
+        {
+          "id": "name-story-name-related-polite-response-and-question-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "给定原创示例同伴说“我给角色取名晨望，望表示向前看的愿望”。录音作一句相关回应和一个礼貌追问，标明是示范。",
+          "answer": "可先确认听到自己创作，再问愿望怎样与角色联系；不追问现实家事，示范不算真实交流。",
+          "analysis": "可先确认听到自己创作，再问愿望怎样与角色联系；不追问现实家事，示范不算真实交流。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "设计一次“我听到……，我还想了解……”的回应，说明问题来自对方哪句话。录音。",
+          "answer": "回应与具体信息有关，问题不只背套话；没有真实同伴则明确是练习。",
+          "analysis": "回应与具体信息有关，问题不只背套话；没有真实同伴则明确是练习。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "真实同伴愿意参加时，听其介绍再回应并追问；可录愿意公开的部分。没有合适条件就说明缺什么。",
+          "answer": "实际听众与响应可核，对方可不回答或不录；无条件保留未完成，不由自己配音补成真实活动。",
+          "analysis": "实际听众与响应可核，对方可不回答或不录；无条件保留未完成，不由自己配音补成真实活动。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "同伴说这部分不想谈，你怎样回应并换到愿意交流的信息？录一段标明身份的示范。",
+          "answer": "尊重选择，可表示理解并请对方选愿分享内容，不强迫交姓名或家庭细节。",
+          "analysis": "尊重选择，可表示理解并请对方选愿分享内容，不强迫交姓名或家庭细节。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对方解释一个词，你仍不明白，录音提出一个更具体的澄清问题，注明实际或示例。",
+          "answer": "点明不明白哪一词或关系，礼貌核对，不反复问已明确回答的信息或贴标签。",
+          "analysis": "点明不明白哪一词或关系，礼貌核对，不反复问已明确回答的信息或贴标签。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "回看一次真实交流，指出自己的回应是否联系对方实际内容；没有记录则说明记忆限制。",
+          "answer": "以真实已听内容核对相关性，回忆与原记录分清，不编同伴原话。",
+          "analysis": "以真实已听内容核对相关性，回忆与原记录分清，不编同伴原话。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-related-polite-response-and-question-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "为什么“你必须全部告诉我”不合适？录音改成既相关又尊重选择的问题。",
+          "answer": "改问愿意分享的部分并允许不答，礼貌不等只加请字后仍强迫。",
+          "analysis": "改问愿意分享的部分并允许不答，礼貌不等只加请字后仍强迫。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "name-story",
+      "atomId": "source:chinese:g3:02915a7d:name-new-information-retelling",
+      "structure": "name-source-faithful-new-information-retelling",
+      "familyProposal": "following-name-source-faithful-new-information-retelling",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "转述有原讲述依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原信息与自己猜测分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准备与实际对合适对象转述分别记",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "保留原创角色和同伴创作来源，准确讲愿望，不添祖辈、出生时刻等未给事实。",
+        "insufficientExample": "名字好听，我已经问过大家，所有故事都是这样。",
+        "insufficientReason": "缺具体信息与来源，也没有实际交流记录，不能由任务要求补成已经发生。",
+        "alternativeAnswers": "人工核对参考；允许不同内容和不披露选择，真实过程和未完成单列。"
+      },
+      "exercises": [
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创示例只说“同伴给角色取名晨望，想表达向前看的愿望”。录音转述一条新信息，勿加真实家人经历。",
+          "answer": "保留原创角色和同伴创作来源，准确讲愿望，不添祖辈、出生时刻等未给事实。",
+          "analysis": "保留原创角色和同伴创作来源，准确讲愿望，不添祖辈、出生时刻等未给事实。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "将一次实际听到且愿意转述的信息，按“谁介绍、我新知道什么、还有什么疑问”录音讲清楚。",
+          "answer": "原讲述可对应，未知留疑问；只做练习录音不自动成为已向家人转述。",
+          "analysis": "原讲述可对应，未知留疑问；只做练习录音不自动成为已向家人转述。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "如果条件合适，向家人或合适照顾者讲一条真实交流中的新信息，再报告实际完成范围。否则只说明准备内容。",
+          "answer": "实际转述对象与信息明确，非本人选择或没有条件不伪造完成，不要求家庭证明。",
+          "analysis": "实际转述对象与信息明确，非本人选择或没有条件不伪造完成，不要求家庭证明。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "给定原信息为“我从爷爷那里了解到这个字的意思”，转述成“名字一定由爷爷取”哪里越界？录音改正。",
+          "answer": "了解字义的来源不等取名者，改回已给信息，不能将推测转成真实来历。",
+          "analysis": "了解字义的来源不等取名者，改回已给信息，不能将推测转成真实来历。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "回忆不清同伴说的是字义还是取名原因，怎样向家人准确表达当前状态？录音说明。",
+          "answer": "可以说尚未记清待询问，不以流畅和故事完整性补成确定；未核范围保留。",
+          "analysis": "可以说尚未记清待询问，不以流畅和故事完整性补成确定；未核范围保留。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次转述一条新信息并指出哪部分是自己理解、哪部分来自对方。没有真实交流时使用明确示例。",
+          "answer": "来源身份与内容对应，示例不冒充真实同伴，理解不倒改对方原讲述。",
+          "analysis": "来源身份与内容对应，示例不冒充真实同伴，理解不倒改对方原讲述。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "name-story-name-source-faithful-new-information-retelling-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "比较原信息与自己的转述，修订一个新增的未经证实细节；无原记录则只说明方法和限制。",
+          "answer": "具体删改有依据，原说法与修订分别保留，不编造过去已讲过或对方已经确认。",
+          "analysis": "具体删改有依据，原说法与修订分别保留，不编造过去已讲过或对方已经确认。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "name-story",
+      "atomId": "core:chinese:contextmeaning",
+      "structure": "name-word-meaning-and-actual-origin",
+      "familyProposal": "following-name-word-meaning-and-actual-origin",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "字义和当前语境相容",
+          "weight": 0.4
+        },
+        {
+          "criterion": "说明所用线索或工具",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字义、愿望和实际来历分别核对",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "晨可联系早晨，出生时刻与实际取名原因不能单由字义得出，需真实来源。",
+        "insufficientExample": "名字好听，我已经问过大家，所有故事都是这样。",
+        "insufficientReason": "缺具体信息与来源，也没有实际交流记录，不能由任务要求补成已经发生。",
+        "alternativeAnswers": "人工核对参考；允许不同内容和不披露选择，真实过程和未完成单列。"
+      },
+      "exercises": [
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "名字中有“晨”，能据字义确定本人一定清晨出生吗？分别写字义与仍需核实的来历。",
+          "answer": "晨可联系早晨，出生时刻与实际取名原因不能单由字义得出，需真实来源。",
+          "analysis": "晨可联系早晨，出生时刻与实际取名原因不能单由字义得出，需真实来源。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "“含义”和“来历”有什么区别？用明确虚构的名字示例说明。",
+          "answer": "含义是所表达意思，来历涉及为何怎样命名；原创例子标明不作真实家庭史。",
+          "analysis": "含义是所表达意思，来历涉及为何怎样命名；原创例子标明不作真实家庭史。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色名“雨航”，创作者说想表达雨中继续前行。解释当前航的联系，不能因此推定现实人物职业。",
+          "answer": "联系行进或航行的联想与创作说明，现实职业未知，不从字面认定。",
+          "analysis": "联系行进或航行的联想与创作说明，现实职业未知，不从字面认定。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只查到一个字的字典解释，下一步怎样核对真实名字故事？",
+          "answer": "字典支持字义，需合适讲述者或可靠材料核实具体来历；没问到仍未知。",
+          "analysis": "字典支持字义，需合适讲述者或可靠材料核实具体来历；没问到仍未知。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "“也许饱含期待”能改成每一个名字都已证明有同一种期待吗？说明范围。",
+          "answer": "不能，也许保留可能与差异，需具体来源，不推每人全部情况一样。",
+          "analysis": "不能，也许保留可能与差异，需具体来源，不推每人全部情况一样。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "“新鲜事”在交流后转述的任务里是否必须是从未有人知道的大事？",
+          "answer": "指本人新了解到的有趣信息等，联系同伴讲述理解，不等世界首次发现或必须夸大。",
+          "analysis": "指本人新了解到的有趣信息等，联系同伴讲述理解，不等世界首次发现或必须夸大。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-word-meaning-and-actual-origin-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选一个愿意交流的名字字词，给当前解释、所用依据和仍不能确定的信息。",
+          "answer": "解释有语境或工具支持，真实取名原因仍单独核实，不由名字推家庭身份经历。",
+          "analysis": "解释有语境或工具支持，真实取名原因仍单独核实，不由名字推家庭身份经历。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "name-story",
+      "atomId": "core:chinese:detail-evidence",
+      "structure": "name-claim-source-and-activity-range",
+      "familyProposal": "following-name-claim-source-and-activity-range",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "信息有具体来源",
+          "weight": 0.4
+        },
+        {
+          "criterion": "已知猜测与未知分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例计划和真实交流不相互替代",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，分别记录已查字义、未询问或未确认，任务要求不能补成已发生经历。",
+        "insufficientExample": "名字好听，我已经问过大家，所有故事都是这样。",
+        "insufficientReason": "缺具体信息与来源，也没有实际交流记录，不能由任务要求补成已经发生。",
+        "alternativeAnswers": "人工核对参考；允许不同内容和不披露选择，真实过程和未完成单列。"
+      },
+      "exercises": [
+        {
+          "id": "name-story-name-claim-source-and-activity-range-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "只知道名字字义，能说已经问过长辈并确认来历吗？怎样准确记录？",
+          "answer": "不能，分别记录已查字义、未询问或未确认，任务要求不能补成已发生经历。",
+          "analysis": "不能，分别记录已查字义、未询问或未确认，任务要求不能补成已发生经历。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同伴不愿分享本人名字，能否换其他有来源且愿意交流的名字？依据当前页说明。",
+          "answer": "可以，本页明确可以关于自己也可以其他人的名字，不以拒绝披露认定不会表达。",
+          "analysis": "可以，本页明确可以关于自己也可以其他人的名字，不以拒绝披露认定不会表达。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给定原创卡“我计划明天问家人”，分一条已发生和一条未发生的事。",
+          "answer": "已制定计划，询问和答复尚未发生，不能把明日计划当已知家人故事。",
+          "analysis": "已制定计划，询问和答复尚未发生，不能把明日计划当已知家人故事。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "某名人的名字来历听起来很熟悉，能不核来源就当事实介绍吗？还需什么？",
+          "answer": "不能，需具体可靠资料及其范围；熟悉传闻不等核实，不虚构出处。",
+          "analysis": "不能，需具体可靠资料及其范围；熟悉传闻不等核实，不虚构出处。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只有自己录的两人配音，能标真实同伴交流与对方回应已完成吗？",
+          "answer": "不能，只是角色示范，真实同伴和回应需实际过程；示范可练方法但不替真人记录。",
+          "analysis": "不能，只是角色示范，真实同伴和回应需实际过程；示范可练方法但不替真人记录。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "原讲述未说出生地点，转述时加上一个地点使故事完整，为什么不准确？",
+          "answer": "新增未经证实细节改变事实范围，应删除或清楚标待核，不能由完整性替来源。",
+          "analysis": "新增未经证实细节改变事实范围，应删除或清楚标待核，不能由完整性替来源。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "name-story-name-claim-source-and-activity-range-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "列当前一条有来源的信息、一个自己的猜测和一项尚未完成的交流环节，说明后续怎样核查。",
+          "answer": "三项身份清楚，证据与结论对应；真实完成需要实际过程，不自填同伴或家人响应。",
+          "analysis": "三项身份清楚，证据与结论对应；真实完成需要实际过程，不自填同伴或家人响应。 候选人工核对参考，不自动打分或认定活动已完成；示例、帮助和真实原记录分别保留。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

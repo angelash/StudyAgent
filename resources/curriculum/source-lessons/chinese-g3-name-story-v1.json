@@ -1,0 +1,283 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry4",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 64,
+    "pageEnd": 64,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:name-clear-sharing",
+      "version": 1,
+      "name": "清楚讲述已了解的名字信息",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语交际",
+      "objective": "选择愿意交流的名字信息，说明含义或来历以及了解途径",
+      "successCriterion": "对象、具体信息与来源清楚，字面联想和真实取名来历分开；可谈其他人的名字，不强迫披露本人或家人隐私",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:name-polite-listening",
+      "version": 1,
+      "name": "倾听名字故事并礼貌追问",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "倾听与交流",
+      "objective": "听清同伴讲述，对感兴趣或不理解内容作相关回应和追问",
+      "successCriterion": "回应联系实际听到的信息，问法尊重选择，记录真实同伴与回应；角色示范不冒充已发生交流",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:name-new-information-retelling",
+      "version": 1,
+      "name": "准确转述交流中新了解到的信息",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语表达",
+      "objective": "交流后向合适家人或照顾者讲述从同伴处了解到的新信息",
+      "successCriterion": "转述有原讲述依据，新增理解与自己猜测分开；真实转述、准备与未发生状态分别保留，不编造家庭经历",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:name-clear-sharing",
+    "source:chinese:g3:02915a7d:name-polite-listening",
+    "source:chinese:g3:02915a7d:name-new-information-retelling",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "已逐张查看物理64印59页的正文、两处想法气泡与两条交流提示。可交流自己或其他人的名字；询问、同伴回应与回家转述是不同环节，不补造成已经发生。",
+    "pages": [
+      {
+        "page": 64,
+        "visualChecked": true,
+        "statement": "已看可询问长辈、了解其他家人或名人名字，交流含义或来历，感兴趣和不理解可追问、交流后向家人转述新鲜事，重点清楚讲述与礼貌回应。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "口语交际：名字里的故事",
+    "activity": true,
+    "physicalPage": 64,
+    "printedPage": 59,
+    "mayShareOtherNames": true,
+    "privatePersonalNameDisclosureRequired": false,
+    "realInterviewOrPeerExchangeNotAutomaticallyCompleted": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "名字里的故事：讲清已知，礼貌倾听，再准确转述",
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:name-clear-sharing",
+        "objective": "选择愿意交流的名字信息，说明含义或来历以及了解途径",
+        "successCriterion": "对象、具体信息与来源清楚，字面联想和真实取名来历分开；可谈其他人的名字，不强迫披露本人或家人隐私"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:name-polite-listening",
+        "objective": "听清同伴讲述，对感兴趣或不理解内容作相关回应和追问",
+        "successCriterion": "回应联系实际听到的信息，问法尊重选择，记录真实同伴与回应；角色示范不冒充已发生交流"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:name-new-information-retelling",
+        "objective": "交流后向合适家人或照顾者讲述从同伴处了解到的新信息",
+        "successCriterion": "转述有原讲述依据，新增理解与自己猜测分开；真实转述、准备与未发生状态分别保留，不编造家庭经历"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "分清名字字面含义、可能期待与实际来历",
+        "successCriterion": "当前字义有依据，真实取名原因仍须实际询问或可靠资料；含某字不自动证明家庭经历"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "给名字故事与转述保留来源和未知范围",
+        "successCriterion": "原讲述、本人猜测与尚未核实信息分清，不把任务计划或示例故事当真实采访和回应"
+      }
+    ],
+    "prerequisites": [],
+    "activation": {
+      "prompt": "明确原创示例：小禾说“这个故事人物叫晨望，我想到早晨和希望，但我还不知道作者为何取这个名字”。哪部分是已给事实，哪部分是联想，什么还需询问？",
+      "expectedObservation": "能把人物名字、自己的联想与实际取名原因分开，不因一个字就编造家庭故事。",
+      "bridge": "介绍真实名字时也先核对了解到什么、来自谁，再选择愿意分享的部分。"
+    },
+    "concept": {
+      "explanation": "名字可能有字面含义、家人的期待或具体来历，知道某个字的意思不等知道真正取名原因。可向长辈或合适照顾者询问，或了解其他人的名字；本页明确可以谈自己或他人，不强迫提供全名、家庭关系或不愿分享的经历。选择愿意交流且已有依据的信息，先说介绍对象，再讲了解到的含义或来历，补充怎样了解到，未核部分就说还不知道。名人名字的来历也要有可靠具体资料，不能凭熟悉传闻补写。听同伴时先听清，回应要联系对方实际讲的话；感兴趣或不明白可以礼貌询问，允许对方选择不谈。交流后向家人转述新了解到的事情，要区分同伴原话、自身理解与新增猜测。准备询问、示范对话、实际同伴交流和实际转述各有状态；没有发生不能由范例或自填记录替代。",
+      "points": [
+        "字义、期待和真实来历分别核对",
+        "可以选自己或其他人的名字",
+        "说明已了解信息与来源，未知保留",
+        "回应联系实际讲述，尊重不分享",
+        "交流后的转述有原讲述依据"
+      ]
+    },
+    "example": {
+      "situation": "原创角色示例，不是任何真实家庭采访：小禾介绍“我为故事角色取名晨望，想表达清晨向前看的愿望”；小米说“我听到你自己取了这个名字，可以再说说望指什么吗？”",
+      "steps": [
+        {
+          "explanation": "小禾明确对象是原创故事人物、取名者是自己，并说出想表达什么，不把原创人物当真实家人。",
+          "board": [
+            "对象：原创角色",
+            "来源：本人创作说明",
+            "含义与来历明确"
+          ]
+        },
+        {
+          "explanation": "小米先接住已听信息，再问具体不明白的望；不把问题换成对他人私事的追查。",
+          "board": [
+            "先听到什么",
+            "回应相关内容",
+            "有礼貌地追问"
+          ]
+        },
+        {
+          "explanation": "示例中的后续转述应说“同伴为角色取名并解释了愿望”，不能增加真实祖辈经历；真实任务仍需真实活动。",
+          "board": [
+            "转述对应原信息",
+            "不添加未给经历",
+            "角色示例不等实际交流"
+          ]
+        }
+      ],
+      "conclusion": "讲述清楚、倾听相关、转述准确需要具体信息与真实过程，示范只能帮助学习方法。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "信息与活动状态各自保留",
+        "headers": [
+          "当前材料或阶段",
+          "可以怎样讲",
+          "还不能直接说"
+        ],
+        "rows": [
+          [
+            "只知道名字和字义",
+            "这个字让我想到某种含义",
+            "不能确认真正取名原因"
+          ],
+          [
+            "实际询问得到答复",
+            "某位讲述者告诉我怎样取名",
+            "不能添加对方未说的经历"
+          ],
+          [
+            "准备同伴交流",
+            "已选愿意分享的信息和问题",
+            "不能说同伴已经回应"
+          ],
+          [
+            "真实听到同伴介绍",
+            "转述实际了解到的新信息",
+            "不能补造对方私事或原话"
+          ],
+          [
+            "原创角色对话示范",
+            "这是我为角色设计的说明",
+            "不能当真实采访或家庭历史"
+          ]
+        ],
+        "explanation": "把信息来源和真实活动状态分开，帮助核对清楚、相关与准确，不以填满表格代实际交流。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "看名字含晨就说家人一定在清晨某时取名，并补出未经询问的经历。",
+        "alternatives": [
+          "可能混字义联想与真实来历，也可能想让故事更完整。"
+        ],
+        "verification": "分别指出字典或词语能支持什么、实际讲述者提供了什么；没有答复仍待核。",
+        "correctiveFeedback": "联想可以标为可能，真实来历需要来源，不为完整故事编造家庭事实。"
+      },
+      {
+        "observation": "同伴不愿说家事，仍要求必须交全名和取名细节才算完成。",
+        "alternatives": [
+          "可能误以为只能讲本人，也可能把追问当必须回答。"
+        ],
+        "verification": "回看本页可讲其他人的名字，选择可公开或原创示例练习方法，真实任务状态另记。",
+        "correctiveFeedback": "交流应礼貌并尊重选择，可换愿意分享的对象或信息，不能把不披露等同表达能力低。"
+      },
+      {
+        "observation": "把同伴可能想表达的意义，转述成同伴家人的真实经历。",
+        "alternatives": [
+          "可能记混来源，也可能把自己的推测接进原话。"
+        ],
+        "verification": "对照实际原讲述，标明原信息、自己的理解与未知；无原记录承认回忆限制。",
+        "correctiveFeedback": "转述不添未给细节，疑问可以再问，记不清不补造成确定事实。"
+      }
+    ],
+    "transfer": {
+      "scenario": "选择愿意分享且确有来源的名字资料，与真实同伴交流；条件不足时可用明确原创角色示范，但只记准备或示范。",
+      "prompt": "讲清一条已了解信息与来源，作一次相关礼貌回应；活动真实发生后，再向合适对象准确转述一条新信息。",
+      "expectedStrategy": "信息对象、来源、未知和实际过程状态清楚，不强迫披露，不伪造真实同伴响应或家庭转述。"
+    },
+    "summary": {
+      "synthesis": "已了解的事情讲清楚，没核实的地方留问题。听别人时礼貌回应，讲给别人听时保留原信息与来源。",
+      "takeaways": [
+        "名字字义不等真实取名原因",
+        "交流对象可以有选择",
+        "先听清再作相关回应",
+        "转述不添未给事实",
+        "准备与真实活动分别记"
+      ]
+    },
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "待教师核对目标、量规和独立材料后按真实日期安排。熟悉原示例和模拟对话不自动取得未见保持资格；没有真实交流与实际录音时保留未完成，不用计划或参考音替本人证据。"
+    },
+    "citations": [
+      {
+        "page": 64,
+        "quote": "把了解到的信息讲清楚。",
+        "usedFor": "concept"
+      },
+      {
+        "page": 64,
+        "quote": "的人提出来，进一步了解。",
+        "usedFor": "example"
+      },
+      {
+        "page": 64,
+        "quote": "你从同学的讲述里知道\n了哪些新鲜事。",
+        "usedFor": "transfer"
+      }
+    ]
+  },
+  "editorNotes": {
+    "slug": "name-story",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "只核当前一页，不自动完成真实采访、同伴回应或家人转述；名人来历仍须可靠资料。",
+    "privacyBoundary": "可谈其他人的名字，允许只分享愿意公开的部分；不收集家庭证明或额外身份材料。",
+    "materialStatus": "候选目标和材料，教师、结构、评分及充分保持库存均待审。"
+  }
+}

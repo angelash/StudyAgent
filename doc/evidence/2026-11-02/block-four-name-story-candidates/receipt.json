@@ -1,0 +1,116 @@
+{
+  "format": "study-block-four-name-story-candidates-v1",
+  "at": "2026-11-02T11:27:26.995Z",
+  "baseCommit": "90bc32fd796ada15af87246e62b370709e11b38f",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "newDrafts": 1,
+  "targetGroups": 5,
+  "newDefinitionCandidates": 3,
+  "newCandidateQuestions": 35,
+  "purposeCounts": {
+    "immediate": 15,
+    "proposedRetention": 20
+  },
+  "modes": {
+    "audio_record": 21,
+    "short_answer": 14
+  },
+  "source": {
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "physicalPagesVisuallyReviewed": [
+      64,
+      65,
+      66,
+      67
+    ],
+    "authoredDraftPhysicalPages": [
+      64
+    ],
+    "writingAndGardenViewedButNotYetAuthored": true,
+    "originalImagesCommitted": false
+  },
+  "actualChecks": {
+    "materialsHttpColdRead": "checks/name-story-materials-http-first.json",
+    "originalCommandReplayed": true,
+    "incompletePublicationRejected": true,
+    "exactSourceCitationsAndMetadataPreserved": true,
+    "browser": {
+      "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+      "passed": 3,
+      "failed": 0,
+      "report": "browser/receipt.json",
+      "screenshotsVisuallyReviewed": 3
+    },
+    "preflightGaps": [
+      {
+        "file": "chinese-g3-name-story-v1.json",
+        "gaps": 63,
+        "codes": [
+          "target_not_published",
+          "material_changed_or_ineligible",
+          "material_family_coverage",
+          "retention_stock_gap"
+        ]
+      }
+    ]
+  },
+  "reusedEngineering": {
+    "applicationContractsAndTestsUnchangedSince": "90bc32fd",
+    "apiSourceUnchangedSince": "4d26c399",
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "priorBuildBrowserBatches": [
+      {
+        "passed": 23,
+        "failed": 0
+      },
+      {
+        "passed": 5,
+        "failed": 0
+      }
+    ],
+    "evidence": "../block-four-reading-preview-and-dog/receipt.json",
+    "countsNotAddedToContentBatch": true
+  },
+  "boundaries": {
+    "teacherReviewed": false,
+    "scoringReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "actualFamilyInterviewsOrPeerResponsesCreated": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 23,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3489,
+    "authoredFollowingMaterialCandidates": 945,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn945": true,
+    "next": "Continue exact-source writing and garden activities, complete missing author original sources and remaining lesson/GESP content and reviews, then block5 engineering and real acceptance."
+  }
+}
