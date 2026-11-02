@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-02T11:02:50.009Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 0,
+  "failed": 1,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('导入完整教学稿', { exact: true }) to be visible\u001b[22m\n",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g3-asking-v1.json",
+      "passed": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '教材课时完整教学稿', exact: true }).getByLabel('导入完整教学稿', { exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": [],
+  "mutations": []
+}

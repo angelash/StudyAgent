@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-02T11:10:54.727Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 0,
+  "failed": 1,
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '当前教学稿阅读预览', exact: true }) to be visible\u001b[22m\n",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g3-dog-v1.json",
+      "passed": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('region', { name: '当前教学稿阅读预览', exact: true }) to be visible\u001b[22m\n"
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": [],
+  "mutations": []
+}

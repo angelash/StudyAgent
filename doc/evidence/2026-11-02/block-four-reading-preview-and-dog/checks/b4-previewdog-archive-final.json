@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T11:18:24.233Z",
+  "archiveFiles": 37,
+  "touchedFiles": 13,
+  "decodedGzip": 6,
+  "decodedBase64": 6,
+  "decodedCharacters": 3372351,
+  "credentialFindings": [],
+  "protectedFiles": 1063,
+  "changedProtectedFiles": [],
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "collectionsSince187": [
+      {
+        "collection": "events",
+        "revision": 188
+      },
+      {
+        "collection": "sessions",
+        "revision": 188
+      }
+    ]
+  },
+  "docLinks": {
+    "checked": 5505,
+    "missing": 0
+  },
+  "stagedByteReadback": false,
+  "stagedRule": "evidence exact bytes; sources and docs after CRLF to LF normalization",
+  "stagedMismatches": [],
+  "scope": "Block-four candidate teaching, first-response implementation, evidence and current delivery documents. Live auth.logged_in at revision188 affects only sessions/events; learned facts and deployed files remain protected. Full regression may still be pending; this check does not grant completion."
+}

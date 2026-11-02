@@ -1,11 +1,20 @@
 'use client';
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import type { KnowledgeAtom } from '@study-agent/contracts';
 import type { TeachingEditorDraft, TeachingEditorOwner } from '../../../lib/teaching-editor-copy';
 import { useTeachingEditorWorkspace } from '../../../lib/use-teaching-editor-workspace';
 import { TeachingPackageContent } from './teaching-package-content';
 import { WorkspaceDialog } from '../../studio/workspace-dialog';
 import './teaching-package.css';
+
+const Preview = dynamic(() => import('./teaching-package-preview'), { loading: () => <p role="status">正在打开阅读预览…</p>, ssr: false });
+function ReadingPreview({ copy }: { copy: TeachingEditorDraft }) {
+  const [open, setOpen] = React.useState(false);
+  return <details className="teaching-package-preview" onToggle={event => setOpen(event.currentTarget.open)}>
+    <summary>阅读当前教学稿</summary>{open && <Preview copy={copy} />}
+  </details>;
+}
 
 const sections = { source: '来源与引用', goals: '目标与先修', explanation: '讲解与例题', visuals: '图示与演示', checks: '检查材料', summary: '迁移与总结', versions: '版本与发布' };
 const uses = { activation: '激活', concept: '概念', example: '例题', visual: '图示', misconception: '错因核查', check: '检查', transfer: '迁移', summary: '总结', retention: '保持' };
@@ -49,6 +58,7 @@ export function TeachingPackageWorkspace({ owner, lessonName, atoms, range, onPa
       {!desk.ready && <button type="button" className="studio-text-button" disabled={locked} onClick={desk.retryLocal}>重新读取本机稿</button>}</div>
     {!copy && <p>正在核对本账号、教材版本与课时的完整本机稿。原记录无法读取时，可明确新建或导入另一份稿。</p>}
     {copy && <>
+      <ReadingPreview key={copy.slot} copy={copy} />
       <nav className="teaching-package-sections" aria-label="完整教学稿章节">{Object.entries(sections).map(([section, label]) => <button type="button" key={section} aria-pressed={copy.editor.section === section} disabled={locked} onClick={() => desk.editReview(value => { value.editor.section = section as TeachingEditorDraft['editor']['section']; })}>{label}</button>)}</nav>
       {copy.editor.section === 'source' && <fieldset className="teaching-package-source" disabled={locked}><legend>完整范围、逐页审核与引用</legend>
         <div className="admin-form"><label>PDF物理起始页<input inputMode="numeric" value={copy.range.start} maxLength={30} onChange={event => desk.edit(value => { value.range.start = event.target.value; })} /></label>

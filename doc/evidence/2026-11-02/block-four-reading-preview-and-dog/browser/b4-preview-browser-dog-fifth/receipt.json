@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-02T11:14:44.218Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 5,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g3-dog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "generated-partial-draft-diagram-and-local-experiment",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    },
+    {
+      "name": "revoked-teaching-role-hides-reading-and-private-source",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "carrot-mobile-table.png",
+    "generated-model-mobile.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

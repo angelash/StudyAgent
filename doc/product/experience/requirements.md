@@ -1,5 +1,7 @@
 # 逐项需求与验收账本
 
+2026-11-02 第4块接续：原工作台增加私有教学稿阅读预览，复用课堂组件；新构建21稿23/0与新增小狗/模型/撤权5/0分批通过，不拼整站。小狗1稿7目标、5新定义、49未审候选，实际HTTP/原请求/独立冷读通过，作者完整三结局仍待核，见[198](../198-private-teaching-reading-preview-and-dog-candidates.md)。当前22项有稿、3490项在选定输入无稿、336册缺目录，910后续候选另加首课44；72项11 implemented/52 in_progress/9 planned/0 verified，第4块及整体未完成，第5块未进入，正式24/revision188及1063文件保护。
+
 2026-11-02 第4块内容继续：预测阅读2稿/91未审候选、13目标绑定、9新定义，见[197](../197-prediction-evidence-original-answers-and-source-boundary.md)。作者省略范围后全文尚待核，不以示例或续写当原作核对；当前21项有稿、3491项无稿、336册缺目录。72项仍11 implemented/52 in_progress/9 planned/0 verified，全部教材/教师/结构/评分/库存、第5块与真实验收继续。
 
 2026-11-02 第4块内容继续：第三单元三活动3稿/112未审候选、16目标绑定、13新定义，见[196](../196-fairy-writing-garden-and-real-reading-candidates.md)。当前19项有稿、3493项无稿、336册缺目录；770候选不等已审或充分库存，书目计划不当本人整本已读。72项仍11 implemented/52 in_progress/9 planned/0 verified，全部余项与第5块和真实验收继续。

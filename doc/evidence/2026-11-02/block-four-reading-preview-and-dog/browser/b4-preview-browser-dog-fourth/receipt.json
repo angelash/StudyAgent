@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-02T11:13:32.173Z",
+  "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 2,
+  "failed": 1,
+  "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g3-dog-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "generated-partial-draft-diagram-and-local-experiment",
+      "passed": false,
+      "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================"
+    }
+  ],
+  "screenshots": [
+    "carrot-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

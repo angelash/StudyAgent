@@ -1,0 +1,93 @@
+{
+  "format": "study-block-four-reading-preview-and-dog-v1",
+  "at": "2026-11-02T11:16:33.273Z",
+  "baseCommit": "5747af95d9a8d40c0592fd81013795e5f01a69d4",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "nextBlockEntered": false,
+  "implementation": {
+    "privateReadingPreview": true,
+    "existingWorkspaceShellPreserved": true,
+    "classroomRendererReused": true,
+    "lazyLoaded": true,
+    "newDogDrafts": 1,
+    "targetGroups": 7,
+    "newDefinitions": 5,
+    "questions": 49,
+    "immediate": 21,
+    "proposedRetention": 28,
+    "modes": {
+      "audio_record": 14,
+      "short_answer": 35
+    }
+  },
+  "validation": {
+    "mainWebTypes": "checks/b4-preview-mainweb-first.json",
+    "buildId": "ELFqjEh0ZktmjW7mcCIOL",
+    "desktopAndMobile21Candidates": {
+      "passed": 23,
+      "failed": 0,
+      "report": "browser/b4-preview-browser-second/receipt.json"
+    },
+    "dogAndGeneratedLayoutAndRevocation": {
+      "passed": 5,
+      "failed": 0,
+      "report": "browser/b4-preview-browser-dog-fifth/receipt.json"
+    },
+    "countsNotCombined": true,
+    "dogRealHttpColdRead": "checks/dog-materials-http-first.json",
+    "firstHarnessFailuresPreserved": [
+      "b4-preview-browser-first",
+      "b4-preview-browser-dog-third",
+      "b4-preview-browser-dog-fourth"
+    ],
+    "allScreenshotsVisuallyReviewed": true
+  },
+  "reusedApi": {
+    "sourceCommit": "4d26c399",
+    "sourceContractsAndTestsUnchanged": true,
+    "fullApi": {
+      "passed": 3051,
+      "failed": 0,
+      "conditionalSkips": 131
+    },
+    "evidence": "../block-four-retention-feedback-and-autumn/receipt.json",
+    "oldBrowser13NotClaimedAsCurrentBuild": true
+  },
+  "boundaries": {
+    "sourceImagesOrFullSourcePagesCommitted": false,
+    "teacherReviewed": false,
+    "fullAuthorOriginalEndingsVerified": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0,
+    "published": 0,
+    "adoptions": 0,
+    "learnerResponses": 0,
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "formal": {
+    "schema": 24,
+    "revision": 188,
+    "protectedRuntimeFiles": 1063
+  },
+  "remaining": {
+    "registeredBooks": 449,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 101,
+    "booksWithDirectory": 113,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3512,
+    "lessonsWithCandidateFiles": 22,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3490,
+    "authoredFollowingMaterialCandidates": 910,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "firstLesson44FollowupsNotIncludedIn910": true,
+    "next": "Continue accurate-source unit4 activities, missing author originals, remaining per-lesson/GESP content and reviews, then block5 engineering and real acceptance."
+  }
+}

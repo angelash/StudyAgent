@@ -1,0 +1,369 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g3-upper-02915a7db6517258",
+    "lessonId": "archive-book:chinese-g3-upper-02915a7db6517258:unit4:entry3",
+    "sourceSha256": "02915a7db6517258434d370430bbf464a1dac6e17df97b90d707dc4ecf5cfedf",
+    "pageStart": 58,
+    "pageEnd": 63,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g3:02915a7d:dog-reading",
+      "version": 1,
+      "name": "小狗课16字语境识读",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "识字与阅读",
+      "objective": "结合词语识读吗讨厌怒批访担压差默模中弹疯汪搞16字",
+      "successCriterion": "本人当前声音覆盖16字；干吗、担保、压根、差不多、模仿、打中、子弹按当前语境核对，不添本课写字表",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:dog-cause",
+      "version": 1,
+      "name": "梳理学叫与误认的因果",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "叙事阅读",
+      "objective": "联系小狗两次学叫、练习和他者反应梳理故事",
+      "successCriterion": "区分先后与原因，练习后学得像不等一开始就会，误认须联系具体角色所听所见",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:dog-perspective",
+      "version": 1,
+      "name": "区分角色所知与误认",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "文学阅读",
+      "objective": "比较小狗狐狸和猎人在同一事件中知道与不知道什么",
+      "successCriterion": "狐狸误当公鸡、猎人误当杜鹃、小狗以为猎人发疯分别归属角色，不把角色想法当全知事实或学生标签",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:dog-prediction",
+      "version": 1,
+      "name": "依据结局开头预测并核对范围",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "预测阅读",
+      "objective": "从三种结局开头提出可能、说明依据并在实际后文出现后核对",
+      "successCriterion": "母牛、农民、汪汪三种开头分清，保留原答与曝光；未核作者完整结局时不伪造比对完成，合理不等必须猜中",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g3:02915a7d:dog-story-sharing",
+      "version": 1,
+      "name": "为同伴选择陌生故事并停读交流",
+      "subject": "chinese",
+      "grade": 3,
+      "term": "upper",
+      "strand": "口语与阅读",
+      "objective": "选择同伴不熟悉的实际故事，合适停读并倾听预测理由",
+      "successCriterion": "标明实际版本和已读范围，停在未给后文处，保留同伴真实预测与后续核对；独白或已熟故事不充当实际同伴活动",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-02915a7d-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g3:02915a7d:dog-reading",
+    "source:chinese:g3:02915a7d:dog-cause",
+    "source:chinese:g3:02915a7d:dog-perspective",
+    "source:chinese:g3:02915a7d:dog-prediction",
+    "source:chinese:g3:02915a7d:dog-story-sharing",
+    "core:chinese:contextmeaning",
+    "core:chinese:detail-evidence"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "当前物理58至63页逐张查看，核对作者译者、略读提示、正文插图、三结局开头和识字表；教材外完整作者结局尚未核实，不以熟悉版本或续写代填。",
+    "pages": [
+      {
+        "page": 58,
+        "visualChecked": true,
+        "statement": "已看罗大里作品、沈萼梅刘锡荣译且选文有改动，略读开头小狗不会叫和他者批评，不把角色说的缺陷用于学生贴标签。"
+      },
+      {
+        "page": 59,
+        "visualChecked": true,
+        "statement": "已看小公鸡同情教叫、三次初试和之后勤练，狐狸把叫声当公鸡来猎食，后误以为设圈套并嘲笑。"
+      },
+      {
+        "page": 60,
+        "visualChecked": true,
+        "statement": "已看小狗委屈离开、小杜鹃同情和教叫，角色语气及插图按实际范围看，不添加动物训练要求。"
+      },
+      {
+        "page": 61,
+        "visualChecked": true,
+        "statement": "已看一个星期后学得不错、猎人误认杜鹃开枪但未打中，小狗以为猎人发疯，按视角区分信息。"
+      },
+      {
+        "page": 62,
+        "visualChecked": true,
+        "statement": "已看第一结局母牛和第二结局农民的开头与省略号，青草医病为角色话语，不当医学或真实动物饮食任务。"
+      },
+      {
+        "page": 63,
+        "visualChecked": true,
+        "statement": "已看第三结局汪汪开头与省略号、三结局预测理由及听老师读后比对、喜欢内容交流与给陌生故事停读、16识字无写字表。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "小狗学叫",
+    "author": "意大利罗大里",
+    "translators": [
+      "沈萼梅",
+      "刘锡荣"
+    ],
+    "textbookAdapted": true,
+    "skim": true,
+    "recognitionCharacters": [
+      "吗",
+      "讨",
+      "厌",
+      "怒",
+      "批",
+      "访",
+      "担",
+      "压",
+      "差",
+      "默",
+      "模",
+      "中",
+      "弹",
+      "疯",
+      "汪",
+      "搞"
+    ],
+    "writingCharacters": [],
+    "fullTextRecitationRequired": false,
+    "endingBeginningsOnly": true,
+    "fullAuthorOriginalEndingsVerified": false,
+    "fullOriginalComparisonPending": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "小狗学叫：分清各自所知，用开头支持可能",
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g3:02915a7d:dog-reading",
+        "objective": "结合词语识读吗讨厌怒批访担压差默模中弹疯汪搞16字",
+        "successCriterion": "本人当前声音覆盖16字；干吗、担保、压根、差不多、模仿、打中、子弹按当前语境核对，不添本课写字表"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g3:02915a7d:dog-cause",
+        "objective": "联系小狗两次学叫、练习和他者反应梳理故事",
+        "successCriterion": "区分先后与原因，练习后学得像不等一开始就会，误认须联系具体角色所听所见"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g3:02915a7d:dog-perspective",
+        "objective": "比较小狗狐狸和猎人在同一事件中知道与不知道什么",
+        "successCriterion": "狐狸误当公鸡、猎人误当杜鹃、小狗以为猎人发疯分别归属角色，不把角色想法当全知事实或学生标签"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g3:02915a7d:dog-prediction",
+        "objective": "从三种结局开头提出可能、说明依据并在实际后文出现后核对",
+        "successCriterion": "母牛、农民、汪汪三种开头分清，保留原答与曝光；未核作者完整结局时不伪造比对完成，合理不等必须猜中"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g3:02915a7d:dog-story-sharing",
+        "objective": "选择同伴不熟悉的实际故事，合适停读并倾听预测理由",
+        "successCriterion": "标明实际版本和已读范围，停在未给后文处，保留同伴真实预测与后续核对；独白或已熟故事不充当实际同伴活动"
+      },
+      {
+        "id": "goal-6",
+        "atomId": "core:chinese:contextmeaning",
+        "objective": "联系当前词句语境解释并说明方法",
+        "successCriterion": "具体语境支持当前解释，词的另一读音或角色判断不直接当普遍事实"
+      },
+      {
+        "id": "goal-7",
+        "atomId": "core:chinese:detail-evidence",
+        "objective": "区分当前原文、角色判断、预测与未知",
+        "successCriterion": "结论有具体依据与范围，原预测不后改，未核实的三种完整结局保留待补"
+      }
+    ],
+    "prerequisites": [],
+    "activation": {
+      "prompt": "原创前卡：小鸭在门外听见熟悉的铃声，猜是送书的人；开门却看见带铃铛的纸车。先分别说听到什么、猜了什么、后来才知道什么。",
+      "expectedObservation": "能区分声音线索、角色推测与后来的真实信息，不把一次误认说成角色所有时候都笨。",
+      "bridge": "小狗学叫里，不同角色听到声音会产生不同判断；预测结局也需要保留当时知道的范围。"
+    },
+    "concept": {
+      "explanation": "小狗起初不会叫，故事里其他角色对此有不同反应。小公鸡同情并教它，最初三次没成功，小狗继续练习才学得逼真；狐狸听到后当作公鸡前来猎食，看见小狗又误以为是圈套并嘲笑。小杜鹃后来也教它，一个星期后小狗学得不错；猎人误把声音当杜鹃而开枪，没有打中，小狗却从自己的角度以为猎人发疯。梳理时不仅列先后，还说明每人听到什么、想了什么，不能把角色误会变成作者证明的全知事实，也不把“缺陷”等故事用语用于给孩子贴标签。教材给出三种结局开头：母牛教哞、碰到农民、听见汪汪。它们都在省略号处停止，可以据已有情节和新开头提出不同可能，却还不能声称三种完整作者结局已经核对。先保留原预测与理由，等可靠全文或老师实际读出的准确后文出现再比对；已经读过或听过要如实记曝光。交流喜欢内容要落到具体片段和理由。给同伴读陌生故事则要有真实同伴与实际书，停在后文尚未给出的位置，让其说理由，再继续核对。",
+      "points": [
+        "练习过程与最终学会分开",
+        "角色的听见、判断与事实分开",
+        "三种结局只有开头，全文来源待补",
+        "预测理由、原答与后文核对分别保留",
+        "熟悉原篇与陌生停读活动资格分清"
+      ]
+    },
+    "example": {
+      "situation": "明确原创三卡：先给小鸭听铃声，保留示例预测“可能送书人到了”；后卡才给带铃纸车；最后讨论小鸭为什么猜错。示例预测不是学生本人首答，也不是小狗原作结局。",
+      "steps": [
+        {
+          "explanation": "列当前已知与还没看见的信息，声音只提供可能。",
+          "board": [
+            "已知：听到铃声",
+            "未知：门外是谁",
+            "示例：可能送书人"
+          ]
+        },
+        {
+          "explanation": "后卡出现后保留原预测，写出实际纸车和新信息，不把原记录改成早知。",
+          "board": [
+            "原预测不覆盖",
+            "后文：带铃纸车",
+            "更新：声音来源不同"
+          ]
+        },
+        {
+          "explanation": "误认说明当时信息有限，不能由一次结果推定角色所有时候无能力。",
+          "board": [
+            "解释局部条件",
+            "不同视角各有范围",
+            "不贴永久标签"
+          ]
+        }
+      ],
+      "conclusion": "有依据仍可能与后文不同，核对要有实际后文和原记录；示例学习不能冒充本人未见首答。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "同一声音，不同角色的信息",
+        "headers": [
+          "角色与当前线索",
+          "角色作出的判断",
+          "读者需要分清"
+        ],
+        "rows": [
+          [
+            "狐狸听见公鸡般叫声",
+            "以为附近有公鸡，见狗后又猜圈套",
+            "两次判断都不是完整事实"
+          ],
+          [
+            "猎人听到杜鹃般叫声",
+            "把叫声来源当杜鹃",
+            "原文没打中，小狗不是知情模仿诱骗"
+          ],
+          [
+            "小狗听见枪声并逃跑",
+            "以为猎人发疯，对狗开枪",
+            "小狗不知猎人先前误认"
+          ],
+          [
+            "三种结局的新开头",
+            "可提出后续可能",
+            "省略号后完整作者内容仍未核实"
+          ]
+        ],
+        "explanation": "用线索和所知范围解释角色反应，避免把角色误认与全篇事实混同；表格不代填三种完整结局。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把小狗以为猎人发疯，改写成作者确认猎人已经发疯。",
+        "alternatives": [
+          "可能没区分人物视角，也可能只记一句强烈判断。"
+        ],
+        "verification": "并列猎人听到的声音与小狗知道的信息，核对判断由谁提出。",
+        "correctiveFeedback": "给判断保留角色身份和证据，不依据故事一句话给现实人物作医学判断。"
+      },
+      {
+        "observation": "把碰到农民等开头，照熟悉记忆填成已经核实的作者全文。",
+        "alternatives": [
+          "可能混开头与全文，也可能把预测或续写误记成原作。"
+        ],
+        "verification": "指出实际原页到哪里、后文具体来源在哪里；无可靠原文保持待补。",
+        "correctiveFeedback": "可以提出有据可能或标明原创续写，完整作者结局的核对尚未完成。"
+      },
+      {
+        "observation": "独自复述熟悉故事后，声称已完成给陌生同伴停读预测。",
+        "alternatives": [
+          "可能忽略真实听众与曝光条件，也可能只完成活动准备。"
+        ],
+        "verification": "核对实际书名版本、同伴熟悉程度、停读位置和真实预测记录。",
+        "correctiveFeedback": "准备、独白、真实活动分别记，未发生的交流不补造。"
+      }
+    ],
+    "transfer": {
+      "scenario": "用一段真正未见的原创误认故事练习，或拿实际陌生故事向同伴停读；没有合适材料与同伴时只做明确标注的准备。",
+      "prompt": "分别列事实、角色判断和自己的预测。保留原答与理由，实际取得后文后核对；交流一处喜欢的内容并说明具体理由。",
+      "expectedStrategy": "角色所知和原文范围准确，预测有据、更新不覆盖，未核完整作者结局与未发生同伴活动保留未完成。"
+    },
+    "summary": {
+      "synthesis": "角色可能因为只知道一部分而误认，读者要给每个判断保留主人。三种开头支持预测，完整结局仍需真实来源；分享故事要让真正未见后文的同伴有机会说理由。",
+      "takeaways": [
+        "先后与原因分别说明",
+        "角色想法不等作者确认",
+        "有据预测允许不同",
+        "原答和实际核对分别保留",
+        "陌生故事活动需要实际对象与过程"
+      ]
+    },
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "结构、评分与充分未见材料审核后按真实日期安排；已读原篇或给定示例不重新取得未见资格，模拟间隔和计划不能作为真人保持效果。"
+    },
+    "citations": [
+      {
+        "page": 63,
+        "quote": "故事的几种结局可能是怎样的？说说你的理由。然后听老师读",
+        "usedFor": "concept"
+      },
+      {
+        "page": 63,
+        "quote": "你喜欢故事的哪些内容？和同学交流。",
+        "usedFor": "transfer"
+      },
+      {
+        "page": 63,
+        "quote": "地方停下来，让他们猜猜后面可能会发生什么。",
+        "usedFor": "example"
+      }
+    ]
+  },
+  "editorNotes": {
+    "slug": "dog",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "materialStatus": "原创候选，目标对齐、独立结构、评分与充分库存尚需审核。",
+    "sourceBoundary": "三种结局仅开头，完整作者结局未核，不用熟悉印象或原创续写代原文。",
+    "scienceBoundary": "不把童话转成动物训练、开枪狩猎或医疗诊断活动。"
+  }
+}
