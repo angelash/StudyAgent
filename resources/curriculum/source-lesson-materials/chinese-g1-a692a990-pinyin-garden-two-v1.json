@@ -1,0 +1,728 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-garden-two",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "sha256": "885c03efbe1be3f311c41e0f450c59b16213226fb75f0161ea5237587456145e",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry9",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 41,
+        "pageEnd": 44,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-reading",
+      "structure": "pinyin-garden2-five-characters",
+      "familyProposal": "a692a990-pinyin-garden2-five-characters",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际认读五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前课程词语读音准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例与本人上课经历分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字实际声音对应当前形式，音乐中乐读yuè，帮助与未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读文数学音乐五字，再读语文数学音乐三个给定词语。",
+          "answer": "五字实际声音对应当前形式，音乐中乐读yuè，帮助与未读范围如实。",
+          "analysis": "五字实际声音对应当前形式，音乐中乐读yuè，帮助与未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确音乐一词示范，再本人读音与乐并回词语读。",
+          "answer": "字音按当前音乐语境核，乐读yuè，不把另一语境的读法机械套来。",
+          "analysis": "字音按当前音乐语境核，乐读yuè，不把另一语境的读法机械套来。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新字牌顺序为乐文音学数，本人看清再实际认读。",
+          "answer": "按当前字形与语境说明，单个乐字需明确所练是本课音乐读法，不背旧顺序代辨字。",
+          "analysis": "按当前字形与语境说明，单个乐字需明确所练是本课音乐读法，不背旧顺序代辨字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读出四字时，录音怎样说明第五字的状态？",
+          "answer": "保留真实已读与卡住处，未覆盖项待帮助后练，不由熟悉课程名补齐。",
+          "analysis": "保留真实已读与卡住处，未覆盖项待帮助后练，不由熟悉课程名补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看到示例音乐课就能说本人已经实际上过吗？本人读词后说明。",
+          "answer": "不能，当前词语读音与本人真实上课经历分开，不由课表示例补事实。",
+          "analysis": "不能，当前词语读音与本人真实上课经历分开，不由课表示例补事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读三个当前课程词，说明乐在不同语境是否都必须读yuè。",
+          "answer": "本课音乐中读yuè，其他语境需另核，不由一个词推所有情况。",
+          "analysis": "本课音乐中读yuè，其他语境需另核，不由一个词推所有情况。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-five-characters-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认五字并选一个词解释，说明实际帮助和覆盖范围。",
+          "answer": "声音、词义与帮助对应当前材料，识读不自动变成本人已写五字。",
+          "analysis": "声音、词义与帮助对应当前材料，识读不自动变成本人已写五字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-timetable",
+      "structure": "pinyin-garden2-current-table-intersection",
+      "familyProposal": "a692a990-pinyin-garden2-current-table-intersection",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "星期列和节次行明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "交点课程与当前表相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示例和真实日历分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "是音乐；先找星期三列与第二节行的交点，结论只对应当前例表。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创例表：星期一第一节美术第二节阅读；星期三第一节语文第二节音乐。星期三第二节是什么？",
+          "answer": "是音乐；先找星期三列与第二节行的交点，结论只对应当前例表。",
+          "analysis": "是音乐；先找星期三列与第二节行的交点，结论只对应当前例表。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同一原创例表中，星期一第二节是什么课，为什么不是沿用音乐？",
+          "answer": "是阅读；星期条件变了，重新找星期一第二节交点，不能只记上一题答案。",
+          "analysis": "是阅读；星期条件变了，重新找星期一第二节交点，不能只记上一题答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新表星期二第一节阅读第二节美术，星期四第一节音乐第二节语文。星期四第一节是什么？",
+          "answer": "是音乐；按新表星期四与第一节交点，不能沿用旧表的位置。",
+          "analysis": "是音乐；按新表星期四与第一节交点，不能沿用旧表的位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只给星期一和星期三的例表，能确定星期五第二节吗？",
+          "answer": "还不能，当前表没有星期五信息，需要补相应材料，不凭熟悉课程推断。",
+          "analysis": "还不能，当前表没有星期五信息，需要补相应材料，不凭熟悉课程推断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定例表里的星期三课程可以直接写成学生明天真实日历吗？",
+          "answer": "不能，例表示范与本人真实日历分开，实际安排需本人真实课表和日期条件。",
+          "analysis": "不能，例表示范与本人真实日历分开，实际安排需本人真实课表和日期条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "如果题目只说第二节而没说星期几，怎样继续回答？",
+          "answer": "先说明缺星期条件，请补完整问题，不能任意选某一列当唯一答案。",
+          "analysis": "先说明缺星期条件，请补完整问题，不能任意选某一列当唯一答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-current-table-intersection-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选原创例表一个交点，说明查了哪两项条件及结论适用范围。",
+          "answer": "星期、节次和当前课程对应，结论限这张明确例表，不扩大为任何学生的实际安排。",
+          "analysis": "星期、节次和当前课程对应，结论限这张明确例表，不扩大为任何学生的实际安排。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-pinyin",
+      "structure": "pinyin-garden2-form-sound-action-words",
+      "familyProposal": "a692a990-pinyin-garden2-form-sound-action-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前近形平翘舌分别核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际拼读给定词语",
+          "weight": 0.4
+        },
+        {
+          "criterion": "认形听辨示意动作分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六字母本人声音实际覆盖，形状区别有依据，认形不代真实声音听辨。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读b d、p q、f t三组，再说一处看见的字形区别。",
+          "answer": "六字母本人声音实际覆盖，形状区别有依据，认形不代真实声音听辨。",
+          "analysis": "六字母本人声音实际覆盖，形状区别有依据，认形不代真实声音听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确z zh、c ch、s sh示范，再本人分别实际读。",
+          "answer": "当前平翘舌按真实声音核，字母形状和帮助条件清楚，不凭地区判能力。",
+          "analysis": "当前平翘舌按真实声音核，字母形状和帮助条件清楚，不凭地区判能力。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新词给hē chá、qí mǎ、chī xī guā，本人看清当前拼音实际读出。",
+          "answer": "当前词语声音与组成对应，实际拼读不要求为任务真的喝茶骑马吃东西。",
+          "analysis": "当前词语声音与组成对应，实际拼读不要求为任务真的喝茶骑马吃东西。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只摆出b和d形状还没发声，能说明已经听辨两种音吗？",
+          "answer": "只能说明形状活动，发音与听辨仍需实际声音和本人回应，不以静物替听觉。",
+          "analysis": "只能说明形状活动，发音与听辨仍需实际声音和本人回应，不以静物替听觉。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读qí mǎ后用一句话解释或合适示意，可以当本人真的骑过马吗？",
+          "answer": "不可以，词义与示意练习和真实骑马活动分别说明，不能由表演补经历。",
+          "analysis": "不可以，词义与示意练习和真实骑马活动分别说明，不能由表演补经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "请准确示范者另选s或sh不先亮字，实际读后本人回应并说明帮助。",
+          "answer": "原声与本人回应可核，目标可见、重复提示等条件如实，未提供声音则待听辨。",
+          "analysis": "原声与本人回应可核，目标可见、重复提示等条件如实，未提供声音则待听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-form-sound-action-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人从近形组或当前动作词任选两项实际读，再说明实际做过哪些任务。",
+          "answer": "读音、辨形与示意各自按真实过程核，未做部分不由参考说明补齐。",
+          "analysis": "读音、辨形与示意各自按真实过程核，未做部分不由参考说明补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-sort",
+      "structure": "pinyin-garden2-object-classification",
+      "familyProposal": "a692a990-pinyin-garden2-object-classification",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前标准说清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整对象分类对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不由词内单字或颜色替类别",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "水果组菠萝鸭梨橘子，动物组其余五项；按当前日常对象类别，不看一个字就判断。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按水果和动物分组：菠萝、鸭梨、橘子、鳄鱼、骆驼、驴、乌鸦、蚂蚁，怎样分？",
+          "answer": "水果组菠萝鸭梨橘子，动物组其余五项；按当前日常对象类别，不看一个字就判断。",
+          "analysis": "水果组菠萝鸭梨橘子，动物组其余五项；按当前日常对象类别，不看一个字就判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "鸭梨中有鸭字，就应归进动物组吗？说明当前对象与标准。",
+          "answer": "不应；鸭梨指当前水果，按水果和动物标准归水果，不能由词内单字代完整对象。",
+          "analysis": "不应；鸭梨指当前水果，按水果和动物标准归水果，不能由词内单字代完整对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新清单给苹果、小猫、梨、小鸟，按水果动物标准怎样分？",
+          "answer": "苹果梨为水果，小猫小鸟为动物，按新对象逐项核，不沿用旧词位置。",
+          "analysis": "苹果梨为水果，小猫小鸟为动物，按新对象逐项核，不沿用旧词位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "如果换成颜色标准，原来的水果动物分组能直接当答案吗？",
+          "answer": "不能，标准变了需要当前颜色信息再分，缺颜色条件时说明不能唯一确定。",
+          "analysis": "不能，标准变了需要当前颜色信息再分，缺颜色条件时说明不能唯一确定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只知道一种物品名字相似，能不问含义就归同一类吗？",
+          "answer": "不能，要先明确实际所指和本次分类标准，再根据对象特征判断。",
+          "analysis": "不能，要先明确实际所指和本次分类标准，再根据对象特征判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有同伴按不同标准分出合理结果，应该怎样比较？",
+          "answer": "先说清双方标准及当前对象，再逐项核，标准不同不直接判同伴错误。",
+          "analysis": "先说清双方标准及当前对象，再逐项核，标准不同不直接判同伴错误。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-object-classification-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从当前八项选两项，分别说所属组与依据，并说明不是靠哪一个字猜。",
+          "answer": "完整对象与当前分类标准对应，具体依据清楚，不以熟悉词中一字替代判断。",
+          "analysis": "完整对象与当前分类标准对应，具体依据清楚，不以熟悉词中一字替代判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-vowels",
+      "structure": "pinyin-garden2-known-characters-vowels",
+      "familyProposal": "a692a990-pinyin-garden2-known-characters-vowels",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际认读当前字组",
+          "weight": 0.4
+        },
+        {
+          "criterion": "末韵母i u a对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "介母与字形提示分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字实际声音对应，画的三拼含介母u但末韵母为a，不把介母代末韵母。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读他打马画，再说这组当前末韵母联系a，并录音。",
+          "answer": "四字实际声音对应，画的三拼含介母u但末韵母为a，不把介母代末韵母。",
+          "analysis": "四字实际声音对应，画的三拼含介母u但末韵母为a，不把介母代末韵母。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人认读七地你棋，再认目不足五，分别说明联系i还是u。",
+          "answer": "前组当前读音末韵母联系i，后组联系u，不能只画线而没有本人实际声音。",
+          "analysis": "前组当前读音末韵母联系i，后组联系u，不能只画线而没有本人实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给画、目、棋、马、地、五，本人读后按当前末韵母归组。",
+          "answer": "画马联系a，目五联系u，棋地联系i；按当前字音不靠原组位置。",
+          "analysis": "画马联系a，目五联系u，棋地联系i；按当前字音不靠原组位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "画的拼音有中间u，就应放入末韵母u组吗？本人读huà说明。",
+          "answer": "不应，huà三拼介母u、末韵母a，组成分别看，实际声音仍核本人。",
+          "analysis": "不应，huà三拼介母u、末韵母a，组成分别看，实际声音仍核本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只有连线答案没有实际读音，能说明本人已经认读全部字吗？",
+          "answer": "不能，连线可看关系选择，实际识读仍需本人声音逐项覆盖。",
+          "analysis": "不能，连线可看关系选择，实际识读仍需本人声音逐项覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次只认出一组时，录音怎样说明另外两组？",
+          "answer": "按真实已读组与字保留范围，未读的待帮助后练，不把部分关系正确推全部会读。",
+          "analysis": "按真实已读组与字保留范围，未读的待帮助后练，不把部分关系正确推全部会读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-known-characters-vowels-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从三组各选一字本人读，再说明当前对应和得到的提示。",
+          "answer": "三字实际声音与末韵母对应，提示如实，字形方法不能替代真实发音。",
+          "analysis": "三字实际声音与末韵母对应，提示如实，字形方法不能替代真实发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-quantity",
+      "structure": "pinyin-garden2-symbol-number-words",
+      "familyProposal": "a692a990-pinyin-garden2-symbol-number-words",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "每个符号含义明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "数词量词与当前数量对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图示条件与真实观察分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四个符号各代表一朵，共四朵云；依据当前原创符号，不说已观察真实天空。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创图示规定每个☁代表一朵云：☁ ☁ ☁ ☁。共有几朵云，应怎样用量词说？",
+          "answer": "四个符号各代表一朵，共四朵云；依据当前原创符号，不说已观察真实天空。",
+          "analysis": "四个符号各代表一朵，共四朵云；依据当前原创符号，不说已观察真实天空。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "文字清单给一座山、四朵云、七朵花、九只鸟，鸟与山各用什么量词？",
+          "answer": "九只鸟、一座山；依据当前清单用只与座，文字条件不代已经看过真实风景。",
+          "analysis": "九只鸟、一座山；依据当前清单用只与座，文字条件不代已经看过真实风景。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新符号规定每个✿一朵花：✿ ✿ ✿，每个△一座山：△ △，分别怎样说？",
+          "answer": "三朵花、两座山；按当前代表关系逐个数，不沿用旧的七朵花一座山。",
+          "analysis": "三朵花、两座山；按当前代表关系逐个数，不沿用旧的七朵花一座山。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写标签四朵云但没有图或真实场景，可以说已逐个看图数过吗？",
+          "answer": "不能，只能说题目文字条件给了四朵，真实看图计数还需实际图示或场景。",
+          "analysis": "不能，只能说题目文字条件给了四朵，真实看图计数还需实际图示或场景。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "如果一个符号代表两只鸟，三个这样的符号还能按三只直接说吗？",
+          "answer": "不能，要先按当前代表关系合计为六只，符号个数和代表对象数量分开。",
+          "analysis": "不能，要先按当前代表关系合计为六只，符号个数和代表对象数量分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "当前图示没说明符号代表什么，应该怎样继续判断数量词？",
+          "answer": "先补明确代表对象和每符号数量，信息不足时不凭样子编出对象与量词。",
+          "analysis": "先补明确代表对象和每符号数量，信息不足时不凭样子编出对象与量词。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-symbol-number-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用当前明确符号或文字清单各举一项数量表达，说明依据来自哪里。",
+          "answer": "数词量词对应材料，原创图示、给定文字与真实观察身份清楚，不互相代替。",
+          "analysis": "数词量词对应材料，原创图示、给定文字与真实观察身份清楚，不互相代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-garden-two",
+      "atomId": "source:chinese:g1:a692a990:pinyin-garden2-window-reading",
+      "structure": "pinyin-garden2-window-poem-reading",
+      "familyProposal": "a692a990-pinyin-garden2-window-poem-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接本件实际读篇",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人共读帮助和范围真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色作品与本人手工分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "概述对应本件实际内容，共读帮助和本人读到范围如实，不复制现代全文作本人表达。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件剪窗花后，本人用自己的话说人物想剪的一样东西。",
+          "answer": "概述对应本件实际内容，共读帮助和本人读到范围如实，不复制现代全文作本人表达。",
+          "analysis": "概述对应本件实际内容，共读帮助和本人读到范围如实，不复制现代全文作本人表达。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际读过一部分后，录音说明角色怎样表达剪纸的趣味。",
+          "answer": "解释接本件具体描写，未读部分不由参考补成完整阅读。",
+          "analysis": "解释接本件具体描写，未读部分不由参考补成完整阅读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色只画了一朵花，和本件剪纸活动可以怎样联系又怎样分清？",
+          "answer": "可联系表现图案的兴趣，画图与剪纸、原创角色与本件人物分别说明。",
+          "analysis": "可联系表现图案的兴趣，画图与剪纸、原创角色与本件人物分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "尚未实际共读，只准备了问题，本次怎样报告进度？",
+          "answer": "说已准备问题，共读仍待发生，不补造成人朗读或本人完成的事实。",
+          "analysis": "说已准备问题，共读仍待发生，不补造成人朗读或本人完成的事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材插图里剪成许多作品，能当本人已经做出的手工吗？",
+          "answer": "不能，角色图示与本人真实作品分开；真实作品需本人实际过程与原件。",
+          "analysis": "不能，角色图示与本人真实作品分开；真实作品需本人实际过程与原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后问一个当前内容问题，录本人回应及得到的帮助。",
+          "answer": "问题回应对应本件，未知细节回原页核，成人说明与本人表达分别留。",
+          "analysis": "问题回应对应本件，未知细节回原页核，成人说明与本人表达分别留。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-garden-two-pinyin-garden2-window-poem-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再概述一处读到内容，另说下一步愿意读或做什么。",
+          "answer": "实际已读范围和后续愿望分清，想做手工不提前登记为已经完成作品。",
+          "analysis": "实际已读范围和后续愿望分清，想做手工不提前登记为已经完成作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

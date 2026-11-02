@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-zhchshr",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "sha256": "0f32bf0a129892847501c99229934bbf89f6287f321e79b1814f54176d4adbf0",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry8",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 39,
+        "pageEnd": 40,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zhchshr-voice",
+      "structure": "pinyin-four-current-curled-initials",
+      "familyProposal": "a692a990-pinyin-four-current-curled-initials",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读四声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "双字母整体身份与送气清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确示范和范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四声母声音逐项对应，双字母不拆成两个名称，轻短发音与帮助清楚。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读zh ch sh r并录音，说明是否先听过准确示范。",
+          "answer": "四声母声音逐项对应，双字母不拆成两个名称，轻短发音与帮助清楚。",
+          "analysis": "四声母声音逐项对应，双字母不拆成两个名称，轻短发音与帮助清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读zh与ch，最后补读sh r。",
+          "answer": "zh不送气ch送气较明显，另外两项各实际听核，不凭音量独断。",
+          "analysis": "zh不送气ch送气较明显，另外两项各实际听核，不凭音量独断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序为r sh zh ch，本人看清当前声母后逐项读。",
+          "answer": "四项按当前完整组合对应，不照背旧顺序或把双字母拆读。",
+          "analysis": "四项按当前完整组合对应，不照背旧顺序或把双字母拆读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会读两个声母时，本次录音怎样说明另外两项？",
+          "answer": "保留实际已读与卡住处，未覆盖仍待练，不由熟悉字形补本人声音。",
+          "analysis": "保留实际已读与卡住处，未覆盖仍待练，不由熟悉字形补本人声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "zh由两字母写出，能把它数成本课两个独立声母吗？本人读它说明。",
+          "answer": "不能，zh作为一个声母整体认读，字母数量与当前声音身份分开。",
+          "analysis": "不能，zh作为一个声母整体认读，字母数量与当前声音身份分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人选一项当前声母再试，说明得到的准确示范或提醒。",
+          "answer": "目标与本人真实原音对应，提示和再试清楚，不要求编造进步。",
+          "analysis": "目标与本人真实原音对应，提示和再试清楚，不要求编造进步。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-current-curled-initials-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "重读四声母，再说本次实际发音和手写分别做过哪些。",
+          "answer": "声音与本人作品各看实际范围，一种任务完成不推全部已做。",
+          "analysis": "声音与本人作品各看实际范围，一种任务完成不推全部已做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-curled-whole",
+      "structure": "pinyin-whole-flat-curled-listening",
+      "familyProposal": "a692a990-pinyin-whole-flat-curled-listening",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人整体读四音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "平翘舌按真实声音比较",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字面i和地域判断分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四项按完整音节实际听核，不用英语名称串代替，示范条件如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人整体认读zhi chi shi ri并录音，不把i套单独i读法。",
+          "answer": "四项按完整音节实际听核，不用英语名称串代替，示范条件如实。",
+          "analysis": "四项按完整音节实际听核，不用英语名称串代替，示范条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确zi与zhi示范，再本人分别实际读出。",
+          "answer": "平翘舌按当前真实声音与位置提示比较，不只看多一个h的字形。",
+          "analysis": "平翘舌按当前真实声音与位置提示比较，不只看多一个h的字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给shi、ci、chi、si，本人看清完整形式后实际认读。",
+          "answer": "当前两组分别对应，不能照背上一轮顺序或只靠音量区分。",
+          "analysis": "当前两组分别对应，不能照背上一轮顺序或只靠音量区分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "请准确示范者另选s或sh，不先亮目标字母，发声后本人回应。",
+          "answer": "原声与回应对应才核听辨，看过目标或请求重读的条件如实。",
+          "analysis": "原声与回应对应才核听辨，看过目标或请求重读的条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "某个地区的说话习惯与标准音不同，就能判个人学不会吗？本人说明并尝试一组。",
+          "answer": "不能，回当前实际声音与帮助练具体目标，不按地区直接下能力结论。",
+          "analysis": "不能，回当前实际声音与帮助练具体目标，不按地区直接下能力结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "目前只有字卡没原声，能说明已经听辨平翘舌吗？",
+          "answer": "只能说明文字观察，真实听辨还需实际声音与本人回应，不由字形代听觉证据。",
+          "analysis": "只能说明文字观察，真实听辨还需实际声音与本人回应，不由字形代听觉证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-whole-flat-curled-listening-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读一对当前整体音节，比较前后尝试并说明帮助。",
+          "answer": "比较依据真实原音，后改与首次分开，未发现明显变化也可如实说明。",
+          "analysis": "比较依据真实原音，后改与首次分开，未发现明显变化也可如实说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zhchshr-blend",
+      "structure": "pinyin-digraph-initial-syllable-parts",
+      "familyProposal": "a692a990-pinyin-digraph-initial-syllable-parts",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "双字母作为一个声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "介母末韵母和标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际连贯拼读",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "双字母各整体作一个声母，声音与当前韵母标调对应，组成说明不代实际声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读zhā chá shé rè，再分别说明当前声母。",
+          "answer": "双字母各整体作一个声母，声音与当前韵母标调对应，组成说明不代实际声音。",
+          "analysis": "双字母各整体作一个声母，声音与当前韵母标调对应，组成说明不代实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读zhuō、chuā、shuō，留意介母。",
+          "answer": "介母u保留并连成音节，不因双字母再拆出多余声母。",
+          "analysis": "介母u保留并连成音节，不因双字母再拆出多余声母。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给rè、shuō、zhā、zhuō，本人看清后实际读。",
+          "answer": "两拼三拼按当前有无介母判断，标调与末韵母分别更新。",
+          "analysis": "两拼三拼按当前有无介母判断，标调与末韵母分别更新。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "zhā有三个字母就一定是三拼吗？本人读后解释组成。",
+          "answer": "不是，zh一个声母与ā拼成音节；是否三拼看介母等声音组成，不只数字符。",
+          "analysis": "不是，zh一个声母与ā拼成音节；是否三拼看介母等声音组成，不只数字符。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "将zhā换成zhuō，本人实际读两项并说明变化。",
+          "answer": "增加介母u且末韵母由a改o，声调按当前形式核，不能沿用旧声音。",
+          "analysis": "增加介母u且末韵母由a改o，声调按当前形式核，不能沿用旧声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只辨出双字母声母还没拼完整音节，怎样说明范围？",
+          "answer": "说明已看清声母，完整音节仍待实际连读，不把准备当完整拼读。",
+          "analysis": "说明已看清声母，完整音节仍待实际连读，不把准备当完整拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraph-initial-syllable-parts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读一个当前两拼和一个三拼，说明所用提示与实际覆盖。",
+          "answer": "两种形式各有真实声音，帮助和原答后改分清，部分成功不推全部组合。",
+          "analysis": "两种形式各有真实声音，帮助和原答后改分清，部分成功不推全部组合。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zhchshr-writing",
+      "structure": "pinyin-digraphs-r-own-writing",
+      "familyProposal": "a692a990-pinyin-digraphs-r-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四项",
+          "weight": 0.4
+        },
+        {
+          "criterion": "双字母成组且格位可辨",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范写与真实过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四项按本件完整范写核，双字母成组，各字母笔画和格位分别清楚。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写zh ch sh r，上传并指出h的上伸。",
+          "answer": "四项按本件完整范写核，双字母成组，各字母笔画和格位分别清楚。",
+          "analysis": "四项按本件完整范写核，双字母成组，各字母笔画和格位分别清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看范写，再本人按r sh ch zh顺序写出并上传。",
+          "answer": "四项实际覆盖，不把双字母拆成不同声母任务，作品不是键入文本。",
+          "analysis": "四项实际覆盖，不把双字母拆成不同声母任务，作品不是键入文本。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸写四项，选一组双字母说明各部分位置。",
+          "answer": "说明对应本人当前原稿，成组排列与单字母笔画分别看。",
+          "analysis": "说明对应本人当前原稿，成组排列与单字母笔画分别看。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写zh与r还没写ch sh，上传如何说明？",
+          "answer": "只核实际两项，另外两项待写，不用打印范字补成本人已写。",
+          "analysis": "只核实际两项，另外两项待写，不用打印范字补成本人已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若h漏掉或成组间距不清，怎样保留原稿再练？",
+          "answer": "保留真实原写，按完整范形再写，不倒用清稿覆盖首次作品。",
+          "analysis": "保留真实原写，按完整范形再写，不倒用清稿覆盖首次作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写双字母时听过提醒，上传怎样说明笔顺与帮助？",
+          "answer": "提示和本人过程如实，静态成品看形，先后步骤仍看真实书写。",
+          "analysis": "提示和本人过程如实，静态成品看形，先后步骤仍看真实书写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-digraphs-r-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传四项原稿，再说明字符数量与声母数量有什么区别。",
+          "answer": "zh ch sh各两字母写一个声母，r一字母，当前任务四声母身份不由字符总数替代。",
+          "analysis": "zh ch sh各两字母写一个声母，r一字母，当前任务四声母身份不由字符总数替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-desk-paper",
+      "structure": "pinyin-desk-paper-action-words",
+      "familyProposal": "a692a990-pinyin-desk-paper-action-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读桌纸两字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前动作词义准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色活动和本人事实分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读桌与纸，再读给定擦桌子折纸两词并录音。",
+          "answer": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。",
+          "analysis": "两字与词语实际声音对应，角色动作帮助理解，不要求本人真实做过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读zhuō与zhǐ，说明一处当前词义。",
+          "answer": "字形读音与桌、纸所指对应，解释接给定材料，实际声音分别听核。",
+          "analysis": "字形读音与桌、纸所指对应，解释接给定材料，实际声音分别听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色卡只给折纸动作，本人选相关识字目标再实际认读。",
+          "answer": "按当前动作联系纸字，不沿用旧图位置猜；角色作品不替本人实际作品。",
+          "analysis": "按当前动作联系纸字，不沿用旧图位置猜；角色作品不替本人实际作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读清桌还没认出纸时，录音怎样报告？",
+          "answer": "保留真实已读一项，另一项待练，不由词语熟悉补齐。",
+          "analysis": "保留真实已读一项，另一项待练，不由词语熟悉补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "会读擦桌子就能登记本人已经完成清洁吗？本人读词后说明。",
+          "answer": "不能，词语理解和本人真实动作分别核，实际完成需当时过程。",
+          "analysis": "不能，词语理解和本人真实动作分别核，实际完成需当时过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本课识字行桌纸，能把绕口令全部字都升为必写吗？本人认读两字说明。",
+          "answer": "不能自动扩大，识字行、字母手写和指定读篇分别看。",
+          "analysis": "不能自动扩大，识字行、字母手写和指定读篇分别看。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-desk-paper-action-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次读两字与一个当前词语，说明帮助和实际完成范围。",
+          "answer": "当前声音与条件清楚，未读到的部分如实，书写仍需本人原稿。",
+          "analysis": "当前声音与条件清楚，未读到的部分如实，书写仍需本人原稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zhchshr",
+      "atomId": "source:chinese:g1:a692a990:pinyin-four-ten-reading",
+      "structure": "pinyin-four-ten-clarity-and-meaning",
+      "familyProposal": "a692a990-pinyin-four-ten-clarity-and-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前数词声音与意义清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际读篇范围明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "准确速度和帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前数词声音逐项核，十四与四十所指不同，先求清楚，不以快代准确。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "按本件绕口令先慢慢读四与十，再读十四与四十并录音。",
+          "answer": "当前数词声音逐项核，十四与四十所指不同，先求清楚，不以快代准确。",
+          "analysis": "当前数词声音逐项核，十四与四十所指不同，先求清楚，不以快代准确。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读四十和十四，说各表示多少。",
+          "answer": "四十表示40，十四表示14，声音与意义都要当前核，说明不代实际发音。",
+          "analysis": "四十表示40，十四表示14，声音与意义都要当前核，说明不代实际发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新数词顺序为十四、十、四十、四，本人看清后实际读出。",
+          "answer": "按当前数词更新，不照背原篇固定顺序代每项辨认。",
+          "analysis": "按当前数词更新，不照背原篇固定顺序代每项辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只读了绕口令一部分，可以怎样说明其余内容？",
+          "answer": "按真实声音保留实际范围，未读部分待练，不由熟悉题名推出整篇已读。",
+          "analysis": "按真实声音保留实际范围，未读部分待练，不由熟悉题名推出整篇已读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读得很快但把十四四十混了，怎样保留原音再练？",
+          "answer": "保留当前混读，回准确示范后慢读两项，后一次不覆盖原始声音。",
+          "analysis": "保留当前混读，回准确示范后慢读两项，后一次不覆盖原始声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "目前没有计时或准确率记录，可以凭感觉写成已经明显进步吗？",
+          "answer": "应按真实前后声音和已有记录说明，未核数值不编造，准确与速度分开。",
+          "analysis": "应按真实前后声音和已有记录说明，未核数值不编造，准确与速度分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zhchshr-pinyin-four-ten-clarity-and-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读指定两项数词并解释意思，说明实际帮助和下一步。",
+          "answer": "音值、意义与帮助分别核，计划不提前当完成，允许当前仍需练习。",
+          "analysis": "音值、意义与帮助分别核，计划不提前当完成，允许当前仍需练习。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

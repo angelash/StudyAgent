@@ -1,0 +1,318 @@
+{
+  "format": "source-original-lesson-draft-v1",
+  "status": "draft_needs_materials_and_review",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry7",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "pageStart": 37,
+    "pageEnd": 38,
+    "publicationYear": null,
+    "curriculumStandardYear": null
+  },
+  "definitionCandidates": [
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-zcs-voice",
+      "version": 1,
+      "name": "三声母与三整体音节实际认读",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "声母与整体认读",
+      "objective": "本人分别读z c s和zi ci si并比较z c送气",
+      "successCriterion": "声母与整体音节任务分明，特殊i不机械读成单独i",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-zcs-blend",
+      "version": 1,
+      "name": "当前两拼三拼与标调",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "音节拼读",
+      "objective": "本人拼读zá cè sǎ zuó cuō suǒ等本件形式",
+      "successCriterion": "当前声母介母末韵母与标调准确，实际连读不靠字母名称串",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-zcs-writing",
+      "version": 1,
+      "name": "三声母的本人书写",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "拼音书写",
+      "objective": "本人在四线格写z c s并比较完整字形",
+      "successCriterion": "原稿三项可辨，均按本件中格范写核，不从键入形状推本人已写",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-word-sentence",
+      "version": 1,
+      "name": "字词语句子识字与层次",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "识字与语言",
+      "objective": "本人识读字词语句子并区别给定字词和完整句",
+      "successCriterion": "五字与当前声音对应，例子能分清字词句，子单读与词中轻声分开",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    },
+    {
+      "id": "source:chinese:g1:a692a990:pinyin-bridge-reading",
+      "version": 1,
+      "name": "过桥读篇的文字与比喻",
+      "subject": "chinese",
+      "grade": 1,
+      "term": "upper",
+      "strand": "阅读与理解",
+      "objective": "成人帮助下读本件并解释等号像桥的表达",
+      "successCriterion": "依据当前文本分清数学关系和形象说法，角色题目不代本人真实作答",
+      "prerequisiteIds": [],
+      "curriculumVersion": "source-original-a692a990-v1",
+      "status": "draft"
+    }
+  ],
+  "targetIds": [
+    "source:chinese:g1:a692a990:pinyin-zcs-voice",
+    "source:chinese:g1:a692a990:pinyin-zcs-blend",
+    "source:chinese:g1:a692a990:pinyin-zcs-writing",
+    "source:chinese:g1:a692a990:pinyin-word-sentence",
+    "source:chinese:g1:a692a990:pinyin-bridge-reading"
+  ],
+  "sourceReview": {
+    "confirmedRange": true,
+    "statement": "本课选定页段已逐张看图并核字形、声调与任务范围；声调文字使用已核原件及字体的规范化提取。发音、听辨、本人书写和帮助分别核，仍待教师及真实声音素材审核。",
+    "pages": [
+      {
+        "page": 37,
+        "visualChecked": true,
+        "statement": "已看三声母、zi ci si整体认读和两拼三拼例项，声母与整体音节不靠字面i套读。"
+      },
+      {
+        "page": 38,
+        "visualChecked": true,
+        "statement": "已看字词句子五字识字行、字词句比较、过桥儿歌与三字母范写；词中子轻声与单读zǐ分开，现代全文仅本地。"
+      }
+    ]
+  },
+  "scope": {
+    "title": "z c s：声母、整体认读与字词句",
+    "pinyinInitials": [
+      "z",
+      "c",
+      "s"
+    ],
+    "wholeSyllables": [
+      "zi",
+      "ci",
+      "si"
+    ],
+    "recognitionCharacters": [
+      "字",
+      "词",
+      "语",
+      "句",
+      "子"
+    ],
+    "writingCharacters": [],
+    "writingPinyinLetters": [
+      "z",
+      "c",
+      "s"
+    ],
+    "directoryGranularity": "lesson",
+    "allPageActivitiesDelivered": false,
+    "authenticListeningStimuliIncluded": false,
+    "standardSoundReferenceNeedsListeningReview": true,
+    "teacherReviewed": false,
+    "published": false
+  },
+  "content": {
+    "title": "z c s：声母、整体认读与字词句",
+    "activation": {
+      "prompt": "给出学、学生、我是小学生三个例子，它们一样长吗？先读一读，再看看哪一个是字、哪一个是词、哪一个说完整意思。",
+      "expectedObservation": "能看到不同层次的语言单位，辨认要联系当前具体例子，不只数声音。",
+      "bridge": "先学三声母与整体音节，再把当前音节放进字、词和句中理解。"
+    },
+    "concept": {
+      "explanation": "本课学习z、c、s三个声母。z和c都在舌尖前部形成阻碍后放开，z不送气，c送气较明显；s有摩擦气流。先听准确示范，再由本人轻短读，声音区别与字形分别核，不以响度或嘴形单独判音。\nzi、ci、si按本课作为整体认读音节学习。它们写着i，但这里不能把i机械读成前面单独i的音，再把两个名称拼起来。声母z、c、s与整体音节zi、ci、si是不同任务，按当前准确示范分别读；也不只靠拖长或读响就判断类别。\n本件有zá、zé、zǔ、cā、cè、cū、sǎ、sè、sù等两拼，也有zuó、cuō、suǒ等三拼。每次看完整形式，三拼中间的u进入连贯音节，声调看当前韵母上的标调。相同声母并不意味着所有音节都读同样声调，不能只认开头就猜后面。\n写z、c、s时观察本件范形，三个主要都在中格。z的折线、c的开口和s的弯曲分别看，自己写后保留原稿再比较。字母手写、本人声音和听辨分别练，不从写对就推已经听清声音。\n识字行是字、词、语、句、子。学是一个字，学生是一个词，我是小学生是表达完整意思的句子；这些是本课给定例子，介绍本人时仍按实际情况。子在识字行单独标zǐ，放到句子这个词中后音节按本件轻声读，不能把两种条件混成一种。\n过桥儿歌把等号形象地比作桥，用来鼓励认真想和算。等号在数学里表示两边相等，并不因图上像桥就变成通行工具；角色做对或做错是读篇情境，不写成本人已经做过几题。可以先在成人帮助下读本件，再用自己的话说明一个比喻和一个实际数学意思。",
+      "points": [
+        "z c送气区别听实际声音",
+        "zi ci si整体读不套单独i",
+        "当前两拼三拼分别看",
+        "z c s主要写中格",
+        "五识字与字词句层次分开",
+        "比喻桥不改等号相等含义"
+      ]
+    },
+    "example": {
+      "situation": "原创练习：小禾读zǐ，再读句子这个词，随后比较学、学生与我是小学生。",
+      "steps": [
+        {
+          "explanation": "单独子按识字行读zǐ，词中后音节按当前句子一词读。",
+          "board": [
+            "单字：子",
+            "当前词：句子",
+            "条件不同分别读"
+          ]
+        },
+        {
+          "explanation": "学是一个字，学生是一个词，完整句子还表达当前说话意思。",
+          "board": [
+            "字：学",
+            "词：学生",
+            "句：我是小学生"
+          ]
+        },
+        {
+          "explanation": "说明这是给定语言例子，本人的身份或学习经历按实际另说。",
+          "board": [
+            "给定例子帮助理解",
+            "本人实际情况另说",
+            "不由例子补本人记录"
+          ]
+        }
+      ],
+      "conclusion": "读音与语言层次都看当前对象和条件，不机械搬用单字形式。"
+    },
+    "visuals": [
+      {
+        "kind": "table",
+        "title": "本课不同任务各怎样核",
+        "headers": [
+          "任务",
+          "当前对象",
+          "核对方法"
+        ],
+        "rows": [
+          [
+            "声母",
+            "z c s",
+            "真实声音与送气区别"
+          ],
+          [
+            "整体认读",
+            "zi ci si",
+            "完整音节，不套单独i"
+          ],
+          [
+            "字词句",
+            "学、学生、我是小学生",
+            "给定例子中的层次"
+          ],
+          [
+            "单字与词中读法",
+            "子、句子",
+            "单独与轻声条件分清"
+          ]
+        ],
+        "explanation": "表中给定材料帮助比较，声音仍要本人实际读，示例句不代真实身份或学习记录。"
+      }
+    ],
+    "misconceptions": [
+      {
+        "observation": "把zi拆成英语Z名称加单独i的音。",
+        "alternatives": [
+          "没有按本课整体音节认读。"
+        ],
+        "verification": "请听准确zi示范，再分别比较声母z和整体zi。",
+        "correctiveFeedback": "整体认读按当前音值练，不能用另一个体系的名称串替代。"
+      },
+      {
+        "observation": "看到等号像桥，就把等号解释为能不能走过去。",
+        "alternatives": [
+          "把形象比喻当作数学符号的定义。"
+        ],
+        "verification": "请分别说原篇怎样比喻、数学等号表示什么关系。",
+        "correctiveFeedback": "形象说法帮助读篇，数学等号仍表示两边相等，给定角色作答另核。"
+      }
+    ],
+    "transfer": {
+      "scenario": "原创材料给字山、词小山、完整句远处有一座山，另给新序suǒ与ci。",
+      "prompt": "比较当前语言例子，再本人实际认读指定整体音节或三拼。",
+      "expectedStrategy": "语言层次按新例子判断，拼读按完整当前条件，不照搬原来的学生句。"
+    },
+    "summary": {
+      "synthesis": "声母、整体音节与具体拼读分别练；三字母亲手写，五字实际认读，字词句层次与比喻回当前材料理解。",
+      "takeaways": [
+        "声母整体音节分清",
+        "三拼中间u不漏",
+        "子单读词中分别核",
+        "等号意义不被比喻替代"
+      ]
+    },
+    "citations": [
+      {
+        "page": 37,
+        "quote": "zá\t\nzé\t\nzǔ",
+        "usedFor": "example"
+      },
+      {
+        "page": 38,
+        "quote": "学\n我是小学生。\n学生",
+        "usedFor": "concept"
+      }
+    ],
+    "goals": [
+      {
+        "id": "goal-1",
+        "atomId": "source:chinese:g1:a692a990:pinyin-zcs-voice",
+        "objective": "本人分别读z c s和zi ci si并比较z c送气",
+        "successCriterion": "声母与整体音节任务分明，特殊i不机械读成单独i"
+      },
+      {
+        "id": "goal-2",
+        "atomId": "source:chinese:g1:a692a990:pinyin-zcs-blend",
+        "objective": "本人拼读zá cè sǎ zuó cuō suǒ等本件形式",
+        "successCriterion": "当前声母介母末韵母与标调准确，实际连读不靠字母名称串"
+      },
+      {
+        "id": "goal-3",
+        "atomId": "source:chinese:g1:a692a990:pinyin-zcs-writing",
+        "objective": "本人在四线格写z c s并比较完整字形",
+        "successCriterion": "原稿三项可辨，均按本件中格范写核，不从键入形状推本人已写"
+      },
+      {
+        "id": "goal-4",
+        "atomId": "source:chinese:g1:a692a990:pinyin-word-sentence",
+        "objective": "本人识读字词语句子并区别给定字词和完整句",
+        "successCriterion": "五字与当前声音对应，例子能分清字词句，子单读与词中轻声分开"
+      },
+      {
+        "id": "goal-5",
+        "atomId": "source:chinese:g1:a692a990:pinyin-bridge-reading",
+        "objective": "成人帮助下读本件并解释等号像桥的表达",
+        "successCriterion": "依据当前文本分清数学关系和形象说法，角色题目不代本人真实作答"
+      }
+    ],
+    "prerequisites": [],
+    "retention": {
+      "intervalDays": [
+        1,
+        3,
+        7,
+        14
+      ],
+      "anchor": "last_relevant_teaching_or_help",
+      "instructions": "按实际教学和帮助时间安排真实到期复测；候选每间隔一题不等充分未见库存、独立题族或长期效果。"
+    }
+  },
+  "editorNotes": {
+    "slug": "pinyin-zcs",
+    "teacherReviewed": false,
+    "automaticPublication": false,
+    "realLearnerEvidence": false,
+    "sourceBoundary": "原页和现代教材全文仅本地参考，正文为原创讲解；必要短引必须符合本件准确页段。",
+    "materialStatus": "目标、讲解、评分和结构均为待审候选，不自动发布或登记学习事实。"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "at": "2026-11-02T23:07:42.339Z",
+  "passed": true,
+  "generationByteStable": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-middle.cjs",
+      "sha256": "cd847bbe367926b17795d8419acb2927916d20932e092e3507ea716339289e8e"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-palatal.cjs",
+      "sha256": "027bcefec8a4aab8d3177f05748daef5d87037ed2dcc474d996663b2276eaa2f"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-sibilants.cjs",
+      "sha256": "28254a7a738b456a6271cbd22f0178d2e5ad597065f2065fb4b5b7aee1243b66"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-garden-two.cjs",
+      "sha256": "06c4b802455a948252e3a90e872f11516bc263d3332715d22693fb5e4f50eebe"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "sha256": "885c03efbe1be3f311c41e0f450c59b16213226fb75f0161ea5237587456145e"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "sha256": "6feea9e04f0c3f9ffa5fb251f8ade791ca029e0ba243ff3f2d569e11605cb9ee"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "sha256": "bdc8141ce8d8dbf6ecc8e64be7754a372dcaea0c389c925cac52d970242af39a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "sha256": "f39fdb14b5e4cd7e6ecc829dde0fbb28d067f36e5c722ee43f07c7e015b877fd"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "sha256": "be14f104ab315dac09a267dce80401b426c51259450a465a833962ccaa18603a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "sha256": "1ac264705eb95418105fad10954e59dbd5c11fadbf80974f47b2d57d4c4ca604"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "sha256": "0f32bf0a129892847501c99229934bbf89f6287f321e79b1814f54176d4adbf0"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "sha256": "ee1983074a71e8bd0008ac6de57eccfc3ce3d14e999005a30b2e239aad27feff"
+    }
+  ],
+  "rows": [
+    {
+      "name": "chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "targets": 7,
+      "questions": 49,
+      "pages": [
+        41,
+        42,
+        43,
+        44
+      ],
+      "bodyCharacters": 799,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        35,
+        36
+      ],
+      "bodyCharacters": 602,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "targets": 5,
+      "questions": 35,
+      "pages": [
+        37,
+        38
+      ],
+      "bodyCharacters": 616,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    },
+    {
+      "name": "chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "targets": 6,
+      "questions": 42,
+      "pages": [
+        39,
+        40
+      ],
+      "bodyCharacters": 678,
+      "completeBodyNonCheckGaps": [],
+      "teacherReviewed": false
+    }
+  ],
+  "modes": {
+    "audio_record": 119,
+    "short_answer": 21,
+    "image_upload": 28
+  },
+  "targets": 24,
+  "questions": 168,
+  "failures": [],
+  "authenticSoundFilesIncluded": false,
+  "teacherReviewed": false,
+  "published": false
+}

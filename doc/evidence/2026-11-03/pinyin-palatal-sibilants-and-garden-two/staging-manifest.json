@@ -1,0 +1,392 @@
+{
+  "at": "2026-11-02T23:14:07.302Z",
+  "branch": "main",
+  "baseCommit": "74fbc0524a9f75cd80853d4a7b5825cddaea0750",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-pinyin-middle.cjs",
+      "bytes": 2321,
+      "sha256": "cd847bbe367926b17795d8419acb2927916d20932e092e3507ea716339289e8e",
+      "gitNormalizedSha256": "cd847bbe367926b17795d8419acb2927916d20932e092e3507ea716339289e8e"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-palatal.cjs",
+      "bytes": 14284,
+      "sha256": "027bcefec8a4aab8d3177f05748daef5d87037ed2dcc474d996663b2276eaa2f",
+      "gitNormalizedSha256": "027bcefec8a4aab8d3177f05748daef5d87037ed2dcc474d996663b2276eaa2f"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-sibilants.cjs",
+      "bytes": 27918,
+      "sha256": "28254a7a738b456a6271cbd22f0178d2e5ad597065f2065fb4b5b7aee1243b66",
+      "gitNormalizedSha256": "28254a7a738b456a6271cbd22f0178d2e5ad597065f2065fb4b5b7aee1243b66"
+    },
+    {
+      "path": "scripts/content/chinese-g1-pinyin-garden-two.cjs",
+      "bytes": 18267,
+      "sha256": "06c4b802455a948252e3a90e872f11516bc263d3332715d22693fb5e4f50eebe",
+      "gitNormalizedSha256": "06c4b802455a948252e3a90e872f11516bc263d3332715d22693fb5e4f50eebe"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "bytes": 16310,
+      "sha256": "885c03efbe1be3f311c41e0f450c59b16213226fb75f0161ea5237587456145e",
+      "gitNormalizedSha256": "885c03efbe1be3f311c41e0f450c59b16213226fb75f0161ea5237587456145e"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "bytes": 45419,
+      "sha256": "6feea9e04f0c3f9ffa5fb251f8ade791ca029e0ba243ff3f2d569e11605cb9ee",
+      "gitNormalizedSha256": "6feea9e04f0c3f9ffa5fb251f8ade791ca029e0ba243ff3f2d569e11605cb9ee"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "bytes": 13846,
+      "sha256": "bdc8141ce8d8dbf6ecc8e64be7754a372dcaea0c389c925cac52d970242af39a",
+      "gitNormalizedSha256": "bdc8141ce8d8dbf6ecc8e64be7754a372dcaea0c389c925cac52d970242af39a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "bytes": 37019,
+      "sha256": "f39fdb14b5e4cd7e6ecc829dde0fbb28d067f36e5c722ee43f07c7e015b877fd",
+      "gitNormalizedSha256": "f39fdb14b5e4cd7e6ecc829dde0fbb28d067f36e5c722ee43f07c7e015b877fd"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "bytes": 13432,
+      "sha256": "be14f104ab315dac09a267dce80401b426c51259450a465a833962ccaa18603a",
+      "gitNormalizedSha256": "be14f104ab315dac09a267dce80401b426c51259450a465a833962ccaa18603a"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "bytes": 31188,
+      "sha256": "1ac264705eb95418105fad10954e59dbd5c11fadbf80974f47b2d57d4c4ca604",
+      "gitNormalizedSha256": "1ac264705eb95418105fad10954e59dbd5c11fadbf80974f47b2d57d4c4ca604"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "bytes": 14358,
+      "sha256": "0f32bf0a129892847501c99229934bbf89f6287f321e79b1814f54176d4adbf0",
+      "gitNormalizedSha256": "0f32bf0a129892847501c99229934bbf89f6287f321e79b1814f54176d4adbf0"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "bytes": 37662,
+      "sha256": "ee1983074a71e8bd0008ac6de57eccfc3ce3d14e999005a30b2e239aad27feff",
+      "gitNormalizedSha256": "ee1983074a71e8bd0008ac6de57eccfc3ce3d14e999005a30b2e239aad27feff"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 16285,
+      "sha256": "3dc25131a6184a00817b09a11394f83867aa346647bdb5cbd67c164d3f8c6121",
+      "gitNormalizedSha256": "b9817607c99e956ad816cca2833eca0d1198e89497dbd81f9dd08fc816af3f39"
+    },
+    {
+      "path": "doc/product/223-pinyin-remaining-lessons-and-gardens.md",
+      "bytes": 6010,
+      "sha256": "7ecedc79393be572174ffa7c449cd44c0f0840b780673c5b77396f0907d0a4f3",
+      "gitNormalizedSha256": "7ecedc79393be572174ffa7c449cd44c0f0840b780673c5b77396f0907d0a4f3"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 20695,
+      "sha256": "fb2537761c16a99e95ab887dcd68385787c0f739fae5b25abe14e6895ff00533",
+      "gitNormalizedSha256": "fb2537761c16a99e95ab887dcd68385787c0f739fae5b25abe14e6895ff00533"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 36364,
+      "sha256": "460ce4ed5a7edc93d6f4e3a7261787b71bf8af6eb663c7066c2c5efd05868469",
+      "gitNormalizedSha256": "20a0074bde3a9a45afb7982535daf8510ac93adb69c784ba13e21f085b926cde"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 188245,
+      "sha256": "84fc739a327408a75d2844e9e66917a63030f2862cd417d50bbf6b5ef9d4c273",
+      "gitNormalizedSha256": "80ee8c90d1c3e342880709e4700f2243113585f8fb802e847b2fd40616cf64f6"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 114629,
+      "sha256": "596e067debe3de3b79f3ad867c79aed242a3430d327956de8e6b2b0bb46014a6",
+      "gitNormalizedSha256": "4c108c554ca3e0b49faeab60a6d41a86a7f61aa86989d61dafb25bce6e525b54"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 119708,
+      "sha256": "242a1e8b52df68b813f9e971c0d83b72bb46ca5eab54c04813f0164fc6eb4c12",
+      "gitNormalizedSha256": "ed0f1451b5e5c71a7ae3fe32396d725a837e779eeb3def05966a0d71a8ef7738"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 29646,
+      "sha256": "ccbebe7984924b28d6b80ff65cdb111f72a4c27614b71e3a35cc111c8c8291e5",
+      "gitNormalizedSha256": "77176aba901c332961d8242376fefc618c1b1dd7750e8c6dad3263106738b35b"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 48921,
+      "sha256": "5d26385ae08e16b20900e21ebc3dee35ddfd6c29e1c6232a947028d88f97078b",
+      "gitNormalizedSha256": "7ffdf10f798539e20e6a69c814fbd866177b715388b8c570014b22828f852b67"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-garden-two-v1-desktop.png",
+      "bytes": 290919,
+      "sha256": "25ee5849bd7780779412fa67a434dd24c9b6f6e6e00954a132a225e3284e6883",
+      "gitNormalizedSha256": "4e48e430a86ac7614f8c9c9b2cc8da139d945fe19234bd1377c12c4072d2e35c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-garden-two-v1-mobile-table.png",
+      "bytes": 66558,
+      "sha256": "9829a0280b79b2906025abda8554b652cec2a2e420005c973a5c7f0f829e3f56",
+      "gitNormalizedSha256": "da0f66a8d5e84cd14cc7b89287f34c980379524ec99960bdec24b2623bc71ef4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-garden-two-v1-mobile.png",
+      "bytes": 68432,
+      "sha256": "a6683d3d1bebc48342eedf82d4fccb77d0645ccb9bf0cd8543bc069b735c0588",
+      "gitNormalizedSha256": "857826ad81c6505e612e8566e8822bd2b018374369a8ed0ae72ce0f389515c1f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-garden-two-v1-table.png",
+      "bytes": 10532,
+      "sha256": "51cd6d0306bc69c95ba46fcd78372c0895ba0105956b29186cda488fb1a88901",
+      "gitNormalizedSha256": "590712715b74188adf2c3990a828e73f3eaa98cc627d8185bb3cbe1816c1a437"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-jqx-v1-desktop.png",
+      "bytes": 259430,
+      "sha256": "99f475db1e5352cff5545760685ca6329162feafaf54d4bd1a6cc1a16589d6e4",
+      "gitNormalizedSha256": "33264d90e263f01ced13c4ff0bfd2034e7209ffe17d46ba9e499946acd2d1e49"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-jqx-v1-mobile.png",
+      "bytes": 77943,
+      "sha256": "f5971569d65337e1a49c8689c878d3b1f03a698ba8f3633567ec0fd27ebca1ba",
+      "gitNormalizedSha256": "ab8e3d6a00a077e961ba50486125e0b5844c98ef817abc75669e2f2347bff04a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-jqx-v1-table.png",
+      "bytes": 29825,
+      "sha256": "7000522a20d8b01df67cd1283be8c103edd236705346fb54ebacd47a5f5aa1ed",
+      "gitNormalizedSha256": "5889ac2c7ad999c1f50ca06cd63802a86a00c62434cb1735a39eaa0d578fb591"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zcs-v1-desktop.png",
+      "bytes": 263138,
+      "sha256": "26283a7aa491afbd59ae2fece7580174db2daac01bc51ab32af7a66273f6da49",
+      "gitNormalizedSha256": "032a9d1194bc35373a0547421c03f4ba6158c628cb1c6c92060df0c39ef6d649"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zcs-v1-mobile.png",
+      "bytes": 73273,
+      "sha256": "bb686e036fdb6c3144456e05bd627f8101739f656d58754beb17ba0a473c39ad",
+      "gitNormalizedSha256": "cb9ca0a9dd23895bfb127ac90c19baa05c1752380ecb37a352da648d054f0807"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zcs-v1-table.png",
+      "bytes": 29132,
+      "sha256": "e64f3d979e799d05e68bba21c9b6acbc9f0c4640573925c15f8189b7b55e4bd4",
+      "gitNormalizedSha256": "2472e8a67771dbecaaa48f1fdd1f176502865b25f616ce7aea91da9b5f6b13e4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zhchshr-v1-desktop.png",
+      "bytes": 276216,
+      "sha256": "d301407f9f9c65570a8e1d6fa4d19fb55942810c5a5565984a3e94ee9d11e87a",
+      "gitNormalizedSha256": "328bc833699704b247560eaa042ca93eed55be050c197ed7c26bad8977802294"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zhchshr-v1-mobile.png",
+      "bytes": 74084,
+      "sha256": "939d1e52f252839be4772c9c332fbef550a23dfbacc6dd5bb2368589a09f0aa3",
+      "gitNormalizedSha256": "8b1e2a62f219210cb22e287e624a51460e105703eedf76d26df3f383b97b721b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/chinese-g1-a692a990-pinyin-zhchshr-v1-table.png",
+      "bytes": 22892,
+      "sha256": "2e8cfa239e4591c4dc6b44a3c924cbebd02adfe49be201428ae547f228cd7724",
+      "gitNormalizedSha256": "278f58762b497c0088d993d7cac1e5507ecac49eed88393703207ab5ba9e196b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/derived/manifest.json",
+      "bytes": 3212,
+      "sha256": "6e10ac56f5f5ef33af2f2e1c2a07f742df65fa77dace7d69c98a086f0c6f40e0",
+      "gitNormalizedSha256": "55c9dcfaddf497f22a92b8a1fdf02c321e6ce68517e5a666a86e2266a2977d63"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/derived/mobile-1.png",
+      "bytes": 226745,
+      "sha256": "77fa2f36627d27c830472629eb6e89c38217e022d4e450e11a63cd83af4f464b",
+      "gitNormalizedSha256": "7707263b48196cbd1dee2d96e6c94baa915e5d370c77a0ea558a52cd3569595e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/derived/mobile-2.png",
+      "bytes": 82735,
+      "sha256": "ee8472a2304ff4c40659510da1062b35e2841f29a93168f4c7eaa6a31981205f",
+      "gitNormalizedSha256": "b20b33a6dd8416c67799d82db4b937ef60fb5186e804299e739bbaa6c19496a9"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/derived/table-1.png",
+      "bytes": 78762,
+      "sha256": "967b0625817d665aa0e40eb762b356b6e922fbab4a587cb6901ba6235ff53ac1",
+      "gitNormalizedSha256": "9f1f5392406786fd5ad44bfd3dabafe70869e70514e26d3514355a8dbee4c053"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/derived/table-2.png",
+      "bytes": 25992,
+      "sha256": "1d51f24c9ca4df74ad9b5affb5b0453234ea0782035e80e2f369071f69bad028",
+      "gitNormalizedSha256": "2f7ea48410c03bfb3e759480f5b8e83cd3cd5665c21809fc99c99b5c50f6babd"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/receipt.json",
+      "bytes": 1763,
+      "sha256": "7d6fb7b602bcb14ebb14a785386435c620e096b62f1c3c40ed4837f24b829724",
+      "gitNormalizedSha256": "7d6fb7b602bcb14ebb14a785386435c620e096b62f1c3c40ed4837f24b829724"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/browser/runner.cjs",
+      "bytes": 17676,
+      "sha256": "8f75da5ce35cd90c1ad82b61748b4fdc17dbfc043520fe6a41c98c4c2a7f0522",
+      "gitNormalizedSha256": "8f75da5ce35cd90c1ad82b61748b4fdc17dbfc043520fe6a41c98c4c2a7f0522"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/book-progress-first.json",
+      "bytes": 744,
+      "sha256": "5353b16b4734e54abd95374a84435ea47d0f3ea0ba9331281c704c690c84ae10",
+      "gitNormalizedSha256": "5353b16b4734e54abd95374a84435ea47d0f3ea0ba9331281c704c690c84ae10"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/browser-visual-review.json",
+      "bytes": 363,
+      "sha256": "acb2acbe367ebf71818a4d7089c04fafe383f3ce00cd7e1898fdc402cc6a4c67",
+      "gitNormalizedSha256": "acb2acbe367ebf71818a4d7089c04fafe383f3ce00cd7e1898fdc402cc6a4c67"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/content-worklist-first.json.gz",
+      "bytes": 122572,
+      "sha256": "8f5dda92ab3bed2bd242f0b302403f85139f45989e37fb1103ea31a788783297",
+      "gitNormalizedSha256": "8f5dda92ab3bed2bd242f0b302403f85139f45989e37fb1103ea31a788783297"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "e115a97de5aa89f14323c372bc42dac1c9e0c70211919e5428c9e7d535d38cc8",
+      "gitNormalizedSha256": "e115a97de5aa89f14323c372bc42dac1c9e0c70211919e5428c9e7d535d38cc8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/static-first-inputs.json.gz",
+      "bytes": 102630,
+      "sha256": "2f06d47172f11128386b722a50001cb33af2487ae77ea65ec012e714031418f0",
+      "gitNormalizedSha256": "e8692178d4211aab445ab0aae1ef11d260e147f4058d024507f124a5617eeaa3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/static-first.json",
+      "bytes": 3636,
+      "sha256": "b1e2861be3e7835de6f7dfc44f723353519decf83006b223bf9de66db4a3cb8f",
+      "gitNormalizedSha256": "b1e2861be3e7835de6f7dfc44f723353519decf83006b223bf9de66db4a3cb8f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/http-first/chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "bytes": 2221,
+      "sha256": "58e10a23eb4c3c58be7f6b186b79d56995af47430a14b0c1430e6f13fa337497",
+      "gitNormalizedSha256": "58e10a23eb4c3c58be7f6b186b79d56995af47430a14b0c1430e6f13fa337497"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/http-first/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "bytes": 2183,
+      "sha256": "7bb8f78eaaf9efacfa2da8705eb882fe61be6163dbadb9285fea6a19433c0992",
+      "gitNormalizedSha256": "7bb8f78eaaf9efacfa2da8705eb882fe61be6163dbadb9285fea6a19433c0992"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/http-first/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "bytes": 2183,
+      "sha256": "a0b0ec0d19f369822a0f710df3a1230a1a3b54b17f4b13b11ecb79b1ba6579cd",
+      "gitNormalizedSha256": "a0b0ec0d19f369822a0f710df3a1230a1a3b54b17f4b13b11ecb79b1ba6579cd"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/http-first/chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "bytes": 2191,
+      "sha256": "727e4e5e35ecacc5e0ffd821adfa0db7b73dfbdaa4c9277c7c58dbafbc4a1578",
+      "gitNormalizedSha256": "727e4e5e35ecacc5e0ffd821adfa0db7b73dfbdaa4c9277c7c58dbafbc4a1578"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/http-first/summary.json",
+      "bytes": 545,
+      "sha256": "dcb38dfcad94caad9660b7bfca6b8db0036ee1895f742474009e2c168a87db82",
+      "gitNormalizedSha256": "dcb38dfcad94caad9660b7bfca6b8db0036ee1895f742474009e2c168a87db82"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/manifest.json",
+      "bytes": 6968,
+      "sha256": "39d37f85432c947bceb26dc3c5ffa625a40a4f993fbc0145f9337a7c37c8fc0c",
+      "gitNormalizedSha256": "39d37f85432c947bceb26dc3c5ffa625a40a4f993fbc0145f9337a7c37c8fc0c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/receipt.json",
+      "bytes": 16535,
+      "sha256": "7668f6bcba5ce22ceaa72a000037507718a036bad170f0cc991c0146dd679f11",
+      "gitNormalizedSha256": "7668f6bcba5ce22ceaa72a000037507718a036bad170f0cc991c0146dd679f11"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/sources.json.gz",
+      "bytes": 91251,
+      "sha256": "dd448762cb22b403a56220409a871452510a53f2f824853dc31af8747775b8c2",
+      "gitNormalizedSha256": "9763f8d1526690500b38ba29dd01da343dbd9a44f47f2b95985423e9d0820fb0"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/archive.cjs",
+      "bytes": 6031,
+      "sha256": "bc3f5e3b6edbd873c2661c5129334d1f6b75ee7d6873121c01c2bd6d9f5b33a1",
+      "gitNormalizedSha256": "bc3f5e3b6edbd873c2661c5129334d1f6b75ee7d6873121c01c2bd6d9f5b33a1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/book-progress.cjs",
+      "bytes": 3252,
+      "sha256": "dbe44580badaf3beee65b04d5b264d3714d482f4f099613514da12a0e506aae2",
+      "gitNormalizedSha256": "dbe44580badaf3beee65b04d5b264d3714d482f4f099613514da12a0e506aae2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/browser-run.cjs",
+      "bytes": 17676,
+      "sha256": "8f75da5ce35cd90c1ad82b61748b4fdc17dbfc043520fe6a41c98c4c2a7f0522",
+      "gitNormalizedSha256": "8f75da5ce35cd90c1ad82b61748b4fdc17dbfc043520fe6a41c98c4c2a7f0522"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/prepare.cjs",
+      "bytes": 3539,
+      "sha256": "df8adde3e8f0c76588a6c951d9834a1e0de203624e456699bb41d18aef2c6536",
+      "gitNormalizedSha256": "df8adde3e8f0c76588a6c951d9834a1e0de203624e456699bb41d18aef2c6536"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/run-http.cjs",
+      "bytes": 1760,
+      "sha256": "7876ae294f6dc489527506a45d5abfc85fc57d4e9229d9494f8cb6072d2dcdc4",
+      "gitNormalizedSha256": "7876ae294f6dc489527506a45d5abfc85fc57d4e9229d9494f8cb6072d2dcdc4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/update-plans.cjs",
+      "bytes": 2427,
+      "sha256": "147fc21f0e64511461977b602499b5ea2dc18135812250b731981d6b045ff15e",
+      "gitNormalizedSha256": "147fc21f0e64511461977b602499b5ea2dc18135812250b731981d6b045ff15e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/visual-sheets.py",
+      "bytes": 1334,
+      "sha256": "6b566c42325d52c42489c14bc9eb03579edde8d254c7c21f867a73becf7e6937",
+      "gitNormalizedSha256": "6b566c42325d52c42489c14bc9eb03579edde8d254c7c21f867a73becf7e6937"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "c489ec7db07dbc8d67090bb05fced5975b44c4e8c9348cf91a524b9894cd805d",
+      "gitNormalizedSha256": "c489ec7db07dbc8d67090bb05fced5975b44c4e8c9348cf91a524b9894cd805d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/pinyin-palatal-sibilants-and-garden-two/tools/stage.cjs",
+      "bytes": 4329,
+      "sha256": "009bdb8abe00f8dd31ace1c2fed328c1efcf18c09ac95d385b79e3124d8b0316",
+      "gitNormalizedSha256": "009bdb8abe00f8dd31ace1c2fed328c1efcf18c09ac95d385b79e3124d8b0316"
+    }
+  ]
+}

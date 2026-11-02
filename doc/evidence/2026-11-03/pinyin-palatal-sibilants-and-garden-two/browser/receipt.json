@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-02T23:09:20.994Z",
+  "buildId": "tSQa109Myy2UD3Gs5L5KY",
+  "source": "main synchronized to data/qa/p187",
+  "accurateTextbookCandidates": true,
+  "teacherReviewed": false,
+  "published": 0,
+  "studentResponses": 0,
+  "passed": 6,
+  "failed": 0,
+  "error": null,
+  "checks": [
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-garden-two-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "passed": true
+    },
+    {
+      "name": "actual-candidate-reading:chinese-g1-a692a990-pinyin-zhchshr-v1.json",
+      "passed": true
+    },
+    {
+      "name": "mobile-table-keyboard-scroll-and-edit-preservation",
+      "passed": true
+    },
+    {
+      "name": "private-preview-creates-no-publication-or-learner-facts",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "chinese-g1-a692a990-pinyin-garden-two-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-garden-two-v1-table.png",
+    "chinese-g1-a692a990-pinyin-garden-two-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-jqx-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-jqx-v1-table.png",
+    "chinese-g1-a692a990-pinyin-jqx-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-zcs-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-zcs-v1-table.png",
+    "chinese-g1-a692a990-pinyin-zcs-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-zhchshr-v1-desktop.png",
+    "chinese-g1-a692a990-pinyin-zhchshr-v1-table.png",
+    "chinese-g1-a692a990-pinyin-zhchshr-v1-mobile.png",
+    "chinese-g1-a692a990-pinyin-garden-two-v1-mobile-table.png"
+  ],
+  "pageErrors": [],
+  "mutations": []
+}

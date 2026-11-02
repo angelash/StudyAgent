@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-zcs",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-zcs-v1.json",
+      "sha256": "be14f104ab315dac09a267dce80401b426c51259450a465a833962ccaa18603a",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry7",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 37,
+        "pageEnd": 38,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-zcs",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zcs-voice",
+      "structure": "pinyin-zcs-and-whole-voice",
+      "familyProposal": "a692a990-pinyin-zcs-and-whole-voice",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读三声母和三整体音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "z c送气与特殊i听核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示范及实际范围明确",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "两组任务分别听核，整体音节不拆成英语名称加单独i，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际读z c s，再整体认读zi ci si并录音。",
+          "answer": "两组任务分别听核，整体音节不拆成英语名称加单独i，帮助如实。",
+          "analysis": "两组任务分别听核，整体音节不拆成英语名称加单独i，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读z与c并补读s。",
+          "answer": "z不送气c送气较明显，s摩擦按当前声音核，不以音量单独判断。",
+          "analysis": "z不送气c送气较明显，s摩擦按当前声音核，不以音量单独判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给si、z、ci、s、zi、c，本人看完整形式实际读。",
+          "answer": "声母和整体音节按当前对象区分，不照背旧顺串替代。",
+          "analysis": "声母和整体音节按当前对象区分，不照背旧顺串替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读会zi ci si就能说声母与听辨也全部完成吗？本人说明并尝试。",
+          "answer": "按真实声音分别核任务，听辨还需原声和回应，不由一组完成推全部。",
+          "analysis": "按真实声音分别核任务，听辨还需原声和回应，不由一组完成推全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "请准确示范者另选z或c不先亮字，发声后本人回应。",
+          "answer": "原声与本人回应对应，提示与重复条件如实，没有声音不能当听辨。",
+          "analysis": "原声与本人回应对应，提示与重复条件如实，没有声音不能当听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把zi中的i读成单独i后，怎样保留原音再听准确示范尝试？",
+          "answer": "原尝试与后改分清，按整体音节音值再读，不用参考声音补本人。",
+          "analysis": "原尝试与后改分清，按整体音节音值再读，不用参考声音补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-and-whole-voice-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读两组当前形式，选择一处还想练的地方。",
+          "answer": "具体目标对应当前真实声音，没明显问题可如实说，不强求造错。",
+          "analysis": "具体目标对应当前真实声音，没明显问题可如实说，不强求造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zcs",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zcs-blend",
+      "structure": "pinyin-zcs-current-syllable-parts",
+      "familyProposal": "a692a990-pinyin-zcs-current-syllable-parts",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前组成和标调准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际连贯拼读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "三拼介母与帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三项按本件当前声母韵母声调听核，组成说明不代实际发音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读zá、cè、sǎ，再分别说当前标调。",
+          "answer": "三项按本件当前声母韵母声调听核，组成说明不代实际发音。",
+          "analysis": "三项按本件当前声母韵母声调听核，组成说明不代实际发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读zuó、cuō、suǒ，留意中间u。",
+          "answer": "三拼保留介母连成一个音节，不漏u也不拖成另一个独立音节。",
+          "analysis": "三拼保留介母连成一个音节，不漏u也不拖成另一个独立音节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新顺序为sù、zǔ、cuō、suǒ，本人看清后实际读出。",
+          "answer": "两拼三拼与声调按当前条件更新，不只凭首字母猜。",
+          "analysis": "两拼三拼与声调按当前条件更新，不只凭首字母猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只辨出声母还没连成音节，怎样介绍当前录音范围？",
+          "answer": "说明声母辨认已尝试，完整音节仍待本人连读，不把准备当全部完成。",
+          "analysis": "说明声母辨认已尝试，完整音节仍待本人连读，不把准备当全部完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "cuō与cè有什么组成变化？本人实际拼读两项。",
+          "answer": "末韵母与是否有介母不同，声调也按当前标调核，真实声音分别听。",
+          "analysis": "末韵母与是否有介母不同，声调也按当前标调核，真实声音分别听。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读一个当前三拼，说明看过分步或听过哪些提示。",
+          "answer": "当前组合与实际声音对应，帮助后流畅不覆盖原先卡顿。",
+          "analysis": "当前组合与实际声音对应，帮助后流畅不覆盖原先卡顿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-current-syllable-parts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本件两拼和三拼各选一项实际读，再说明尚待练的范围。",
+          "answer": "两种任务实际覆盖清楚，部分表现不扩大为所有字母排列都能正确拼读。",
+          "analysis": "两种任务实际覆盖清楚，部分表现不扩大为所有字母排列都能正确拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zcs",
+      "atomId": "source:chinese:g1:a692a990:pinyin-zcs-writing",
+      "structure": "pinyin-zcs-middle-grid-forms",
+      "familyProposal": "a692a990-pinyin-zcs-middle-grid-forms",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖z c s",
+          "weight": 0.4
+        },
+        {
+          "criterion": "折线开口弯曲与中格清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "范写过程帮助分别说明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三字母按本件完整范写看本人原稿，z折线c开口s弯曲分别核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写z c s，上传并指出三项中格位置。",
+          "answer": "三字母按本件完整范写看本人原稿，z折线c开口s弯曲分别核。",
+          "analysis": "三字母按本件完整范写看本人原稿，z折线c开口s弯曲分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先观察范写，再本人按c s z顺序实际写出并上传。",
+          "answer": "三项实际覆盖，范形与本人作品分清，不以键入字代手写。",
+          "analysis": "三项实际覆盖，范形与本人作品分清，不以键入字代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸写三字母，选一个字母说明与另一个的形状差别。",
+          "answer": "具体区别对应本人当前原稿，不用字母读音代字形观察。",
+          "analysis": "具体区别对应本人当前原稿，不用字母读音代字形观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写z与s，上传应怎样说明c？",
+          "answer": "原稿按实际两项核，c待写，不用打印样本补成本人已写。",
+          "analysis": "原稿按实际两项核，c待写，不用打印样本补成本人已写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看自己c开口与s弯曲，必要时保留原稿再写并上传。",
+          "answer": "调整接当前作品，无需故意造错，前后原稿与说明对应。",
+          "analysis": "调整接当前作品，无需故意造错，前后原稿与说明对应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "写三字母时看过范写，上传怎样交代帮助和笔顺？",
+          "answer": "帮助如实，字形看原稿，真实书写先后还需过程，静图不独证。",
+          "analysis": "帮助如实，字形看原稿，真实书写先后还需过程，静图不独证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-zcs-middle-grid-forms-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三字母并说明辅助线是否属于字母笔画。",
+          "answer": "格线只是位置参照，字母由本人实际写，不能把辅助线增成字母笔画。",
+          "analysis": "格线只是位置参照，字母由本人实际写，不能把辅助线增成字母笔画。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zcs",
+      "atomId": "source:chinese:g1:a692a990:pinyin-word-sentence",
+      "structure": "pinyin-five-characters-language-units",
+      "familyProposal": "a692a990-pinyin-five-characters-language-units",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前字词句层次清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "子单读与词中读法分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字实际声音与当前形式对应，字词句例子层次清楚，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读字词语句子五字，再读学、学生、我是小学生三个例子。",
+          "answer": "五字实际声音与当前形式对应，字词句例子层次清楚，帮助如实。",
+          "analysis": "五字实际声音与当前形式对应，字词句例子层次清楚，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看识字行子单独标zǐ，再听句子一词示范，由本人分别读。",
+          "answer": "单字与词中后音节轻声按不同条件核，不能机械把一处读法全套另一处。",
+          "analysis": "单字与词中后音节轻声按不同条件核，不能机械把一处读法全套另一处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料给山、小山、远处有一座山，本人读后说明各是哪种例子。",
+          "answer": "字、词、完整句按新材料判断，不照背学生三个例子替代。",
+          "analysis": "字、词、完整句按新材料判断，不照背学生三个例子替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读出四个识字目标时，录音怎样说明第五个？",
+          "answer": "保留实际已读与卡住处，未读项待帮助后练，不由词熟悉补齐。",
+          "analysis": "保留实际已读与卡住处，未读项待帮助后练，不由词熟悉补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "给定我是小学生一句，可以直接作为任何人的真实身份声明吗？",
+          "answer": "这是当前语言示例，本人真实身份另按实际说明，不由例句自动填资料。",
+          "analysis": "这是当前语言示例，本人真实身份另按实际说明，不由例句自动填资料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际读句子这个词，再说为什么和子单独练习条件不同。",
+          "answer": "当前词语后音节按本件轻声，单字按识字行标调，实际声音分别核。",
+          "analysis": "当前词语后音节按本件轻声，单字按识字行标调，实际声音分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-five-characters-language-units-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读五字并选一条完整原创句，说明实际读了哪些部分。",
+          "answer": "五字和句子各自有真实声音，原创句与本件原句分清，不要求虚构本人经历。",
+          "analysis": "五字和句子各自有真实声音，原创句与本件原句分清，不要求虚构本人经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-zcs",
+      "atomId": "source:chinese:g1:a692a990:pinyin-bridge-reading",
+      "structure": "pinyin-bridge-metaphor-reading",
+      "familyProposal": "a692a990-pinyin-bridge-metaphor-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接本件实际读篇",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比喻与数学等号分清",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色题目与本人作答分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "根据本件形象说法解释像桥，成人帮助和本人实际读篇范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件过桥后，本人用自己的话说等号被比作什么。",
+          "answer": "根据本件形象说法解释像桥，成人帮助和本人实际读篇范围如实。",
+          "analysis": "根据本件形象说法解释像桥，成人帮助和本人实际读篇范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录音分别说儿歌怎样用桥作比喻、数学等号表示什么。",
+          "answer": "比喻帮助阅读，数学等号仍表示两边相等，不能用通行工具替代定义。",
+          "analysis": "比喻帮助阅读，数学等号仍表示两边相等，不能用通行工具替代定义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创例子把书比作朋友，就等于书真的会像人说话吗？本人说明。",
+          "answer": "不等于，形象比喻联系具体特点，原创例子与本件等号表达分别说。",
+          "analysis": "不等于，形象比喻联系具体特点，原创例子与本件等号表达分别说。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "还没实际共读，只看过标题，本次阅读进度怎样说明？",
+          "answer": "说明实际看过标题或准备问题，完整共读仍待发生，不补造读篇过程。",
+          "analysis": "说明实际看过标题或准备问题，完整共读仍待发生，不补造读篇过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "儿歌角色做过几道题，能直接登记为本人真实作答数量吗？",
+          "answer": "不能，角色读篇与本人练习事实分别核，真实作答需本人实际题目过程。",
+          "analysis": "不能，角色读篇与本人练习事实分别核，真实作答需本人实际题目过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后提出一个当前问题，录本人回应及所获帮助。",
+          "answer": "问题回应对应本件，未知细节回原篇核，成人说明和本人表达分开。",
+          "analysis": "问题回应对应本件，未知细节回原篇核，成人说明和本人表达分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-zcs-pinyin-bridge-metaphor-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再次用自己的话说一处比喻，再说下一步想实际读或练什么。",
+          "answer": "已读范围按真实过程，愿望和完成分清，不由比喻或示例补本人事实。",
+          "analysis": "已读范围按真实过程，愿望和完成分清，不由比喻或示例补本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "pinyin-jqx",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-pinyin-jqx-v1.json",
+      "sha256": "bdc8141ce8d8dbf6ecc8e64be7754a372dcaea0c389c925cac52d970242af39a",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter3:entry6",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 35,
+        "pageEnd": 36,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选。本人发音、真实听辨、拼读和手写分别核；成人现场示范如实说明，不把可见文字题当已提供独立听力材料。声音、目标、评分、题族与充分未见库存仍未审，不自动发布。",
+  "groups": [
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-jqx-voice",
+      "structure": "pinyin-jqx-current-sounds",
+      "familyProposal": "a692a990-pinyin-jqx-current-sounds",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读三声母",
+          "weight": 0.4
+        },
+        {
+          "criterion": "j q送气与x摩擦可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "示范条件和原音清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三声母实际声音与当前字母对应，轻短发音，不用英语名称代替。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人录音读j q x，再说明是否先听过准确汉语拼音示范。",
+          "answer": "三声母实际声音与当前字母对应，轻短发音，不用英语名称代替。",
+          "analysis": "三声母实际声音与当前字母对应，轻短发音，不用英语名称代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人交替读j与q，最后补读x。",
+          "answer": "j不送气q送气较明显，x按摩擦音听核，不以音量独自判断。",
+          "analysis": "j不送气q送气较明显，x按摩擦音听核，不以音量独自判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序为x j q，本人看清字母后逐个实际认读。",
+          "answer": "当前顺序与本人声音对应，不背原来的三音串代替。",
+          "analysis": "当前顺序与本人声音对应，不背原来的三音串代替。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次j q还分不稳，怎样保留原音后再练？",
+          "answer": "先保留真实尝试，听准确示范后另试，不以他人声音或后改覆盖本人。",
+          "analysis": "先保留真实尝试，听准确示范后另试，不以他人声音或后改覆盖本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "请准确示范者另选j或q不先亮字牌，实际发声后本人回应。",
+          "answer": "有当前原声和本人回应才核听辨，可见目标或重复提示如实。",
+          "analysis": "有当前原声和本人回应才核听辨，可见目标或重复提示如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人选一个当前声母重读，说明实际想练的是哪一处。",
+          "answer": "具体目标接本人原音，示范帮助与再试分清，不强求编出错误。",
+          "analysis": "具体目标接本人原音，示范帮助与再试分清，不强求编出错误。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-current-sounds-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "再次读三声母，分别说本次发音与字形辨认完成范围。",
+          "answer": "声音与认形各自核，部分成功不能推三项或全部听辨已经完成。",
+          "analysis": "声音与认形各自核，部分成功不能推三项或全部听辨已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-jqx-umlaut",
+      "structure": "pinyin-jqx-conditional-umlaut",
+      "familyProposal": "a692a990-pinyin-jqx-conditional-umlaut",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "当前j q x组合省点正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "n l组合保留两点",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人原稿与音值说明分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "j q x与ü相拼省两点，n l后保留，写法正确仍需真实声音核音值。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人写ju qu xu，再写nü lü，上传原稿并说明省点条件。",
+          "answer": "j q x与ü相拼省两点，n l后保留，写法正确仍需真实声音核音值。",
+          "analysis": "j q x与ü相拼省两点，n l后保留，写法正确仍需真实声音核音值。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人实际写jū qū xū，指出韵母仍联系哪个声音。",
+          "answer": "当前三项省点带一声，韵母仍是ü音，不因写u就换成单独u。",
+          "analysis": "当前三项省点带一声，韵母仍是ü音，不因写u就换成单独u。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新要求写xū、nǚ、lǘ，上传并分别说明点的处理。",
+          "answer": "xū按当前x组合省点，nǚ lǘ留两点，声调按各项原条件。",
+          "analysis": "xū按当前x组合省点，nǚ lǘ留两点，声调按各项原条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写ju还没写其他四种组合，上传怎样报告？",
+          "answer": "按原稿保留实际一项，其余待写，不把一项规则正确扩大为全部作品完成。",
+          "analysis": "按原稿保留实际一项，其余待写，不把一项规则正确扩大为全部作品完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若自己误把nü写成nu，怎样保留再订正并上传？",
+          "answer": "留原稿，按n组合保留两点重写，原写和后改对应，不倒改第一次表现。",
+          "analysis": "留原稿，按n组合保留两点重写，原写和后改对应，不倒改第一次表现。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "看到同样写u就认定ju与单独u读音一样，应该怎样重新核？",
+          "answer": "先看当前声母和省点条件，再听准确声音；书面规则与本人发音分别判断。",
+          "analysis": "先看当前声母和省点条件，再听准确声音；书面规则与本人发音分别判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-conditional-umlaut-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传本次五种组合原稿，说明哪些条件可用、哪些不能直接推广。",
+          "answer": "j q x省点、n l留点各自明确，不推出所有ü都可无条件去点。",
+          "analysis": "j q x省点、n l留点各自明确，不推出所有ü都可无条件去点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-jqx-blend",
+      "structure": "pinyin-jqx-two-three-blending",
+      "familyProposal": "a692a990-pinyin-jqx-two-three-blending",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前组成标调正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人实际连成完整音节",
+          "weight": 0.4
+        },
+        {
+          "criterion": "三拼介母与帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "三项按当前声母和i上的标调听核，组成说明不代真实声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人实际拼读jī qì xī，再说当前各项声母与标调。",
+          "answer": "三项按当前声母和i上的标调听核，组成说明不代真实声音。",
+          "analysis": "三项按当前声母和i上的标调听核，组成说明不代真实声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人拼jiā qiā xiá，留意中间部分。",
+          "answer": "介母i不省漏，三项声母和声调按当前形式，不把三拼拆成长音节串。",
+          "analysis": "介母i不省漏，三项声母和声调按当前形式，不把三拼拆成长音节串。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给xiá、jī、qiā、qì，本人看清后实际读出。",
+          "answer": "两拼三拼按当前完整条件判断，不照背旧顺序或声调。",
+          "analysis": "两拼三拼按当前完整条件判断，不照背旧顺序或声调。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只报j、i、a三个名称但没有连读，怎样说明已做范围？",
+          "answer": "说明已辨组成，完整音节还待本人实际连读，不把准备说成拼读完成。",
+          "analysis": "说明已辨组成，完整音节还待本人实际连读，不把准备说成拼读完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "将jiā换成qiā时有什么变化？本人实际读两项。",
+          "answer": "声母j改q，介母韵母与当前一声保持，声音中的送气区别仍需实际听核。",
+          "analysis": "声母j改q，介母韵母与当前一声保持，声音中的送气区别仍需实际听核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "重读一项当前三拼，说明是否听过分步或完整示范。",
+          "answer": "帮助和本人实际声音可对应，不把示范后连贯表现改为无帮助初次拼读。",
+          "analysis": "帮助和本人实际声音可对应，不把示范后连贯表现改为无帮助初次拼读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-two-three-blending-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本件两拼和三拼各选一项，录音说明实际读到和待练的部分。",
+          "answer": "两种形式实际覆盖，范围按本人声音核，不由一项推所有组合。",
+          "analysis": "两种形式实际覆盖，范围按本人声音核，不由一项推所有组合。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-jqx-writing",
+      "structure": "pinyin-jqx-three-grid-writing",
+      "familyProposal": "a692a990-pinyin-jqx-three-grid-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖j q x",
+          "weight": 0.4
+        },
+        {
+          "criterion": "j点下伸与q x格位准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "印刷范形与本人过程分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "j整体上中下三格，q中下格、x中格，具体字形按本件完整范写核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人在四线格写j q x，上传并指出j的点和下伸。",
+          "answer": "j整体上中下三格，q中下格、x中格，具体字形按本件完整范写核。",
+          "analysis": "j整体上中下三格，q中下格、x中格，具体字形按本件完整范写核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看本件范写，再本人写q j x并上传原件。",
+          "answer": "三字母实际覆盖，点、下伸和斜笔分别看，不以键入文本代本人手写。",
+          "analysis": "三字母实际覆盖，点、下伸和斜笔分别看，不以键入文本代本人手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新格纸按x q j顺序写三项，上传并说明一处格位。",
+          "answer": "当前本人作品和顺序相符，格位不随字母排列改变。",
+          "analysis": "当前本人作品和顺序相符，格位不随字母排列改变。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只写j与q，上传如何说明x的状态？",
+          "answer": "只核实际两项，x待写，不用范字图片补成本人已经写完。",
+          "analysis": "只核实际两项，x待写，不用范字图片补成本人已经写完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若j漏点或下伸不清，怎样留原稿再练并上传？",
+          "answer": "保留真实原稿，按完整范形订正，未发现问题可如实说，不故意造错。",
+          "analysis": "保留真实原稿，按完整范形订正，未发现问题可如实说，不故意造错。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "印刷j的形状与手写范形有差别，本次作品按什么核？",
+          "answer": "回本件完整范写和本人原稿看结构位置，不把字体差异当本人已写的过程。",
+          "analysis": "回本件完整范写和本人原稿看结构位置，不把字体差异当本人已写的过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-jqx-three-grid-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "上传三字母，另说实际笔顺和所获帮助怎样核对。",
+          "answer": "字形看原稿，先后依本人书写过程，范写提示与原写后改分开。",
+          "analysis": "字形看原稿，先后依本人书写过程，范写提示与原写后改分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-chess-chicken",
+      "structure": "pinyin-chess-chicken-words",
+      "familyProposal": "a692a990-pinyin-chess-chicken-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读棋鸡两字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字音与当前词义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色活动不替本人事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "棋qí与鸡jī的字形声音对应，下棋按当前词义解释，不要求本人真实下过棋。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读棋与鸡，再读给定角色卡上的下棋并录音。",
+          "answer": "棋qí与鸡jī的字形声音对应，下棋按当前词义解释，不要求本人真实下过棋。",
+          "analysis": "棋qí与鸡jī的字形声音对应，下棋按当前词义解释，不要求本人真实下过棋。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人分别读qí与jī，说明声母和声调差别。",
+          "answer": "q与j、二声与一声分别核，解释之后仍要听本人实际声音。",
+          "analysis": "q与j、二声与一声分别核，解释之后仍要听本人实际声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片先放鸡再放棋，本人看清认读并选出与棋类活动有关的字。",
+          "answer": "按当前字形、声音和词义判断，不记原顺序或只凭相似音猜。",
+          "analysis": "按当前字形、声音和词义判断，不记原顺序或只凭相似音猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次只认出鸡时，录音后应怎样说明棋的状态？",
+          "answer": "保留实际一字，另字待帮助后练，不由认识角色动物推两字都会。",
+          "analysis": "保留实际一字，另字待帮助后练，不由认识角色动物推两字都会。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "会读下棋就能说明本人实际参加过棋类游戏吗？本人读词后说明。",
+          "answer": "不能，当前核词语声音与意思，本人真实活动另看实际过程。",
+          "analysis": "不能，当前核词语声音与意思，本人真实活动另看实际过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "识字行只有棋鸡，是否把儿歌全部字都变成本课必写？本人认读两字说明。",
+          "answer": "不能自动扩大，识字行与字母书写、儿歌阅读范围分别核。",
+          "analysis": "不能自动扩大，识字行与字母书写、儿歌阅读范围分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-chess-chicken-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读两字与一个当前词语，说明提示和实际覆盖范围。",
+          "answer": "本人声音、词义解释和帮助清楚，未覆盖部分如实留待继续。",
+          "analysis": "本人声音、词义解释和帮助清楚，未覆盖部分如实留待继续。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "pinyin-jqx",
+      "atomId": "source:chinese:g1:a692a990:pinyin-together-reading",
+      "structure": "pinyin-together-reading-process",
+      "familyProposal": "a692a990-pinyin-together-reading-process",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "解释对应本件实际读篇",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实共读与角色合作分明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人声音范围和帮助清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "概述接当前本件内容，成人帮助和本人实际读到的部分如实，不复写现代全文。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件在一起后，本人用自己的话说两只小鸡的一处活动。",
+          "answer": "概述接当前本件内容，成人帮助和本人实际读到的部分如实，不复写现代全文。",
+          "analysis": "概述接当前本件内容，成人帮助和本人实际读到的部分如实，不复写现代全文。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人录音解释下棋与搭积木两个给定词语各指什么活动。",
+          "answer": "两种当前活动意思清楚，角色示例不证明本人已经实际参加。",
+          "analysis": "两种当前活动意思清楚，角色示例不证明本人已经实际参加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换原创两角色共同整理字卡的情境，和本件活动有什么联系？",
+          "answer": "可说明一起参与或合作等具体联系，原创情境与本件原篇分清。",
+          "analysis": "可说明一起参与或合作等具体联系，原创情境与本件原篇分清。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "尚未与成人实际共读，只准备了问题，本次可以怎样说明？",
+          "answer": "说明当前准备和问题，共读仍待发生，不补造成人或本人阅读过程。",
+          "analysis": "说明当前准备和问题，共读仍待发生，不补造成人或本人阅读过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材角色一起游戏，就能把记录写成本人已与同伴合作吗？",
+          "answer": "不能，角色情境与本人真实互动分别核，独自分角色练习须注明。",
+          "analysis": "不能，角色情境与本人真实互动分别核，独自分角色练习须注明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "实际共读后提一个当前问题，录本人回应并说明得到的帮助。",
+          "answer": "问题回应接本件，未核细节回原页，成人解释与本人表达分开。",
+          "analysis": "问题回应接本件，未核细节回原页，成人解释与本人表达分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-pinyin-jqx-pinyin-together-reading-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次概述读过的一处内容，再说下一步想实际练什么。",
+          "answer": "已读按本人真实范围，后续计划明确，不用愿望代替已完成的过程。",
+          "analysis": "已读按本人真实范围，后续计划明确，不用愿望代替已完成的过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
