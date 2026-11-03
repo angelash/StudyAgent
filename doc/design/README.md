@@ -1,5 +1,7 @@
 # StudyAgent 当前功能与设计总册
 
+2026-11-03 当前业务应用已正式发布到原域名，源码0acfaee2、Web buildId 82ipCOFHwA7Ub7Th8AqtY、正式schema37。详见[229发布与数据保持记录](../product/229-main-publication-20261103.md)；历史未部署记录保持为历史，内容生产与原完整验收状态不提升。
+
 2026-11-03 本轮业务收尾已归档，见[228](../product/228-business-functionality-closure-and-content-freeze.md)。当前总册14领域/148功能/589接口；试题和教学内容保持冻结，原完整产品及保留差异不提升为已验收。
 
 2026-11-03 按用户要求暂停试题与教学内容，转为业务功能收口，见[227](../product/227-content-pause-and-business-development-closure.md)。本轮按当前源码补齐14领域/148功能/589接口关联；原教材与题目快照保持历史版本，不重标为当前内容验收。业务总册可用 `node scripts/architecture/validate-project-design.cjs <本轮业务回执> --business-only` 校验源码引用、接口关联及离线浏览器，默认模式仍核对原内容快照。

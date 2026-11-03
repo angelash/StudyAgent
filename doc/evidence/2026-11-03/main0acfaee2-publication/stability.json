@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "applicationRevision": "0acfaee2b2977d547ba2a1883e8c3b639118f8c4",
+  "buildId": "82ipCOFHwA7Ub7Th8AqtY",
+  "spanMs": 64429,
+  "samples": [
+    {
+      "at": "2026-11-03T04:30:36.502Z",
+      "services": [
+        {
+          "name": "study-agent-web",
+          "pid": 93088,
+          "status": "online",
+          "restarts": 3,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 86276,
+          "status": "online",
+          "restarts": 1,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-api",
+          "pid": 68700,
+          "status": "online",
+          "restarts": 0,
+          "rss": 0
+        }
+      ],
+      "externalReadiness": 200,
+      "currentWebBuildConfirmed": true
+    },
+    {
+      "at": "2026-11-03T04:31:08.662Z",
+      "services": [
+        {
+          "name": "study-agent-web",
+          "pid": 93088,
+          "status": "online",
+          "restarts": 3,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 86276,
+          "status": "online",
+          "restarts": 1,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-api",
+          "pid": 68700,
+          "status": "online",
+          "restarts": 0,
+          "rss": 0
+        }
+      ],
+      "externalReadiness": 200,
+      "currentWebBuildConfirmed": true
+    },
+    {
+      "at": "2026-11-03T04:31:40.931Z",
+      "services": [
+        {
+          "name": "study-agent-web",
+          "pid": 93088,
+          "status": "online",
+          "restarts": 3,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-health",
+          "pid": 86276,
+          "status": "online",
+          "restarts": 1,
+          "rss": 0
+        },
+        {
+          "name": "study-agent-api",
+          "pid": 68700,
+          "status": "online",
+          "restarts": 0,
+          "rss": 0
+        }
+      ],
+      "externalReadiness": 200,
+      "currentWebBuildConfirmed": true
+    }
+  ],
+  "scope": "Three post-release guardian observations over at least60 seconds. No long-duration stability or real-learner acceptance claim."
+}

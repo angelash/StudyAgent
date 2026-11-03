@@ -1,0 +1,71 @@
+{
+  "at": "2026-11-03T04:26:27.357Z",
+  "passed": true,
+  "applicationRevision": "0acfaee2b2977d547ba2a1883e8c3b639118f8c4",
+  "buildId": "82ipCOFHwA7Ub7Th8AqtY",
+  "fromSchema": 24,
+  "toSchema": 37,
+  "revision": 188,
+  "originalRecords": 89866,
+  "allOriginalRecordIdsPositionsAndRawHashesPreserved": true,
+  "services": [
+    {
+      "name": "study-agent-web",
+      "pid": 93088,
+      "status": "online",
+      "restarts": 3,
+      "seed": "false",
+      "textbookBaseMatchesPreservedEnvironment": true
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 86276,
+      "status": "online",
+      "restarts": 1,
+      "seed": "false",
+      "textbookBaseMatchesPreservedEnvironment": true
+    },
+    {
+      "name": "study-agent-api",
+      "pid": 68700,
+      "status": "online",
+      "restarts": 0,
+      "seed": "false",
+      "textbookBaseMatchesPreservedEnvironment": true
+    }
+  ],
+  "sameExistingPorts": true,
+  "http": [
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/parent/login",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/api/ready",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/api/admin/operations/capabilities",
+      "status": 401
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/parent/login",
+      "status": 200
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/api/ready",
+      "status": 200
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/api/admin/operations/capabilities",
+      "status": 401
+    }
+  ],
+  "contentAutoSeedingDisabled": true
+}

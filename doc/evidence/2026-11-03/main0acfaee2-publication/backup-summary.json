@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-03T04:21:19.581Z",
+  "consistentDatabase": {
+    "schema": 24,
+    "revision": 188,
+    "files": 1,
+    "referencedFiles": 0,
+    "assetsIncluded": false
+  },
+  "runtime": [
+    {
+      "path": "apps/web/.next",
+      "files": 634,
+      "bytes": 393360396
+    },
+    {
+      "path": "apps/api/dist",
+      "files": 424,
+      "bytes": 4535504
+    },
+    {
+      "path": "packages/contracts/dist",
+      "files": 2,
+      "bytes": 376897
+    },
+    {
+      "path": "packages/config/dist",
+      "files": 2,
+      "bytes": 5998
+    }
+  ],
+  "configuration": {
+    "beforeSha256": "986c3a6e14f548f78914103262074328bceab7fc10a159d8997a4b3097f2a5bc",
+    "afterSha256": "29e29dccf9afaf5bbeb1b07c9047860fc95fb67c776767d69b14d613e7504037",
+    "changedKeys": [
+      "STUDY_SEED_FOUNDATION"
+    ],
+    "allOtherKeysPreserved": true
+  },
+  "privateBackupDirectory": "output/releases/2026-11-03-0acfaee2",
+  "runtimeManifestSha256": "b1bb0c1a637a9c0187dc80f6c215047cd72a7adeb2c774951b7353f7e639e6c6",
+  "oldDiskWebBuildId": "MyNtmoQpty03pNrAEnTz-",
+  "independentDeletionLedgerExport": {
+    "deletions": 5,
+    "sha256": "2b8ebf7e970bd0918c3d9c38d6b90a55bfafad6940ca83534d13a237e6728f10"
+  },
+  "assetScope": "Referenced mutable data inventory was empty; shared source assets and external textbooks were retained at existing locations. Not a full static/external asset backup."
+}

@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-03T04:28:05.612Z",
+  "checks": [
+    "public registration and Secure HttpOnly SameSite cookie",
+    "non-administrator rejected by the actual new diagnostics route",
+    "public login opens the actual desktop workbench with a single navigation",
+    "generated account deleted through its own authenticated privacy endpoint"
+  ],
+  "browserErrors": [],
+  "reason": "The generated adult has personal task heading 我的学习任务; the initial smoke expected the child heading 学习任务. Fixture corrected; application code unchanged.",
+  "actualFailure": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: '学习任务', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: '学习任务', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: '学习任务', exact: true })\n",
+  "generatedAccountCleanupConfirmed": true
+}
