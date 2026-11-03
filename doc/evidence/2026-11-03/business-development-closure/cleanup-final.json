@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-03T03:21:23.832Z",
+  "ownedPostgres": [
+    {
+      "name": "b5pg",
+      "port": 15457,
+      "ownedDirectoryVerified": true,
+      "stopped": true,
+      "noResponseConfirmed": true
+    },
+    {
+      "name": "b5pg-reader32",
+      "port": 15443,
+      "ownedDirectoryVerified": true,
+      "stopped": true,
+      "noResponseConfirmed": true
+    }
+  ],
+  "preexistingPostgres": [
+    {
+      "port": 15455,
+      "untouchedAndQueryable": true
+    },
+    {
+      "port": 15456,
+      "untouchedAndQueryable": true
+    }
+  ],
+  "onlyOwnedClustersStopped": true
+}

@@ -38,14 +38,20 @@ export function readEditionConformities(file: string): TextbookEditionConformity
 }
 
 /** A negative finding grants no permission; it only explains a pinned mismatch. */
-export function editionDiscrepancy(file: string, book: CurriculumBook, sources: EditionSourceIdentity[]) {
+export function readEditionDiscrepancies(file: string): unknown[] {
   try {
     const document = JSON.parse(readFileSync(file, 'utf8'));
-    if (document.format !== 'textbook-edition-conformities-v1' || !Array.isArray(document.discrepancies)) return null;
-    const rows = document.discrepancies.filter((row: any) => row?.bookId === book.id && row?.bookVersion === book.version &&
+    return document.format === 'textbook-edition-conformities-v1' && Array.isArray(document.discrepancies) ? document.discrepancies : [];
+  } catch { return []; }
+}
+
+export function editionDiscrepancy(file: string, book: CurriculumBook, sources: EditionSourceIdentity[], snapshot = readEditionDiscrepancies(file)) {
+  try {
+    const rows = snapshot.filter((row: any) => row?.bookId === book.id && row?.bookVersion === book.version &&
       row.registryFingerprint === registryEditionFingerprint(book) && typeof row.reason === 'string' && row.reason.length <= 2000 &&
       sources.some(source => source.id === row.sourceBookId && source.sha256 === row.sourceSha256 && source.extractedSha256 === row.extractedSha256));
-    return rows.length === 1 ? { reason: rows[0].reason as string, sourceBookId: rows[0].sourceBookId as string } : null;
+    const row = rows[0] as { reason: string; sourceBookId: string } | undefined;
+    return rows.length === 1 && row ? { reason: row.reason, sourceBookId: row.sourceBookId } : null;
   } catch { return null; }
 }
 

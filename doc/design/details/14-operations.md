@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：运维、管理员、教研。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -86,10 +86,10 @@
 **服务方法**：
 
 - `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:363](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L363)。
+- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:376](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L376)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
 - `ProcessingController.requireHandwritingProcessor`；[apps/api/src/modules/processing/processing.controller.ts:84](../../../apps/api/src/modules/processing/processing.controller.ts#L84)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:261](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L261)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:274](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L274)。
 
 ## OPS-04 导入文件分块与处理产物
 
@@ -150,28 +150,38 @@
 
 **输入**：管理员身份与进程/存储/任务状态。
 
-**处理与实现**：health仅检查存活；ready验证存储请求；运行看板汇总请求、错误、延迟、任务、复核与AI质量；区分进程计数和持久库计数。
+**处理与实现**：health仅检查存活；ready验证存储请求；运行看板汇总请求、错误、延迟、任务、复核与AI质量；区分进程计数和持久库计数。管理员可明确检查存储、资产、模型目录、CLI、语音、Python/PDF、OCR、音视频、生图、C++隔离和文档导出，分本地检查通过、配置已读取、关闭和需处理；固定本地探测有超时、输出限制和短缓存，各可选失败互不阻断。前端刷新与换号清空旧结果并拒绝迟到响应。
 
-**输出**：健康探针、积压与运行摘要。
+**输出**：健康探针、积压与运行摘要、逐项依赖状态和修复建议。
 
 **状态与持久化**：复用调用者上下文、独立索引、SQL任务表或文件资产；不另造业务集合。
 
-**权限、失败与边界**：请求指标是当前进程自启动累计，不是完整分布式监控平台。
+**权限、失败与边界**：配置或依赖通过不等供应商在线、实际生成或新机器验收；不自动安装、不调用生成、不返回本机路径或凭据。请求指标是当前进程自启动累计。
 
 **关联接口**：
 
 - `GET /api/health` → `HealthController.health`；[apps/api/src/infrastructure/health.controller.ts:7](../../../apps/api/src/infrastructure/health.controller.ts#L7)。
 - `GET /api/ready` → `HealthController.ready`；[apps/api/src/infrastructure/health.controller.ts:8](../../../apps/api/src/infrastructure/health.controller.ts#L8)。
 - `GET /api/admin/operations` → `OperationsController.overview`；[apps/api/src/infrastructure/operations.controller.ts:14](../../../apps/api/src/infrastructure/operations.controller.ts#L14)。
+- `GET /api/admin/operations/capabilities` → `OperationsCapabilitiesController.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:126](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L126)。
 - `GET /api/admin/analytics/overview` → `ProgressController.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.controller.ts:55](../../../apps/api/src/modules/progress/progress.controller.ts#L55)。
 - `GET /api/admin/analytics/ai-quality` → `ProgressController.getAiQualityOverview`；[apps/api/src/modules/progress/progress.controller.ts:60](../../../apps/api/src/modules/progress/progress.controller.ts#L60)。
 
 **服务方法**：
 
-- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:245](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L245)。
+- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:258](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L258)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
+- `OperationsCapabilitiesService.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:51](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L51)。
 - `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
 - `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/operations/operations-capabilities.module.ts](../../../apps/api/src/modules/operations/operations-capabilities.module.ts)
+- [apps/web/app/admin/analytics/runtime-capabilities.tsx](../../../apps/web/app/admin/analytics/runtime-capabilities.tsx)
+- [apps/api/src/modules/operations/operations-capabilities.test.ts](../../../apps/api/src/modules/operations/operations-capabilities.test.ts)
+- [apps/api/src/modules/operations/operations-capabilities.integration.test.ts](../../../apps/api/src/modules/operations/operations-capabilities.integration.test.ts)
+- [tests/e2e/operations-capabilities.spec.ts](../../../tests/e2e/operations-capabilities.spec.ts)
 
 ## OPS-07 业务、媒体、原始资产备份恢复
 

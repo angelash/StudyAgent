@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-03T02:52:27.772Z",
+  "complete": true,
+  "scope": "Controlled original snapshot paths, corrected one changed native test then independently read back all files",
+  "originalIncompleteReceipt": "data/qa/b5-business-patch/source.snapshot-incomplete.json",
+  "files": 3200,
+  "bytes": 109853220,
+  "sha256Readback": true,
+  "changedSincePriorSuite": [
+    "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-edition-conformity.ts",
+    "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+    "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+    "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+    "scripts/qa/README.md",
+    "tests/e2e/product-smoke.spec.ts",
+    "tests/e2e/studio-assistant.spec.ts"
+  ],
+  "oldBrowserSourcesMutated": false,
+  "oldFullApiStopped": true
+}

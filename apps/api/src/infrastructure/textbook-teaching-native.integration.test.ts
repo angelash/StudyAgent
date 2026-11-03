@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { DatabaseSync } from 'node:sqlite';
@@ -16,13 +16,21 @@ const directory = mkdtempSync(join(qa, 'teaching33-native-')), configured = proc
   digest = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const archive = readFileSync(join(root, 'resources/compatibility/domain-reader-schema32-v1.json.gz')),
   receipt = JSON.parse(readFileSync(join(root, 'resources/compatibility/domain-reader-schema32-v1.receipt.json'), 'utf8')),
-  manifest = JSON.parse(gunzipSync(archive).toString('utf8')), actual32 = join(workspace, 'data/qa/r32b');
+  manifest = JSON.parse(gunzipSync(archive, { maxOutputLength: 40 * 1024 * 1024 }).toString('utf8')),
+  actual32 = mkdtempSync(join(qa, 'actual-reader32-for-teaching-'));
 expect(digest(archive)).toBe(receipt.gzipSha256); expect(manifest.schemaVersion).toBe(32);
-for (const [file, member] of Object.entries(manifest.files) as Array<[string, { sha256: string }]>) {
+for (const [file, member] of Object.entries(manifest.files) as Array<[string, { sha256: string; base64: string }]>) {
   if (!/^(?:apps\/api\/dist\/|packages\/(?:contracts|config)\/|scripts\/operations\/|resources\/paper-export\/)/.test(file) || /[\\:\x00]/.test(file) || file.split('/').some(part => !part || ['.', '..'].includes(part))) throw Error('Unsafe actual32 baseline member');
-  expect(digest(readFileSync(join(actual32, file))), file).toBe(member.sha256);
+  const bytes = Buffer.from(member.base64, 'base64'); expect(digest(bytes), file).toBe(member.sha256);
+  const target = join(actual32, file); mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, bytes, { flag: 'wx' });
+  expect(digest(readFileSync(target)), file).toBe(member.sha256);
 }
-for (const dependency of manifest.externalDependencies) expect(digest(readFileSync(join(workspace, dependency.path))), dependency.path).toBe(dependency.sha256);
+for (const dependency of manifest.externalDependencies) {
+  if (!dependency.path.startsWith('node_modules/') || dependency.path.split('/').includes('..') || /[\\:\x00]/.test(dependency.path)) throw Error('Unsafe actual32 dependency');
+  expect(digest(readFileSync(join(workspace, dependency.path))), dependency.path).toBe(dependency.sha256);
+}
+mkdirSync(join(actual32, 'node_modules/@study-agent'), { recursive: true });
+for (const name of ['contracts', 'config']) symlinkSync(join(actual32, 'packages', name), join(actual32, 'node_modules/@study-agent', name), 'junction');
 const { DomainDatabase: Reader32 } = require(join(actual32, 'apps/api/dist/apps/api/src/infrastructure/domain-database.js')),
   oldGuard = require(join(actual32, 'scripts/operations/database-reader-guard.cjs'));
 let pool: Pool | undefined;

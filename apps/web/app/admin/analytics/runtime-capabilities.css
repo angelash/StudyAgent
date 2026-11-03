@@ -1,0 +1,11 @@
+.runtime-capabilities{margin-top:24px;padding:24px;border:1px solid var(--line,#e9ecf1);border-radius:12px;background:#fff;color:var(--ink,#172031)}
+.runtime-capabilities-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.runtime-capabilities-heading h2{margin:0 0 8px}.runtime-capabilities-heading p,.runtime-capabilities-note{margin:0;color:var(--muted,#7d8799);font-size:13px;line-height:1.8}
+.runtime-capabilities-heading button{flex:none;min-height:44px}.runtime-capabilities button:disabled{opacity:.65;cursor:wait}
+.runtime-capabilities-note{margin:20px 0 4px;font-size:12px}.runtime-capabilities-list{list-style:none;margin:0;padding:0}
+.runtime-capabilities-list li{padding:20px 0;border-bottom:1px solid var(--line,#e9ecf1)}.runtime-capabilities-list li:last-child{padding-bottom:0;border-bottom:0}
+.runtime-capabilities-item-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px}.runtime-capabilities-item-title h3{font-size:14px;font-weight:500;margin:0}
+.runtime-capabilities-item-title span{font-size:12px;color:#38634a;flex:none}.runtime-capabilities-list [data-state=unavailable] .runtime-capabilities-item-title span{color:#95622e}
+.runtime-capabilities-list [data-state=disabled] .runtime-capabilities-item-title span{color:var(--muted,#7d8799)}.runtime-capabilities-list p{font-size:13px;line-height:1.8;margin:7px 0 0}
+.runtime-capabilities-list .runtime-capabilities-repair{font-size:12px;color:var(--muted,#7d8799)}.runtime-capabilities-error{color:#a13232;font-size:13px;line-height:1.8}
+@media(max-width:600px){.runtime-capabilities{padding:18px}.runtime-capabilities-heading{flex-direction:column;gap:14px}.runtime-capabilities-heading button{width:100%}.runtime-capabilities-item-title{gap:10px}}

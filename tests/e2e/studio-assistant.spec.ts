@@ -47,9 +47,13 @@ test('lecture-assistant: directory opens a whole lecture in the independent assi
 });
 
 for (const width of [390, 768, 880, 1440]) test(`lecture-assistant: usable course entry, composer and complete model selection at${width}`, async ({ page }) => {
-  test.setTimeout(90000); await lecture(page, width);
+  test.setTimeout(90000); const actor = await lecture(page, width);
   await expect(page.getByRole('region', { name: '当前讲座上下文' })).toBeVisible();
-  const picker = page.getByRole('combobox', { name: '选择大模型', exact: true }); await expect(picker.locator('option')).toHaveCount(23); await expect(picker).toHaveValue('deepseek-v4-flash');
+  const catalog = await call(actor, '/ai/models');
+  const picker = page.getByRole('combobox', { name: '选择大模型', exact: true });
+  await expect(picker.locator('option')).toHaveCount(catalog.models.length + 1);
+  expect(await picker.locator('option').evaluateAll(options => options.map(option => (option as HTMLOptionElement).value).sort())).toEqual(['auto', ...catalog.models.map((model: any) => model.id)].sort());
+  await expect(picker).toHaveValue(catalog.defaultModel);
   await page.getByLabel('模型文字检查说明').click(); await expect(page.getByText('尚未进行文字检查', { exact: true })).toBeVisible();
   await page.getByLabel('模型文字检查说明').click();
   await page.getByRole('button', { name: 'Tools', exact: true }).click(); await expect(page.getByRole('menuitem', { name: /Whiteboard session/ })).toBeVisible();

@@ -1,0 +1,2080 @@
+{
+  "at": "2026-11-03T02:54:57.833Z",
+  "phase": "business_implementation_and_regressions_archived",
+  "scopeSource": "doc/product/227-content-pause-and-business-development-closure.md",
+  "requirements": 72,
+  "workspaceItems": 12,
+  "featureCatalog": {
+    "areas": 14,
+    "features": 148,
+    "routes": 589,
+    "routeAssociationsComplete": true
+  },
+  "businessRegressionsPending": false,
+  "originalFullProductClaimedComplete": false,
+  "sourceAssociationsAreNotAssertionCompleteness": true,
+  "rows": [
+    {
+      "id": "XP-A01",
+      "title": "统一学习首页",
+      "originalStatus": "implemented",
+      "requirement": "家长、学生、教师/管理员可从`/learn`进入适合其身份的学习入口；无孩子的成人能直接学独立课程。验收：真实身份访问、空档案与有档案均有可执行操作，学生没有家庭管理入口。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-07",
+        "STUDIO-37"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/components/workspace-next-action.tsx",
+        "apps/web/app/studio/studio.tsx",
+        "apps/web/app/learn/page.tsx",
+        "apps/web/lib/learning-context.ts",
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-navigation.ts",
+        "apps/web/app/studio/profiles/profiles.tsx",
+        "apps/web/app/studio/reports/reports.tsx",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "tests/e2e/workspace-shell.spec.ts",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-A02",
+      "title": "档案与学科上下文",
+      "originalStatus": "implemented",
+      "requirement": "URL、标签页恢复与授权列表有明确优先级；跨页面链接携带上下文，换号/退出清理选择。验收：两孩子三学科、刷新/前后退、无效ID、撤权和延迟响应均不串数据。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AUTH-04",
+        "STUDIO-37"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/students/students.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-navigation.ts",
+        "apps/web/app/studio/profiles/profiles.tsx",
+        "apps/web/app/studio/reports/reports.tsx",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "tests/e2e/workspace-shell.spec.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-A03",
+      "title": "一个主要下一步",
+      "originalStatus": "implemented",
+      "requirement": "按未完成评测、到期复测、监护决定、训练与课程断点生成可解释行动。验收：每种状态进入准确对象，暂停/失效计划不推荐继续，访问首页不创建活动。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/components/workspace-next-action.tsx",
+        "apps/web/app/studio/studio.tsx",
+        "apps/web/app/learn/page.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-A04",
+      "title": "今日负担与次要行动",
+      "originalStatus": "implemented",
+      "requirement": "显示当前范围、预计题量/时长、保存状态和可展开待办；未确认范围先引导确认。验收：预计与实际活动约定一致，未知值不伪造，首屏不堆全部报告字段。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/components/workspace-next-action.tsx",
+        "apps/web/app/studio/studio.tsx",
+        "apps/web/app/learn/page.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-A05",
+      "title": "全状态与身份边界",
+      "originalStatus": "implemented",
+      "requirement": "加载、无数据、无权限、超时、版本冲突、重试与换号均有正确界面。验收：失败不显示成功，旧孩子数据立即清空，错误恢复不重复写入。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AUTH-02",
+        "STUDIO-37"
+      ],
+      "sourceFiles": [
+        "apps/web/lib/session-user.ts",
+        "apps/web/components/session-connection.tsx",
+        "apps/web/components/session-control.tsx",
+        "tests/e2e/assistant-conversations.spec.ts",
+        "apps/web/app/parent/login/page.tsx",
+        "apps/web/app/student/login/page.tsx",
+        "tests/e2e/topic-whiteboard.spec.ts",
+        "apps/api/src/modules/auth/auth.service.ts",
+        "apps/api/src/modules/auth/auth.controller.ts",
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-navigation.ts",
+        "apps/web/app/studio/profiles/profiles.tsx",
+        "apps/web/app/studio/reports/reports.tsx",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "tests/e2e/workspace-shell.spec.ts",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-A06",
+      "title": "旧入口与导航统一",
+      "originalStatus": "implemented",
+      "requirement": "现有家长、诊断、今日、工作台、资料入口互相衔接并保留地址兼容。验收：从每条主路径进入/返回保留档案学科，学生按钮与实际资格一致。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-06",
+        "STUDIO-37"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/progress/progress.service.ts",
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-navigation.ts",
+        "apps/web/app/studio/profiles/profiles.tsx",
+        "apps/web/app/studio/reports/reports.tsx",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "tests/e2e/workspace-shell.spec.ts",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B01",
+      "title": "课程列表完整筛选",
+      "originalStatus": "implemented",
+      "requirement": "搜索、类型、进行中/完成、来源和最近条件一致工作。验收：成人/小学/编程课程身份清楚，刷新恢复条件，无结果可恢复筛选。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-01"
+      ],
+      "sourceFiles": [
+        "apps/web/app/studio/course-library-state.ts",
+        "apps/web/app/studio/course-library.css",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B02",
+      "title": "创建与蓝图确认",
+      "originalStatus": "in_progress",
+      "requirement": "目标、资料、语言、预算、单元讲次及缺口可预览修改后确认。验收：取消不建正式课，修改使旧预览失效，重复确认只建一份。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-02",
+        "STUDIO-40"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/studio-course.ts",
+        "apps/web/app/studio/course-builder.tsx",
+        "apps/web/app/studio/course-builder.css",
+        "apps/api/src/modules/learning/learning.controller.ts",
+        "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "doc/product/185-schema33-integration-and-browser-regressions.md"
+      ],
+      "deferredConditions": [
+        "真人理解与教学内容适配"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B03",
+      "title": "完整课程导航",
+      "originalStatus": "in_progress",
+      "requirement": "Learn、Practice、资料、项目和单元核查同目录。验收：各活动返回原单元面板，触屏可查看目标，私有答案不随目录返回。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-03"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B04",
+      "title": "进度语义与继续学习",
+      "originalStatus": "in_progress",
+      "requirement": "阅读、练习、辅助与独立测量分别显示；定位实际断点。验收：重开当前课句、当前题与项目草稿均准确，不把看完写为稳定掌握。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-04",
+        "LEARN-03"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/classroom-speech.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "apps/web/app/studio/classroom/captions.css",
+        "tests/e2e/classroom-captions.spec.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B05",
+      "title": "来源材料到课程",
+      "originalStatus": "in_progress",
+      "requirement": "选原页、教材课时和知识目标生成有依据课程；保留资料版本。验收：点击来源到对应页，缺映射显式阻止正式测量，不混入旧版本正文。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-21",
+        "STUDIO-23",
+        "CUR-11"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/source-course.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course-worker.service.ts",
+        "apps/api/src/modules/learning/source-course-pipeline.ts",
+        "apps/api/src/modules/learning/source-course.integration.test.ts",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "apps/web/app/studio/source-courses/content-editor.tsx",
+        "apps/web/app/studio/source-courses/generation-panel.tsx",
+        "apps/web/app/studio/source-courses/original-manuscript.tsx",
+        "apps/web/app/studio/source-courses/source-courses.css",
+        "apps/api/src/common/http-body.ts",
+        "apps/api/src/common/http-body.integration.test.ts",
+        "scripts/qa/source-course-fixture.cjs",
+        "scripts/qa/source-course-test-api.cjs",
+        "scripts/qa/run-source-course-browser.cjs",
+        "tests/e2e/source-course.spec.ts",
+        "packages/contracts/src/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-chunks.ts",
+        "apps/api/src/modules/learning/source-course-selection.ts",
+        "apps/api/src/modules/learning/source-course-compilation.ts",
+        "apps/api/src/modules/learning/source-course-compiler.service.ts",
+        "apps/api/src/modules/learning/source-course-compilation.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-chunks.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "apps/web/app/studio/source-courses/compilation-panel.tsx",
+        "apps/web/app/studio/source-courses/compilation.css",
+        "tests/e2e/source-course-long.spec.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+        "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+        "doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md",
+        "apps/api/src/modules/diagnostics/textbook-teaching.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-B06",
+      "title": "课程包与版本变更",
+      "originalStatus": "in_progress",
+      "requirement": "课程导入、修订、撤回、归档有影响预览与版本。验收：新课程使用新版本，旧课堂可恢复旧快照，删除不造成悬空媒体。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-08",
+        "STUDIO-26",
+        "STUDIO-40"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/curriculum-package.service.ts",
+        "packages/contracts/src/source-course-lifecycle.ts",
+        "apps/api/src/modules/learning/source-course-lifecycle.service.ts",
+        "apps/api/src/modules/learning/source-course-lifecycle.controller.ts",
+        "apps/api/src/modules/learning/source-course-lifecycle.integration.test.ts",
+        "apps/api/src/modules/learning/source-course-content.ts",
+        "apps/api/src/modules/learning/source-course.service.ts",
+        "apps/api/src/modules/privacy/privacy-records.ts",
+        "apps/web/app/studio/source-courses/lifecycle-panel.tsx",
+        "apps/web/app/studio/source-courses/workbench.tsx",
+        "tests/e2e/source-course-lifecycle.spec.ts",
+        "scripts/qa/run-source-lifecycle-postgres.cjs",
+        "apps/api/src/modules/learning/learning.controller.ts",
+        "doc/product/185-schema33-integration-and-browser-regressions.md",
+        "apps/api/src/modules/learning/textbook-teaching-course.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C01",
+      "title": "完整课堂状态机",
+      "originalStatus": "in_progress",
+      "requirement": "准备、等待、播放、暂停、插问、检查点、失败、完成使用同一时序。验收：音频结束驱动推进、暂停无延迟跳步、停止中断在途请求。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-04"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/classroom-speech.ts",
+        "apps/api/src/modules/learning/classroom-presentation.ts",
+        "apps/api/src/modules/learning/classroom-presentation.test.ts",
+        "apps/api/src/modules/learning/classroom-presentation.integration.test.ts",
+        "apps/web/app/studio/classroom/captions.tsx",
+        "apps/web/app/studio/classroom/captions.css",
+        "tests/e2e/classroom-captions.spec.ts",
+        "scripts/qa/classroom-caption-live.cjs",
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C02",
+      "title": "提炼板书与逐句字幕",
+      "originalStatus": "in_progress",
+      "requirement": "讲稿和板书独立，板书逐行/项、字幕当前完整句。验收：长句语义拆分、重放/静音/倍速不堆字幕、不逐字抄讲稿。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-10"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/studio-whiteboard-access.ts",
+        "packages/contracts/src/whiteboard-speech.ts",
+        "apps/web/app/studio/whiteboard-player.tsx",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/studio/whiteboard-canvas.tsx",
+        "apps/web/app/studio/whiteboard-media.ts",
+        "apps/web/app/studio/whiteboard-webm.ts",
+        "apps/web/app/studio/whiteboard-narration.ts",
+        "apps/web/app/studio/whiteboard-frame.ts",
+        "apps/web/lib/original-teaching-fonts.ts",
+        "apps/web/lib/original-teaching-fonts.json",
+        "apps/web/app/studio/original-teaching-shell.generated.css",
+        "apps/web/app/studio/original-teaching-shell.css",
+        "apps/web/lib/original-teaching-styles.json",
+        "scripts/reference/import-hyperknow-assets.cjs",
+        "scripts/reference/build-hyperknow-fonts.cjs",
+        "scripts/reference/build-hyperknow-teaching-styles.cjs",
+        "tests/e2e/original-teaching-fonts.spec.ts",
+        "doc/product/129-hyperknow-original-assets-and-teaching-shell.md",
+        "tests/e2e/whiteboard-timing.ts",
+        "tests/e2e/whiteboard-media.spec.ts",
+        "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md",
+        "doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json",
+        "doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C03",
+      "title": "插问与自适应讲法",
+      "originalStatus": "in_progress",
+      "requirement": "插问绑定当前节点和证据，能换例子、降低语言难度、补先修和对照表征。验收：回答有依据、笔记去重、原课停在原句、学习者决定继续。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-05",
+        "STUDIO-33",
+        "STUDIO-34"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/classroom-turn.ts",
+        "apps/api/src/modules/learning/classroom-turn-record.ts",
+        "apps/api/src/modules/learning/classroom-turn.service.ts",
+        "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-turn.controller.ts",
+        "apps/api/src/modules/learning/classroom-turn.integration.test.ts",
+        "apps/web/app/studio/classroom/turns.tsx",
+        "tests/e2e/classroom-turns.spec.ts",
+        "scripts/qa/verify-classroom-turn-live.cjs",
+        "packages/contracts/src/classroom-board.ts",
+        "apps/api/src/modules/ai/classroom-reply-board.ts",
+        "apps/api/src/modules/ai/classroom-reply-board.test.ts",
+        "apps/web/app/studio/classroom/reply-board.tsx",
+        "apps/web/app/studio/classroom/board-formula.ts",
+        "apps/web/app/studio/classroom/reply-board-notes.ts",
+        "apps/web/app/studio/classroom/reply-reading.ts",
+        "tests/e2e/classroom-boards.spec.ts",
+        "scripts/qa/verify-classroom-board-live.cjs",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "packages/contracts/src/whiteboard-question.ts",
+        "apps/api/src/modules/learning/whiteboard-question.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-worker.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-context.ts",
+        "apps/api/src/modules/learning/whiteboard-question-access.ts",
+        "apps/api/src/modules/learning/whiteboard-question.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-storage.integration.test.ts",
+        "apps/api/src/infrastructure/whiteboard-question-postgres.integration.test.ts",
+        "scripts/qa/run-whiteboard-questions-postgres.cjs",
+        "apps/api/src/modules/ai/xiaojiu-text-transport.ts",
+        "apps/api/src/modules/ai/xiaojiu-text-transport.test.ts",
+        "apps/web/app/studio/whiteboard-questions.tsx",
+        "tests/e2e/whiteboard-questions.spec.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+        "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+        "apps/web/app/studio/whiteboard-question-notes.ts",
+        "apps/web/app/studio/whiteboard-original.ts",
+        "apps/web/app/studio/whiteboard-frame.ts",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/studio/whiteboard-reading-panel.tsx"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C04",
+      "title": "音色、语速与听感",
+      "originalStatus": "in_progress",
+      "requirement": "选音色、倍速、静音、重试与偏好恢复；句间连续。验收：真实音轨试听、手机播放/打断、配置缺失可文字继续，失败不静默换供应商。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-05",
+        "AI-09",
+        "STUDIO-10"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/ai/neutral-voice-samples.ts",
+        "apps/api/src/modules/ai/speech.service.ts",
+        "apps/web/app/studio/classroom/voice-preview.tsx",
+        "apps/web/app/studio/classroom/workbench.tsx",
+        "packages/contracts/src/studio.ts",
+        "apps/api/src/modules/learning/classroom-voice-preview.integration.test.ts",
+        "tests/e2e/classroom-neutral-voices.spec.ts",
+        "apps/web/public/classroom-voice-samples/manifest.json",
+        "apps/api/src/modules/learning/classroom.service.ts",
+        "apps/api/src/modules/learning/studio-whiteboard-access.ts",
+        "packages/contracts/src/whiteboard-speech.ts",
+        "apps/web/app/studio/whiteboard-player.tsx",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/studio/whiteboard-canvas.tsx",
+        "apps/web/app/studio/whiteboard-media.ts",
+        "apps/web/app/studio/whiteboard-webm.ts",
+        "apps/web/app/studio/whiteboard-narration.ts",
+        "apps/web/app/studio/whiteboard-frame.ts",
+        "apps/web/lib/original-teaching-fonts.ts",
+        "apps/web/lib/original-teaching-fonts.json",
+        "apps/web/app/studio/original-teaching-shell.generated.css",
+        "apps/web/app/studio/original-teaching-shell.css",
+        "apps/web/lib/original-teaching-styles.json",
+        "scripts/reference/import-hyperknow-assets.cjs",
+        "scripts/reference/build-hyperknow-fonts.cjs",
+        "scripts/reference/build-hyperknow-teaching-styles.cjs",
+        "tests/e2e/original-teaching-fonts.spec.ts",
+        "doc/product/129-hyperknow-original-assets-and-teaching-shell.md",
+        "tests/e2e/whiteboard-timing.ts",
+        "tests/e2e/whiteboard-media.spec.ts",
+        "doc/product/125-whiteboard-continuous-narration-and-bounded-preparation.md",
+        "doc/evidence/2026-10-26/whiteboard-continuity-acceptance.json",
+        "doc/evidence/2026-10-26/whiteboard-continuity-exact-ci/receipt.json",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [
+        "真实音轨听感、手机音频与打断"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C05",
+      "title": "工具与多端布局",
+      "originalStatus": "in_progress",
+      "requirement": "缩放、翻页、背景、字体、对话宽度、新手引导与键盘均可用。验收：三档视口与真实触屏，字幕/操作不遮挡，焦点和减少动画正确。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-08",
+        "STUDIO-39"
+      ],
+      "sourceFiles": [
+        "apps/web/app/studio/classroom/tool-tour.tsx",
+        "apps/web/app/studio/classroom/tool-tour.css",
+        "apps/web/app/studio/classroom/figure-reader.tsx",
+        "apps/web/app/studio/classroom/figure-reader.css",
+        "apps/web/app/studio/classroom/voice-preview.tsx",
+        "apps/web/app/studio/classroom/diagram.tsx",
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "tests/e2e/classroom-tools.spec.ts",
+        "packages/contracts/src/activity-navigation.ts",
+        "apps/api/src/modules/learning/activity-navigation.ts",
+        "apps/api/src/modules/learning/activity-navigation.test.ts",
+        "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+        "apps/web/components/activity-workspace-navigation.tsx",
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-exit-guard.ts",
+        "apps/web/app/studio/whiteboard-player.tsx",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/library/practice/session.tsx",
+        "apps/web/app/admin/workspace-shell.tsx",
+        "apps/web/app/admin/workspace-shell.css",
+        "apps/web/lib/admin-navigation.ts",
+        "tests/e2e/workspace-focus.spec.ts"
+      ],
+      "deferredConditions": [
+        "真实触屏与辅助技术"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-C06",
+      "title": "保存、导出与安全分享",
+      "originalStatus": "in_progress",
+      "requirement": "当前句、已出现板书、补充笔记和导出版本一致。验收：退出/重启/重开恢复，分享不含儿童私有对话与答案，失效分享不可读。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-08",
+        "STUDIO-34"
+      ],
+      "sourceFiles": [
+        "apps/web/app/studio/classroom/tool-tour.tsx",
+        "apps/web/app/studio/classroom/tool-tour.css",
+        "apps/web/app/studio/classroom/figure-reader.tsx",
+        "apps/web/app/studio/classroom/figure-reader.css",
+        "apps/web/app/studio/classroom/voice-preview.tsx",
+        "apps/web/app/studio/classroom/diagram.tsx",
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "tests/e2e/classroom-tools.spec.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.ts",
+        "apps/api/src/modules/learning/whiteboard-question-narration.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-notes.test.ts",
+        "apps/web/app/studio/whiteboard-question-notes.ts",
+        "apps/web/app/studio/whiteboard-original.ts",
+        "apps/web/app/studio/whiteboard-frame.ts",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/studio/whiteboard-reading-panel.tsx",
+        "tests/e2e/whiteboard-questions.spec.ts",
+        "apps/api/src/modules/learning/whiteboard-question.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D01",
+      "title": "受控图示表达",
+      "originalStatus": "in_progress",
+      "requirement": "支持分数、数轴、关系、流程、比较、坐标/几何等教学表达。验收：每类有真实课程样例、缩放导出一致、图示含义经审核。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-02",
+        "STUDIO-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/teaching-author.ts",
+        "apps/web/components/teaching-guide.tsx",
+        "packages/contracts/src/classroom-code.ts",
+        "apps/api/src/modules/learning/classroom-code.service.ts",
+        "apps/api/src/modules/learning/classroom-code.controller.ts",
+        "apps/api/src/modules/learning/classroom-code.integration.test.ts",
+        "apps/web/app/studio/classroom/code-draft.tsx",
+        "apps/web/app/studio/classroom/runner/route.ts",
+        "apps/web/app/studio/classroom/code-workbench.tsx",
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "tests/e2e/classroom-code.spec.ts"
+      ],
+      "deferredConditions": [
+        "逐图内容审核"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D02",
+      "title": "表格与公式结构",
+      "originalStatus": "in_progress",
+      "requirement": "表格逐行/列、合并单元、手机滚动和公式结构可读。验收：原页/候选/渲染可对照，长公式不溢出，关键条件不截断。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-12",
+        "CONTENT-15"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/studio-pdf-structure.ts",
+        "scripts/processing/process_document.py",
+        "apps/api/src/modules/library/paper-selection.controller.ts",
+        "apps/api/src/modules/library/paper-export.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/library/paper-selection.service.ts",
+        "apps/api/src/modules/library/paper-export.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D03",
+      "title": "运行期生图",
+      "originalStatus": "implemented",
+      "requirement": "复用小九生图路径，以持久任务生成插画并保存来源和审核状态。验收：真实生成产物、取消/重试/重启、权限与任务去重，失败课堂继续。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-07",
+        "STUDIO-22"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/ai/classroom-image.service.ts",
+        "apps/api/src/modules/ai/classroom-image.service.test.ts",
+        "scripts/operations/setup-imagegen.cjs",
+        "scripts/processing/requirements-imagegen.txt",
+        "scripts/qa/classroom-image-live.cjs",
+        "packages/contracts/src/classroom-visual.ts",
+        "apps/api/src/modules/learning/classroom-visual.service.ts",
+        "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/web/app/studio/classroom/visuals.tsx",
+        "apps/web/app/studio/classroom/visuals.css",
+        "tests/e2e/classroom-visual.spec.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D04",
+      "title": "教学视觉选择与后补",
+      "originalStatus": "in_progress",
+      "requirement": "按知识需求选择图表、原页或插画，先可读后补图。验收：图像插回正确节点、不挤走当前操作，精确测量图不用不可靠位图替代。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-22",
+        "STUDIO-32",
+        "STUDIO-35"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/classroom-visual.ts",
+        "apps/api/src/modules/learning/classroom-visual.service.ts",
+        "apps/api/src/modules/learning/classroom-visual-worker.service.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.ts",
+        "apps/api/src/modules/learning/classroom-visual-context.test.ts",
+        "apps/api/src/modules/learning/classroom-visual.integration.test.ts",
+        "apps/api/src/modules/learning/classroom-visual-storage.test.ts",
+        "apps/web/app/studio/classroom/visuals.tsx",
+        "apps/web/app/studio/classroom/visuals.css",
+        "tests/e2e/classroom-visual.spec.ts",
+        "packages/contracts/src/topic-whiteboard-visual.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual.controller.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual.service.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-worker.service.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-figures.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual-retention.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+        "apps/api/src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+        "apps/web/app/studio/whiteboards/figure-workbench.tsx",
+        "apps/web/app/studio/topic-figure-image.tsx",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/studio/whiteboard-canvas.tsx",
+        "tests/e2e/topic-whiteboard.spec.ts",
+        "doc/product/124-topic-whiteboard-figures-and-visual-manuscripts.md",
+        "apps/web/app/studio/whiteboard-formula.ts",
+        "apps/web/app/studio/whiteboard-formula-image.ts",
+        "apps/web/app/studio/whiteboard-exhibit.tsx",
+        "apps/web/app/studio/whiteboard-exhibit.css",
+        "apps/api/src/modules/learning/whiteboard-formula.test.ts",
+        "scripts/qa/topic-figure-live.cjs",
+        "doc/evidence/2026-10-26/topic-figure-runtime.json",
+        "doc/evidence/2026-10-26/topic-figure-acceptance.json",
+        "apps/api/src/modules/learning/topic-whiteboard.service.ts",
+        "packages/contracts/src/whiteboard-question-visual.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-context.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-access.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-worker.service.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual.controller.ts",
+        "apps/api/src/modules/learning/whiteboard-question-teaching-versions.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual-retention.ts",
+        "apps/api/src/infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+        "apps/api/src/modules/learning/whiteboard-question-visual.integration.test.ts",
+        "apps/web/app/studio/whiteboard-question-figures.tsx",
+        "apps/web/app/studio/whiteboard-question-figures.css",
+        "apps/web/app/studio/whiteboard-questions.tsx",
+        "apps/web/app/studio/whiteboard-media.ts",
+        "apps/web/app/studio/whiteboard-original.ts",
+        "apps/web/app/studio/whiteboard-question-notes.ts",
+        "tests/e2e/whiteboard-questions.spec.ts",
+        "scripts/qa/question-figure-live.cjs",
+        "scripts/qa/run-question-figures-postgres.cjs"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D05",
+      "title": "浏览器代码实验",
+      "originalStatus": "in_progress",
+      "requirement": "JS编辑、输入、运行、停止、错误和输出有完整课堂路径。验收：超时/限输出/隔离负例、刷新恢复、手机编辑与重复运行。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-07"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/classroom-code.ts",
+        "apps/api/src/modules/learning/classroom-code.service.ts",
+        "apps/api/src/modules/learning/classroom-code.controller.ts",
+        "apps/api/src/modules/learning/classroom-code.integration.test.ts",
+        "apps/web/app/studio/classroom/code-draft.tsx",
+        "apps/web/app/studio/classroom/runner/route.ts",
+        "apps/web/app/studio/classroom/code-workbench.tsx",
+        "apps/web/app/studio/classroom/board-step.tsx",
+        "tests/e2e/classroom-code.spec.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-D06",
+      "title": "C++独立执行体验",
+      "originalStatus": "in_progress",
+      "requirement": "GESP概念/跟踪/实现/调试关联隔离运行与分层反馈。验收：真实Linux/WSL、隐藏测试不泄露、工具链失效有明确状态、不降级宿主执行。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "GESP-04"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/gesp/gesp.service.ts"
+      ],
+      "deferredConditions": [
+        "完整GESP内容与真人效果"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E01",
+      "title": "专用答题交互",
+      "originalStatus": "in_progress",
+      "requirement": "17类协议的适用题都有可用控件、草稿、反馈和恢复。验收：每类合法/错误/部分输入、键盘触屏、提交重放和媒体实机。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "ASM-07",
+        "LEARN-03"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/answer-protocol.ts",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [
+        "真实录音相机和触屏设备"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E02",
+      "title": "练习页面与反馈",
+      "originalStatus": "implemented",
+      "requirement": "题干/图/选项/进度/Check/Skip/助教形成完整流程。验收：提交前保密、提交后解释具体、提示辅助标记、反馈后下一动作。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-choice-content.ts",
+        "packages/contracts/src/classroom-choice.ts",
+        "apps/web/app/studio/classroom/practice-draft.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css",
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E03",
+      "title": "逐级提示与不会",
+      "originalStatus": "implemented",
+      "requirement": "提示从方向到关键步骤，支持跳过/不会与后续核查。验收：各级提示不混成独立成功，重复请求不增加层级或重复曝光。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-03",
+        "GESP-05"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/learning.service.ts",
+        "apps/api/src/modules/gesp/gesp.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E04",
+      "title": "成人完整Practice",
+      "originalStatus": "in_progress",
+      "requirement": "60微课各有足够不同结构练习，当前单题模式补齐。验收：逐课内容审核、非仅换词换数、首课之外同样有图表与误区核查。",
+      "scope": "content_paused",
+      "featureIds": [
+        "STUDIO-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/classroom-unit-checks.ts",
+        "apps/api/src/modules/learning/classroom-practice-content.ts",
+        "apps/api/src/modules/learning/classroom-practice-model.ts",
+        "apps/api/src/modules/learning/classroom-practice-u1.ts",
+        "apps/api/src/modules/learning/classroom-practice-u2.ts",
+        "apps/api/src/modules/learning/classroom-practice-u3.ts",
+        "apps/api/src/modules/learning/classroom-practice-u4.ts",
+        "apps/api/src/modules/learning/classroom-practice-u5.ts",
+        "apps/api/src/modules/learning/classroom-choice-content.ts",
+        "packages/contracts/src/classroom-choice.ts",
+        "apps/web/app/studio/classroom/practice-draft.ts",
+        "apps/web/app/studio/classroom/practice-panel.tsx",
+        "apps/web/app/studio/classroom/practice-review.css",
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "deferredConditions": [
+        "60课逐课内容和独立结构库存"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E05",
+      "title": "独立单元测验",
+      "originalStatus": "in_progress",
+      "requirement": "每单元有未曝光独立题族、固定规则与可追溯反馈。验收：练习/复习/测验区别明确，复用课堂题不算独立增量。",
+      "scope": "content_paused",
+      "featureIds": [
+        "STUDIO-30"
+      ],
+      "sourceFiles": [
+        "doc/product/120-source-course-independent-unit-checks.md",
+        "doc/product/121-single-lesson-source-course-checks.md",
+        "packages/contracts/src/source-course-check.ts",
+        "apps/api/src/modules/learning/source-course-check-content.ts",
+        "apps/api/src/modules/learning/source-course-check.service.ts",
+        "apps/api/src/modules/learning/source-course-check-worker.service.ts",
+        "apps/api/src/modules/learning/source-course-check-classroom.ts",
+        "apps/api/src/modules/learning/source-course-check.integration.test.ts",
+        "apps/api/src/infrastructure/source-course-check-storage.integration.test.ts",
+        "apps/api/src/infrastructure/source-course-check-postgres.integration.test.ts",
+        "apps/web/app/studio/source-courses/check-panel.tsx",
+        "apps/web/app/studio/source-courses/check-editor.tsx",
+        "apps/web/app/studio/source-courses/check-manuscript.tsx",
+        "apps/web/app/studio/source-courses/check-recovery.ts",
+        "apps/web/app/studio/classroom/check-source.tsx",
+        "tests/e2e/source-course-check.spec.ts",
+        "scripts/qa/source-check-live.cjs",
+        "apps/api/src/modules/learning/classroom.service.ts"
+      ],
+      "deferredConditions": [
+        "独立未曝光题族与逐单元审核"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-E06",
+      "title": "项目阶段与量规",
+      "originalStatus": "implemented",
+      "requirement": "项目有阶段目标、草稿/提交/修订、素材证据与审核量规。验收：五阶段成人项目及课程项目真实产物恢复，AI建议与正式结论分离。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-20",
+        "STUDIO-28"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/course-project.service.ts",
+        "apps/api/src/modules/learning/course-project-content.ts",
+        "apps/web/app/studio/projects/workbench.tsx",
+        "apps/web/app/studio/projects/projects.css",
+        "packages/contracts/src/project-teaching.ts",
+        "apps/api/src/modules/learning/project-teaching.controller.ts",
+        "apps/api/src/modules/learning/project-teaching.service.ts",
+        "apps/api/src/modules/learning/project-teaching.integration.test.ts",
+        "apps/api/src/modules/learning/course-project.integration.test.ts",
+        "apps/web/app/studio/projects/project-teaching.tsx",
+        "apps/web/app/studio/projects/project-teaching.css",
+        "apps/web/app/studio/projects/project-narration.ts",
+        "apps/web/app/studio/projects/project-recovery.ts",
+        "apps/web/app/studio/projects/use-project-recovery.ts",
+        "tests/e2e/project-teaching.spec.ts",
+        "scripts/qa/run-project-teaching-postgres.cjs"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F01",
+      "title": "全范围课时覆盖清单",
+      "originalStatus": "in_progress",
+      "requirement": "小学三科六年级按版本/学期/课时展开正文、映射、教学和测量状态。验收：18格之外继续到具体课时，缺源/待审保留，不能整册一键通过。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-06",
+        "CUR-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts"
+      ],
+      "deferredConditions": [
+        "全部教材目录、正文和逐课内容"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F02",
+      "title": "原子知识深拆与先修",
+      "originalStatus": "in_progress",
+      "requirement": "按可观察行为拆分目标，绑定先修和评分观察。验收：教师核对可测性、无环、综合题上游阻断与独立探针正确。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-01",
+        "CUR-03"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/curriculum.service.ts"
+      ],
+      "deferredConditions": [
+        "全量目标拆分及教师审核"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F03",
+      "title": "完整课时教学包",
+      "originalStatus": "in_progress",
+      "requirement": "每课具备目标/激活/概念/示例/误区/图示/检查/练习/总结/保持。验收：逐课审核与浏览器学习，字段存在不等于内容准确。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-11"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+        "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+        "doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md",
+        "apps/api/src/modules/diagnostics/textbook-teaching.service.ts"
+      ],
+      "deferredConditions": [
+        "全课时内容与教师审核"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F04",
+      "title": "题族多样性与素材预算",
+      "originalStatus": "in_progress",
+      "requirement": "理解/执行/迁移/保持有独立结构，变式不冒充新题族。验收：题族人工抽核、预算不足行为、评分金样本与跨表征实例。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-09"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/verification-materials.ts",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts"
+      ],
+      "deferredConditions": [
+        "独立题族、评分金样本和充分库存"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F05",
+      "title": "包格式与审核生产线",
+      "originalStatus": "in_progress",
+      "requirement": "内容以版本化课程包导入编辑审核发布，保留生成信息与原件。验收：重复导入、撤回、旧快照、五门禁和媒体完整性双库验证。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-08",
+        "CUR-11"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/curriculum-package.service.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+        "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+        "doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md",
+        "apps/api/src/modules/diagnostics/textbook-teaching.service.ts"
+      ],
+      "deferredConditions": [
+        "全部素材媒体与审核生产"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-F06",
+      "title": "GESP1～4级完整课程",
+      "originalStatus": "in_progress",
+      "requirement": "从研究和49试点任务扩展完整目标、教学、调试、迁移与保持。验收：逐目标真人内容审核、真实隔离测试、独立学习与复测结果。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "GESP-02",
+        "GESP-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/gesp/gesp.service.ts"
+      ],
+      "deferredConditions": [
+        "完整课程内容、教师和真实保持"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G01",
+      "title": "全量资料复用对账",
+      "originalStatus": "in_progress",
+      "requirement": "核对研究工程与本项目全部可复用原卷、媒体、模型、工具、教材和证据。验收：来源/目标清单、一致性与哈希、缺口、独立备份，不只复制样例。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-07",
+        "OPS-09"
+      ],
+      "sourceFiles": [
+        "scripts/operations/backup.cjs",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "scripts/gesp/backup_archive.py",
+        "scripts/operations/package-source.py",
+        "scripts/qa/run-browser-acceptance.cjs",
+        "scripts/ci/configure-ubuntu-packages.cjs",
+        "scripts/ci/configure-ubuntu-packages.test.cjs",
+        ".github/workflows/verify.yml",
+        ".github/apt-ci.conf"
+      ],
+      "deferredConditions": [
+        "全量来源迁入和独立备份完整性"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G02",
+      "title": "一题/整页/教辅采集分流",
+      "originalStatus": "in_progress",
+      "requirement": "相机相册、多页PDF、已知题卷和教材有明确入口。验收：真实手机权限、取消、旋转、模糊、页序与中断恢复。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-41"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/paper-capture.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+        "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+        "apps/api/src/modules/learning/paper-capture-command.service.ts",
+        "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+        "apps/api/src/modules/learning/paper-capture-page.service.ts",
+        "apps/api/src/modules/learning/paper-capture-group.service.ts",
+        "apps/api/src/modules/learning/paper-capture-derivation.service.ts"
+      ],
+      "deferredConditions": [
+        "真实手机相机及权限"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G03",
+      "title": "原图与处理图",
+      "originalStatus": "in_progress",
+      "requirement": "裁剪、旋转、去笔迹和修订不覆盖原件。验收：变换可恢复、低清和阴影样本、误擦内容对照、隐私元数据清理。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-25",
+        "STUDIO-41"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/studio-original-repair.service.ts",
+        "apps/api/src/modules/learning/studio-original-repair-worker.service.ts",
+        "apps/api/src/modules/learning/studio-original-repair-record.ts",
+        "apps/api/src/modules/learning/studio-original-repair.integration.test.ts",
+        "apps/api/src/infrastructure/studio-original-repair.ts",
+        "apps/api/src/infrastructure/studio-original-repair.test.ts",
+        "apps/web/app/studio/source-courses/original-repair.tsx",
+        "tests/e2e/pdf-material.spec.ts",
+        "apps/api/src/modules/learning/paper-capture.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+        "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+        "apps/api/src/modules/learning/paper-capture-command.service.ts",
+        "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+        "apps/api/src/modules/learning/paper-capture-page.service.ts",
+        "apps/api/src/modules/learning/paper-capture-group.service.ts",
+        "apps/api/src/modules/learning/paper-capture-derivation.service.ts"
+      ],
+      "deferredConditions": [
+        "低清阴影误擦全集人工对比"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G04",
+      "title": "OCR表格公式恢复",
+      "originalStatus": "in_progress",
+      "requirement": "按区域保留文字、表格单元和公式原图/候选/确认。验收：扫描混排、跨页表、合并单元、复杂公式与手写样本人工标注对比。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-12",
+        "STUDIO-13"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/studio-pdf-structure.ts",
+        "scripts/processing/process_document.py",
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [
+        "扫描手写全集人工标注质量"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G05",
+      "title": "教材页题答案层级",
+      "originalStatus": "in_progress",
+      "requirement": "书→章→课时→页→题/答案与原页引用互通。验收：准确版本年份、缺页、无答案、正文未取得与来源冲突均显示真实状态。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CUR-06",
+        "CUR-11"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+        "apps/api/src/modules/diagnostics/curriculum.service.ts",
+        "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+        "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+        "doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md",
+        "apps/api/src/modules/diagnostics/textbook-teaching.service.ts"
+      ],
+      "deferredConditions": [
+        "全部准确版本和正文来源取得"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-G06",
+      "title": "文档任务与人工核对",
+      "originalStatus": "in_progress",
+      "requirement": "上传、进度、取消、失败重试、页级核对与修改影响闭环。验收：重启/重复提交/旧页确认/撤权，不发布过期识别结果。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-03",
+        "OPS-05",
+        "STUDIO-41"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/processing/processing.controller.ts",
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/infrastructure/domain-event-bus.service.ts",
+        "apps/api/src/modules/processing/import-files.service.ts",
+        "apps/api/src/modules/learning/paper-capture.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+        "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+        "apps/api/src/modules/learning/paper-capture-command.service.ts",
+        "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+        "apps/api/src/modules/learning/paper-capture-page.service.ts",
+        "apps/api/src/modules/learning/paper-capture-group.service.ts",
+        "apps/api/src/modules/learning/paper-capture-derivation.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H01",
+      "title": "多维试卷与资源检索",
+      "originalStatus": "in_progress",
+      "requirement": "年级/学科/版本/地区/类型/年份/完整度服务端分页，记住条件。验收：大索引实测、空结果、缺题卷与只有预览资源不误导。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CONTENT-06",
+        "STUDIO-38"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/library/library.service.ts",
+        "apps/web/app/studio/materials-workspace.tsx",
+        "apps/web/app/studio/materials-workspace.css",
+        "apps/web/app/studio/personal-materials.tsx",
+        "apps/web/lib/materials-navigation.ts",
+        "apps/web/lib/material-text-draft.ts",
+        "apps/web/app/studio/source-courses/source-reader.tsx",
+        "apps/web/app/library/studio.tsx",
+        "apps/web/components/paper-practice-launcher.tsx",
+        "apps/api/src/infrastructure/materials-navigation.test.ts",
+        "tests/e2e/workspace-materials.spec.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H02",
+      "title": "个人组织与选题清单",
+      "originalStatus": "in_progress",
+      "requirement": "收藏、文件夹、最近阅读/下载和跨卷选题独立保存。验收：重复添加、移动删除、撤回来源、多孩子隔离与恢复。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CONTENT-08",
+        "CONTENT-15"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/library/library.service.ts",
+        "apps/api/src/modules/library/paper-selection.controller.ts",
+        "apps/api/src/modules/library/paper-export.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/library/paper-selection.service.ts",
+        "apps/api/src/modules/library/paper-export.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H03",
+      "title": "整卷单题练习",
+      "originalStatus": "in_progress",
+      "requirement": "整卷阅读、选题、分题作答、反馈与原卷定位连贯。验收：完整/部分/PDF卷分别走通，缺答案不自动评分。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CONTENT-12"
+      ],
+      "sourceFiles": [
+        "packages/contracts/src/paper-practice.ts",
+        "apps/api/src/modules/library/paper-practice-record.ts",
+        "apps/api/src/modules/library/paper-practice.service.ts",
+        "apps/web/app/library/practice/studio.tsx",
+        "apps/web/app/library/practice/session.tsx",
+        "apps/web/components/paper-practice-launcher.tsx",
+        "apps/web/lib/paper-practice-local.ts",
+        "apps/web/lib/paper-practice-api.ts",
+        "apps/api/src/modules/library/paper-practice.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+        "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+        "tests/e2e/paper-practice.spec.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H04",
+      "title": "错题整理与订正",
+      "originalStatus": "in_progress",
+      "requirement": "原始表现、标签、错误步骤、订正、复做、来源和计划关联。验收：不同来源题保持身份，提示/看答案后订正不算新独立成功。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-05",
+        "CONTENT-14"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/notebook.service.ts",
+        "apps/api/src/modules/library/paper-review-eligibility.ts",
+        "apps/api/src/modules/diagnostics/paper-exposure.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+        "apps/api/src/modules/privacy/privacy-records.ts",
+        "apps/web/components/paper-review-next-steps.tsx",
+        "packages/contracts/src/diagnostics.ts",
+        "apps/api/src/modules/library/measurement-content.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+        "apps/api/src/modules/library/paper-practice.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H05",
+      "title": "PDF/DOCX与打印",
+      "originalStatus": "in_progress",
+      "requirement": "题序、留白、答案分离、公式表格、页码来源可预览，异步产物受控下载。验收：实际渲染/打开及实体打印，无截断/丢图/错分页。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "CONTENT-15"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/library/paper-selection.controller.ts",
+        "apps/api/src/modules/library/paper-export.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/library/paper-selection.service.ts",
+        "apps/api/src/modules/library/paper-export.service.ts"
+      ],
+      "deferredConditions": [
+        "实体打印"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-H06",
+      "title": "异步中心与复习回流",
+      "originalStatus": "in_progress",
+      "requirement": "导出/处理记录可取消、恢复、重试，错题能进入新题复习。验收：完成文件真实存在且可读，任务成功不等于教学审核通过。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-03",
+        "CONTENT-15"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/processing/processing.controller.ts",
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/infrastructure/domain-event-bus.service.ts",
+        "apps/api/src/modules/library/paper-selection.controller.ts",
+        "apps/api/src/modules/library/paper-export.controller.ts",
+        "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+        "apps/api/src/modules/library/paper-selection.service.ts",
+        "apps/api/src/modules/library/paper-export.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I01",
+      "title": "范围与蓝图低负担体验",
+      "originalStatus": "in_progress",
+      "requirement": "按年级/教材/进度确认范围，预览题量时长和未测缺口。验收：新用户理解流程、未学不混入、旧预览/曝光变化失效。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "ASM-01",
+        "ASM-02"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts"
+      ],
+      "deferredConditions": [
+        "真人新用户理解与负担"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I02",
+      "title": "自适应与步骤观察深化",
+      "originalStatus": "in_progress",
+      "requirement": "预算内核查基础、先修、迁移、保持与显式分项。验收：路由理由可追溯、无题/待复核/提示分支正确、分项不重复计样本。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "ASM-03",
+        "MEA-03",
+        "MEA-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/adaptive-routing.ts",
+        "packages/contracts/src/controlled-contrast.ts",
+        "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+        "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+        "apps/api/src/modules/diagnostics/controlled-native.ts",
+        "apps/api/src/modules/diagnostics/controlled-guidance-basis.ts",
+        "apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts",
+        "apps/web/components/controlled-contrast-planner.tsx",
+        "apps/web/components/controlled-guidance-panel.tsx",
+        "apps/web/app/admin/curriculum/controlled-editorial-panel.tsx",
+        "tests/e2e/controlled-contrasts.spec.ts",
+        "doc/product/163-controlled-cause-contrasts-and-counterevidence.md",
+        "doc/evidence/2026-10-31/workspace-r3-controlled-contrasts/receipt.json",
+        "apps/api/src/modules/diagnostics/guidance.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I03",
+      "title": "普通语言报告与证据",
+      "originalStatus": "in_progress",
+      "requirement": "家长能看到已知/未知/待验证及单一主要下一步。验收：无证据不判弱、区间和版本可展开、报告重算不改原始答案。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "ASM-11",
+        "LEARN-07"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/measurement-compatibility.ts",
+        "apps/web/components/report-analysis-update.tsx",
+        "apps/web/components/knowledge-report-workspace.tsx",
+        "apps/web/components/knowledge-report-workspace.css",
+        "doc/product/139-self-reported-difficulty-and-measurement-versioning.md",
+        "tests/e2e/knowledge-report.spec.ts",
+        "apps/api/src/modules/diagnostics/diagnostics.service.ts",
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/components/workspace-next-action.tsx",
+        "apps/web/app/studio/studio.tsx",
+        "apps/web/app/learn/page.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I04",
+      "title": "更多原因与反证探针",
+      "originalStatus": "in_progress",
+      "requirement": "新错误解释先定义可观察条件、替代解释和反证，不直接给心理标签。验收：支持/冲突/反驳/无法判断、教师核对与后续重开。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "MEA-04",
+        "MEA-05",
+        "MEA-06"
+      ],
+      "sourceFiles": [
+        "apps/web/components/knowledge-report-workspace.tsx",
+        "doc/product/126-knowledge-report-workspace-and-evidence-paths.md",
+        "tests/e2e/knowledge-report.spec.ts",
+        "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json",
+        "apps/web/components/report-plan-path.tsx",
+        "packages/contracts/src/controlled-contrast.ts",
+        "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+        "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+        "apps/api/src/modules/diagnostics/controlled-native.ts",
+        "apps/api/src/modules/diagnostics/controlled-guidance-basis.ts",
+        "apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts",
+        "apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts",
+        "apps/web/components/controlled-contrast-planner.tsx",
+        "apps/web/components/controlled-guidance-panel.tsx",
+        "apps/web/app/admin/curriculum/controlled-editorial-panel.tsx",
+        "tests/e2e/controlled-contrasts.spec.ts",
+        "doc/product/163-controlled-cause-contrasts-and-counterevidence.md",
+        "doc/evidence/2026-10-31/workspace-r3-controlled-contrasts/receipt.json",
+        "apps/api/src/modules/diagnostics/guidance.service.ts"
+      ],
+      "deferredConditions": [
+        "教师对照和原因有效性"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I05",
+      "title": "个性指导与预算",
+      "originalStatus": "in_progress",
+      "requirement": "根据真实卡点选择讲法、资源、训练、成功标准与复测，家长确认修改。验收：资源可用、先修优先、日预算、暂停、旧定义不兼容和无模型降级。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "PLAN-01",
+        "PLAN-02",
+        "PLAN-05"
+      ],
+      "sourceFiles": [
+        "apps/web/components/report-plan-path.tsx",
+        "apps/web/components/knowledge-report-workspace.tsx",
+        "doc/product/126-knowledge-report-workspace-and-evidence-paths.md",
+        "tests/e2e/knowledge-report.spec.ts",
+        "doc/evidence/2026-10-26/knowledge-report-focused/receipt.json",
+        "apps/api/src/modules/diagnostics/guidance.service.ts",
+        "apps/api/src/modules/diagnostics/guidance-model.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-I06",
+      "title": "真实复测与干预复盘",
+      "originalStatus": "in_progress",
+      "requirement": "1/3/7/14日真实间隔、独立题族、前后可比、原因关闭/重开。验收：真实时间学生结果、保持失败、反向结果、不足样本均保留。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "PLAN-03",
+        "PLAN-04",
+        "LEARN-13"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/diagnostics/guidance.service.ts",
+        "apps/api/src/modules/diagnostics/retention.service.ts",
+        "apps/api/src/modules/diagnostics/retention-anchor.ts",
+        "apps/api/src/modules/diagnostics/retention-source.ts",
+        "apps/api/src/modules/diagnostics/retention-integrity.ts",
+        "apps/api/src/modules/diagnostics/retention-evidence-projection.ts",
+        "apps/api/src/modules/diagnostics/retention-review-gate.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-record.ts",
+        "apps/api/src/modules/diagnostics/classroom-retention-origin.ts",
+        "apps/api/src/modules/diagnostics/retention-legacy-classroom.test.ts",
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/learning/classroom-turn.service.ts",
+        "apps/api/src/modules/learning/classroom-turn-worker.service.ts",
+        "apps/api/src/modules/diagnostics/retention.integration.test.ts",
+        "apps/api/src/infrastructure/schema29-reader.integration.test.ts",
+        "apps/web/components/retention-evidence.tsx",
+        "apps/web/app/studio/classroom/retention-display.tsx",
+        "packages/contracts/src/retention.ts",
+        "tests/e2e/retention-evidence.spec.ts",
+        "doc/product/162-retention-anchor-and-measurement-compatibility.md",
+        "apps/api/src/modules/diagnostics/classroom-retention-history.test.ts",
+        "apps/api/src/modules/diagnostics/retention-course-history.integration.test.ts"
+      ],
+      "deferredConditions": [
+        "真实学生1/3/7/14日结果"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J01",
+      "title": "统一全模型路径",
+      "originalStatus": "in_progress",
+      "requirement": "逐项统一聊天/插问/计划/兼容分析/PDF的适配与能力目录。验收：各路径真实小调用、默认模型、视觉支持、持久选型和不可用原因。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-01",
+        "AI-03",
+        "AI-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/ai/codex-command.ts",
+        "apps/api/src/common/terminate-child-process.ts",
+        "scripts/qa/verify-assistant-turn-runtime.cjs"
+      ],
+      "deferredConditions": [
+        "各供应商真实生成与账号可用性"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J02",
+      "title": "流式反馈与可靠取消",
+      "originalStatus": "in_progress",
+      "requirement": "首个可读状态及时显示，安全回复分段或增量，最终验证后保存。验收：取消/断网/重连/重试无重复消息，非法结构不成为正式指导。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-02",
+        "AI-03",
+        "AI-08"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/ai/assistant-turn.service.ts",
+        "apps/api/src/modules/ai/assistant-turn-worker.service.ts",
+        "apps/web/lib/assistant-conversation.tsx",
+        "apps/web/components/assistant-widget.tsx",
+        "apps/api/src/modules/ai/assistant-lecture-context.ts",
+        "apps/api/src/modules/ai/assistant-lecture.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-lecture-recovery.integration.test.ts",
+        "apps/web/app/studio/studio-instant-assistant.tsx",
+        "apps/web/app/studio/studio-instant-assistant.css",
+        "tests/e2e/studio-assistant.spec.ts",
+        "apps/api/src/modules/ai/teaching-output-policy.ts",
+        "apps/api/src/modules/ai/teaching-output-policy.test.ts",
+        "apps/api/src/modules/ai/teaching-output-caller.test.ts",
+        "doc/product/141-normal-teaching-and-evidence-output-boundaries.md",
+        "apps/api/src/modules/ai/ai.service.ts",
+        "apps/api/src/modules/ai/codex-command.ts",
+        "apps/api/src/common/terminate-child-process.ts",
+        "scripts/qa/verify-assistant-turn-runtime.cjs",
+        "apps/web/app/student/assessment/studio.tsx"
+      ],
+      "deferredConditions": [
+        "当前助教采用持久任务状态反馈和完整校验后正文；逐token文字传输仍未实现，作为原完整交互要求的明确保留差异，不转成外部验收条件"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J03",
+      "title": "来源引用与上下文控制",
+      "originalStatus": "in_progress",
+      "requirement": "模型只收到授权、相关、预算内证据；引用可点击原题/原页。验收：跨家庭负例、答案阶段保护、伪引用拒绝、超长上下文与资料变更。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-10",
+        "AI-11",
+        "AI-12"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/ai/assistant-teaching-content.ts",
+        "apps/api/src/modules/ai/assistant-course-context.ts",
+        "apps/api/src/modules/ai/assistant-source-references.ts",
+        "apps/api/src/modules/ai/assistant-teaching-instructions.ts",
+        "apps/api/src/modules/ai/assistant-course.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-course-recovery.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-source-references.test.ts",
+        "apps/api/src/modules/ai/assistant-controlled-figure.ts",
+        "apps/api/src/modules/ai/assistant-controlled-figure.test.ts",
+        "apps/api/src/modules/ai/assistant-chemistry-tutorial.test.ts",
+        "apps/web/app/studio/classroom/classroom-image.tsx",
+        "apps/api/src/modules/ai/assistant-teaching-provider-context.test.ts",
+        "apps/web/app/studio/studio-course-assistant.tsx",
+        "apps/web/app/studio/studio-course-assistant.css",
+        "apps/web/lib/assistant-course-client.ts",
+        "apps/web/lib/assistant-course-navigation.ts",
+        "apps/web/components/assistant-source-preview.tsx",
+        "apps/web/components/assistant-source-preview.css",
+        "tests/e2e/course-assistant.spec.ts",
+        "doc/product/142-course-teaching-context-and-source-references.md",
+        "apps/api/src/modules/ai/ai.service.ts",
+        "packages/contracts/src/assistant-artifact.ts",
+        "apps/api/src/modules/ai/assistant-artifact.controller.ts",
+        "apps/api/src/modules/ai/assistant-artifact.service.ts",
+        "apps/api/src/modules/ai/assistant-artifact.integration.test.ts",
+        "apps/api/src/modules/ai/assistant-note.controller.ts",
+        "apps/api/src/modules/ai/assistant-note.service.ts",
+        "apps/api/src/modules/ai/assistant-note-record.ts",
+        "apps/api/src/modules/ai/assistant-note.integration.test.ts",
+        "apps/api/src/common/auth.guard.ts",
+        "apps/web/components/assistant-notes.tsx",
+        "apps/web/components/assistant-notes.css",
+        "apps/web/components/assistant-note-reading.tsx",
+        "apps/web/components/assistant-widget.tsx",
+        "apps/web/lib/assistant-conversation.tsx",
+        "tests/e2e/assistant-notes.spec.ts",
+        "scripts/qa/run-assistant-notes-postgres.cjs",
+        "doc/product/143-assistant-messages-to-learning-artifacts.md",
+        "packages/contracts/src/assistant-whiteboard.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard.controller.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard.service.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-source.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-content.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-integrity.ts",
+        "apps/api/src/modules/learning/topic-whiteboard-source-access.ts",
+        "apps/api/src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-reader.integration.test.ts",
+        "apps/api/src/infrastructure/assistant-whiteboard-recovery.integration.test.ts",
+        "apps/web/components/assistant-whiteboards.tsx",
+        "apps/web/components/assistant-whiteboards.css",
+        "apps/web/app/studio/whiteboards/assistant-source.tsx",
+        "apps/web/app/studio/whiteboards/source-write-guard.tsx",
+        "apps/web/app/studio/whiteboards/rejected-edits.ts",
+        "tests/e2e/assistant-whiteboards.spec.ts",
+        "doc/product/146-conversation-sourced-whiteboard-teaching.md",
+        "apps/api/src/modules/learning/topic-whiteboard.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J04",
+      "title": "可检查学习记忆",
+      "originalStatus": "in_progress",
+      "requirement": "事实、偏好、未知、假设、来源和删除影响可查看。验收：不凭模型生成固定能力标签，修改/撤权/删除后新会话上下文同步。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "LEARN-01"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/learning.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J05",
+      "title": "连续日历与手动ICS",
+      "originalStatus": "in_progress",
+      "requirement": "月周、确认/待处理、完成/重开、计划/订阅边界和手动同步闭环。验收：身份可见性、冲突、时区、全天跨日、批删范围和版本冲突。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-17",
+        "STUDIO-18",
+        "STUDIO-19",
+        "LEARN-12"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/learning/ics-calendar.ts",
+        "apps/api/src/modules/learning/studio-integration.service.ts",
+        "apps/web/app/studio/calendar-board.tsx",
+        "apps/web/app/studio/workspace-dialog.tsx",
+        "apps/api/src/modules/learning/guidance-calendar.service.ts",
+        "apps/api/src/modules/learning/guidance-calendar.controller.ts",
+        "apps/api/src/modules/learning/guidance-calendar-preview.ts",
+        "apps/api/src/modules/learning/guidance-calendar-time.ts",
+        "apps/api/src/modules/learning/guidance-calendar-record.ts",
+        "apps/api/src/modules/learning/legacy-calendar-command.ts",
+        "apps/api/src/modules/privacy/privacy-records.ts",
+        "apps/api/src/infrastructure/schema28-reader.integration.test.ts",
+        "apps/web/components/guidance-calendar-manager.tsx",
+        "apps/web/lib/guidance-calendar-copy.ts",
+        "packages/contracts/src/guidance-calendar.ts",
+        "tests/e2e/guidance-calendar.spec.ts",
+        "doc/product/161-guidance-calendar-persistence-and-timezone-protocol.md"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-J06",
+      "title": "历史、下一问与跨会话恢复",
+      "originalStatus": "in_progress",
+      "requirement": "历史可检索并恢复对象，推荐问题绑定当前目标。验收：换页/刷新/重启恢复，不因建议点击自动发送外部请求或改变学习事实。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "AI-08",
+        "LEARN-07"
+      ],
+      "sourceFiles": [
+        "apps/web/app/student/assessment/studio.tsx",
+        "apps/api/src/modules/ai/assistant-turn.service.ts",
+        "apps/api/src/modules/learning/learning-home.service.ts",
+        "apps/web/components/workspace-next-action.tsx",
+        "apps/web/app/studio/studio.tsx",
+        "apps/web/app/learn/page.tsx",
+        "apps/web/lib/learning-context.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K01",
+      "title": "固定参考视觉验收",
+      "originalStatus": "in_progress",
+      "requirement": "页面状态矩阵、统一视口字体DPR与截图差异记录。验收：逐状态人工核对，差异明确修复或保留未完成，不以单图声称100%。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "STUDIO-37",
+        "STUDIO-39"
+      ],
+      "sourceFiles": [
+        "apps/web/components/workspace-shell.tsx",
+        "apps/web/lib/workspace-navigation.ts",
+        "apps/web/app/studio/profiles/profiles.tsx",
+        "apps/web/app/studio/reports/reports.tsx",
+        "apps/api/src/modules/learning/workspace-overview.integration.test.ts",
+        "tests/e2e/workspace-shell.spec.ts",
+        "apps/api/src/modules/learning/learning.service.ts",
+        "packages/contracts/src/activity-navigation.ts",
+        "apps/api/src/modules/learning/activity-navigation.ts",
+        "apps/api/src/modules/learning/activity-navigation.test.ts",
+        "apps/api/src/modules/learning/source-course-project.integration.test.ts",
+        "apps/web/components/activity-workspace-navigation.tsx",
+        "apps/web/lib/workspace-exit-guard.ts",
+        "apps/web/app/studio/whiteboard-player.tsx",
+        "apps/web/app/studio/whiteboard-session.tsx",
+        "apps/web/app/library/practice/session.tsx",
+        "apps/web/app/admin/workspace-shell.tsx",
+        "apps/web/app/admin/workspace-shell.css",
+        "apps/web/lib/admin-navigation.ts",
+        "tests/e2e/workspace-focus.spec.ts"
+      ],
+      "deferredConditions": [
+        "全参考像素、字体DPR与逐状态人工验收"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K02",
+      "title": "真实设备与辅助技术",
+      "originalStatus": "planned",
+      "requirement": "手机/平板/桌面、键盘、读屏、相机和录音权限、听感。验收：设备型号/浏览器/步骤/结果可追溯，自动模拟不替代实机。",
+      "scope": "external_acceptance_deferred",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "真实手机平板桌面、读屏、相机录音权限和听感"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K03",
+      "title": "性能与长时稳定",
+      "originalStatus": "planned",
+      "requirement": "页面、首个反馈、语音、文档处理、并发评测和长时课堂实测。验收：明确负载/机器/冷暖、资源泄漏与失败恢复，无凭空承诺指标。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/operations/operations-capabilities.service.ts",
+        "apps/api/src/modules/operations/operations-capabilities.module.ts",
+        "apps/web/app/admin/analytics/runtime-capabilities.tsx",
+        "apps/api/src/modules/operations/operations-capabilities.test.ts",
+        "apps/api/src/modules/operations/operations-capabilities.integration.test.ts",
+        "tests/e2e/operations-capabilities.spec.ts",
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/infrastructure/runtime-metrics.service.ts",
+        "apps/api/src/modules/progress/progress.service.ts"
+      ],
+      "deferredConditions": [
+        "长时稳定、实际供应商延迟、全工作负载容量"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K04",
+      "title": "依赖自检与故障修复",
+      "originalStatus": "in_progress",
+      "requirement": "库/资产/CLI/语音/Python/OCR/FFmpeg/图像/C++分别检查。验收：全新配置及缺依赖场景给准确修复建议，普通学习不被可选能力阻断。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-06"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/operations/operations-capabilities.service.ts",
+        "apps/api/src/modules/operations/operations-capabilities.module.ts",
+        "apps/web/app/admin/analytics/runtime-capabilities.tsx",
+        "apps/api/src/modules/operations/operations-capabilities.test.ts",
+        "apps/api/src/modules/operations/operations-capabilities.integration.test.ts",
+        "tests/e2e/operations-capabilities.spec.ts",
+        "apps/api/src/infrastructure/in-memory-store.service.ts",
+        "apps/api/src/infrastructure/runtime-metrics.service.ts",
+        "apps/api/src/modules/progress/progress.service.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K05",
+      "title": "升级、守护与一致性恢复",
+      "originalStatus": "in_progress",
+      "requirement": "双库迁移、任务栅栏、库/媒体/资产备份、删除账本、守护重启。验收：独立空目录恢复并继续学习、旧任务不能覆盖新结果。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-07",
+        "OPS-08"
+      ],
+      "sourceFiles": [
+        "scripts/operations/backup.cjs",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "scripts/gesp/backup_archive.py"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-K06",
+      "title": "隐私、安全与可维护性",
+      "originalStatus": "in_progress",
+      "requirement": "权限负例、上传/渲染/代码隔离、日志脱敏和服务职责拆分。验收：跨家庭/撤权/答案泄漏负例，拆分不改变事务与快照语义。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "PRIVACY-01",
+        "PRIVACY-03",
+        "OPS-01",
+        "OPS-02"
+      ],
+      "sourceFiles": [
+        "apps/api/src/modules/privacy/privacy.service.ts",
+        "apps/api/src/modules/privacy/privacy-records.ts",
+        "apps/api/src/modules/learning/studio-material-maintenance.service.ts",
+        "apps/api/src/infrastructure/request-rate.middleware.ts",
+        "apps/api/src/common/auth.guard.ts",
+        "apps/api/src/common/api-response.interceptor.ts"
+      ],
+      "deferredConditions": [],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L01",
+      "title": "教材与课堂逐项教师审核",
+      "originalStatus": "planned",
+      "requirement": "对要求范围每课内容、题目、映射、量规与先修有真实审核。验收：审核人、版本、原页和问题修订可核对，候选不当批准。",
+      "scope": "content_paused",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "逐课教师审核，内容已暂停"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L02",
+      "title": "连续真实学习试用",
+      "originalStatus": "planned",
+      "requirement": "家长/学生连续使用覆盖真实1/3/7/14日学习和复测。验收：输入障碍、求助/退出、实际负担、成功和失败均保留，不能合成替代。",
+      "scope": "external_acceptance_deferred",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "连续真实学习和真实间隔观察"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L03",
+      "title": "诊断与评分有效性检查",
+      "originalStatus": "planned",
+      "requirement": "教师对照误报/漏报、评分分歧和验证结论改变。验收：原始结果、替代解释、样本边界和规则修订，不宣称已建立常模。",
+      "scope": "content_paused",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "教师评分和诊断有效性"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L04",
+      "title": "全资产与安装交接",
+      "originalStatus": "planned",
+      "requirement": "所有采用来源有迁入、缺口与备份记录，换机器可安装并使用。验收：实际新环境、资源完整性、缺源说明与恢复演练。",
+      "scope": "business_flow_included",
+      "featureIds": [
+        "OPS-07",
+        "OPS-08",
+        "OPS-09"
+      ],
+      "sourceFiles": [
+        "scripts/operations/backup.cjs",
+        "scripts/operations/postgres-backup.cjs",
+        "scripts/operations/restore-context.cjs",
+        "scripts/operations/restore-files.cjs",
+        "scripts/operations/sqlite-restore.cjs",
+        "apps/api/src/infrastructure/sqlite-restore-resume.integration.test.ts",
+        "scripts/operations/postgres-restore-import.cjs",
+        "scripts/operations/postgres-restore.cjs",
+        "apps/api/src/infrastructure/postgres-restore-resume.integration.test.ts",
+        "apps/api/src/infrastructure/atomic-marker-publication.ts",
+        "apps/api/src/infrastructure/restore-context.test.ts",
+        "apps/api/src/infrastructure/postgres-restore-import.integration.test.ts",
+        "scripts/operations/restore-state.cjs",
+        "scripts/operations/restored-materials.cjs",
+        "apps/api/src/infrastructure/restored-materials.integration.test.ts",
+        "apps/api/src/infrastructure/source-material-backup.integration.test.ts",
+        "scripts/gesp/backup_archive.py",
+        "scripts/operations/package-source.py",
+        "scripts/qa/run-browser-acceptance.cjs",
+        "scripts/ci/configure-ubuntu-packages.cjs",
+        "scripts/ci/configure-ubuntu-packages.test.cjs",
+        ".github/workflows/verify.yml",
+        ".github/apt-ci.conf"
+      ],
+      "deferredConditions": [
+        "完整资产交接及真实新电脑安装"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L05",
+      "title": "跨需求最终审计",
+      "originalStatus": "planned",
+      "requirement": "合并用户目标、原始需求与本账本逐项核对。验收：每要求对应当前代码、运行、内容和所需真人证据，缺失/间接证据保留未完成。",
+      "scope": "business_scope_archive",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "本轮仅审计业务；原完整产品各外部条件保留"
+      ],
+      "originalRequirementVerified": false
+    },
+    {
+      "id": "XP-L06",
+      "title": "全量归档与完成声明",
+      "originalStatus": "planned",
+      "requirement": "方案、实现、素材清单、验证、已知限制、提交与运行版本一致。验收：没有将待审、待观察、待真实间隔或排除项混作完成，目标仅在全部满足后标complete。",
+      "scope": "business_scope_archive",
+      "featureIds": [],
+      "sourceFiles": [],
+      "deferredConditions": [
+        "本轮归档和结束开发不等原完整教学产品验收"
+      ],
+      "originalRequirementVerified": false
+    }
+  ],
+  "workspace": [
+    {
+      "id": "WS01",
+      "requirement": "工作台统一产品入口；品牌、登录、安全返回、退出换号和旧地址一致；不保留另一套观察室主导航",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS02",
+      "requirement": "原六项加任务/诊断/报告的九项轻分组菜单、底部档案/账号/管理；各角色/撤权/手机正确；后端仍独立授权",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS03",
+      "requirement": "复用240/60侧栏、原字体/token/图标、列表/标签/弹窗/抽屉/焦点；旧正文同规范，有真实渲染与参考差异",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS04",
+      "requirement": "本人/孩子、适用学科和GESP明确；student/studentId冲突、成人意图、双孩子/学科、迟到响应、多标签和存储不可用正确",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS05",
+      "requirement": "首页保留创建课程/即时帮助，吸收learn主要下一步和恢复；家长、学生、成人/无档案可用；读取不产生业务活动",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS06",
+      "requirement": "今日/指导/错题/复测归任务；原计划/活动/草稿/回执/暂停/待确认正确；家长不能代写首答",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS07",
+      "requirement": "诊断作答、报告解释、任务执行、日历安排；旧会话/报告/评分/计划引用与学生合法报告投影保持",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS08",
+      "requirement": "档案/监护和教师授权/学习码/设备归档案，账号数据管理归底部；保留确认、删除和学习身份语义",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS09",
+      "requirement": "个人资料/题卷/学案/资料建课同入口；来源、授权、分页、完整度、成人能力与限制、原卷练习/打印恢复正确",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS10",
+      "requirement": "课堂/白板/项目/来源课/原卷/GESP及后台共用一个外壳；专注交互、声音/字体/公式/代码/媒体/打印与返回不回归",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS11",
+      "requirement": "31旧页面和参数显式适配；原actor/首答/曝光/题包/快照/请求键/草稿保持；刷新/前后退/深链/安全返回/恢复通过",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    },
+    {
+      "id": "WS12",
+      "requirement": "全状态、320～1440px及短高度、触屏/键盘/读屏、隔离双库/浏览器/完整回归、实际运行和回退均有相称证据",
+      "originalStatus": "in_progress",
+      "engineeringIncluded": true,
+      "originalRequirementVerified": false,
+      "externalConditionsRetained": true
+    }
+  ],
+  "evidence": "receipt.json",
+  "fullOriginalProductComplete": false,
+  "currentBusinessScopeClosed": true,
+  "retainedImplementationDifference": "XP-J02 uses durable task status and complete validated replies. Token transport remains absent and is not an external acceptance condition."
+}

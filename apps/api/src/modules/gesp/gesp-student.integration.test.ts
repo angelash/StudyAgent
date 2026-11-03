@@ -69,6 +69,7 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     expect(capability.dimensions).toContainEqual({ dimension: 'understanding', status: 'recorded', attempts: 1 });
   }, 30_000);
 
+  // Three real isolated compilations include WSL startup, five hidden runs and cleanup.
   it('runs source with hidden tests and returns only sanitized evidence', async () => {
     const source = '#include <iostream>\nint main(){long long a,b;std::cin>>a>>b;std::cout<<a+b<<"\\n";}';
     const requestKey = randomUUID(), first = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source, requestKey }, learner);
@@ -82,7 +83,7 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     const compileError = await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.io', source: 'int main(){ this is invalid; }',
       requestKey: randomUUID() }, learner); expect(compileError).toMatchObject({ status: 'error', compilePassed: false });
     expect(compileError.compileDiagnostics.length).toBeGreaterThan(0); expect(JSON.stringify(compileError)).not.toContain('/tmp/study-');
-  }, 60_000);
+  }, 120_000);
 
   it('rejects points outside scope, parent code submission and unrelated guardians', async () => {
     await call('post', '/gesp/code-submissions', { studentId, atomId: 'gesp-cpp.l1.branch', source: 'int main(){}', requestKey: randomUUID() }, learner, 403);
@@ -108,5 +109,5 @@ describe.skipIf(process.platform !== 'win32')('GESP isolated student programming
     expect(workspace.capabilities[0].state).not.toBe('current_evidence_met');
     expect(workspace.capabilities[0].independentEvidenceIds).not.toContain(receipt.id);
     expect(workspace.capabilities[0].independentEvidenceIds).not.toContain(repeated.id);
-  }, 60_000);
+  }, 120_000);
 });

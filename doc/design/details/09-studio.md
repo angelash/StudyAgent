@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/tasks`、`/studio/assessment`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -120,11 +120,11 @@
 
 **关联接口**：
 
-- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)。
+- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:24](../../../apps/api/src/modules/learning/learning.controller.ts#L24)。
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:77](../../../apps/api/src/modules/learning/learning.service.ts#L77)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:76](../../../apps/api/src/modules/learning/learning.service.ts#L76)。
 
 **补充实现文件**：
 
@@ -191,11 +191,11 @@
 
 **关联接口**：
 
-- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)。
+- `GET /api/learning/studio/overview` → `LearningController.studioOverview`；[apps/api/src/modules/learning/learning.controller.ts:24](../../../apps/api/src/modules/learning/learning.controller.ts#L24)。
 
 **服务方法**：
 
-- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:77](../../../apps/api/src/modules/learning/learning.service.ts#L77)。
+- `LearningService.studioOverview`；[apps/api/src/modules/learning/learning.service.ts:76](../../../apps/api/src/modules/learning/learning.service.ts#L76)。
 
 **补充实现文件**：
 
@@ -216,15 +216,18 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/courses/preview` → `LearningController.studioCoursePreview`；[apps/api/src/modules/learning/learning.controller.ts:24](../../../apps/api/src/modules/learning/learning.controller.ts#L24)。
-- `POST /api/learning/studio/courses` → `LearningController.studioCourseCreate`；[apps/api/src/modules/learning/learning.controller.ts:27](../../../apps/api/src/modules/learning/learning.controller.ts#L27)。
-- `POST /api/learning/studio/courses/:courseId/lessons/:lessonId/start` → `LearningController.studioLessonStart`；[apps/api/src/modules/learning/learning.controller.ts:30](../../../apps/api/src/modules/learning/learning.controller.ts#L30)。
+- `POST /api/learning/studio/courses/preview` → `LearningController.studioCoursePreview`；[apps/api/src/modules/learning/learning.controller.ts:41](../../../apps/api/src/modules/learning/learning.controller.ts#L41)。
+- `POST /api/learning/studio/courses` → `LearningController.studioCourseCreate`；[apps/api/src/modules/learning/learning.controller.ts:45](../../../apps/api/src/modules/learning/learning.controller.ts#L45)。
+- `POST /api/learning/studio/courses/:courseId/lessons/:lessonId/start` → `LearningController.studioLessonStart`；[apps/api/src/modules/learning/learning.controller.ts:49](../../../apps/api/src/modules/learning/learning.controller.ts#L49)。
 
 **服务方法**：
 
+- `LearningController.teachingRequest`；[apps/api/src/modules/learning/learning.controller.ts:15](../../../apps/api/src/modules/learning/learning.controller.ts#L15)。
+- `TextbookTeachingCourseService.preview`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:118](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L118)。
 - `LearningService.previewStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:552](../../../apps/api/src/modules/learning/learning.service.ts#L552)。
+- `TextbookTeachingCourseService.create`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:138](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L138)。
 - `LearningService.createStudioCourse`；[apps/api/src/modules/learning/learning.service.ts:570](../../../apps/api/src/modules/learning/learning.service.ts#L570)。
-- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:599](../../../apps/api/src/modules/learning/learning.service.ts#L599)。
+- `LearningService.startStudioLesson`；[apps/api/src/modules/learning/learning.service.ts:596](../../../apps/api/src/modules/learning/learning.service.ts#L596)。
 
 **补充实现文件**：
 
@@ -250,7 +253,7 @@
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:38](../../../apps/api/src/modules/learning/classroom.service.ts#L38)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:40](../../../apps/api/src/modules/learning/classroom.service.ts#L40)。
 
 ## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
@@ -274,11 +277,11 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:108](../../../apps/api/src/modules/learning/classroom.service.ts#L108)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:98](../../../apps/api/src/modules/learning/classroom.service.ts#L98)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:162](../../../apps/api/src/modules/learning/classroom.service.ts#L162)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:333](../../../apps/api/src/modules/learning/classroom.service.ts#L333)。
-- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:190](../../../apps/api/src/modules/learning/classroom.service.ts#L190)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:119](../../../apps/api/src/modules/learning/classroom.service.ts#L119)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:109](../../../apps/api/src/modules/learning/classroom.service.ts#L109)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:179](../../../apps/api/src/modules/learning/classroom.service.ts#L179)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:350](../../../apps/api/src/modules/learning/classroom.service.ts#L350)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:207](../../../apps/api/src/modules/learning/classroom.service.ts#L207)。
 
 **补充实现文件**：
 
@@ -314,7 +317,7 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:287](../../../apps/api/src/modules/learning/classroom.service.ts#L287)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:304](../../../apps/api/src/modules/learning/classroom.service.ts#L304)。
 - `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:65](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L65)。
 - `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:69](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L69)。
 - `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:71](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L71)。
@@ -359,8 +362,8 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:209](../../../apps/api/src/modules/learning/classroom.service.ts#L209)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:260](../../../apps/api/src/modules/learning/classroom.service.ts#L260)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:226](../../../apps/api/src/modules/learning/classroom.service.ts#L226)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:277](../../../apps/api/src/modules/learning/classroom.service.ts#L277)。
 
 **补充实现文件**：
 
@@ -450,13 +453,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/whiteboards/preview` → `LearningController.studioWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:34](../../../apps/api/src/modules/learning/learning.controller.ts#L34)。
-- `POST /api/learning/studio/whiteboards` → `LearningController.studioWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:37](../../../apps/api/src/modules/learning/learning.controller.ts#L37)。
+- `POST /api/learning/studio/whiteboards/preview` → `LearningController.studioWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:53](../../../apps/api/src/modules/learning/learning.controller.ts#L53)。
+- `POST /api/learning/studio/whiteboards` → `LearningController.studioWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:56](../../../apps/api/src/modules/learning/learning.controller.ts#L56)。
 
 **服务方法**：
 
-- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:242](../../../apps/api/src/modules/learning/learning.service.ts#L242)。
-- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:254](../../../apps/api/src/modules/learning/learning.service.ts#L254)。
+- `LearningService.previewStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:241](../../../apps/api/src/modules/learning/learning.service.ts#L241)。
+- `LearningService.createStudioWhiteboard`；[apps/api/src/modules/learning/learning.service.ts:253](../../../apps/api/src/modules/learning/learning.service.ts#L253)。
 
 **补充实现文件**：
 
@@ -476,7 +479,7 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/whiteboards/:id/narration/:sceneId` → `LearningController.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.controller.ts:68](../../../apps/api/src/modules/learning/learning.controller.ts#L68)。
+- `POST /api/learning/studio/whiteboards/:id/narration/:sceneId` → `LearningController.studioWhiteboardNarration`；[apps/api/src/modules/learning/learning.controller.ts:87](../../../apps/api/src/modules/learning/learning.controller.ts#L87)。
 
 **服务方法**：
 
@@ -523,15 +526,15 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/pdf` → `LearningController.studioPdfUpload`；[apps/api/src/modules/learning/learning.controller.ts:40](../../../apps/api/src/modules/learning/learning.controller.ts#L40)。
-- `GET /api/learning/studio/materials/:id/pages/:page` → `LearningController.studioPdfPage`；[apps/api/src/modules/learning/learning.controller.ts:43](../../../apps/api/src/modules/learning/learning.controller.ts#L43)。
-- `GET /api/learning/studio/materials/:id/original` → `LearningController.studioPdfOriginal`；[apps/api/src/modules/learning/learning.controller.ts:45](../../../apps/api/src/modules/learning/learning.controller.ts#L45)。
+- `POST /api/learning/studio/materials/pdf` → `LearningController.studioPdfUpload`；[apps/api/src/modules/learning/learning.controller.ts:59](../../../apps/api/src/modules/learning/learning.controller.ts#L59)。
+- `GET /api/learning/studio/materials/:id/pages/:page` → `LearningController.studioPdfPage`；[apps/api/src/modules/learning/learning.controller.ts:62](../../../apps/api/src/modules/learning/learning.controller.ts#L62)。
+- `GET /api/learning/studio/materials/:id/original` → `LearningController.studioPdfOriginal`；[apps/api/src/modules/learning/learning.controller.ts:64](../../../apps/api/src/modules/learning/learning.controller.ts#L64)。
 
 **服务方法**：
 
-- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:286](../../../apps/api/src/modules/learning/learning.service.ts#L286)。
-- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:347](../../../apps/api/src/modules/learning/learning.service.ts#L347)。
-- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:357](../../../apps/api/src/modules/learning/learning.service.ts#L357)。
+- `LearningService.uploadStudioPdf`；[apps/api/src/modules/learning/learning.service.ts:285](../../../apps/api/src/modules/learning/learning.service.ts#L285)。
+- `LearningService.studioPdfPageImage`；[apps/api/src/modules/learning/learning.service.ts:346](../../../apps/api/src/modules/learning/learning.service.ts#L346)。
+- `LearningService.studioPdfOriginal`；[apps/api/src/modules/learning/learning.service.ts:356](../../../apps/api/src/modules/learning/learning.service.ts#L356)。
 
 **补充实现文件**：
 
@@ -570,13 +573,13 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/:id/structure/review` → `LearningController.studioPdfStructureReview`；[apps/api/src/modules/learning/learning.controller.ts:48](../../../apps/api/src/modules/learning/learning.controller.ts#L48)。
-- `POST /api/learning/studio/materials/:id/process/retry` → `LearningController.studioPdfProcessRetry`；[apps/api/src/modules/learning/learning.controller.ts:52](../../../apps/api/src/modules/learning/learning.controller.ts#L52)。
+- `POST /api/learning/studio/materials/:id/structure/review` → `LearningController.studioPdfStructureReview`；[apps/api/src/modules/learning/learning.controller.ts:67](../../../apps/api/src/modules/learning/learning.controller.ts#L67)。
+- `POST /api/learning/studio/materials/:id/process/retry` → `LearningController.studioPdfProcessRetry`；[apps/api/src/modules/learning/learning.controller.ts:71](../../../apps/api/src/modules/learning/learning.controller.ts#L71)。
 
 **服务方法**：
 
-- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:372](../../../apps/api/src/modules/learning/learning.service.ts#L372)。
-- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:400](../../../apps/api/src/modules/learning/learning.service.ts#L400)。
+- `LearningService.reviewStudioPdfStructure`；[apps/api/src/modules/learning/learning.service.ts:371](../../../apps/api/src/modules/learning/learning.service.ts#L371)。
+- `LearningService.retryStudioPdfProcessing`；[apps/api/src/modules/learning/learning.service.ts:399](../../../apps/api/src/modules/learning/learning.service.ts#L399)。
 
 ## STUDIO-14 PDF页级白板
 
@@ -592,8 +595,8 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/materials/:id/whiteboard/preview` → `LearningController.studioPdfWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:56](../../../apps/api/src/modules/learning/learning.controller.ts#L56)。
-- `POST /api/learning/studio/materials/:id/whiteboard` → `LearningController.studioPdfWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:58](../../../apps/api/src/modules/learning/learning.controller.ts#L58)。
+- `POST /api/learning/studio/materials/:id/whiteboard/preview` → `LearningController.studioPdfWhiteboardPreview`；[apps/api/src/modules/learning/learning.controller.ts:75](../../../apps/api/src/modules/learning/learning.controller.ts#L75)。
+- `POST /api/learning/studio/materials/:id/whiteboard` → `LearningController.studioPdfWhiteboardCreate`；[apps/api/src/modules/learning/learning.controller.ts:77](../../../apps/api/src/modules/learning/learning.controller.ts#L77)。
 
 **服务方法**：
 
@@ -618,8 +621,8 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/study-packs/preview` → `LearningController.studioLearningPackPreview`；[apps/api/src/modules/learning/learning.controller.ts:62](../../../apps/api/src/modules/learning/learning.controller.ts#L62)。
-- `POST /api/learning/studio/study-packs` → `LearningController.studioLearningPackCreate`；[apps/api/src/modules/learning/learning.controller.ts:65](../../../apps/api/src/modules/learning/learning.controller.ts#L65)。
+- `POST /api/learning/studio/study-packs/preview` → `LearningController.studioLearningPackPreview`；[apps/api/src/modules/learning/learning.controller.ts:81](../../../apps/api/src/modules/learning/learning.controller.ts#L81)。
+- `POST /api/learning/studio/study-packs` → `LearningController.studioLearningPackCreate`；[apps/api/src/modules/learning/learning.controller.ts:84](../../../apps/api/src/modules/learning/learning.controller.ts#L84)。
 
 **服务方法**：
 
@@ -644,15 +647,15 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/study-plans/preview` → `LearningController.studioStudyPlanPreview`；[apps/api/src/modules/learning/learning.controller.ts:105](../../../apps/api/src/modules/learning/learning.controller.ts#L105)。
-- `POST /api/learning/studio/study-plans` → `LearningController.studioStudyPlanCreate`；[apps/api/src/modules/learning/learning.controller.ts:108](../../../apps/api/src/modules/learning/learning.controller.ts#L108)。
-- `POST /api/learning/studio/study-plans/:planId/sessions/:sessionId` → `LearningController.studioStudyPlanSession`；[apps/api/src/modules/learning/learning.controller.ts:111](../../../apps/api/src/modules/learning/learning.controller.ts#L111)。
+- `POST /api/learning/studio/study-plans/preview` → `LearningController.studioStudyPlanPreview`；[apps/api/src/modules/learning/learning.controller.ts:124](../../../apps/api/src/modules/learning/learning.controller.ts#L124)。
+- `POST /api/learning/studio/study-plans` → `LearningController.studioStudyPlanCreate`；[apps/api/src/modules/learning/learning.controller.ts:127](../../../apps/api/src/modules/learning/learning.controller.ts#L127)。
+- `POST /api/learning/studio/study-plans/:planId/sessions/:sessionId` → `LearningController.studioStudyPlanSession`；[apps/api/src/modules/learning/learning.controller.ts:130](../../../apps/api/src/modules/learning/learning.controller.ts#L130)。
 
 **服务方法**：
 
-- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:143](../../../apps/api/src/modules/learning/learning.service.ts#L143)。
-- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:159](../../../apps/api/src/modules/learning/learning.service.ts#L159)。
-- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:197](../../../apps/api/src/modules/learning/learning.service.ts#L197)。
+- `LearningService.previewStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:142](../../../apps/api/src/modules/learning/learning.service.ts#L142)。
+- `LearningService.createStudioStudyPlan`；[apps/api/src/modules/learning/learning.service.ts:158](../../../apps/api/src/modules/learning/learning.service.ts#L158)。
+- `LearningService.updateStudioPlanSession`；[apps/api/src/modules/learning/learning.service.ts:196](../../../apps/api/src/modules/learning/learning.service.ts#L196)。
 
 **补充实现文件**：
 
@@ -672,9 +675,9 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/integrations` → `LearningController.studioIntegrationConnect`；[apps/api/src/modules/learning/learning.controller.ts:84](../../../apps/api/src/modules/learning/learning.controller.ts#L84)。
-- `POST /api/learning/studio/integrations/:id/sync` → `LearningController.studioIntegrationSync`；[apps/api/src/modules/learning/learning.controller.ts:87](../../../apps/api/src/modules/learning/learning.controller.ts#L87)。
-- `POST /api/learning/studio/integrations/:id/disconnect` → `LearningController.studioIntegrationDisconnect`；[apps/api/src/modules/learning/learning.controller.ts:90](../../../apps/api/src/modules/learning/learning.controller.ts#L90)。
+- `POST /api/learning/studio/integrations` → `LearningController.studioIntegrationConnect`；[apps/api/src/modules/learning/learning.controller.ts:103](../../../apps/api/src/modules/learning/learning.controller.ts#L103)。
+- `POST /api/learning/studio/integrations/:id/sync` → `LearningController.studioIntegrationSync`；[apps/api/src/modules/learning/learning.controller.ts:106](../../../apps/api/src/modules/learning/learning.controller.ts#L106)。
+- `POST /api/learning/studio/integrations/:id/disconnect` → `LearningController.studioIntegrationDisconnect`；[apps/api/src/modules/learning/learning.controller.ts:109](../../../apps/api/src/modules/learning/learning.controller.ts#L109)。
 
 **服务方法**：
 
@@ -700,10 +703,10 @@
 
 **关联接口**：
 
-- `POST /api/learning/studio/calendar/events` → `LearningController.studioCalendarEventCreate`；[apps/api/src/modules/learning/learning.controller.ts:93](../../../apps/api/src/modules/learning/learning.controller.ts#L93)。
-- `POST /api/learning/studio/calendar/events/:id/update` → `LearningController.studioCalendarEventUpdate`；[apps/api/src/modules/learning/learning.controller.ts:99](../../../apps/api/src/modules/learning/learning.controller.ts#L99)。
-- `POST /api/learning/studio/calendar/events/:id/remove` → `LearningController.studioCalendarEventRemove`；[apps/api/src/modules/learning/learning.controller.ts:96](../../../apps/api/src/modules/learning/learning.controller.ts#L96)。
-- `POST /api/learning/studio/calendar/batch-remove` → `LearningController.studioCalendarBatchRemove`；[apps/api/src/modules/learning/learning.controller.ts:102](../../../apps/api/src/modules/learning/learning.controller.ts#L102)。
+- `POST /api/learning/studio/calendar/events` → `LearningController.studioCalendarEventCreate`；[apps/api/src/modules/learning/learning.controller.ts:112](../../../apps/api/src/modules/learning/learning.controller.ts#L112)。
+- `POST /api/learning/studio/calendar/events/:id/update` → `LearningController.studioCalendarEventUpdate`；[apps/api/src/modules/learning/learning.controller.ts:118](../../../apps/api/src/modules/learning/learning.controller.ts#L118)。
+- `POST /api/learning/studio/calendar/events/:id/remove` → `LearningController.studioCalendarEventRemove`；[apps/api/src/modules/learning/learning.controller.ts:115](../../../apps/api/src/modules/learning/learning.controller.ts#L115)。
+- `POST /api/learning/studio/calendar/batch-remove` → `LearningController.studioCalendarBatchRemove`；[apps/api/src/modules/learning/learning.controller.ts:121](../../../apps/api/src/modules/learning/learning.controller.ts#L121)。
 
 **服务方法**：
 
@@ -731,7 +734,7 @@
 
 **关联接口**：
 
-- `GET /api/learning/studio/calendar/export` → `LearningController.studioCalendarExport`；[apps/api/src/modules/learning/learning.controller.ts:115](../../../apps/api/src/modules/learning/learning.controller.ts#L115)。
+- `GET /api/learning/studio/calendar/export` → `LearningController.studioCalendarExport`；[apps/api/src/modules/learning/learning.controller.ts:134](../../../apps/api/src/modules/learning/learning.controller.ts#L134)。
 
 **服务方法**：
 
@@ -894,7 +897,7 @@
 
 - `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:69](../../../apps/api/src/modules/learning/course-project.service.ts#L69)。
 - `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:83](../../../apps/api/src/modules/learning/course-project.service.ts#L83)。
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:38](../../../apps/api/src/modules/learning/classroom.service.ts#L38)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:40](../../../apps/api/src/modules/learning/classroom.service.ts#L40)。
 - `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:87](../../../apps/api/src/modules/learning/source-course.service.ts#L87)。
 
 **补充实现文件**：
@@ -952,7 +955,7 @@
 - `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
 - `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:125](../../../apps/api/src/modules/learning/source-course-check.service.ts#L125)。
 - `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:137](../../../apps/api/src/modules/learning/source-course-check.service.ts#L137)。
-- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:99](../../../apps/api/src/modules/learning/classroom.service.ts#L99)。
+- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:110](../../../apps/api/src/modules/learning/classroom.service.ts#L110)。
 
 **补充实现文件**：
 
@@ -1531,3 +1534,131 @@
 - [tests/e2e/whiteboard-questions.spec.ts](../../../tests/e2e/whiteboard-questions.spec.ts)
 - [scripts/qa/question-figure-live.cjs](../../../scripts/qa/question-figure-live.cjs)
 - [scripts/qa/run-question-figures-postgres.cjs](../../../scripts/qa/run-question-figures-postgres.cjs)
+
+## STUDIO-40 原课程创建、升级影响与精确历史恢复
+
+**输入**：当前身份与课程、原版本指纹、完整创建或升级命令和原请求键。
+
+**处理与实现**：来源教学选项与预览绑定版本；创建及升级原命令可独立读回，确认前显示影响。升级后旧课程与课时快照仍可按准确修订读取，原课堂及首答不覆盖；明确拒绝与未知结果分开处理。
+
+**输出**：教学选项、原请求回执、升级预览与历史课程课时快照。
+
+**状态与持久化**：`studioCourses`、`classroomSessions`
+
+**权限、失败与边界**：新版本不自动替换历史学习事实；教师内容审核、真实学习效果与运行部署另计。
+
+**关联接口**：
+
+- `GET /api/learning/studio/courses/teaching-options` → `LearningController.studioTeachingOptions`；[apps/api/src/modules/learning/learning.controller.ts:29](../../../apps/api/src/modules/learning/learning.controller.ts#L29)。
+- `GET /api/learning/studio/courses/requests/:key` → `LearningController.studioCourseOriginalRequest`；[apps/api/src/modules/learning/learning.controller.ts:32](../../../apps/api/src/modules/learning/learning.controller.ts#L32)。
+- `POST /api/learning/studio/courses/upgrade-preview` → `LearningController.studioCourseUpgradePreview`；[apps/api/src/modules/learning/learning.controller.ts:35](../../../apps/api/src/modules/learning/learning.controller.ts#L35)。
+- `POST /api/learning/studio/courses/upgrade` → `LearningController.studioCourseUpgrade`；[apps/api/src/modules/learning/learning.controller.ts:36](../../../apps/api/src/modules/learning/learning.controller.ts#L36)。
+- `GET /api/learning/studio/courses/upgrade-requests/:key` → `LearningController.studioCourseUpgradeRequest`；[apps/api/src/modules/learning/learning.controller.ts:37](../../../apps/api/src/modules/learning/learning.controller.ts#L37)。
+- `GET /api/learning/studio/courses/:id/revisions` → `LearningController.studioCourseVersions`；[apps/api/src/modules/learning/learning.controller.ts:38](../../../apps/api/src/modules/learning/learning.controller.ts#L38)。
+- `GET /api/learning/studio/courses/:id/revisions/:revision` → `LearningController.studioCourseVersion`；[apps/api/src/modules/learning/learning.controller.ts:39](../../../apps/api/src/modules/learning/learning.controller.ts#L39)。
+- `GET /api/learning/studio/courses/:id/lesson-versions/:lessonId` → `LearningController.studioCourseLessonVersion`；[apps/api/src/modules/learning/learning.controller.ts:40](../../../apps/api/src/modules/learning/learning.controller.ts#L40)。
+
+**服务方法**：
+
+- `TextbookTeachingCourseService.options`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:97](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L97)。
+- `TextbookTeachingCourseService.getRequest`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:164](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L164)。
+- `LearningController.teachingRequest`；[apps/api/src/modules/learning/learning.controller.ts:15](../../../apps/api/src/modules/learning/learning.controller.ts#L15)。
+- `TextbookTeachingCourseService.previewUpgrade`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:178](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L178)。
+- `TextbookTeachingCourseService.upgrade`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:191](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L191)。
+- `TextbookTeachingCourseService.getUpgradeRequest`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:203](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L203)。
+- `TextbookTeachingCourseService.history`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:211](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L211)。
+- `TextbookTeachingCourseService.versionForLesson`；[apps/api/src/modules/learning/textbook-teaching-course.service.ts:204](../../../apps/api/src/modules/learning/textbook-teaching-course.service.ts#L204)。
+
+**补充实现文件**：
+
+- [doc/product/185-schema33-integration-and-browser-regressions.md](../../../doc/product/185-schema33-integration-and-browser-regressions.md)
+
+## STUDIO-41 纸面三用途采集、原图恢复与分组识别
+
+**输入**：本人或孩子范围、单题/整页/教辅用途、分块原件、页序旋转裁剪、原命令及版本。
+
+**处理与实现**：统一资料入口区分三种用途，上传限额和进度可读；原件不覆盖，处理版本、明确原件恢复与分组PDF冻结保留来源身份。识别任务可取消重试，逐页结果、旧版本和缺口分别核；完整本机副本、原命令与源字节恢复有专用流程。
+
+**输出**：原图与派生图、分组原PDF、OCR候选、页级核对与任务原回执。
+
+**状态与持久化**：`paperImageUploads`、`paperCapturePages`、`paperCaptureGroups`、`paperCaptureCommands`、`paperCaptureDerivations`、`paperCaptureFileAssets`、`paperCaptureRepairUploads`、`paperCaptureRepairCommands`、`paperCaptureRepairs`
+
+**权限、失败与边界**：OCR候选不自动成为正式题；真实相机权限、扫描手写全集与实体设备效果仍另验。
+
+**关联接口**：
+
+- `GET /api/learning/paper-captures/repair-commands/:requestKey` → `PaperCaptureController.repairCommand`；[apps/api/src/modules/learning/paper-capture.controller.ts:16](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L16)。
+- `POST /api/learning/paper-captures/repair-candidates` → `PaperCaptureController.repairCandidate`；[apps/api/src/modules/learning/paper-capture.controller.ts:17](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L17)。
+- `GET /api/learning/paper-captures/repair-uploads` → `PaperCaptureController.repairUploads`；[apps/api/src/modules/learning/paper-capture.controller.ts:18](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L18)。
+- `POST /api/learning/paper-captures/repair-uploads` → `PaperCaptureController.repairUpload`；[apps/api/src/modules/learning/paper-capture.controller.ts:19](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L19)。
+- `GET /api/learning/paper-captures/repair-uploads/:id` → `PaperCaptureController.repairUploadProgress`；[apps/api/src/modules/learning/paper-capture.controller.ts:20](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L20)。
+- `PUT /api/learning/paper-captures/repair-uploads/:id/chunks/:index` → `PaperCaptureController.repairChunk`；[apps/api/src/modules/learning/paper-capture.controller.ts:21](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L21)。
+- `POST /api/learning/paper-captures/repair-uploads/:id/cancel` → `PaperCaptureController.cancelRepairUpload`；[apps/api/src/modules/learning/paper-capture.controller.ts:22](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L22)。
+- `GET /api/learning/paper-captures/repairs` → `PaperCaptureController.repairList`；[apps/api/src/modules/learning/paper-capture.controller.ts:23](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L23)。
+- `POST /api/learning/paper-captures/repairs` → `PaperCaptureController.repairStart`；[apps/api/src/modules/learning/paper-capture.controller.ts:24](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L24)。
+- `GET /api/learning/paper-captures/repairs/:id` → `PaperCaptureController.repairProgress`；[apps/api/src/modules/learning/paper-capture.controller.ts:25](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L25)。
+- `POST /api/learning/paper-captures/repairs/:id/cancel` → `PaperCaptureController.cancelRepair`；[apps/api/src/modules/learning/paper-capture.controller.ts:26](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L26)。
+- `POST /api/learning/paper-captures/repairs/:id/retry` → `PaperCaptureController.retryRepair`；[apps/api/src/modules/learning/paper-capture.controller.ts:27](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L27)。
+- `GET /api/learning/paper-captures/limits` → `PaperCaptureController.limits`；[apps/api/src/modules/learning/paper-capture.controller.ts:28](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L28)。
+- `GET /api/learning/paper-captures/commands/:requestKey` → `PaperCaptureController.result`；[apps/api/src/modules/learning/paper-capture.controller.ts:29](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L29)。
+- `GET /api/learning/paper-captures/uploads` → `PaperCaptureController.list`；[apps/api/src/modules/learning/paper-capture.controller.ts:30](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L30)。
+- `POST /api/learning/paper-captures/uploads` → `PaperCaptureController.start`；[apps/api/src/modules/learning/paper-capture.controller.ts:31](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L31)。
+- `GET /api/learning/paper-captures/uploads/:id` → `PaperCaptureController.get`；[apps/api/src/modules/learning/paper-capture.controller.ts:32](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L32)。
+- `GET /api/learning/paper-captures/uploads/:id/commands` → `PaperCaptureController.uploadCommands`；[apps/api/src/modules/learning/paper-capture.controller.ts:33](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L33)。
+- `PUT /api/learning/paper-captures/uploads/:id/chunks/:index` → `PaperCaptureController.chunk`；[apps/api/src/modules/learning/paper-capture.controller.ts:34](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L34)。
+- `POST /api/learning/paper-captures/uploads/:id/complete` → `PaperCaptureController.complete`；[apps/api/src/modules/learning/paper-capture.controller.ts:35](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L35)。
+- `POST /api/learning/paper-captures/uploads/:id/cancel` → `PaperCaptureController.cancel`；[apps/api/src/modules/learning/paper-capture.controller.ts:36](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L36)。
+- `GET /api/learning/paper-captures/pages/:id` → `PaperCaptureController.page`；[apps/api/src/modules/learning/paper-capture.controller.ts:37](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L37)。
+- `GET /api/learning/paper-captures/pages/:id/files` → `PaperCaptureController.pageFiles`；[apps/api/src/modules/learning/paper-capture.controller.ts:38](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L38)。
+- `POST /api/learning/paper-captures/pages/:id/revisions` → `PaperCaptureController.revise`；[apps/api/src/modules/learning/paper-capture.controller.ts:39](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L39)。
+- `GET /api/learning/paper-captures/groups` → `PaperCaptureController.listGroups`；[apps/api/src/modules/learning/paper-capture.controller.ts:40](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L40)。
+- `GET /api/learning/paper-captures/groups/:id` → `PaperCaptureController.group`；[apps/api/src/modules/learning/paper-capture.controller.ts:41](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L41)。
+- `POST /api/learning/paper-captures/groups/:id/revisions` → `PaperCaptureController.reviseGroup`；[apps/api/src/modules/learning/paper-capture.controller.ts:42](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L42)。
+- `POST /api/learning/paper-captures/groups/:id/recognize` → `PaperCaptureController.recognize`；[apps/api/src/modules/learning/paper-capture.controller.ts:43](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L43)。
+- `GET /api/learning/paper-captures/groups/:id/derivations` → `PaperCaptureController.derivationList`；[apps/api/src/modules/learning/paper-capture.controller.ts:44](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L44)。
+- `GET /api/learning/paper-captures/derivations/:id` → `PaperCaptureController.derivation`；[apps/api/src/modules/learning/paper-capture.controller.ts:45](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L45)。
+- `GET /api/learning/paper-captures/derivations/:id/files` → `PaperCaptureController.derivationFiles`；[apps/api/src/modules/learning/paper-capture.controller.ts:46](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L46)。
+- `POST /api/learning/paper-captures/derivations/:id/cancel` → `PaperCaptureController.cancelDerivation`；[apps/api/src/modules/learning/paper-capture.controller.ts:47](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L47)。
+- `POST /api/learning/paper-captures/derivations/:id/retry` → `PaperCaptureController.retryDerivation`；[apps/api/src/modules/learning/paper-capture.controller.ts:48](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L48)。
+- `GET /api/learning/paper-captures/derivations/:id/pdf` → `PaperCaptureController.derivedPdf`；[apps/api/src/modules/learning/paper-capture.controller.ts:49](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L49)。
+- `GET /api/learning/paper-captures/pages/:id/images/:role` → `PaperCaptureController.image`；[apps/api/src/modules/learning/paper-capture.controller.ts:50](../../../apps/api/src/modules/learning/paper-capture.controller.ts#L50)。
+
+**服务方法**：
+
+- `PaperCaptureRepairService.command`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:48](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L48)。
+- `PaperCaptureIntegrityService.repairCandidate`；[apps/api/src/modules/learning/paper-capture-integrity.service.ts:68](../../../apps/api/src/modules/learning/paper-capture-integrity.service.ts#L68)。
+- `PaperCaptureRepairService.listUploads`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:52](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L52)。
+- `PaperCaptureRepairService.startUpload`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:54](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L54)。
+- `PaperCaptureRepairService.getUpload`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:51](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L51)。
+- `PaperCaptureRepairService.chunk`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:65](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L65)。
+- `PaperCaptureRepairService.cancelUpload`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:72](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L72)。
+- `PaperCaptureRepairService.list`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:89](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L89)。
+- `PaperCaptureRepairService.start`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:75](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L75)。
+- `PaperCaptureRepairService.get`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:88](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L88)。
+- `PaperCaptureRepairService.control`；[apps/api/src/modules/learning/paper-capture-repair.service.ts:94](../../../apps/api/src/modules/learning/paper-capture-repair.service.ts#L94)。
+- `PaperCaptureCommandService.result`；[apps/api/src/modules/learning/paper-capture-command.service.ts:41](../../../apps/api/src/modules/learning/paper-capture-command.service.ts#L41)。
+- `PaperCaptureUploadService.list`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:58](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L58)。
+- `PaperCaptureUploadService.start`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:38](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L38)。
+- `PaperCaptureUploadService.get`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:52](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L52)。
+- `PaperCaptureUploadService.originalCommands`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:53](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L53)。
+- `PaperCaptureUploadService.chunk`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:59](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L59)。
+- `PaperCaptureUploadService.complete`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:74](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L74)。
+- `PaperCaptureUploadService.cancel`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:68](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L68)。
+- `PaperCaptureUploadService.pageView`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:91](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L91)。
+- `PaperCaptureIntegrityService.page`；[apps/api/src/modules/learning/paper-capture-integrity.service.ts:62](../../../apps/api/src/modules/learning/paper-capture-integrity.service.ts#L62)。
+- `PaperCapturePageService.revise`；[apps/api/src/modules/learning/paper-capture-page.service.ts:31](../../../apps/api/src/modules/learning/paper-capture-page.service.ts#L31)。
+- `PaperCaptureGroupService.list`；[apps/api/src/modules/learning/paper-capture-group.service.ts:19](../../../apps/api/src/modules/learning/paper-capture-group.service.ts#L19)。
+- `PaperCaptureGroupService.get`；[apps/api/src/modules/learning/paper-capture-group.service.ts:18](../../../apps/api/src/modules/learning/paper-capture-group.service.ts#L18)。
+- `PaperCaptureGroupService.revise`；[apps/api/src/modules/learning/paper-capture-group.service.ts:20](../../../apps/api/src/modules/learning/paper-capture-group.service.ts#L20)。
+- `PaperCaptureDerivationService.recognize`；[apps/api/src/modules/learning/paper-capture-derivation.service.ts:45](../../../apps/api/src/modules/learning/paper-capture-derivation.service.ts#L45)。
+- `PaperCaptureDerivationService.list`；[apps/api/src/modules/learning/paper-capture-derivation.service.ts:26](../../../apps/api/src/modules/learning/paper-capture-derivation.service.ts#L26)。
+- `PaperCaptureDerivationService.get`；[apps/api/src/modules/learning/paper-capture-derivation.service.ts:25](../../../apps/api/src/modules/learning/paper-capture-derivation.service.ts#L25)。
+- `PaperCaptureIntegrityService.derivation`；[apps/api/src/modules/learning/paper-capture-integrity.service.ts:63](../../../apps/api/src/modules/learning/paper-capture-integrity.service.ts#L63)。
+- `PaperCaptureDerivationService.control`；[apps/api/src/modules/learning/paper-capture-derivation.service.ts:58](../../../apps/api/src/modules/learning/paper-capture-derivation.service.ts#L58)。
+- `PaperCaptureDerivationService.pdf`；[apps/api/src/modules/learning/paper-capture-derivation.service.ts:27](../../../apps/api/src/modules/learning/paper-capture-derivation.service.ts#L27)。
+- `PaperCaptureUploadService.image`；[apps/api/src/modules/learning/paper-capture-upload.service.ts:92](../../../apps/api/src/modules/learning/paper-capture-upload.service.ts#L92)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/paper-capture.controller.ts](../../../apps/api/src/modules/learning/paper-capture.controller.ts)
+- [doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md](../../../doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md)

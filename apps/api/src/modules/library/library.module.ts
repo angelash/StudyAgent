@@ -17,5 +17,5 @@ import { PaperExportRenderWorkerService } from './paper-export-render-worker.ser
 import { PaperExportArtifactController } from './paper-export-artifact.controller';
 import { PaperExportCleanupWorkerService } from './paper-export-cleanup-worker.service';
 @Module({ imports: [DiagnosticsModule, StudentsModule], controllers: [LibraryController, MeasurementContentController, PaperPracticeController, PaperSelectionController, PaperExportController, PaperExportArtifactController],
-  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService, PaperSelectionService, PaperExportService, PaperExportRuntimeService, PaperExportRenderWorkerService, PaperExportCleanupWorkerService], exports: [LibraryRepository, LibraryService, MeasurementContentService] })
+  providers: [LibraryRepository, LibraryService, MeasurementContentService, PaperPracticeService, PaperSelectionService, PaperExportService, PaperExportRuntimeService, PaperExportRenderWorkerService, PaperExportCleanupWorkerService], exports: [LibraryRepository, LibraryService, MeasurementContentService, PaperExportRuntimeService] })
 export class LibraryModule {}

@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-03T03:18:45.005Z",
+  "purpose": "Existing historical invariant fixtures excluded by default source snapshot; explicit exact inputs for two unchanged regression suites. No content generation or application edits.",
+  "files": [
+    {
+      "path": "doc/evidence/2026-10-20/family-identity-content-audit.json",
+      "bytes": 310475,
+      "sha256": "7ba4dc9a5f475c95b8144e3534a80a226d71348871d6d2beeecbcf90f8239f53"
+    },
+    {
+      "path": "doc/evidence/2026-10-31/workspace-r5-adult-model-preparation/before-content.json.gz",
+      "bytes": 97936,
+      "sha256": "c24a07068bd760187129c2435896150ddc4261d6f254e5b9960f7a1f032383a9"
+    }
+  ],
+  "sha256Readback": true
+}

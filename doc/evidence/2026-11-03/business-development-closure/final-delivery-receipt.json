@@ -1,0 +1,257 @@
+{
+  "at": "2026-11-03T03:19:37.847Z",
+  "scope": "User requested content pause, business functionality closure, testing and ending development; local main delivery only.",
+  "source": {
+    "mainBase": "54a1b173df739c87092a7cae5d79fa587489f1fb",
+    "finalHashedInputs": 3199,
+    "priorBrowserApplicationChanges": [
+      "apps/api/src/infrastructure/textbook-teaching-native.integration.test.ts",
+      "apps/api/src/modules/diagnostics/textbook-edition-conformity.ts",
+      "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts",
+      "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+      "apps/api/src/modules/gesp/gesp-student.integration.test.ts",
+      "scripts/qa/README.md",
+      "tests/e2e/product-smoke.spec.ts",
+      "tests/e2e/studio-assistant.spec.ts"
+    ],
+    "webApplicationBytesUnchanged": true,
+    "fullApiSourceDifference": {
+      "files": [
+        "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts"
+      ],
+      "delta": "discrepancy-test-delta.json",
+      "applicationSourcesUnchangedDuringRun": true,
+      "correctedSuitePassed": true
+    }
+  },
+  "api": {
+    "name": "full-api-patch",
+    "files": 332,
+    "passed": 3109,
+    "failed": 1,
+    "skipped": 131,
+    "success": false,
+    "failedFiles": [
+      "src/modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts",
+      "src/modules/learning/adult-classroom-models.test.ts"
+    ],
+    "fixtureCorrection": {
+      "name": "discrepancy-fixture-corrected",
+      "files": 1,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "missingInputsRestored": {
+      "name": "snapshot-fixtures-corrected",
+      "files": 2,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "note": "Raw run has one missing-history-fixture failure and one unloaded suite; both unchanged suites pass after two exact historical inputs are copied. Raw run and follow-ups remain separate; blanket input guard reports the one controlled withdrawal fixture correction."
+  },
+  "browser": {
+    "discovered": 663,
+    "executedUnique": 663,
+    "noMissingOrDuplicateIds": true,
+    "passed": 658,
+    "failed": 5,
+    "skipped": 0,
+    "retries": 0,
+    "batches": [
+      {
+        "name": "browser-shard-one-final",
+        "startTime": "2026-11-03T02:38:44.160Z",
+        "duration": 1866373.628,
+        "expected": 171,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      {
+        "name": "browser-shard-two-final",
+        "startTime": "2026-11-03T02:35:45.626Z",
+        "duration": 1492662.214,
+        "expected": 166,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      {
+        "name": "browser-shard-three-final",
+        "startTime": "2026-11-03T02:35:47.803Z",
+        "duration": 1824630.4100000001,
+        "expected": 173,
+        "skipped": 0,
+        "unexpected": 5,
+        "flaky": 0
+      },
+      {
+        "name": "browser-shard-four-final",
+        "startTime": "2026-11-03T02:35:47.058Z",
+        "duration": 2362699.034,
+        "expected": 148,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    ],
+    "affectedFinalSource": {
+      "name": "browser-patch",
+      "passed": 10,
+      "failed": 0
+    },
+    "note": "Four shards use the DI-fixed source before local read optimization and stale fixture corrections. The final source ten-case batch includes all five stale-assertion cases. These are not a single all-green run."
+  },
+  "additionalBatches": {
+    "focusedBeforeReadOptimization": {
+      "name": "focused-final",
+      "files": 3,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "affectedBeforeFixtureCorrection": {
+      "name": "affected-patch",
+      "files": 7,
+      "passed": 67,
+      "failed": 1,
+      "skipped": 0,
+      "success": false,
+      "failedFiles": [
+        "src/modules/diagnostics/textbook-registry-document.test.ts"
+      ]
+    },
+    "correctedFixture": {
+      "name": "discrepancy-fixture-corrected",
+      "files": 1,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "initialFull": {
+      "name": "full-api-first",
+      "files": 332,
+      "passed": 3049,
+      "failed": 49,
+      "skipped": 131,
+      "success": false,
+      "failedFiles": [
+        "src/infrastructure/textbook-teaching-native.integration.test.ts",
+        "src/infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+        "src/modules/diagnostics/verification-materials.integration.test.ts",
+        "src/modules/gesp/gesp-student.integration.test.ts",
+        "src/modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+        "src/modules/learning/classroom-presentation.integration.test.ts",
+        "src/modules/learning/classroom-visual.integration.test.ts",
+        "src/modules/learning/topic-whiteboard-visual.integration.test.ts",
+        "src/modules/learning/whiteboard-question-visual.integration.test.ts"
+      ]
+    },
+    "initialPostgres": {
+      "name": "postgres-first",
+      "files": 12,
+      "passed": 47,
+      "failed": 44,
+      "skipped": 0,
+      "success": false,
+      "failedFiles": [
+        "src/infrastructure/gesp-evidence-reader.integration.test.ts",
+        "src/infrastructure/math-figures-reader.integration.test.ts",
+        "src/infrastructure/schema32-reader.integration.test.ts",
+        "src/infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+        "src/infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+        "src/infrastructure/textbook-teaching-native.integration.test.ts"
+      ]
+    },
+    "missingHistoricalInputsRestored": {
+      "name": "snapshot-fixtures-corrected",
+      "files": 2,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "exactPostgresSecond": {
+      "name": "postgres-second",
+      "files": 6,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "success": false,
+      "failedFiles": [
+        "src/infrastructure/textbook-teaching-native.integration.test.ts"
+      ]
+    },
+    "originalNativePostgresThird": {
+      "name": "postgres-third",
+      "files": 1,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    },
+    "finalNativePostgres": {
+      "name": "postgres-native-patch",
+      "files": 1,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "success": true,
+      "failedFiles": []
+    }
+  },
+  "guards": {
+    "at": "2026-11-03T03:19:24.369Z",
+    "protectedFiles": 1063,
+    "protectedChanged": [],
+    "contentInputs": 318,
+    "contentChanged": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1
+  },
+  "contentProductionPaused": true,
+  "fullOriginalProductComplete": false,
+  "screenshots": {
+    "viewports": [
+      390,
+      768,
+      1440
+    ],
+    "visuallyInspected": true,
+    "syntheticAdminOnly": true
+  },
+  "performanceScope": "1000 synthetic profiles/20000 evidence records: measured warm local read samples only. Separate unseeded 452-book source projection sample: 3031ms vs69ms; not full-admin-page or production capacity.",
+  "reproduction": [
+    "node data/qa/b5-business-final/run-fixture-corrected.cjs full <new-label> (final3199-input guard; two archived fixture inputs must match explicit-fixture-inputs.json)",
+    "node data/qa/b5-business-final/run-fixture-corrected.cjs focused <new-label>",
+    "node data/qa/b5-business-final/run-browser-patch.cjs browser <new-label>",
+    "node scripts/architecture/validate-project-design.cjs <business-receipt> --business-only"
+  ],
+  "formalPublishedOrMigrated": false,
+  "pushed": false,
+  "localCommitOnly": true,
+  "privateLogsTracesAndDatabasesExcluded": true,
+  "shutdown": {
+    "receipt": "cleanup-final.json",
+    "ownedPostgresStopped": true,
+    "existingPostgresPreserved": true
+  }
+}

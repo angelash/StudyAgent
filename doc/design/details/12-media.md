@@ -1,6 +1,6 @@
 # 12 作答图片、录音与受控媒体 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：学生、监护人、授权复核教师。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：学生、监护人、授权复核教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/admin/reviews`。
 
@@ -46,12 +46,12 @@
 
 **服务方法**：
 
-- `StudentMediaService.capabilities`；[apps/api/src/modules/student-media/student-media.service.ts:23](../../../apps/api/src/modules/student-media/student-media.service.ts#L23)。
-- `StudentMediaService.start`；[apps/api/src/modules/student-media/student-media.service.ts:62](../../../apps/api/src/modules/student-media/student-media.service.ts#L62)。
-- `StudentMediaService.get`；[apps/api/src/modules/student-media/student-media.service.ts:60](../../../apps/api/src/modules/student-media/student-media.service.ts#L60)。
-- `StudentMediaService.chunk`；[apps/api/src/modules/student-media/student-media.service.ts:91](../../../apps/api/src/modules/student-media/student-media.service.ts#L91)。
-- `StudentMediaService.complete`；[apps/api/src/modules/student-media/student-media.service.ts:102](../../../apps/api/src/modules/student-media/student-media.service.ts#L102)。
-- `StudentMediaService.cancel`；[apps/api/src/modules/student-media/student-media.service.ts:229](../../../apps/api/src/modules/student-media/student-media.service.ts#L229)。
+- `StudentMediaService.capabilities`；[apps/api/src/modules/student-media/student-media.service.ts:24](../../../apps/api/src/modules/student-media/student-media.service.ts#L24)。
+- `StudentMediaService.start`；[apps/api/src/modules/student-media/student-media.service.ts:71](../../../apps/api/src/modules/student-media/student-media.service.ts#L71)。
+- `StudentMediaService.get`；[apps/api/src/modules/student-media/student-media.service.ts:69](../../../apps/api/src/modules/student-media/student-media.service.ts#L69)。
+- `StudentMediaService.chunk`；[apps/api/src/modules/student-media/student-media.service.ts:100](../../../apps/api/src/modules/student-media/student-media.service.ts#L100)。
+- `StudentMediaService.complete`；[apps/api/src/modules/student-media/student-media.service.ts:111](../../../apps/api/src/modules/student-media/student-media.service.ts#L111)。
+- `StudentMediaService.cancel`；[apps/api/src/modules/student-media/student-media.service.ts:238](../../../apps/api/src/modules/student-media/student-media.service.ts#L238)。
 
 ## MEDIA-02 图片/录音规范化与证据绑定
 
@@ -85,4 +85,4 @@
 
 **服务方法**：
 
-- `StudentMediaService.content`；[apps/api/src/modules/student-media/student-media.service.ts:152](../../../apps/api/src/modules/student-media/student-media.service.ts#L152)。
+- `StudentMediaService.content`；[apps/api/src/modules/student-media/student-media.service.ts:161](../../../apps/api/src/modules/student-media/student-media.service.ts#L161)。

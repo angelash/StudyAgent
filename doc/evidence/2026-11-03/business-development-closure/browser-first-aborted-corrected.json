@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-03T02:36:23.850Z",
+  "runs": [
+    {
+      "shard": "one",
+      "expected": 337,
+      "finishedPassedLines": 218,
+      "finishedFailureLines": [
+        "x  158 tests\\e2e\\assistant-whiteboards.spec.ts:128:5 › source whiteboard: actual private PNG generation, original editing, adoption and sentence narration use the existing classroom (23.3s)",
+        "x  233 tests\\e2e\\classroom-visual.spec.ts:45:5 › classroom image survives navigation, binds its original node, enlarges and exports offline notes at three widths (19.4s)",
+        "x  234 tests\\e2e\\classroom-visual.spec.ts:119:5 › failed and cancelled classroom image tasks retry their saved version (20.2s)",
+        "x  235 tests\\e2e\\classroom-visual.spec.ts:139:5 › lost image creation acknowledgement recovers the single saved task (20.2s)",
+        "x  236 tests\\e2e\\classroom-visual.spec.ts:158:5 › PDF preparation waits for selected image bytes and closing settings cancels a pending print (19.4s)"
+      ],
+      "stopped": true,
+      "reason": "Known duplicated classroom image provider; both owned process trees stopped before source resync",
+      "complete": false,
+      "formalContacted": false
+    },
+    {
+      "shard": "two",
+      "expected": 326,
+      "finishedPassedLines": 165,
+      "finishedFailureLines": [
+        "x   68 tests\\e2e\\product-smoke.spec.ts:177:5 › an administrator can reach the curriculum review workbench (21.9s)",
+        "x  139 tests\\e2e\\studio-assistant.spec.ts:49:48 › lecture-assistant: usable course entry, composer and complete model selection at390 (19.0s)",
+        "x  140 tests\\e2e\\studio-assistant.spec.ts:49:48 › lecture-assistant: usable course entry, composer and complete model selection at768 (19.5s)",
+        "x  141 tests\\e2e\\studio-assistant.spec.ts:49:48 › lecture-assistant: usable course entry, composer and complete model selection at880 (19.8s)",
+        "x  142 tests\\e2e\\studio-assistant.spec.ts:49:48 › lecture-assistant: usable course entry, composer and complete model selection at1440 (20.2s)",
+        "x  181 tests\\e2e\\topic-whiteboard.spec.ts:121:5 › topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline (26.5s)",
+        "x  183 tests\\e2e\\topic-whiteboard.spec.ts:190:5 › topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume (25.4s)",
+        "x  184 tests\\e2e\\topic-whiteboard.spec.ts:258:5 › topic-figure: uncached complete image commands block leaving until their exact complete download (25.9s)",
+        "x  185 tests\\e2e\\topic-whiteboard.spec.ts:278:5 › topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate (25.3s)",
+        "x  186 tests\\e2e\\topic-whiteboard.spec.ts:290:5 › topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation (25.6s)",
+        "x  188 tests\\e2e\\topic-whiteboard.spec.ts:313:43 › topic-figure: complete verified image and keyboard reader fit 390 (20.7s)",
+        "x  189 tests\\e2e\\topic-whiteboard.spec.ts:313:43 › topic-figure: complete verified image and keyboard reader fit 768 (25.4s)",
+        "x  190 tests\\e2e\\topic-whiteboard.spec.ts:313:43 › topic-figure: complete verified image and keyboard reader fit 1440 (25.8s)",
+        "x  242 tests\\e2e\\whiteboard-questions.spec.ts:254:5 › question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review (21.6s)",
+        "x  243 tests\\e2e\\whiteboard-questions.spec.ts:292:5 › question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions (22.1s)",
+        "x  244 tests\\e2e\\whiteboard-questions.spec.ts:311:5 › question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions (22.3s)",
+        "x  245 tests\\e2e\\whiteboard-questions.spec.ts:329:5 › question figures: explicit cancel and original retry keep the same image requirement and target (21.9s)",
+        "x  250 tests\\e2e\\whiteboard-questions.spec.ts:370:5 › question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again (20.8s)",
+        "x  251 tests\\e2e\\whiteboard-questions.spec.ts:389:37 › question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 390 (21.5s)",
+        "x  252 tests\\e2e\\whiteboard-questions.spec.ts:389:37 › question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 768 (21.5s)"
+      ],
+      "stopped": true,
+      "reason": "Known duplicated classroom image provider; both owned process trees stopped before source resync",
+      "complete": false,
+      "formalContacted": false
+    }
+  ],
+  "reasonForCorrection": "Failure prefix has multiple spaces; correct first summary parser, preserve initial summary."
+}

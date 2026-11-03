@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "startTime": "2026-11-03T03:03:07.101Z",
+    "duration": 91049.352,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "id": "5f6a468230c371cba7ba-e894c0c4138b12aab1d4",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3841
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-83858ec6a9f734f1daaa",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3322
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-5375d36ca8e26beaca92",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3769
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-1d4c0d3151a558c02ca4",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: network failure preserves metrics and explicit retry recovers",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3053
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-7dbeb9200cb698073ff7",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations analytics: late original refresh cannot replace the newer response",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2895
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-84b77675197b4e6d1a69",
+      "file": "product-smoke.spec.ts",
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6795
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-b3ae56726ffa8ea10a78",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4534
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f95d2ac1baaecf712bc4",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4337
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f5991ccec4a37e464bcf",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at880",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4858
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-511904f37439fbb155cc",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5295
+        }
+      ]
+    }
+  ],
+  "globalErrors": 0
+}

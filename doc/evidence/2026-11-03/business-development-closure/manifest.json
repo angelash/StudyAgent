@@ -1,0 +1,196 @@
+{
+  "at": "2026-11-03T03:19:38.262Z",
+  "files": [
+    {
+      "path": "full-api-patch-cases.json.gz",
+      "bytes": 143743,
+      "sha256": "de605daec2bc9c4a30d91e26c7ee825d5359a159a43d266612a6ac2d31338e5f"
+    },
+    {
+      "path": "discrepancy-fixture-corrected-cases.json.gz",
+      "bytes": 951,
+      "sha256": "1b81f6d7d139f331090c58ad9ae0aa37f0b9d8e1f01f0984905aeaa91e9c1970"
+    },
+    {
+      "path": "snapshot-fixtures-corrected-cases.json.gz",
+      "bytes": 1858,
+      "sha256": "265e04372f98e9a0447ce7319ae834ae364992435bd64544e3f4331536579c9d"
+    },
+    {
+      "path": "browser-shard-one-final.json",
+      "bytes": 68614,
+      "sha256": "14964084e16734a3b51dcb07e1290d7c489989934aa53105f1ecbfdf7e2f4ef3"
+    },
+    {
+      "path": "browser-shard-two-final.json",
+      "bytes": 63646,
+      "sha256": "4bdaa167c484accebda78d8cd368290d8b932ae7d1f53361fea741ddd6cad20a"
+    },
+    {
+      "path": "browser-shard-three-final.json",
+      "bytes": 69699,
+      "sha256": "235a3005a1dcf0ca18fd5c8229359c883aa2c5d685a7bc41d05a8930b0c04eb0"
+    },
+    {
+      "path": "browser-shard-four-final.json",
+      "bytes": 58191,
+      "sha256": "2e9502656ed177b826c3f8aa576a4fcc4b868470cf626a2fbc638b3c7dae1412"
+    },
+    {
+      "path": "browser-patch.json",
+      "bytes": 3888,
+      "sha256": "197a7f35b21371c0b869ba761eec42cd64634e298bf4f12505327ecedff56c51"
+    },
+    {
+      "path": "focused-final-cases.json.gz",
+      "bytes": 760,
+      "sha256": "01813e43f0585ae3398de1093c39698004e1cc2f9262a24ceaf091f8b899bf02"
+    },
+    {
+      "path": "affected-patch-cases.json.gz",
+      "bytes": 3390,
+      "sha256": "ba587d5815b19d52bd565367100ac9bfe0bf9cd4a651c0bb109c5501f05661aa"
+    },
+    {
+      "path": "full-api-first-cases.json.gz",
+      "bytes": 143064,
+      "sha256": "953804ec78a1a3f367f68228e95df1e92b56513ad14a10857dc84fd92d0c2143"
+    },
+    {
+      "path": "postgres-first-cases.json.gz",
+      "bytes": 4151,
+      "sha256": "c0019fe0f7b380eaee66319e4df210afc59d239e54d7d76b397598f4ef375f4a"
+    },
+    {
+      "path": "postgres-second-cases.json.gz",
+      "bytes": 1681,
+      "sha256": "ea4f95d96d44ae90101608b49836b730f39bf099ff27a2f6a51e46974e91d5a7"
+    },
+    {
+      "path": "postgres-third-cases.json.gz",
+      "bytes": 709,
+      "sha256": "266fc57bfb684b708aa0713c04b069c978d4a485fbc61dc34e1c809a2f142ea2"
+    },
+    {
+      "path": "postgres-native-patch-cases.json.gz",
+      "bytes": 716,
+      "sha256": "92095522d708532ba7a500a6880d744be6ba6866f7098374a7b23e6a1be60fda"
+    },
+    {
+      "path": "compile-patch.json",
+      "bytes": 336,
+      "sha256": "937ca515e19dcd4b6ab57bb9facb8b64df3b3c141a0c21238b3359b091902e4a"
+    },
+    {
+      "path": "type-patch.json",
+      "bytes": 284,
+      "sha256": "3352976e21ede99745fd0eaed2de01fb12709993244ec1a16984ccb02ab6ea25"
+    },
+    {
+      "path": "patch-source-sync.json",
+      "bytes": 469,
+      "sha256": "9cfc5dc81908c467cbd10a498f106353ca2830c119cdb16ed8c166203e652728"
+    },
+    {
+      "path": "patch-source-readback.json",
+      "bytes": 909,
+      "sha256": "aa9993db525186f5f80612d11c4e909550b53d30985f7c8707cb670b68c6dac4"
+    },
+    {
+      "path": "discrepancy-test-delta.json",
+      "bytes": 500,
+      "sha256": "350bf9e43bf931fc8c2ae4614770b5a806fcc007e7ced50ae357f38a420eae28"
+    },
+    {
+      "path": "guards-final.json",
+      "bytes": 250,
+      "sha256": "3ffb2f097bd1bdd061a2d9580dcde0edfa35f39eb4b3b055db0d037fae26f61d"
+    },
+    {
+      "path": "actual-http-final.json",
+      "bytes": 7940,
+      "sha256": "1bc78cb60bd60b91195216deea07cc5291ede07cee25ca90155c798646ac163d"
+    },
+    {
+      "path": "formal-copy-upgrade-first.json",
+      "bytes": 829,
+      "sha256": "7faead0ffc89b770d28c17633ab3f1550781316de1610eb30a5a1596ab1f03af"
+    },
+    {
+      "path": "performance-first.json",
+      "bytes": 1711,
+      "sha256": "80384dbfd4b67409b0d0732a77929d6fde311497f66f1eea8325879a50e46742"
+    },
+    {
+      "path": "performance-run-first.json",
+      "bytes": 315,
+      "sha256": "74b0bbf75f2afc1c16b251eb2c476162c077289fec974a34b4d07d83345f444e"
+    },
+    {
+      "path": "overview-profile.json",
+      "bytes": 455,
+      "sha256": "5b159f700d9c5a9b8f7b6fa3657311961bab2dc8193cec5992a10b565ef749b9"
+    },
+    {
+      "path": "overview-profile-patch.json",
+      "bytes": 455,
+      "sha256": "fec191d121c6ab83f43938bc08e93e4198b22678f06b792312558d51f4d5fbbb"
+    },
+    {
+      "path": "explicit-fixture-inputs.json",
+      "bytes": 691,
+      "sha256": "758b57e170f632145c92c40b755e6f3db5b2cc29238c2e38f937d66afb9ebda1"
+    },
+    {
+      "path": "browser-first-aborted-corrected.json",
+      "bytes": 5138,
+      "sha256": "de86ba763330b3f9d0556813688f2e049ac428c701aee6408ee41976b6423dd5"
+    },
+    {
+      "path": "browser-test-delta.json",
+      "bytes": 626,
+      "sha256": "69177513cb29fca7bcc001c535020f94d8cf07be17ca3cf0d690656bc52fcd29"
+    },
+    {
+      "path": "browser-first.json",
+      "bytes": 238,
+      "sha256": "5027af7f11d8930083ba6a35a7580c355a3d05f13c4bad99abd59bd332bb0833"
+    },
+    {
+      "path": "final-source-inputs.json.gz",
+      "bytes": 151865,
+      "sha256": "cc5ae016fe486e27f6f0803720bb716ae73f84e1e436eae2c8284017b3381fed"
+    },
+    {
+      "path": "browser-expected-ids.json",
+      "bytes": 154426,
+      "sha256": "04bef2494966f2a3046a4913b3370c9a2aae7a3ee8848802e3ac0dabb263734e"
+    },
+    {
+      "path": "scope-audit.json",
+      "bytes": 97389,
+      "sha256": "a1a5ad9fff6c0029d2e7fd87ffbb2eda85651d76bf4bd464a991eb57b7e30cfe"
+    },
+    {
+      "path": "screenshots/dependencies-390.png",
+      "bytes": 292371,
+      "sha256": "5b34fef93643386562c763e546d767da59401c4d2a614dda5c0cddb3487a474d"
+    },
+    {
+      "path": "screenshots/dependencies-768.png",
+      "bytes": 283716,
+      "sha256": "28a9777bd7aeb7cde565aaa8255dcb43e651bbc3d23d8b6ace4a8dce5ea49ca2"
+    },
+    {
+      "path": "screenshots/dependencies-1440.png",
+      "bytes": 330498,
+      "sha256": "756e19a7cfba2095cfc487ed0bcf8a350c3221d59cb609fea745dc1967f21241"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 8015,
+      "sha256": "895ecadd54213252b1efe5ea807c95321413812f1a013d387451bedee3b10e8f"
+    }
+  ],
+  "sha256Readback": true
+}

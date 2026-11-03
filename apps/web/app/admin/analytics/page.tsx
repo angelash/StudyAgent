@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { apiRequest, getAuthToken } from '../../../lib/api';
 import { useSessionUser } from '../../../lib/session-user';
 import type { OperationsOverview } from '@study-agent/contracts';
+import { RuntimeCapabilities } from './runtime-capabilities';
 
 
 type AnalyticsOverview = {
@@ -84,11 +85,16 @@ export default function AdminAnalyticsPage() {
   const [operations, setOperations] = React.useState<OperationsOverview | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(true);
+  const [loadedFor, setLoadedFor] = React.useState<string | null>(null);
+  const pending = React.useRef<AbortController | null>(null);
 
   async function loadData() {
+    pending.current?.abort();
+    const controller = new AbortController(); pending.current = controller;
     try {
       setError(null);
       setLoading(true);
+      setLoadedFor(null); setOverview(null); setAiQuality(null); setOperations(null);
       const currentUser = identity;
       if (!currentUser) {
         return;
@@ -101,23 +107,28 @@ export default function AdminAnalyticsPage() {
       }
 
       const [overviewResult, aiQualityResult, operationsResult] = await Promise.all([
-        apiRequest<AnalyticsOverview>('/admin/analytics/overview', {}, getAuthToken()),
-        apiRequest<AIQualityOverview>('/admin/analytics/ai-quality', {}, getAuthToken()),
-        apiRequest<OperationsOverview>('/admin/operations', {}, getAuthToken()),
+        apiRequest<AnalyticsOverview>('/admin/analytics/overview', { signal: controller.signal }, getAuthToken()),
+        apiRequest<AIQualityOverview>('/admin/analytics/ai-quality', { signal: controller.signal }, getAuthToken()),
+        apiRequest<OperationsOverview>('/admin/operations', { signal: controller.signal }, getAuthToken()),
       ]);
+      if (controller.signal.aborted) return;
       setOverview(overviewResult);
       setAiQuality(aiQualityResult);
       setOperations(operationsResult);
+      setLoadedFor(currentUser.id);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : '运营看板加载失败');
+      if (!controller.signal.aborted) setError(caught instanceof Error ? caught.message : '运营看板加载失败');
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted) setLoading(false);
     }
   }
 
   React.useEffect(() => {
     void loadData();
+    return () => { pending.current?.abort(); };
   }, [identity?.id,identity?.role]);
+
+  const current = identity?.role === 'admin' && loadedFor === identity.id;
 
   return (
     <main style={{ padding: 'clamp(16px, 4vw, 40px)', maxWidth: 1180, minWidth: 0 }}>
@@ -148,7 +159,7 @@ export default function AdminAnalyticsPage() {
         <section style={{ ...panelStyle, marginTop: 24, color: '#475569' }}>正在读取运营指标...</section>
       ) : null}
 
-      {overview ? (
+      {overview && current ? (
         <section style={{ marginTop: 24, display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
           {[
             { label: '学生数', value: overview.studentCount },
@@ -169,7 +180,7 @@ export default function AdminAnalyticsPage() {
         </section>
       ) : null}
 
-      {operations ? (
+      {operations && current ? (
         <section style={{ ...panelStyle, marginTop: 24 }} aria-label="运行与待办监控">
           <h2 style={{ marginTop: 0 }}>运行与待办</h2>
           <p style={{ color: '#475569', lineHeight: 1.7 }}>
@@ -211,7 +222,9 @@ export default function AdminAnalyticsPage() {
         </section>
       ) : null}
 
-      {aiQuality ? (
+      {identity?.role === 'admin' && <RuntimeCapabilities key={identity.id} ownerId={identity.id} />}
+
+      {aiQuality && current ? (
         <section style={{ marginTop: 28, display: 'grid', gap: 20 }}>
           <div style={panelStyle}>
             <h2 style={{ marginTop: 0 }}>AI 质量概览</h2>

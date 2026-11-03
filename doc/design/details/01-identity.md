@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：家长、学生、管理员、授权教师。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -125,14 +125,14 @@
 - `POST /api/students` → `StudentsController.createStudent`；[apps/api/src/modules/students/students.controller.ts:20](../../../apps/api/src/modules/students/students.controller.ts#L20)。
 - `GET /api/students/:studentId/profile` → `StudentsController.getProfile`；[apps/api/src/modules/students/students.controller.ts:38](../../../apps/api/src/modules/students/students.controller.ts#L38)。
 - `GET /api/parents/:parentId/students` → `StudentsController.listChildren`；[apps/api/src/modules/students/students.controller.ts:62](../../../apps/api/src/modules/students/students.controller.ts#L62)。
-- `GET /api/learning/students` → `LearningController.students`；[apps/api/src/modules/learning/learning.controller.ts:14](../../../apps/api/src/modules/learning/learning.controller.ts#L14)。
+- `GET /api/learning/students` → `LearningController.students`；[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)。
 
 **服务方法**：
 
 - `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:33](../../../apps/api/src/modules/students/students.service.ts#L33)。
 - `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:134](../../../apps/api/src/modules/students/students.service.ts#L134)。
 - `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:149](../../../apps/api/src/modules/students/students.service.ts#L149)。
-- `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:72](../../../apps/api/src/modules/learning/learning.service.ts#L72)。
+- `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:71](../../../apps/api/src/modules/learning/learning.service.ts#L71)。
 
 ## AUTH-05 邀请与共同监护绑定
 

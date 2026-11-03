@@ -1,0 +1,1937 @@
+{
+  "stats": {
+    "startTime": "2026-11-03T02:35:47.058Z",
+    "duration": 2362699.034,
+    "expected": 148,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "id": "e046ebfd3e9cdf69f01e-1166db1cfa0f4e29f340",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "continuity: a confirmed adult topic also overlaps its adjacent WAV and preserves its frozen sentence identity",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13727
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-56daad4d31080019accb",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-formula: complete vector fractions, aligned roots and Unicode fit narrow notes and preserve copyable source and safe fallback",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 14788
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-373879e8230dfe1d52b0",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-formula: actual shared image and fraction/root/alignment vector video decodes with full audio and caption timeline",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 35511
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-f9987f084dfa9c0f93de",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "login forms cannot submit before their client handlers are ready",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2416
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-c9fc89af84b21cba2190",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: restores a lost original image prepare without duplicate writes, edits its PNG and publishes an image with pause/read/resume",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 30312
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-00fa17c62ef2f9a30be6",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: uncached complete image commands block leaving until their exact complete download",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7306
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-737c95b10bc201f16ef7",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: mismatched image bytes stay hidden and can be reread without creating another candidate",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9047
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-2943bf8bd83d04fa2c58",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: an explicit running cancellation and retry keep the same original candidate and advance its task generation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13583
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-62dd971c78e0180155a8",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: two actual tabs retain separate full figure inputs and metadata across reloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9529
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-dc29a0f3951d7982ca46",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9221
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-d3c5db8500cd6d17d3fd",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9871
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-6e51b821646e6c71ef70",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-figure: complete verified image and keyboard reader fit 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9729
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-cc5fb6bbf463525cd1fa",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "adult original generation, lost edit and confirmation replies recover without duplicates and reach a complete table/formula player",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11101
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-08adb2f21322eb11af0c",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "cancelled and failed review generations retain the original selected model through refresh and explicit retry",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 20800
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-8cb1d37b7a0b896e38b0",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "incomplete local teaching edits survive reload and another saved draft cannot silently replace them",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7705
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-2db515c98ce4055960c8",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "unavailable local storage keeps the full editable draft and requires a real downloaded copy before leaving",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6627
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-6112ba6cc45b4fcf6508",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "stale-topic: another real tab keeps the local manuscript and opens a comparison before any replacement save",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9090
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-005f4c7ef7719a0a0bf6",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "uncached original topic cannot disappear on a scope change until its complete input is downloaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5231
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-30a6557ae1e7c4726a83",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "another explicit local manuscript cannot replace uncached dirty input until the current complete copy is downloaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8723
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-11b13ee3ffb486bd9f65",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "recovery: an uncached original cancellation survives object changes until its exact command is downloaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5619
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-b817f4c2c190b308c732",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "topic-slot: two real tabs keep their own complete incomplete edits after either tab reloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11841
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-1b928351ddb87fe05b18",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8026
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-608c7ceb00f09af9ae8a",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9093
+        }
+      ]
+    },
+    {
+      "id": "e046ebfd3e9cdf69f01e-eb298190669c5cc984ec",
+      "file": "topic-whiteboard.spec.ts",
+      "title": "explicit child goals, adult separation and complete edit controls fit at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8410
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-bc7fcf39d7380703805e",
+      "file": "whiteboard-media.spec.ts",
+      "title": "complete sentence, complete notes, paused text reading and explicit sentence navigation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6555
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-6231436059e5ab4cac1a",
+      "file": "whiteboard-media.spec.ts",
+      "title": "real WAV ended drives cloud playback, pause retains audio time and late ended cannot move a new sentence",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9477
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-8f44e2972629b5b4f421",
+      "file": "whiteboard-media.spec.ts",
+      "title": "ended boundary: a queued previous audio frame cannot seek the next actual WAV to its end",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8875
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-d3bbcfb7e920bc10358d",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: adjacent actual WAV prepares during the current sentence and transfers once at its beginning",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9796
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-0997bb961bb3a6c21ba3",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: three complete actual WAVs remain ordered through a live speed change without duplicate preparation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11600
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ef24875f594c2c0a4ca6",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: an already prepared WAV cannot survive actual login-session revocation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8023
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ae9bbf29e285dd05f56c",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: a failed adjacent preparation preserves current playback and needs an explicit retry at its original sentence",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8635
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-aa84a92123d7e37b8174",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: closing during adjacent preparation aborts it and no late audio can play",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6661
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-ee06fbb9e9b8f6a5b7f8",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: an exact manual next keeps the prepared WAV paused and transfers it without another request",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8020
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-519dd59d0656be299deb",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: a prepared WAV cannot play after actual guardian revocation before handover",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8248
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-797108f6e5fc36aac35c",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: changing voice fences the old adjacent request and preserves an explicit fresh play",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9690
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-4665b4cbb3717b787326",
+      "file": "whiteboard-media.spec.ts",
+      "title": "continuity: slow adjacent audio cannot advance early and can be paused while waiting",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12904
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-367305629a2286f541a1",
+      "file": "whiteboard-media.spec.ts",
+      "title": "voice switch fences delayed requests and an audio failure offers explicit retry or text reading",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7311
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-7aac6f08ec7bca02740f",
+      "file": "whiteboard-media.spec.ts",
+      "title": "reopening a paused cloud sentence restores its known audio time in the verified original board",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9355
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-39b1df6194b59dc7f2a8",
+      "file": "whiteboard-media.spec.ts",
+      "title": "scoped local resume and complete accessible notes fit phone, tablet and desktop",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11619
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-a3f399433c3bfe3876ec",
+      "file": "whiteboard-media.spec.ts",
+      "title": "actual WebM has a decoded audio track and the same complete SRT timeline at the selected speed",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 17959
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-5089bc4b4e0a15aa7bb2",
+      "file": "whiteboard-media.spec.ts",
+      "title": "cancelling a recording releases it and never downloads a partial video",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5627
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-9fce2e8b4aa915004ae6",
+      "file": "whiteboard-media.spec.ts",
+      "title": "seeking cancels old audio and ignores its late completion at the new reading position",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5524
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-848caf2c5f8fd80094e2",
+      "file": "whiteboard-media.spec.ts",
+      "title": "revoked student access closes the private player before another frozen sentence can be fetched",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5964
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-c8f3b92e098e122e66d0",
+      "file": "whiteboard-media.spec.ts",
+      "title": "closing while export audio is pending aborts it and cannot download or reopen a late result",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7882
+        }
+      ]
+    },
+    {
+      "id": "64bf3b59c02ea1230df8-21203581cb83a795e1c0",
+      "file": "whiteboard-media.spec.ts",
+      "title": "a recorder error releases resources, keeps the reading position and offers a retry without a partial download",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5601
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-f2243b70463a883772fc",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: selected model, exact sentence and pause bookmark survive a real queued answer and return",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7508
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-cc4aeb99a6dbb7f57fd7",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary board: explicit audio, whole structured items, real video/SRT and original camera restoration",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 15707
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-3d5b2a50517dab345fe2",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary board: a delayed authorized audio response cannot play after the original grant is revoked",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8264
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-ff952e4d1e13be42499e",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "teaching notes: full JSON and Markdown include twelve saved answers while only the last history page is loaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 28952
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-32ad73df4e3c16412f7f",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "teaching notes: closing the whiteboard discards a late full-note response",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4688
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-716df73040886f2da71d",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "mobile draft: closing and reopening the reading layer preserves blocked-storage input without remounting the composer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4305
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-e83571e5a3d3b9644172",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary private link: restores its actual answer and original sentence for a child guidance board",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7731
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-b3dc4d0f54f5208d7b70",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary private link: restores its actual answer and original sentence for an adult topic without a child",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7909
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-702ae1632dff26796078",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "supplementary close: a late authorized sentence stays silent while the original board remains open",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6282
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-99f5d67ea25e1c8525bf",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: five intentions produce distinct original commands and retain completed history",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12879
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-c6d9193911490423e686",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: a failed answer has an explicit original-model retry and preserves the next unsent question",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7416
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-af799b9016a35a0c2c47",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: cancelling running work blocks the late answer and the same original can be retried",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11469
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-38eabaaa923a56e72037",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: a lost create response is recovered after reload without a second write",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6108
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-f8456f0a7261a85e2baa",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: unavailable local storage keeps the full input, protects closing and round trips the downloaded JSON",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6499
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-bfaa77f80069862f4c10",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: duplicated documents keep separate full drafts across independent reloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9055
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-4ff6cbd7f0500ca23bbb",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6287
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-6e2a575de959af73b31b",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5967
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-4f7d9fdb759e156ac658",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "whiteboard questions: the real composer, model selection and return controls remain usable at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7317
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-e223c0b9759638ecc4e2",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: exact PNG adoption binds voice, video, private links, complete notes and original-version review",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 22526
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-d2506d655c5eebea2267",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: lost prepare and adoption receipts retain original commands through reload without duplicate images or versions",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10715
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-d6db0b6523a220345816",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: original PNG editing and two explicit adoptions preserve both prior teaching versions",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13979
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-07a0e5cf1404e721cc80",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: explicit cancel and original retry keep the same image requirement and target",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 21188
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-2d16e0595c5f5c4d6ba5",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: duplicated documents keep separate full inputs and a closed workbench discards late preflight",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13154
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-34e53c84874e54da2111",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7486
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-24f9d54bb0457650d1cd",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7235
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-eeace06980b097ad3621",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: full input, storage failure, download and import remain usable at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6502
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-158251ef6fd31008cae5",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: a stale second tab preserves its full requirements and rechecks the current adoption before choosing again",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11518
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-14505ba97ef038968869",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9588
+        }
+      ]
+    },
+    {
+      "id": "dae50bb9f64849b255e1-90be96abf30f6bef9374",
+      "file": "whiteboard-questions.spec.ts",
+      "title": "question figures: mobile adopted image layers contain keyboard focus and return to the actual original control at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9725
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-37b390d3ed70412c6427",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: six actual neutral MP3s decode, previews preserve selection and closing releases audio",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7463
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d66534b68fb20b65c7b3",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: corrupt samples fail visibly, explicit retry works and a late closed sample never plays",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6512
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-77cbd46a5558eb5b33a5",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: half speed restores, double speed records real WAV and frozen captions at matching durations",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13190
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d001ce15b27fb992744a",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: real seven-tool tour preserves position and focus at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5367
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-c1e6579fe7a4e3d5dfdf",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "original settings: real seven-tool tour preserves position and focus at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5151
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-fa2be5252f29b6855cfa",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: original380 width, pointer and keyboard bounds, viewport cap and collapsed preference restore without teaching writes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6657
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-5a74e42a4c6cfc6ede74",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4555
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-a6ebcbd26bbaf7ae39e8",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: explicit mobile entry contains focus, returns to the same sentence and closes only its own layer at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4851
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-d9b0d9757a8021a0539d",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "reading panel: malformed or wrong-owner device preferences are rejected and blocked storage leaves resizing usable",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7423
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-facafe3b549321b2a207",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: a private link reopens the same board and a real PNG exactly decodes the visible frozen canvas",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6881
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-f9d29d0bc80fb74d3376",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: closing during original PNG authorization fences a late reply and never downloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5361
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-7a6f62eafd5cfe9d3048",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4584
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-772c9487ec9b530c429d",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4445
+        }
+      ]
+    },
+    {
+      "id": "6fcfac3924ad5008d78e-ba89ddec966a8a85078b",
+      "file": "whiteboard-settings.spec.ts",
+      "title": "share toolbar: every visible playback and toolbar control stays inside the actual viewport at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5043
+        }
+      ]
+    },
+    {
+      "id": "6a243751a71624737876-39e1999d0d69d2151646",
+      "file": "workspace-continuation.spec.ts",
+      "title": "continuation: an old in-progress assessment keeps its draft, pause, original answer and current item across workspace URLs",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9243
+        }
+      ]
+    },
+    {
+      "id": "6a243751a71624737876-509ee8e2668f78cd5b09",
+      "file": "workspace-continuation.spec.ts",
+      "title": "continuation: teachers and admins sign in to their original allowed management page while a forbidden teacher return reads no account data",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13769
+        }
+      ]
+    },
+    {
+      "id": "6a243751a71624737876-1e77e703a59b3f35011c",
+      "file": "workspace-continuation.spec.ts",
+      "title": "continuation: a student signs in to the same unfinished old assessment and cannot submit another family session",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10921
+        }
+      ]
+    },
+    {
+      "id": "6a243751a71624737876-043e5dacf94305b7a75a",
+      "file": "workspace-continuation.spec.ts",
+      "title": "continuation: phone touch opens the existing drawer, follows a task link and closes the overlay without losing the child",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7421
+        }
+      ]
+    },
+    {
+      "id": "6a243751a71624737876-f4f0c5b9e184436552dc",
+      "file": "workspace-continuation.spec.ts",
+      "title": "continuation: switching between parent and learner sign-in and continuing an existing learner session preserve the original activity",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9801
+        }
+      ]
+    },
+    {
+      "id": "7eb139e2ecbcba654668-94b733258652fbb8a6ae",
+      "file": "workspace-family-pages.spec.ts",
+      "title": "family pages: authorization keeps the requested child and completes learning code, reviewer and guardian invitation journeys",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 14268
+        }
+      ]
+    },
+    {
+      "id": "7eb139e2ecbcba654668-2ac6162c765258cb5399",
+      "file": "workspace-family-pages.spec.ts",
+      "title": "family pages: data management is reached from settings, downloads a copy and deletes one synthetic child with a receipt",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5594
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-61b991892a6302d64b83",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: a real classroom uses its authorized chemistry scope and restores the ordinary sidebar preference",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7028
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-eb64ade97c3faedd4650",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: adult whiteboard exposes one navigation and restores the original workspace and focus",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5240
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-2f5a81b052382e4873dd",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: paper exit preserves the full draft and imports it without writing a first answer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6317
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-40dff7fb0425a9ab0de6",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: admin cookie identity exposes nine modules and a teacher is gated before private data reads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 16625
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-2b964bfa6c38d9f0228b",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: project navigation protects the complete local artifact before an explicit export and leave",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6923
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-92adc1be23b131a7e0b1",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: all nine admin modules render in one shell and actual content fits phone, tablet and desktop",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 16442
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-82eb8422ca5c604040b7",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: without Navigation API the persistent host keeps full unsaved material text during browser back",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10138
+        }
+      ]
+    },
+    {
+      "id": "e44b011520c0dba8f6f4-97116f3497f36f9921e2",
+      "file": "workspace-focus.spec.ts",
+      "title": "workspace focus: a classroom with disabled storage requires the full choice download and never submits it on exit",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6768
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-815437f71df659020f25",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a legacy receipt without first-response metadata never displays an independent-completion claim",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 44582
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-81c184d9b11f29053531",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: code-first feedback stays held until both probe first responses are saved",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 47956
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-6d94aeb1fb4b9f079ddd",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: exact original task and complete independent code survive task changes, reloads and a second tab",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 21361
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-91e041b57d126e7b7328",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: disabled storage requires the complete code download before mobile navigation and explicit import",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 19968
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-960f94c83787130ae2bc",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost probe reply retains the original full command through reload and rejects another atom",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4650
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-6b126f20dc14d501196f",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a changed parent scope keeps the original full code visible for export and blocks new writes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10362
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-717e5a02973bc9320a61",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent restores the exact linked child and certification level while keeping each level draft separate",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5749
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-c243105a8a9332911102",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a lost parent confirmation replays its original version while a later confirmed scope stays current",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6174
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-f1742acc80ed98008912",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: a parent with disabled storage downloads the full selection before changing levels and restores it explicitly",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7714
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-112633f33e90029954d7",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: without Navigation API browser back preserves the full original-task code until its exact download",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10072
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-0e49218f6da1595792a8",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: actual isolated code execution recovers one lost receipt while preserving later complete code edits",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 40958
+        }
+      ]
+    },
+    {
+      "id": "97026f51b463f27fab5a-f601d76c4c983d44ee14",
+      "file": "workspace-gesp.spec.ts",
+      "title": "GESP workspace: delayed parent reads and a disconnected refresh cannot replace another child or erase its complete draft",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5730
+        }
+      ]
+    },
+    {
+      "id": "d5645b5d1d74562c1b51-76119dd2e4710e965aa3",
+      "file": "workspace-keyboard.spec.ts",
+      "title": "keyboard: every sidebar entry is reached by Tab with a visible focus ring, is named as shown and opens with Enter",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4363
+        }
+      ]
+    },
+    {
+      "id": "d5645b5d1d74562c1b51-c151738961fe45eb32f6",
+      "file": "workspace-keyboard.spec.ts",
+      "title": "keyboard: the phone drawer opens from the keyboard, keeps Tab inside and returns focus on Escape",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4016
+        }
+      ]
+    },
+    {
+      "id": "44fabee82d9c6299c485-773a27cef0a2cd8ec04d",
+      "file": "workspace-legacy-entries.spec.ts",
+      "title": "legacy entries: every old address is observed for each identity at phone and desktop widths",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 849181
+        }
+      ]
+    },
+    {
+      "id": "44fabee82d9c6299c485-ac503a798db883c41e0e",
+      "file": "workspace-legacy-entries.spec.ts",
+      "title": "legacy entries: browser history returns through the parent sequence without re-entering another identity",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 30554
+        }
+      ]
+    },
+    {
+      "id": "e52686562fe1d4876cfc-5dbd8312e87788a2fae6",
+      "file": "workspace-legacy-parameters.spec.ts",
+      "title": "legacy parameters: the old mission link opens the requested child and refuses ambiguous learners",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5571
+        }
+      ]
+    },
+    {
+      "id": "e52686562fe1d4876cfc-7ffa9a4c0eb0b4d99ec2",
+      "file": "workspace-legacy-parameters.spec.ts",
+      "title": "legacy parameters: browser history returns from the old mission link to the original workspace child",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7059
+        }
+      ]
+    },
+    {
+      "id": "e52686562fe1d4876cfc-d7abd233558d47a47b07",
+      "file": "workspace-legacy-parameters.spec.ts",
+      "title": "legacy parameters: the chemistry alias keeps the requested child, reloads without refused reads and rejects conflicts",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7953
+        }
+      ]
+    },
+    {
+      "id": "e52686562fe1d4876cfc-012dba3fee409ae3eeda",
+      "file": "workspace-legacy-parameters.spec.ts",
+      "title": "legacy parameters: shared old home, report and knowledge adapters reject every conflicting learner alias",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5822
+        }
+      ]
+    },
+    {
+      "id": "70745a2949eea14a8a01-362e0635d018dd99e64a",
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: anonymous workspace deep links come back to the same address after parent sign-in",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12610
+        }
+      ]
+    },
+    {
+      "id": "70745a2949eea14a8a01-1a054195ad8add0679a1",
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: old addresses in saved sign-in links reach their workspace destination, including the same plan",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11762
+        }
+      ]
+    },
+    {
+      "id": "70745a2949eea14a8a01-ccd4da762d0f4b9f4695",
+      "file": "workspace-login-return.spec.ts",
+      "title": "login return: a learner code sign-in returns to the original task page",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6309
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-19cede8308095643dd6b",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: adult documents and actor-bound text drafts work without a child",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5475
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-4de53151a261ae5bf93d",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: explicit object and subject never mix lawful parent-private documents",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6467
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-c8f61a745faff0f6cae9",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a lost text receipt and reload reuse the complete original command once",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4752
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-01162ee9b7bc88165a30",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: unavailable storage protects full text across browser back and restores focus",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12887
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-910ef0c1cf3cc5e78ef0",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: real PDF pages, source course, classroom and project preserve the source return",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12502
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-aeae94ab22fd14566bcf",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: paper legacy links and URL filters survive details answers back forward and refresh",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5108
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-e740ac4f763fa233c5b8",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: original-paper first answers keep identity and exact source return through review",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7976
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-05e8088c00ff9c460292",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: student learning code reads only their own materials and no adult projection",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4607
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-e0835de14dade3c83427",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: existing-style tabs support keyboard navigation and narrow screens",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3958
+        }
+      ]
+    },
+    {
+      "id": "b52eb6a8a5fb527dbfa8-22fb97356b113b6022fd",
+      "file": "workspace-materials.spec.ts",
+      "title": "workspace materials: a late catalog cannot replace a new object and list pagination restores from URL",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9524
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-a9125b77dcca6506703f",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: one existing-style sidebar keeps the object across tasks reports and profiles",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3944
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-d8918e6e25bf4cb6c268",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: profiles read metadata only and new profiles keep the original creation contract",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3303
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-6f2e3cff592f7da13f5e",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: a learning-code student stays bound to their own profile and rejects self mode",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4149
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-0643b52b79248153679b",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: completed reports and the old family URL preserve original records without writes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10621
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-9638934483581e423a77",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: login returns to a local original activity and refuses an external return",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4744
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-ff2772c720565e4ec517",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: parent self learning reads independent data instead of a cached child",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3200
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-8d0210f420695c33a140",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2980
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-a8952908a35a092e4506",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: report detail refuses an unfinished session without becoming an answer screen",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2939
+        }
+      ]
+    },
+    {
+      "id": "84bf53f4247e1e3dd17a-ccc28ed74624763d791c",
+      "file": "workspace-shell.spec.ts",
+      "title": "workspace shell: mobile navigation and compact preference work across legacy and new pages",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4113
+        }
+      ]
+    },
+    {
+      "id": "b163ed09f68681248ada-785678de6c7d7376d94f",
+      "file": "workspace.spec.ts",
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7793
+        }
+      ]
+    },
+    {
+      "id": "b163ed09f68681248ada-38682a6ed88852160ee9",
+      "file": "workspace.spec.ts",
+      "title": "course library and outline preserve navigation, panels, help and classroom back/forward without Navigation API",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7854
+        }
+      ]
+    },
+    {
+      "id": "b163ed09f68681248ada-0fc832b1b7c65de9271a",
+      "file": "workspace.spec.ts",
+      "title": "calendar supports real date navigation, edit, confirmation, completion, export and batch lifecycle",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9533
+        }
+      ]
+    }
+  ],
+  "globalErrors": 0
+}

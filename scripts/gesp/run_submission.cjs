@@ -112,9 +112,19 @@ function runSubmission(raw, overrides = {}) {
   }
 }
 if (require.main === module) {
+  if (process.argv[2] === '--capabilities') {
+    try {
+      const env = settings(); preflight(env);
+      const namespaces = runtime(env, ['unshare', '--user', '--map-root-user', '--mount', '--pid', '--fork', '--net', '--uts', '--ipc', 'true']);
+      const available = namespaces.status === 0;
+      process.stdout.write(JSON.stringify({ protocol: 'gesp-runner-capabilities-v1', available, namespaces: available }) + '\n');
+      if (!available) process.exitCode = 1;
+    } catch { process.stdout.write(JSON.stringify({ protocol: 'gesp-runner-capabilities-v1', available: false, namespaces: false }) + '\n'); process.exitCode = 1; }
+  } else {
   const chunks = []; process.stdin.on('data', chunk => chunks.push(chunk)); process.stdin.on('end', () => {
     try { const receipt = runSubmission(JSON.parse(Buffer.concat(chunks).toString('utf8')), { cleanup: process.env.STUDY_GESP_KEEP_TEMP !== 'true' }); process.stdout.write(JSON.stringify(receipt, null, 2) + '\n'); if (!receipt.passed) process.exitCode = 1; }
     catch (error) { process.stderr.write(`${error.message}\n`); process.exitCode = 1; }
   });
+  }
 }
 module.exports = { LIMITS, isolatedBash, preflight, runSubmission };

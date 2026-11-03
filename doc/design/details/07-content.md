@@ -1,6 +1,6 @@
 # 07 题卷资产、内容编辑、导入与发布 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习。
 
 产品入口：`/library`、`/library/practice`、`/admin/content`、`/admin/imports`、`/admin/measurement`。
 
@@ -181,15 +181,15 @@
 
 **关联接口**：
 
-- `GET /api/library/overview` → `LibraryController.overview`；[apps/api/src/modules/library/library.controller.ts:12](../../../apps/api/src/modules/library/library.controller.ts#L12)。
-- `GET /api/library/facets` → `LibraryController.facets`；[apps/api/src/modules/library/library.controller.ts:13](../../../apps/api/src/modules/library/library.controller.ts#L13)。
-- `GET /api/library/papers` → `LibraryController.search`；[apps/api/src/modules/library/library.controller.ts:14](../../../apps/api/src/modules/library/library.controller.ts#L14)。
+- `GET /api/library/overview` → `LibraryController.overview`；[apps/api/src/modules/library/library.controller.ts:11](../../../apps/api/src/modules/library/library.controller.ts#L11)。
+- `GET /api/library/facets` → `LibraryController.facets`；[apps/api/src/modules/library/library.controller.ts:12](../../../apps/api/src/modules/library/library.controller.ts#L12)。
+- `GET /api/library/papers` → `LibraryController.search`；[apps/api/src/modules/library/library.controller.ts:13](../../../apps/api/src/modules/library/library.controller.ts#L13)。
 
 **服务方法**：
 
-- `LibraryService.overview`；[apps/api/src/modules/library/library.service.ts:45](../../../apps/api/src/modules/library/library.service.ts#L45)。
-- `LibraryService.facets`；[apps/api/src/modules/library/library.service.ts:53](../../../apps/api/src/modules/library/library.service.ts#L53)。
-- `LibraryService.search`；[apps/api/src/modules/library/library.service.ts:54](../../../apps/api/src/modules/library/library.service.ts#L54)。
+- `LibraryService.overview`；[apps/api/src/modules/library/library.service.ts:48](../../../apps/api/src/modules/library/library.service.ts#L48)。
+- `LibraryService.facets`；[apps/api/src/modules/library/library.service.ts:56](../../../apps/api/src/modules/library/library.service.ts#L56)。
+- `LibraryService.search`；[apps/api/src/modules/library/library.service.ts:57](../../../apps/api/src/modules/library/library.service.ts#L57)。
 
 ## CONTENT-07 原卷、缺题位置、媒体与打印
 
@@ -205,13 +205,13 @@
 
 **关联接口**：
 
-- `GET /api/library/papers/:id` → `LibraryController.preview`；[apps/api/src/modules/library/library.controller.ts:15](../../../apps/api/src/modules/library/library.controller.ts#L15)。
-- `GET /api/library/media` → `LibraryController.media`；[apps/api/src/modules/library/library.controller.ts:20](../../../apps/api/src/modules/library/library.controller.ts#L20)。
+- `GET /api/library/papers/:id` → `LibraryController.preview`；[apps/api/src/modules/library/library.controller.ts:14](../../../apps/api/src/modules/library/library.controller.ts#L14)。
+- `GET /api/library/media` → `LibraryController.media`；[apps/api/src/modules/library/library.controller.ts:19](../../../apps/api/src/modules/library/library.controller.ts#L19)。
 
 **服务方法**：
 
-- `LibraryService.preview`；[apps/api/src/modules/library/library.service.ts:79](../../../apps/api/src/modules/library/library.service.ts#L79)。
-- `LibraryService.media`；[apps/api/src/modules/library/library.service.ts:99](../../../apps/api/src/modules/library/library.service.ts#L99)。
+- `LibraryService.preview`；[apps/api/src/modules/library/library.service.ts:81](../../../apps/api/src/modules/library/library.service.ts#L81)。
+- `LibraryService.media`；[apps/api/src/modules/library/library.service.ts:112](../../../apps/api/src/modules/library/library.service.ts#L112)。
 
 ## CONTENT-08 整卷发布、撤回与收藏
 
@@ -227,13 +227,13 @@
 
 **关联接口**：
 
-- `POST /api/library/papers/:id/publication` → `LibraryController.publish`；[apps/api/src/modules/library/library.controller.ts:18](../../../apps/api/src/modules/library/library.controller.ts#L18)。
-- `PATCH /api/library/papers/:id/bookmark` → `LibraryController.bookmark`；[apps/api/src/modules/library/library.controller.ts:19](../../../apps/api/src/modules/library/library.controller.ts#L19)。
+- `POST /api/library/papers/:id/publication` → `LibraryController.publish`；[apps/api/src/modules/library/library.controller.ts:17](../../../apps/api/src/modules/library/library.controller.ts#L17)。
+- `PATCH /api/library/papers/:id/bookmark` → `LibraryController.bookmark`；[apps/api/src/modules/library/library.controller.ts:18](../../../apps/api/src/modules/library/library.controller.ts#L18)。
 
 **服务方法**：
 
-- `LibraryService.publish`；[apps/api/src/modules/library/library.service.ts:106](../../../apps/api/src/modules/library/library.service.ts#L106)。
-- `LibraryService.bookmark`；[apps/api/src/modules/library/library.service.ts:125](../../../apps/api/src/modules/library/library.service.ts#L125)。
+- `LibraryService.publish`；[apps/api/src/modules/library/library.service.ts:123](../../../apps/api/src/modules/library/library.service.ts#L123)。
+- `LibraryService.bookmark`；[apps/api/src/modules/library/library.service.ts:142](../../../apps/api/src/modules/library/library.service.ts#L142)。
 
 ## CONTENT-09 原卷题转量化素材候选
 
@@ -338,14 +338,14 @@
 
 **服务方法**：
 
-- `PaperPracticeService.preview`；[apps/api/src/modules/library/paper-practice.service.ts:135](../../../apps/api/src/modules/library/paper-practice.service.ts#L135)。
-- `PaperPracticeService.create`；[apps/api/src/modules/library/paper-practice.service.ts:143](../../../apps/api/src/modules/library/paper-practice.service.ts#L143)。
-- `PaperPracticeService.creationResult`；[apps/api/src/modules/library/paper-practice.service.ts:157](../../../apps/api/src/modules/library/paper-practice.service.ts#L157)。
-- `PaperPracticeService.list`；[apps/api/src/modules/library/paper-practice.service.ts:161](../../../apps/api/src/modules/library/paper-practice.service.ts#L161)。
-- `PaperPracticeService.get`；[apps/api/src/modules/library/paper-practice.service.ts:171](../../../apps/api/src/modules/library/paper-practice.service.ts#L171)。
-- `PaperPracticeService.item`；[apps/api/src/modules/library/paper-practice.service.ts:254](../../../apps/api/src/modules/library/paper-practice.service.ts#L254)。
-- `PaperPracticeService.commandResult`；[apps/api/src/modules/library/paper-practice.service.ts:262](../../../apps/api/src/modules/library/paper-practice.service.ts#L262)。
-- `PaperPracticeService.command`；[apps/api/src/modules/library/paper-practice.service.ts:267](../../../apps/api/src/modules/library/paper-practice.service.ts#L267)。
+- `PaperPracticeService.preview`；[apps/api/src/modules/library/paper-practice.service.ts:139](../../../apps/api/src/modules/library/paper-practice.service.ts#L139)。
+- `PaperPracticeService.create`；[apps/api/src/modules/library/paper-practice.service.ts:147](../../../apps/api/src/modules/library/paper-practice.service.ts#L147)。
+- `PaperPracticeService.creationResult`；[apps/api/src/modules/library/paper-practice.service.ts:161](../../../apps/api/src/modules/library/paper-practice.service.ts#L161)。
+- `PaperPracticeService.list`；[apps/api/src/modules/library/paper-practice.service.ts:165](../../../apps/api/src/modules/library/paper-practice.service.ts#L165)。
+- `PaperPracticeService.get`；[apps/api/src/modules/library/paper-practice.service.ts:175](../../../apps/api/src/modules/library/paper-practice.service.ts#L175)。
+- `PaperPracticeService.item`；[apps/api/src/modules/library/paper-practice.service.ts:258](../../../apps/api/src/modules/library/paper-practice.service.ts#L258)。
+- `PaperPracticeService.commandResult`；[apps/api/src/modules/library/paper-practice.service.ts:266](../../../apps/api/src/modules/library/paper-practice.service.ts#L266)。
+- `PaperPracticeService.command`；[apps/api/src/modules/library/paper-practice.service.ts:271](../../../apps/api/src/modules/library/paper-practice.service.ts#L271)。
 
 **补充实现文件**：
 
@@ -381,9 +381,9 @@
 
 **服务方法**：
 
-- `PaperPracticeService.reviews`；[apps/api/src/modules/library/paper-practice.service.ts:224](../../../apps/api/src/modules/library/paper-practice.service.ts#L224)。
-- `PaperPracticeService.reviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:239](../../../apps/api/src/modules/library/paper-practice.service.ts#L239)。
-- `PaperPracticeService.exportReviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:248](../../../apps/api/src/modules/library/paper-practice.service.ts#L248)。
+- `PaperPracticeService.reviews`；[apps/api/src/modules/library/paper-practice.service.ts:228](../../../apps/api/src/modules/library/paper-practice.service.ts#L228)。
+- `PaperPracticeService.reviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:243](../../../apps/api/src/modules/library/paper-practice.service.ts#L243)。
+- `PaperPracticeService.exportReviewCalendar`；[apps/api/src/modules/library/paper-practice.service.ts:252](../../../apps/api/src/modules/library/paper-practice.service.ts#L252)。
 
 **补充实现文件**：
 
@@ -417,9 +417,9 @@
 
 **服务方法**：
 
-- `PaperPracticeService.nextOptions`；[apps/api/src/modules/library/paper-practice.service.ts:172](../../../apps/api/src/modules/library/paper-practice.service.ts#L172)。
-- `PaperPracticeService.verificationPreview`；[apps/api/src/modules/library/paper-practice.service.ts:193](../../../apps/api/src/modules/library/paper-practice.service.ts#L193)。
-- `PaperPracticeService.verificationRequest`；[apps/api/src/modules/library/paper-practice.service.ts:210](../../../apps/api/src/modules/library/paper-practice.service.ts#L210)。
+- `PaperPracticeService.nextOptions`；[apps/api/src/modules/library/paper-practice.service.ts:176](../../../apps/api/src/modules/library/paper-practice.service.ts#L176)。
+- `PaperPracticeService.verificationPreview`；[apps/api/src/modules/library/paper-practice.service.ts:197](../../../apps/api/src/modules/library/paper-practice.service.ts#L197)。
+- `PaperPracticeService.verificationRequest`；[apps/api/src/modules/library/paper-practice.service.ts:214](../../../apps/api/src/modules/library/paper-practice.service.ts#L214)。
 
 **补充实现文件**：
 
@@ -431,3 +431,53 @@
 - [packages/contracts/src/diagnostics.ts](../../../packages/contracts/src/diagnostics.ts)
 - [apps/api/src/modules/library/measurement-content.integration.test.ts](../../../apps/api/src/modules/library/measurement-content.integration.test.ts)
 - [apps/api/src/modules/library/paper-practice-recovery.integration.test.ts](../../../apps/api/src/modules/library/paper-practice-recovery.integration.test.ts)
+
+## CONTENT-15 个人选题与可恢复PDF/DOCX导出
+
+**输入**：当前身份和选题清单、准确来源、题序留白、答案可见性、冻结导出输入与原请求键。
+
+**处理与实现**：跨卷选题独立保存，来源阅读与曝光按原对象记录；预检重新核身份、来源和结构。导出冻结完整题目与原生公式表格、答案册分离，实际任务保留原命令、产物哈希与受控下载；取消、恢复和到期回收沿原队列及文件栅栏。
+
+**输出**：选题清单、来源元数据、原读请求、预检、导出任务及PDF/DOCX文件。
+
+**状态与持久化**：`paperSelectionLists`、`paperSelectionCommands`、`paperExports`、`paperExportCommands`、`paperSourceExposures`、`paperExportFiles`
+
+**权限、失败与边界**：工具缺失不丢选题，错误和过期来源不假成功；文档渲染与实体打印分开计，未审内容不因导出而获批准。
+
+**关联接口**：
+
+- `GET /api/library/selection-lists` → `PaperSelectionController.list`；[apps/api/src/modules/library/paper-selection.controller.ts:9](../../../apps/api/src/modules/library/paper-selection.controller.ts#L9)。
+- `GET /api/library/selection-lists/:id` → `PaperSelectionController.get`；[apps/api/src/modules/library/paper-selection.controller.ts:10](../../../apps/api/src/modules/library/paper-selection.controller.ts#L10)。
+- `POST /api/library/selection-commands` → `PaperSelectionController.command`；[apps/api/src/modules/library/paper-selection.controller.ts:11](../../../apps/api/src/modules/library/paper-selection.controller.ts#L11)。
+- `GET /api/library/selection-commands/:key` → `PaperSelectionController.commandResult`；[apps/api/src/modules/library/paper-selection.controller.ts:12](../../../apps/api/src/modules/library/paper-selection.controller.ts#L12)。
+- `GET /api/library/papers/:id/metadata` → `PaperSelectionController.metadata`；[apps/api/src/modules/library/paper-selection.controller.ts:13](../../../apps/api/src/modules/library/paper-selection.controller.ts#L13)。
+- `POST /api/library/source-reads` → `PaperSelectionController.read`；[apps/api/src/modules/library/paper-selection.controller.ts:14](../../../apps/api/src/modules/library/paper-selection.controller.ts#L14)。
+- `GET /api/library/source-reads/:key` → `PaperSelectionController.readResult`；[apps/api/src/modules/library/paper-selection.controller.ts:15](../../../apps/api/src/modules/library/paper-selection.controller.ts#L15)。
+- `POST /api/library/export-preflight` → `PaperExportController.preflight`；[apps/api/src/modules/library/paper-export.controller.ts:8](../../../apps/api/src/modules/library/paper-export.controller.ts#L8)。
+- `POST /api/library/export-commands` → `PaperExportController.command`；[apps/api/src/modules/library/paper-export.controller.ts:9](../../../apps/api/src/modules/library/paper-export.controller.ts#L9)。
+- `GET /api/library/export-commands/:key` → `PaperExportController.commandResult`；[apps/api/src/modules/library/paper-export.controller.ts:10](../../../apps/api/src/modules/library/paper-export.controller.ts#L10)。
+- `GET /api/library/exports` → `PaperExportController.list`；[apps/api/src/modules/library/paper-export.controller.ts:11](../../../apps/api/src/modules/library/paper-export.controller.ts#L11)。
+- `GET /api/library/exports/:id` → `PaperExportController.get`；[apps/api/src/modules/library/paper-export.controller.ts:12](../../../apps/api/src/modules/library/paper-export.controller.ts#L12)。
+- `GET /api/library/exports/:id/files/:book/:format` → `PaperExportArtifactController.file`；[apps/api/src/modules/library/paper-export-artifact.controller.ts:9](../../../apps/api/src/modules/library/paper-export-artifact.controller.ts#L9)。
+
+**服务方法**：
+
+- `PaperSelectionService.list`；[apps/api/src/modules/library/paper-selection.service.ts:51](../../../apps/api/src/modules/library/paper-selection.service.ts#L51)。
+- `PaperSelectionService.get`；[apps/api/src/modules/library/paper-selection.service.ts:58](../../../apps/api/src/modules/library/paper-selection.service.ts#L58)。
+- `PaperSelectionService.command`；[apps/api/src/modules/library/paper-selection.service.ts:66](../../../apps/api/src/modules/library/paper-selection.service.ts#L66)。
+- `PaperSelectionService.commandResult`；[apps/api/src/modules/library/paper-selection.service.ts:59](../../../apps/api/src/modules/library/paper-selection.service.ts#L59)。
+- `PaperSelectionService.metadata`；[apps/api/src/modules/library/paper-selection.service.ts:101](../../../apps/api/src/modules/library/paper-selection.service.ts#L101)。
+- `PaperSelectionService.read`；[apps/api/src/modules/library/paper-selection.service.ts:118](../../../apps/api/src/modules/library/paper-selection.service.ts#L118)。
+- `PaperSelectionService.readResult`；[apps/api/src/modules/library/paper-selection.service.ts:111](../../../apps/api/src/modules/library/paper-selection.service.ts#L111)。
+- `PaperExportService.preflight`；[apps/api/src/modules/library/paper-export.service.ts:89](../../../apps/api/src/modules/library/paper-export.service.ts#L89)。
+- `PaperExportService.command`；[apps/api/src/modules/library/paper-export.service.ts:109](../../../apps/api/src/modules/library/paper-export.service.ts#L109)。
+- `PaperExportService.commandResult`；[apps/api/src/modules/library/paper-export.service.ts:69](../../../apps/api/src/modules/library/paper-export.service.ts#L69)。
+- `PaperExportService.list`；[apps/api/src/modules/library/paper-export.service.ts:63](../../../apps/api/src/modules/library/paper-export.service.ts#L63)。
+- `PaperExportService.get`；[apps/api/src/modules/library/paper-export.service.ts:68](../../../apps/api/src/modules/library/paper-export.service.ts#L68)。
+- `PaperExportService.file`；[apps/api/src/modules/library/paper-export.service.ts:158](../../../apps/api/src/modules/library/paper-export.service.ts#L158)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/library/paper-selection.controller.ts](../../../apps/api/src/modules/library/paper-selection.controller.ts)
+- [apps/api/src/modules/library/paper-export.controller.ts](../../../apps/api/src/modules/library/paper-export.controller.ts)
+- [doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md](../../../doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md)

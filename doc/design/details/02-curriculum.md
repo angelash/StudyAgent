@@ -1,6 +1,6 @@
 # 02 知识、教材、范围与课程版本 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：家长、学生、教研、管理员。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：家长、学生、教研、管理员。
 
 产品入口：`/admin/curriculum`、`/parent/dashboard`、`/student/assessment`。
 
@@ -39,12 +39,12 @@
 **关联接口**：
 
 - `GET /api/diagnostics/curriculum` → `DiagnosticsController.curriculumList`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:28](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L28)。
-- `POST /api/admin/knowledge-atoms` → `DiagnosticsController.saveAtom`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:62](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L62)。
+- `POST /api/admin/knowledge-atoms` → `DiagnosticsController.saveAtom`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:90](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L90)。
 
 **服务方法**：
 
-- `CurriculumService.list`；[apps/api/src/modules/diagnostics/curriculum.service.ts:121](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L121)。
-- `CurriculumService.upsertAtom`；[apps/api/src/modules/diagnostics/curriculum.service.ts:130](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L130)。
+- `CurriculumService.list`；[apps/api/src/modules/diagnostics/curriculum.service.ts:66](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L66)。
+- `CurriculumService.upsertAtom`；[apps/api/src/modules/diagnostics/curriculum.service.ts:75](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L75)。
 
 ## CUR-02 已审核教学卡与受限图形
 
@@ -79,11 +79,11 @@
 
 **关联接口**：
 
-- `POST /api/admin/measurement-items` → `DiagnosticsController.saveMapping`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:64](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L64)。
+- `POST /api/admin/measurement-items` → `DiagnosticsController.saveMapping`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:92](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L92)。
 
 **服务方法**：
 
-- `CurriculumService.upsertMapping`；[apps/api/src/modules/diagnostics/curriculum.service.ts:264](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L264)。
+- `CurriculumService.upsertMapping`；[apps/api/src/modules/diagnostics/curriculum.service.ts:209](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L209)。
 
 ## CUR-04 按教材或知识点确认学习范围
 
@@ -99,13 +99,13 @@
 
 **关联接口**：
 
-- `GET /api/students/:studentId/learning-scope` → `DiagnosticsController.scope`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:66](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L66)。
-- `PUT /api/students/:studentId/learning-scope` → `DiagnosticsController.saveScope`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:70](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L70)。
+- `GET /api/students/:studentId/learning-scope` → `DiagnosticsController.scope`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:94](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L94)。
+- `PUT /api/students/:studentId/learning-scope` → `DiagnosticsController.saveScope`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:98](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L98)。
 
 **服务方法**：
 
-- `CurriculumService.getScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:163](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L163)。
-- `CurriculumService.saveScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:192](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L192)。
+- `CurriculumService.getScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:108](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L108)。
+- `CurriculumService.saveScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:137](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L137)。
 
 ## CUR-05 学生进度提议与家长确认
 
@@ -121,15 +121,15 @@
 
 **关联接口**：
 
-- `GET /api/students/:studentId/progress-proposals` → `DiagnosticsController.progressProposals`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:74](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L74)。
-- `POST /api/students/:studentId/progress-proposals` → `DiagnosticsController.proposeProgress`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:76](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L76)。
-- `POST /api/students/:studentId/progress-proposals/:proposalId/decision` → `DiagnosticsController.decideProgress`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:78](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L78)。
+- `GET /api/students/:studentId/progress-proposals` → `DiagnosticsController.progressProposals`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:102](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L102)。
+- `POST /api/students/:studentId/progress-proposals` → `DiagnosticsController.proposeProgress`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:104](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L104)。
+- `POST /api/students/:studentId/progress-proposals/:proposalId/decision` → `DiagnosticsController.decideProgress`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:106](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L106)。
 
 **服务方法**：
 
-- `CurriculumService.progressProposals`；[apps/api/src/modules/diagnostics/curriculum.service.ts:205](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L205)。
-- `CurriculumService.proposeScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:211](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L211)。
-- `CurriculumService.decideProgress`；[apps/api/src/modules/diagnostics/curriculum.service.ts:231](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L231)。
+- `CurriculumService.progressProposals`；[apps/api/src/modules/diagnostics/curriculum.service.ts:150](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L150)。
+- `CurriculumService.proposeScope`；[apps/api/src/modules/diagnostics/curriculum.service.ts:156](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L156)。
+- `CurriculumService.decideProgress`；[apps/api/src/modules/diagnostics/curriculum.service.ts:176](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L176)。
 
 ## CUR-06 教材登记、章节与受控原文阅读
 
@@ -149,13 +149,18 @@
 - `GET /api/diagnostics/textbooks/:bookId` → `DiagnosticsController.textbook`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:37](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L37)。
 - `GET /api/admin/curriculum/textbooks/:bookId` → `DiagnosticsController.textbookForEditor`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:47](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L47)。
 - `GET /api/admin/curriculum/textbooks/:bookId/document` → `DiagnosticsController.textbookDocument`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:51](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L51)。
+- `GET /api/admin/curriculum/textbooks/:bookId/lessons/:lessonId/source` → `DiagnosticsController.textbookLessonSource`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:63](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L63)。
+- `GET /api/admin/curriculum/textbooks/:bookId/reference-sources/:sourceId/document` → `DiagnosticsController.textbookReferenceDocument`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:74](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L74)。
 
 **服务方法**：
 
-- `TextbookRegistryService.list`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:65](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L65)。
-- `TextbookRegistryService.detail`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:77](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L77)。
-- `CurriculumService.assertEditor`；[apps/api/src/modules/diagnostics/curriculum.service.ts:454](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L454)。
-- `TextbookRegistryService.document`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:102](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L102)。
+- `TextbookRegistryService.list`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:82](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L82)。
+- `TextbookRegistryService.detail`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:97](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L97)。
+- `CurriculumService.assertEditor`；[apps/api/src/modules/diagnostics/curriculum.service.ts:403](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L403)。
+- `TextbookRegistryService.document`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:126](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L126)。
+- `CurriculumService.assertCurrentSourceEditor`；[apps/api/src/modules/diagnostics/curriculum.service.ts:406](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L406)。
+- `TextbookRegistryService.lessonSource`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:163](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L163)。
+- `TextbookRegistryService.referenceDocument`；[apps/api/src/modules/diagnostics/textbook-registry.service.ts:135](../../../apps/api/src/modules/diagnostics/textbook-registry.service.ts#L135)。
 
 ## CUR-07 教材课时知识映射审核
 
@@ -171,13 +176,13 @@
 
 **关联接口**：
 
-- `POST /api/admin/curriculum/textbook-mappings` → `DiagnosticsController.saveTextbookMapping`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:58](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L58)。
-- `GET /api/admin/curriculum/textbook-mapping-worklist` → `DiagnosticsController.textbookMappingWorklist`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:60](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L60)。
+- `POST /api/admin/curriculum/textbook-mappings` → `DiagnosticsController.saveTextbookMapping`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:86](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L86)。
+- `GET /api/admin/curriculum/textbook-mapping-worklist` → `DiagnosticsController.textbookMappingWorklist`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:88](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L88)。
 
 **服务方法**：
 
-- `CurriculumService.saveTextbookMapping`；[apps/api/src/modules/diagnostics/curriculum.service.ts:296](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L296)。
-- `CurriculumService.textbookMappingWorklist`；[apps/api/src/modules/diagnostics/curriculum.service.ts:318](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L318)。
+- `CurriculumService.saveTextbookMapping`；[apps/api/src/modules/diagnostics/curriculum.service.ts:241](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L241)。
+- `CurriculumService.textbookMappingWorklist`；[apps/api/src/modules/diagnostics/curriculum.service.ts:263](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L263)。
 
 ## CUR-08 课程包导出、比较与整批导入
 
@@ -222,8 +227,8 @@
 
 **服务方法**：
 
-- `CurriculumService.overview`；[apps/api/src/modules/diagnostics/curriculum.service.ts:376](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L376)。
-- `CurriculumService.itemsForAtom`；[apps/api/src/modules/diagnostics/curriculum.service.ts:422](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L422)。
+- `CurriculumService.overview`；[apps/api/src/modules/diagnostics/curriculum.service.ts:321](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L321)。
+- `CurriculumService.itemsForAtom`；[apps/api/src/modules/diagnostics/curriculum.service.ts:371](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L371)。
 
 **补充实现文件**：
 
@@ -247,9 +252,47 @@
 
 **服务方法**：
 
-- `CurriculumService.revisions`；[apps/api/src/modules/diagnostics/curriculum.service.ts:444](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L444)。
+- `CurriculumService.revisions`；[apps/api/src/modules/diagnostics/curriculum.service.ts:393](../../../apps/api/src/modules/diagnostics/curriculum.service.ts#L393)。
 
 **补充实现文件**：
 
 - [apps/api/src/modules/diagnostics/measurement-definition.ts](../../../apps/api/src/modules/diagnostics/measurement-definition.ts)
 - [apps/api/src/modules/diagnostics/family-identity.ts](../../../apps/api/src/modules/diagnostics/family-identity.ts)
+
+## CUR-11 完整教学稿编辑、逐项材料与明确发布采用
+
+**输入**：准确教材版本和页段、目标定义、完整稿件、材料映射、原请求键及预期版本。
+
+**处理与实现**：原教材工作台读取准确原页；完整讲解、例题、图示、检查与保持逐项编辑和阅读预览。本机完整副本和原请求回执可恢复，来源或目标变化重新核对；明确审核发布与私人采用分别执行，旧课堂保留原快照。
+
+**输出**：来源预览、逐项目标及材料缺口、稿件版本、原命令和采用回执。
+
+**状态与持久化**：`textbookTeachingPackages`、`textbookTeachingVersions`、`textbookTeachingSources`、`textbookTeachingCommands`、`textbookTeachingAdoptions`、`textbookTeachingCourseRevisions`
+
+**权限、失败与边界**：候选与可保存草稿不等完整可发布；未审材料、题族、评分和充分未见库存仍阻断相应资格，内容生产当前按用户要求暂停。
+
+**关联接口**：
+
+- `POST /api/admin/curriculum/teaching-packages/source-preview` → `TextbookTeachingController.source`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:15](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L15)。
+- `POST /api/admin/curriculum/teaching-packages/preflight` → `TextbookTeachingController.preflight`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:19](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L19)。
+- `POST /api/admin/curriculum/teaching-packages/commands` → `TextbookTeachingController.command`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:23](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L23)。
+- `GET /api/admin/curriculum/teaching-packages/commands/:key` → `TextbookTeachingController.result`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:27](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L27)。
+- `GET /api/admin/curriculum/teaching-packages/materials` → `TextbookTeachingController.materials`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:31](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L31)。
+- `GET /api/admin/curriculum/teaching-packages` → `TextbookTeachingController.list`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:35](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L35)。
+- `GET /api/admin/curriculum/teaching-packages/:id` → `TextbookTeachingController.get`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:39](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L39)。
+
+**服务方法**：
+
+- `TextbookTeachingController.cancellable`；[apps/api/src/modules/diagnostics/textbook-teaching.controller.ts:10](../../../apps/api/src/modules/diagnostics/textbook-teaching.controller.ts#L10)。
+- `TextbookTeachingService.sourcePreview`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:44](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L44)。
+- `TextbookTeachingService.preflight`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:49](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L49)。
+- `TextbookTeachingService.command`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:94](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L94)。
+- `TextbookTeachingService.commandResult`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:89](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L89)。
+- `TextbookTeachingService.materials`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:54](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L54)。
+- `TextbookTeachingService.list`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:69](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L69)。
+- `TextbookTeachingService.get`；[apps/api/src/modules/diagnostics/textbook-teaching.service.ts:77](../../../apps/api/src/modules/diagnostics/textbook-teaching.service.ts#L77)。
+
+**补充实现文件**：
+
+- [apps/web/app/admin/curriculum/teaching-package-workspace.tsx](../../../apps/web/app/admin/curriculum/teaching-package-workspace.tsx)
+- [doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md](../../../doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md)

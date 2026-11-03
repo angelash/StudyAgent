@@ -1,0 +1,2327 @@
+{
+  "stats": {
+    "startTime": "2026-11-03T02:35:47.803Z",
+    "duration": 1824630.4100000001,
+    "expected": 173,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "id": "5f6a468230c371cba7ba-e894c0c4138b12aab1d4",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4512
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-83858ec6a9f734f1daaa",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3344
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-5375d36ca8e26beaca92",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: optional tools and recovery instructions at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3822
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-1d4c0d3151a558c02ca4",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations capabilities: network failure preserves metrics and explicit retry recovers",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3322
+        }
+      ]
+    },
+    {
+      "id": "5f6a468230c371cba7ba-7dbeb9200cb698073ff7",
+      "file": "operations-capabilities.spec.ts",
+      "title": "operations analytics: late original refresh cannot replace the newer response",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2745
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-a3d3fac28e911593a621",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: real captured Latin and Chinese faces decode before a board is measured, played or exported",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5932
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-75665c0a7a92d36b1d89",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: a failed captured glyph never starts playback and an explicit retry recovers the same board",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5024
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-577d5013df9ed2bf65b0",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching frame: moving to another scene retains already taught notes, excludes future scenes and keeps one full caption",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5475
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-8603666e910f7e0f7d3a",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5315
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-067b5d2f7f714941bb08",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5009
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-5549cc0aa6895bc70821",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "teaching shell: actual original chrome, font switch and return fit 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5334
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-42c781ac9449d3c64add",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: captured math faces stay isolated and the real formula editor decodes its own local font bytes after a board closes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9240
+        }
+      ]
+    },
+    {
+      "id": "8380aeb01eb0e1b51ecf-ba53d80f907a97bf62c1",
+      "file": "original-teaching-fonts.spec.ts",
+      "title": "original fonts: assistant shares the controlled registry without duplicate board faces and prepares its real UI fonts",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6211
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-a95b6894a03833eb5a08",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual original-paper entry keeps the first answer, explicit reference, correction and completed review",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9036
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f2d79d835b5d4d62f45c",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost first-answer receipt recovers the same command after actual refresh without submitting twice",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5507
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0dca4094cda8adfed5f5",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a lost creation acknowledgment restores the original started session with read-only receipt checks",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5561
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f4ff7cd0fa4ce98b05ac",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice offline draft saving and a refresh retain the full original command until explicit retry",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8281
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-676800933f29efe0d2fb",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: two actual pages preserve different local drafts and resolve a server conflict without overwriting the other copy",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6717
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-12f4007736eeb7284f44",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: rejected local persistence sends no answer until a real recovery download and explicit protection acknowledgment",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4784
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-3ee5cc57be053dfc3b7f",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual original PDF stays an unsplit document with its own persistent response",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5271
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f82a30c183af610ae2fc",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: actual publication withdrawal hides the frozen question and reference while retaining the learner response",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4732
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-ff4364367f37ae0ac02f",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: completed review permits explicit reference reading without changing the original response or reopening correction",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4833
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-dd04e44038bc425bddbb",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4027
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-faeeba7e4c2c2dac8b4a",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4388
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-9b122ff6dc6d31673125",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: original formula/table/image and keyboard completion controls fit 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5265
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-cbf692c0749a27bbe9b7",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: selected positions from two actual papers remain in the cross-paper basket and return to their original anchor",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7130
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-4c2c7ad8f87fc86347d9",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice correction drafts stay with their own item through rapid review, navigation and a real reload",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9706
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-1f88c663cf56a24966f4",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: delayed cross-item reads cannot replace the current question after actual browser back and forward",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4537
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-d5be6cbbc721c26b2f4f",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: metadata refreshes keep the same original PDF frame through submit and explicit reference reading",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4406
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-98787ca76322a7417d6b",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: recovery files from another account, session or item never replace the current private draft",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3998
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-ead3c17f3fa628dc67c2",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: a real learning-code student writes only their own record and loses the private workspace after grant revocation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5931
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f5276899ceea877234f8",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an actual login logout and another family cannot reuse a private record or its visible answer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6136
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-72c1b795322a38517d4e",
+      "file": "paper-practice.spec.ts",
+      "title": "paper practice: an expired original preview can be safely retained and previewed again without duplicating a started record",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5094
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-56ee185176588adc1a17",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper practice retains an uncommitted original start through three actual refreshes before one explicit retry",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6914
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-813baf6ab4983b3860f1",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: a completed first answer leads through real reflection, actual review and the stable local-date calendar",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5274
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0410afcb11ed80c2ffc4",
+      "file": "paper-practice.spec.ts",
+      "title": "recovery: paper review: a lost organization receipt is recovered after three reloads without duplicating history or clearing later reflection",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8478
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-63773271fe730f2137cc",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: two real pages compare conflicting reflection drafts before saving a new command",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6146
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-f0233254c53b9b9f40a5",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4702
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-d9d6325ab58b2cd48236",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5418
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-a5befd9c22abe393ef10",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: current item, full reflection and protected calendar fit 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5751
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-192e5463b536f8e37978",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: an original redo retains its source and recovers the exact new attempt after a lost creation receipt",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8148
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-869da8230954541368db",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a learner confirms scope, restores a lost independent preview and starts only the frozen new group",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 16539
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-320c828fa4cb406b7b58",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5375
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-baaf3f93edbed6e973e5",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5811
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-9402518b61ded0537d11",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: the original review shares the real course grid without becoming a removable course event at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6020
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-2195418d4f50b21355a0",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: changing the actual actor scope fences a late private response and preserves an explicit read failure",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5815
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-2fb07ff27a30b7de70d3",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: a late recovery-file read cannot replace the subsequently confirmed original preview",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6476
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-0302fcdc8a49ae2bf477",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: repeating the owned fixture withdraws the previous published candidate before creating its next reviewed version",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7288
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-01d54efb592f751202cf",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review next: denied storage requires a real original file and rejects another owner before explicit exact-key preview recovery",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8333
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-835846768fd47488bafb",
+      "file": "paper-practice.spec.ts",
+      "title": "paper review: actual large history is refused before truncation and the complete earlier history remains downloadable",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 24261
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-72aaa7f8697af7916df4",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9762
+        }
+      ]
+    },
+    {
+      "id": "f14fb30346e4ff2c63a1-1d2219680bd0fd3913c4",
+      "file": "paper-practice.spec.ts",
+      "title": "paper calendar: an adult without a child keeps the actual all-day date, original review and calendar return through reloads",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9547
+        }
+      ]
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-6de9e5f12cfd5c892a52",
+      "file": "pdf-material.spec.ts",
+      "title": "interrupted PDF chunks survive reload, a lost completion acknowledgment recovers one material and its later pages load lazily",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 17158
+        }
+      ]
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-c568544b83fdb848af1a",
+      "file": "pdf-material.spec.ts",
+      "title": "page processing cancellation retains its checkpoint and retry restores the task instead of publishing the cancelled attempt",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 18688
+        }
+      ]
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-adce21d2d7e68868ca90",
+      "file": "pdf-material.spec.ts",
+      "title": "the PDF workbench uses the same long upload and loads current-page text and structures without fetching the whole book",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 14409
+        }
+      ]
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-17a56f46e7b93184a89a",
+      "file": "pdf-material.spec.ts",
+      "title": "file checks recover lost acknowledgments, regenerate missing pages and honestly report unavailable original bytes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 23404
+        }
+      ]
+    },
+    {
+      "id": "78dcf7253e3d2dad0433-9983f30504c5f48108ce",
+      "file": "pdf-material.spec.ts",
+      "title": "the original PDF workbench repairs and cancels through the same persistent flow",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 26105
+        }
+      ]
+    },
+    {
+      "id": "3ae95be07735de3dbec2-8006e8fe14b9278280f2",
+      "file": "pdf-merged-table.spec.ts",
+      "title": "native PDF preserves merged source cells through processing, confirmation and browser reload",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10559
+        }
+      ]
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-ca5e3bf7617bce1e6882",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: explicit frozen media, three-column answer, readable full feedback and no unrelated next-question image",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5682
+        }
+      ]
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-66be18c12c815b3d9c0b",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5034
+        }
+      ]
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-43419c05e1f994586702",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4334
+        }
+      ]
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-71fa6cfec53ae26107f8",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4996
+        }
+      ]
+    },
+    {
+      "id": "7d8d40e543bd35bd8e59-09f2bf5c8e69fde7b323",
+      "file": "practice-reference.spec.ts",
+      "title": "reference practice: multiple choice and local assistant preserve complete input and selection at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4580
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-95572ea67c799a12702b",
+      "file": "product-smoke.spec.ts",
+      "title": "public product shell remains usable at phone, tablet and desktop widths",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2921
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-81825c55c5250f56124f",
+      "file": "product-smoke.spec.ts",
+      "title": "a touch and keyboard user can enter the family access flow",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2839
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-2d7276792832876c3ef3",
+      "file": "product-smoke.spec.ts",
+      "title": "a parent can create a learning profile and complete an evidence-limited assessment",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13249
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-ca37cf930cc8b6e5cde7",
+      "file": "product-smoke.spec.ts",
+      "title": "an approved fraction teaching card renders a safe step-by-step visual",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6410
+        }
+      ]
+    },
+    {
+      "id": "3530775f769d4e233761-84b77675197b4e6d1a69",
+      "file": "product-smoke.spec.ts",
+      "title": "an administrator can reach the curriculum review workbench",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "durationMs": 21784
+        }
+      ]
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-eb03604899bc5312807c",
+      "file": "project-files.spec.ts",
+      "title": "actual file versions remain frozen through submission, download, nested preview, editing and responsive layouts",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 16508
+        }
+      ]
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-cc37afc5c07ff088c87d",
+      "file": "project-files.spec.ts",
+      "title": "a dropped second chunk resumes the exact selected image after refresh and lost complete acknowledgments do not duplicate it",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10035
+        }
+      ]
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-7884f473fc904e1444a4",
+      "file": "project-files.spec.ts",
+      "title": "real PDF previews turn individual pages and closing a playing recording releases its actual audio element",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13722
+        }
+      ]
+    },
+    {
+      "id": "c867b9a9c00d0fa73cdd-ea271979b824d84f7c85",
+      "file": "project-files.spec.ts",
+      "title": "an oversized saved project keeps its full text while the learner explicitly narrows the AI advice scope",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4010
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e7485a181ff5672fe9e2",
+      "file": "project-teaching.spec.ts",
+      "title": "guided original fields save before moving, keep the full work and submit one frozen stage",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4798
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-cffae01eb681c8045d4c",
+      "file": "project-teaching.spec.ts",
+      "title": "an unsaved local field survives reload and a different tab requires an explicit comparison before saving",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5702
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-b9c3c5bf3908bff995b3",
+      "file": "project-teaching.spec.ts",
+      "title": "independent unsaved tab copies survive reload even when a duplicated tab inherits sessionStorage",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5663
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-d729d33dd77546ac9098",
+      "file": "project-teaching.spec.ts",
+      "title": "hard closing without beforeunload preserves the input effect and reopening offers an explicit copy preview",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4629
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e39101d58468f7d5c1b0",
+      "file": "project-teaching.spec.ts",
+      "title": "two pending original commands use separate slots and confirming one preserves the other",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5273
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-cc7cc26cc8c0d3aed76f",
+      "file": "project-teaching.spec.ts",
+      "title": "unavailable project storage keeps the live input and offers a full download",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3611
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-b640b460f43f5f723a3a",
+      "file": "project-teaching.spec.ts",
+      "title": "a mismatched owner draft is preserved but never restored or offered as another copy",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3756
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-852f01ffec8fc961c376",
+      "file": "project-teaching.spec.ts",
+      "title": "observed denied teaching clears old project content and narration",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3721
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-459196cf079d3becf9ad",
+      "file": "project-teaching.spec.ts",
+      "title": "observed denied narration clears old project content and narration",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3542
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-45801a4d62561871a376",
+      "file": "project-teaching.spec.ts",
+      "title": "a lost save reply survives reload, reads the same actor receipt and preserves later local edits",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4235
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-6195cd7a27d58c17415e",
+      "file": "project-teaching.spec.ts",
+      "title": "a lost submission reply reloads its original receipt without creating a second frozen submission",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4614
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-c73e18b60048f06437ea",
+      "file": "project-teaching.spec.ts",
+      "title": "an unavailable step link returns to the frozen stage introduction without writing progress",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3231
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-10f4978ee912be5b238a",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2816
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-c8256ef4b75579c7a4fa",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2947
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-e6d718da7cace552ca55",
+      "file": "project-teaching.spec.ts",
+      "title": "project teaching, original fields and controls fit at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3312
+        }
+      ]
+    },
+    {
+      "id": "7cf5271b1f84c170c4fa-8d681d1af0b9df7a25cc",
+      "file": "project-teaching.spec.ts",
+      "title": "project audio decodes original samples, does not save progress and stops when the selected step changes",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3252
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-05ae90e6c406886adbed",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3979
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-507092b920d9cdc66ee9",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4254
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-63d8469320787683247e",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5588
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-7260473487ac8a254a1a",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: truthful empty history, actual navigation and complete compact or modal controls at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5158
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-b700b5ee2a8414019696",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: a real saved classroom opens the exact original session and position from the course library",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5047
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-4c12fc588e3014c0250a",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: resizing an open drawer restores usable desktop controls and releases the original background",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3766
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-95a9a00c2a2425581f35",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: blocked preference storage keeps current controls usable without inventing a saved preference",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4318
+        }
+      ]
+    },
+    {
+      "id": "2a2d810d70c0bcdef190-66be3a745b22484be6c4",
+      "file": "reference-navigation.spec.ts",
+      "title": "reference navigation: a mobile drawer hands focus to the real course blueprint and returns to its menu trigger after closing",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3447
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-d58d30394473ccf2a126",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 320",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6334
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-0ca4234a2330bc4a950e",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6160
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-a4fc41b1fa89d6d6b7f5",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6354
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-039f0e8dbc8fb5705266",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: actual latest teaching and required interval stay separate from the original task schedule at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6675
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-060b0b50bd28c8f9ff9c",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: a lost exact original classroom time receipt survives reload and cannot move the original recorded time",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7075
+        }
+      ]
+    },
+    {
+      "id": "14fb6c54150c984cbce0-8c0d0e14c761832cbea5",
+      "file": "retention-evidence.spec.ts",
+      "title": "retention evidence: disabled storage preserves the exact classroom time command and requires its full downloaded copy before writing",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6574
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-e8d58d3cf7fa02961df5",
+      "file": "source-course-check.spec.ts",
+      "title": "one confirmed lesson prepares one explicit target and restores its independent first answer and frozen source",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9474
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-f3da16ee3ed57cce1fc8",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9831
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-b2c58411dcb06caf3c7b",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9052
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-a43c23a271f015d180a7",
+      "file": "source-course-check.spec.ts",
+      "title": "source check keeps independent first answers, frozen sources and exact course return at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10944
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-08bae9b8a98fccba6536",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: lost prepare and confirmation replies replay exact original commands after refresh without exposing answers",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10156
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-e9bfd11820992dba6275",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: explicit authoring keeps a dirty local copy and replays a lost edit without replacing the original request or review",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8290
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-90df4613a6821aee5a1d",
+      "file": "source-course-check.spec.ts",
+      "title": "uncertain review requires an explicit acknowledgement and cancellation retries only the original model",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11876
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-7d0fc63e124122b3642b",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: shared tabs block unknown commands while another device can edit before historical replay",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13653
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-4fe07803bb7cbfdd6cf5",
+      "file": "source-course-check.spec.ts",
+      "title": "an unavailable local draft store keeps the editor open and never promises a saved recoverable copy",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6613
+        }
+      ]
+    },
+    {
+      "id": "87dc6410287ba28c4727-ee25a3706d8e7f9da920",
+      "file": "source-course-check.spec.ts",
+      "title": "recovery: a rejected concurrent edit keeps both drafts until the user explicitly compares and rebases",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9460
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-f2175de9d306382cf3f9",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "edit and publish a revision, then explicitly resume the old version at its frozen line",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5977
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-ff6aa44fc944e312c0fc",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "lost revision creation receipts survive refresh and recover the same draft with the original command",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5544
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-48fcfc8299f84f4e1b24",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "archive, withdrawal reasons, restore, keyboard cancellation and responsive impact previews use real saved states",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8195
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-88cc9d94feed552fe799",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a lost publication reply recovers after refresh without another publication or another lesson version",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5538
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-909ff358c5c88c1d7949",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "a stale publication preview reads the actual saved version before a new explicit confirmation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5455
+        }
+      ]
+    },
+    {
+      "id": "a4cae738131d1ae89e2b-e7638106fe30d28dedf0",
+      "file": "source-course-lifecycle.spec.ts",
+      "title": "stopping a lost publication wait preserves the committed command and ignores its late reply",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6699
+        }
+      ]
+    },
+    {
+      "id": "cced6230ebf2a519dcfa-cd72f1e1a7d0a9823b34",
+      "file": "source-course-long.spec.ts",
+      "title": "long text import, cancellable preflight, lost acknowledgment, original coverage and single-lesson authoring reach the classroom",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 13405
+        }
+      ]
+    },
+    {
+      "id": "cced6230ebf2a519dcfa-71e75a59e8b40f771c9f",
+      "file": "source-course-long.spec.ts",
+      "title": "a long-source failure resumes saved stages across page reload and retains exact progress",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 21749
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-309acd5dc044d4e1c6ef",
+      "file": "source-course-project.spec.ts",
+      "title": "a published source course opens one real project, completes all frozen stages and returns to its original course",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 15300
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-f40a602dd154b4fc040d",
+      "file": "source-course-project.spec.ts",
+      "title": "a project URL bound to another source course clears the old work instead of silently changing the course",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5600
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-2b645b83846c9a0ef623",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5280
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-562107329a246dca6ce3",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5010
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-4b89730c824b7ba2785e",
+      "file": "source-course-project.spec.ts",
+      "title": "source-course project entry and frozen objectives fit at 1440",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4691
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-125e270c91c4f4ffbfc3",
+      "file": "source-course-project.spec.ts",
+      "title": "source reading, assisted practice and project draft return to their exact saved objects in one continuous journey",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10289
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-bb85ba6e737669f9f560",
+      "file": "source-course-project.spec.ts",
+      "title": "returning from a course restores the personal project step and mode while an explicit URL takes priority",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6575
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-5cddbb821b35b4b9a520",
+      "file": "source-course-project.spec.ts",
+      "title": "adult course journey keeps reading, unit check and project separate and resumes the same saved classroom",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6668
+        }
+      ]
+    },
+    {
+      "id": "ca3f281aa3d97832c646-b003db869f0cd28d1322",
+      "file": "source-course-project.spec.ts",
+      "title": "an entire adult unit retains every lesson, complete practice, unit check and all project submissions as separate facts",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 238849
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-1139edb033e9fb5ec95e",
+      "file": "source-course.spec.ts",
+      "title": "adult source selection, blueprint editing, lost confirmation, classroom practice and source return form a real persisted route",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 15829
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-fe6a79da87e0b808372f",
+      "file": "source-course.spec.ts",
+      "title": "in-flight cancellation and retry survive reload and never publish the cancelled attempt",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11010
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-d0ae88e36b1ba237be32",
+      "file": "source-course.spec.ts",
+      "title": "lost generation acknowledgment is replayed and stale blueprint edits preserve local input without overwriting another page",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7139
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-311ae6ac8705201bcb26",
+      "file": "source-course.spec.ts",
+      "title": "an adult can upload a PDF, inspect its real page and preserve selected page and language through generation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11804
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-90560b77e8ec8c0f262b",
+      "file": "source-course.spec.ts",
+      "title": "complete teaching edits survive section switches and a lost save, then reach the classroom with private answers",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11218
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-99fd7e9903893babf84e",
+      "file": "source-course.spec.ts",
+      "title": "staged generation retains reviewed work through failure, retry and manuscript correction",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 22548
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-5f16e640f898d12ee67e",
+      "file": "source-course.spec.ts",
+      "title": "uncertain model checks remain visible through confirmation and retain private review details",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6421
+        }
+      ]
+    },
+    {
+      "id": "73d7dca569d7b10f6464-e1b93c0241af7789bd20",
+      "file": "source-course.spec.ts",
+      "title": "stale full manuscripts stay local through a public reload and offer an export before browser back",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6953
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-4d121785716d89a20757",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: directory opens a whole lecture in the independent assistant without starting a micro lesson",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5396
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-b3ae56726ffa8ea10a78",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at390",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "durationMs": 20869
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f95d2ac1baaecf712bc4",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at768",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "durationMs": 22532
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f5991ccec4a37e464bcf",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at880",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "durationMs": 21920
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-511904f37439fbb155cc",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: usable course entry, composer and complete model selection at1440",
+      "status": "unexpected",
+      "attempts": [
+        {
+          "status": "failed",
+          "retry": 0,
+          "durationMs": 22273
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-e47bc53e16690991c8f3",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: lecture removal, back and reload preserve separate unsent drafts without sending",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7440
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-c6ac78f8124eafdcc683",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: durable pending turn resumes after refresh with its original model",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 15837
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-e0f44c612a64059a4b1d",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a lost receipt is recovered with the original request and no duplicate post",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7627
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-4086d4a5f1618383f83e",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v1",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6326
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-91833c79d6f109e00eca",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: a retained original version opens from the server without creating or resending a session · classroom-lecture-v2",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4957
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-f88e1ff873945f1b1cb9",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: failed initialization after a child change cannot retain the previous active session",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6756
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-1fe029d625926b0c4360",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: read-only recovery preserves a cached pending command and identifies separately selected history",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6047
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-d641a4ef47123186db7d",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: an unavailable original still allows owner-only history reads without a session post",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4634
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-2816accfe7509faad95c",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: another account cannot open a retained version or find its private messages",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7299
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-6ea61d4cbec1c46c56d1",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: explicit cancellation and retry preserve one lecture request and the original model",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10125
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-27f65c742ec468ff30a5",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-assistant: changing the selected learner fences a late whiteboard preview and releases the new composer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 5513
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-3c938a041758b8b13b9d",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-navigation: lecture tools retain the original scope and draft through material refresh and planner return",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6557
+        }
+      ]
+    },
+    {
+      "id": "c6379daf62f330c6b22f-82da1af4482514c611ea",
+      "file": "studio-assistant.spec.ts",
+      "title": "lecture-navigation: independent tools retain the original scope and draft through material refresh and planner return",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7874
+        }
+      ]
+    },
+    {
+      "id": "64bdea7002f9c9cea9f4-627c2448d2639098bb7a",
+      "file": "studio.spec.ts",
+      "title": "a parent can build and reopen an evidence-backed learning studio course",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 62566
+        }
+      ]
+    },
+    {
+      "id": "538f3ed5a3e666a63c56-c504b8962f27fffde6b2",
+      "file": "teaching-plan-verification.spec.ts",
+      "title": "original guidance verification: ordinary baseline retains prerequisite checks",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7968
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-40b1cddf1306451e75c0",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 390",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10196
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-4eaa7e8dc94e99b48cba",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 768",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9605
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-3cb97389490d333f4b38",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: complete analysis, original input and unreviewed result at 1280",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11578
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-fd8aa9a7cd932516022c",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: bank preflight shows actual table and formula, freezing the server original version and structured answer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10292
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-5bd725a8a760f9899293",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: hint failure stays explicit and a retry uses the frozen original model after changing the composer",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10772
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-9275e43b07b060c708cc",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: lost creation acknowledgement restores the same original command after reload without duplicate generation",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10000
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-0e7a7d54cb00fda55e54",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: two tabs retain their own complete drafts and copying another preserves the current version",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10201
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-0a69b6327774e23acf58",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: failed local storage blocks navigation and logout until the complete original input is downloaded",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8924
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-064a75580f738b1663b6",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a provider finishing after cancellation cannot publish its late result",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 15866
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-bb4497e98f05d6350c77",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: cancellation acknowledgement loss recovers its original control key after reload",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12294
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-06cee0988e5a2a58c17a",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a role revocation unloads private work and fences the late provider reply",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 17510
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-b9b1217b9807dab88791",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: parent identity cannot read the admin workspace or load model generation controls",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3469
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-30c7bcf811b7e41ceedf",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: oversized original text is rejected without losing or truncating the form or making a provider call",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7667
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-8524a81a443e4840f4db",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: malformed structured work survives a reload and never gets silently converted into a score",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8485
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-25ceb77e3adfb213d6be",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: a stale cancellation preserves its command, reads the latest state explicitly and requires a new user action",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12155
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-9f7ae59e090cb93ddbd0",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: an unreadable original remains discoverable after two reloads and downloads byte for byte",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9328
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-c44125a59290a93b9908",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: an unknown control original remains discoverable across reloads and cannot execute as a command",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12726
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-5999f0b52d39f0dada7f",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 待核对作答 stays original and cannot become an unknown null",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 9578
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-05aa845626147e4c8033",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 参考答案 stays original and cannot become an unknown null",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8380
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-c0f67782df04170e6aa9",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 完整题目结构 JSON stays original and cannot become an unknown null",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4625
+        }
+      ]
+    },
+    {
+      "id": "31448ea25db9cfaf3694-bea078cf6ffef525fdad",
+      "file": "teaching-tools.spec.ts",
+      "title": "teaching tools: non-finite JSON in 原答案结构 JSON stays original and cannot become an unknown null",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7862
+        }
+      ]
+    }
+  ],
+  "globalErrors": 0
+}

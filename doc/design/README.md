@@ -1,5 +1,9 @@
 # StudyAgent 当前功能与设计总册
 
+2026-11-03 本轮业务收尾已归档，见[228](../product/228-business-functionality-closure-and-content-freeze.md)。当前总册14领域/148功能/589接口；试题和教学内容保持冻结，原完整产品及保留差异不提升为已验收。
+
+2026-11-03 按用户要求暂停试题与教学内容，转为业务功能收口，见[227](../product/227-content-pause-and-business-development-closure.md)。本轮按当前源码补齐14领域/148功能/589接口关联；原教材与题目快照保持历史版本，不重标为当前内容验收。业务总册可用 `node scripts/architecture/validate-project-design.cjs <本轮业务回执> --business-only` 校验源码引用、接口关联及离线浏览器，默认模式仍核对原内容快照。
+
 2026-10-28 141现已实际守护交付：buildId Fr2r2Kk2ddHCxQhccI7rC、schema21；正常教学输出策略详见[141当前设计与原件](../product/141-normal-teaching-and-evidence-output-boundaries.md)。完整API/本地及远端433浏览器/真实两条默认模型和三次稳定观察通过；旧矩阵21/22及全项目剩余范围保持。下方独立候选与140段落为阶段历史，静态源码覆盖未新增路由/集合。
 
 2026-10-28 141独立源码候选：ef7466b接入teaching-output-policy-v1，三个模型回答入口共用局部标签/因果检查，正常数学断言与明确否定不再按字串拒绝。108项SQLite/策略/助教组合、16项PG组合及类型检查通过，范围重叠；真实默认模型与完整门禁继续。正式服务保持140/NkfAGfS0FLw-vibTZyptB，未部署141，见[具体设计与原失败](../product/141-normal-teaching-and-evidence-output-boundaries.md)。以下140是已交付基线。
@@ -16,10 +20,10 @@
 
 ## 阅读入口
 
-- [功能框架](01-functional-framework.md)：14个领域、128项功能，包含角色、入口、能力和限制。
+- [功能框架](01-functional-framework.md)：14个领域、148项功能，包含角色、入口、能力和限制。
 - [概要设计](02-high-level-design.md)：产品边界、角色、架构、模块依赖、业务闭环和关键设计决策。
 - [核心详细设计](03-core-detailed-design.md)：范围、组题、评分、能力估计、原因验证、指导、AI、课堂和日历的处理细节。
-- [数据与状态设计](04-data-and-state-design.md)：实体关系、103个领域集合、SQL结构、版本与状态机。
+- [数据与状态设计](04-data-and-state-design.md)：实体关系、142个领域集合、SQL结构、版本与状态机。
 - [运行、资产与质量设计](05-runtime-assets-and-quality.md)：依赖、AI通道、处理链、部署、备份恢复、测试与当前证据。
 - [完成边界与待完善项](06-boundaries-and-follow-ups.md)：已实现、历史保留、待验证和明确不做的范围。
 - [离线功能浏览器](index.html)：按领域或关键词查找功能，展开输入、处理、输出、接口、数据与代码。
@@ -45,9 +49,9 @@
 
 ## 开发查阅索引
 
-- [全部接口](generated/api-reference.md)：399个源码路由声明中，当前正常接入378个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
-- [页面职责](generated/page-reference.md)：29个页面和1个课堂runner处理器；部分页面是兼容重定向。
-- [领域集合与355个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
+- [全部接口](generated/api-reference.md)：610个源码路由声明中，当前正常接入589个、旧协议410拦截8个、未接入历史声明13个。正常接口数包含健康和运维接口。
+- [页面职责](generated/page-reference.md)：36个页面和1个课堂runner处理器；部分页面是兼容重定向。
+- [领域集合与606个共享类型](generated/data-reference.md)：逻辑集合不等于SQL表，Zod推导类型须继续查看源Schema。
 - [功能目录JSON](feature-catalog.json)、[源码结构JSON](generated/source-inventory.json)、[接口覆盖检查](generated/coverage.json)、[整理验证收据](generated/design-validation.json)。
 
 ## 端到端产品结构
@@ -80,7 +84,16 @@ flowchart LR
 
 ## 更新方法
 
-在仓库根目录执行：
+内容暂停期间只运行源码与业务文档更新，不重新生成教学内容快照：
+
+```powershell
+node scripts/architecture/project-design-inventory.cjs
+node scripts/architecture/build-project-design.cjs
+node scripts/architecture/validate-project-design.cjs data/qa/b5-business-final/focused-final.json --business-only
+npm run qa:docs
+```
+
+下列为恢复内容工作后的原完整更新入口，当前不执行：
 
 ```powershell
 node scripts/architecture/project-design-inventory.cjs

@@ -8,6 +8,7 @@ const { createHash } = require('node:crypto');
 const { chromium } = require('@playwright/test');
 const root = path.resolve(__dirname, '../..');
 const design = path.join(root, 'doc/design');
+const businessOnly = process.argv.includes('--business-only');
 const applicationReceipt = path.resolve(root, process.argv[2] || 'doc/evidence/2026-10-23/learning-home-acceptance.json');
 assert(applicationReceipt.startsWith(root + path.sep), 'Application receipt must stay inside the repository');
 const applicationEvidence = JSON.parse(fs.readFileSync(applicationReceipt, 'utf8'));
@@ -39,7 +40,7 @@ assert.equal(coverage.sourceReferenceProblems.length, 0);
 assert.equal(coverage.coveredApiRoutes, inventory.counts.activeBusinessHttpRoutes);
 assert.equal(features.length, catalog.counts.features);
 assert.equal(new Set(features.map(feature => feature.id)).size, features.length);
-for (const document of [coverage, catalog, snapshot]) assert.equal(document.sourceRevision, inventory.sourceRevision, 'Baseline mismatch');
+for (const document of [coverage, catalog, ...(!businessOnly ? [snapshot] : [])]) assert.equal(document.sourceRevision, inventory.sourceRevision, 'Baseline mismatch');
 const docs = JSON.parse(execFileSync(process.execPath, ['scripts/qa/verify-doc-links.cjs'], { cwd: root, encoding: 'utf8' }));
 assert.deepEqual(docs.missing, []);
 
@@ -123,7 +124,7 @@ async function main() {
     });
     assert.deepEqual(browserErrors, [], 'Offline viewer browser errors');
     assert.deepEqual(networkRequests, [], 'Viewer must remain offline');
-    const artifactDirectory = path.join(root, 'data/qa/project-design-viewer');
+    const artifactDirectory = path.join(root, businessOnly ? 'data/qa/project-design-viewer-business-' + Date.now() : 'data/qa/project-design-viewer');
     fs.mkdirSync(artifactDirectory, { recursive: true });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.screenshot({ path: path.join(artifactDirectory, 'desktop.png'), fullPage: true });
@@ -131,13 +132,13 @@ async function main() {
     await page.screenshot({ path: path.join(artifactDirectory, 'mobile.png'), fullPage: true });
     const receipt = {
       schemaVersion: 1, at: new Date().toISOString(), sourceRevision: inventory.sourceRevision, passed: true,
-      scope: 'Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.',
+      scope: businessOnly ? 'Business source references, API associations and offline handbook UI only. Teaching content is paused and its earlier snapshot is not revalidated or relabeled.' : 'Documentation, static content/source references, API coverage and offline handbook UI only. No running application changes, family data reads or new full application test run.',
       inventory: inventory.counts, features: catalog.counts,
       sourceReferences: { uniqueFiles: sourceHashes.size, problems, sha256: Object.fromEntries([...sourceHashes].sort(([a], [b]) => a.localeCompare(b))) },
       coverage: { activeNormalApiRoutes: coverage.activeNormalApiRoutes, coveredApiRoutes: coverage.coveredApiRoutes, uncovered: coverage.uncoveredApiRoutes },
       markdownLinks: docs,
-      staticContent: { receipt: 'content-snapshot.json', authoredAuditAt: snapshot.authored.auditAt, totals: snapshot.authored.totals },
-      offlineViewer: { checks, browserErrors, externalNetworkRequests: networkRequests, viewports: [1440, 768, 390], screenshots: ['data/qa/project-design-viewer/desktop.png', 'data/qa/project-design-viewer/mobile.png'] },
+      staticContent: businessOnly ? { receipt: 'content-snapshot.json', revalidated: false, previousSourceRevision: snapshot.sourceRevision, reason: 'User paused question and teaching-content production; the previous content snapshot remains historical.' } : { receipt: 'content-snapshot.json', authoredAuditAt: snapshot.authored.auditAt, totals: snapshot.authored.totals },
+      offlineViewer: { checks, browserErrors, externalNetworkRequests: networkRequests, viewports: [1440, 768, 390], screenshots: ['desktop.png', 'mobile.png'].map(file => path.relative(root, path.join(artifactDirectory, file)).replaceAll('\\', '/')) },
       applicationBaselineEvidence: { newlyRunByThisScript: false,
         receipt: path.relative(design, applicationReceipt).split(path.sep).join('/'),
         revision: applicationEvidence.sourceRevision ?? applicationEvidence.productionBuildRevision ?? applicationEvidence.applicationRevision,

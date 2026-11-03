@@ -1,6 +1,6 @@
 # 05 指导计划、训练编排与间隔复盘 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：监护家长、学生、授权教师。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：监护家长、学生、授权教师。
 
 产品入口：`/student/assessment`、`/student/today`、`/parent/dashboard`。
 
@@ -47,13 +47,13 @@
 
 **关联接口**：
 
-- `POST /api/diagnostics/students/:studentId/plans` → `DiagnosticsController.plan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:122](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L122)。
-- `GET /api/diagnostics/students/:studentId/plan-requests/:requestKey` → `DiagnosticsController.planCreationResult`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:126](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L126)。
+- `POST /api/diagnostics/students/:studentId/plans` → `DiagnosticsController.plan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:150](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L150)。
+- `GET /api/diagnostics/students/:studentId/plan-requests/:requestKey` → `DiagnosticsController.planCreationResult`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:158](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L158)。
 
 **服务方法**：
 
-- `GuidanceService.create`；[apps/api/src/modules/diagnostics/guidance.service.ts:46](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L46)。
-- `GuidanceService.creationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:155](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L155)。
+- `GuidanceService.create`；[apps/api/src/modules/diagnostics/guidance.service.ts:52](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L52)。
+- `GuidanceService.creationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:203](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L203)。
 
 **补充实现文件**：
 
@@ -77,19 +77,19 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/students/:studentId/plans` → `DiagnosticsController.plans`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:124](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L124)。
-- `GET /api/diagnostics/plans/:planId` → `DiagnosticsController.getPlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:130](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L130)。
-- `PATCH /api/diagnostics/plans/:planId` → `DiagnosticsController.updatePlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:128](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L128)。
-- `POST /api/diagnostics/plans/:planId/adjust` → `DiagnosticsController.adjustPlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:136](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L136)。
-- `GET /api/diagnostics/plans/:planId/history` → `DiagnosticsController.planHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:132](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L132)。
+- `GET /api/diagnostics/students/:studentId/plans` → `DiagnosticsController.plans`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:156](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L156)。
+- `GET /api/diagnostics/plans/:planId` → `DiagnosticsController.getPlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:162](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L162)。
+- `PATCH /api/diagnostics/plans/:planId` → `DiagnosticsController.updatePlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:160](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L160)。
+- `POST /api/diagnostics/plans/:planId/adjust` → `DiagnosticsController.adjustPlan`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:168](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L168)。
+- `GET /api/diagnostics/plans/:planId/history` → `DiagnosticsController.planHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:164](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L164)。
 
 **服务方法**：
 
-- `GuidanceService.list`；[apps/api/src/modules/diagnostics/guidance.service.ts:148](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L148)。
-- `GuidanceService.get`；[apps/api/src/modules/diagnostics/guidance.service.ts:154](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L154)。
-- `GuidanceService.update`；[apps/api/src/modules/diagnostics/guidance.service.ts:266](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L266)。
-- `GuidanceService.adjust`；[apps/api/src/modules/diagnostics/guidance.service.ts:228](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L228)。
-- `GuidanceService.history`；[apps/api/src/modules/diagnostics/guidance.service.ts:161](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L161)。
+- `GuidanceService.list`；[apps/api/src/modules/diagnostics/guidance.service.ts:169](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L169)。
+- `GuidanceService.get`；[apps/api/src/modules/diagnostics/guidance.service.ts:175](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L175)。
+- `GuidanceService.update`；[apps/api/src/modules/diagnostics/guidance.service.ts:317](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L317)。
+- `GuidanceService.adjust`；[apps/api/src/modules/diagnostics/guidance.service.ts:278](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L278)。
+- `GuidanceService.history`；[apps/api/src/modules/diagnostics/guidance.service.ts:209](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L209)。
 
 ## PLAN-03 到期复测、改期与启动
 
@@ -105,17 +105,17 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/students/:studentId/reviews` → `DiagnosticsController.reviews`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:138](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L138)。
-- `GET /api/diagnostics/plans/:planId/reviews` → `DiagnosticsController.planReviews`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:134](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L134)。
-- `POST /api/diagnostics/reviews/:reviewId/reschedule` → `DiagnosticsController.reschedule`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:142](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L142)。
-- `POST /api/diagnostics/reviews/:reviewId/start` → `DiagnosticsController.review`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:140](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L140)。
+- `GET /api/diagnostics/students/:studentId/reviews` → `DiagnosticsController.reviews`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:170](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L170)。
+- `GET /api/diagnostics/plans/:planId/reviews` → `DiagnosticsController.planReviews`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:166](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L166)。
+- `POST /api/diagnostics/reviews/:reviewId/reschedule` → `DiagnosticsController.reschedule`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:174](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L174)。
+- `POST /api/diagnostics/reviews/:reviewId/start` → `DiagnosticsController.review`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:172](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L172)。
 
 **服务方法**：
 
-- `GuidanceService.reviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:302](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L302)。
-- `GuidanceService.planReviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:308](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L308)。
-- `GuidanceService.reschedule`；[apps/api/src/modules/diagnostics/guidance.service.ts:319](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L319)。
-- `GuidanceService.startReview`；[apps/api/src/modules/diagnostics/guidance.service.ts:344](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L344)。
+- `GuidanceService.reviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:353](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L353)。
+- `GuidanceService.planReviews`；[apps/api/src/modules/diagnostics/guidance.service.ts:359](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L359)。
+- `GuidanceService.reschedule`；[apps/api/src/modules/diagnostics/guidance.service.ts:370](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L370)。
+- `GuidanceService.startReview`；[apps/api/src/modules/diagnostics/guidance.service.ts:395](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L395)。
 
 ## PLAN-04 干预前后复盘与家长确认
 
@@ -131,13 +131,13 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/plans/:planId/retrospective` → `DiagnosticsController.retrospective`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:144](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L144)。
-- `POST /api/diagnostics/plans/:planId/retrospective/acknowledge` → `DiagnosticsController.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:146](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L146)。
+- `GET /api/diagnostics/plans/:planId/retrospective` → `DiagnosticsController.retrospective`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:176](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L176)。
+- `POST /api/diagnostics/plans/:planId/retrospective/acknowledge` → `DiagnosticsController.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:178](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L178)。
 
 **服务方法**：
 
-- `GuidanceService.retrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:358](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L358)。
-- `GuidanceService.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:419](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L419)。
+- `GuidanceService.retrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:409](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L409)。
+- `GuidanceService.acknowledgeRetrospective`；[apps/api/src/modules/diagnostics/guidance.service.ts:470](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L470)。
 
 ## PLAN-05 持久模型说明建议与明确采用
 

@@ -1,0 +1,214 @@
+{
+  "at": "2026-11-03T02:32:53.481Z",
+  "passed": true,
+  "results": [
+    {
+      "driver": "sqlite",
+      "passed": true,
+      "checks": 11,
+      "elapsedMs": 12857,
+      "report": {
+        "at": "2026-11-03T02:33:37.241Z",
+        "cacheSeconds": 30,
+        "scope": "仅检查本地依赖、配置与已打开的存储；不安装工具、不调用生成、不修改学习记录。配置就绪不等于供应商在线或真实设备验收。",
+        "checks": [
+          {
+            "id": "storage",
+            "title": "业务存储",
+            "state": "ready",
+            "optional": false,
+            "message": "当前业务库已打开并启用持久化。",
+            "repair": null
+          },
+          {
+            "id": "assets",
+            "title": "资料资产目录",
+            "state": "configured",
+            "optional": true,
+            "message": "目录存在；具体资料、媒体及哈希仍按引用逐项校验。",
+            "repair": null
+          },
+          {
+            "id": "text_models",
+            "title": "AI 模型目录",
+            "state": "disabled",
+            "optional": true,
+            "message": "AI 生成已关闭，已有课程与确定性学习功能可以继续。",
+            "repair": "需要 AI 生成时启用 XIAOJIU_CHAT_ENABLED 并核对模型连接。"
+          },
+          {
+            "id": "cli",
+            "title": "模型命令行工具",
+            "state": "ready",
+            "optional": true,
+            "message": "原配置命令可启动并返回版本；未发起生成或验证账号。",
+            "repair": null
+          },
+          {
+            "id": "speech",
+            "title": "课堂语音",
+            "state": "unavailable",
+            "optional": true,
+            "message": "未配置语音服务，可继续阅读文字与字幕。",
+            "repair": "按语音配置说明设置原供应商凭据并重启，再从课堂进行实际试听。"
+          },
+          {
+            "id": "pdf",
+            "title": "Python 与 PDF 处理",
+            "state": "ready",
+            "optional": true,
+            "message": "当前处理器可导入 PDF 和图像依赖；具体文档仍需任务预检。",
+            "repair": null
+          },
+          {
+            "id": "ocr",
+            "title": "扫描页文字识别",
+            "state": "configured",
+            "optional": true,
+            "message": "OCR 依赖可导入；模型资产和扫描效果仍须真实任务检查。",
+            "repair": null
+          },
+          {
+            "id": "ffmpeg",
+            "title": "音视频处理",
+            "state": "ready",
+            "optional": true,
+            "message": "FFmpeg 与 FFprobe 可启动；具体音视频格式仍按任务检查。",
+            "repair": null
+          },
+          {
+            "id": "image",
+            "title": "课堂参考图",
+            "state": "unavailable",
+            "optional": true,
+            "message": "生图技能、依赖或本地代理尚未就绪，文字课堂可以继续。",
+            "repair": "核对集成生图技能目录，运行 scripts/operations/setup-imagegen.cjs 并确认小九已登录。"
+          },
+          {
+            "id": "cpp",
+            "title": "C++ 隔离执行",
+            "state": "ready",
+            "optional": true,
+            "message": "工具链和隔离命名空间检查通过；本次不运行学生代码。",
+            "repair": null
+          },
+          {
+            "id": "paper_export",
+            "title": "PDF / DOCX 导出",
+            "state": "unavailable",
+            "optional": true,
+            "message": "该项检查未通过；其他功能按各自状态使用。",
+            "repair": "核对 STUDY_PAPER_EXPORT_INSTALLATION 和原安装回执，修复导出环境后重试。"
+          }
+        ]
+      },
+      "learningAndTaskHashesPreserved": true,
+      "anonymousRejected": true,
+      "cachedConcurrentReadsIdentical": true
+    },
+    {
+      "driver": "postgres",
+      "passed": true,
+      "checks": 11,
+      "elapsedMs": 11498,
+      "report": {
+        "at": "2026-11-03T02:34:58.193Z",
+        "cacheSeconds": 30,
+        "scope": "仅检查本地依赖、配置与已打开的存储；不安装工具、不调用生成、不修改学习记录。配置就绪不等于供应商在线或真实设备验收。",
+        "checks": [
+          {
+            "id": "storage",
+            "title": "业务存储",
+            "state": "ready",
+            "optional": false,
+            "message": "当前业务库已打开并启用持久化。",
+            "repair": null
+          },
+          {
+            "id": "assets",
+            "title": "资料资产目录",
+            "state": "configured",
+            "optional": true,
+            "message": "目录存在；具体资料、媒体及哈希仍按引用逐项校验。",
+            "repair": null
+          },
+          {
+            "id": "text_models",
+            "title": "AI 模型目录",
+            "state": "disabled",
+            "optional": true,
+            "message": "AI 生成已关闭，已有课程与确定性学习功能可以继续。",
+            "repair": "需要 AI 生成时启用 XIAOJIU_CHAT_ENABLED 并核对模型连接。"
+          },
+          {
+            "id": "cli",
+            "title": "模型命令行工具",
+            "state": "ready",
+            "optional": true,
+            "message": "原配置命令可启动并返回版本；未发起生成或验证账号。",
+            "repair": null
+          },
+          {
+            "id": "speech",
+            "title": "课堂语音",
+            "state": "unavailable",
+            "optional": true,
+            "message": "未配置语音服务，可继续阅读文字与字幕。",
+            "repair": "按语音配置说明设置原供应商凭据并重启，再从课堂进行实际试听。"
+          },
+          {
+            "id": "pdf",
+            "title": "Python 与 PDF 处理",
+            "state": "ready",
+            "optional": true,
+            "message": "当前处理器可导入 PDF 和图像依赖；具体文档仍需任务预检。",
+            "repair": null
+          },
+          {
+            "id": "ocr",
+            "title": "扫描页文字识别",
+            "state": "configured",
+            "optional": true,
+            "message": "OCR 依赖可导入；模型资产和扫描效果仍须真实任务检查。",
+            "repair": null
+          },
+          {
+            "id": "ffmpeg",
+            "title": "音视频处理",
+            "state": "ready",
+            "optional": true,
+            "message": "FFmpeg 与 FFprobe 可启动；具体音视频格式仍按任务检查。",
+            "repair": null
+          },
+          {
+            "id": "image",
+            "title": "课堂参考图",
+            "state": "configured",
+            "optional": true,
+            "message": "技能依赖和本地代理检查通过；本次未生成图片。",
+            "repair": null
+          },
+          {
+            "id": "cpp",
+            "title": "C++ 隔离执行",
+            "state": "ready",
+            "optional": true,
+            "message": "工具链和隔离命名空间检查通过；本次不运行学生代码。",
+            "repair": null
+          },
+          {
+            "id": "paper_export",
+            "title": "PDF / DOCX 导出",
+            "state": "unavailable",
+            "optional": true,
+            "message": "该项检查未通过；其他功能按各自状态使用。",
+            "repair": "核对 STUDY_PAPER_EXPORT_INSTALLATION 和原安装回执，修复导出环境后重试。"
+          }
+        ]
+      },
+      "learningAndTaskHashesPreserved": true,
+      "anonymousRejected": true,
+      "cachedConcurrentReadsIdentical": true
+    }
+  ]
+}

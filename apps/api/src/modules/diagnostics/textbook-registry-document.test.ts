@@ -8,6 +8,7 @@ import { join } from 'node:path';
 import type { CurriculumBook } from '@study-agent/contracts';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { TextbookRegistryService } from './textbook-registry.service';
+import { registryEditionFingerprint } from './textbook-edition-conformity';
 
 describe('verified textbook source documents', () => {
   let root = '', assets = '', registryPath = '', manifestPath = '', sourcePath = '', service: TextbookRegistryService;
@@ -133,6 +134,22 @@ describe('verified textbook source documents', () => {
       assetPath: 'data/assets/textbook-sources/test/books/book.pdf', sha256, pages: 12 }] }));
     service = new TextbookRegistryService(new InMemoryStoreService());
     expect(service.documentMetadata(service.require('title-year-book'))).toBeNull();
+  });
+  it('releases a shared discrepancy snapshot before the next catalog read', () => {
+    const file = process.env.STUDY_TEXTBOOK_EDITION_CONFORMITIES!;
+    const document = { format: 'textbook-edition-conformities-v1', rows: [], discrepancies: [{
+      bookId: book.id, bookVersion: book.version, registryFingerprint: registryEditionFingerprint(book),
+      sourceBookId: 'source:test', sourceSha256: sha256, extractedSha256: 'c'.repeat(64),
+      reason: 'Synthetic exact edition mismatch retained for one catalog read.' }] };
+    writeFileSync(file, JSON.stringify(document));
+    service.readSourcesTogether(() => {
+      expect(service.availability(book).status).toBe('version_conflict');
+      writeFileSync(file, JSON.stringify({ ...document, discrepancies: [] }));
+      expect(service.availability(book).status).toBe('version_conflict');
+    });
+    expect(service.readSourcesTogether(() => service.availability(book).status)).toBe('edition_unverified');
+    writeFileSync(file, JSON.stringify(document));
+    expect(service.availability(book).status).toBe('version_conflict');
   });
   it('never grants exact conformity from either same or conflicting year labels alone', () => {
     writeFileSync(registryPath, JSON.stringify({ books: [{ ...book, id: 'dated-book', edition: '测试版(2022)' }] }));

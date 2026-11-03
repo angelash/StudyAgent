@@ -10,7 +10,7 @@ import { studyAssetRoot, workspaceRoot } from '../../infrastructure/workspace-pa
 import { openVerifiedLibraryMedia } from '../library/verified-library-media';
 import { boundTextbookSourceCandidate, lessonSourceFingerprint, loadTextbookSourceCandidates, sourceFingerprint, type TextbookSourceCandidate } from './textbook-source-candidates';
 import { makeTeachingSourceSnapshot, teachingTextHash } from './textbook-teaching-package';
-import { assertConformityExtraction, editionConformity, editionDiscrepancy, readEditionConformities } from './textbook-edition-conformity';
+import { assertConformityExtraction, editionConformity, editionDiscrepancy, readEditionConformities, readEditionDiscrepancies } from './textbook-edition-conformity';
 import { textbookExtractionIdentityMatches } from './textbook-extraction-identity';
 
 const names = { math: '数学', chinese: '语文', english: '英语', chemistry: '化学' };
@@ -23,7 +23,7 @@ type SourceMatch = { status: SourceAvailabilityStatus; reason: string; document:
 export class TextbookRegistryService {
   private imported?: CurriculumBook[];
   private importedIdentity?: string;
-  private sourceRead?: { sources?: SourceDocument[]; proofs?: ReturnType<typeof readEditionConformities>; candidates?: Map<string, TextbookSourceCandidate>;
+  private sourceRead?: { sources?: SourceDocument[]; proofs?: ReturnType<typeof readEditionConformities>; discrepancies?: unknown[]; candidates?: Map<string, TextbookSourceCandidate>;
     conformities: Map<string, ReturnType<typeof editionConformity>>; matches: Map<string, SourceMatch> };
   private sourceCandidates?: Map<string, TextbookSourceCandidate>;
   constructor(private readonly store: InMemoryStoreService) {}
@@ -272,6 +272,13 @@ export class TextbookRegistryService {
   }
 
   private conformityFile() { return resolve(process.env.STUDY_TEXTBOOK_EDITION_CONFORMITIES ?? resolve(workspaceRoot(), 'resources/curriculum/textbook-edition-conformities-v1.json')); }
+  private discrepancy(book: CurriculumBook, sources: SourceDocument[]) {
+    // Reuse only within one synchronous projection; the next request and every
+    // read after an await must observe edits or withdrawal of the source file.
+    const file = this.conformityFile();
+    const snapshot = this.sourceRead ? this.sourceRead.discrepancies ??= readEditionDiscrepancies(file) : readEditionDiscrepancies(file);
+    return editionDiscrepancy(file, book, sources, snapshot);
+  }
   private conformity(book: CurriculumBook) {
     const previous = this.sourceRead?.conformities.get(book.id); if (previous) return previous;
     const proofs = this.sourceRead ? this.sourceRead.proofs ??= readEditionConformities(this.conformityFile()) : readEditionConformities(this.conformityFile());
@@ -291,7 +298,7 @@ export class TextbookRegistryService {
   }
   private matchSource(book: CurriculumBook): SourceMatch {
     if (book.source === 'original') return { status: 'original', reason: '原创能力路径不关联教材原卷', document: null };
-    const current = this.conformity(book), sources = this.loadSources(), discrepancy = editionDiscrepancy(this.conformityFile(), book, sources);
+    const current = this.conformity(book), sources = this.loadSources(), discrepancy = this.discrepancy(book, sources);
     if (!current.proof && discrepancy) return { status: 'version_conflict', reason: discrepancy.reason, document: null };
     if (!sources.some(source => source.subject === book.subject && source.grade === book.grade && source.term === book.term))
       return { status: 'no_candidate', reason: '未找到同学科、年级和学期的本地完整原件', document: null };
@@ -299,7 +306,7 @@ export class TextbookRegistryService {
   }
 
   private referenceSources(book: CurriculumBook) {
-    const sources = this.loadSources(), discrepancy = editionDiscrepancy(this.conformityFile(), book, sources);
+    const sources = this.loadSources(), discrepancy = this.discrepancy(book, sources);
     return sources.filter(source => source.subject === book.subject && source.grade === book.grade && source.term === book.term).map(source => {
       let available = false; try { const file = this.resolveSourcePath(source); available = !!file && existsSync(file); } catch {}
       return { id: source.id, title: source.title, edition: source.edition, pages: source.pages, sha256: source.sha256, available,

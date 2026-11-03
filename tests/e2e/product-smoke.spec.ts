@@ -188,7 +188,7 @@ test('an administrator can reach the curriculum review workbench', async ({ page
   await expect(page.getByRole('heading', { name: '教材课时与知识映射' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: '管理功能' }).getByRole('link', { name: '运营分析', exact: true })).toBeVisible();
   // Only a whole-book edition verified against its original counts; same-name or same-year files do not.
-  await expect(page.getByText(/来源总览：1 条整册版本已核对，448 条仍需补来源/)).toBeVisible();
+  await expect(page.getByText(/来源总览：4 条整册版本已核对，448 条仍需补来源/)).toBeVisible();
   await expect(page.getByRole('button', { name: /同版来源未匹配/ }).first()).toBeVisible();
   await page.getByLabel('选择目录').selectOption('archive-book:44deea6d4015a5183e175acc');
   await expect(page.getByText(/未绑定内审原卷：/)).toBeVisible();

@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-03T01:42:50.122Z",
+  "path": "tests/e2e/operations-capabilities.spec.ts",
+  "before": "fc78058f35d3f9d74206ab37ebb55922dd9e40f5293e9448e2cefc6a6d446696",
+  "after": "0205ddcc9cd7a9f6a8bd02829f4369773ab9ed16ce57a088b8fedaa66475753e",
+  "reason": "Scope the network-error alert to its panel, excluding the Next route announcer; wait for metrics and return scroll to top before full-page screenshots.",
+  "applicationCodeChanged": false,
+  "apiExecutableOrTestInputsChanged": false,
+  "fullApiBroadGuardMayReportThisUnrelatedBrowserFile": true,
+  "apiQualificationMustIndependentlyCheckAllOtherInputs": true
+}

@@ -1,125 +1,151 @@
 # 领域集合与契约索引
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
-- `users` → `InMemoryUserAccount`；[apps/api/src/infrastructure/in-memory-store.service.ts:376](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L376)。
-- `paperPublications` → `PaperPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:377](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L377)。
-- `libraryBookmarks` → `LibraryBookmark`；[apps/api/src/infrastructure/in-memory-store.service.ts:378](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L378)。
-- `paperPracticeSessions` → `PaperPracticeSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:379](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L379)。
-- `paperPracticeCommands` → `PaperPracticeCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:380](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L380)。
-- `practiceSessions` → `PracticeSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:381](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L381)。
-- `practiceAttempts` → `PracticeAttempt`；[apps/api/src/infrastructure/in-memory-store.service.ts:382](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L382)。
-- `practiceHints` → `PracticeHint`；[apps/api/src/infrastructure/in-memory-store.service.ts:383](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L383)。
-- `practiceScoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:384](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L384)。
-- `teacherAssignments` → `TeacherStudentAssignment`；[apps/api/src/infrastructure/in-memory-store.service.ts:385](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L385)。
-- `evidenceFeedback` → `EvidenceFeedback`；[apps/api/src/infrastructure/in-memory-store.service.ts:386](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L386)。
-- `importFiles` → `ImportFile`；[apps/api/src/infrastructure/in-memory-store.service.ts:387](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L387)。
-- `processingArtifacts` → `ProcessingArtifact`；[apps/api/src/infrastructure/in-memory-store.service.ts:388](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L388)。
-- `importPages` → `ImportPageEvidenceRef`；[apps/api/src/infrastructure/in-memory-store.service.ts:389](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L389)。
-- `guidancePlanRevisions` → `GuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:390](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L390)。
-- `studentLearningAccess` → `StudentLearningAccess`；[apps/api/src/infrastructure/in-memory-store.service.ts:391](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L391)。
-- `studentLearningCodes` → `StudentLearningCode`；[apps/api/src/infrastructure/in-memory-store.service.ts:392](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L392)。
-- `studentAccessRevisions` → `StudentAccessRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:393](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L393)。
-- `studentProgressProposals` → `StudentProgressProposal`；[apps/api/src/infrastructure/in-memory-store.service.ts:394](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L394)。
-- `privacyRequests` → `PrivacyReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:395](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L395)。
-- `studentMedia` → `StudentMedia`；[apps/api/src/infrastructure/in-memory-store.service.ts:396](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L396)。
-- `sessions` → `InMemoryAuthSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:397](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L397)。
-- `students` → `StudentProfile`；[apps/api/src/infrastructure/in-memory-store.service.ts:398](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L398)。
-- `bindings` → `ParentStudentBinding`；[apps/api/src/infrastructure/in-memory-store.service.ts:399](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L399)。
-- `studentInvitations` → `StudentInvitation`；[apps/api/src/infrastructure/in-memory-store.service.ts:400](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L400)。
-- `subjectEnrollments` → `SubjectEnrollment`；[apps/api/src/infrastructure/in-memory-store.service.ts:401](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L401)。
-- `textbookVolumes` → `TextbookVolume`；[apps/api/src/infrastructure/in-memory-store.service.ts:402](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L402)。
-- `textbookUnits` → `TextbookUnit`；[apps/api/src/infrastructure/in-memory-store.service.ts:403](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L403)。
-- `textbookLessons` → `TextbookLesson`；[apps/api/src/infrastructure/in-memory-store.service.ts:404](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L404)。
-- `knowledgePoints` → `KnowledgePoint`；[apps/api/src/infrastructure/in-memory-store.service.ts:405](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L405)。
-- `questions` → `Question`；[apps/api/src/infrastructure/in-memory-store.service.ts:406](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L406)。
-- `questionDocuments` → `QuestionDocument`；[apps/api/src/infrastructure/in-memory-store.service.ts:407](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L407)。
-- `questionAnswerSchemas` → `QuestionAnswerSchema`；[apps/api/src/infrastructure/in-memory-store.service.ts:408](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L408)。
-- `questionSources` → `QuestionSourceRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:409](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L409)。
-- `questionImportJobs` → `QuestionImportJob`；[apps/api/src/infrastructure/in-memory-store.service.ts:410](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L410)。
-- `questionImportRecords` → `QuestionImportRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:411](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L411)。
-- `assessments` → `AssessmentSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:412](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L412)。
-- `assessmentAnswers` → `AssessmentAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:413](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L413)。
-- `assessmentResults` → `AssessmentResult`；[apps/api/src/infrastructure/in-memory-store.service.ts:414](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L414)。
-- `studyPlans` → `StudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:415](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L415)。
-- `missions` → `DailyMissionInternal`；[apps/api/src/infrastructure/in-memory-store.service.ts:416](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L416)。
-- `missionAnswers` → `MissionAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:417](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L417)。
-- `assistantSessions` → `AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }`；[apps/api/src/infrastructure/in-memory-store.service.ts:418](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L418)。
-- `assistantMessages` → `AssistantMessage`；[apps/api/src/infrastructure/in-memory-store.service.ts:419](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L419)。
-- `assistantArtifactDrafts` → `AssistantNoteRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:420](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L420)。
-- `assistantPracticeArtifacts` → `AssistantPracticeArtifactRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:421](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L421)。
-- `assistantGuidanceIntents` → `GuidanceIntentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:422](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L422)。
-- `guidanceCalendarArrangements` → `GuidanceCalendarRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:423](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L423)。
-- `retentionExposureEvents` → `RetentionExposureRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:424](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L424)。
-- `studioCalendarCommands` → `StudioCalendarCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:425](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L425)。
-- `assistantTeachingPracticeDrafts` → `TeachingDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:426](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L426)。
-- `assistantTeachingPractices` → `TeachingPracticeRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:427](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L427)。
-- `assistantTeachingSessions` → `TeachingSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:428](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L428)。
-- `assistantTeachingAssignments` → `TeachingAssignmentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:429](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L429)。
-- `assistantPracticeAssignments` → `AssistantPracticeAssignmentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:430](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L430)。
-- `assistantPracticeAssignmentWithdrawals` → `AssistantPracticeWithdrawalRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:431](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L431)。
-- `assistantPracticeGroupStarts` → `AssistantPracticeGroupStartRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:432](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L432)。
-- `assistantTurns` → `AssistantTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:433](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L433)。
-- `guidanceModelSuggestions` → `GuidanceModelSuggestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:434](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L434)。
-- `teachingToolRuns` → `TeachingToolRunRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:435](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L435)。
-- `aiInsights` → `AIInsightRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:436](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L436)。
-- `events` → `Record<string, unknown>`；[apps/api/src/infrastructure/in-memory-store.service.ts:437](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L437)。
-- `knowledgeAtoms` → `KnowledgeAtom`；[apps/api/src/infrastructure/in-memory-store.service.ts:438](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L438)。
-- `learningScopes` → `LearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:439](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L439)。
-- `measurementItems` → `MeasurementItem`；[apps/api/src/infrastructure/in-memory-store.service.ts:440](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L440)。
-- `measurementCandidates` → `MeasurementContentCandidate`；[apps/api/src/infrastructure/in-memory-store.service.ts:441](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L441)。
-- `mistakeNotebookEntries` → `MistakeNotebookEntry`；[apps/api/src/infrastructure/in-memory-store.service.ts:442](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L442)。
-- `textbookAtomMappings` → `TextbookAtomMapping`；[apps/api/src/infrastructure/in-memory-store.service.ts:443](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L443)。
-- `curriculumRevisions` → `CurriculumRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:444](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L444)。
-- `diagnosticSessions` → `DiagnosticSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:445](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L445)。
-- `diagnosticBlueprints` → `DiagnosticBlueprintReservation`；[apps/api/src/infrastructure/in-memory-store.service.ts:446](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L446)。
-- `diagnosticResponses` → `DiagnosticResponse`；[apps/api/src/infrastructure/in-memory-store.service.ts:447](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L447)。
-- `diagnosticHypotheses` → `DiagnosticHypothesis`；[apps/api/src/infrastructure/in-memory-store.service.ts:448](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L448)。
-- `diagnosticPlans` → `DiagnosticGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:449](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L449)。
-- `reviewTasks` → `ReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:450](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L450)。
-- `scoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:451](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L451)。
-- `diagnosticHints` → `{ id: string; sessionId: string; itemId: string; level: number; at: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:452](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L452)。
-- `diagnosticReports` → `{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }`；[apps/api/src/infrastructure/in-memory-store.service.ts:453](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L453)。
-- `diagnosticDrafts` → `{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata`；[apps/api/src/infrastructure/in-memory-store.service.ts:455](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L455)。
-- `gespLearningScopes` → `GespLearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:456](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L456)。
-- `gespLearningScopeRevisions` → `GespLearningScopeRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:457](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L457)。
-- `gespCodeSubmissions` → `GespCodeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:458](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L458)。
-- `gespProbeSubmissions` → `GespProbeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:459](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L459)。
-- `gespHintEvents` → `GespHintEvent`；[apps/api/src/infrastructure/in-memory-store.service.ts:460](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L460)。
-- `gespGuidancePlans` → `GespGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:461](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L461)。
-- `gespGuidancePlanRevisions` → `GespGuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:462](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L462)。
-- `gespReviewTasks` → `GespReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:463](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L463)。
-- `gespTaskReviews` → `GespTaskReview`；[apps/api/src/infrastructure/in-memory-store.service.ts:464](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L464)。
-- `gespTaskReviewRevisions` → `GespTaskReviewRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:465](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L465)。
-- `studioCourses` → `StudioCourse`；[apps/api/src/infrastructure/in-memory-store.service.ts:466](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L466)。
-- `classroomSessions` → `ClassroomSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:467](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L467)。
-- `classroomTurns` → `ClassroomTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:468](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L468)。
-- `whiteboardQuestionTurns` → `WhiteboardQuestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:469](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L469)。
-- `whiteboardQuestionVisuals` → `QuestionVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:470](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L470)。
-- `classroomCodeDrafts` → `ClassroomCodeDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:471](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L471)。
-- `classroomVisuals` → `ClassroomVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:472](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L472)。
-- `courseProjects` → `CourseProjectRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:473](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L473)。
-- `projectAssetUploads` → `ProjectUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:474](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L474)。
-- `projectAssets` → `ProjectAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:475](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L475)。
-- `sourceCourses` → `SourceCourseRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:476](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L476)。
-- `sourceCourseChecks` → `SourceCourseCheckRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:477](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L477)。
-- `sourceCourseCheckPublications` → `SourceCourseCheckPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:478](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L478)。
-- `studioTopicWhiteboardDrafts` → `TopicWhiteboardDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:479](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L479)。
-- `studioTopicWhiteboards` → `TopicWhiteboardRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:480](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L480)。
-- `studioTopicWhiteboardVisuals` → `TopicVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:481](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L481)。
-- `sourceCourseStages` → `SourceCourseStageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:482](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L482)。
-- `studioActivities` → `StudioActivity`；[apps/api/src/infrastructure/in-memory-store.service.ts:483](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L483)。
-- `studioStudyPlans` → `StudioStudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:484](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L484)。
-- `studioSourceMaterials` → `StudioSourceMaterial`；[apps/api/src/infrastructure/in-memory-store.service.ts:485](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L485)。
-- `studioMaterialUploads` → `StudioMaterialUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:486](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L486)。
-- `studioMaterialAssets` → `StudioMaterialAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:487](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L487)。
-- `studioOriginalRepairs` → `StudioOriginalRepairRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:488](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L488)。
-- `studioLearningPacks` → `StudioLearningPack`；[apps/api/src/infrastructure/in-memory-store.service.ts:489](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L489)。
-- `studioWhiteboards` → `StudioWhiteboard`；[apps/api/src/infrastructure/in-memory-store.service.ts:490](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L490)。
-- `studioConnectors` → `StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:491](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L491)。
-- `studioScheduleEvents` → `StudioScheduleEvent & { createdBy?: string; requestHash?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:492](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L492)。
+- `users` → `InMemoryUserAccount`；[apps/api/src/infrastructure/in-memory-store.service.ts:389](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L389)。
+- `paperPublications` → `PaperPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:390](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L390)。
+- `libraryBookmarks` → `LibraryBookmark`；[apps/api/src/infrastructure/in-memory-store.service.ts:391](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L391)。
+- `paperPracticeSessions` → `PaperPracticeSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:392](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L392)。
+- `paperPracticeCommands` → `PaperPracticeCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:393](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L393)。
+- `practiceSessions` → `PracticeSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:394](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L394)。
+- `practiceAttempts` → `PracticeAttempt`；[apps/api/src/infrastructure/in-memory-store.service.ts:395](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L395)。
+- `practiceHints` → `PracticeHint`；[apps/api/src/infrastructure/in-memory-store.service.ts:396](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L396)。
+- `practiceScoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:397](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L397)。
+- `teacherAssignments` → `TeacherStudentAssignment`；[apps/api/src/infrastructure/in-memory-store.service.ts:398](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L398)。
+- `evidenceFeedback` → `EvidenceFeedback`；[apps/api/src/infrastructure/in-memory-store.service.ts:399](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L399)。
+- `importFiles` → `ImportFile`；[apps/api/src/infrastructure/in-memory-store.service.ts:400](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L400)。
+- `processingArtifacts` → `ProcessingArtifact`；[apps/api/src/infrastructure/in-memory-store.service.ts:401](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L401)。
+- `importPages` → `ImportPageEvidenceRef`；[apps/api/src/infrastructure/in-memory-store.service.ts:402](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L402)。
+- `guidancePlanRevisions` → `GuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:403](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L403)。
+- `studentLearningAccess` → `StudentLearningAccess`；[apps/api/src/infrastructure/in-memory-store.service.ts:404](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L404)。
+- `studentLearningCodes` → `StudentLearningCode`；[apps/api/src/infrastructure/in-memory-store.service.ts:405](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L405)。
+- `studentAccessRevisions` → `StudentAccessRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:406](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L406)。
+- `studentProgressProposals` → `StudentProgressProposal`；[apps/api/src/infrastructure/in-memory-store.service.ts:407](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L407)。
+- `privacyRequests` → `PrivacyReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:408](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L408)。
+- `studentMedia` → `StudentMedia`；[apps/api/src/infrastructure/in-memory-store.service.ts:409](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L409)。
+- `sessions` → `InMemoryAuthSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:410](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L410)。
+- `students` → `StudentProfile`；[apps/api/src/infrastructure/in-memory-store.service.ts:411](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L411)。
+- `bindings` → `ParentStudentBinding`；[apps/api/src/infrastructure/in-memory-store.service.ts:412](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L412)。
+- `studentInvitations` → `StudentInvitation`；[apps/api/src/infrastructure/in-memory-store.service.ts:413](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L413)。
+- `subjectEnrollments` → `SubjectEnrollment`；[apps/api/src/infrastructure/in-memory-store.service.ts:414](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L414)。
+- `textbookVolumes` → `TextbookVolume`；[apps/api/src/infrastructure/in-memory-store.service.ts:415](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L415)。
+- `textbookUnits` → `TextbookUnit`；[apps/api/src/infrastructure/in-memory-store.service.ts:416](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L416)。
+- `textbookLessons` → `TextbookLesson`；[apps/api/src/infrastructure/in-memory-store.service.ts:417](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L417)。
+- `knowledgePoints` → `KnowledgePoint`；[apps/api/src/infrastructure/in-memory-store.service.ts:418](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L418)。
+- `questions` → `Question`；[apps/api/src/infrastructure/in-memory-store.service.ts:419](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L419)。
+- `questionDocuments` → `QuestionDocument`；[apps/api/src/infrastructure/in-memory-store.service.ts:420](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L420)。
+- `questionAnswerSchemas` → `QuestionAnswerSchema`；[apps/api/src/infrastructure/in-memory-store.service.ts:421](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L421)。
+- `questionSources` → `QuestionSourceRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:422](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L422)。
+- `questionImportJobs` → `QuestionImportJob`；[apps/api/src/infrastructure/in-memory-store.service.ts:423](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L423)。
+- `questionImportRecords` → `QuestionImportRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:424](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L424)。
+- `assessments` → `AssessmentSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:425](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L425)。
+- `assessmentAnswers` → `AssessmentAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:426](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L426)。
+- `assessmentResults` → `AssessmentResult`；[apps/api/src/infrastructure/in-memory-store.service.ts:427](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L427)。
+- `studyPlans` → `StudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:428](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L428)。
+- `missions` → `DailyMissionInternal`；[apps/api/src/infrastructure/in-memory-store.service.ts:429](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L429)。
+- `missionAnswers` → `MissionAnswerRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:430](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L430)。
+- `assistantSessions` → `AssistantSession & { ownerUserId: string; scopeKey?: string; lectureSnapshot?: AssistantLectureSnapshot; courseSnapshot?: AssistantCourseSnapshot }`；[apps/api/src/infrastructure/in-memory-store.service.ts:431](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L431)。
+- `assistantMessages` → `AssistantMessage`；[apps/api/src/infrastructure/in-memory-store.service.ts:432](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L432)。
+- `assistantArtifactDrafts` → `AssistantNoteRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:433](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L433)。
+- `assistantPracticeArtifacts` → `AssistantPracticeArtifactRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:434](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L434)。
+- `assistantGuidanceIntents` → `GuidanceIntentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:435](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L435)。
+- `guidanceCalendarArrangements` → `GuidanceCalendarRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:436](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L436)。
+- `retentionExposureEvents` → `RetentionExposureRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:437](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L437)。
+- `controlledMaterialReviews` → `ControlledReviewRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:439](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L439)。
+- `controlledContrastPublications` → `ControlledContrastPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:440](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L440)。
+- `controlledContrastReleases` → `ControlledReleaseRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:441](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L441)。
+- `controlledEditorialCommands` → `ControlledEditorialCommand`；[apps/api/src/infrastructure/in-memory-store.service.ts:442](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L442)。
+- `controlledContrastPreviews` → `ControlledPreviewRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:443](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L443)。
+- `paperImageUploads` → `PaperImageUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:444](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L444)。
+- `paperCapturePages` → `PaperCapturePageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:445](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L445)。
+- `paperCaptureGroups` → `PaperCaptureGroupRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:446](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L446)。
+- `paperCaptureCommands` → `PaperCaptureCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:447](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L447)。
+- `paperCaptureDerivations` → `PaperCaptureDerivationRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:448](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L448)。
+- `paperCaptureFileAssets` → `PaperCaptureFileAsset`；[apps/api/src/infrastructure/in-memory-store.service.ts:449](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L449)。
+- `paperCaptureRepairUploads` → `PaperRepairUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:450](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L450)。
+- `paperCaptureRepairCommands` → `PaperRepairCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:451](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L451)。
+- `paperCaptureRepairs` → `PaperRepairRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:452](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L452)。
+- `paperSelectionLists` → `PaperSelectionListRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:453](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L453)。
+- `textbookTeachingPackages` → `TextbookTeachingPackageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:454](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L454)。
+- `textbookTeachingVersions` → `TextbookTeachingVersionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:455](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L455)。
+- `textbookTeachingSources` → `TextbookTeachingSourceRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:456](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L456)。
+- `textbookTeachingCommands` → `TextbookTeachingCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:457](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L457)。
+- `textbookTeachingAdoptions` → `TextbookTeachingAdoptionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:458](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L458)。
+- `textbookTeachingCourseRevisions` → `TeachingCourseRevisionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:459](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L459)。
+- `paperSelectionCommands` → `PaperSelectionCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:460](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L460)。
+- `paperExports` → `PaperExportRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:461](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L461)。
+- `paperExportCommands` → `PaperExportCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:462](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L462)。
+- `paperSourceExposures` → `PaperSourceExposureRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:463](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L463)。
+- `paperExportFiles` → `PaperExportFileRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:464](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L464)。
+- `studioCalendarCommands` → `StudioCalendarCommandRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:465](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L465)。
+- `assistantTeachingPracticeDrafts` → `TeachingDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:466](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L466)。
+- `assistantTeachingPractices` → `TeachingPracticeRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:467](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L467)。
+- `assistantTeachingSessions` → `TeachingSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:468](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L468)。
+- `assistantTeachingAssignments` → `TeachingAssignmentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:469](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L469)。
+- `assistantPracticeAssignments` → `AssistantPracticeAssignmentRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:470](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L470)。
+- `assistantPracticeAssignmentWithdrawals` → `AssistantPracticeWithdrawalRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:471](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L471)。
+- `assistantPracticeGroupStarts` → `AssistantPracticeGroupStartRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:472](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L472)。
+- `assistantTurns` → `AssistantTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:473](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L473)。
+- `guidanceModelSuggestions` → `GuidanceModelSuggestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:474](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L474)。
+- `teachingToolRuns` → `TeachingToolRunRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:475](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L475)。
+- `aiInsights` → `AIInsightRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:476](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L476)。
+- `events` → `Record<string, unknown>`；[apps/api/src/infrastructure/in-memory-store.service.ts:477](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L477)。
+- `knowledgeAtoms` → `KnowledgeAtom`；[apps/api/src/infrastructure/in-memory-store.service.ts:478](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L478)。
+- `learningScopes` → `LearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:479](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L479)。
+- `measurementItems` → `MeasurementItem`；[apps/api/src/infrastructure/in-memory-store.service.ts:480](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L480)。
+- `measurementCandidates` → `MeasurementContentCandidate`；[apps/api/src/infrastructure/in-memory-store.service.ts:481](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L481)。
+- `mistakeNotebookEntries` → `MistakeNotebookEntry`；[apps/api/src/infrastructure/in-memory-store.service.ts:482](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L482)。
+- `textbookAtomMappings` → `TextbookAtomMapping`；[apps/api/src/infrastructure/in-memory-store.service.ts:483](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L483)。
+- `curriculumRevisions` → `CurriculumRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:484](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L484)。
+- `diagnosticSessions` → `DiagnosticSession`；[apps/api/src/infrastructure/in-memory-store.service.ts:485](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L485)。
+- `diagnosticBlueprints` → `DiagnosticBlueprintReservation`；[apps/api/src/infrastructure/in-memory-store.service.ts:486](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L486)。
+- `diagnosticResponses` → `DiagnosticResponse`；[apps/api/src/infrastructure/in-memory-store.service.ts:487](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L487)。
+- `diagnosticHypotheses` → `DiagnosticHypothesis`；[apps/api/src/infrastructure/in-memory-store.service.ts:488](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L488)。
+- `diagnosticPlans` → `DiagnosticGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:489](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L489)。
+- `reviewTasks` → `ReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:490](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L490)。
+- `scoringRevisions` → `ScoringRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:491](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L491)。
+- `diagnosticHints` → `{ id: string; sessionId: string; itemId: string; level: number; at: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:492](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L492)。
+- `diagnosticReports` → `{ id: string; sessionId: string; version: number; createdAt: string; report: DiagnosticReport; reanalysis?: { actorId: string; requestKey: string; inputHash: string } }`；[apps/api/src/infrastructure/in-memory-store.service.ts:493](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L493)。
+- `diagnosticDrafts` → `{ id: string; sessionId: string; itemId: string; answer: unknown; updatedAt: string } & AnswerDraftMetadata`；[apps/api/src/infrastructure/in-memory-store.service.ts:495](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L495)。
+- `gespLearningScopes` → `GespLearningScope`；[apps/api/src/infrastructure/in-memory-store.service.ts:496](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L496)。
+- `gespLearningScopeRevisions` → `GespLearningScopeRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:497](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L497)。
+- `gespCodeSubmissions` → `GespCodeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:498](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L498)。
+- `gespProbeSubmissions` → `GespProbeSubmissionReceipt`；[apps/api/src/infrastructure/in-memory-store.service.ts:499](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L499)。
+- `gespHintEvents` → `GespHintEvent`；[apps/api/src/infrastructure/in-memory-store.service.ts:500](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L500)。
+- `gespGuidancePlans` → `GespGuidancePlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:501](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L501)。
+- `gespGuidancePlanRevisions` → `GespGuidancePlanRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:502](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L502)。
+- `gespReviewTasks` → `GespReviewTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:503](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L503)。
+- `gespTaskReviews` → `GespTaskReview`；[apps/api/src/infrastructure/in-memory-store.service.ts:504](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L504)。
+- `gespTaskReviewRevisions` → `GespTaskReviewRevision`；[apps/api/src/infrastructure/in-memory-store.service.ts:505](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L505)。
+- `studioCourses` → `StudioCourse`；[apps/api/src/infrastructure/in-memory-store.service.ts:506](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L506)。
+- `classroomSessions` → `ClassroomSessionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:507](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L507)。
+- `classroomTurns` → `ClassroomTurnRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:508](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L508)。
+- `whiteboardQuestionTurns` → `WhiteboardQuestionRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:509](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L509)。
+- `whiteboardQuestionVisuals` → `QuestionVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:510](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L510)。
+- `classroomCodeDrafts` → `ClassroomCodeDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:511](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L511)。
+- `classroomVisuals` → `ClassroomVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:512](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L512)。
+- `courseProjects` → `CourseProjectRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:513](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L513)。
+- `projectAssetUploads` → `ProjectUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:514](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L514)。
+- `projectAssets` → `ProjectAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:515](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L515)。
+- `sourceCourses` → `SourceCourseRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:516](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L516)。
+- `sourceCourseChecks` → `SourceCourseCheckRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:517](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L517)。
+- `sourceCourseCheckPublications` → `SourceCourseCheckPublication`；[apps/api/src/infrastructure/in-memory-store.service.ts:518](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L518)。
+- `studioTopicWhiteboardDrafts` → `TopicWhiteboardDraftRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:519](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L519)。
+- `studioTopicWhiteboards` → `TopicWhiteboardRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:520](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L520)。
+- `studioTopicWhiteboardVisuals` → `TopicVisualRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:521](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L521)。
+- `sourceCourseStages` → `SourceCourseStageRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:522](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L522)。
+- `studioActivities` → `StudioActivity`；[apps/api/src/infrastructure/in-memory-store.service.ts:523](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L523)。
+- `studioStudyPlans` → `StudioStudyPlan`；[apps/api/src/infrastructure/in-memory-store.service.ts:524](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L524)。
+- `studioSourceMaterials` → `StudioSourceMaterial`；[apps/api/src/infrastructure/in-memory-store.service.ts:525](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L525)。
+- `studioMaterialUploads` → `StudioMaterialUploadRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:526](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L526)。
+- `studioMaterialAssets` → `StudioMaterialAssetRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:527](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L527)。
+- `studioOriginalRepairs` → `StudioOriginalRepairRecord`；[apps/api/src/infrastructure/in-memory-store.service.ts:528](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L528)。
+- `studioLearningPacks` → `StudioLearningPack`；[apps/api/src/infrastructure/in-memory-store.service.ts:529](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L529)。
+- `studioWhiteboards` → `StudioWhiteboard`；[apps/api/src/infrastructure/in-memory-store.service.ts:530](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L530)。
+- `studioConnectors` → `StudioConnector & { encryptedFeedUrl: string; requestKey?: string; requestHash?: string; createdBy?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:531](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L531)。
+- `studioScheduleEvents` → `StudioScheduleEvent & { createdBy?: string; requestHash?: string }`；[apps/api/src/infrastructure/in-memory-store.service.ts:532](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L532)。
 
 ## 共享数据契约
 
@@ -257,26 +283,26 @@
 
 ### packages/contracts/src/assistant-turn.ts
 
-- `AssistantReplySource`：[packages/contracts/src/assistant-turn.ts:4](../../../packages/contracts/src/assistant-turn.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantCourseKind`：[packages/contracts/src/assistant-turn.ts:5](../../../packages/contracts/src/assistant-turn.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantTeachingSelection`：[packages/contracts/src/assistant-turn.ts:6](../../../packages/contracts/src/assistant-turn.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantTeachingCoverage`：[packages/contracts/src/assistant-turn.ts:7](../../../packages/contracts/src/assistant-turn.ts#L7)；字段：`totalParts`、`includedParts`、`totalTargets`、`includedTargets`、`complete`。
-- `AssistantSourceReference`：[packages/contracts/src/assistant-turn.ts:8](../../../packages/contracts/src/assistant-turn.ts#L8)；字段：`key`、`kind`、`courseId`、`itemId`、`title`、`href`、`contextFingerprint`、`originHref?`、`page?`、`quote?`、`sourceVersion?`。
-- `AssistantTeachingBlock`：[packages/contracts/src/assistant-turn.ts:10](../../../packages/contracts/src/assistant-turn.ts#L10)；字段：`kind`、`text`、`items?`、`code?`、`table?`、`diagram?`、`figure?`。
-- `AssistantSourcePreview`：[packages/contracts/src/assistant-turn.ts:13](../../../packages/contracts/src/assistant-turn.ts#L13)；字段：`reference`、`current`、`scope`、`accessMode?`、`selection`、`coverage`、`targets`、`sections`。
-- `AssistantReply`：[packages/contracts/src/assistant-turn.ts:17](../../../packages/contracts/src/assistant-turn.ts#L17)；字段：`reply`、`source`、`evidenceIds`、`modelId`、`modelName`、`sourceReferences?`。
-- `AssistantHistoryMessage`：[packages/contracts/src/assistant-turn.ts:19](../../../packages/contracts/src/assistant-turn.ts#L19)；字段：`id`、`sessionId`、`sender`、`content`、`createdAt`、`sequence?`、`source?`、`modelId?`、`modelName?`、`evidenceIds?`、`assistanceRecorded?`、`inReplyTo?`、`sourceReferences?`。
-- `AssistantLocation`：[packages/contracts/src/assistant-turn.ts:22](../../../packages/contracts/src/assistant-turn.ts#L22)；字段：`sessionId`、`pageContext`、`studentId`、`subject`、`contextRefType`、`contextRefId`、`contextItemId`、`href`。
-- `AssistantLectureSummary`：[packages/contracts/src/assistant-turn.ts:24](../../../packages/contracts/src/assistant-turn.ts#L24)；字段：`courseId`、`courseVersion`、`courseTitle`、`unitId`、`unitTitle`、`unitPosition`、`lectureId`、`lectureTitle`、`lecturePosition`、`fingerprint`、`referenceId`、`current`、`href`。
-- `AssistantLectureDescriptor`：[packages/contracts/src/assistant-turn.ts:27](../../../packages/contracts/src/assistant-turn.ts#L27)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantCourseSummary`：[packages/contracts/src/assistant-turn.ts:28](../../../packages/contracts/src/assistant-turn.ts#L28)；字段：`kind`、`courseId`、`courseTitle`、`itemId`、`itemTitle`、`studentId`、`subject`、`accessMode`、`fingerprint`、`referenceId`、`current`、`href`、`selection`、`coverage`、`canSend?`、`blocked?`。
-- `AssistantCourseDescriptor`：[packages/contracts/src/assistant-turn.ts:32](../../../packages/contracts/src/assistant-turn.ts#L32)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AssistantContextView`：[packages/contracts/src/assistant-turn.ts:36](../../../packages/contracts/src/assistant-turn.ts#L36)；字段：`contextVersion`、`location`、`lecture?`、`course?`。
-- `AssistantTurnCommand`：[packages/contracts/src/assistant-turn.ts:37](../../../packages/contracts/src/assistant-turn.ts#L37)；字段：`requestKey`、`message`、`modelId`、`contextVersion`。
-- `AssistantTurnView`：[packages/contracts/src/assistant-turn.ts:38](../../../packages/contracts/src/assistant-turn.ts#L38)；字段：`id`、`sessionId`、`requestKey`、`message`、`requestedModelId`、`modelId`、`modelName`、`source`、`contextVersion`、`location`、`status`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
-- `AssistantHistoryPage`：[packages/contracts/src/assistant-turn.ts:43](../../../packages/contracts/src/assistant-turn.ts#L43)；字段：`messages`、`nextCursor`、`location`。
-- `AssistantTurnList`：[packages/contracts/src/assistant-turn.ts:44](../../../packages/contracts/src/assistant-turn.ts#L44)；字段：`turns`、`hasMore`、`page`、`pageSize`。
-- `AssistantHistorySearch`：[packages/contracts/src/assistant-turn.ts:45](../../../packages/contracts/src/assistant-turn.ts#L45)；字段：`sessions`、`total`、`page`、`pageSize`。
+- `AssistantReplySource`：[packages/contracts/src/assistant-turn.ts:5](../../../packages/contracts/src/assistant-turn.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantCourseKind`：[packages/contracts/src/assistant-turn.ts:6](../../../packages/contracts/src/assistant-turn.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantTeachingSelection`：[packages/contracts/src/assistant-turn.ts:7](../../../packages/contracts/src/assistant-turn.ts#L7)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantTeachingCoverage`：[packages/contracts/src/assistant-turn.ts:8](../../../packages/contracts/src/assistant-turn.ts#L8)；字段：`totalParts`、`includedParts`、`totalTargets`、`includedTargets`、`complete`。
+- `AssistantSourceReference`：[packages/contracts/src/assistant-turn.ts:9](../../../packages/contracts/src/assistant-turn.ts#L9)；字段：`key`、`kind`、`courseId`、`itemId`、`title`、`href`、`contextFingerprint`、`originHref?`、`page?`、`quote?`、`sourceVersion?`。
+- `AssistantTeachingBlock`：[packages/contracts/src/assistant-turn.ts:11](../../../packages/contracts/src/assistant-turn.ts#L11)；字段：`kind`、`text`、`items?`、`code?`、`table?`、`diagram?`、`math?`、`figure?`。
+- `AssistantSourcePreview`：[packages/contracts/src/assistant-turn.ts:14](../../../packages/contracts/src/assistant-turn.ts#L14)；字段：`reference`、`current`、`scope`、`accessMode?`、`selection`、`coverage`、`targets`、`sections`。
+- `AssistantReply`：[packages/contracts/src/assistant-turn.ts:18](../../../packages/contracts/src/assistant-turn.ts#L18)；字段：`reply`、`source`、`evidenceIds`、`modelId`、`modelName`、`sourceReferences?`。
+- `AssistantHistoryMessage`：[packages/contracts/src/assistant-turn.ts:20](../../../packages/contracts/src/assistant-turn.ts#L20)；字段：`id`、`sessionId`、`sender`、`content`、`createdAt`、`sequence?`、`source?`、`modelId?`、`modelName?`、`evidenceIds?`、`assistanceRecorded?`、`inReplyTo?`、`sourceReferences?`。
+- `AssistantLocation`：[packages/contracts/src/assistant-turn.ts:23](../../../packages/contracts/src/assistant-turn.ts#L23)；字段：`sessionId`、`pageContext`、`studentId`、`subject`、`contextRefType`、`contextRefId`、`contextItemId`、`href`。
+- `AssistantLectureSummary`：[packages/contracts/src/assistant-turn.ts:25](../../../packages/contracts/src/assistant-turn.ts#L25)；字段：`courseId`、`courseVersion`、`courseTitle`、`unitId`、`unitTitle`、`unitPosition`、`lectureId`、`lectureTitle`、`lecturePosition`、`fingerprint`、`referenceId`、`current`、`href`。
+- `AssistantLectureDescriptor`：[packages/contracts/src/assistant-turn.ts:28](../../../packages/contracts/src/assistant-turn.ts#L28)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantCourseSummary`：[packages/contracts/src/assistant-turn.ts:29](../../../packages/contracts/src/assistant-turn.ts#L29)；字段：`kind`、`courseId`、`courseTitle`、`itemId`、`itemTitle`、`studentId`、`subject`、`accessMode`、`fingerprint`、`referenceId`、`current`、`href`、`selection`、`coverage`、`canSend?`、`blocked?`。
+- `AssistantCourseDescriptor`：[packages/contracts/src/assistant-turn.ts:33](../../../packages/contracts/src/assistant-turn.ts#L33)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AssistantContextView`：[packages/contracts/src/assistant-turn.ts:37](../../../packages/contracts/src/assistant-turn.ts#L37)；字段：`contextVersion`、`location`、`lecture?`、`course?`。
+- `AssistantTurnCommand`：[packages/contracts/src/assistant-turn.ts:38](../../../packages/contracts/src/assistant-turn.ts#L38)；字段：`requestKey`、`message`、`modelId`、`contextVersion`。
+- `AssistantTurnView`：[packages/contracts/src/assistant-turn.ts:39](../../../packages/contracts/src/assistant-turn.ts#L39)；字段：`id`、`sessionId`、`requestKey`、`message`、`requestedModelId`、`modelId`、`modelName`、`source`、`contextVersion`、`location`、`status`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
+- `AssistantHistoryPage`：[packages/contracts/src/assistant-turn.ts:44](../../../packages/contracts/src/assistant-turn.ts#L44)；字段：`messages`、`nextCursor`、`location`。
+- `AssistantTurnList`：[packages/contracts/src/assistant-turn.ts:45](../../../packages/contracts/src/assistant-turn.ts#L45)；字段：`turns`、`hasMore`、`page`、`pageSize`。
+- `AssistantHistorySearch`：[packages/contracts/src/assistant-turn.ts:46](../../../packages/contracts/src/assistant-turn.ts#L46)；字段：`sessions`、`total`、`page`、`pageSize`。
 
 ### packages/contracts/src/assistant-whiteboard.ts
 
@@ -312,6 +338,15 @@
 - `ClassroomExperimentKind`：[packages/contracts/src/classroom-experiment.ts:2](../../../packages/contracts/src/classroom-experiment.ts#L2)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `ClassroomExperiment`：[packages/contracts/src/classroom-experiment.ts:4](../../../packages/contracts/src/classroom-experiment.ts#L4)；字段：`kind`、`title`、`prediction`、`observation`、`explanation`、`limitation`。
 
+### packages/contracts/src/classroom-math.ts
+
+- `ClassroomMathFigure`：[packages/contracts/src/classroom-math.ts:17](../../../packages/contracts/src/classroom-math.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomSolidShape`：[packages/contracts/src/classroom-math.ts:18](../../../packages/contracts/src/classroom-math.ts#L18)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomMathPaint`：[packages/contracts/src/classroom-math.ts:46](../../../packages/contracts/src/classroom-math.ts#L46)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `Painted`：[packages/contracts/src/classroom-math.ts:47](../../../packages/contracts/src/classroom-math.ts#L47)；字段：`fill`、`stroke?`、`strokeWidth?`。
+- `ClassroomMathPrimitive`：[packages/contracts/src/classroom-math.ts:48](../../../packages/contracts/src/classroom-math.ts#L48)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomMathDrawing`：[packages/contracts/src/classroom-math.ts:55](../../../packages/contracts/src/classroom-math.ts#L55)；字段：`width`、`height`、`primitives`、`description`、`caption`。
+
 ### packages/contracts/src/classroom-speech.ts
 
 - `ClassroomSpeechVersion`：[packages/contracts/src/classroom-speech.ts:4](../../../packages/contracts/src/classroom-speech.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
@@ -339,23 +374,36 @@
 
 ### packages/contracts/src/classroom.ts
 
-- `ClassroomDiagram`：[packages/contracts/src/classroom.ts:8](../../../packages/contracts/src/classroom.ts#L8)；字段：`kind`、`title`、`labels`、`values?`、`captions?`。
-- `ClassroomBlock`：[packages/contracts/src/classroom.ts:9](../../../packages/contracts/src/classroom.ts#L9)；字段：`id`、`kind`、`text`、`atSentence?`、`items?`、`image?`、`diagram?`、`experiment?`、`code?`、`table?`。
-- `ClassroomStep`：[packages/contracts/src/classroom.ts:12](../../../packages/contracts/src/classroom.ts#L12)；字段：`id`、`title`、`narration`、`blocks`、`phase`、`durationMs`。
-- `ClassroomSelectionMode`：[packages/contracts/src/classroom.ts:14](../../../packages/contracts/src/classroom.ts#L14)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomAnswerDisposition`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:16](../../../packages/contracts/src/classroom.ts#L16)；字段：`id`、`prompt`、`options`、`hint`、`image?`、`targetLessonIds?`、`selectionMode?`、`hintCount?`、`table?`、`diagram?`、`topic?`、`purpose?`。
-- `ClassroomLesson`：[packages/contracts/src/classroom.ts:22](../../../packages/contracts/src/classroom.ts#L22)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`generatedNotice?`、`nextLessonId?`、`sourceReferences?`、`questions`、`verificationHref?`、`practiceVersion?`、`assessment?`。
-- `ClassroomLecture`：[packages/contracts/src/classroom.ts:27](../../../packages/contracts/src/classroom.ts#L27)；字段：`id`、`title`、`description`、`lessons`。
-- `ClassroomUnit`：[packages/contracts/src/classroom.ts:28](../../../packages/contracts/src/classroom.ts#L28)；字段：`id`、`title`、`objective`、`lectures`、`project`。
-- `ClassroomCourse`：[packages/contracts/src/classroom.ts:30](../../../packages/contracts/src/classroom.ts#L30)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
-- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:32](../../../packages/contracts/src/classroom.ts#L32)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`sourceReferences?`、`selectedIndices?`、`correctIndices?`、`optionExplanations?`、`explanation`、`hintUsed`、`at`、`disposition?`、`hintLevel?`、`answerExposure?`。
-- `ClassroomHintReceipt`：[packages/contracts/src/classroom.ts:36](../../../packages/contracts/src/classroom.ts#L36)；字段：`questionId`、`level`、`text`、`at`。
-- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:37](../../../packages/contracts/src/classroom.ts#L37)；字段：`id`、`role`、`content`、`at`、`modelName?`、`speech?`、`board?`。
-- `ClassroomSession`：[packages/contracts/src/classroom.ts:40](../../../packages/contracts/src/classroom.ts#L40)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`retentionContext?`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`sourceCourseId?`、`authoringAnswerExposure?`、`sourceCheckId?`、`sourceCheckFingerprint?`、`sourceCheckTargets?`、`presentation?`、`presentationRevisions?`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`hintReceipts?`、`createdAt`、`updatedAt`。
-- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:52](../../../packages/contracts/src/classroom.ts#L52)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:56](../../../packages/contracts/src/classroom.ts#L56)；字段：`course`、`progress`、`lessonActivities?`、`projectActivities?`、`readingProgress?`、`archivedSessions?`。
-- `ClassroomPracticeSummary`：[packages/contracts/src/classroom.ts:62](../../../packages/contracts/src/classroom.ts#L62)；字段：`total`、`answered`、`remaining`、`correct`、`incorrect`、`skipped`、`dontKnow`、`assisted`、`independentCorrect`、`complete`、`nextQuestionIndex`、`reviewQuestionIds`。
+- `ClassroomDiagram`：[packages/contracts/src/classroom.ts:9](../../../packages/contracts/src/classroom.ts#L9)；字段：`kind`、`title`、`labels`、`values?`、`captions?`。
+- `ClassroomBlock`：[packages/contracts/src/classroom.ts:10](../../../packages/contracts/src/classroom.ts#L10)；字段：`id`、`kind`、`text`、`atSentence?`、`items?`、`image?`、`diagram?`、`math?`、`experiment?`、`code?`、`table?`。
+- `ClassroomStep`：[packages/contracts/src/classroom.ts:13](../../../packages/contracts/src/classroom.ts#L13)；字段：`id`、`title`、`narration`、`blocks`、`phase`、`durationMs`。
+- `ClassroomSelectionMode`：[packages/contracts/src/classroom.ts:15](../../../packages/contracts/src/classroom.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomAnswerDisposition`：[packages/contracts/src/classroom.ts:16](../../../packages/contracts/src/classroom.ts#L16)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomQuestion`：[packages/contracts/src/classroom.ts:17](../../../packages/contracts/src/classroom.ts#L17)；字段：`id`、`prompt`、`options`、`hint`、`image?`、`targetLessonIds?`、`selectionMode?`、`hintCount?`、`table?`、`diagram?`、`math?`、`topic?`、`purpose?`。
+- `ClassroomLesson`：[packages/contracts/src/classroom.ts:23](../../../packages/contracts/src/classroom.ts#L23)；字段：`id`、`title`、`objective`、`lectureId`、`steps`、`generatedNotice?`、`nextLessonId?`、`sourceReferences?`、`questions`、`verificationHref?`、`practiceVersion?`、`assessment?`。
+- `ClassroomLecture`：[packages/contracts/src/classroom.ts:28](../../../packages/contracts/src/classroom.ts#L28)；字段：`id`、`title`、`description`、`lessons`。
+- `ClassroomUnit`：[packages/contracts/src/classroom.ts:29](../../../packages/contracts/src/classroom.ts#L29)；字段：`id`、`title`、`objective`、`lectures`、`project`。
+- `ClassroomCourse`：[packages/contracts/src/classroom.ts:31](../../../packages/contracts/src/classroom.ts#L31)；字段：`id`、`title`、`description`、`level`、`version`、`provenance`、`units`、`references`。
+- `ClassroomAnswerReceipt`：[packages/contracts/src/classroom.ts:33](../../../packages/contracts/src/classroom.ts#L33)；字段：`questionId`、`selectedIndex`、`correct`、`skipped`、`sourceReferences?`、`selectedIndices?`、`correctIndices?`、`optionExplanations?`、`explanation`、`hintUsed`、`at`、`disposition?`、`hintLevel?`、`answerExposure?`。
+- `ClassroomHintReceipt`：[packages/contracts/src/classroom.ts:37](../../../packages/contracts/src/classroom.ts#L37)；字段：`questionId`、`level`、`text`、`at`。
+- `ClassroomChatMessage`：[packages/contracts/src/classroom.ts:38](../../../packages/contracts/src/classroom.ts#L38)；字段：`id`、`role`、`content`、`at`、`modelName?`、`speech?`、`board?`。
+- `ClassroomSession`：[packages/contracts/src/classroom.ts:41](../../../packages/contracts/src/classroom.ts#L41)；字段：`id`、`ownerUserId`、`studentId`、`courseId`、`retentionContext?`、`studioCourseId?`、`lessonId`、`contentFingerprint`、`lesson`、`sourceCourseId?`、`authoringAnswerExposure?`、`sourceCheckId?`、`sourceCheckFingerprint?`、`sourceCheckTargets?`、`presentation?`、`presentationRevisions?`、`cursor`、`revealed`、`sentenceCursor?`、`status`、`revision`、`messages`、`answers`、`projectDraft`、`hintedQuestionIds?`、`hintReceipts?`、`createdAt`、`updatedAt`。
+- `ClassroomSessionView`：[packages/contracts/src/classroom.ts:53](../../../packages/contracts/src/classroom.ts#L53)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomCatalog`：[packages/contracts/src/classroom.ts:57](../../../packages/contracts/src/classroom.ts#L57)；字段：`course`、`progress`、`lessonActivities?`、`projectActivities?`、`readingProgress?`、`archivedSessions?`。
+- `ClassroomPracticeSummary`：[packages/contracts/src/classroom.ts:63](../../../packages/contracts/src/classroom.ts#L63)；字段：`total`、`answered`、`remaining`、`correct`、`incorrect`、`skipped`、`dontKnow`、`assisted`、`independentCorrect`、`complete`、`nextQuestionIndex`、`reviewQuestionIds`。
+
+### packages/contracts/src/controlled-contrast.ts
+
+- `ControlledCause`：[packages/contracts/src/controlled-contrast.ts:1](../../../packages/contracts/src/controlled-contrast.ts#L1)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ControlledGuidanceBasis`：[packages/contracts/src/controlled-contrast.ts:2](../../../packages/contracts/src/controlled-contrast.ts#L2)；字段：`protocol`、`reportId`、`sessionId`、`reportVersion`、`reportCreatedAt`、`reportFingerprint`、`stateId`、`atomId`、`definitionFingerprint`、`cause`、`status`、`actionId`、`supportingEvidenceIds`、`counterEvidenceIds`。
+- `ControlledCauseState`：[packages/contracts/src/controlled-contrast.ts:3](../../../packages/contracts/src/controlled-contrast.ts#L3)；字段：`id`、`studentId`、`subject`、`atomId`、`definitionFingerprint`、`cause`、`ruleVersion`、`status`、`supportingEvidenceIds`、`counterEvidenceIds`、`supportingUnits`、`counterUnits`、`updatedAt`、`history`。
+- `ControlledContrastUnitStatus`：[packages/contracts/src/controlled-contrast.ts:4](../../../packages/contracts/src/controlled-contrast.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ControlledContrastResult`：[packages/contracts/src/controlled-contrast.ts:5](../../../packages/contracts/src/controlled-contrast.ts#L5)；字段：`protocol`、`sourceScope`、`startedAt`、`blueprintFingerprint`、`sessionId`、`studentId`、`atomId`、`cause`、`units`、`supportingUnits`、`counterUnits`、`reverseUnits`、`bothBelowUnits`、`status`、`independentUnits`、`notice`、`fingerprint`。
+- `ControlledPreviewInput`：[packages/contracts/src/controlled-contrast.ts:10](../../../packages/contracts/src/controlled-contrast.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ControlledStartInput`：[packages/contracts/src/controlled-contrast.ts:11](../../../packages/contracts/src/controlled-contrast.ts#L11)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ControlledStartReceipt`：[packages/contracts/src/controlled-contrast.ts:12](../../../packages/contracts/src/controlled-contrast.ts#L12)；字段：`protocol`、`previewId`、`studentId`、`sessionId`、`startedAt`。
+- `ControlledPreviewView`：[packages/contracts/src/controlled-contrast.ts:13](../../../packages/contracts/src/controlled-contrast.ts#L13)；字段：`id`、`studentId`、`subject`、`publicationId`、`previewFingerprint`、`createdAt`、`expiresAt`、`expired`、`sessionId`、`cause`、`atomId`、`independentUnits`、`requiredIndependentUnits`、`totalItems`、`expectedSeconds`、`fullyCovered`、`gaps`、`currentAvailability`、`canStart`、`notice`。
+- `ControlledAvailability`：[packages/contracts/src/controlled-contrast.ts:14](../../../packages/contracts/src/controlled-contrast.ts#L14)；字段：`studentId`、`subject`、`atomId`、`scopeId`、`scopeVersion`、`protocols`、`notice`。
 
 ### packages/contracts/src/course-journey.ts
 
@@ -386,50 +434,59 @@
 - `CurriculumTocPart`：[packages/contracts/src/curriculum.ts:5](../../../packages/contracts/src/curriculum.ts#L5)；字段：`name`、`printedPage`、`tocPage?`。
 - `CurriculumLesson`：[packages/contracts/src/curriculum.ts:6](../../../packages/contracts/src/curriculum.ts#L6)；字段：`id`、`name`、`printedPage?`、`tocPage?`、`kind?`、`number?`、`skim?`、`parts?`。
 - `CurriculumChapter`：[packages/contracts/src/curriculum.ts:12](../../../packages/contracts/src/curriculum.ts#L12)；字段：`id`、`name`、`lessons`、`printedPage?`、`tocPage?`、`kind?`、`pageBasis?`、`syntheticHeading?`。
-- `CurriculumBook`：[packages/contracts/src/curriculum.ts:17](../../../packages/contracts/src/curriculum.ts#L17)；字段：`id`、`subject`、`grade`、`term`、`edition`、`title`、`version`、`source`、`sourceRef`、`sourceSha256`、`chapterState`、`chapters`、`catalogVersion?`、`chapterEvidence?`。
-- `TextbookAtomMapping`：[packages/contracts/src/curriculum.ts:34](../../../packages/contracts/src/curriculum.ts#L34)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `CurriculumRevision`：[packages/contracts/src/curriculum.ts:38](../../../packages/contracts/src/curriculum.ts#L38)；字段：`id`、`entityId`、`kind`、`version`、`actorId`、`at`、`snapshot`。
-- `CurriculumPackage`：[packages/contracts/src/curriculum.ts:48](../../../packages/contracts/src/curriculum.ts#L48)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `CurriculumPackagePreview`：[packages/contracts/src/curriculum.ts:49](../../../packages/contracts/src/curriculum.ts#L49)；字段：`fileId`、`fileSha256`、`title`、`provenance`、`fingerprint`、`total`、`added`、`changed`、`unchanged`、`published`、`draft`、`changes`。
-- `MaterialStructureGap`：[packages/contracts/src/curriculum.ts:57](../../../packages/contracts/src/curriculum.ts#L57)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MaterialStructureCoverage`：[packages/contracts/src/curriculum.ts:59](../../../packages/contracts/src/curriculum.ts#L59)；字段：`version`、`familyIdentityVersion`、`families`、`understandingFamilies`、`procedureFamilies`、`basicFamilies`、`transferFamilies`、`contrastFamilies`、`ready`、`gaps`。
-- `KnowledgeMaterialCoverage`：[packages/contracts/src/curriculum.ts:64](../../../packages/contracts/src/curriculum.ts#L64)；字段：`version`、`ready`、`structure`、`sample`。
+- `CurriculumBook`：[packages/contracts/src/curriculum.ts:17](../../../packages/contracts/src/curriculum.ts#L17)；字段：`id`、`subject`、`grade`、`term`、`edition`、`title`、`version`、`source`、`sourceRef`、`sourceSha256`、`chapterState`、`chapters`、`catalogVersion?`、`sourceEdition?`、`chapterEvidence?`。
+- `TextbookScopeInventory`：[packages/contracts/src/curriculum.ts:35](../../../packages/contracts/src/curriculum.ts#L35)；字段：`registeredBooks`、`booksWithProgressLessons`、`booksWithoutProgressLessons`、`progressLessons`。
+- `TextbookScopeBookGap`：[packages/contracts/src/curriculum.ts:39](../../../packages/contracts/src/curriculum.ts#L39)；字段：`bookId`、`bookTitle`、`bookVersion`、`edition`、`chapterState`、`reason`、`sourceStatus`、`sourceReason`。
+- `TextbookScopeBookGaps`：[packages/contracts/src/curriculum.ts:45](../../../packages/contracts/src/curriculum.ts#L45)；字段：`total`、`page`、`pageSize`、`rows`。
+- `TextbookLessonSource`：[packages/contracts/src/curriculum.ts:50](../../../packages/contracts/src/curriculum.ts#L50)；字段：`bookId`、`bookVersion`、`lessonId`、`lessonName`、`sourceBookId`、`sourceSha256`、`extractedSha256`、`lessonFingerprint`、`fingerprint`、`locatorStatus`、`contentReview`、`pageRange`、`sourcePages`、`titleMatched`、`page`、`text`、`textCharacters`、`extractionStatus`、`notice`。
+- `TextbookAtomMapping`：[packages/contracts/src/curriculum.ts:64](../../../packages/contracts/src/curriculum.ts#L64)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `CurriculumRevision`：[packages/contracts/src/curriculum.ts:68](../../../packages/contracts/src/curriculum.ts#L68)；字段：`id`、`entityId`、`kind`、`version`、`actorId`、`at`、`snapshot`。
+- `CurriculumPackage`：[packages/contracts/src/curriculum.ts:78](../../../packages/contracts/src/curriculum.ts#L78)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `CurriculumPackagePreview`：[packages/contracts/src/curriculum.ts:79](../../../packages/contracts/src/curriculum.ts#L79)；字段：`fileId`、`fileSha256`、`title`、`provenance`、`fingerprint`、`total`、`added`、`changed`、`unchanged`、`published`、`draft`、`changes`。
+- `MaterialStructureGap`：[packages/contracts/src/curriculum.ts:87](../../../packages/contracts/src/curriculum.ts#L87)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MaterialStructureCoverage`：[packages/contracts/src/curriculum.ts:89](../../../packages/contracts/src/curriculum.ts#L89)；字段：`version`、`familyIdentityVersion`、`families`、`understandingFamilies`、`procedureFamilies`、`basicFamilies`、`transferFamilies`、`contrastFamilies`、`ready`、`gaps`。
+- `KnowledgeMaterialCoverage`：[packages/contracts/src/curriculum.ts:94](../../../packages/contracts/src/curriculum.ts#L94)；字段：`version`、`ready`、`structure`、`sample`。
 
 ### packages/contracts/src/diagnostics.ts
 
-- `MeasurementDimension`：[packages/contracts/src/diagnostics.ts:8](../../../packages/contracts/src/diagnostics.ts#L8)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TeachingVisual`：[packages/contracts/src/diagnostics.ts:37](../../../packages/contracts/src/diagnostics.ts#L37)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `AtomTeaching`：[packages/contracts/src/diagnostics.ts:54](../../../packages/contracts/src/diagnostics.ts#L54)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `KnowledgeAtom`：[packages/contracts/src/diagnostics.ts:65](../../../packages/contracts/src/diagnostics.ts#L65)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `LearningScope`：[packages/contracts/src/diagnostics.ts:82](../../../packages/contracts/src/diagnostics.ts#L82)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ComponentBinding`：[packages/contracts/src/diagnostics.ts:90](../../../packages/contracts/src/diagnostics.ts#L90)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `MeasurementItem`：[packages/contracts/src/diagnostics.ts:103](../../../packages/contracts/src/diagnostics.ts#L103)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticStart`：[packages/contracts/src/diagnostics.ts:111](../../../packages/contracts/src/diagnostics.ts#L111)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticVerificationBlueprint`：[packages/contracts/src/diagnostics.ts:113](../../../packages/contracts/src/diagnostics.ts#L113)；字段：`familyIdentityVersion?`、`hypothesisId`、`title`、`cause`、`ruleVersion`、`sourceRuleVersion`、`basisFingerprint`、`supportCondition`、`counterCondition`、`undecidedCondition`、`fullyCovered`、`groups`。
-- `DiagnosticVerificationResult`：[packages/contracts/src/diagnostics.ts:120](../../../packages/contracts/src/diagnostics.ts#L120)；字段：`familyIdentityVersion?`、`distinctFamilyRequirementsMet?`、`blueprint`、`independentObservationsComplete`、`groups`、`notice`。
-- `AssessmentBlueprint`：[packages/contracts/src/diagnostics.ts:128](../../../packages/contracts/src/diagnostics.ts#L128)；字段：`familyIdentityVersion?`、`version`、`title`、`intent`、`focus`、`itemLimit`、`minutesLimit`、`expectedSeconds`、`groupSize`、`stopReason`、`stopRule`、`targetAtomIds`、`prerequisiteAtomIds`、`groups`、`dimensions`、`warnings`、`verification?`、`routing?`。
-- `PaperReviewAssessmentOrigin`：[packages/contracts/src/diagnostics.ts:140](../../../packages/contracts/src/diagnostics.ts#L140)；字段：`sessionId`、`itemId`、`atomId`、`createdAt`。
-- `DiagnosticBlueprintReservation`：[packages/contracts/src/diagnostics.ts:141](../../../packages/contracts/src/diagnostics.ts#L141)；字段：`id`、`studentId`、`actorId`、`command`、`seed`、`fingerprint`、`createdAt`、`expiresAt`、`sessionId`、`requestHash`、`blueprint`、`scopeSnapshot`、`coverage`、`atomNames`、`itemCount`、`paperReviewOrigin?`。
-- `DiagnosticBlueprintView`：[packages/contracts/src/diagnostics.ts:148](../../../packages/contracts/src/diagnostics.ts#L148)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticSession`：[packages/contracts/src/diagnostics.ts:153](../../../packages/contracts/src/diagnostics.ts#L153)；字段：`retentionProtocol?`、`id`、`studentId`、`subject`、`intent`、`status`、`scopeSnapshot`、`blueprint?`、`revision?`、`endedAt?`、`stateHistory?`、`atomSnapshots?`、`componentAtomSnapshots?`、`itemIds`、`itemSnapshots`、`questionSnapshots`、`coverage`、`selectionReasons`、`seed`、`algorithmVersion`、`startedAt`、`completedAt`、`hypothesisId`、`reviewTaskId`、`exposedQuestionIds?`、`paperReviewOrigin?`、`planId?`、`planRevision?`、`routing?`。
-- `DiagnosticRoutingDecision`：[packages/contracts/src/diagnostics.ts:175](../../../packages/contracts/src/diagnostics.ts#L175)；字段：`sequence`、`itemId`、`focusAtomId`、`rule`、`reason`、`at`、`basis`。
-- `DiagnosticRouting`：[packages/contracts/src/diagnostics.ts:181](../../../packages/contracts/src/diagnostics.ts#L181)；字段：`version`、`initialItemIds`、`currentItemId`、`decisions`。
-- `DiagnosticResponseInput`：[packages/contracts/src/diagnostics.ts:191](../../../packages/contracts/src/diagnostics.ts#L191)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `DiagnosticResponse`：[packages/contracts/src/diagnostics.ts:192](../../../packages/contracts/src/diagnostics.ts#L192)；字段：`id`、`sessionId`、`studentId`、`itemId`、`questionId`、`atomId`、`family`、`dimension`、`questionVersion`、`mappingVersion`、`answer`、`score`、`correct`、`status`、`disposition`、`elapsedMs`、`hintLevel`、`observationCode`、`gradingReason`、`retentionDelayDays`、`retentionEvidence?`、`submittedAt`、`gradingVersion`、`requestKey`、`requestHash?`、`priorExposure?`、`atomVersion?`、`atomDefinitionFingerprint?`、`scoreDetails?`。
-- `ResponseScoreDetail`：[packages/contracts/src/diagnostics.ts:207](../../../packages/contracts/src/diagnostics.ts#L207)；字段：`key`、`label`、`score`、`origin`、`observation?`。
-- `DiagnosticObservation`：[packages/contracts/src/diagnostics.ts:208](../../../packages/contracts/src/diagnostics.ts#L208)；字段：`responseId`、`atomId`、`kind`、`description`、`details`。
-- `ComponentObservation`：[packages/contracts/src/diagnostics.ts:211](../../../packages/contracts/src/diagnostics.ts#L211)；字段：`responseId`、`bindingId`、`sourceAtomId`、`atomId`、`atomName`、`state`、`description`、`nextAction`、`scoreDetails`、`upstreamDetails`、`independentEstimateContribution`、`ruleVersion`、`targetDefinitionFingerprint`。
-- `ScoringRevision`：[packages/contracts/src/diagnostics.ts:218](../../../packages/contracts/src/diagnostics.ts#L218)；字段：`id`、`responseId`、`score`、`reason`、`reviewerId`、`createdAt`、`version`、`requestKey?`、`requestHash?`、`ratings?`、`rubricSnapshot?`。
-- `MasteryEstimate`：[packages/contracts/src/diagnostics.ts:226](../../../packages/contracts/src/diagnostics.ts#L226)；字段：`familyIdentityVersion?`、`atomId`、`atomName`、`grade`、`mastery`、`lower`、`upper`、`status`、`rawCorrect`、`scoredCount`、`effectiveSamples`、`independentFamilies`、`dimensions`、`independentRate`、`transferVerified`、`retentionVerified`、`evidenceIds`、`lastMeasuredAt`、`algorithmVersion`。
-- `DiagnosticHypothesis`：[packages/contracts/src/diagnostics.ts:236](../../../packages/contracts/src/diagnostics.ts#L236)；字段：`familyIdentityVersion?`、`id`、`studentId`、`subject`、`atomId`、`cause`、`status`、`title`、`observation`、`explanation`、`alternatives`、`supportingEvidenceIds`、`counterEvidenceIds`、`probeAtomIds`、`reportedEvidenceIds?`、`verification?`、`nextAction`、`confidence`、`ruleVersion`、`updatedAt`、`history`、`atomDefinitionFingerprint?`。
-- `LearningSourceCitation`：[packages/contracts/src/diagnostics.ts:251](../../../packages/contracts/src/diagnostics.ts#L251)；字段：`id`、`kind`、`bookId`、`bookVersion`、`title`、`edition`、`chapterName`、`lessonId`、`lessonName`、`mappingId`、`mappingVersion`、`pageStart`、`pageEnd`、`locatorStatus`、`sourceAvailability`、`note`。
-- `GuidanceAction`：[packages/contracts/src/diagnostics.ts:270](../../../packages/contracts/src/diagnostics.ts#L270)；字段：`id`、`atomId`、`hypothesisId`、`evidenceIds`、`title`、`activity`、`minutes`、`successCriterion`、`resourceQuestionIds`、`retestAt`、`teachingSnapshot?`、`sourceCitations?`。
-- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:277](../../../packages/contracts/src/diagnostics.ts#L277)；字段：`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`baselineMeasurementVersion?`、`baselineFamilyIdentityVersion?`、`aiAdoption?`、`retrospectiveReview?`。
-- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:287](../../../packages/contracts/src/diagnostics.ts#L287)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:294](../../../packages/contracts/src/diagnostics.ts#L294)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
-- `ReviewTask`：[packages/contracts/src/diagnostics.ts:299](../../../packages/contracts/src/diagnostics.ts#L299)；字段：`retentionReadiness?`、`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
-- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:308](../../../packages/contracts/src/diagnostics.ts#L308)；字段：`retentionProtocol?`、`familyIdentityVersion?`、`measurementVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
-- `DiagnosticReportAnalysisStatus`：[packages/contracts/src/diagnostics.ts:327](../../../packages/contracts/src/diagnostics.ts#L327)；字段：`requiresReanalysis`、`reportVersion`、`canReanalyze`、`reportMeasurementVersion`、`currentMeasurementVersion`、`reportFamilyIdentityVersion`、`currentFamilyIdentityVersion`、`measurementRulesChanged`、`familyRulesChanged`、`affectedEvidenceIds`、`unverifiedEvidenceIds`、`reasons`。
+- `MeasurementDimension`：[packages/contracts/src/diagnostics.ts:9](../../../packages/contracts/src/diagnostics.ts#L9)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TeachingVisual`：[packages/contracts/src/diagnostics.ts:38](../../../packages/contracts/src/diagnostics.ts#L38)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `AtomTeaching`：[packages/contracts/src/diagnostics.ts:55](../../../packages/contracts/src/diagnostics.ts#L55)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `KnowledgeAtom`：[packages/contracts/src/diagnostics.ts:66](../../../packages/contracts/src/diagnostics.ts#L66)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `LearningScope`：[packages/contracts/src/diagnostics.ts:83](../../../packages/contracts/src/diagnostics.ts#L83)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ComponentBinding`：[packages/contracts/src/diagnostics.ts:91](../../../packages/contracts/src/diagnostics.ts#L91)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `MeasurementItem`：[packages/contracts/src/diagnostics.ts:104](../../../packages/contracts/src/diagnostics.ts#L104)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticStart`：[packages/contracts/src/diagnostics.ts:113](../../../packages/contracts/src/diagnostics.ts#L113)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticVerificationBlueprint`：[packages/contracts/src/diagnostics.ts:115](../../../packages/contracts/src/diagnostics.ts#L115)；字段：`familyIdentityVersion?`、`hypothesisId`、`title`、`cause`、`ruleVersion`、`sourceRuleVersion`、`basisFingerprint`、`supportCondition`、`counterCondition`、`undecidedCondition`、`fullyCovered`、`groups`。
+- `DiagnosticVerificationResult`：[packages/contracts/src/diagnostics.ts:122](../../../packages/contracts/src/diagnostics.ts#L122)；字段：`familyIdentityVersion?`、`distinctFamilyRequirementsMet?`、`blueprint`、`independentObservationsComplete`、`groups`、`notice`。
+- `AssessmentBlueprint`：[packages/contracts/src/diagnostics.ts:130](../../../packages/contracts/src/diagnostics.ts#L130)；字段：`familyIdentityVersion?`、`version`、`title`、`intent`、`focus`、`itemLimit`、`minutesLimit`、`expectedSeconds`、`groupSize`、`stopReason`、`stopRule`、`targetAtomIds`、`prerequisiteAtomIds`、`groups`、`dimensions`、`warnings`、`verification?`、`routing?`、`teachingCoverage?`。
+- `PaperReviewAssessmentOrigin`：[packages/contracts/src/diagnostics.ts:143](../../../packages/contracts/src/diagnostics.ts#L143)；字段：`sessionId`、`itemId`、`atomId`、`createdAt`。
+- `DiagnosticBlueprintReservation`：[packages/contracts/src/diagnostics.ts:144](../../../packages/contracts/src/diagnostics.ts#L144)；字段：`id`、`studentId`、`actorId`、`command`、`seed`、`fingerprint`、`createdAt`、`expiresAt`、`sessionId`、`requestHash`、`blueprint`、`scopeSnapshot`、`coverage`、`atomNames`、`itemCount`、`paperReviewOrigin?`、`teachingOrigin?`。
+- `DiagnosticBlueprintView`：[packages/contracts/src/diagnostics.ts:152](../../../packages/contracts/src/diagnostics.ts#L152)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticSession`：[packages/contracts/src/diagnostics.ts:157](../../../packages/contracts/src/diagnostics.ts#L157)；字段：`retentionProtocol?`、`teachingOrigin?`、`teachingPackets?`、`id`、`studentId`、`subject`、`intent`、`status`、`scopeSnapshot`、`blueprint?`、`revision?`、`endedAt?`、`stateHistory?`、`atomSnapshots?`、`componentAtomSnapshots?`、`itemIds`、`itemSnapshots`、`questionSnapshots`、`coverage`、`selectionReasons`、`seed`、`algorithmVersion`、`startedAt`、`completedAt`、`hypothesisId`、`reviewTaskId`、`exposedQuestionIds?`、`paperReviewOrigin?`、`planId?`、`planRevision?`、`routing?`。
+- `DiagnosticRoutingDecision`：[packages/contracts/src/diagnostics.ts:182](../../../packages/contracts/src/diagnostics.ts#L182)；字段：`sequence`、`itemId`、`focusAtomId`、`rule`、`reason`、`at`、`basis`。
+- `DiagnosticRouting`：[packages/contracts/src/diagnostics.ts:188](../../../packages/contracts/src/diagnostics.ts#L188)；字段：`version`、`initialItemIds`、`currentItemId`、`decisions`。
+- `DiagnosticResponseInput`：[packages/contracts/src/diagnostics.ts:198](../../../packages/contracts/src/diagnostics.ts#L198)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `DiagnosticResponse`：[packages/contracts/src/diagnostics.ts:199](../../../packages/contracts/src/diagnostics.ts#L199)；字段：`evidencePurpose?`、`id`、`sessionId`、`studentId`、`itemId`、`questionId`、`atomId`、`family`、`dimension`、`questionVersion`、`mappingVersion`、`answer`、`score`、`correct`、`status`、`disposition`、`elapsedMs`、`hintLevel`、`observationCode`、`gradingReason`、`retentionDelayDays`、`retentionEvidence?`、`submittedAt`、`gradingVersion`、`requestKey`、`requestHash?`、`priorExposure?`、`atomVersion?`、`atomDefinitionFingerprint?`、`scoreDetails?`。
+- `ResponseScoreDetail`：[packages/contracts/src/diagnostics.ts:215](../../../packages/contracts/src/diagnostics.ts#L215)；字段：`key`、`label`、`score`、`origin`、`observation?`。
+- `DiagnosticObservation`：[packages/contracts/src/diagnostics.ts:216](../../../packages/contracts/src/diagnostics.ts#L216)；字段：`responseId`、`atomId`、`kind`、`description`、`details`。
+- `ComponentObservation`：[packages/contracts/src/diagnostics.ts:219](../../../packages/contracts/src/diagnostics.ts#L219)；字段：`responseId`、`bindingId`、`sourceAtomId`、`atomId`、`atomName`、`state`、`description`、`nextAction`、`scoreDetails`、`upstreamDetails`、`independentEstimateContribution`、`ruleVersion`、`targetDefinitionFingerprint`。
+- `ScoringRevision`：[packages/contracts/src/diagnostics.ts:226](../../../packages/contracts/src/diagnostics.ts#L226)；字段：`id`、`responseId`、`score`、`reason`、`reviewerId`、`createdAt`、`version`、`requestKey?`、`requestHash?`、`ratings?`、`rubricSnapshot?`。
+- `MasteryEstimate`：[packages/contracts/src/diagnostics.ts:234](../../../packages/contracts/src/diagnostics.ts#L234)；字段：`familyIdentityVersion?`、`atomId`、`atomName`、`grade`、`mastery`、`lower`、`upper`、`status`、`rawCorrect`、`scoredCount`、`effectiveSamples`、`independentFamilies`、`dimensions`、`independentRate`、`transferVerified`、`retentionVerified`、`evidenceIds`、`lastMeasuredAt`、`algorithmVersion`。
+- `DiagnosticHypothesis`：[packages/contracts/src/diagnostics.ts:244](../../../packages/contracts/src/diagnostics.ts#L244)；字段：`familyIdentityVersion?`、`id`、`studentId`、`subject`、`atomId`、`cause`、`status`、`title`、`observation`、`explanation`、`alternatives`、`supportingEvidenceIds`、`counterEvidenceIds`、`probeAtomIds`、`reportedEvidenceIds?`、`verification?`、`nextAction`、`confidence`、`ruleVersion`、`updatedAt`、`history`、`atomDefinitionFingerprint?`。
+- `LearningSourceCitation`：[packages/contracts/src/diagnostics.ts:259](../../../packages/contracts/src/diagnostics.ts#L259)；字段：`id`、`kind`、`bookId`、`bookVersion`、`title`、`edition`、`chapterName`、`lessonId`、`lessonName`、`mappingId`、`mappingVersion`、`pageStart`、`pageEnd`、`locatorStatus`、`sourceAvailability`、`note`。
+- `GuidanceAction`：[packages/contracts/src/diagnostics.ts:278](../../../packages/contracts/src/diagnostics.ts#L278)；字段：`id`、`atomId`、`hypothesisId`、`evidenceIds`、`title`、`activity`、`minutes`、`successCriterion`、`resourceQuestionIds`、`retestAt`、`teachingSnapshot?`、`sourceCitations?`。
+- `DiagnosticGuidancePlan`：[packages/contracts/src/diagnostics.ts:285](../../../packages/contracts/src/diagnostics.ts#L285)；字段：`controlledBasis?`、`id`、`studentId`、`subject`、`baselineSessionId`、`version`、`source`、`status`、`minutesPerDay`、`summary`、`actions`、`evidenceIds`、`createdAt`、`aiStatus`、`revision?`、`baselineReportVersion?`、`activatedAt?`、`baselineMeasurementVersion?`、`baselineFamilyIdentityVersion?`、`aiAdoption?`、`retrospectiveReview?`。
+- `GuidancePlanView`：[packages/contracts/src/diagnostics.ts:296](../../../packages/contracts/src/diagnostics.ts#L296)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GuidancePlanRevision`：[packages/contracts/src/diagnostics.ts:304](../../../packages/contracts/src/diagnostics.ts#L304)；字段：`id`、`planId`、`revision`、`kind`、`at`、`actorId`、`reason`、`snapshot`、`requestKey?`、`inputHash?`。
+- `ReviewTask`：[packages/contracts/src/diagnostics.ts:309](../../../packages/contracts/src/diagnostics.ts#L309)；字段：`retentionReadiness?`、`id`、`planId`、`studentId`、`subject`、`atomId`、`intervalDays`、`dueAt`、`status`、`sessionId`、`planRevision?`、`baselineReportVersion?`、`earliestDueAt?`、`scheduleRevision?`、`scheduleHistory?`。
+- `DiagnosticReport`：[packages/contracts/src/diagnostics.ts:318](../../../packages/contracts/src/diagnostics.ts#L318)；字段：`controlledContrast?`、`controlledCauses?`、`retentionProtocol?`、`familyIdentityVersion?`、`measurementVersion?`、`sessionId`、`studentId`、`subject`、`status`、`answeredCount`、`totalCount`、`scoredCount`、`pendingReviewCount`、`rawScore`、`coverage`、`estimates`、`hypotheses`、`evidence`、`unmeasuredAtomIds`、`observations?`、`componentObservations?`、`verification?`、`summary`、`modelNotice`、`scopeSnapshot?`、`version?`、`generatedAt?`、`revisionReason?`、`scoringRevisionIds?`、`definitionContext?`。
+- `DiagnosticReportAnalysisStatus`：[packages/contracts/src/diagnostics.ts:339](../../../packages/contracts/src/diagnostics.ts#L339)；字段：`requiresReanalysis`、`reportVersion`、`canReanalyze`、`reportMeasurementVersion`、`currentMeasurementVersion`、`reportFamilyIdentityVersion`、`currentFamilyIdentityVersion`、`measurementRulesChanged`、`familyRulesChanged`、`affectedEvidenceIds`、`unverifiedEvidenceIds`、`reasons`。
+
+### packages/contracts/src/gesp-teaching.ts
+
+- `GespTeachingCandidate`：[packages/contracts/src/gesp-teaching.ts:20](../../../packages/contracts/src/gesp-teaching.ts#L20)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespTeachingCandidateView`：[packages/contracts/src/gesp-teaching.ts:21](../../../packages/contracts/src/gesp-teaching.ts#L21)；字段：`contentSha256`、`notice`、`lessons`、`automaticPublication`、`teacherReviewed`。
 
 ### packages/contracts/src/gesp.ts
 
@@ -448,13 +505,14 @@
 - `GespTaskReviewRevision`：[packages/contracts/src/gesp.ts:131](../../../packages/contracts/src/gesp.ts#L131)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `GespTaskReviewHistoryItem`：[packages/contracts/src/gesp.ts:132](../../../packages/contracts/src/gesp.ts#L132)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `GespPilotTaskReviewView`：[packages/contracts/src/gesp.ts:133](../../../packages/contracts/src/gesp.ts#L133)；字段：`id`、`atomId`、`title`、`prompt`、`language`、`standard`、`timeLimitSeconds`、`memoryLimitMiB`、`contentSha256`、`probes`、`tests`、`review`。
-- `GespProbeSubmissionReceipt`：[packages/contracts/src/gesp.ts:141](../../../packages/contracts/src/gesp.ts#L141)；字段：`id`、`studentId`、`atomId`、`taskId`、`probeId`、`dimension`、`status`、`requestKey`、`answer`、`createdAt`、`analysis`、`provenance?`。
-- `GespCodeSubmissionReceipt`：[packages/contracts/src/gesp.ts:148](../../../packages/contracts/src/gesp.ts#L148)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSha256`、`status`、`createdAt`、`toolchain`、`compilePassed`、`requestKey`、`source`、`compileDiagnostics`、`runtimeDiagnostics`、`tests`、`hintEventId`、`hintLevel`、`independent`、`reviewTaskId`、`provenance?`。
-- `GespHintEvent`：[packages/contracts/src/gesp.ts:157](../../../packages/contracts/src/gesp.ts#L157)；字段：`id`、`studentId`、`atomId`、`taskId`、`level`、`text`、`revealsAnswer`、`requestKey`、`createdAt`。
-- `GespGuidanceAction`：[packages/contracts/src/gesp.ts:162](../../../packages/contracts/src/gesp.ts#L162)；字段：`id`、`atomId`、`title`、`activity`、`successCriterion`、`dimensionGaps`、`evidenceIds`、`minutes`。
-- `GespGuidancePlan`：[packages/contracts/src/gesp.ts:167](../../../packages/contracts/src/gesp.ts#L167)；字段：`id`、`studentId`、`scopeVersion`、`evidenceFingerprint`、`source`、`status`、`version`、`minutesPerDay`、`requestKey`、`reason`、`createdAt`、`updatedAt`、`createdByUserId`、`decidedByUserId`、`decidedAt`、`actions`、`totalActionMinutes`、`deferredAtomIds`。
-- `GespGuidancePlanRevision`：[packages/contracts/src/gesp.ts:175](../../../packages/contracts/src/gesp.ts#L175)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `GespReviewTask`：[packages/contracts/src/gesp.ts:177](../../../packages/contracts/src/gesp.ts#L177)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSubmissionId`、`stageDay`、`dueAt`、`createdAt`、`status`、`taskContentSha256?`、`testPackSha256`、`attemptCount`、`lastSubmissionId`、`lastStatus`、`completedSubmissionId`、`completedAt`。
+- `GespProbeSubmissionReceipt`：[packages/contracts/src/gesp.ts:141](../../../packages/contracts/src/gesp.ts#L141)；字段：`id`、`studentId`、`atomId`、`taskId`、`probeId`、`dimension`、`status`、`requestKey`、`answer`、`createdAt`、`analysis`、`provenance?`、`evidence?`、`feedbackHeld?`。
+- `GespResponseEvidence`：[packages/contracts/src/gesp.ts:152](../../../packages/contracts/src/gesp.ts#L152)；字段：`policy`、`classification`、`priorResponseIds`、`hintEventIds`、`feedbackExposureIds?`。
+- `GespCodeSubmissionReceipt`：[packages/contracts/src/gesp.ts:160](../../../packages/contracts/src/gesp.ts#L160)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSha256`、`status`、`createdAt`、`toolchain`、`compilePassed`、`requestKey`、`source`、`compileDiagnostics`、`runtimeDiagnostics`、`tests`、`hintEventId`、`hintLevel`、`independent`、`reviewTaskId`、`provenance?`、`evidence?`、`feedbackHeld?`、`retentionTiming?`。
+- `GespHintEvent`：[packages/contracts/src/gesp.ts:172](../../../packages/contracts/src/gesp.ts#L172)；字段：`id`、`studentId`、`atomId`、`taskId`、`level`、`text`、`revealsAnswer`、`requestKey`、`createdAt`。
+- `GespGuidanceAction`：[packages/contracts/src/gesp.ts:177](../../../packages/contracts/src/gesp.ts#L177)；字段：`id`、`atomId`、`title`、`activity`、`successCriterion`、`dimensionGaps`、`evidenceIds`、`minutes`。
+- `GespGuidancePlan`：[packages/contracts/src/gesp.ts:182](../../../packages/contracts/src/gesp.ts#L182)；字段：`id`、`studentId`、`scopeVersion`、`evidenceFingerprint`、`source`、`status`、`version`、`minutesPerDay`、`requestKey`、`reason`、`createdAt`、`updatedAt`、`createdByUserId`、`decidedByUserId`、`decidedAt`、`actions`、`totalActionMinutes`、`deferredAtomIds`。
+- `GespGuidancePlanRevision`：[packages/contracts/src/gesp.ts:190](../../../packages/contracts/src/gesp.ts#L190)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `GespReviewTask`：[packages/contracts/src/gesp.ts:192](../../../packages/contracts/src/gesp.ts#L192)；字段：`id`、`studentId`、`atomId`、`taskId`、`sourceSubmissionId`、`stageDay`、`dueAt`、`createdAt`、`status`、`taskContentSha256?`、`testPackSha256`、`attemptCount`、`lastSubmissionId`、`lastStatus`、`completedSubmissionId`、`completedAt`。
 
 ### packages/contracts/src/guidance-calendar.ts
 
@@ -544,11 +602,11 @@
 ### packages/contracts/src/learning.ts
 
 - `PracticeAttempt`：[packages/contracts/src/learning.ts:5](../../../packages/contracts/src/learning.ts#L5)；字段：`id`、`sessionId`、`questionId`、`requestKey`、`answer`、`disposition`、`score`、`correct`、`status`、`hintLevel`、`attempt`、`solutionExposedBefore`、`elapsedMs`、`reason`、`submittedAt`、`scoreDetails?`、`requestHash?`、`actorId?`、`actorRole?`、`actorStudentId?`、`learnerExplanation?`、`assistantInput?`、`assistantHelpSequence?`。
-- `PracticeSession`：[packages/contracts/src/learning.ts:16](../../../packages/contracts/src/learning.ts#L16)；字段：`retentionProtocol?`、`id`、`studentId`、`subject`、`planId`、`actionId`、`atomId`、`day`、`status`、`questionIds`、`snapshots`、`createdAt`、`completedAt`、`drafts?`、`actionSnapshot?`、`planRevision?`、`snapshotOrigin?`、`origin?`、`notebookEntryId?`、`atomSnapshot?`、`assistantAssignmentId?`、`sourceGroupId?`、`itemSnapshots?`、`familyIdentityVersion?`、`sourceAssessmentId?`。
-- `PracticeHint`：[packages/contracts/src/learning.ts:29](../../../packages/contracts/src/learning.ts#L29)；字段：`id`、`sessionId`、`questionId`、`level`、`at`、`actorId?`、`actorStudentId?`、`sourceGroupId?`、`requestKey?`。
-- `LearningMemory`：[packages/contracts/src/learning.ts:32](../../../packages/contracts/src/learning.ts#L32)；字段：`generatedAt`、`revision`、`student`、`subject`、`consent`、`summary`、`facts`、`unknowns`、`openHypotheses`、`feed`。
-- `NotebookMetadata`：[packages/contracts/src/learning.ts:42](../../../packages/contracts/src/learning.ts#L42)；字段：`tags`、`favorite`、`removed`、`errorSteps`、`reflection`、`reviewState`。
-- `MistakeNotebookEntry`：[packages/contracts/src/learning.ts:43](../../../packages/contracts/src/learning.ts#L43)；字段：`id`、`studentId`、`subject`、`kind`、`responseId`、`questionId`、`atomId`、`version`、`metadata`、`createdAt`、`updatedAt`、`redoSessionIds`、`verificationBlueprintIds`、`history`。
+- `PracticeSession`：[packages/contracts/src/learning.ts:16](../../../packages/contracts/src/learning.ts#L16)；字段：`controlledGuidanceOrigin?`、`retentionProtocol?`、`id`、`studentId`、`subject`、`planId`、`actionId`、`atomId`、`day`、`status`、`questionIds`、`snapshots`、`createdAt`、`completedAt`、`drafts?`、`actionSnapshot?`、`planRevision?`、`snapshotOrigin?`、`origin?`、`notebookEntryId?`、`atomSnapshot?`、`assistantAssignmentId?`、`sourceGroupId?`、`itemSnapshots?`、`familyIdentityVersion?`、`sourceAssessmentId?`。
+- `PracticeHint`：[packages/contracts/src/learning.ts:30](../../../packages/contracts/src/learning.ts#L30)；字段：`id`、`sessionId`、`questionId`、`level`、`at`、`actorId?`、`actorStudentId?`、`sourceGroupId?`、`requestKey?`。
+- `LearningMemory`：[packages/contracts/src/learning.ts:33](../../../packages/contracts/src/learning.ts#L33)；字段：`generatedAt`、`revision`、`student`、`subject`、`consent`、`summary`、`facts`、`unknowns`、`openHypotheses`、`feed`。
+- `NotebookMetadata`：[packages/contracts/src/learning.ts:43](../../../packages/contracts/src/learning.ts#L43)；字段：`tags`、`favorite`、`removed`、`errorSteps`、`reflection`、`reviewState`。
+- `MistakeNotebookEntry`：[packages/contracts/src/learning.ts:44](../../../packages/contracts/src/learning.ts#L44)；字段：`id`、`studentId`、`subject`、`kind`、`responseId`、`questionId`、`atomId`、`version`、`metadata`、`createdAt`、`updatedAt`、`redoSessionIds`、`verificationBlueprintIds`、`history`。
 
 ### packages/contracts/src/measurement-content.ts
 
@@ -558,7 +616,80 @@
 
 ### packages/contracts/src/operations.ts
 
-- `OperationsOverview`：[packages/contracts/src/operations.ts:1](../../../packages/contracts/src/operations.ts#L1)；字段：`at`、`runtime`、`requests`、`storage`、`rateLimits`、`tasks`、`learning`。
+- `OperationsCapability`：[packages/contracts/src/operations.ts:1](../../../packages/contracts/src/operations.ts#L1)；字段：`id`、`title`、`state`、`optional`、`message`、`repair`。
+- `OperationsCapabilities`：[packages/contracts/src/operations.ts:9](../../../packages/contracts/src/operations.ts#L9)；字段：`at`、`cacheSeconds`、`scope`、`checks`。
+- `OperationsOverview`：[packages/contracts/src/operations.ts:16](../../../packages/contracts/src/operations.ts#L16)；字段：`at`、`runtime`、`requests`、`storage`、`rateLimits`、`tasks`、`learning`。
+
+### packages/contracts/src/paper-capture-integrity.ts
+
+- `PaperCaptureFileTarget`：[packages/contracts/src/paper-capture-integrity.ts:8](../../../packages/contracts/src/paper-capture-integrity.ts#L8)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureFileCheck`：[packages/contracts/src/paper-capture-integrity.ts:10](../../../packages/contracts/src/paper-capture-integrity.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureFileReport`：[packages/contracts/src/paper-capture-integrity.ts:12](../../../packages/contracts/src/paper-capture-integrity.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/paper-capture-origin.ts
+
+- `PaperCapturePdfPage`：[packages/contracts/src/paper-capture-origin.ts:8](../../../packages/contracts/src/paper-capture-origin.ts#L8)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCapturePdfReceipt`：[packages/contracts/src/paper-capture-origin.ts:9](../../../packages/contracts/src/paper-capture-origin.ts#L9)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureMaterialOrigin`：[packages/contracts/src/paper-capture-origin.ts:10](../../../packages/contracts/src/paper-capture-origin.ts#L10)；字段：`protocol`、`derivationId`、`sourceGroupScope`、`pdf`、`fingerprint`。
+- `PaperCaptureCourseSource`：[packages/contracts/src/paper-capture-origin.ts:12](../../../packages/contracts/src/paper-capture-origin.ts#L12)；字段：`protocol`、`derivationId`、`originFingerprint`、`sourceGroupScope`、`groupId`、`groupRevision`、`groupFingerprint`、`pdfSha256`、`page`。
+
+### packages/contracts/src/paper-capture-repair.ts
+
+- `PaperCaptureRepairSelection`：[packages/contracts/src/paper-capture-repair.ts:10](../../../packages/contracts/src/paper-capture-repair.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairCandidate`：[packages/contracts/src/paper-capture-repair.ts:20](../../../packages/contracts/src/paper-capture-repair.ts#L20)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairCommand`：[packages/contracts/src/paper-capture-repair.ts:28](../../../packages/contracts/src/paper-capture-repair.ts#L28)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairCommandResult`：[packages/contracts/src/paper-capture-repair.ts:35](../../../packages/contracts/src/paper-capture-repair.ts#L35)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairUploadView`：[packages/contracts/src/paper-capture-repair.ts:41](../../../packages/contracts/src/paper-capture-repair.ts#L41)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairPublication`：[packages/contracts/src/paper-capture-repair.ts:43](../../../packages/contracts/src/paper-capture-repair.ts#L43)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureRepairView`：[packages/contracts/src/paper-capture-repair.ts:45](../../../packages/contracts/src/paper-capture-repair.ts#L45)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/paper-capture.ts
+
+- `PaperCaptureIntent`：[packages/contracts/src/paper-capture.ts:6](../../../packages/contracts/src/paper-capture.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCapturePrivateScope`：[packages/contracts/src/paper-capture.ts:11](../../../packages/contracts/src/paper-capture.ts#L11)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureScope`：[packages/contracts/src/paper-capture.ts:12](../../../packages/contracts/src/paper-capture.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperImageSource`：[packages/contracts/src/paper-capture.ts:16](../../../packages/contracts/src/paper-capture.ts#L16)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperImageTransform`：[packages/contracts/src/paper-capture.ts:17](../../../packages/contracts/src/paper-capture.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperImageVersion`：[packages/contracts/src/paper-capture.ts:19](../../../packages/contracts/src/paper-capture.ts#L19)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureGroupInput`：[packages/contracts/src/paper-capture.ts:21](../../../packages/contracts/src/paper-capture.ts#L21)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureGroupVersion`：[packages/contracts/src/paper-capture.ts:23](../../../packages/contracts/src/paper-capture.ts#L23)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCapturePendingCommand`：[packages/contracts/src/paper-capture.ts:37](../../../packages/contracts/src/paper-capture.ts#L37)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureCommandResult`：[packages/contracts/src/paper-capture.ts:48](../../../packages/contracts/src/paper-capture.ts#L48)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureResult`：[packages/contracts/src/paper-capture.ts:49](../../../packages/contracts/src/paper-capture.ts#L49)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureCommandLookup`：[packages/contracts/src/paper-capture.ts:54](../../../packages/contracts/src/paper-capture.ts#L54)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureUploadCommands`：[packages/contracts/src/paper-capture.ts:56](../../../packages/contracts/src/paper-capture.ts#L56)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureUploadView`：[packages/contracts/src/paper-capture.ts:58](../../../packages/contracts/src/paper-capture.ts#L58)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCapturePageView`：[packages/contracts/src/paper-capture.ts:60](../../../packages/contracts/src/paper-capture.ts#L60)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureGroupView`：[packages/contracts/src/paper-capture.ts:62](../../../packages/contracts/src/paper-capture.ts#L62)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureDerivationView`：[packages/contracts/src/paper-capture.ts:66](../../../packages/contracts/src/paper-capture.ts#L66)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureLimits`：[packages/contracts/src/paper-capture.ts:68](../../../packages/contracts/src/paper-capture.ts#L68)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureEditor`：[packages/contracts/src/paper-capture.ts:81](../../../packages/contracts/src/paper-capture.ts#L81)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureCompleteCopy`：[packages/contracts/src/paper-capture.ts:90](../../../packages/contracts/src/paper-capture.ts#L90)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperCaptureTransformDraft`：[packages/contracts/src/paper-capture.ts:91](../../../packages/contracts/src/paper-capture.ts#L91)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/paper-export.ts
+
+- `PaperExportBook`：[packages/contracts/src/paper-export.ts:9](../../../packages/contracts/src/paper-export.ts#L9)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportFormat`：[packages/contracts/src/paper-export.ts:10](../../../packages/contracts/src/paper-export.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportCommand`：[packages/contracts/src/paper-export.ts:23](../../../packages/contracts/src/paper-export.ts#L23)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportResult`：[packages/contracts/src/paper-export.ts:30](../../../packages/contracts/src/paper-export.ts#L30)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportDocument`：[packages/contracts/src/paper-export.ts:54](../../../packages/contracts/src/paper-export.ts#L54)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportSourceMap`：[packages/contracts/src/paper-export.ts:63](../../../packages/contracts/src/paper-export.ts#L63)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperExportErasureProof`：[packages/contracts/src/paper-export.ts:73](../../../packages/contracts/src/paper-export.ts#L73)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/paper-library-copy.ts
+
+- `PaperLibraryCopyOwner`：[packages/contracts/src/paper-library-copy.ts:9](../../../packages/contracts/src/paper-library-copy.ts#L9)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryJournal`：[packages/contracts/src/paper-library-copy.ts:26](../../../packages/contracts/src/paper-library-copy.ts#L26)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryCompleteCopy`：[packages/contracts/src/paper-library-copy.ts:47](../../../packages/contracts/src/paper-library-copy.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryDraftBody`：[packages/contracts/src/paper-library-copy.ts:48](../../../packages/contracts/src/paper-library-copy.ts#L48)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
+### packages/contracts/src/paper-library-view.ts
+
+- `PaperLibrarySelectionView`：[packages/contracts/src/paper-library-view.ts:10](../../../packages/contracts/src/paper-library-view.ts#L10)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryMetadata`：[packages/contracts/src/paper-library-view.ts:15](../../../packages/contracts/src/paper-library-view.ts#L15)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryExportView`：[packages/contracts/src/paper-library-view.ts:27](../../../packages/contracts/src/paper-library-view.ts#L27)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperLibraryPreflight`：[packages/contracts/src/paper-library-view.ts:36](../../../packages/contracts/src/paper-library-view.ts#L36)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/paper-practice.ts
 
@@ -586,13 +717,30 @@
 - `PaperReviewCalendarEvent`：[packages/contracts/src/paper-review.ts:30](../../../packages/contracts/src/paper-review.ts#L30)；字段：`id`、`sessionId`、`itemId`、`title`、`date`、`href`、`status`、`ownerUserId`、`studentId`、`editable`。
 - `PaperReviewNextOptions`：[packages/contracts/src/paper-review.ts:34](../../../packages/contracts/src/paper-review.ts#L34)；字段：`redo`、`knowledge`、`activities`。
 
+### packages/contracts/src/paper-selection.ts
+
+- `PaperSelectionScope`：[packages/contracts/src/paper-selection.ts:22](../../../packages/contracts/src/paper-selection.ts#L22)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionSourceIdentity`：[packages/contracts/src/paper-selection.ts:34](../../../packages/contracts/src/paper-selection.ts#L34)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionSource`：[packages/contracts/src/paper-selection.ts:39](../../../packages/contracts/src/paper-selection.ts#L39)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionItem`：[packages/contracts/src/paper-selection.ts:43](../../../packages/contracts/src/paper-selection.ts#L43)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionCommand`：[packages/contracts/src/paper-selection.ts:59](../../../packages/contracts/src/paper-selection.ts#L59)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionResult`：[packages/contracts/src/paper-selection.ts:64](../../../packages/contracts/src/paper-selection.ts#L64)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionSnapshot`：[packages/contracts/src/paper-selection.ts:66](../../../packages/contracts/src/paper-selection.ts#L66)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSelectionAvailability`：[packages/contracts/src/paper-selection.ts:68](../../../packages/contracts/src/paper-selection.ts#L68)；字段：`available`、`reason`。
+- `PaperSelectionListView`：[packages/contracts/src/paper-selection.ts:69](../../../packages/contracts/src/paper-selection.ts#L69)；字段：`id`、`scope`、`revision`、`fingerprint`、`createdAt`、`updatedAt`、`title`、`items`。
+
+### packages/contracts/src/paper-source-read.ts
+
+- `PaperSourceReadCommand`：[packages/contracts/src/paper-source-read.ts:21](../../../packages/contracts/src/paper-source-read.ts#L21)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `PaperSourceReadResult`：[packages/contracts/src/paper-source-read.ts:25](../../../packages/contracts/src/paper-source-read.ts#L25)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
 ### packages/contracts/src/privacy.ts
 
 - `PrivacyCounts`：[packages/contracts/src/privacy.ts:1](../../../packages/contracts/src/privacy.ts#L1)；字段：`records`、`observations`、`activities`、`plans`、`conversations`、`accessRecords`。
-- `PrivacyReceipt`：[packages/contracts/src/privacy.ts:2](../../../packages/contracts/src/privacy.ts#L2)；字段：`id`、`actorId`、`kind`、`subjectHash`、`requestKey`、`inputHash`、`completedAt`、`counts`、`erasedStudentHashes?`、`retainedStudentHashes?`。
-- `PrivacyOverview`：[packages/contracts/src/privacy.ts:7](../../../packages/contracts/src/privacy.ts#L7)；字段：`account`、`children`、`receipts`、`policyVersion`、`retentionNotice`。
-- `PrivacyPreview`：[packages/contracts/src/privacy.ts:13](../../../packages/contracts/src/privacy.ts#L13)；字段：`scope`、`subjectId`、`confirmation`、`fingerprint`、`counts`、`canDelete`、`blockers`、`deletedChildren`、`retainedChildren`、`policyVersion`、`retentionNotice`。
-- `PrivacyExport`：[packages/contracts/src/privacy.ts:18](../../../packages/contracts/src/privacy.ts#L18)；字段：`format`、`exportedAt`、`policyVersion`、`account`、`students`、`accountRecords`、`receipt`、`notices`。
+- `PrivacyReceipt`：[packages/contracts/src/privacy.ts:2](../../../packages/contracts/src/privacy.ts#L2)；字段：`id`、`actorId`、`kind`、`subjectHash`、`requestKey`、`inputHash`、`completedAt`、`counts`、`erasedStudentHashes?`、`retainedStudentHashes?`、`retainedPaperSources?`、`erasedPaperExports?`。
+- `PrivacyOverview`：[packages/contracts/src/privacy.ts:11](../../../packages/contracts/src/privacy.ts#L11)；字段：`account`、`children`、`receipts`、`policyVersion`、`retentionNotice`。
+- `PrivacyPreview`：[packages/contracts/src/privacy.ts:17](../../../packages/contracts/src/privacy.ts#L17)；字段：`scope`、`subjectId`、`confirmation`、`fingerprint`、`counts`、`canDelete`、`blockers`、`deletedChildren`、`retainedChildren`、`policyVersion`、`retentionNotice`。
+- `PrivacyExport`：[packages/contracts/src/privacy.ts:22](../../../packages/contracts/src/privacy.ts#L22)；字段：`format`、`exportedAt`、`policyVersion`、`account`、`students`、`accountRecords`、`receipt`、`notices`。
 
 ### packages/contracts/src/processing.ts
 
@@ -661,17 +809,17 @@
 
 ### packages/contracts/src/source-course.ts
 
-- `SourceCourseContent`：[packages/contracts/src/source-course.ts:17](../../../packages/contracts/src/source-course.ts#L17)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseLessonContent`：[packages/contracts/src/source-course.ts:18](../../../packages/contracts/src/source-course.ts#L18)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseReviewField`：[packages/contracts/src/source-course.ts:19](../../../packages/contracts/src/source-course.ts#L19)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseReviewIssue`：[packages/contracts/src/source-course.ts:20](../../../packages/contracts/src/source-course.ts#L20)；字段：`field`、`questionIndex`、`quote`、`detail`。
-- `SourceCourseLessonReview`：[packages/contracts/src/source-course.ts:21](../../../packages/contracts/src/source-course.ts#L21)；字段：`decision`、`issues`、`at`、`modelId`、`modelName`、`inputFingerprint`、`outputFingerprint`。
-- `SourceCourseGenerationView`：[packages/contracts/src/source-course.ts:22](../../../packages/contracts/src/source-course.ts#L22)；字段：`version`、`inputCapture`、`stage`、`plannedLessons`、`draftedLessons`、`reviewedLessons`、`scopeNote`、`uncoveredSourceKeys`、`modelId`、`modelName`、`reviewCurrent`、`reviews`。
-- `CourseSourceSnapshot`：[packages/contracts/src/source-course.ts:27](../../../packages/contracts/src/source-course.ts#L27)；字段：`key`、`materialId`、`page`、`title`、`kind`、`text`、`blocks`、`sha256`、`version`、`fingerprint`、`structureReviewRequired`、`textCharacters?`、`range?`。
-- `SourceCourseInput`：[packages/contracts/src/source-course.ts:30](../../../packages/contracts/src/source-course.ts#L30)；字段：`title`、`goal`、`language`、`minutesPerSession`、`modelId`、`targetAtomIds`。
-- `SourceCourseSummary`：[packages/contracts/src/source-course.ts:32](../../../packages/contracts/src/source-course.ts#L32)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`versioning?`、`status`、`lessonCount`、`viewed`、`lastLessonId`、`lastSessionId?`、`nextLessonId?`、`nextLessonTitle?`、`lastStudied`、`createdAt`、`updatedAt`。
-- `SourceCourseView`：[packages/contracts/src/source-course.ts:35](../../../packages/contracts/src/source-course.ts#L35)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:46](../../../packages/contracts/src/source-course.ts#L46)；字段：`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
+- `SourceCourseContent`：[packages/contracts/src/source-course.ts:18](../../../packages/contracts/src/source-course.ts#L18)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseLessonContent`：[packages/contracts/src/source-course.ts:19](../../../packages/contracts/src/source-course.ts#L19)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseReviewField`：[packages/contracts/src/source-course.ts:20](../../../packages/contracts/src/source-course.ts#L20)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseReviewIssue`：[packages/contracts/src/source-course.ts:21](../../../packages/contracts/src/source-course.ts#L21)；字段：`field`、`questionIndex`、`quote`、`detail`。
+- `SourceCourseLessonReview`：[packages/contracts/src/source-course.ts:22](../../../packages/contracts/src/source-course.ts#L22)；字段：`decision`、`issues`、`at`、`modelId`、`modelName`、`inputFingerprint`、`outputFingerprint`。
+- `SourceCourseGenerationView`：[packages/contracts/src/source-course.ts:23](../../../packages/contracts/src/source-course.ts#L23)；字段：`version`、`inputCapture`、`stage`、`plannedLessons`、`draftedLessons`、`reviewedLessons`、`scopeNote`、`uncoveredSourceKeys`、`modelId`、`modelName`、`reviewCurrent`、`reviews`。
+- `CourseSourceSnapshot`：[packages/contracts/src/source-course.ts:28](../../../packages/contracts/src/source-course.ts#L28)；字段：`key`、`materialId`、`page`、`title`、`kind`、`text`、`blocks`、`sha256`、`version`、`fingerprint`、`structureReviewRequired`、`textCharacters?`、`range?`、`paperCaptureSource?`。
+- `SourceCourseInput`：[packages/contracts/src/source-course.ts:31](../../../packages/contracts/src/source-course.ts#L31)；字段：`title`、`goal`、`language`、`minutesPerSession`、`modelId`、`targetAtomIds`。
+- `SourceCourseSummary`：[packages/contracts/src/source-course.ts:33](../../../packages/contracts/src/source-course.ts#L33)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`versioning?`、`status`、`lessonCount`、`viewed`、`lastLessonId`、`lastSessionId?`、`nextLessonId?`、`nextLessonTitle?`、`lastStudied`、`createdAt`、`updatedAt`。
+- `SourceCourseView`：[packages/contracts/src/source-course.ts:36](../../../packages/contracts/src/source-course.ts#L36)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:47](../../../packages/contracts/src/source-course.ts#L47)；字段：`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
 
 ### packages/contracts/src/student-access.ts
 
@@ -686,6 +834,22 @@
 - `StudentMedia`：[packages/contracts/src/student-media.ts:7](../../../packages/contracts/src/student-media.ts#L7)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `StudentMediaView`：[packages/contracts/src/student-media.ts:12](../../../packages/contracts/src/student-media.ts#L12)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
+### packages/contracts/src/studio-course-history.ts
+
+- `TextbookTeachingCourseUpgradeDraft`：[packages/contracts/src/studio-course-history.ts:25](../../../packages/contracts/src/studio-course-history.ts#L25)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseUpgrade`：[packages/contracts/src/studio-course-history.ts:26](../../../packages/contracts/src/studio-course-history.ts#L26)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseUpgradeResult`：[packages/contracts/src/studio-course-history.ts:29](../../../packages/contracts/src/studio-course-history.ts#L29)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseUpgradePreview`：[packages/contracts/src/studio-course-history.ts:30](../../../packages/contracts/src/studio-course-history.ts#L30)；字段：`protocol`、`course`、`previousRevision`、`previousFingerprint`、`changes`、`previewFingerprint`、`canUpgrade`、`warnings`。
+- `StudioCourseVersionMetadata`：[packages/contracts/src/studio-course-history.ts:32](../../../packages/contracts/src/studio-course-history.ts#L32)；字段：`revision`、`fingerprint`、`previousFingerprint`、`at`、`title`、`targets`、`lessons`。
+- `StudioCourseHistory`：[packages/contracts/src/studio-course-history.ts:33](../../../packages/contracts/src/studio-course-history.ts#L33)；字段：`protocol`、`courseId`、`currentRevision`、`versions`。
+- `StudioCourseVersion`：[packages/contracts/src/studio-course-history.ts:34](../../../packages/contracts/src/studio-course-history.ts#L34)；字段：`protocol`、`courseId`、`revision`、`course`。
+- `TextbookTeachingCourseUpgradeReceipt`：[packages/contracts/src/studio-course-history.ts:35](../../../packages/contracts/src/studio-course-history.ts#L35)；字段：`requestKey`、`requestHash`、`result`、`course`。
+
+### packages/contracts/src/studio-course-request.ts
+
+- `StudioCourseDraft`：[packages/contracts/src/studio-course-request.ts:8](../../../packages/contracts/src/studio-course-request.ts#L8)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioCourseCreate`：[packages/contracts/src/studio-course-request.ts:9](../../../packages/contracts/src/studio-course-request.ts#L9)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+
 ### packages/contracts/src/studio-material-upload.ts
 
 - `StudioMaterialUpload`：[packages/contracts/src/studio-material-upload.ts:4](../../../packages/contracts/src/studio-material-upload.ts#L4)；字段：`id`、`ownerUserId`、`studentId`、`subject`、`name`、`size`、`sha256`、`chunkSize`、`chunks`、`status`、`revision`、`createdAt`、`expiresAt`、`completedAt`、`materialId`、`repairId?`。
@@ -696,42 +860,73 @@
 
 ### packages/contracts/src/studio.ts
 
-- `StudioSubject`：[packages/contracts/src/studio.ts:3](../../../packages/contracts/src/studio.ts#L3)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioLessonKind`：[packages/contracts/src/studio.ts:4](../../../packages/contracts/src/studio.ts#L4)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioLessonState`：[packages/contracts/src/studio.ts:5](../../../packages/contracts/src/studio.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioLesson`：[packages/contracts/src/studio.ts:7](../../../packages/contracts/src/studio.ts#L7)；字段：`id`、`atomId`、`title`、`objective`、`kind`、`state`、`href`、`teaching?`。
-- `StudioUnit`：[packages/contracts/src/studio.ts:18](../../../packages/contracts/src/studio.ts#L18)；字段：`id`、`title`、`objective`、`lessons`。
-- `StudioCoursePace`：[packages/contracts/src/studio.ts:25](../../../packages/contracts/src/studio.ts#L25)；字段：`version`、`minutesPerSession`、`teachingLanguage`、`estimatedMinutes`、`notice`、`sessions`。
-- `StudioCourse`：[packages/contracts/src/studio.ts:34](../../../packages/contracts/src/studio.ts#L34)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`curriculumVersion?`、`teachingVersion?`、`focusAtomIds`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`、`pace?`。
-- `StudioCoursePreview`：[packages/contracts/src/studio.ts:59](../../../packages/contracts/src/studio.ts#L59)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioActivity`：[packages/contracts/src/studio.ts:61](../../../packages/contracts/src/studio.ts#L61)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`、`actorId?`、`requestHash?`。
-- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:77](../../../packages/contracts/src/studio.ts#L77)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPlanSession`：[packages/contracts/src/studio.ts:78](../../../packages/contracts/src/studio.ts#L78)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
-- `StudioStudyPlan`：[packages/contracts/src/studio.ts:95](../../../packages/contracts/src/studio.ts#L95)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
-- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:111](../../../packages/contracts/src/studio.ts#L111)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfBBox`：[packages/contracts/src/studio.ts:116](../../../packages/contracts/src/studio.ts#L116)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:118](../../../packages/contracts/src/studio.ts#L118)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioSourcePage`：[packages/contracts/src/studio.ts:123](../../../packages/contracts/src/studio.ts#L123)；字段：`page`、`text`、`textCharacters?`、`method?`、`confidence?`、`blocks?`、`warnings?`。
-- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:133](../../../packages/contracts/src/studio.ts#L133)；字段：`modelReviewedPages?`、`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
-- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:148](../../../packages/contracts/src/studio.ts#L148)；字段：`contentVersion?`、`id`、`studentId`、`subject`、`ownerUserId?`、`kind?`、`originalFormat?`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
-- `StudioLearningCitation`：[packages/contracts/src/studio.ts:171](../../../packages/contracts/src/studio.ts#L171)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
-- `StudioLearningSection`：[packages/contracts/src/studio.ts:179](../../../packages/contracts/src/studio.ts#L179)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
-- `StudioFlashcard`：[packages/contracts/src/studio.ts:188](../../../packages/contracts/src/studio.ts#L188)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
-- `StudioLearningPack`：[packages/contracts/src/studio.ts:196](../../../packages/contracts/src/studio.ts#L196)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:212](../../../packages/contracts/src/studio.ts#L212)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioFeedItem`：[packages/contracts/src/studio.ts:214](../../../packages/contracts/src/studio.ts#L214)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
-- `StudioWhiteboardExhibit`：[packages/contracts/src/studio.ts:223](../../../packages/contracts/src/studio.ts#L223)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioWhiteboardFigure`：[packages/contracts/src/studio.ts:225](../../../packages/contracts/src/studio.ts#L225)；字段：`snapshotId`、`sha256`、`originalSha256`、`width`、`height`、`alt`、`caption`、`imageUrl`、`originalUrl`。
-- `StudioWhiteboardReveal`：[packages/contracts/src/studio.ts:227](../../../packages/contracts/src/studio.ts#L227)；字段：`version`、`sourceText`、`bulletEnds`、`exhibits`、`diagramAt?`。
-- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:229](../../../packages/contracts/src/studio.ts#L229)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`exhibit?`、`exhibits?`、`diagram?`、`reveal?`、`figure?`、`targetAtomIds?`、`source?`、`durationMs`。
-- `StudioWhiteboard`：[packages/contracts/src/studio.ts:247](../../../packages/contracts/src/studio.ts#L247)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
-- `StudioConnectorKind`：[packages/contracts/src/studio.ts:264](../../../packages/contracts/src/studio.ts#L264)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `StudioConnector`：[packages/contracts/src/studio.ts:265](../../../packages/contracts/src/studio.ts#L265)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
-- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:280](../../../packages/contracts/src/studio.ts#L280)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`、`guidance?`。
-- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:303](../../../packages/contracts/src/studio.ts#L303)；字段：`connectors`、`events`。
-- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:308](../../../packages/contracts/src/studio.ts#L308)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
-- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:310](../../../packages/contracts/src/studio.ts#L310)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
-- `StudioOverview`：[packages/contracts/src/studio.ts:318](../../../packages/contracts/src/studio.ts#L318)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+- `StudioSubject`：[packages/contracts/src/studio.ts:5](../../../packages/contracts/src/studio.ts#L5)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioLessonKind`：[packages/contracts/src/studio.ts:6](../../../packages/contracts/src/studio.ts#L6)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioLessonState`：[packages/contracts/src/studio.ts:7](../../../packages/contracts/src/studio.ts#L7)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioLesson`：[packages/contracts/src/studio.ts:9](../../../packages/contracts/src/studio.ts#L9)；字段：`id`、`atomId`、`title`、`objective`、`kind`、`state`、`href`、`teaching?`、`targetAtomIds?`、`textbookTeaching?`、`textbookTeachingLessonId?`、`estimatedMinutes?`。
+- `StudioUnit`：[packages/contracts/src/studio.ts:26](../../../packages/contracts/src/studio.ts#L26)；字段：`id`、`title`、`objective`、`lessons`。
+- `StudioCoursePace`：[packages/contracts/src/studio.ts:33](../../../packages/contracts/src/studio.ts#L33)；字段：`version`、`minutesPerSession`、`teachingLanguage`、`estimatedMinutes`、`notice`、`sessions`。
+- `StudioCourse`：[packages/contracts/src/studio.ts:42](../../../packages/contracts/src/studio.ts#L42)；字段：`id`、`studentId`、`subject`、`grade`、`term`、`title`、`description`、`objective`、`status`、`source`、`scopeVersion`、`textbookVersion`、`curriculumVersion?`、`teachingVersion?`、`focusAtomIds`、`teachingSelection?`、`contentRevision?`、`units`、`materials`、`fingerprint`、`createdAt`、`updatedAt`、`learningProgress?`、`pace?`。
+- `StudioCoursePreview`：[packages/contracts/src/studio.ts:71](../../../packages/contracts/src/studio.ts#L71)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioActivity`：[packages/contracts/src/studio.ts:73](../../../packages/contracts/src/studio.ts#L73)；字段：`id`、`studentId`、`subject`、`kind`、`title`、`detail`、`href`、`at`、`status`、`requestKey?`、`referenceId?`、`actorId?`、`requestHash?`、`courseFingerprint?`、`courseRevision?`。
+- `StudioPlanSessionKind`：[packages/contracts/src/studio.ts:91](../../../packages/contracts/src/studio.ts#L91)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPlanSession`：[packages/contracts/src/studio.ts:92](../../../packages/contracts/src/studio.ts#L92)；字段：`id`、`index`、`title`、`kind`、`atomIds`、`objective`、`successCriterion`、`startsAt`、`endsAt`、`status`、`calendarEventId`、`evidenceBasis`、`reviewForSessionId?`、`reviewOffsetDays?`。
+- `StudioStudyPlan`：[packages/contracts/src/studio.ts:109](../../../packages/contracts/src/studio.ts#L109)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`targetDate`、`minutesPerDay`、`status`、`sessions`、`fingerprint`、`createdAt`、`updatedAt`、`revision`。
+- `StudioStudyPlanPreview`：[packages/contracts/src/studio.ts:125](../../../packages/contracts/src/studio.ts#L125)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfBBox`：[packages/contracts/src/studio.ts:130](../../../packages/contracts/src/studio.ts#L130)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioPdfTableCell`：[packages/contracts/src/studio.ts:131](../../../packages/contracts/src/studio.ts#L131)；字段：`row`、`column`、`rowSpan`、`columnSpan`、`text`。
+- `StudioPdfStructureBlock`：[packages/contracts/src/studio.ts:133](../../../packages/contracts/src/studio.ts#L133)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioSourcePage`：[packages/contracts/src/studio.ts:138](../../../packages/contracts/src/studio.ts#L138)；字段：`page`、`text`、`textCharacters?`、`method?`、`confidence?`、`blocks?`、`warnings?`。
+- `StudioMaterialStructure`：[packages/contracts/src/studio.ts:148](../../../packages/contracts/src/studio.ts#L148)；字段：`modelReviewedPages?`、`method`、`ocrPageCount`、`tableCount`、`formulaCount`、`confidence`、`reviewRequired`、`modelAssisted`、`modelSource`、`modelId?`、`reviewedAt?`、`warnings`。
+- `StudioSourceMaterial`：[packages/contracts/src/studio.ts:163](../../../packages/contracts/src/studio.ts#L163)；字段：`paperCaptureOrigin?`、`contentVersion?`、`id`、`studentId`、`subject`、`ownerUserId?`、`kind?`、`originalFormat?`、`filename`、`title`、`pageCount`、`pages`、`sha256`、`byteSize`、`hasPageImages?`、`status?`、`structure?`、`processingTaskId?`、`error?`、`createdAt`、`updatedAt?`。
+- `StudioLearningCitation`：[packages/contracts/src/studio.ts:187](../../../packages/contracts/src/studio.ts#L187)；字段：`atomId`、`atomName`、`materialId?`、`page?`、`label`。
+- `StudioLearningSection`：[packages/contracts/src/studio.ts:195](../../../packages/contracts/src/studio.ts#L195)；字段：`id`、`kind`、`title`、`body`、`bullets`、`citations`。
+- `StudioFlashcard`：[packages/contracts/src/studio.ts:204](../../../packages/contracts/src/studio.ts#L204)；字段：`id`、`prompt`、`answer`、`hint`、`citations`。
+- `StudioLearningPack`：[packages/contracts/src/studio.ts:212](../../../packages/contracts/src/studio.ts#L212)；字段：`id`、`studentId`、`subject`、`title`、`atomIds`、`sourceMaterialId`、`sections`、`flashcards`、`practiceSteps`、`reviewDays`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioLearningPackPreview`：[packages/contracts/src/studio.ts:228](../../../packages/contracts/src/studio.ts#L228)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioFeedItem`：[packages/contracts/src/studio.ts:230](../../../packages/contracts/src/studio.ts#L230)；字段：`id`、`kind`、`priority`、`title`、`reason`、`href`。
+- `StudioWhiteboardExhibit`：[packages/contracts/src/studio.ts:239](../../../packages/contracts/src/studio.ts#L239)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioWhiteboardFigure`：[packages/contracts/src/studio.ts:241](../../../packages/contracts/src/studio.ts#L241)；字段：`snapshotId`、`sha256`、`originalSha256`、`width`、`height`、`alt`、`caption`、`imageUrl`、`originalUrl`。
+- `StudioWhiteboardReveal`：[packages/contracts/src/studio.ts:243](../../../packages/contracts/src/studio.ts#L243)；字段：`version`、`sourceText`、`bulletEnds`、`exhibits`、`diagramAt?`。
+- `StudioWhiteboardScene`：[packages/contracts/src/studio.ts:245](../../../packages/contracts/src/studio.ts#L245)；字段：`id`、`kind`、`title`、`narration`、`body?`、`bullets?`、`visual?`、`exhibit?`、`exhibits?`、`diagram?`、`math?`、`reveal?`、`figure?`、`targetAtomIds?`、`source?`、`durationMs`。
+- `StudioWhiteboard`：[packages/contracts/src/studio.ts:264](../../../packages/contracts/src/studio.ts#L264)；字段：`id`、`studentId`、`subject`、`atomId`、`sourceMaterialId?`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`。
+- `StudioConnectorKind`：[packages/contracts/src/studio.ts:281](../../../packages/contracts/src/studio.ts#L281)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `StudioConnector`：[packages/contracts/src/studio.ts:282](../../../packages/contracts/src/studio.ts#L282)；字段：`id`、`studentId`、`subject`、`kind`、`label`、`sourceHost`、`status`、`lastSyncedAt`、`eventCount`、`lastError`、`version`、`createdAt`。
+- `StudioScheduleEvent`：[packages/contracts/src/studio.ts:297](../../../packages/contracts/src/studio.ts#L297)；字段：`id`、`connectorId`、`studentId`、`subject`、`title`、`description`、`startsAt`、`endsAt`、`allDay`、`externalUid`、`source`、`createdAt`、`requestKey?`、`planId?`、`planSessionId?`、`status?`、`confirmed?`、`revision?`、`guidance?`。
+- `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:320](../../../packages/contracts/src/studio.ts#L320)；字段：`connectors`、`events`。
+- `StudioSpeechVoice`：[packages/contracts/src/studio.ts:325](../../../packages/contracts/src/studio.ts#L325)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
+- `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:327](../../../packages/contracts/src/studio.ts#L327)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
+- `StudioOverview`：[packages/contracts/src/studio.ts:335](../../../packages/contracts/src/studio.ts#L335)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+
+### packages/contracts/src/textbook-teaching.ts
+
+- `TextbookTeachingSourceDescriptor`：[packages/contracts/src/textbook-teaching.ts:32](../../../packages/contracts/src/textbook-teaching.ts#L32)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingSourceSnapshot`：[packages/contracts/src/textbook-teaching.ts:33](../../../packages/contracts/src/textbook-teaching.ts#L33)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingTargetRef`：[packages/contracts/src/textbook-teaching.ts:38](../../../packages/contracts/src/textbook-teaching.ts#L38)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingTargetSnapshot`：[packages/contracts/src/textbook-teaching.ts:39](../../../packages/contracts/src/textbook-teaching.ts#L39)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingMaterialRef`：[packages/contracts/src/textbook-teaching.ts:46](../../../packages/contracts/src/textbook-teaching.ts#L46)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingMaterialSnapshot`：[packages/contracts/src/textbook-teaching.ts:47](../../../packages/contracts/src/textbook-teaching.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingMaterialOption`：[packages/contracts/src/textbook-teaching.ts:48](../../../packages/contracts/src/textbook-teaching.ts#L48)；字段：`reference`、`atomId`、`family`、`familyKey`、`familyIdentityVersion`、`dimension`、`probeRole`、`expectedSeconds`、`stem`、`answerMode`。
+- `TextbookTeachingMaterialCatalog`：[packages/contracts/src/textbook-teaching.ts:51](../../../packages/contracts/src/textbook-teaching.ts#L51)；字段：`atom`、`page`、`pageSize`、`total`、`items`。
+- `CrossContent`：[packages/contracts/src/textbook-teaching.ts:86](../../../packages/contracts/src/textbook-teaching.ts#L86)；字段：`goals`、`checks`。
+- `TextbookTeachingDraftContent`：[packages/contracts/src/textbook-teaching.ts:105](../../../packages/contracts/src/textbook-teaching.ts#L105)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingContent`：[packages/contracts/src/textbook-teaching.ts:106](../../../packages/contracts/src/textbook-teaching.ts#L106)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingPublicContent`：[packages/contracts/src/textbook-teaching.ts:107](../../../packages/contracts/src/textbook-teaching.ts#L107)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingSave`：[packages/contracts/src/textbook-teaching.ts:119](../../../packages/contracts/src/textbook-teaching.ts#L119)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCommand`：[packages/contracts/src/textbook-teaching.ts:120](../../../packages/contracts/src/textbook-teaching.ts#L120)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingGap`：[packages/contracts/src/textbook-teaching.ts:122](../../../packages/contracts/src/textbook-teaching.ts#L122)；字段：`code`、`path`、`message`。
+- `TextbookTeachingPreflight`：[packages/contracts/src/textbook-teaching.ts:131](../../../packages/contracts/src/textbook-teaching.ts#L131)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingPublicBase`：[packages/contracts/src/textbook-teaching.ts:136](../../../packages/contracts/src/textbook-teaching.ts#L136)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingPublicSnapshot`：[packages/contracts/src/textbook-teaching.ts:137](../../../packages/contracts/src/textbook-teaching.ts#L137)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingPracticeOrigin`：[packages/contracts/src/textbook-teaching.ts:143](../../../packages/contracts/src/textbook-teaching.ts#L143)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingQuestionPacket`：[packages/contracts/src/textbook-teaching.ts:144](../../../packages/contracts/src/textbook-teaching.ts#L144)；字段：`question`、`document`、`answerSchema`、`source`。
+- `TextbookTeachingCourseSelection`：[packages/contracts/src/textbook-teaching.ts:153](../../../packages/contracts/src/textbook-teaching.ts#L153)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseDraft`：[packages/contracts/src/textbook-teaching.ts:159](../../../packages/contracts/src/textbook-teaching.ts#L159)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseCreate`：[packages/contracts/src/textbook-teaching.ts:160](../../../packages/contracts/src/textbook-teaching.ts#L160)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingCourseOptions`：[packages/contracts/src/textbook-teaching.ts:161](../../../packages/contracts/src/textbook-teaching.ts#L161)；字段：`protocol`、`studentId`、`subject`、`scopeVersion`、`bookId`、`bookVersion`、`title`、`edition`、`page`、`pageSize`、`total`、`lessons`、`notice`。
+- `TextbookTeachingPackageHeader`：[packages/contracts/src/textbook-teaching.ts:172](../../../packages/contracts/src/textbook-teaching.ts#L172)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingResult`：[packages/contracts/src/textbook-teaching.ts:175](../../../packages/contracts/src/textbook-teaching.ts#L175)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TextbookTeachingEditorDetail`：[packages/contracts/src/textbook-teaching.ts:176](../../../packages/contracts/src/textbook-teaching.ts#L176)；字段：`header`、`source`、`version`、`savedBy`、`availability`。
 
 ### packages/contracts/src/topic-whiteboard-visual.ts
 
@@ -743,13 +938,13 @@
 
 ### packages/contracts/src/topic-whiteboard.ts
 
-- `TopicWhiteboardAudience`：[packages/contracts/src/topic-whiteboard.ts:45](../../../packages/contracts/src/topic-whiteboard.ts#L45)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardInput`：[packages/contracts/src/topic-whiteboard.ts:46](../../../packages/contracts/src/topic-whiteboard.ts#L46)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardContent`：[packages/contracts/src/topic-whiteboard.ts:47](../../../packages/contracts/src/topic-whiteboard.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardReview`：[packages/contracts/src/topic-whiteboard.ts:48](../../../packages/contracts/src/topic-whiteboard.ts#L48)；字段：`decision`、`issues`、`modelId`、`inputFingerprint`、`outputFingerprint`、`at`、`current`。
-- `TopicWhiteboardDraftStatus`：[packages/contracts/src/topic-whiteboard.ts:50](../../../packages/contracts/src/topic-whiteboard.ts#L50)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `TopicWhiteboardDraftView`：[packages/contracts/src/topic-whiteboard.ts:51](../../../packages/contracts/src/topic-whiteboard.ts#L51)；字段：`id`、`audience`、`studentId`、`subject`、`prompt`、`objective`、`modelId`、`modelName`、`status`、`stage`、`revision`、`generation`、`task`、`originalContent`、`content`、`contentFingerprint`、`review`、`whiteboardId`、`teacherReviewStatus`、`formalMeasurementEligible`、`createdAt`、`updatedAt`、`receipt?`。
-- `StudioTopicWhiteboard`：[packages/contracts/src/topic-whiteboard.ts:62](../../../packages/contracts/src/topic-whiteboard.ts#L62)；字段：`id`、`kind`、`studentId`、`subject`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`、`origin`。
+- `TopicWhiteboardAudience`：[packages/contracts/src/topic-whiteboard.ts:47](../../../packages/contracts/src/topic-whiteboard.ts#L47)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardInput`：[packages/contracts/src/topic-whiteboard.ts:48](../../../packages/contracts/src/topic-whiteboard.ts#L48)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardContent`：[packages/contracts/src/topic-whiteboard.ts:49](../../../packages/contracts/src/topic-whiteboard.ts#L49)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardReview`：[packages/contracts/src/topic-whiteboard.ts:50](../../../packages/contracts/src/topic-whiteboard.ts#L50)；字段：`decision`、`issues`、`modelId`、`inputFingerprint`、`outputFingerprint`、`at`、`current`。
+- `TopicWhiteboardDraftStatus`：[packages/contracts/src/topic-whiteboard.ts:52](../../../packages/contracts/src/topic-whiteboard.ts#L52)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `TopicWhiteboardDraftView`：[packages/contracts/src/topic-whiteboard.ts:53](../../../packages/contracts/src/topic-whiteboard.ts#L53)；字段：`id`、`audience`、`studentId`、`subject`、`prompt`、`objective`、`modelId`、`modelName`、`status`、`stage`、`revision`、`generation`、`task`、`originalContent`、`content`、`contentFingerprint`、`review`、`whiteboardId`、`teacherReviewStatus`、`formalMeasurementEligible`、`createdAt`、`updatedAt`、`receipt?`。
+- `StudioTopicWhiteboard`：[packages/contracts/src/topic-whiteboard.ts:64](../../../packages/contracts/src/topic-whiteboard.ts#L64)；字段：`id`、`kind`、`studentId`、`subject`、`title`、`prompt`、`scenes`、`durationMs`、`width`、`height`、`fingerprint`、`createdAt`、`updatedAt`、`origin`。
 
 ### packages/contracts/src/whiteboard-question-visual.ts
 

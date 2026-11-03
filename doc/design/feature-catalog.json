@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "55efe6592072d56be20db9be261e179374a7b85f",
+  "sourceRevision": "54a1b173df739c87092a7cae5d79fa587489f1fb",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 143,
-    "activeNormalApiRoutes": 504,
-    "coveredApiRoutes": 504
+    "features": 148,
+    "activeNormalApiRoutes": 589,
+    "coveredApiRoutes": 589
   },
   "areas": [
     {
@@ -324,7 +324,7 @@
               "controller": "LearningController",
               "method": "students",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 14
+              "line": 19
             }
           ],
           "implementations": [
@@ -346,7 +346,7 @@
             {
               "name": "LearningService.studentProfiles",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 72
+              "line": 71
             }
           ],
           "sourceFiles": [
@@ -606,19 +606,19 @@
               "controller": "DiagnosticsController",
               "method": "saveAtom",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 62
+              "line": 90
             }
           ],
           "implementations": [
             {
               "name": "CurriculumService.list",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 121
+              "line": 66
             },
             {
               "name": "CurriculumService.upsertAtom",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 130
+              "line": 75
             }
           ],
           "sourceFiles": [
@@ -688,14 +688,14 @@
               "controller": "DiagnosticsController",
               "method": "saveMapping",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 64
+              "line": 92
             }
           ],
           "implementations": [
             {
               "name": "CurriculumService.upsertMapping",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 264
+              "line": 209
             }
           ],
           "sourceFiles": [
@@ -734,7 +734,7 @@
               "controller": "DiagnosticsController",
               "method": "scope",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 66
+              "line": 94
             },
             {
               "verb": "PUT",
@@ -742,19 +742,19 @@
               "controller": "DiagnosticsController",
               "method": "saveScope",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 70
+              "line": 98
             }
           ],
           "implementations": [
             {
               "name": "CurriculumService.getScope",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 163
+              "line": 108
             },
             {
               "name": "CurriculumService.saveScope",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 192
+              "line": 137
             }
           ],
           "sourceFiles": [
@@ -792,7 +792,7 @@
               "controller": "DiagnosticsController",
               "method": "progressProposals",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 74
+              "line": 102
             },
             {
               "verb": "POST",
@@ -800,7 +800,7 @@
               "controller": "DiagnosticsController",
               "method": "proposeProgress",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 76
+              "line": 104
             },
             {
               "verb": "POST",
@@ -808,24 +808,24 @@
               "controller": "DiagnosticsController",
               "method": "decideProgress",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 78
+              "line": 106
             }
           ],
           "implementations": [
             {
               "name": "CurriculumService.progressProposals",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 205
+              "line": 150
             },
             {
               "name": "CurriculumService.proposeScope",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 211
+              "line": 156
             },
             {
               "name": "CurriculumService.decideProgress",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 231
+              "line": 176
             }
           ],
           "sourceFiles": [
@@ -887,28 +887,59 @@
               "method": "textbookDocument",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
               "line": 51
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/textbooks/:bookId/lessons/:lessonId/source",
+              "controller": "DiagnosticsController",
+              "method": "textbookLessonSource",
+              "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+              "line": 63
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/textbooks/:bookId/reference-sources/:sourceId/document",
+              "controller": "DiagnosticsController",
+              "method": "textbookReferenceDocument",
+              "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+              "line": 74
             }
           ],
           "implementations": [
             {
               "name": "TextbookRegistryService.list",
               "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
-              "line": 65
+              "line": 82
             },
             {
               "name": "TextbookRegistryService.detail",
               "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
-              "line": 77
+              "line": 97
             },
             {
               "name": "CurriculumService.assertEditor",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 454
+              "line": 403
             },
             {
               "name": "TextbookRegistryService.document",
               "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
-              "line": 102
+              "line": 126
+            },
+            {
+              "name": "CurriculumService.assertCurrentSourceEditor",
+              "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
+              "line": 406
+            },
+            {
+              "name": "TextbookRegistryService.lessonSource",
+              "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+              "line": 163
+            },
+            {
+              "name": "TextbookRegistryService.referenceDocument",
+              "file": "apps/api/src/modules/diagnostics/textbook-registry.service.ts",
+              "line": 135
             }
           ],
           "sourceFiles": [
@@ -947,7 +978,7 @@
               "controller": "DiagnosticsController",
               "method": "saveTextbookMapping",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 58
+              "line": 86
             },
             {
               "verb": "GET",
@@ -955,19 +986,19 @@
               "controller": "DiagnosticsController",
               "method": "textbookMappingWorklist",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 60
+              "line": 88
             }
           ],
           "implementations": [
             {
               "name": "CurriculumService.saveTextbookMapping",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 296
+              "line": 241
             },
             {
               "name": "CurriculumService.textbookMappingWorklist",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 318
+              "line": 263
             }
           ],
           "sourceFiles": [
@@ -1094,12 +1125,12 @@
             {
               "name": "CurriculumService.overview",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 376
+              "line": 321
             },
             {
               "name": "CurriculumService.itemsForAtom",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 422
+              "line": 371
             }
           ],
           "sourceFiles": [
@@ -1146,13 +1177,148 @@
             {
               "name": "CurriculumService.revisions",
               "file": "apps/api/src/modules/diagnostics/curriculum.service.ts",
-              "line": 444
+              "line": 393
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/diagnostics/measurement-definition.ts",
             "apps/api/src/modules/diagnostics/family-identity.ts",
             "apps/api/src/modules/diagnostics/curriculum.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
+            "apps/api/src/modules/diagnostics/diagnostics.integration.test.ts",
+            "apps/api/src/modules/diagnostics/textbook-registry-document.test.ts"
+          ]
+        },
+        {
+          "id": "CUR-11",
+          "title": "完整教学稿编辑、逐项材料与明确发布采用",
+          "area": "curriculum",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生、教研、管理员",
+          "pages": [
+            "/admin/curriculum",
+            "/parent/dashboard",
+            "/student/assessment"
+          ],
+          "inputs": "准确教材版本和页段、目标定义、完整稿件、材料映射、原请求键及预期版本",
+          "implementation": "原教材工作台读取准确原页；完整讲解、例题、图示、检查与保持逐项编辑和阅读预览。本机完整副本和原请求回执可恢复，来源或目标变化重新核对；明确审核发布与私人采用分别执行，旧课堂保留原快照。",
+          "outputs": "来源预览、逐项目标及材料缺口、稿件版本、原命令和采用回执",
+          "collections": [
+            "textbookTeachingPackages",
+            "textbookTeachingVersions",
+            "textbookTeachingSources",
+            "textbookTeachingCommands",
+            "textbookTeachingAdoptions",
+            "textbookTeachingCourseRevisions"
+          ],
+          "limits": "候选与可保存草稿不等完整可发布；未审材料、题族、评分和充分未见库存仍阻断相应资格，内容生产当前按用户要求暂停。",
+          "endpoints": [
+            {
+              "verb": "POST",
+              "path": "/api/admin/curriculum/teaching-packages/source-preview",
+              "controller": "TextbookTeachingController",
+              "method": "source",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/admin/curriculum/teaching-packages/preflight",
+              "controller": "TextbookTeachingController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "POST",
+              "path": "/api/admin/curriculum/teaching-packages/commands",
+              "controller": "TextbookTeachingController",
+              "method": "command",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 23
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/teaching-packages/commands/:key",
+              "controller": "TextbookTeachingController",
+              "method": "result",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 27
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/teaching-packages/materials",
+              "controller": "TextbookTeachingController",
+              "method": "materials",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 31
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/teaching-packages",
+              "controller": "TextbookTeachingController",
+              "method": "list",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 35
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/curriculum/teaching-packages/:id",
+              "controller": "TextbookTeachingController",
+              "method": "get",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 39
+            }
+          ],
+          "implementations": [
+            {
+              "name": "TextbookTeachingController.cancellable",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+              "line": 10
+            },
+            {
+              "name": "TextbookTeachingService.sourcePreview",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 44
+            },
+            {
+              "name": "TextbookTeachingService.preflight",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 49
+            },
+            {
+              "name": "TextbookTeachingService.command",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 94
+            },
+            {
+              "name": "TextbookTeachingService.commandResult",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 89
+            },
+            {
+              "name": "TextbookTeachingService.materials",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 54
+            },
+            {
+              "name": "TextbookTeachingService.list",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 69
+            },
+            {
+              "name": "TextbookTeachingService.get",
+              "file": "apps/api/src/modules/diagnostics/textbook-teaching.service.ts",
+              "line": 77
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/diagnostics/textbook-teaching.controller.ts",
+            "apps/web/app/admin/curriculum/teaching-package-workspace.tsx",
+            "doc/product/192-textbook-followups-gesp-teaching-and-first-response-evidence.md",
+            "apps/api/src/modules/diagnostics/textbook-teaching.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/diagnostics/curriculum-package.integration.test.ts",
@@ -1222,7 +1388,7 @@
               "controller": "DiagnosticsController",
               "method": "previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 84
+              "line": 112
             },
             {
               "verb": "GET",
@@ -1230,19 +1396,19 @@
               "controller": "DiagnosticsController",
               "method": "blueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 86
+              "line": 114
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.previewBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 163
+              "line": 239
             },
             {
               "name": "DiagnosticsService.getBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 196
+              "line": 273
             }
           ],
           "sourceFiles": [
@@ -1283,7 +1449,7 @@
               "controller": "DiagnosticsController",
               "method": "startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 88
+              "line": 116
             },
             {
               "verb": "POST",
@@ -1291,19 +1457,19 @@
               "controller": "DiagnosticsController",
               "method": "start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 82
+              "line": 110
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.startBlueprint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 197
+              "line": 274
             },
             {
               "name": "DiagnosticsService.start",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 39
+              "line": 78
             }
           ],
           "sourceFiles": [
@@ -1378,7 +1544,7 @@
               "controller": "DiagnosticsController",
               "method": "list",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 92
+              "line": 120
             },
             {
               "verb": "GET",
@@ -1386,7 +1552,7 @@
               "controller": "DiagnosticsController",
               "method": "session",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 96
+              "line": 124
             },
             {
               "verb": "GET",
@@ -1394,24 +1560,24 @@
               "controller": "DiagnosticsController",
               "method": "render",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 102
+              "line": 130
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.listSessions",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 237
+              "line": 314
             },
             {
               "name": "DiagnosticsService.sessionView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 243
+              "line": 320
             },
             {
               "name": "DiagnosticsService.renderItem",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 304
+              "line": 386
             }
           ],
           "sourceFiles": [
@@ -1453,7 +1619,7 @@
               "controller": "DiagnosticsController",
               "method": "draft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 106
+              "line": 134
             },
             {
               "verb": "POST",
@@ -1461,7 +1627,7 @@
               "controller": "DiagnosticsController",
               "method": "changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 90
+              "line": 118
             },
             {
               "verb": "POST",
@@ -1469,24 +1635,24 @@
               "controller": "DiagnosticsController",
               "method": "complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 112
+              "line": 140
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.saveDraft",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 329
+              "line": 412
             },
             {
               "name": "DiagnosticsService.changeState",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 264
+              "line": 345
             },
             {
               "name": "DiagnosticsService.complete",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 423
+              "line": 513
             }
           ],
           "sourceFiles": [
@@ -1527,7 +1693,7 @@
               "controller": "DiagnosticsController",
               "method": "respond",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 104
+              "line": 132
             },
             {
               "verb": "POST",
@@ -1535,19 +1701,19 @@
               "controller": "DiagnosticsController",
               "method": "hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 110
+              "line": 138
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.submit",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 347
+              "line": 431
             },
             {
               "name": "DiagnosticsService.hint",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 409
+              "line": 498
             }
           ],
           "sourceFiles": [
@@ -1654,14 +1820,14 @@
               "controller": "DiagnosticsController",
               "method": "evidence",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 98
+              "line": 126
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.evidenceView",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 570
+              "line": 663
             }
           ],
           "sourceFiles": [
@@ -1703,7 +1869,7 @@
               "controller": "DiagnosticsController",
               "method": "reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 148
+              "line": 180
             },
             {
               "verb": "GET",
@@ -1711,19 +1877,19 @@
               "controller": "DiagnosticsController",
               "method": "reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 150
+              "line": 182
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.reviewScore",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 634
+              "line": 730
             },
             {
               "name": "DiagnosticsService.reportHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 516
+              "line": 608
             }
           ],
           "sourceFiles": [
@@ -1769,7 +1935,7 @@
               "controller": "DiagnosticsController",
               "method": "report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 114
+              "line": 142
             },
             {
               "verb": "GET",
@@ -1777,7 +1943,7 @@
               "controller": "DiagnosticsController",
               "method": "profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 120
+              "line": 148
             },
             {
               "verb": "GET",
@@ -1785,7 +1951,7 @@
               "controller": "DiagnosticsController",
               "method": "analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 116
+              "line": 144
             },
             {
               "verb": "POST",
@@ -1793,29 +1959,29 @@
               "controller": "DiagnosticsController",
               "method": "reanalyze",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 118
+              "line": 146
             }
           ],
           "implementations": [
             {
               "name": "DiagnosticsService.report",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 509
+              "line": 601
             },
             {
               "name": "DiagnosticsService.profile",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 489
+              "line": 580
             },
             {
               "name": "DiagnosticsService.analysisStatus",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 523
+              "line": 615
             },
             {
               "name": "DiagnosticsService.reanalyzeReport",
               "file": "apps/api/src/modules/diagnostics/diagnostics.service.ts",
-              "line": 542
+              "line": 634
             }
           ],
           "sourceFiles": [
@@ -2026,6 +2192,271 @@
             "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
             "apps/api/src/modules/diagnostics/family-identity.integration.test.ts"
           ]
+        },
+        {
+          "id": "MEA-06",
+          "title": "受控原因对照与双来源条件指导",
+          "area": "measurement",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "学生、家长、教研",
+          "pages": [
+            "/student/assessment",
+            "/parent/dashboard",
+            "/admin/curriculum"
+          ],
+          "inputs": "实际教研原题、共享确认、冻结配对与当前范围、本人原命令、普通独立基准及原受控报告",
+          "implementation": "只读核对原题后明确审核/发布与修订/撤回；本人固定题序和原首答，整组结束前共同延后评分披露；两侧仅计原因观察。普通独立报告供能力/保持基准，受控原报告补充条件指导，孩子本人活动后由新独立配对支持或反驳。评分和明确重分析追加版本并保护原指导历史；私人命令与匿名共享原件分开，实际删除账本及双库原生读取核对来源。工作台沿原样式、弹窗、完整副本与退出保护。",
+          "outputs": "审核与预览原件、配对支持/反证、明确规则计划、本人只写活动与历史、schema30原生恢复",
+          "collections": [
+            "controlledMaterialReviews",
+            "controlledContrastPublications",
+            "controlledContrastReleases",
+            "controlledEditorialCommands",
+            "controlledContrastPreviews",
+            "diagnosticSessions",
+            "diagnosticResponses",
+            "diagnosticReports",
+            "diagnosticPlans",
+            "practiceSessions"
+          ],
+          "limits": "完整API2246/0/101；实际PG批20按9业务/5PG读取器/6重复SQLite分列。627唯一浏览器用例分片626通过/1登录导航ERR_NO_BUFFER_SPACE，原失败另批精确1项通过，不称627单次全绿；新两实例测试SQLite/PG各1另计。正式仍24/revision187且构建保持；原72/WS、纸面/全教材/GESP、教师/实机/真人长期及整体交付未完成。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/admin/controlled-contrasts/materials/:itemId/preflight",
+              "controller": "ControlledEditorialController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/controlled-contrasts/material-reviews",
+              "controller": "ControlledEditorialController",
+              "method": "reviews",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/admin/controlled-contrasts/material-reviews",
+              "controller": "ControlledEditorialController",
+              "method": "review",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/controlled-contrasts/protocols",
+              "controller": "ControlledEditorialController",
+              "method": "protocols",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/controlled-contrasts/protocols/:logicalId/history",
+              "controller": "ControlledEditorialController",
+              "method": "history",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "POST",
+              "path": "/api/admin/controlled-contrasts/protocols",
+              "controller": "ControlledEditorialController",
+              "method": "publish",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "POST",
+              "path": "/api/admin/controlled-contrasts/protocols/withdrawals",
+              "controller": "ControlledEditorialController",
+              "method": "withdraw",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 22
+            },
+            {
+              "verb": "GET",
+              "path": "/api/admin/controlled-contrasts/commands/:requestKey",
+              "controller": "ControlledEditorialController",
+              "method": "receipt",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.controller.ts",
+              "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/controlled-contrasts",
+              "controller": "ControlledDiagnosticsController",
+              "method": "available",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/controlled-preview-requests/:requestKey",
+              "controller": "ControlledDiagnosticsController",
+              "method": "creationResult",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/controlled-contrasts/previews/:id/start-requests/:requestKey",
+              "controller": "ControlledDiagnosticsController",
+              "method": "startResult",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/controlled-contrasts/previews",
+              "controller": "ControlledDiagnosticsController",
+              "method": "preview",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/controlled-contrasts/previews/:id",
+              "controller": "ControlledDiagnosticsController",
+              "method": "get",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/controlled-previews",
+              "controller": "ControlledDiagnosticsController",
+              "method": "list",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "POST",
+              "path": "/api/diagnostics/controlled-contrasts/previews/:id/start",
+              "controller": "ControlledDiagnosticsController",
+              "method": "start",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts",
+              "line": 22
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/controlled-guidance-options",
+              "controller": "DiagnosticsController",
+              "method": "controlledGuidanceOptions",
+              "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+              "line": 152
+            },
+            {
+              "verb": "GET",
+              "path": "/api/diagnostics/students/:studentId/controlled-guidance-requests/:requestKey",
+              "controller": "DiagnosticsController",
+              "method": "controlledGuidanceResult",
+              "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
+              "line": 154
+            }
+          ],
+          "implementations": [
+            {
+              "name": "ControlledEditorialService.materialPreflight",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 41
+            },
+            {
+              "name": "ControlledEditorialService.reviews",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 52
+            },
+            {
+              "name": "ControlledEditorialService.execute",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 78
+            },
+            {
+              "name": "ControlledEditorialService.publications",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 58
+            },
+            {
+              "name": "ControlledEditorialService.history",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 67
+            },
+            {
+              "name": "ControlledEditorialService.commandResult",
+              "file": "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+              "line": 73
+            },
+            {
+              "name": "ControlledDiagnosticsService.available",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 84
+            },
+            {
+              "name": "ControlledDiagnosticsService.creationResult",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 73
+            },
+            {
+              "name": "ControlledDiagnosticsService.startResult",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 79
+            },
+            {
+              "name": "ControlledDiagnosticsService.preview",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 109
+            },
+            {
+              "name": "ControlledDiagnosticsService.get",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 72
+            },
+            {
+              "name": "ControlledDiagnosticsService.list",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 101
+            },
+            {
+              "name": "ControlledDiagnosticsService.start",
+              "file": "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+              "line": 135
+            },
+            {
+              "name": "GuidanceService.controlledOptions",
+              "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
+              "line": 186
+            },
+            {
+              "name": "GuidanceService.controlledCreationResult",
+              "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
+              "line": 197
+            }
+          ],
+          "sourceFiles": [
+            "packages/contracts/src/controlled-contrast.ts",
+            "apps/api/src/modules/diagnostics/controlled-editorial.service.ts",
+            "apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts",
+            "apps/api/src/modules/diagnostics/controlled-native.ts",
+            "apps/api/src/modules/diagnostics/controlled-guidance-basis.ts",
+            "apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts",
+            "apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts",
+            "apps/web/components/controlled-contrast-planner.tsx",
+            "apps/web/components/controlled-guidance-panel.tsx",
+            "apps/web/app/admin/curriculum/controlled-editorial-panel.tsx",
+            "tests/e2e/controlled-contrasts.spec.ts",
+            "doc/product/163-controlled-cause-contrasts-and-counterevidence.md",
+            "doc/evidence/2026-10-31/workspace-r3-controlled-contrasts/receipt.json",
+            "apps/api/src/modules/diagnostics/guidance.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/diagnostics/measurement.test.ts",
+            "apps/api/src/modules/diagnostics/atomic-components.integration.test.ts",
+            "apps/api/src/modules/diagnostics/verification-blueprint.integration.test.ts",
+            "apps/api/src/modules/diagnostics/family-identity.integration.test.ts"
+          ]
         }
       ]
     },
@@ -2089,7 +2520,7 @@
               "controller": "DiagnosticsController",
               "method": "plan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 122
+              "line": 150
             },
             {
               "verb": "GET",
@@ -2097,19 +2528,19 @@
               "controller": "DiagnosticsController",
               "method": "planCreationResult",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 126
+              "line": 158
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.create",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 46
+              "line": 52
             },
             {
               "name": "GuidanceService.creationResult",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 155
+              "line": 203
             }
           ],
           "sourceFiles": [
@@ -2156,7 +2587,7 @@
               "controller": "DiagnosticsController",
               "method": "plans",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 124
+              "line": 156
             },
             {
               "verb": "GET",
@@ -2164,7 +2595,7 @@
               "controller": "DiagnosticsController",
               "method": "getPlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 130
+              "line": 162
             },
             {
               "verb": "PATCH",
@@ -2172,7 +2603,7 @@
               "controller": "DiagnosticsController",
               "method": "updatePlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 128
+              "line": 160
             },
             {
               "verb": "POST",
@@ -2180,7 +2611,7 @@
               "controller": "DiagnosticsController",
               "method": "adjustPlan",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 136
+              "line": 168
             },
             {
               "verb": "GET",
@@ -2188,34 +2619,34 @@
               "controller": "DiagnosticsController",
               "method": "planHistory",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 132
+              "line": 164
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.list",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 148
+              "line": 169
             },
             {
               "name": "GuidanceService.get",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 154
+              "line": 175
             },
             {
               "name": "GuidanceService.update",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 266
+              "line": 317
             },
             {
               "name": "GuidanceService.adjust",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 228
+              "line": 278
             },
             {
               "name": "GuidanceService.history",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 161
+              "line": 209
             }
           ],
           "sourceFiles": [
@@ -2257,7 +2688,7 @@
               "controller": "DiagnosticsController",
               "method": "reviews",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 138
+              "line": 170
             },
             {
               "verb": "GET",
@@ -2265,7 +2696,7 @@
               "controller": "DiagnosticsController",
               "method": "planReviews",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 134
+              "line": 166
             },
             {
               "verb": "POST",
@@ -2273,7 +2704,7 @@
               "controller": "DiagnosticsController",
               "method": "reschedule",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 142
+              "line": 174
             },
             {
               "verb": "POST",
@@ -2281,29 +2712,29 @@
               "controller": "DiagnosticsController",
               "method": "review",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 140
+              "line": 172
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.reviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 302
+              "line": 353
             },
             {
               "name": "GuidanceService.planReviews",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 308
+              "line": 359
             },
             {
               "name": "GuidanceService.reschedule",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 319
+              "line": 370
             },
             {
               "name": "GuidanceService.startReview",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 344
+              "line": 395
             }
           ],
           "sourceFiles": [
@@ -2347,7 +2778,7 @@
               "controller": "DiagnosticsController",
               "method": "retrospective",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 144
+              "line": 176
             },
             {
               "verb": "POST",
@@ -2355,19 +2786,19 @@
               "controller": "DiagnosticsController",
               "method": "acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/diagnostics.controller.ts",
-              "line": 146
+              "line": 178
             }
           ],
           "implementations": [
             {
               "name": "GuidanceService.retrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 358
+              "line": 409
             },
             {
               "name": "GuidanceService.acknowledgeRetrospective",
               "file": "apps/api/src/modules/diagnostics/guidance.service.ts",
-              "line": 419
+              "line": 470
             }
           ],
           "sourceFiles": [
@@ -3249,7 +3680,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 105
+              "line": 124
             },
             {
               "verb": "POST",
@@ -3257,7 +3688,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 108
+              "line": 127
             },
             {
               "verb": "POST",
@@ -3265,24 +3696,24 @@
               "controller": "LearningController",
               "method": "studioStudyPlanSession",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 111
+              "line": 130
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 143
+              "line": 142
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 159
+              "line": 158
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 197
+              "line": 196
             }
           ],
           "sourceFiles": [
@@ -3556,7 +3987,7 @@
               "controller": "LearningController",
               "method": "overview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 18
+              "line": 23
             },
             {
               "verb": "GET",
@@ -3564,19 +3995,32 @@
               "controller": "LearningController",
               "method": "memory",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 15
+              "line": 20
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/students/:id/knowledge",
+              "controller": "LearningController",
+              "method": "learnerKnowledge",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 138
             }
           ],
           "implementations": [
             {
               "name": "LearningService.overview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 1035
+              "line": 1041
             },
             {
               "name": "LearningService.memory",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 625
+              "line": 622
+            },
+            {
+              "name": "LearningService.learnerKnowledge",
+              "file": "apps/api/src/modules/learning/learning.service.ts",
+              "line": 1045
             }
           ],
           "sourceFiles": [
@@ -3624,7 +4068,7 @@
               "controller": "LearningController",
               "method": "today",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 119
+              "line": 141
             },
             {
               "verb": "POST",
@@ -3632,19 +4076,19 @@
               "controller": "LearningController",
               "method": "start",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 125
+              "line": 147
             }
           ],
           "implementations": [
             {
               "name": "LearningService.today",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 685
+              "line": 682
             },
             {
               "name": "LearningService.start",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 699
+              "line": 696
             }
           ],
           "sourceFiles": [
@@ -3693,7 +4137,7 @@
               "controller": "LearningController",
               "method": "view",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 126
+              "line": 148
             },
             {
               "verb": "GET",
@@ -3701,7 +4145,7 @@
               "controller": "LearningController",
               "method": "render",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 127
+              "line": 149
             },
             {
               "verb": "PATCH",
@@ -3709,7 +4153,7 @@
               "controller": "LearningController",
               "method": "draft",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 129
+              "line": 151
             },
             {
               "verb": "POST",
@@ -3717,7 +4161,7 @@
               "controller": "LearningController",
               "method": "submit",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 128
+              "line": 150
             },
             {
               "verb": "POST",
@@ -3725,7 +4169,7 @@
               "controller": "LearningController",
               "method": "hint",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 130
+              "line": 152
             },
             {
               "verb": "POST",
@@ -3733,39 +4177,39 @@
               "controller": "LearningController",
               "method": "complete",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 131
+              "line": 153
             }
           ],
           "implementations": [
             {
               "name": "LearningService.view",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 742
+              "line": 741
             },
             {
               "name": "LearningService.render",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 769
+              "line": 770
             },
             {
               "name": "LearningService.draft",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 794
+              "line": 795
             },
             {
               "name": "LearningService.submit",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 895
+              "line": 899
             },
             {
               "name": "LearningService.hint",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 974
+              "line": 979
             },
             {
               "name": "LearningService.complete",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 992
+              "line": 997
             }
           ],
           "sourceFiles": [
@@ -3813,14 +4257,14 @@
               "controller": "LearningController",
               "method": "mistakes",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 122
+              "line": 144
             }
           ],
           "implementations": [
             {
               "name": "LearningService.mistakes",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 1004
+              "line": 1010
             }
           ],
           "sourceFiles": [
@@ -4602,7 +5046,7 @@
               "controller": "LibraryController",
               "method": "overview",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 12
+              "line": 11
             },
             {
               "verb": "GET",
@@ -4610,7 +5054,7 @@
               "controller": "LibraryController",
               "method": "facets",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 13
+              "line": 12
             },
             {
               "verb": "GET",
@@ -4618,24 +5062,24 @@
               "controller": "LibraryController",
               "method": "search",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 14
+              "line": 13
             }
           ],
           "implementations": [
             {
               "name": "LibraryService.overview",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 45
+              "line": 48
             },
             {
               "name": "LibraryService.facets",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 53
+              "line": 56
             },
             {
               "name": "LibraryService.search",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 54
+              "line": 57
             }
           ],
           "sourceFiles": [
@@ -4678,7 +5122,7 @@
               "controller": "LibraryController",
               "method": "preview",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 15
+              "line": 14
             },
             {
               "verb": "GET",
@@ -4686,19 +5130,19 @@
               "controller": "LibraryController",
               "method": "media",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 20
+              "line": 19
             }
           ],
           "implementations": [
             {
               "name": "LibraryService.preview",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 79
+              "line": 81
             },
             {
               "name": "LibraryService.media",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 99
+              "line": 112
             }
           ],
           "sourceFiles": [
@@ -4742,7 +5186,7 @@
               "controller": "LibraryController",
               "method": "publish",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 18
+              "line": 17
             },
             {
               "verb": "PATCH",
@@ -4750,19 +5194,19 @@
               "controller": "LibraryController",
               "method": "bookmark",
               "file": "apps/api/src/modules/library/library.controller.ts",
-              "line": 19
+              "line": 18
             }
           ],
           "implementations": [
             {
               "name": "LibraryService.publish",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 106
+              "line": 123
             },
             {
               "name": "LibraryService.bookmark",
               "file": "apps/api/src/modules/library/library.service.ts",
-              "line": 125
+              "line": 142
             }
           ],
           "sourceFiles": [
@@ -5145,42 +5589,42 @@
             {
               "name": "PaperPracticeService.preview",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 135
+              "line": 139
             },
             {
               "name": "PaperPracticeService.create",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 143
+              "line": 147
             },
             {
               "name": "PaperPracticeService.creationResult",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 157
+              "line": 161
             },
             {
               "name": "PaperPracticeService.list",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 161
+              "line": 165
             },
             {
               "name": "PaperPracticeService.get",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 171
+              "line": 175
             },
             {
               "name": "PaperPracticeService.item",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 254
+              "line": 258
             },
             {
               "name": "PaperPracticeService.commandResult",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 262
+              "line": 266
             },
             {
               "name": "PaperPracticeService.command",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 267
+              "line": 271
             }
           ],
           "sourceFiles": [
@@ -5258,17 +5702,17 @@
             {
               "name": "PaperPracticeService.reviews",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 224
+              "line": 228
             },
             {
               "name": "PaperPracticeService.reviewCalendar",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 239
+              "line": 243
             },
             {
               "name": "PaperPracticeService.exportReviewCalendar",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 248
+              "line": 252
             }
           ],
           "sourceFiles": [
@@ -5346,17 +5790,17 @@
             {
               "name": "PaperPracticeService.nextOptions",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 172
+              "line": 176
             },
             {
               "name": "PaperPracticeService.verificationPreview",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 193
+              "line": 197
             },
             {
               "name": "PaperPracticeService.verificationRequest",
               "file": "apps/api/src/modules/library/paper-practice.service.ts",
-              "line": 210
+              "line": 214
             }
           ],
           "sourceFiles": [
@@ -5369,6 +5813,221 @@
             "apps/api/src/modules/library/measurement-content.integration.test.ts",
             "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
             "apps/api/src/modules/library/paper-practice.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/library/library.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice.integration.test.ts",
+            "apps/api/src/modules/library/paper-practice-recovery.integration.test.ts",
+            "apps/api/src/infrastructure/paper-practice-migration.test.ts",
+            "tests/e2e/paper-practice.spec.ts",
+            "apps/api/src/modules/library/measurement-content.integration.test.ts",
+            "apps/api/src/modules/question-workspace/question-import.utils.test.ts"
+          ]
+        },
+        {
+          "id": "CONTENT-15",
+          "title": "个人选题与可恢复PDF/DOCX导出",
+          "area": "content",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "教研、教师、运营、管理员；家庭/学生使用已发布原卷与本人练习",
+          "pages": [
+            "/library",
+            "/library/practice",
+            "/admin/content",
+            "/admin/imports",
+            "/admin/measurement"
+          ],
+          "inputs": "当前身份和选题清单、准确来源、题序留白、答案可见性、冻结导出输入与原请求键",
+          "implementation": "跨卷选题独立保存，来源阅读与曝光按原对象记录；预检重新核身份、来源和结构。导出冻结完整题目与原生公式表格、答案册分离，实际任务保留原命令、产物哈希与受控下载；取消、恢复和到期回收沿原队列及文件栅栏。",
+          "outputs": "选题清单、来源元数据、原读请求、预检、导出任务及PDF/DOCX文件",
+          "collections": [
+            "paperSelectionLists",
+            "paperSelectionCommands",
+            "paperExports",
+            "paperExportCommands",
+            "paperSourceExposures",
+            "paperExportFiles"
+          ],
+          "limits": "工具缺失不丢选题，错误和过期来源不假成功；文档渲染与实体打印分开计，未审内容不因导出而获批准。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/library/selection-lists",
+              "controller": "PaperSelectionController",
+              "method": "list",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/selection-lists/:id",
+              "controller": "PaperSelectionController",
+              "method": "get",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/selection-commands",
+              "controller": "PaperSelectionController",
+              "method": "command",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/selection-commands/:key",
+              "controller": "PaperSelectionController",
+              "method": "commandResult",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/papers/:id/metadata",
+              "controller": "PaperSelectionController",
+              "method": "metadata",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/source-reads",
+              "controller": "PaperSelectionController",
+              "method": "read",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/source-reads/:key",
+              "controller": "PaperSelectionController",
+              "method": "readResult",
+              "file": "apps/api/src/modules/library/paper-selection.controller.ts",
+              "line": 15
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/export-preflight",
+              "controller": "PaperExportController",
+              "method": "preflight",
+              "file": "apps/api/src/modules/library/paper-export.controller.ts",
+              "line": 8
+            },
+            {
+              "verb": "POST",
+              "path": "/api/library/export-commands",
+              "controller": "PaperExportController",
+              "method": "command",
+              "file": "apps/api/src/modules/library/paper-export.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/export-commands/:key",
+              "controller": "PaperExportController",
+              "method": "commandResult",
+              "file": "apps/api/src/modules/library/paper-export.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/exports",
+              "controller": "PaperExportController",
+              "method": "list",
+              "file": "apps/api/src/modules/library/paper-export.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/exports/:id",
+              "controller": "PaperExportController",
+              "method": "get",
+              "file": "apps/api/src/modules/library/paper-export.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "GET",
+              "path": "/api/library/exports/:id/files/:book/:format",
+              "controller": "PaperExportArtifactController",
+              "method": "file",
+              "file": "apps/api/src/modules/library/paper-export-artifact.controller.ts",
+              "line": 9
+            }
+          ],
+          "implementations": [
+            {
+              "name": "PaperSelectionService.list",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 51
+            },
+            {
+              "name": "PaperSelectionService.get",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 58
+            },
+            {
+              "name": "PaperSelectionService.command",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 66
+            },
+            {
+              "name": "PaperSelectionService.commandResult",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 59
+            },
+            {
+              "name": "PaperSelectionService.metadata",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 101
+            },
+            {
+              "name": "PaperSelectionService.read",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 118
+            },
+            {
+              "name": "PaperSelectionService.readResult",
+              "file": "apps/api/src/modules/library/paper-selection.service.ts",
+              "line": 111
+            },
+            {
+              "name": "PaperExportService.preflight",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 89
+            },
+            {
+              "name": "PaperExportService.command",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 109
+            },
+            {
+              "name": "PaperExportService.commandResult",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 69
+            },
+            {
+              "name": "PaperExportService.list",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 63
+            },
+            {
+              "name": "PaperExportService.get",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 68
+            },
+            {
+              "name": "PaperExportService.file",
+              "file": "apps/api/src/modules/library/paper-export.service.ts",
+              "line": 158
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/library/paper-selection.controller.ts",
+            "apps/api/src/modules/library/paper-export.controller.ts",
+            "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+            "apps/api/src/modules/library/paper-selection.service.ts",
+            "apps/api/src/modules/library/paper-export.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/library/library.integration.test.ts",
@@ -5455,7 +6114,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 82
+              "line": 84
             }
           ],
           "sourceFiles": [
@@ -5584,27 +6243,27 @@
             {
               "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 304
+              "line": 306
             },
             {
               "name": "AiService.openDurableAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 283
+              "line": 285
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 424
+              "line": 426
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 553
+              "line": 557
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 680
+              "line": 684
             },
             {
               "name": "AssistantTurnService.context",
@@ -5778,12 +6437,12 @@
             {
               "name": "AiService.courseDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 322
+              "line": 324
             },
             {
               "name": "AiService.sourcePreview",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 395
+              "line": 397
             }
           ],
           "sourceFiles": [
@@ -6088,7 +6747,7 @@
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 325
+              "line": 342
             }
           ],
           "sourceFiles": [
@@ -7036,14 +7695,14 @@
               "controller": "LearningController",
               "method": "studioOverview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 19
+              "line": 24
             }
           ],
           "implementations": [
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 77
+              "line": 76
             }
           ],
           "sourceFiles": [
@@ -7228,14 +7887,14 @@
               "controller": "LearningController",
               "method": "studioOverview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 19
+              "line": 24
             }
           ],
           "implementations": [
             {
               "name": "LearningService.studioOverview",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 77
+              "line": 76
             }
           ],
           "sourceFiles": [
@@ -7300,7 +7959,7 @@
               "controller": "LearningController",
               "method": "studioCoursePreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 24
+              "line": 41
             },
             {
               "verb": "POST",
@@ -7308,7 +7967,7 @@
               "controller": "LearningController",
               "method": "studioCourseCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 27
+              "line": 45
             },
             {
               "verb": "POST",
@@ -7316,14 +7975,29 @@
               "controller": "LearningController",
               "method": "studioLessonStart",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 30
+              "line": 49
             }
           ],
           "implementations": [
             {
+              "name": "LearningController.teachingRequest",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 15
+            },
+            {
+              "name": "TextbookTeachingCourseService.preview",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 118
+            },
+            {
               "name": "LearningService.previewStudioCourse",
               "file": "apps/api/src/modules/learning/learning.service.ts",
               "line": 552
+            },
+            {
+              "name": "TextbookTeachingCourseService.create",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 138
             },
             {
               "name": "LearningService.createStudioCourse",
@@ -7333,13 +8007,15 @@
             {
               "name": "LearningService.startStudioLesson",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 599
+              "line": 596
             }
           ],
           "sourceFiles": [
             "apps/api/src/modules/learning/studio-course.ts",
             "apps/web/app/studio/course-builder.tsx",
             "apps/web/app/studio/course-builder.css",
+            "apps/api/src/modules/learning/learning.controller.ts",
+            "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
             "apps/api/src/modules/learning/learning.service.ts"
           ],
           "tests": [
@@ -7405,7 +8081,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 38
+              "line": 40
             }
           ],
           "sourceFiles": [
@@ -7506,27 +8182,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 108
+              "line": 119
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 98
+              "line": 109
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 162
+              "line": 179
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 333
+              "line": 350
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 190
+              "line": 207
             }
           ],
           "sourceFiles": [
@@ -7644,7 +8320,7 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 287
+              "line": 304
             },
             {
               "name": "ClassroomTurnService.list",
@@ -7759,12 +8435,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 209
+              "line": 226
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 260
+              "line": 277
             }
           ],
           "sourceFiles": [
@@ -7992,7 +8668,7 @@
               "controller": "LearningController",
               "method": "studioWhiteboardPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 34
+              "line": 53
             },
             {
               "verb": "POST",
@@ -8000,19 +8676,19 @@
               "controller": "LearningController",
               "method": "studioWhiteboardCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 37
+              "line": 56
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 242
+              "line": 241
             },
             {
               "name": "LearningService.createStudioWhiteboard",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 254
+              "line": 253
             }
           ],
           "sourceFiles": [
@@ -8075,7 +8751,7 @@
               "controller": "LearningController",
               "method": "studioWhiteboardNarration",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 68
+              "line": 87
             }
           ],
           "implementations": [
@@ -8170,7 +8846,7 @@
               "controller": "LearningController",
               "method": "studioPdfUpload",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 40
+              "line": 59
             },
             {
               "verb": "GET",
@@ -8178,7 +8854,7 @@
               "controller": "LearningController",
               "method": "studioPdfPage",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 43
+              "line": 62
             },
             {
               "verb": "GET",
@@ -8186,24 +8862,24 @@
               "controller": "LearningController",
               "method": "studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 45
+              "line": 64
             }
           ],
           "implementations": [
             {
               "name": "LearningService.uploadStudioPdf",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 286
+              "line": 285
             },
             {
               "name": "LearningService.studioPdfPageImage",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 347
+              "line": 346
             },
             {
               "name": "LearningService.studioPdfOriginal",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 357
+              "line": 356
             }
           ],
           "sourceFiles": [
@@ -8322,7 +8998,7 @@
               "controller": "LearningController",
               "method": "studioPdfStructureReview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 48
+              "line": 67
             },
             {
               "verb": "POST",
@@ -8330,19 +9006,19 @@
               "controller": "LearningController",
               "method": "studioPdfProcessRetry",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 52
+              "line": 71
             }
           ],
           "implementations": [
             {
               "name": "LearningService.reviewStudioPdfStructure",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 372
+              "line": 371
             },
             {
               "name": "LearningService.retryStudioPdfProcessing",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 400
+              "line": 399
             }
           ],
           "sourceFiles": [
@@ -8405,7 +9081,7 @@
               "controller": "LearningController",
               "method": "studioPdfWhiteboardPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 56
+              "line": 75
             },
             {
               "verb": "POST",
@@ -8413,7 +9089,7 @@
               "controller": "LearningController",
               "method": "studioPdfWhiteboardCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 58
+              "line": 77
             }
           ],
           "implementations": [
@@ -8489,7 +9165,7 @@
               "controller": "LearningController",
               "method": "studioLearningPackPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 62
+              "line": 81
             },
             {
               "verb": "POST",
@@ -8497,7 +9173,7 @@
               "controller": "LearningController",
               "method": "studioLearningPackCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 65
+              "line": 84
             }
           ],
           "implementations": [
@@ -8574,7 +9250,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanPreview",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 105
+              "line": 124
             },
             {
               "verb": "POST",
@@ -8582,7 +9258,7 @@
               "controller": "LearningController",
               "method": "studioStudyPlanCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 108
+              "line": 127
             },
             {
               "verb": "POST",
@@ -8590,24 +9266,24 @@
               "controller": "LearningController",
               "method": "studioStudyPlanSession",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 111
+              "line": 130
             }
           ],
           "implementations": [
             {
               "name": "LearningService.previewStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 143
+              "line": 142
             },
             {
               "name": "LearningService.createStudioStudyPlan",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 159
+              "line": 158
             },
             {
               "name": "LearningService.updateStudioPlanSession",
               "file": "apps/api/src/modules/learning/learning.service.ts",
-              "line": 197
+              "line": 196
             }
           ],
           "sourceFiles": [
@@ -8671,7 +9347,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationConnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 84
+              "line": 103
             },
             {
               "verb": "POST",
@@ -8679,7 +9355,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationSync",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 87
+              "line": 106
             },
             {
               "verb": "POST",
@@ -8687,7 +9363,7 @@
               "controller": "LearningController",
               "method": "studioIntegrationDisconnect",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 90
+              "line": 109
             }
           ],
           "implementations": [
@@ -8768,7 +9444,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventCreate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 93
+              "line": 112
             },
             {
               "verb": "POST",
@@ -8776,7 +9452,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventUpdate",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 99
+              "line": 118
             },
             {
               "verb": "POST",
@@ -8784,7 +9460,7 @@
               "controller": "LearningController",
               "method": "studioCalendarEventRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 96
+              "line": 115
             },
             {
               "verb": "POST",
@@ -8792,7 +9468,7 @@
               "controller": "LearningController",
               "method": "studioCalendarBatchRemove",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 102
+              "line": 121
             }
           ],
           "implementations": [
@@ -8878,7 +9554,7 @@
               "controller": "LearningController",
               "method": "studioCalendarExport",
               "file": "apps/api/src/modules/learning/learning.controller.ts",
-              "line": 115
+              "line": 134
             }
           ],
           "implementations": [
@@ -9480,7 +10156,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 38
+              "line": 40
             },
             {
               "name": "SourceCourseService.get",
@@ -9711,7 +10387,7 @@
             {
               "name": "ClassroomService.source",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 99
+              "line": 110
             }
           ],
           "sourceFiles": [
@@ -11815,6 +12491,681 @@
             "tests/e2e/course-builder.spec.ts",
             "tests/e2e/workspace.spec.ts"
           ]
+        },
+        {
+          "id": "STUDIO-40",
+          "title": "原课程创建、升级影响与精确历史恢复",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/tasks",
+            "/studio/assessment",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "当前身份与课程、原版本指纹、完整创建或升级命令和原请求键",
+          "implementation": "来源教学选项与预览绑定版本；创建及升级原命令可独立读回，确认前显示影响。升级后旧课程与课时快照仍可按准确修订读取，原课堂及首答不覆盖；明确拒绝与未知结果分开处理。",
+          "outputs": "教学选项、原请求回执、升级预览与历史课程课时快照",
+          "collections": [
+            "studioCourses",
+            "classroomSessions"
+          ],
+          "limits": "新版本不自动替换历史学习事实；教师内容审核、真实学习效果与运行部署另计。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/teaching-options",
+              "controller": "LearningController",
+              "method": "studioTeachingOptions",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 29
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/requests/:key",
+              "controller": "LearningController",
+              "method": "studioCourseOriginalRequest",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 32
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/courses/upgrade-preview",
+              "controller": "LearningController",
+              "method": "studioCourseUpgradePreview",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 35
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/studio/courses/upgrade",
+              "controller": "LearningController",
+              "method": "studioCourseUpgrade",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 36
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/upgrade-requests/:key",
+              "controller": "LearningController",
+              "method": "studioCourseUpgradeRequest",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 37
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/:id/revisions",
+              "controller": "LearningController",
+              "method": "studioCourseVersions",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 38
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/:id/revisions/:revision",
+              "controller": "LearningController",
+              "method": "studioCourseVersion",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 39
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/studio/courses/:id/lesson-versions/:lessonId",
+              "controller": "LearningController",
+              "method": "studioCourseLessonVersion",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 40
+            }
+          ],
+          "implementations": [
+            {
+              "name": "TextbookTeachingCourseService.options",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 97
+            },
+            {
+              "name": "TextbookTeachingCourseService.getRequest",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 164
+            },
+            {
+              "name": "LearningController.teachingRequest",
+              "file": "apps/api/src/modules/learning/learning.controller.ts",
+              "line": 15
+            },
+            {
+              "name": "TextbookTeachingCourseService.previewUpgrade",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 178
+            },
+            {
+              "name": "TextbookTeachingCourseService.upgrade",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 191
+            },
+            {
+              "name": "TextbookTeachingCourseService.getUpgradeRequest",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 203
+            },
+            {
+              "name": "TextbookTeachingCourseService.history",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 211
+            },
+            {
+              "name": "TextbookTeachingCourseService.versionForLesson",
+              "file": "apps/api/src/modules/learning/textbook-teaching-course.service.ts",
+              "line": 204
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/learning.controller.ts",
+            "doc/product/185-schema33-integration-and-browser-regressions.md",
+            "apps/api/src/modules/learning/textbook-teaching-course.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
+          "id": "STUDIO-41",
+          "title": "纸面三用途采集、原图恢复与分组识别",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/tasks",
+            "/studio/assessment",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "本人或孩子范围、单题/整页/教辅用途、分块原件、页序旋转裁剪、原命令及版本",
+          "implementation": "统一资料入口区分三种用途，上传限额和进度可读；原件不覆盖，处理版本、明确原件恢复与分组PDF冻结保留来源身份。识别任务可取消重试，逐页结果、旧版本和缺口分别核；完整本机副本、原命令与源字节恢复有专用流程。",
+          "outputs": "原图与派生图、分组原PDF、OCR候选、页级核对与任务原回执",
+          "collections": [
+            "paperImageUploads",
+            "paperCapturePages",
+            "paperCaptureGroups",
+            "paperCaptureCommands",
+            "paperCaptureDerivations",
+            "paperCaptureFileAssets",
+            "paperCaptureRepairUploads",
+            "paperCaptureRepairCommands",
+            "paperCaptureRepairs"
+          ],
+          "limits": "OCR候选不自动成为正式题；真实相机权限、扫描手写全集与实体设备效果仍另验。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/repair-commands/:requestKey",
+              "controller": "PaperCaptureController",
+              "method": "repairCommand",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 16
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repair-candidates",
+              "controller": "PaperCaptureController",
+              "method": "repairCandidate",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 17
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/repair-uploads",
+              "controller": "PaperCaptureController",
+              "method": "repairUploads",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repair-uploads",
+              "controller": "PaperCaptureController",
+              "method": "repairUpload",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 19
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/repair-uploads/:id",
+              "controller": "PaperCaptureController",
+              "method": "repairUploadProgress",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 20
+            },
+            {
+              "verb": "PUT",
+              "path": "/api/learning/paper-captures/repair-uploads/:id/chunks/:index",
+              "controller": "PaperCaptureController",
+              "method": "repairChunk",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 21
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repair-uploads/:id/cancel",
+              "controller": "PaperCaptureController",
+              "method": "cancelRepairUpload",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 22
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/repairs",
+              "controller": "PaperCaptureController",
+              "method": "repairList",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 23
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repairs",
+              "controller": "PaperCaptureController",
+              "method": "repairStart",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 24
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/repairs/:id",
+              "controller": "PaperCaptureController",
+              "method": "repairProgress",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 25
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repairs/:id/cancel",
+              "controller": "PaperCaptureController",
+              "method": "cancelRepair",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 26
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/repairs/:id/retry",
+              "controller": "PaperCaptureController",
+              "method": "retryRepair",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 27
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/limits",
+              "controller": "PaperCaptureController",
+              "method": "limits",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 28
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/commands/:requestKey",
+              "controller": "PaperCaptureController",
+              "method": "result",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 29
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/uploads",
+              "controller": "PaperCaptureController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 30
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/uploads",
+              "controller": "PaperCaptureController",
+              "method": "start",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 31
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/uploads/:id",
+              "controller": "PaperCaptureController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 32
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/uploads/:id/commands",
+              "controller": "PaperCaptureController",
+              "method": "uploadCommands",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 33
+            },
+            {
+              "verb": "PUT",
+              "path": "/api/learning/paper-captures/uploads/:id/chunks/:index",
+              "controller": "PaperCaptureController",
+              "method": "chunk",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 34
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/uploads/:id/complete",
+              "controller": "PaperCaptureController",
+              "method": "complete",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 35
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/uploads/:id/cancel",
+              "controller": "PaperCaptureController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 36
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/pages/:id",
+              "controller": "PaperCaptureController",
+              "method": "page",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 37
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/pages/:id/files",
+              "controller": "PaperCaptureController",
+              "method": "pageFiles",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 38
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/pages/:id/revisions",
+              "controller": "PaperCaptureController",
+              "method": "revise",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 39
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/groups",
+              "controller": "PaperCaptureController",
+              "method": "listGroups",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 40
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/groups/:id",
+              "controller": "PaperCaptureController",
+              "method": "group",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 41
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/groups/:id/revisions",
+              "controller": "PaperCaptureController",
+              "method": "reviseGroup",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 42
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/groups/:id/recognize",
+              "controller": "PaperCaptureController",
+              "method": "recognize",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 43
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/groups/:id/derivations",
+              "controller": "PaperCaptureController",
+              "method": "derivationList",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 44
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/derivations/:id",
+              "controller": "PaperCaptureController",
+              "method": "derivation",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 45
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/derivations/:id/files",
+              "controller": "PaperCaptureController",
+              "method": "derivationFiles",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 46
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/derivations/:id/cancel",
+              "controller": "PaperCaptureController",
+              "method": "cancelDerivation",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 47
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/paper-captures/derivations/:id/retry",
+              "controller": "PaperCaptureController",
+              "method": "retryDerivation",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 48
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/derivations/:id/pdf",
+              "controller": "PaperCaptureController",
+              "method": "derivedPdf",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 49
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/paper-captures/pages/:id/images/:role",
+              "controller": "PaperCaptureController",
+              "method": "image",
+              "file": "apps/api/src/modules/learning/paper-capture.controller.ts",
+              "line": 50
+            }
+          ],
+          "implementations": [
+            {
+              "name": "PaperCaptureRepairService.command",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 48
+            },
+            {
+              "name": "PaperCaptureIntegrityService.repairCandidate",
+              "file": "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+              "line": 68
+            },
+            {
+              "name": "PaperCaptureRepairService.listUploads",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 52
+            },
+            {
+              "name": "PaperCaptureRepairService.startUpload",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 54
+            },
+            {
+              "name": "PaperCaptureRepairService.getUpload",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 51
+            },
+            {
+              "name": "PaperCaptureRepairService.chunk",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 65
+            },
+            {
+              "name": "PaperCaptureRepairService.cancelUpload",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 72
+            },
+            {
+              "name": "PaperCaptureRepairService.list",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 89
+            },
+            {
+              "name": "PaperCaptureRepairService.start",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 75
+            },
+            {
+              "name": "PaperCaptureRepairService.get",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 88
+            },
+            {
+              "name": "PaperCaptureRepairService.control",
+              "file": "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+              "line": 94
+            },
+            {
+              "name": "PaperCaptureCommandService.result",
+              "file": "apps/api/src/modules/learning/paper-capture-command.service.ts",
+              "line": 41
+            },
+            {
+              "name": "PaperCaptureUploadService.list",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 58
+            },
+            {
+              "name": "PaperCaptureUploadService.start",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 38
+            },
+            {
+              "name": "PaperCaptureUploadService.get",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 52
+            },
+            {
+              "name": "PaperCaptureUploadService.originalCommands",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 53
+            },
+            {
+              "name": "PaperCaptureUploadService.chunk",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 59
+            },
+            {
+              "name": "PaperCaptureUploadService.complete",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 74
+            },
+            {
+              "name": "PaperCaptureUploadService.cancel",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 68
+            },
+            {
+              "name": "PaperCaptureUploadService.pageView",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 91
+            },
+            {
+              "name": "PaperCaptureIntegrityService.page",
+              "file": "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+              "line": 62
+            },
+            {
+              "name": "PaperCapturePageService.revise",
+              "file": "apps/api/src/modules/learning/paper-capture-page.service.ts",
+              "line": 31
+            },
+            {
+              "name": "PaperCaptureGroupService.list",
+              "file": "apps/api/src/modules/learning/paper-capture-group.service.ts",
+              "line": 19
+            },
+            {
+              "name": "PaperCaptureGroupService.get",
+              "file": "apps/api/src/modules/learning/paper-capture-group.service.ts",
+              "line": 18
+            },
+            {
+              "name": "PaperCaptureGroupService.revise",
+              "file": "apps/api/src/modules/learning/paper-capture-group.service.ts",
+              "line": 20
+            },
+            {
+              "name": "PaperCaptureDerivationService.recognize",
+              "file": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+              "line": 45
+            },
+            {
+              "name": "PaperCaptureDerivationService.list",
+              "file": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+              "line": 26
+            },
+            {
+              "name": "PaperCaptureDerivationService.get",
+              "file": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+              "line": 25
+            },
+            {
+              "name": "PaperCaptureIntegrityService.derivation",
+              "file": "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+              "line": 63
+            },
+            {
+              "name": "PaperCaptureDerivationService.control",
+              "file": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+              "line": 58
+            },
+            {
+              "name": "PaperCaptureDerivationService.pdf",
+              "file": "apps/api/src/modules/learning/paper-capture-derivation.service.ts",
+              "line": 27
+            },
+            {
+              "name": "PaperCaptureUploadService.image",
+              "file": "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+              "line": 92
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/paper-capture.controller.ts",
+            "doc/product/191-native-matrices-chinese-formulas-and-pdf-cell-geometry.md",
+            "apps/api/src/modules/learning/paper-capture-repair.service.ts",
+            "apps/api/src/modules/learning/paper-capture-integrity.service.ts",
+            "apps/api/src/modules/learning/paper-capture-command.service.ts",
+            "apps/api/src/modules/learning/paper-capture-upload.service.ts",
+            "apps/api/src/modules/learning/paper-capture-page.service.ts",
+            "apps/api/src/modules/learning/paper-capture-group.service.ts",
+            "apps/api/src/modules/learning/paper-capture-derivation.service.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
         }
       ]
     },
@@ -11916,7 +13267,7 @@
               "controller": "GespController",
               "method": "atoms",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 30
+              "line": 34
             },
             {
               "verb": "GET",
@@ -11924,7 +13275,7 @@
               "controller": "GespController",
               "method": "search",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 31
+              "line": 35
             },
             {
               "verb": "GET",
@@ -11932,7 +13283,7 @@
               "controller": "GespController",
               "method": "detail",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 32
+              "line": 36
             },
             {
               "verb": "GET",
@@ -11940,34 +13291,34 @@
               "controller": "GespController",
               "method": "document",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 33
+              "line": 37
             }
           ],
           "implementations": [
             {
               "name": "GespService.overview",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 75
+              "line": 76
             },
             {
               "name": "GespService.atoms",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 438
+              "line": 547
             },
             {
               "name": "GespService.search",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 443
+              "line": 552
             },
             {
               "name": "GespService.detail",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 476
+              "line": 585
             },
             {
               "name": "GespService.document",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 495
+              "line": 604
             }
           ],
           "sourceFiles": [
@@ -12006,7 +13357,7 @@
               "controller": "GespController",
               "method": "setScope",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 17
+              "line": 21
             },
             {
               "verb": "GET",
@@ -12014,19 +13365,19 @@
               "controller": "GespController",
               "method": "workspace",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 20
+              "line": 24
             }
           ],
           "implementations": [
             {
               "name": "GespService.setStudentScope",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 128
+              "line": 146
             },
             {
               "name": "GespService.studentWorkspace",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 150
+              "line": 168
             }
           ],
           "sourceFiles": [
@@ -12064,14 +13415,14 @@
               "controller": "GespController",
               "method": "submitProbe",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 24
+              "line": 28
             }
           ],
           "implementations": [
             {
               "name": "GespService.submitProbe",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 252
+              "line": 269
             }
           ],
           "sourceFiles": [
@@ -12109,14 +13460,14 @@
               "controller": "GespController",
               "method": "submitCode",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 23
+              "line": 27
             }
           ],
           "implementations": [
             {
               "name": "GespService.submitCode",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 274
+              "line": 295
             }
           ],
           "sourceFiles": [
@@ -12156,14 +13507,14 @@
               "controller": "GespController",
               "method": "requestHint",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 25
+              "line": 29
             }
           ],
           "implementations": [
             {
               "name": "GespService.requestHint",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 170
+              "line": 187
             }
           ],
           "sourceFiles": [
@@ -12203,7 +13554,7 @@
               "controller": "GespController",
               "method": "createGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 26
+              "line": 30
             },
             {
               "verb": "PATCH",
@@ -12211,19 +13562,19 @@
               "controller": "GespController",
               "method": "decideGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 27
+              "line": 31
             }
           ],
           "implementations": [
             {
               "name": "GespService.createGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 193
+              "line": 210
             },
             {
               "name": "GespService.decideGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 236
+              "line": 253
             }
           ],
           "sourceFiles": [
@@ -12270,7 +13621,7 @@
               "controller": "GespController",
               "method": "reviewStudentContent",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 13
+              "line": 17
             },
             {
               "verb": "GET",
@@ -12278,24 +13629,37 @@
               "controller": "GespController",
               "method": "studentContentReviews",
               "file": "apps/api/src/modules/gesp/gesp.controller.ts",
-              "line": 14
+              "line": 18
+            },
+            {
+              "verb": "GET",
+              "path": "/api/gesp/teaching-candidates",
+              "controller": "GespController",
+              "method": "teachingCandidates",
+              "file": "apps/api/src/modules/gesp/gesp.controller.ts",
+              "line": 13
             }
           ],
           "implementations": [
             {
               "name": "GespService.studentContentReview",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 88
+              "line": 89
             },
             {
               "name": "GespService.reviewStudentTask",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 100
+              "line": 118
             },
             {
               "name": "GespService.studentTaskReviewHistory",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 121
+              "line": 139
+            },
+            {
+              "name": "GespService.teachingCandidates",
+              "file": "apps/api/src/modules/gesp/gesp.service.ts",
+              "line": 101
             }
           ],
           "sourceFiles": [
@@ -12576,32 +13940,32 @@
             {
               "name": "StudentMediaService.capabilities",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 23
+              "line": 24
             },
             {
               "name": "StudentMediaService.start",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 62
+              "line": 71
             },
             {
               "name": "StudentMediaService.get",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 60
+              "line": 69
             },
             {
               "name": "StudentMediaService.chunk",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 91
+              "line": 100
             },
             {
               "name": "StudentMediaService.complete",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 102
+              "line": 111
             },
             {
               "name": "StudentMediaService.cancel",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 229
+              "line": 238
             }
           ],
           "sourceFiles": [
@@ -12674,7 +14038,7 @@
             {
               "name": "StudentMediaService.content",
               "file": "apps/api/src/modules/student-media/student-media.service.ts",
-              "line": 152
+              "line": 161
             }
           ],
           "sourceFiles": [
@@ -12771,17 +14135,17 @@
             {
               "name": "PrivacyService.overview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 55
+              "line": 64
             },
             {
               "name": "PrivacyService.preview",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 78
+              "line": 90
             },
             {
               "name": "PrivacyService.export",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 85
+              "line": 97
             }
           ],
           "sourceFiles": [
@@ -12861,7 +14225,7 @@
             {
               "name": "PrivacyService.prepareArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 118
+              "line": 130
             },
             {
               "name": "PrivacyController.archiveResponse",
@@ -12871,7 +14235,7 @@
             {
               "name": "PrivacyService.downloadArchive",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 127
+              "line": 139
             }
           ],
           "sourceFiles": [
@@ -12931,7 +14295,7 @@
             {
               "name": "PrivacyService.delete",
               "file": "apps/api/src/modules/privacy/privacy.service.ts",
-              "line": 201
+              "line": 247
             }
           ],
           "sourceFiles": [
@@ -13101,7 +14465,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 363
+              "line": 376
             },
             {
               "name": "DomainEventBusService.publish",
@@ -13116,7 +14480,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 261
+              "line": 274
             }
           ],
           "sourceFiles": [
@@ -13335,10 +14699,10 @@
             "/admin/analytics"
           ],
           "inputs": "管理员身份与进程/存储/任务状态",
-          "implementation": "health仅检查存活；ready验证存储请求；运行看板汇总请求、错误、延迟、任务、复核与AI质量；区分进程计数和持久库计数。",
-          "outputs": "健康探针、积压与运行摘要",
+          "implementation": "health仅检查存活；ready验证存储请求；运行看板汇总请求、错误、延迟、任务、复核与AI质量；区分进程计数和持久库计数。管理员可明确检查存储、资产、模型目录、CLI、语音、Python/PDF、OCR、音视频、生图、C++隔离和文档导出，分本地检查通过、配置已读取、关闭和需处理；固定本地探测有超时、输出限制和短缓存，各可选失败互不阻断。前端刷新与换号清空旧结果并拒绝迟到响应。",
+          "outputs": "健康探针、积压与运行摘要、逐项依赖状态和修复建议",
           "collections": [],
-          "limits": "请求指标是当前进程自启动累计，不是完整分布式监控平台。",
+          "limits": "配置或依赖通过不等供应商在线、实际生成或新机器验收；不自动安装、不调用生成、不返回本机路径或凭据。请求指标是当前进程自启动累计。",
           "endpoints": [
             {
               "verb": "GET",
@@ -13366,6 +14730,14 @@
             },
             {
               "verb": "GET",
+              "path": "/api/admin/operations/capabilities",
+              "controller": "OperationsCapabilitiesController",
+              "method": "check",
+              "file": "apps/api/src/modules/operations/operations-capabilities.service.ts",
+              "line": 126
+            },
+            {
+              "verb": "GET",
               "path": "/api/admin/analytics/overview",
               "controller": "ProgressController",
               "method": "getAnalyticsOverview",
@@ -13385,12 +14757,17 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 245
+              "line": 258
             },
             {
               "name": "RuntimeMetricsService.snapshot",
               "file": "apps/api/src/infrastructure/runtime-metrics.service.ts",
               "line": 27
+            },
+            {
+              "name": "OperationsCapabilitiesService.check",
+              "file": "apps/api/src/modules/operations/operations-capabilities.service.ts",
+              "line": 51
             },
             {
               "name": "ProgressService.getAnalyticsOverview",
@@ -13404,6 +14781,12 @@
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/operations/operations-capabilities.service.ts",
+            "apps/api/src/modules/operations/operations-capabilities.module.ts",
+            "apps/web/app/admin/analytics/runtime-capabilities.tsx",
+            "apps/api/src/modules/operations/operations-capabilities.test.ts",
+            "apps/api/src/modules/operations/operations-capabilities.integration.test.ts",
+            "tests/e2e/operations-capabilities.spec.ts",
             "apps/api/src/infrastructure/in-memory-store.service.ts",
             "apps/api/src/infrastructure/runtime-metrics.service.ts",
             "apps/api/src/modules/progress/progress.service.ts"

@@ -18,25 +18,25 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/admin/analytics/page.tsx](../../../apps/web/app/admin/analytics/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`../../../lib/api`、`../../../lib/session-user`、`@study-agent/contracts`
+- 直接引用：`react`、`next/link`、`../../../lib/api`、`../../../lib/session-user`、`@study-agent/contracts`、`./runtime-capabilities`
 
 ## /admin/content
 
 类型：页面。实现：[apps/web/app/admin/content/page.tsx](../../../apps/web/app/admin/content/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../components/formula-input`、`../../../components/question-renderer`、`../../../lib/api`、`../../../lib/session-user`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../components/formula-input`、`../../../components/question-renderer`、`../../../lib/api`、`../../../lib/session-user`
 
 ## /admin/curriculum
 
 类型：页面。实现：[apps/web/app/admin/curriculum/page.tsx](../../../apps/web/app/admin/curriculum/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`./package-panel`、`./teaching-editor`、`./component-binding-editor`、`./material-coverage`、`./mapping-worklist`、`../../student/assessment/studio.css`、`../workbench.css`、`./curriculum.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`next/navigation`、`@study-agent/contracts`、`../../../lib/api`、`./package-panel`、`./teaching-editor`、`./component-binding-editor`、`./material-coverage`、`./mapping-worklist`、`./teaching-package-workspace`、`./reference-source-panel`、`./controlled-editorial-panel`、`../../../components/controlled-copy-exit`、`../../../lib/workspace-exit-guard`、`../../student/assessment/studio.css`、`../workbench.css`、`./curriculum.css`
 
 ## /admin/gesp
 
 类型：页面。实现：[apps/web/app/admin/gesp/page.tsx](../../../apps/web/app/admin/gesp/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../student/assessment/studio.css`、`../workbench.css`、`./gesp.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../student/assessment/studio.css`、`../workbench.css`、`./gesp.css`、`./teaching-candidates`
 
 ## /admin/imports
 
@@ -48,7 +48,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/admin/measurement/page.tsx](../../../apps/web/app/admin/measurement/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/rich-math`、`../../../components/question-renderer`、`../../student/assessment/studio.css`、`../workbench.css`、`./measurement.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../components/rich-math`、`../../../components/question-renderer`、`../../student/assessment/studio.css`、`../workbench.css`、`./measurement.css`
 
 ## /admin/reviews
 
@@ -96,7 +96,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/access/page.tsx](../../../apps/web/app/parent/access/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/study-nav`、`../../../lib/session-user`、`../../../components/student-learning-access`、`../../student/assessment/studio.css`、`../../admin/workbench.css`、`./access.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/study-nav`、`../../../lib/learning-context`、`../../../lib/session-user`、`../../../components/student-learning-access`、`../../student/assessment/studio.css`、`./access.css`
 
 ## /parent/dashboard
 
@@ -108,7 +108,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/data/page.tsx](../../../apps/web/app/parent/data/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`./privacy.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/session-user`、`../../../components/study-nav`、`../../student/assessment/studio.css`、`./privacy.css`
 
 ## /parent/gesp
 
@@ -120,7 +120,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/login/page.tsx](../../../apps/web/app/parent/login/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/learning-login.css`
+- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/login-link`、`../../../components/learning-login.css`
 
 ## /student/assessment
 
@@ -144,7 +144,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/student/login/page.tsx](../../../apps/web/app/student/login/page.tsx)。
 
-- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/learning-login.css`
+- 直接引用：`react`、`next/link`、`next/navigation`、`../../../lib/api`、`../../../lib/session-user`、`../../../lib/workspace-navigation`、`../../../components/login-link`、`../../../components/learning-login.css`
 
 ## /student/mission
 
@@ -204,7 +204,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/studio/settings/page.tsx](../../../apps/web/app/studio/settings/page.tsx)。
 
-- 直接引用：`next/link`、`../studio-navigation`、`../../../lib/session-user`
+- 直接引用：`../../../components/login-link`、`next/link`、`../studio-navigation`、`../../../lib/session-user`
 
 ## /studio/source-courses
 

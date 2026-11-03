@@ -1,3 +1,18 @@
+export type OperationsCapability = {
+  id: 'storage' | 'assets' | 'text_models' | 'cli' | 'speech' | 'pdf' | 'ocr' | 'ffmpeg' | 'image' | 'cpp' | 'paper_export';
+  title: string;
+  state: 'ready' | 'configured' | 'unavailable' | 'disabled';
+  optional: boolean;
+  message: string;
+  repair: string | null;
+};
+export type OperationsCapabilities = {
+  at: string;
+  cacheSeconds: number;
+  scope: string;
+  checks: OperationsCapability[];
+};
+
 export type OperationsOverview = {
   at: string;
   runtime: { node: string; uptimeSeconds: number; memory: { rss: number; heapTotal: number; heapUsed: number; external: number; arrayBuffers: number } };

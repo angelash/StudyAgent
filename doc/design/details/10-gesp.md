@@ -1,6 +1,6 @@
 # 10 GESP研究、C++试点与独立保持 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：教研、监护家长、试点学生。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：教研、监护家长、试点学生。
 
 产品入口：`/admin/gesp`、`/parent/gesp`、`/student/gesp`。
 
@@ -64,18 +64,18 @@
 **关联接口**：
 
 - `GET /api/gesp/overview` → `GespController.overview`；[apps/api/src/modules/gesp/gesp.controller.ts:11](../../../apps/api/src/modules/gesp/gesp.controller.ts#L11)。
-- `GET /api/gesp/atoms` → `GespController.atoms`；[apps/api/src/modules/gesp/gesp.controller.ts:30](../../../apps/api/src/modules/gesp/gesp.controller.ts#L30)。
-- `GET /api/gesp/questions` → `GespController.search`；[apps/api/src/modules/gesp/gesp.controller.ts:31](../../../apps/api/src/modules/gesp/gesp.controller.ts#L31)。
-- `GET /api/gesp/questions/:id` → `GespController.detail`；[apps/api/src/modules/gesp/gesp.controller.ts:32](../../../apps/api/src/modules/gesp/gesp.controller.ts#L32)。
-- `GET /api/gesp/documents/:sha256` → `GespController.document`；[apps/api/src/modules/gesp/gesp.controller.ts:33](../../../apps/api/src/modules/gesp/gesp.controller.ts#L33)。
+- `GET /api/gesp/atoms` → `GespController.atoms`；[apps/api/src/modules/gesp/gesp.controller.ts:34](../../../apps/api/src/modules/gesp/gesp.controller.ts#L34)。
+- `GET /api/gesp/questions` → `GespController.search`；[apps/api/src/modules/gesp/gesp.controller.ts:35](../../../apps/api/src/modules/gesp/gesp.controller.ts#L35)。
+- `GET /api/gesp/questions/:id` → `GespController.detail`；[apps/api/src/modules/gesp/gesp.controller.ts:36](../../../apps/api/src/modules/gesp/gesp.controller.ts#L36)。
+- `GET /api/gesp/documents/:sha256` → `GespController.document`；[apps/api/src/modules/gesp/gesp.controller.ts:37](../../../apps/api/src/modules/gesp/gesp.controller.ts#L37)。
 
 **服务方法**：
 
-- `GespService.overview`；[apps/api/src/modules/gesp/gesp.service.ts:75](../../../apps/api/src/modules/gesp/gesp.service.ts#L75)。
-- `GespService.atoms`；[apps/api/src/modules/gesp/gesp.service.ts:438](../../../apps/api/src/modules/gesp/gesp.service.ts#L438)。
-- `GespService.search`；[apps/api/src/modules/gesp/gesp.service.ts:443](../../../apps/api/src/modules/gesp/gesp.service.ts#L443)。
-- `GespService.detail`；[apps/api/src/modules/gesp/gesp.service.ts:476](../../../apps/api/src/modules/gesp/gesp.service.ts#L476)。
-- `GespService.document`；[apps/api/src/modules/gesp/gesp.service.ts:495](../../../apps/api/src/modules/gesp/gesp.service.ts#L495)。
+- `GespService.overview`；[apps/api/src/modules/gesp/gesp.service.ts:76](../../../apps/api/src/modules/gesp/gesp.service.ts#L76)。
+- `GespService.atoms`；[apps/api/src/modules/gesp/gesp.service.ts:547](../../../apps/api/src/modules/gesp/gesp.service.ts#L547)。
+- `GespService.search`；[apps/api/src/modules/gesp/gesp.service.ts:552](../../../apps/api/src/modules/gesp/gesp.service.ts#L552)。
+- `GespService.detail`；[apps/api/src/modules/gesp/gesp.service.ts:585](../../../apps/api/src/modules/gesp/gesp.service.ts#L585)。
+- `GespService.document`；[apps/api/src/modules/gesp/gesp.service.ts:604](../../../apps/api/src/modules/gesp/gesp.service.ts#L604)。
 
 ## GESP-02 试点范围与学生工作区
 
@@ -91,13 +91,13 @@
 
 **关联接口**：
 
-- `PUT /api/gesp/students/:studentId/scope` → `GespController.setScope`；[apps/api/src/modules/gesp/gesp.controller.ts:17](../../../apps/api/src/modules/gesp/gesp.controller.ts#L17)。
-- `GET /api/gesp/students/:studentId/workspace` → `GespController.workspace`；[apps/api/src/modules/gesp/gesp.controller.ts:20](../../../apps/api/src/modules/gesp/gesp.controller.ts#L20)。
+- `PUT /api/gesp/students/:studentId/scope` → `GespController.setScope`；[apps/api/src/modules/gesp/gesp.controller.ts:21](../../../apps/api/src/modules/gesp/gesp.controller.ts#L21)。
+- `GET /api/gesp/students/:studentId/workspace` → `GespController.workspace`；[apps/api/src/modules/gesp/gesp.controller.ts:24](../../../apps/api/src/modules/gesp/gesp.controller.ts#L24)。
 
 **服务方法**：
 
-- `GespService.setStudentScope`；[apps/api/src/modules/gesp/gesp.service.ts:128](../../../apps/api/src/modules/gesp/gesp.service.ts#L128)。
-- `GespService.studentWorkspace`；[apps/api/src/modules/gesp/gesp.service.ts:150](../../../apps/api/src/modules/gesp/gesp.service.ts#L150)。
+- `GespService.setStudentScope`；[apps/api/src/modules/gesp/gesp.service.ts:146](../../../apps/api/src/modules/gesp/gesp.service.ts#L146)。
+- `GespService.studentWorkspace`；[apps/api/src/modules/gesp/gesp.service.ts:168](../../../apps/api/src/modules/gesp/gesp.service.ts#L168)。
 
 ## GESP-03 概念与跟踪探针
 
@@ -113,11 +113,11 @@
 
 **关联接口**：
 
-- `POST /api/gesp/probe-submissions` → `GespController.submitProbe`；[apps/api/src/modules/gesp/gesp.controller.ts:24](../../../apps/api/src/modules/gesp/gesp.controller.ts#L24)。
+- `POST /api/gesp/probe-submissions` → `GespController.submitProbe`；[apps/api/src/modules/gesp/gesp.controller.ts:28](../../../apps/api/src/modules/gesp/gesp.controller.ts#L28)。
 
 **服务方法**：
 
-- `GespService.submitProbe`；[apps/api/src/modules/gesp/gesp.service.ts:252](../../../apps/api/src/modules/gesp/gesp.service.ts#L252)。
+- `GespService.submitProbe`；[apps/api/src/modules/gesp/gesp.service.ts:269](../../../apps/api/src/modules/gesp/gesp.service.ts#L269)。
 
 ## GESP-04 隔离C++编译运行与隐藏测试
 
@@ -133,11 +133,11 @@
 
 **关联接口**：
 
-- `POST /api/gesp/code-submissions` → `GespController.submitCode`；[apps/api/src/modules/gesp/gesp.controller.ts:23](../../../apps/api/src/modules/gesp/gesp.controller.ts#L23)。
+- `POST /api/gesp/code-submissions` → `GespController.submitCode`；[apps/api/src/modules/gesp/gesp.controller.ts:27](../../../apps/api/src/modules/gesp/gesp.controller.ts#L27)。
 
 **服务方法**：
 
-- `GespService.submitCode`；[apps/api/src/modules/gesp/gesp.service.ts:274](../../../apps/api/src/modules/gesp/gesp.service.ts#L274)。
+- `GespService.submitCode`；[apps/api/src/modules/gesp/gesp.service.ts:295](../../../apps/api/src/modules/gesp/gesp.service.ts#L295)。
 
 ## GESP-05 逐级提示与辅助实现记录
 
@@ -153,11 +153,11 @@
 
 **关联接口**：
 
-- `POST /api/gesp/hints` → `GespController.requestHint`；[apps/api/src/modules/gesp/gesp.controller.ts:25](../../../apps/api/src/modules/gesp/gesp.controller.ts#L25)。
+- `POST /api/gesp/hints` → `GespController.requestHint`；[apps/api/src/modules/gesp/gesp.controller.ts:29](../../../apps/api/src/modules/gesp/gesp.controller.ts#L29)。
 
 **服务方法**：
 
-- `GespService.requestHint`；[apps/api/src/modules/gesp/gesp.service.ts:170](../../../apps/api/src/modules/gesp/gesp.service.ts#L170)。
+- `GespService.requestHint`；[apps/api/src/modules/gesp/gesp.service.ts:187](../../../apps/api/src/modules/gesp/gesp.service.ts#L187)。
 
 ## GESP-06 家长确认指导与四阶段保持
 
@@ -173,13 +173,13 @@
 
 **关联接口**：
 
-- `POST /api/gesp/guidance-plans` → `GespController.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.controller.ts:26](../../../apps/api/src/modules/gesp/gesp.controller.ts#L26)。
-- `PATCH /api/gesp/guidance-plans/:planId` → `GespController.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.controller.ts:27](../../../apps/api/src/modules/gesp/gesp.controller.ts#L27)。
+- `POST /api/gesp/guidance-plans` → `GespController.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.controller.ts:30](../../../apps/api/src/modules/gesp/gesp.controller.ts#L30)。
+- `PATCH /api/gesp/guidance-plans/:planId` → `GespController.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.controller.ts:31](../../../apps/api/src/modules/gesp/gesp.controller.ts#L31)。
 
 **服务方法**：
 
-- `GespService.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:193](../../../apps/api/src/modules/gesp/gesp.service.ts#L193)。
-- `GespService.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:236](../../../apps/api/src/modules/gesp/gesp.service.ts#L236)。
+- `GespService.createGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:210](../../../apps/api/src/modules/gesp/gesp.service.ts#L210)。
+- `GespService.decideGuidancePlan`；[apps/api/src/modules/gesp/gesp.service.ts:253](../../../apps/api/src/modules/gesp/gesp.service.ts#L253)。
 
 ## GESP-07 试点任务内容审核与版本历史
 
@@ -196,11 +196,13 @@
 **关联接口**：
 
 - `GET /api/gesp/student-content` → `GespController.studentContent`；[apps/api/src/modules/gesp/gesp.controller.ts:12](../../../apps/api/src/modules/gesp/gesp.controller.ts#L12)。
-- `POST /api/gesp/student-content/reviews` → `GespController.reviewStudentContent`；[apps/api/src/modules/gesp/gesp.controller.ts:13](../../../apps/api/src/modules/gesp/gesp.controller.ts#L13)。
-- `GET /api/gesp/student-content/:taskId/reviews` → `GespController.studentContentReviews`；[apps/api/src/modules/gesp/gesp.controller.ts:14](../../../apps/api/src/modules/gesp/gesp.controller.ts#L14)。
+- `POST /api/gesp/student-content/reviews` → `GespController.reviewStudentContent`；[apps/api/src/modules/gesp/gesp.controller.ts:17](../../../apps/api/src/modules/gesp/gesp.controller.ts#L17)。
+- `GET /api/gesp/student-content/:taskId/reviews` → `GespController.studentContentReviews`；[apps/api/src/modules/gesp/gesp.controller.ts:18](../../../apps/api/src/modules/gesp/gesp.controller.ts#L18)。
+- `GET /api/gesp/teaching-candidates` → `GespController.teachingCandidates`；[apps/api/src/modules/gesp/gesp.controller.ts:13](../../../apps/api/src/modules/gesp/gesp.controller.ts#L13)。
 
 **服务方法**：
 
-- `GespService.studentContentReview`；[apps/api/src/modules/gesp/gesp.service.ts:88](../../../apps/api/src/modules/gesp/gesp.service.ts#L88)。
-- `GespService.reviewStudentTask`；[apps/api/src/modules/gesp/gesp.service.ts:100](../../../apps/api/src/modules/gesp/gesp.service.ts#L100)。
-- `GespService.studentTaskReviewHistory`；[apps/api/src/modules/gesp/gesp.service.ts:121](../../../apps/api/src/modules/gesp/gesp.service.ts#L121)。
+- `GespService.studentContentReview`；[apps/api/src/modules/gesp/gesp.service.ts:89](../../../apps/api/src/modules/gesp/gesp.service.ts#L89)。
+- `GespService.reviewStudentTask`；[apps/api/src/modules/gesp/gesp.service.ts:118](../../../apps/api/src/modules/gesp/gesp.service.ts#L118)。
+- `GespService.studentTaskReviewHistory`；[apps/api/src/modules/gesp/gesp.service.ts:139](../../../apps/api/src/modules/gesp/gesp.service.ts#L139)。
+- `GespService.teachingCandidates`；[apps/api/src/modules/gesp/gesp.service.ts:101](../../../apps/api/src/modules/gesp/gesp.service.ts#L101)。

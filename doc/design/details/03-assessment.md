@@ -1,6 +1,6 @@
 # 03 评测组题、作答与评分 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：学生、监护家长、授权教师。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：学生、监护家长、授权教师。
 
 产品入口：`/student/assessment`、`/parent/dashboard`。
 
@@ -48,13 +48,13 @@
 
 **关联接口**：
 
-- `POST /api/diagnostics/blueprints` → `DiagnosticsController.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:84](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L84)。
-- `GET /api/diagnostics/blueprints/:blueprintId` → `DiagnosticsController.blueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:86](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L86)。
+- `POST /api/diagnostics/blueprints` → `DiagnosticsController.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:112](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L112)。
+- `GET /api/diagnostics/blueprints/:blueprintId` → `DiagnosticsController.blueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:114](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L114)。
 
 **服务方法**：
 
-- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:163](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L163)。
-- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:196](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L196)。
+- `DiagnosticsService.previewBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:239](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L239)。
+- `DiagnosticsService.getBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:273](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L273)。
 
 ## ASM-02 确认蓝图与冻结评测
 
@@ -70,13 +70,13 @@
 
 **关联接口**：
 
-- `POST /api/diagnostics/blueprints/:blueprintId/start` → `DiagnosticsController.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:88](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L88)。
-- `POST /api/diagnostics/sessions` → `DiagnosticsController.start`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:82](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L82)。
+- `POST /api/diagnostics/blueprints/:blueprintId/start` → `DiagnosticsController.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:116](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L116)。
+- `POST /api/diagnostics/sessions` → `DiagnosticsController.start`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:110](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L110)。
 
 **服务方法**：
 
-- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:197](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L197)。
-- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:39](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L39)。
+- `DiagnosticsService.startBlueprint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:274](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L274)。
+- `DiagnosticsService.start`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:78](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L78)。
 
 ## ASM-03 冻结题组内的逐题自适应
 
@@ -110,15 +110,15 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/sessions` → `DiagnosticsController.list`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:92](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L92)。
-- `GET /api/diagnostics/sessions/:sessionId` → `DiagnosticsController.session`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:96](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L96)。
-- `GET /api/diagnostics/sessions/:sessionId/items/:itemId` → `DiagnosticsController.render`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:102](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L102)。
+- `GET /api/diagnostics/sessions` → `DiagnosticsController.list`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:120](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L120)。
+- `GET /api/diagnostics/sessions/:sessionId` → `DiagnosticsController.session`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:124](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L124)。
+- `GET /api/diagnostics/sessions/:sessionId/items/:itemId` → `DiagnosticsController.render`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:130](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L130)。
 
 **服务方法**：
 
-- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:237](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L237)。
-- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:243](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L243)。
-- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:304](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L304)。
+- `DiagnosticsService.listSessions`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:314](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L314)。
+- `DiagnosticsService.sessionView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:320](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L320)。
+- `DiagnosticsService.renderItem`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:386](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L386)。
 
 ## ASM-05 草稿、暂停、继续与提前结束
 
@@ -134,15 +134,15 @@
 
 **关联接口**：
 
-- `PATCH /api/diagnostics/sessions/:sessionId/items/:itemId/draft` → `DiagnosticsController.draft`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:106](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L106)。
-- `POST /api/diagnostics/sessions/:sessionId/state` → `DiagnosticsController.changeState`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:90](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L90)。
-- `POST /api/diagnostics/sessions/:sessionId/complete` → `DiagnosticsController.complete`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:112](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L112)。
+- `PATCH /api/diagnostics/sessions/:sessionId/items/:itemId/draft` → `DiagnosticsController.draft`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:134](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L134)。
+- `POST /api/diagnostics/sessions/:sessionId/state` → `DiagnosticsController.changeState`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:118](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L118)。
+- `POST /api/diagnostics/sessions/:sessionId/complete` → `DiagnosticsController.complete`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:140](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L140)。
 
 **服务方法**：
 
-- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:329](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L329)。
-- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:264](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L264)。
-- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:423](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L423)。
+- `DiagnosticsService.saveDraft`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:412](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L412)。
+- `DiagnosticsService.changeState`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:345](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L345)。
+- `DiagnosticsService.complete`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:513](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L513)。
 
 ## ASM-06 首次响应、跳过、不会与提示
 
@@ -158,13 +158,13 @@
 
 **关联接口**：
 
-- `POST /api/diagnostics/sessions/:sessionId/responses` → `DiagnosticsController.respond`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:104](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L104)。
-- `POST /api/diagnostics/sessions/:sessionId/items/:itemId/hint` → `DiagnosticsController.hint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:110](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L110)。
+- `POST /api/diagnostics/sessions/:sessionId/responses` → `DiagnosticsController.respond`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:132](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L132)。
+- `POST /api/diagnostics/sessions/:sessionId/items/:itemId/hint` → `DiagnosticsController.hint`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:138](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L138)。
 
 **服务方法**：
 
-- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:347](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L347)。
-- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:409](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L409)。
+- `DiagnosticsService.submit`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:431](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L431)。
+- `DiagnosticsService.hint`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:498](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L498)。
 
 ## ASM-07 17类作答控件与协议
 
@@ -212,11 +212,11 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/students/:studentId/evidence/:responseId` → `DiagnosticsController.evidence`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:98](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L98)。
+- `GET /api/diagnostics/students/:studentId/evidence/:responseId` → `DiagnosticsController.evidence`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:126](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L126)。
 
 **服务方法**：
 
-- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:570](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L570)。
+- `DiagnosticsService.evidenceView`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:663](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L663)。
 
 ## ASM-10 评分复核与报告历史
 
@@ -232,13 +232,13 @@
 
 **关联接口**：
 
-- `POST /api/admin/diagnostic-responses/:responseId/review` → `DiagnosticsController.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)。
-- `GET /api/diagnostics/sessions/:sessionId/report-history` → `DiagnosticsController.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:150](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L150)。
+- `POST /api/admin/diagnostic-responses/:responseId/review` → `DiagnosticsController.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:180](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L180)。
+- `GET /api/diagnostics/sessions/:sessionId/report-history` → `DiagnosticsController.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:182](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L182)。
 
 **服务方法**：
 
-- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:634](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L634)。
-- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:516](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L516)。
+- `DiagnosticsService.reviewScore`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:730](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L730)。
+- `DiagnosticsService.reportHistory`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:608](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L608)。
 
 **补充实现文件**：
 
@@ -261,17 +261,17 @@
 
 **关联接口**：
 
-- `GET /api/diagnostics/sessions/:sessionId/report` → `DiagnosticsController.report`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:114](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L114)。
-- `GET /api/diagnostics/students/:studentId/profile` → `DiagnosticsController.profile`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:120](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L120)。
-- `GET /api/diagnostics/sessions/:sessionId/analysis-status` → `DiagnosticsController.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:116](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L116)。
-- `POST /api/diagnostics/sessions/:sessionId/reanalyze` → `DiagnosticsController.reanalyze`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:118](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L118)。
+- `GET /api/diagnostics/sessions/:sessionId/report` → `DiagnosticsController.report`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:142](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L142)。
+- `GET /api/diagnostics/students/:studentId/profile` → `DiagnosticsController.profile`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:148](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L148)。
+- `GET /api/diagnostics/sessions/:sessionId/analysis-status` → `DiagnosticsController.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:144](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L144)。
+- `POST /api/diagnostics/sessions/:sessionId/reanalyze` → `DiagnosticsController.reanalyze`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:146](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L146)。
 
 **服务方法**：
 
-- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:509](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L509)。
-- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:489](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L489)。
-- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:523](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L523)。
-- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:542](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L542)。
+- `DiagnosticsService.report`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:601](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L601)。
+- `DiagnosticsService.profile`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:580](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L580)。
+- `DiagnosticsService.analysisStatus`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:615](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L615)。
+- `DiagnosticsService.reanalyzeReport`；[apps/api/src/modules/diagnostics/diagnostics.service.ts:634](../../../apps/api/src/modules/diagnostics/diagnostics.service.ts#L634)。
 
 **补充实现文件**：
 

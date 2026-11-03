@@ -1,6 +1,6 @@
 # 04 掌握量化、原子观察与深层原因 — 详细设计
 
-源码基线：`55efe6592072d56be20db9be261e179374a7b85f`。角色：学生、家长、教研。
+源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：学生、家长、教研。
 
 产品入口：`/student/assessment`、`/parent/dashboard`、`/admin/curriculum`。
 
@@ -116,3 +116,67 @@
 - [doc/product/126-knowledge-report-workspace-and-evidence-paths.md](../../../doc/product/126-knowledge-report-workspace-and-evidence-paths.md)
 - [tests/e2e/knowledge-report.spec.ts](../../../tests/e2e/knowledge-report.spec.ts)
 - [doc/evidence/2026-10-26/knowledge-report-focused/receipt.json](../../../doc/evidence/2026-10-26/knowledge-report-focused/receipt.json)
+
+## MEA-06 受控原因对照与双来源条件指导
+
+**输入**：实际教研原题、共享确认、冻结配对与当前范围、本人原命令、普通独立基准及原受控报告。
+
+**处理与实现**：只读核对原题后明确审核/发布与修订/撤回；本人固定题序和原首答，整组结束前共同延后评分披露；两侧仅计原因观察。普通独立报告供能力/保持基准，受控原报告补充条件指导，孩子本人活动后由新独立配对支持或反驳。评分和明确重分析追加版本并保护原指导历史；私人命令与匿名共享原件分开，实际删除账本及双库原生读取核对来源。工作台沿原样式、弹窗、完整副本与退出保护。
+
+**输出**：审核与预览原件、配对支持/反证、明确规则计划、本人只写活动与历史、schema30原生恢复。
+
+**状态与持久化**：`controlledMaterialReviews`、`controlledContrastPublications`、`controlledContrastReleases`、`controlledEditorialCommands`、`controlledContrastPreviews`、`diagnosticSessions`、`diagnosticResponses`、`diagnosticReports`、`diagnosticPlans`、`practiceSessions`
+
+**权限、失败与边界**：完整API2246/0/101；实际PG批20按9业务/5PG读取器/6重复SQLite分列。627唯一浏览器用例分片626通过/1登录导航ERR_NO_BUFFER_SPACE，原失败另批精确1项通过，不称627单次全绿；新两实例测试SQLite/PG各1另计。正式仍24/revision187且构建保持；原72/WS、纸面/全教材/GESP、教师/实机/真人长期及整体交付未完成。
+
+**关联接口**：
+
+- `GET /api/admin/controlled-contrasts/materials/:itemId/preflight` → `ControlledEditorialController.preflight`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:10](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L10)。
+- `GET /api/admin/controlled-contrasts/material-reviews` → `ControlledEditorialController.reviews`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:12](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L12)。
+- `POST /api/admin/controlled-contrasts/material-reviews` → `ControlledEditorialController.review`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:14](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L14)。
+- `GET /api/admin/controlled-contrasts/protocols` → `ControlledEditorialController.protocols`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:16](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L16)。
+- `GET /api/admin/controlled-contrasts/protocols/:logicalId/history` → `ControlledEditorialController.history`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:18](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L18)。
+- `POST /api/admin/controlled-contrasts/protocols` → `ControlledEditorialController.publish`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:20](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L20)。
+- `POST /api/admin/controlled-contrasts/protocols/withdrawals` → `ControlledEditorialController.withdraw`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:22](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L22)。
+- `GET /api/admin/controlled-contrasts/commands/:requestKey` → `ControlledEditorialController.receipt`；[apps/api/src/modules/diagnostics/controlled-editorial.controller.ts:24](../../../apps/api/src/modules/diagnostics/controlled-editorial.controller.ts#L24)。
+- `GET /api/diagnostics/students/:studentId/controlled-contrasts` → `ControlledDiagnosticsController.available`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:10](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L10)。
+- `GET /api/diagnostics/students/:studentId/controlled-preview-requests/:requestKey` → `ControlledDiagnosticsController.creationResult`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:12](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L12)。
+- `GET /api/diagnostics/controlled-contrasts/previews/:id/start-requests/:requestKey` → `ControlledDiagnosticsController.startResult`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:14](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L14)。
+- `POST /api/diagnostics/controlled-contrasts/previews` → `ControlledDiagnosticsController.preview`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:16](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L16)。
+- `GET /api/diagnostics/controlled-contrasts/previews/:id` → `ControlledDiagnosticsController.get`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:18](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L18)。
+- `GET /api/diagnostics/students/:studentId/controlled-previews` → `ControlledDiagnosticsController.list`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:20](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L20)。
+- `POST /api/diagnostics/controlled-contrasts/previews/:id/start` → `ControlledDiagnosticsController.start`；[apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts:22](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.controller.ts#L22)。
+- `GET /api/diagnostics/students/:studentId/controlled-guidance-options` → `DiagnosticsController.controlledGuidanceOptions`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:152](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L152)。
+- `GET /api/diagnostics/students/:studentId/controlled-guidance-requests/:requestKey` → `DiagnosticsController.controlledGuidanceResult`；[apps/api/src/modules/diagnostics/diagnostics.controller.ts:154](../../../apps/api/src/modules/diagnostics/diagnostics.controller.ts#L154)。
+
+**服务方法**：
+
+- `ControlledEditorialService.materialPreflight`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:41](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L41)。
+- `ControlledEditorialService.reviews`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:52](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L52)。
+- `ControlledEditorialService.execute`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:78](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L78)。
+- `ControlledEditorialService.publications`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:58](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L58)。
+- `ControlledEditorialService.history`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:67](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L67)。
+- `ControlledEditorialService.commandResult`；[apps/api/src/modules/diagnostics/controlled-editorial.service.ts:73](../../../apps/api/src/modules/diagnostics/controlled-editorial.service.ts#L73)。
+- `ControlledDiagnosticsService.available`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:84](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L84)。
+- `ControlledDiagnosticsService.creationResult`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:73](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L73)。
+- `ControlledDiagnosticsService.startResult`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:79](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L79)。
+- `ControlledDiagnosticsService.preview`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:109](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L109)。
+- `ControlledDiagnosticsService.get`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:72](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L72)。
+- `ControlledDiagnosticsService.list`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:101](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L101)。
+- `ControlledDiagnosticsService.start`；[apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts:135](../../../apps/api/src/modules/diagnostics/controlled-diagnostics.service.ts#L135)。
+- `GuidanceService.controlledOptions`；[apps/api/src/modules/diagnostics/guidance.service.ts:186](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L186)。
+- `GuidanceService.controlledCreationResult`；[apps/api/src/modules/diagnostics/guidance.service.ts:197](../../../apps/api/src/modules/diagnostics/guidance.service.ts#L197)。
+
+**补充实现文件**：
+
+- [packages/contracts/src/controlled-contrast.ts](../../../packages/contracts/src/controlled-contrast.ts)
+- [apps/api/src/modules/diagnostics/controlled-native.ts](../../../apps/api/src/modules/diagnostics/controlled-native.ts)
+- [apps/api/src/modules/diagnostics/controlled-guidance-basis.ts](../../../apps/api/src/modules/diagnostics/controlled-guidance-basis.ts)
+- [apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts](../../../apps/api/src/modules/diagnostics/controlled-storage.integration.test.ts)
+- [apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts](../../../apps/api/src/modules/diagnostics/controlled-contexts.integration.test.ts)
+- [apps/web/components/controlled-contrast-planner.tsx](../../../apps/web/components/controlled-contrast-planner.tsx)
+- [apps/web/components/controlled-guidance-panel.tsx](../../../apps/web/components/controlled-guidance-panel.tsx)
+- [apps/web/app/admin/curriculum/controlled-editorial-panel.tsx](../../../apps/web/app/admin/curriculum/controlled-editorial-panel.tsx)
+- [tests/e2e/controlled-contrasts.spec.ts](../../../tests/e2e/controlled-contrasts.spec.ts)
+- [doc/product/163-controlled-cause-contrasts-and-counterevidence.md](../../../doc/product/163-controlled-cause-contrasts-and-counterevidence.md)
+- [doc/evidence/2026-10-31/workspace-r3-controlled-contrasts/receipt.json](../../../doc/evidence/2026-10-31/workspace-r3-controlled-contrasts/receipt.json)

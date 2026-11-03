@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-03T01:49:53.753Z",
+  "passed": true,
+  "sourceOpenedReadOnly": true,
+  "consistentSqliteBackup": true,
+  "onlyOwnedCopyMigrated": true,
+  "originalSchema": 24,
+  "copySchema": 37,
+  "originalRevision": 188,
+  "recordCount": 89866,
+  "collectionCount": 32,
+  "originalAggregateSha256": "a0620cc7f6e940dfe41c182632aa1d50f4076490e8d363b266f875c9644d57c1",
+  "passes": [
+    {
+      "coldOpen": 1,
+      "schema": 37,
+      "originalRecords": 89866,
+      "revisionPreserved": true,
+      "idsPositionsAndRawBodyHashesPreserved": true
+    },
+    {
+      "coldOpen": 2,
+      "schema": 37,
+      "originalRecords": 89866,
+      "revisionPreserved": true,
+      "idsPositionsAndRawBodyHashesPreserved": true
+    }
+  ],
+  "mediaRestoreOrFormalMigrationClaimed": false,
+  "privateIdsBodiesAndDatabaseExcluded": true
+}
