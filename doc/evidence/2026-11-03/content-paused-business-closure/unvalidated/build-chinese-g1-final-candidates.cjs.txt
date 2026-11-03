@@ -1,0 +1,46 @@
+// Last nine directory entries of the exact first-grade source. Editorial candidates only.
+const assert=require('node:assert/strict'),{createKit}=require('./exact-source-candidate-kit.cjs');
+const bookId='archive-book:chinese-g1-upper-a692a990d41b6291',filePrefix='chinese-g1-a692a990',kit=createKit({bookId,prefix:'source:chinese:g1:a692a990:',filePrefix});
+let count=0;
+function make(c){
+ assert.equal(c.pageNotes.length,c.end-c.start+1);
+ const definitions=c.goals.map(g=>[c.slug+'-'+g.key,g.name,g.objective,g.success,g.strand]);
+ const d=kit.draft({slug:c.slug,lessonId:bookId+':chapter6:entry'+c.entry,start:c.start,end:c.end,definitions,
+  scope:{title:c.title,directoryGranularity:c.entry===10||c.entry>=14?'activity':'lesson',allPageActivitiesDelivered:false,authenticListeningStimuliIncluded:false,...c.scope},
+  content:{title:c.title,activation:c.activation,concept:{explanation:c.explanation,points:c.points},example:{situation:c.example.situation,steps:c.example.steps.map(([explanation,board])=>({explanation,board})),conclusion:c.example.conclusion},visuals:[{kind:'table',...c.table}],misconceptions:c.errors.map(([observation,alternative,verification,correctiveFeedback])=>({observation,alternatives:[alternative],verification,correctiveFeedback})),transfer:c.transfer,summary:c.summary,citations:c.citations},
+  sourceReview:{confirmedRange:true,statement:'本批重新逐页看图，核完整读篇、识写行、范形和页内任务。现代全文仅本地参考，正文为原创讲解；真实原声、手写、同伴过程与帮助另核，仍待教师审核。',pages:c.pageNotes.map((statement,i)=>({page:c.start+i,visualChecked:true,statement}))}});
+ const groups=c.goals.map(g=>kit.group(c.slug,c.slug+'-'+g.key,c.slug+'-'+g.key,g.mode,g.criteria,g.rows));
+ kit.write(filePrefix+'-'+c.slug+'-v1',[d],groups,'每目标三项即时和四项拟议1/3/7/14日原创候选；识读、书写、朗读背诵与真实活动分别核。单题间隔候选不等充分未见库存，目标、量规、独立题族与保持库存均待教师审核，不自动发布或写入学习事实。');count++;
+}
+// Reuse only the mechanics of literal character practice; each lesson supplies its exact list and context.
+function literacy({recognition,writing,pronunciation,writingFocus}){return[
+ {key:'recognition',name:'当前识字行与语境读音',objective:'本人认读本件'+recognition+'并回当前词句',success:'实际覆盖当前识字行，'+pronunciation+'；识字不代写字，示范与本人原声分清',strand:'识字',mode:'audio_record',criteria:['本人声音覆盖明确当前范围','字形读音与本件语境对应','提示与未读部分如实'],rows:[
+  ['本人回本件识字行读'+recognition+'，再选两个字回当前词语。','逐字实际认读并接当前词句；'+pronunciation+'。本人原声和得到的帮助分别核，不用参考音代本人声音。'],
+  ['先听准确示范，再本人重读本件识字行中上次尚未读稳的字，报告帮助。','先保留初次尝试，再核本次实际声音与当前字形；'+pronunciation+'。没有覆盖的字继续待练。'],
+  ['新角色词卡改变本件字的顺序，本人按当前字形认读并说明一个语境读法。','按新顺序实际认字，不只顺背原行；'+pronunciation+'。新卡若缺读音条件应回具体词义核对。'],
+  ['本次只读本件识字行的一半，能登记整行全部独立认读了吗？请本人说明。','不能，实际原声仅支持已读部分，未读待练；识读不自动证明书写或长期保持。'],
+  ['熟悉原行顺序却认不出打乱后的当前字，本人怎样报告这次情况？','顺序背诵与当前字形识读分开；保留真实原答和帮助，不用参考音补齐未认出的字。'],
+  ['成人指出本件一个字后本人改读，怎样保留初次和帮助后的两次声音？','初读、具体提示和重读分别留，不把后改倒作为首次独立；'+pronunciation+'。'],
+  ['本人再按打乱顺序读本件'+recognition+'，说明实际覆盖与帮助范围。','逐项核当前字形和本人原声，'+pronunciation+'；未覆盖不编，后练不倒作原答。']
+ ]},
+ {key:'writing',name:'当前范字本人书写',objective:'本人按本件完整范形书写'+writing,success:'实际原稿覆盖'+writing+'，'+writingFocus+'；静态字形、动态笔顺和帮助分开核',strand:'写字',mode:'image_upload',criteria:['本人原稿与当前范字对应','关键形体位置清楚完整','真实过程提示与未写部分如实'],rows:[
+  ['本人回本件完整范形写'+writing+'，上传当前完整原稿并说明帮助。','原稿实际覆盖'+writing+'；'+writingFocus+'。按真实过程核，不用教材范形或生成图代本人作品。'],
+  ['比较本件范形后本人重写一个尚不稳的字，保留初稿与当前原稿。','两次作品与实际帮助分别留；'+writingFocus+'。字形照片不能单独证明全部动态笔顺。'],
+  ['新字卡把本件'+writing+'打乱顺序，本人重新按卡书写并说明观察依据。','实际按当前字卡完成，'+writingFocus+'；不只照搬旧照片，写字与顺背字名分别核。'],
+  ['本人只写完本件一个范字，却准备上传教材范形代其余字，可以吗？','不可以，范形是参考，只有本人实际原稿才支持本次书写；未写部分继续待练。'],
+  ['一张写完的字形照片能独自证明全部落笔顺序完全正确吗？请说明。','不能，字形与动态过程是不同证据，笔顺需实际观察或过程记录，帮助也须如实。'],
+  ['成人握笔示范后本人重写，怎样保存本次原稿和得到的帮助？','本人初稿、示范和重写分别留，不把示范作品当本人独立原稿；'+writingFocus+'。'],
+  ['本人再写本件'+writing+'，逐项说明当前原稿、实际帮助和仍待练的部分。','实际原稿与当前范形对应，'+writingFocus+'；不由一次作品推出长期未见保持已经证实。']
+ ]}
+ ];}
+function reading({range,focus,memorize=false}){return{key:'reading',name:'当前完整读篇与实际原声',objective:'本人按本件'+range+'实际朗读'+(memorize?'并尝试背诵':''),success:'原声覆盖当前范围，'+focus+'；帮助与看文如实',strand:'朗读理解',mode:'audio_record',criteria:['本人原声覆盖明确范围','当前词义语气和理解对应','看文提示与未完成如实'],rows:[
+ ['本人回本件'+range+'完整朗读，再说明一条当前理解。','实际原声覆盖'+range+'，'+focus+'；示范、看文和未读部分分别核。'],
+ [memorize?'先听准确示范，再本人尝试背诵本件完整读篇，报告看文和帮助。':'先听准确示范，再本人重读本件尚不稳的一段，报告看文和帮助。','保留初次、示范与本人新原声，'+focus+'；'+(memorize?'实际背到与看文范围如实，不用参考音补齐。':'原件未列必背，不能擅称原书已有此要求。')],
+ ['新卡将当前相近对象或语句顺序调整，本人回卡说明能否原样套背旧答案。','应先回新条件核对象与先后，'+focus+'；新卡与作者原文分清，熟读旧篇不代新材料理解。'],
+ ['本人只读当前半篇，能将完整读篇登记为全部本人独立读完吗？','不能，只记录实际覆盖和帮助，未读继续待练；'+focus+'，不以熟悉情节补真实声音。'],
+ ['手机折行变了就把自然段和词组重分，怎样回原件朗读？','回原件段落、标点与完整词意，屏幕折行不独自决定段落和停顿；实际重读另留。'],
+ ['成人带读或提醒之后本人改读，怎样保存第一次与得到的帮助？','原声、具体提示与新读分别留，不把帮助后的版本倒作首次完全独立；实际范围如实。'],
+ ['本人再完成本件'+range+'，说明当前理解、看文帮助和未完成部分。','实际原声与当前范围对应，'+focus+'；没有原声不代填，不由一次熟读认定未见长期保持。']
+ ]};}
+for(const name of ['chinese-g1-hike-growth-necklace','chinese-g1-garden-seven-snow-crow','chinese-g1-snail-pumpkin-garden-eight'])require('./'+name+'.cjs')({make,literacy,reading});
+assert.equal(count,9);
