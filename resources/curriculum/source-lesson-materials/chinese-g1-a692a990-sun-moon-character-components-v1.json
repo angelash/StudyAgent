@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "sun-moon-character-components",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-sun-moon-character-components-v1.json",
+      "sha256": "31b9169d4f2271e341dd05c73dcb6930a83d70f6bcb0c024213f63e23a828506",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry4",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 77,
+        "pageEnd": 78,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-forms",
+      "structure": "g1-components-current-forms-and-transformations",
+      "familyProposal": "a692a990-g1-components-current-forms-and-transformations",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前部件位置准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整字形变化可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "字形线索不代普遍字源",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "先看当前部件与位置，明左右、尖上下等完整形式，记忆线索不当任意字符串相加。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件日月联系明、小大联系尖，怎样用完整字形而不是随意贴字图来记？",
+          "answer": "先看当前部件与位置，明左右、尖上下等完整形式，记忆线索不当任意字符串相加。",
+          "analysis": "先看当前部件与位置，明左右、尖上下等完整形式，记忆线索不当任意字符串相加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "林的左木旁与独体木在完整写法上能不看范形原样复制吗？",
+          "answer": "不能，部件进入位置有形体变化，回当前完整林范形核，不机械复制两张木图。",
+          "analysis": "不能，部件进入位置有形体变化，回当前完整林范形核，不机械复制两张木图。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新词说森林有许多树，可以只因森三木就限定三棵吗？",
+          "answer": "不能，三木是字形记忆线索，真实森林树数不由部件数固定。",
+          "analysis": "不能，三木是字形记忆线索，真实森林树数不由部件数固定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件讲田力男，就能推男学生一定承担某种劳动吗？",
+          "answer": "不能，当前字形线索不证明个人性别决定兴趣能力或分工。",
+          "analysis": "不能，当前字形线索不证明个人性别决定兴趣能力或分工。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看出某字两个部件，就已核实它唯一历史字源了吗？",
+          "answer": "没有，现代字形记忆与历史演变不同，字源需可靠材料另核。",
+          "analysis": "没有，现代字形记忆与历史演变不同，字源需可靠材料另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "从有两个人形，可以把从只当数字二使用吗？",
+          "answer": "不能，字形线索与具体词义不同，当前字义需回词语语境核。",
+          "analysis": "不能，字形线索与具体词义不同，当前字义需回词语语境核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-current-forms-and-transformations-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本件两组说部件位置与完整字形，再指出一项不能由此推出的事实。",
+          "answer": "位置形体有当前依据，历史字源、现实固定数量或个人能力不凭线索硬推。",
+          "analysis": "位置形体有当前依据，历史字源、现实固定数量或个人能力不凭线索硬推。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-inference",
+      "structure": "g1-components-lei-xiu-wai-guess-and-check",
+      "familyProposal": "a692a990-g1-components-lei-xiu-wai-guess-and-check",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前部件语境明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "猜想与核义分开",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不推广万能拆字法",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可猜联系泪水，再核准确词义；当前部件与语境支持，不把单一线索当任意字都可猜准。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件泪有氵和目，配眼睛流出水珠的语境，可以先提出什么猜想再怎样核？",
+          "answer": "可猜联系泪水，再核准确词义；当前部件与语境支持，不把单一线索当任意字都可猜准。",
+          "analysis": "可猜联系泪水，再核准确词义；当前部件与语境支持，不把单一线索当任意字都可猜准。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "休的亻和木怎样配合给定休息语境帮助记忆，亻能原样当独体人图吗？",
+          "answer": "可联系人的休息，亻在当前字里是偏旁形体，不原样复制独体人，准确字义另核。",
+          "analysis": "可联系人的休息，亻在当前字里是偏旁形体，不原样复制独体人，准确字义另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给定歪和“不正”的明确语境，怎样说当前猜义与依据？",
+          "answer": "可联系不正或倾斜，说明来自当前不正部件和语境，核准后再用，不编历史出处。",
+          "analysis": "可联系不正或倾斜，说明来自当前不正部件和语境，核准后再用，不编历史出处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会拆出部件就能断言任何新字只有一个这样拼出的意思吗？",
+          "answer": "不能，部件线索有限，新字可能多义或需其他资料，准确词义与字源分别核。",
+          "analysis": "不能，部件线索有限，新字可能多义或需其他资料，准确词义与字源分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "没有给出当前字形或语境，能照背泪的答案当新字解释吗？",
+          "answer": "不能，需当前对象和条件，不把旧例答案机械套来。",
+          "analysis": "不能，需当前对象和条件，不把旧例答案机械套来。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人解释后修正了原猜想，怎样保留两次说法？",
+          "answer": "保留原猜、帮助与核后解释，后改不倒作首次已经知道。",
+          "analysis": "保留原猜、帮助与核后解释，后改不倒作首次已经知道。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-lei-xiu-wai-guess-and-check-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从泪休歪选两字，说当前线索、可能意思和怎样核准确。",
+          "answer": "每字依据与语境清楚，猜与确认分步骤，不从三例推所有字万能拆义。",
+          "analysis": "每字依据与语境清楚，猜与确认分步骤，不从三例推所有字万能拆义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-cooperation",
+      "structure": "g1-components-cooperation-figurative-value",
+      "familyProposal": "a692a990-g1-components-cooperation-figurative-value",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "解释接当前合作语境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比喻与现实过程分明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与本人协作真实范围分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "是合力创造价值的形象表达，不作真实土壤自动变金属的材料事实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件黄土变成金在合作语境怎样理解？是否说真实土直接变金属？",
+          "answer": "是合力创造价值的形象表达，不作真实土壤自动变金属的材料事实。",
+          "analysis": "是合力创造价值的形象表达，不作真实土壤自动变金属的材料事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "一人不成众、独木不成林怎样帮助表现合作意思？",
+          "answer": "用人与树的形象强调共同努力，解释接当前语境，不限定现实固定人数树数。",
+          "analysis": "用人与树的形象强调共同努力，解释接当前语境，不限定现实固定人数树数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色分工整理书架，可以怎样联系合作又不代本人已做？",
+          "answer": "可说角色分工合力完成当前目标，角色场景与本人真实过程分开，未实际参加不编已做。",
+          "analysis": "可说角色分工合力完成当前目标，角色场景与本人真实过程分开，未实际参加不编已做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "合作是不是要求所有人的兴趣和做法完全一样且不能提出不同意见？",
+          "answer": "不是，当前合力可有不同分工与建议，需要明确目标和实际协商，不强加相同偏好。",
+          "analysis": "不是，当前合力可有不同分工与建议，需要明确目标和实际协商，不强加相同偏好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读懂合作韵文就能记录本人已与同伴完成真实活动吗？",
+          "answer": "不能，理解和真实双方参与是不同事实，协作要实际过程与帮助依据。",
+          "analysis": "不能，理解和真实双方参与是不同事实，协作要实际过程与帮助依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "有人把比喻变成安排土变金实操，怎样回当前教学范围？",
+          "answer": "回文学合作意思，不由比喻创建材料转变任务，现实科学事实另核。",
+          "analysis": "回文学合作意思，不由比喻创建材料转变任务，现实科学事实另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-cooperation-figurative-value-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用明确原创角色说明一项合作办法，再说当前实际发生到哪一步。",
+          "answer": "角色和本人身份、愿望与完成分清，不由例子补真实协作或创造价值事实。",
+          "analysis": "角色和本人身份、愿望与完成分清，不由例子补真实协作或创造价值事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-recognition",
+      "structure": "g1-components-eleven-characters-and-word-meaning",
+      "familyProposal": "a692a990-g1-components-eleven-characters-and-word-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语声音意义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "部件数与现实数识写分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字和当前词语实际声音对应，字形部件数不规定真实树数，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读明力尘从众双木林森条心十一字，再读树林森林两个词。",
+          "answer": "十一字和当前词语实际声音对应，字形部件数不规定真实树数，帮助如实。",
+          "analysis": "十一字和当前词语实际声音对应，字形部件数不规定真实树数，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按心众力森条木明从林尘双的新顺序认读。",
+          "answer": "按当前字形逐项读，不背旧顺序，卡住和提示实际可核。",
+          "analysis": "按当前字形逐项读，不背旧顺序，卡住和提示实际可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给明月力气尘土众多，本人选两词实际读并解释。",
+          "answer": "当前声音词义与选择对应，不以读熟词替逐字独立识读。",
+          "analysis": "当前声音词义与选择对应，不以读熟词替逐字独立识读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只读出九字，怎样如实说明另外两字？",
+          "answer": "保留真实已读与未读，未覆盖待练，不用完整熟篇或参考声补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待练，不用完整熟篇或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读众多就能在任何新材料直接报三个人吗？",
+          "answer": "不能，众的字形线索不代现实精确人数，数量需当前材料。",
+          "analysis": "不能，众的字形线索不代现实精确人数，数量需当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字都自动是本课本人必写吗？",
+          "answer": "不是，必写木林土力心五字另核，识读与手写范围分开。",
+          "analysis": "不是，必写木林土力心五字另核，识读与手写范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-eleven-characters-and-word-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字与一个词，说明实际帮助和待练范围。",
+          "answer": "声音词义与过程真实，未写不补为已经本人手写。",
+          "analysis": "声音词义与过程真实，未写不补为已经本人手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-writing",
+      "structure": "g1-components-mu-lin-tu-li-xin-own-writing",
+      "familyProposal": "a692a990-g1-components-mu-lin-tu-li-xin-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整字形木旁变化对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字实际覆盖，林左木旁等变化按完整范形核，不用键入或范字图代本人作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写木林土力心，上传格中原稿。",
+          "answer": "五字实际覆盖，林左木旁等变化按完整范形核，不用键入或范字图代本人作品。",
+          "analysis": "五字实际覆盖，林左木旁等变化按完整范形核，不用键入或范字图代本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先比较独体木与林中左木旁，再本人写木林说明当前形体区别。",
+          "answer": "说明接真实原稿，完整位置和笔画形态对应，先后过程另核。",
+          "analysis": "说明接真实原稿，完整位置和笔画形态对应，先后过程另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给心力林土木，本人依次写上传。",
+          "answer": "字形与当前顺序对应，不沿用旧五字位置补作品。",
+          "analysis": "字形与当前顺序对应，不沿用旧五字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写木林土，怎样说明力心两字仍待本人写？",
+          "answer": "只核实际三字，另外两字待写，不用范例补齐本人作品。",
+          "analysis": "只核实际三字，另外两字待写，不用范例补齐本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若林的部件形体照贴两个独体木不合范形，怎样留原稿订正？",
+          "answer": "保留原写，回完整林字范形由本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整林字范形由本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一张五字成品图能独证全部笔顺和全程无帮助吗？",
+          "answer": "不能，字形、实际过程与提示分别核，静图不补动作或独立性。",
+          "analysis": "不能，字形、实际过程与提示分别核，静图不补动作或独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-mu-lin-tu-li-xin-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写五字，选一处结构说明实际帮助与想核之处。",
+          "answer": "说明接当前真实原稿，不编错误或进步，实际范围如实。",
+          "analysis": "说明接当前真实原稿，不编错误或进步，实际范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "sun-moon-character-components",
+      "atomId": "source:chinese:g1:a692a990:g1-components-reading",
+      "structure": "g1-components-real-reading-and-current-words",
+      "familyProposal": "a692a990-g1-components-real-reading-and-current-words",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际朗读当前范围",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词义接当前语境",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与原书任务范围分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原篇与本人声音清楚，词义接当前语境，帮助和未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件完整原篇朗读，再解释明月或关心一个当前词。",
+          "answer": "原篇与本人声音清楚，词义接当前语境，帮助和未读范围如实。",
+          "analysis": "原篇与本人声音清楚，词义接当前语境，帮助和未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读合作部分并说明一项提示。",
+          "answer": "参考声不代本人声音，读到范围和帮助分别留，现代全文回原件。",
+          "analysis": "参考声不代本人声音，读到范围和帮助分别留，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给开心森林力气尘土，本人逐词读并选一个解释。",
+          "answer": "当前词语与声音对应，不背旧词表顺序或把部件数当现实数量。",
+          "analysis": "当前词语与声音对应，不背旧词表顺序或把部件数当现实数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读过八词，能登记现代原篇全部本人朗读完成吗？",
+          "answer": "不能，词表与完整读篇范围不同，真实未读部分待读。",
+          "analysis": "不能，词表与完整读篇范围不同，真实未读部分待读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件只要求朗读，可以把背诵标成原书强制要求吗？",
+          "answer": "不能，任务依当前来源核，不把候选练习扩为原件未列必背。",
+          "analysis": "不能，任务依当前来源核，不把候选练习扩为原件未列必背。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读当前想练的一处，比较前后真实声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-sun-moon-character-components-g1-components-real-reading-and-current-words-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明实际读到、解释过和待练范围，再读一个当前词。",
+          "answer": "声音与范围对应，读过不自动等背过或真实同伴协作已经完成。",
+          "analysis": "声音与范围对应，读过不自动等背过或真实同伴协作已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

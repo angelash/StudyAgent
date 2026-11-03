@@ -1,0 +1,828 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+      "sha256": "05916090dc9b377c6abf66552c5ecf33ae1a7887a7d01f2b6e349a6d0872f62d",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry6",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 81,
+        "pageEnd": 84,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-time",
+      "structure": "g1-garden5-time-units-and-current-anchor",
+      "familyProposal": "a692a990-g1-garden5-time-units-and-current-anchor",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前参照与单位明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "前后日期月年正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "例子与真实日历分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "昨天11月2日，明天11月4日，按当前一天前后，不把时间词当永久固定日期。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创例今天是2026年11月3日，昨天和明天各是哪一天？",
+          "answer": "昨天11月2日，明天11月4日，按当前一天前后，不把时间词当永久固定日期。",
+          "analysis": "昨天11月2日，明天11月4日，按当前一天前后，不把时间词当永久固定日期。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同例这个月11月，今年2026，分别说上月下月去年明年。",
+          "answer": "上月10月、下月12月、去年2025、明年2027，月与年单位分别核。",
+          "analysis": "上月10月、下月12月、去年2025、明年2027，月与年单位分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新例今天改成2026年12月31日，明天应怎样说明？",
+          "answer": "是2027年1月1日，按新参照跨年，不能沿用旧11月4日。",
+          "analysis": "是2027年1月1日，按新参照跨年，不能沿用旧11月4日。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "题目没给今天是哪天，可以唯一写昨天就是11月2日吗？",
+          "answer": "不能，需当前参照日期，旧例答案不作所有情境唯一结论。",
+          "analysis": "不能，需当前参照日期，旧例答案不作所有情境唯一结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "上午下午晚上和昨天今天明天，是同一层次的时间单位吗？",
+          "answer": "不是，前者是一日时段，后者是相对当前日期的天，先分单位再判断。",
+          "analysis": "不是，前者是一日时段，后者是相对当前日期的天，先分单位再判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "例题说明天读书，就能自动建立学生真实日历事件吗？",
+          "answer": "不能，原创时间例子与真实安排分开，愿望和示例不代实际排期。",
+          "analysis": "不能，原创时间例子与真实安排分开，愿望和示例不代实际排期。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-time-units-and-current-anchor-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选一个明确原创今天日期，说昨天明天并说明依据和范围。",
+          "answer": "参照与一天前后对应，例子身份清楚，未给真实活动不编学生经历。",
+          "analysis": "参照与一天前后对应，例子身份清楚，未给真实活动不编学生经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-recognition",
+      "structure": "g1-garden5-five-time-characters-reading",
+      "familyProposal": "a692a990-g1-garden5-five-time-characters-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前时间词音义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与时间活动事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字与完整当前词语声音对应，时间意义有参照，帮助和未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读午晚昨今年五字，再读上午晚上昨天今天今年。",
+          "answer": "五字与完整当前词语声音对应，时间意义有参照，帮助和未读如实。",
+          "analysis": "五字与完整当前词语声音对应，时间意义有参照，帮助和未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按年午今昨晚的新顺序认读。",
+          "answer": "看当前字形实际读，不背旧序列，午牛形体区别依当前字形核。",
+          "analysis": "看当前字形实际读，不背旧序列，午牛形体区别依当前字形核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给明年上个月和今天，本人读词并指出年或今。",
+          "answer": "词语与单字分别按当前材料核，不用熟悉完整词代独立认字。",
+          "analysis": "词语与单字分别按当前材料核，不用熟悉完整词代独立认字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只读清三字，怎样如实报告另外两字？",
+          "answer": "保留真实已读与未读，未覆盖待练，不用时间顺序背串补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待练，不用时间顺序背串补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "认识午字就能写成牛而说意思完全一样吗？",
+          "answer": "不能，两字当前字形与词义不同，回完整范形和上午等语境核。",
+          "analysis": "不能，两字当前字形与词义不同，回完整范形和上午等语境核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读会明天一词，就能登记本人明天某活动已完成吗？",
+          "answer": "不能，识读和后续真实活动不同，计划不提前记作已发生。",
+          "analysis": "不能，识读和后续真实活动不同，计划不提前记作已发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-five-time-characters-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读五字和一词，说明实际帮助与未读范围。",
+          "answer": "声音词义过程真实，本件写字是复用儿林本天，识读不自动代手写。",
+          "analysis": "声音词义过程真实，本件写字是复用儿林本天，识读不自动代手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-radicals",
+      "structure": "g1-garden5-grass-wood-cues-and-meaning",
+      "familyProposal": "a692a990-g1-garden5-grass-wood-cues-and-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前字形部件准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "线索与词义结合",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不推广所有字绝对同义",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "观察艹形体并联系当前植物词，作记忆或猜义线索，仍回完整字和词义核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件花草莲苹一组可观察什么共同字形线索，怎样用它帮助记字？",
+          "answer": "观察艹形体并联系当前植物词，作记忆或猜义线索，仍回完整字和词义核。",
+          "analysis": "观察艹形体并联系当前植物词，作记忆或猜义线索，仍回完整字和词义核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "树林桃桥有木形线索，桥就一定是一棵树吗？",
+          "answer": "不是，桥当前指桥梁，木材料的联系可帮助记忆，不把木旁所有字都当树。",
+          "analysis": "不是，桥当前指桥梁，木材料的联系可帮助记忆，不把木旁所有字都当树。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给桥梁和桃树，怎样分共同部件与完整所指？",
+          "answer": "可都有木形线索，但完整词分别桥梁与植物，所指不因同部件就相同。",
+          "analysis": "可都有木形线索，但完整词分别桥梁与植物，所指不因同部件就相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "见一个陌生字有艹，就能唯一知道其所有意思吗？",
+          "answer": "不能，线索有限，需当前完整字形和准确词语语境，不推唯一全义。",
+          "analysis": "不能，线索有限，需当前完整字形和准确词语语境，不推唯一全义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "现代字形观察能直接证明某字唯一历史字源吗？",
+          "answer": "不能，记忆线索与历史演变不同，字源需可靠材料另核。",
+          "analysis": "不能，记忆线索与历史演变不同，字源需可靠材料另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人解释后改变了原部件猜义，怎样保留原答？",
+          "answer": "原猜、帮助和核后解释分别留，不把后改倒作首次已知。",
+          "analysis": "原猜、帮助和核后解释分别留，不把后改倒作首次已知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-grass-wood-cues-and-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本件两字说共同线索与不同词义，再指出尚不能推出什么。",
+          "answer": "当前部件和完整语境对应，不推所有同部首字绝对同类或万能拆义。",
+          "analysis": "当前部件和完整语境对应，不推所有同部首字绝对同类或万能拆义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-pronunciation",
+      "structure": "g1-garden5-eight-phrases-real-pronunciation",
+      "familyProposal": "a692a990-g1-garden5-eight-phrases-real-pronunciation",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读八当前词",
+          "weight": 0.4
+        },
+        {
+          "criterion": "近音条件按真实声音核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看形听辨和帮助分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "八词当前读音可核，n l、鼻音和平翘舌逐项听本人原声，不用字形代声音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读你们家里男生蓝色上山三年写字报纸八词，录真实声音。",
+          "answer": "八词当前读音可核，n l、鼻音和平翘舌逐项听本人原声，不用字形代声音。",
+          "analysis": "八词当前读音可核，n l、鼻音和平翘舌逐项听本人原声，不用字形代声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确男生蓝色示范，再本人读，说明开头n与l的当前区别。",
+          "answer": "原声和本人声音对应，帮助如实，不以只指出字母就说实际发音已准。",
+          "analysis": "原声和本人声音对应，帮助如实，不以只指出字母就说实际发音已准。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给报纸写字三年上山，本人看清完整词实际读。",
+          "answer": "按当前词语更新，字纸平翘舌等回真实声音，不背旧序列。",
+          "analysis": "按当前词语更新，字纸平翘舌等回真实声音，不背旧序列。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看字卡没给真实声音，可以说独立听辨已经完成吗？",
+          "answer": "不能，只能核文字观察或本人看字读，独立听辨仍需原声与真实回应。",
+          "analysis": "不能，只能核文字观察或本人看字读，独立听辨仍需原声与真实回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "某次读混或地区口音不同，就能直接判断学习能力吗？",
+          "answer": "不能，回当前具体声音和帮助练一小项，不按地区或一次表现下能力结论。",
+          "analysis": "不能，回当前具体声音和帮助练一小项，不按地区或一次表现下能力结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "准确示范者不先亮字，另选当前一对实际发声，本人回应并说明提示。",
+          "answer": "真实原声与回应对应才核听辨，重复、可见目标或帮助条件如实。",
+          "analysis": "真实原声与回应对应才核听辨，重复、可见目标或帮助条件如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-eight-phrases-real-pronunciation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重读八词，说明当前独立覆盖与还想练的声音。",
+          "answer": "按真实原音说明，未明显变化或未覆盖如实，不造错误进步或声音库存。",
+          "analysis": "按真实原音说明，未明显变化或未覆盖如实，不造错误进步或声音库存。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-writing",
+      "structure": "g1-garden5-er-lin-ben-tian-relative-order",
+      "familyProposal": "a692a990-g1-garden5-er-lin-ben-tian-relative-order",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四复用字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形与相对笔顺准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "静图过程和帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字实际覆盖，从左到右和撇捺相对顺序依范形与真实过程核，不以静图独证先后。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写儿林本天，上传原稿并说明一处当前相对笔顺。",
+          "answer": "四字实际覆盖，从左到右和撇捺相对顺序依范形与真实过程核，不以静图独证先后。",
+          "analysis": "四字实际覆盖，从左到右和撇捺相对顺序依范形与真实过程核，不以静图独证先后。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看天字完整范形，再本人写并说明先撇后捺是否意味着第一笔撇。",
+          "answer": "不意味着，天整体前面还有横等笔画；撇捺相对顺序与整字首笔分清，过程真实。",
+          "analysis": "不意味着，天整体前面还有横等笔画；撇捺相对顺序与整字首笔分清，过程真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给本天林儿，本人依序写，说明林的左右部分怎样核。",
+          "answer": "按完整范形先左后右等当前安排与真实过程核，木旁变化也看完整字形。",
+          "analysis": "按完整范形先左后右等当前安排与真实过程核，木旁变化也看完整字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "已学过四字但本次未动手，可以记录本人已完成本次复用手写吗？",
+          "answer": "不能，已学与本次实际写不同，当前手写仍待发生，不用旧范图补新作品。",
+          "analysis": "不能，已学与本次实际写不同，当前手写仍待发生，不用旧范图补新作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把本第一笔错当撇，怎样留原稿再本人纠正？",
+          "answer": "保留真实原写，回完整范形核全部笔顺再重写，不把相对规则当整体首笔。",
+          "analysis": "保留真实原写，回完整范形核全部笔顺再重写，不把相对规则当整体首笔。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "四字静态图能独证真实笔顺和完全无帮助吗？",
+          "answer": "不能，成品可核字形，过程及提示另看真实依据，帮助与后改分开。",
+          "analysis": "不能，成品可核字形，过程及提示另看真实依据，帮助与后改分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-er-lin-ben-tian-relative-order-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再写四字，说明实际做过步骤、提示与仍想核的一处。",
+          "answer": "说明接当前真实作品和过程，不编错误或进步，复用范围如实。",
+          "analysis": "说明接当前真实作品和过程，不编错误或进步，复用范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-minnong",
+      "structure": "g1-garden5-minnong-four-lines-and-labor",
+      "familyProposal": "a692a990-g1-garden5-minnong-four-lines-and-labor",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读完整四句",
+          "weight": 0.4
+        },
+        {
+          "criterion": "劳动诗意有当前依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与真实活动健康条件分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前四句实际覆盖，联系正午锄禾汗滴田土的辛苦，帮助和读到范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读正文悯农其二完整四句，再用自己的话说前两句画面。",
+          "answer": "当前四句实际覆盖，联系正午锄禾汗滴田土的辛苦，帮助和读到范围如实。",
+          "analysis": "当前四句实际覆盖，联系正午锄禾汗滴田土的辛苦，帮助和读到范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读后两句，解释盘中餐与劳动的联系。",
+          "answer": "当前原篇声音清楚，联系粮食背后付出，参考声不代本人声音。",
+          "analysis": "当前原篇声音清楚，联系粮食背后付出，参考声不代本人声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创角色准备合理食量，本人联系诗意说一项适合的珍惜办法。",
+          "answer": "可按实际食量合理取用，尊重健康条件，诗意不变强迫吃不适合食物或评判品质。",
+          "analysis": "可按实际食量合理取用，尊重健康条件，诗意不变强迫吃不适合食物或评判品质。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读前两句就能记录四句都已本人读完吗？",
+          "answer": "不能，前两句按真实原音核，后两句待读，不用参考声补齐。",
+          "analysis": "不能，前两句按真实原音核，后两句待读，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "为理解正午劳作，是否必须安排学生真实在正午锄地？",
+          "answer": "不需要，当前阅读核诗句画面和意思，不把作品劳动直接改实际劳动任务。",
+          "analysis": "不需要，当前阅读核诗句画面和意思，不把作品劳动直接改实际劳动任务。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人解释后本人修正诗意，怎样留原说法？",
+          "answer": "保留原理解、帮助与新解释，不把后改倒作独立首次。",
+          "analysis": "保留原理解、帮助与新解释，不把后改倒作独立首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-minnong-four-lines-and-labor-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读四句，说明一句理解、实际帮助与未完成范围。",
+          "answer": "完整声音和解释分别核，熟悉古诗不自动证明未见迁移或长期保持。",
+          "analysis": "完整声音和解释分别核，熟悉古诗不自动证明未见迁移或长期保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-turnip",
+      "structure": "g1-garden5-turnip-given-text-help-chain",
+      "familyProposal": "a692a990-g1-garden5-turnip-given-text-help-chain",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接实际本件共读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助链当前文字准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与本人活动帮助分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "老公公后老婆婆、小姑娘、小狗，再写小狗喊小猫，依据当前文字与实际共读，不补未给原译后文。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件两页拔萝卜后，本人按文字概述帮助者怎样加入。",
+          "answer": "老公公后老婆婆、小姑娘、小狗，再写小狗喊小猫，依据当前文字与实际共读，不补未给原译后文。",
+          "analysis": "老公公后老婆婆、小姑娘、小狗，再写小狗喊小猫，依据当前文字与实际共读，不补未给原译后文。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人从已读部分选两次喊帮忙，说谁叫谁与当前先后。",
+          "answer": "人物关系对应本件实际文字，成人帮助与本人表达分开，不凭熟悉故事别版补顺序。",
+          "analysis": "人物关系对应本件实际文字，成人帮助与本人表达分开，不凭熟悉故事别版补顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡片只给小甲喊小乙帮整理纸盒，本人按新关系概述。",
+          "answer": "当前人物和动作按新材料，不机械套老公公小狗链，也不记本人已参与。",
+          "analysis": "当前人物和动作按新材料，不机械套老公公小狗链，也不记本人已参与。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看末页插图还没共读，怎样报告当前阅读进度？",
+          "answer": "如实说已看图，实际两页共读仍待发生，不用熟悉故事补已读事实。",
+          "analysis": "如实说已看图，实际两页共读仍待发生，不用熟悉故事补已读事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色在拉萝卜，是否要求学生为了语文任务真拉拽别人或搬重物？",
+          "answer": "不要求，当前阅读理解与真实身体活动不同，材料动作不自动变本人任务。",
+          "analysis": "不要求，当前阅读理解与真实身体活动不同，材料动作不自动变本人任务。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "共读时成人提醒一个人物才接上，录音怎样保留帮助？",
+          "answer": "原尝试、提醒和新概述分别留，不把帮助后顺序正确倒作独立初答。",
+          "analysis": "原尝试、提醒和新概述分别留，不把帮助后顺序正确倒作独立初答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-turnip-given-text-help-chain-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再概述一处已读帮助关系，说依据来自哪页文字及所用帮助。",
+          "answer": "当前关系有实际文字，未读部分和省略后文保留未知，角色不代本人协作事实。",
+          "analysis": "当前关系有实际文字，未读部分和省略后文保留未知，角色不代本人协作事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-five-time-components-and-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-garden5-ending",
+      "structure": "g1-garden5-omission-picture-and-original-continuation",
+      "familyProposal": "a692a990-g1-garden5-omission-picture-and-original-continuation",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "文字图示原创分来源",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未给原译后文不冒充",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人回应帮助与范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可说文字到省略处、图示有拔出画面，图示不代已经逐字核过完整原译本结尾。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件文字喊小猫后省略，末页图画萝卜出来，本人怎样分别说明两种来源？",
+          "answer": "可说文字到省略处、图示有拔出画面，图示不代已经逐字核过完整原译本结尾。",
+          "analysis": "可说文字到省略处、图示有拔出画面，图示不代已经逐字核过完整原译本结尾。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本人按末页图示概述一种后续，再明确是否作者原译本文字。",
+          "answer": "标清按图说的内容，未核完整原译后文仍待来源，不能冒充原句。",
+          "analysis": "标清按图说的内容，未核完整原译后文仍待来源，不能冒充原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换新原创故事只有邀请伙伴后省略且另配结果图，本人怎样说明结尾？",
+          "answer": "分别列已给文字、图示线索和自己的设想，不套旧故事或假称作者原文已给。",
+          "analysis": "分别列已给文字、图示线索和自己的设想，不套旧故事或假称作者原文已给。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "熟悉另一个版本的结尾，就能回填为本件已读文字吗？",
+          "answer": "不能，版本范围不同，本件省略未给文字仍未核，需准确来源另比。",
+          "analysis": "不能，版本范围不同，本件省略未给文字仍未核，需准确来源另比。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人原创续想是否可以接受，又应怎样标明身份？",
+          "answer": "可以按当前人物和条件合理设想，清楚标原创可能后续，不把设想当作者事实。",
+          "analysis": "可以按当前人物和条件合理设想，清楚标原创可能后续，不把设想当作者事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提供后续猜想后本人修改，怎样留原表达？",
+          "answer": "原想法、成人帮助和新表达分别留，不倒作首次独立或已核作者结尾。",
+          "analysis": "原想法、成人帮助和新表达分别留，不倒作首次独立或已核作者结尾。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-five-time-components-and-reading-g1-garden5-omission-picture-and-original-continuation-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再说明当前已给文字、插图与仍待核原译后文各是什么。",
+          "answer": "来源和范围明确，真实共读帮助如实，猜想图示不补原译文本验证完成。",
+          "analysis": "来源和范围明确，真实共读帮助如实，猜想图示不补原译文本验证完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

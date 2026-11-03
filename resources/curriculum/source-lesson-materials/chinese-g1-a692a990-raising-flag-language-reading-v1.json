@@ -1,0 +1,528 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "raising-flag-language-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+      "sha256": "0e5457d6be9deecdf397f19b2b1e28e131302b7d3ea9c4a290f8555579156ff4",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry5",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 79,
+        "pageEnd": 80,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "raising-flag-language-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-flag-context",
+      "structure": "g1-flag-chinese-context-star-count-and-scene",
+      "familyProposal": "a692a990-g1-flag-chinese-context-star-count-and-scene",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前中国图文条件准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "星数与角数及场景分明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色身份经历不代本人",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "共五颗，一加四按星的个体数；五角是每星形状特征，不代星总数。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件中国五星红旗图文给一大四小黄星，共几颗，为什么不数成角的数量？",
+          "answer": "共五颗，一加四按星的个体数；五角是每星形状特征，不代星总数。",
+          "analysis": "共五颗，一加四按星的个体数；五角是每星形状特征，不代星总数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "红色旗面与黄色星怎样帮助辨认当前本件对象？",
+          "answer": "颜色和一大四小配置接当前中国五星红旗图文，不只凭任一熟悉颜色下结论。",
+          "analysis": "颜色和一大四小配置接当前中国五星红旗图文，不只凭任一熟悉颜色下结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创计数卡三颗大星两颗小星也是五颗，能只凭总数说就是本件国旗图样吗？",
+          "answer": "不能，总数相同不等大小配置和完整对象相同，明确原创卡不冒充准确国旗图样。",
+          "analysis": "不能，总数相同不等大小配置和完整对象相同，明确原创卡不冒充准确国旗图样。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件说我们，就能直接填写学生国籍吗？",
+          "answer": "不能，作品说话者和当前中国语言语境不代个人身份，真实资料另核。",
+          "analysis": "不能，作品说话者和当前中国语言语境不代个人身份，真实资料另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看到角色敬礼图，就能记录本人今天真实参加升旗吗？",
+          "answer": "不能，角色图景与本人经历不同，实际参加需真实过程，不由教材材料补写。",
+          "analysis": "不能，角色图景与本人经历不同，实际参加需真实过程，不由教材材料补写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "静态旗帜图能独证完整升起速度和连续过程吗？",
+          "answer": "不能，静态形象与连续动作不同，速度过程需实际材料，词义解释不代观察。",
+          "analysis": "不能，静态形象与连续动作不同，速度过程需实际材料，词义解释不代观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-chinese-context-star-count-and-scene-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用自己的话概述本件对象与场景，再说明一项没有给出的本人信息。",
+          "answer": "当前中国国旗与升旗场景解释有材料，个人身份、日期和是否参加未知就不编。",
+          "analysis": "当前中国国旗与升旗场景解释有材料，个人身份、日期和是否参加未知就不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raising-flag-language-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-flag-words",
+      "structure": "g1-flag-current-ceremony-phrases-and-meaning",
+      "familyProposal": "a692a990-g1-flag-current-ceremony-phrases-and-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人实际读当前词",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词义与场景对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与真实动作声源分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前完整声音与词义对应，徐徐联系缓慢，理解不代本人真实参加仪式。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读升起徐徐飘扬立正敬礼，再用自己的话解释徐徐。",
+          "answer": "当前完整声音与词义对应，徐徐联系缓慢，理解不代本人真实参加仪式。",
+          "analysis": "当前完整声音与词义对应，徐徐联系缓慢，理解不代本人真实参加仪式。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读徐徐升起并说明动作方向和方式。",
+          "answer": "由低向高、缓慢方式分别核，原声与本人声音和帮助分开。",
+          "analysis": "由低向高、缓慢方式分别核，原声与本人声音和帮助分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给敬礼飘扬升起立正徐徐，本人按当前词读并选一项解释。",
+          "answer": "按当前材料实际读，不背旧顺序，词义接本件场景。",
+          "analysis": "按当前材料实际读，不背旧顺序，词义接本件场景。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "文本提到国歌，就能说明本课已经给真实国歌音频吗？",
+          "answer": "不能，文字提及与已提供声音不同，实际听过需真实声源和回应。",
+          "analysis": "不能，文字提及与已提供声音不同，实际听过需真实声源和回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "理解立正敬礼，就必须为当前语文任务真实举行仪式吗？",
+          "answer": "不要求，读词理解与真实活动不同，按本人参与条件，不以身体动作推学习能力。",
+          "analysis": "不要求，读词理解与真实活动不同，按本人参与条件，不以身体动作推学习能力。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次本人只读清三个词，怎样报告其余两词？",
+          "answer": "保留真实已读与未读，待帮助后练，不用参考声补齐。",
+          "analysis": "保留真实已读与未读，待帮助后练，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-current-ceremony-phrases-and-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读五词，说明当前帮助、词义与实际动作做过哪些。",
+          "answer": "声音解释和真实参与范围分别核，未做动作或仪式不由词语补完成。",
+          "analysis": "声音解释和真实参与范围分别核，未做动作或仪式不由词语补完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raising-flag-language-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-flag-recognition",
+      "structure": "g1-flag-eleven-characters-current-reading",
+      "familyProposal": "a692a990-g1-flag-eleven-characters-current-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语读法对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "识写帮助范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字当前声音可核，么在多么词中按本件读法，帮助与未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读升国旗中红歌起么美丽立十一字，再读多么美丽。",
+          "answer": "十一字当前声音可核，么在多么词中按本件读法，帮助与未读如实。",
+          "analysis": "十一字当前声音可核，么在多么词中按本件读法，帮助与未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按丽歌中起美旗红立国么升的新顺序认读。",
+          "answer": "看当前字形逐项读，么需明确当前词语语境，不背旧序列代识字。",
+          "analysis": "看当前字形逐项读，么需明确当前词语语境，不背旧序列代识字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡片给升起中国美丽，本人选两词读并分别指出一个字。",
+          "answer": "词语与单字当前声音对应，不能以完整熟篇顺读代逐字认读。",
+          "analysis": "词语与单字当前声音对应，不能以完整熟篇顺读代逐字认读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出九字，怎样如实说明另两字识读状态？",
+          "answer": "保留真实已读和卡住项，未覆盖待练，不用参考声或熟词补齐。",
+          "analysis": "保留真实已读和卡住项，未覆盖待练，不用参考声或熟词补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "认得中国两字能直接证明本人国籍资料吗？",
+          "answer": "不能，字词识读和个人身份不同，真实资料不由学习材料推定。",
+          "analysis": "不能，字词识读和个人身份不同，真实资料不由学习材料推定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字会自动都成为本课必写吗？",
+          "answer": "不会，必写中五立正四字另核，识读与本人手写目标分开。",
+          "analysis": "不会，必写中五立正四字另核，识读与本人手写目标分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-eleven-characters-current-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字和一词，说明实际帮助与未读范围。",
+          "answer": "声音词义和过程真实，未写不登记已经手写。",
+          "analysis": "声音词义和过程真实，未写不登记已经手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raising-flag-language-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-flag-writing",
+      "structure": "g1-flag-zhong-wu-li-zheng-own-writing",
+      "familyProposal": "a692a990-g1-flag-zhong-wu-li-zheng-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形结构对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程提示和后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写中五立正，上传格中原稿。",
+          "answer": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+          "analysis": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先比较中与正完整范形，再本人各写并说明当前内部区别。",
+          "answer": "说明接真实原稿与范形，笔顺先后另看过程，帮助如实。",
+          "analysis": "说明接真实原稿与范形，笔顺先后另看过程，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给正立五中，本人依次写上传。",
+          "answer": "字形与当前顺序对应，不沿用旧四字位置补作品。",
+          "analysis": "字形与当前顺序对应，不沿用旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写中五，如何如实说明立正两字还待本人写？",
+          "answer": "只核实际两字，另外两字待写，不用范例补为本人已经完成。",
+          "analysis": "只核实际两字，另外两字待写，不用范例补为本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "汉字五的笔画连接写错后，怎样留原稿再本人订正？",
+          "answer": "这里核汉字五的当前范形，保留原写后本人重写，不把后改覆盖首次。",
+          "analysis": "这里核汉字五的当前范形，保留原写后本人重写，不把后改覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "四字静态图能独证全部笔顺和全程无帮助吗？",
+          "answer": "不能，成品核字形，实际过程及提示分别核，不从静图补全部独立性。",
+          "analysis": "不能，成品核字形，实际过程及提示分别核，不从静图补全部独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-zhong-wu-li-zheng-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处结构说明实际帮助和想核之处。",
+          "answer": "依据当前真实原稿，不编错误或进步，覆盖范围如实。",
+          "analysis": "依据当前真实原稿，不编错误或进步，覆盖范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "raising-flag-language-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-flag-reading-recall",
+      "structure": "g1-flag-real-reading-and-recall",
+      "familyProposal": "a692a990-g1-flag-real-reading-and-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "当前完整原篇清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背真实可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示和仪式声源分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "完整现代原篇回原件，当前本人声音清楚，读背、提示与覆盖分别核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件完整原篇朗读，再按真实范围尝试背诵并说明是否看文。",
+          "answer": "完整现代原篇回原件，当前本人声音清楚，读背、提示与覆盖分别核。",
+          "analysis": "完整现代原篇回原件，当前本人声音清楚，读背、提示与覆盖分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确朗读示范，再本人读一部分并说明帮助。",
+          "answer": "参考朗读与本人原声分开，朗读示范不冒充真实国歌音频。",
+          "analysis": "参考朗读与本人原声分开，朗读示范不冒充真实国歌音频。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上原篇后本人尝试背一小部分，录真实过程。",
+          "answer": "按是否看文核，当前范围和提示清楚，概述不代原篇背诵。",
+          "analysis": "按是否看文核，当前范围和提示清楚，概述不代原篇背诵。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只背出五星红旗一词，就能记完整原篇已背吗？",
+          "answer": "不能，只核实际范围，其余待练，不由熟词或参考声补齐。",
+          "analysis": "不能，只核实际范围，其余待练，不由熟词或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "成人提示开头后才接出，怎样保留本次条件？",
+          "answer": "原尝试、提示与接读分别留，不倒作为首次完全独立。",
+          "analysis": "原尝试、提示与接读分别留，不倒作为首次完全独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人读背完成就等于真实参加过本件仪式吗？",
+          "answer": "不等于，实际读背与真实仪式经历不同，不能由教材角色补本人参加。",
+          "analysis": "不等于，实际读背与真实仪式经历不同，不能由教材角色补本人参加。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raising-flag-language-reading-g1-flag-real-reading-and-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明读过背过及待练范围，再实际读一处当前词句。",
+          "answer": "声音与范围一致，帮助如实，原篇学习不自动证明未见迁移或长期保持。",
+          "analysis": "声音与范围一致，帮助如实，原篇学习不自动证明未见迁移或长期保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,610 @@
+{
+  "protocol": "second-literacy-conditions-components-and-omitted-ending-v1",
+  "at": "2026-11-03T00:21:28.388Z",
+  "branch": "main",
+  "block": 4,
+  "blockCompleted": false,
+  "wholeGoal": "active",
+  "source": {
+    "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+    "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "extractedSha256": "9d4c9c93727eadcf19bfeda6580833b68b5ada8d2cdaed2daca1e578441ee987",
+    "currentPhysicalRange": [
+      72,
+      84
+    ],
+    "currentPagesFullyRead": 13,
+    "totalPagesVisuallyRead": 127,
+    "totalBookPages": 127,
+    "wholeBookFullyRead": true
+  },
+  "content": {
+    "drafts": 6,
+    "targets": 37,
+    "candidates": 259,
+    "perPacket": [
+      {
+        "name": "chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+        "targets": 8,
+        "questions": 56,
+        "pages": [
+          81,
+          82,
+          83,
+          84
+        ],
+        "bodyCharacters": 1150,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-picture-riddle-reading-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          72
+        ],
+        "bodyCharacters": 731,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+        "targets": 5,
+        "questions": 35,
+        "pages": [
+          79,
+          80
+        ],
+        "bodyCharacters": 762,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          75,
+          76
+        ],
+        "bodyCharacters": 871,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-size-and-number-literacy-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          73,
+          74
+        ],
+        "bodyCharacters": 784,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      },
+      {
+        "name": "chinese-g1-a692a990-sun-moon-character-components-v1.json",
+        "targets": 6,
+        "questions": 42,
+        "pages": [
+          77,
+          78
+        ],
+        "bodyCharacters": 921,
+        "completeBodyNonCheckGaps": [],
+        "teacherReviewed": false
+      }
+    ],
+    "modes": {
+      "short_answer": 77,
+      "audio_record": 133,
+      "image_upload": 49
+    },
+    "collectiveQuantifiersNotFixedCounts": true,
+    "componentMnemonicsNotUniversalEtymology": true,
+    "currentTimeAnchorAndRelativeStrokeOrderExplicit": true,
+    "omittedTurnipTextAndPictureSeparate": true,
+    "explicitCurrentQuantitiesAndSymbolMaterials": true,
+    "teacherReviewed": false,
+    "authenticSoundInventoryComplete": false,
+    "scoringIndependentFamiliesAndSufficientStockApproved": false
+  },
+  "validation": {
+    "staticPassed": true,
+    "generationByteStable": true,
+    "allSixHttpAndColdReadPassed": true,
+    "http": [
+      {
+        "name": "chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+        "result": {
+          "at": "2026-11-03T00:15:11.825Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 56,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+              "sha256": "05916090dc9b377c6abf66552c5ecf33ae1a7887a7d01f2b6e349a6d0872f62d",
+              "physicalPages": [
+                81,
+                82,
+                83,
+                84
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 8,
+              "preflightPublishable": false,
+              "gapCount": 104,
+              "linkedDraftMaterialReferences": 56,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 56,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+            "sha256": "45e3c8075c7b1c2ebb7552c2196b95ec2835a63cb3d921f906c88e711079256f",
+            "groups": 8,
+            "questions": 56,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-picture-riddle-reading-v1.json",
+        "result": {
+          "at": "2026-11-03T00:15:11.912Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-picture-riddle-reading-v1.json",
+              "sha256": "d443f0b8b6f066fd19f97fcdae4496c774d9bd0613c4f8eb97c56a5f5ae4c857",
+              "physicalPages": [
+                72
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+            "sha256": "c9c40f2b0bacf6a2a8dff719304b2591cf20e278ce5b3175f1c283bcb44be492",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+        "result": {
+          "at": "2026-11-03T00:17:03.597Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 35,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+              "sha256": "0e5457d6be9deecdf397f19b2b1e28e131302b7d3ea9c4a290f8555579156ff4",
+              "physicalPages": [
+                79,
+                80
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 5,
+              "preflightPublishable": false,
+              "gapCount": 65,
+              "linkedDraftMaterialReferences": 35,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 35,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+            "sha256": "be29f4297ce90f9e46f8b1f67ce06805e8b69d77b6aba839d87927816696c693",
+            "groups": 5,
+            "questions": 35,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+        "result": {
+          "at": "2026-11-03T00:17:03.626Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+              "sha256": "789975729741690d118c59be58fae3c298b1aa0c5506e2c19a7ec1caaa3a16fe",
+              "physicalPages": [
+                75,
+                76
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+            "sha256": "b1e615c58b2a0e4a53fc121c1a73f985f2016568d49898e6b1bad69d4e4c2008",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-size-and-number-literacy-v1.json",
+        "result": {
+          "at": "2026-11-03T00:18:34.543Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-size-and-number-literacy-v1.json",
+              "sha256": "6ca2fe6edaccb90f11836d8d27fe8276daf1a5151180ef048446eb6a0fc3f693",
+              "physicalPages": [
+                73,
+                74
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-size-and-number-literacy-v1.json",
+            "sha256": "ca9199ff7f747f24db70b729df8da6435e415a7f0368f0aecc945396c1ccac2a",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      },
+      {
+        "name": "chinese-g1-a692a990-sun-moon-character-components-v1.json",
+        "result": {
+          "at": "2026-11-03T00:18:34.642Z",
+          "passed": true,
+          "storage": "sqlite",
+          "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+          "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+          "subject": "chinese",
+          "prewriteValidation": {
+            "passed": true,
+            "selectedDrafts": 1,
+            "questionCount": 42,
+            "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+            "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+          },
+          "drafts": [
+            {
+              "file": "chinese-g1-a692a990-sun-moon-character-components-v1.json",
+              "sha256": "31b9169d4f2271e341dd05c73dcb6930a83d70f6bcb0c024213f63e23a828506",
+              "physicalPages": [
+                77,
+                78
+              ],
+              "fullSourceTextKeptPrivate": true,
+              "targets": 6,
+              "preflightPublishable": false,
+              "gapCount": 78,
+              "linkedDraftMaterialReferences": 42,
+              "gapCodes": [
+                "target_not_published",
+                "material_changed_or_ineligible",
+                "material_family_coverage",
+                "retention_stock_gap"
+              ],
+              "fullOriginalContentReadBack": true,
+              "originalCommandReplayed": true,
+              "incompletePublicationRejected": true
+            }
+          ],
+          "coldRead": {
+            "drafts": 1,
+            "wholeContentAndSourceFingerprintsPreserved": true,
+            "draftQuestions": 42,
+            "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+            "exactSourceNamesAndMetadataPreserved": true,
+            "visualQuestionDocuments": 0,
+            "wholeVisualDocumentsPreserved": true,
+            "staleVisualDocumentVersionRejected": false,
+            "publications": 0,
+            "adoptions": 0,
+            "learnerResponses": 0
+          },
+          "materials": {
+            "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-sun-moon-character-components-v1.json",
+            "sha256": "3f6ad1fb2554a714f90734f9f13ee541b864e1e636cc9d4d021cfbc6b92acc8f",
+            "groups": 6,
+            "questions": 42,
+            "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+            "teacherReviewed": false,
+            "independentFamiliesApproved": 0,
+            "fullyStockedRetentionIntervals": 0
+          }
+        }
+      }
+    ],
+    "browser": {
+      "buildId": "tSQa109Myy2UD3Gs5L5KY",
+      "passed": 8,
+      "failed": 0,
+      "screenshotsVisuallyInspected": 19,
+      "firstAttemptPassed": true,
+      "noRetries": true,
+      "completeConceptTablesDownloadsAndLocalEditsVerified": true,
+      "mobileKeyboardAndNoPageOverflow": true,
+      "learningAndPublicationWrites": 0
+    },
+    "wholeBookCandidateProgress": {
+      "at": "2026-11-03T00:14:45.931Z",
+      "passed": true,
+      "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+      "teachingDirectoryEntries": 51,
+      "referencesExcluded": 4,
+      "teachingEntriesWithCandidates": 36,
+      "teachingEntriesWithoutCandidates": 15,
+      "targets": 200,
+      "candidateQuestions": 1400,
+      "sourceRange": [
+        7,
+        84
+      ],
+      "sourcePages": 78,
+      "rangesContinuousWithoutOverlap": true,
+      "allTargetAndQuestionIdentitiesUnique": true,
+      "allGenerationBytesReproduced": true,
+      "teacherReviewed": false,
+      "authenticSoundStockCompleted": false,
+      "allActivitiesDelivered": false,
+      "scoringFamiliesAndSufficientStockApproved": false,
+      "published": 0,
+      "adopted": 0,
+      "learnerResponses": 0,
+      "wholeBookCompleted": false
+    },
+    "frozenApplicationAndCompiledInputs": 1930,
+    "frozenPriorInputs": 2274,
+    "newInputs": 16,
+    "changedExistingInputs": [],
+    "applicationRuntimeChanged": false,
+    "databaseProtocolUnchanged": 37,
+    "previousFullApi": {
+      "passed": 3105,
+      "failed": 0,
+      "conditionalSkips": 131,
+      "currentFullSuiteRerun": false,
+      "countsNotCombined": true
+    }
+  },
+  "protection": {
+    "at": "2026-11-03T00:21:23.844Z",
+    "branch": "main",
+    "branches": [
+      "main"
+    ],
+    "worktreeCount": 1,
+    "protectedFiles": 1063,
+    "changedProtectedFiles": [],
+    "formal": {
+      "schema": 24,
+      "revision": 188
+    },
+    "formalMigrated": false,
+    "pushed": false,
+    "deployed": false
+  },
+  "remaining": {
+    "registeredBooks": 452,
+    "publicCatalogBooks": 348,
+    "archiveRegisteredBooks": 104,
+    "booksWithDirectory": 116,
+    "booksWithoutDirectory": 336,
+    "directoryInstructionalEntries": 3581,
+    "lessonsWithCandidateFiles": 102,
+    "lessonsWithPersistedPackages": 0,
+    "lessonsWithPublicationRecords": 0,
+    "lessonsWithoutRecordedContent": 3479,
+    "authoredFollowingMaterialCandidates": 4368,
+    "materialBundlesWithStaleDraftIdentity": 0,
+    "thisBookTeachingEntriesWithoutCandidates": 15,
+    "firstLessonSeparateCandidates": 44,
+    "nextFifteenReadingLessonsAndActivitiesNotAuthored": true,
+    "allRemainingTextbooksGespTeacherAndRealWorldConditions": true,
+    "block5": true
+  },
+  "boundaries": {
+    "rawOriginalImagesFullModernTextAndUnverifiedPublicDomainPassagesLocalOnly": true,
+    "privateRuntimeAndCredentialsExcluded": true,
+    "realLearnerDataWritten": false,
+    "automaticApproval": false,
+    "published": 0,
+    "adopted": 0,
+    "learnerResponses": 0,
+    "pushed": false,
+    "deployed": false
+  }
+}

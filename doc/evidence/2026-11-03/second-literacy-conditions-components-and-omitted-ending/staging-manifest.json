@@ -1,0 +1,470 @@
+{
+  "at": "2026-11-03T00:21:30.911Z",
+  "branch": "main",
+  "baseCommit": "6bf4104923faee471e8c9d662bc29f21fed4cb73",
+  "manifestExcludedFromOwnHash": true,
+  "files": [
+    {
+      "path": "scripts/content/build-chinese-g1-literacy-second.cjs",
+      "bytes": 2345,
+      "sha256": "d4e0d6ba197bc70929aca3db5934783c006493501da78d18060393c9bbd8c87b",
+      "gitNormalizedSha256": "d4e0d6ba197bc70929aca3db5934783c006493501da78d18060393c9bbd8c87b"
+    },
+    {
+      "path": "scripts/content/chinese-g1-picture-and-quantities.cjs",
+      "bytes": 30320,
+      "sha256": "3e74ba3c0af383b6b5857ad2c591064fd6381f15585e64394c8b71df2c362857",
+      "gitNormalizedSha256": "3e74ba3c0af383b6b5857ad2c591064fd6381f15585e64394c8b71df2c362857"
+    },
+    {
+      "path": "scripts/content/chinese-g1-schoolbag-and-components.cjs",
+      "bytes": 32609,
+      "sha256": "ce40ef08721f3a59c6266850a3cf24493436ce63e7682e9a6742a5bbc31bd1e3",
+      "gitNormalizedSha256": "ce40ef08721f3a59c6266850a3cf24493436ce63e7682e9a6742a5bbc31bd1e3"
+    },
+    {
+      "path": "scripts/content/chinese-g1-flag-and-garden-five.cjs",
+      "bytes": 35175,
+      "sha256": "1d0ef9f3e999c4d13cd6ff7b74034f2941d287ffdc8d9730ceea8a44c32a1281",
+      "gitNormalizedSha256": "1d0ef9f3e999c4d13cd6ff7b74034f2941d287ffdc8d9730ceea8a44c32a1281"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+      "bytes": 19503,
+      "sha256": "05916090dc9b377c6abf66552c5ecf33ae1a7887a7d01f2b6e349a6d0872f62d",
+      "gitNormalizedSha256": "05916090dc9b377c6abf66552c5ecf33ae1a7887a7d01f2b6e349a6d0872f62d"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+      "bytes": 52781,
+      "sha256": "45e3c8075c7b1c2ebb7552c2196b95ec2835a63cb3d921f906c88e711079256f",
+      "gitNormalizedSha256": "45e3c8075c7b1c2ebb7552c2196b95ec2835a63cb3d921f906c88e711079256f"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+      "bytes": 14634,
+      "sha256": "d443f0b8b6f066fd19f97fcdae4496c774d9bd0613c4f8eb97c56a5f5ae4c857",
+      "gitNormalizedSha256": "d443f0b8b6f066fd19f97fcdae4496c774d9bd0613c4f8eb97c56a5f5ae4c857"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+      "bytes": 37851,
+      "sha256": "c9c40f2b0bacf6a2a8dff719304b2591cf20e278ce5b3175f1c283bcb44be492",
+      "gitNormalizedSha256": "c9c40f2b0bacf6a2a8dff719304b2591cf20e278ce5b3175f1c283bcb44be492"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+      "bytes": 14200,
+      "sha256": "0e5457d6be9deecdf397f19b2b1e28e131302b7d3ea9c4a290f8555579156ff4",
+      "gitNormalizedSha256": "0e5457d6be9deecdf397f19b2b1e28e131302b7d3ea9c4a290f8555579156ff4"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+      "bytes": 32325,
+      "sha256": "be29f4297ce90f9e46f8b1f67ce06805e8b69d77b6aba839d87927816696c693",
+      "gitNormalizedSha256": "be29f4297ce90f9e46f8b1f67ce06805e8b69d77b6aba839d87927816696c693"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+      "bytes": 15599,
+      "sha256": "789975729741690d118c59be58fae3c298b1aa0c5506e2c19a7ec1caaa3a16fe",
+      "gitNormalizedSha256": "789975729741690d118c59be58fae3c298b1aa0c5506e2c19a7ec1caaa3a16fe"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+      "bytes": 38726,
+      "sha256": "b1e615c58b2a0e4a53fc121c1a73f985f2016568d49898e6b1bad69d4e4c2008",
+      "gitNormalizedSha256": "b1e615c58b2a0e4a53fc121c1a73f985f2016568d49898e6b1bad69d4e4c2008"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-size-and-number-literacy-v1.json",
+      "bytes": 15177,
+      "sha256": "6ca2fe6edaccb90f11836d8d27fe8276daf1a5151180ef048446eb6a0fc3f693",
+      "gitNormalizedSha256": "6ca2fe6edaccb90f11836d8d27fe8276daf1a5151180ef048446eb6a0fc3f693"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-size-and-number-literacy-v1.json",
+      "bytes": 38113,
+      "sha256": "ca9199ff7f747f24db70b729df8da6435e415a7f0368f0aecc945396c1ccac2a",
+      "gitNormalizedSha256": "ca9199ff7f747f24db70b729df8da6435e415a7f0368f0aecc945396c1ccac2a"
+    },
+    {
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-sun-moon-character-components-v1.json",
+      "bytes": 16109,
+      "sha256": "31b9169d4f2271e341dd05c73dcb6930a83d70f6bcb0c024213f63e23a828506",
+      "gitNormalizedSha256": "31b9169d4f2271e341dd05c73dcb6930a83d70f6bcb0c024213f63e23a828506"
+    },
+    {
+      "path": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-sun-moon-character-components-v1.json",
+      "bytes": 39174,
+      "sha256": "3f6ad1fb2554a714f90734f9f13ee541b864e1e636cc9d4d021cfbc6b92acc8f",
+      "gitNormalizedSha256": "3f6ad1fb2554a714f90734f9f13ee541b864e1e636cc9d4d021cfbc6b92acc8f"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 16728,
+      "sha256": "3f8754c9bef71798c9ede4bffc7c24e5a4d437e4392dd45b2cfaf4813636abf3",
+      "gitNormalizedSha256": "e32c63af35aa25919f96dd2b63ce5f5c0df61d8e7f2775159974eb20e1ede752"
+    },
+    {
+      "path": "doc/product/225-second-literacy-conditions-components-and-omitted-ending.md",
+      "bytes": 4988,
+      "sha256": "3ea89f03f3744b54189837f9854c6e1345d91c25667a62e2db5b7a94db299366",
+      "gitNormalizedSha256": "3ea89f03f3744b54189837f9854c6e1345d91c25667a62e2db5b7a94db299366"
+    },
+    {
+      "path": "doc/product/03-development-plan.md",
+      "bytes": 23667,
+      "sha256": "7bf5c53398261b9ef857285fc3093d7c12b390c470e06079f9b903ae598e3b32",
+      "gitNormalizedSha256": "7bf5c53398261b9ef857285fc3093d7c12b390c470e06079f9b903ae598e3b32"
+    },
+    {
+      "path": "doc/product/92-experience-and-content-master-plan.md",
+      "bytes": 39336,
+      "sha256": "0d0d735455d9d5555730549d213ddc673eaffd6f49ab4596794a23d7fa2b1b22",
+      "gitNormalizedSha256": "a46ee77561c3dfc2d2fa0df46534ed9a48beec0debb11564ee6cadbc726cc0d5"
+    },
+    {
+      "path": "doc/product/105-development-plan-status-and-next-milestones.md",
+      "bytes": 191217,
+      "sha256": "8bc0ec62ce0da652332804294676a6bc4b3d61ced65e54ee887475c36d8aa179",
+      "gitNormalizedSha256": "67859b7c8259eefc9cdf2aa70fd3af76292acc107ec250b6077cb55625f861a7"
+    },
+    {
+      "path": "doc/product/148-current-work-checkpoint-and-remaining-scope.md",
+      "bytes": 117601,
+      "sha256": "3a5613a52b678c59f76f3ae2902c7d6cf6586e39010fe72de1d4163a7554f710",
+      "gitNormalizedSha256": "705f1f24b2d440a25d1b53b71987a88496e2b0965013cc1673ca82f20c675c30"
+    },
+    {
+      "path": "doc/product/150-integrated-delivery-plan-and-work-ledger.md",
+      "bytes": 122680,
+      "sha256": "e41db9210dd530bbe0148f8ea1dc34406fae249cb2277c2a8884e37709805409",
+      "gitNormalizedSha256": "ab73b6022db7d89767fcd28e945b0b4da58364f7715f9ed3017fa4bb19e3b5ac"
+    },
+    {
+      "path": "doc/product/190-mainline-and-five-block-delivery.md",
+      "bytes": 32618,
+      "sha256": "9ced84f3dcd26331ac117e718ed0504382e93b4bab74bb1b093aa0e134415d42",
+      "gitNormalizedSha256": "fa415ba92248fd5a0d3f543e73adc7acda72908698925f4224f0031e4cd72290"
+    },
+    {
+      "path": "doc/product/experience/requirements.md",
+      "bytes": 51902,
+      "sha256": "a7511a39fa3cb639fd7b7fcb28f9fc2b20ef98c0d099d6a20d00ee8a059cb725",
+      "gitNormalizedSha256": "596c9cda9676d6656b35369898cc69807abde773fe176a5fe8492272f191a6e4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-garden-five-time-components-and-reading-v1-desktop.png",
+      "bytes": 337878,
+      "sha256": "c8eb5f7a49e90317e6b6659d029d3688ffd79e8d6a586328490fe292e4a39449",
+      "gitNormalizedSha256": "109fe016fc5611da79010a0d52063cc36611c2846ea2d77ee7f7ca25de61e5cc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-garden-five-time-components-and-reading-v1-mobile-table.png",
+      "bytes": 79640,
+      "sha256": "71ddc6c0c9ce53340c64df3db90c48a3ff02dac3a11aff63970b025f45a91fe6",
+      "gitNormalizedSha256": "33a753c80f67dbde61bb60d0deddb74eb41e739a05de827ee1e31b487744a7ff"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-garden-five-time-components-and-reading-v1-mobile.png",
+      "bytes": 78440,
+      "sha256": "52d9840f43669b78851d5c48217e5f088cb29b0b6f788a2e471f92ae1777528a",
+      "gitNormalizedSha256": "354416b2b04570836ab5d3ad36d48cf0881f592c5ddb454f9fb2642731bb56d4"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-garden-five-time-components-and-reading-v1-table.png",
+      "bytes": 39202,
+      "sha256": "c8396e42f854a8091fe7d946ca39ec837d72c0c8fae81075f27bff333a4d2f8a",
+      "gitNormalizedSha256": "97446257bb9ea596b8ac896ff21e57472a64490eada936f09b66b17d664766f7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-picture-riddle-reading-v1-desktop.png",
+      "bytes": 276547,
+      "sha256": "650cac44fc08fadbbdd473e312dd03aca86e215d6d6f01155765faff0056a890",
+      "gitNormalizedSha256": "4c17e0b8db2cef285fcb99132be43aaf88b099735df86087c651ee1a832af9fc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-picture-riddle-reading-v1-mobile.png",
+      "bytes": 80298,
+      "sha256": "97cded0a1edd9241127233eed04faaeb3aca0e5ac26d50082af4d73c88d2e2e0",
+      "gitNormalizedSha256": "33c4535211dcd8aaa0ee7a0a274dd395c1c6049680565164c1d4c55daaf4c7fe"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-picture-riddle-reading-v1-table.png",
+      "bytes": 34045,
+      "sha256": "78e6101147e69408dad3995614d3be0e1b4e3be1902bd3ea630c57eacc12d43f",
+      "gitNormalizedSha256": "91a4e675e1c7160b7018e1aac9193832a89fec609e4156c3cdba77244ce05e31"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-raising-flag-language-reading-v1-desktop.png",
+      "bytes": 293833,
+      "sha256": "368b278d4599849d26264de1198b4e22f4c1b85f60582681570dc3fc5213e5ba",
+      "gitNormalizedSha256": "fdec973601beef51deb59adb19482abf0cc123047f4c8fc0b1cc1d4f372a160a"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-raising-flag-language-reading-v1-mobile.png",
+      "bytes": 65051,
+      "sha256": "15ae3fe1732b667dbe49a4cad82143c4950fc32fbaaa76ce7c3bbfed488d03b0",
+      "gitNormalizedSha256": "72bbf1b15c4284ab4932feee101e73e670b9717bab1505f5a5e28654f8df9da5"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-raising-flag-language-reading-v1-table.png",
+      "bytes": 39484,
+      "sha256": "2e7d4f1bc93ad8f9a274d0122bbe9ed58c538f23f0ceb8b8fb37010acd7d75e5",
+      "gitNormalizedSha256": "66f7582372f594dfc188d6a36a8efcd43a12c0bc956de90dae4844e5aa51588c"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-schoolbag-tools-and-organization-v1-desktop.png",
+      "bytes": 315770,
+      "sha256": "1842055b90ba8b55fea185012251c6b0be1d9f773792492527f839bcdeec9a0b",
+      "gitNormalizedSha256": "606ec08d6094449abe6e4431705316b59b34cec899f725f1e5d7b5185db2a40f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-schoolbag-tools-and-organization-v1-mobile.png",
+      "bytes": 79304,
+      "sha256": "02d1b83483f75135328c2048c78fd611f8526a941a08a8ef2f3c83f2512b4141",
+      "gitNormalizedSha256": "19062b31b235b964547e1d8ce2784eab1dc965afc06b3343673bcc4226dbf56f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-schoolbag-tools-and-organization-v1-table.png",
+      "bytes": 38564,
+      "sha256": "b1134909ee3c0c053a279ccad36e5710a619b16a0d9e6ee2c067e50b4298a163",
+      "gitNormalizedSha256": "9742b7abb6dbde592f5c7812cc46d81fa511408255ba2c11db661aaef3f1c2de"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-size-and-number-literacy-v1-desktop.png",
+      "bytes": 291412,
+      "sha256": "0685cd6a4e847c1641536e12b65ef30095f604485b4ac3b1b090c6612b1905eb",
+      "gitNormalizedSha256": "2aee1ee9311c0a63b8f959c638ca2c77a338508247e5e98dca40bf02daec2c1b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-size-and-number-literacy-v1-mobile.png",
+      "bytes": 79728,
+      "sha256": "83ca593b353dc4025be4fc6aaf1b23d2a7fef199aba75234e1ec320dc47952dc",
+      "gitNormalizedSha256": "e9e4399b877b97f946f4c01c1800f0005bce105a05be9f2efab08539b3024816"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-size-and-number-literacy-v1-table.png",
+      "bytes": 41414,
+      "sha256": "1968e47dfe911658895870ed32117a72173e2a2b72267760e0c4e3a9cc702567",
+      "gitNormalizedSha256": "95b65ad36fef8496a22dd1a7e84fdea4c452fb9db3cd41bcf9489a37a7c11d85"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-sun-moon-character-components-v1-desktop.png",
+      "bytes": 336020,
+      "sha256": "64641cf8aea8ff7b5c7b7ac9957c5eb94f16a248a1e867638aa0c4b0d6b5f195",
+      "gitNormalizedSha256": "02b31c0c34368a616aed97213f16c3d43db9805add5b4570214c63ad4d3a6d1b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-sun-moon-character-components-v1-mobile.png",
+      "bytes": 75870,
+      "sha256": "219a2364f6c535a31bc8ff6551c3ddb9056770e59291f0c9646440b39575148c",
+      "gitNormalizedSha256": "d4ad165d220c75659e8984b6f7bffdd71c59de0eb62ccc757844b4f742144a3f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/chinese-g1-a692a990-sun-moon-character-components-v1-table.png",
+      "bytes": 43326,
+      "sha256": "b9a33e2d3338c08c1bf857652a4a05523f5803dc70a4e8d00fc4d7fbc0ca7902",
+      "gitNormalizedSha256": "3e29bde1291cd0af92db61c548287f16592e9b9abc396349199f48f7d71badf7"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/derived/manifest.json",
+      "bytes": 4838,
+      "sha256": "3d44394303d20ffe544c710b0817252f120f2ec685d27fb9fc3690ed69c30a22",
+      "gitNormalizedSha256": "d8a04600853e841c440ec0fa3f61c14e2dc710bebfdba0878d7ef6c6bb838c3b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/derived/mobile-1.png",
+      "bytes": 241503,
+      "sha256": "16c8720120a8fe184a3d10c0d2f83fc60b43d8f26f8555bb7968c3cb89407421",
+      "gitNormalizedSha256": "438bc1f0e8c9245a8cc00cbf0596ca601ca4c27aad7cfc4d034bbadaee5515a6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/derived/mobile-2.png",
+      "bytes": 237661,
+      "sha256": "66fb1a59cafc210fb62ddabfad80a8f1a2a1e699d2062f9d3839012f37ffda78",
+      "gitNormalizedSha256": "2341cf1e33b985119494d20b46762501183bec9789db019a93c6a0dcd6c978e2"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/derived/table-1.png",
+      "bytes": 125799,
+      "sha256": "ed4ddc76f698fbd485d79bbd84fd700b40bcd99b8db6dc3ea8e35b6a6e496caa",
+      "gitNormalizedSha256": "b623f4d0d674b27a190bb63e082a36c253348394a3e4f0173aea45e6f3ff2217"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/derived/table-2.png",
+      "bytes": 137734,
+      "sha256": "3c9694b1166de25c213340006a1267beecca7208592da3ffc7fbe970919e87dc",
+      "gitNormalizedSha256": "b2007666ee3e389bd7c953d24deac775e9d6a20ae36732be0aa03cdf0daf9e7e"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/receipt.json",
+      "bytes": 2743,
+      "sha256": "bfb4288aff3c49b1786ac59fccb91b74ec95266f4c91d450020f885568fce785",
+      "gitNormalizedSha256": "bfb4288aff3c49b1786ac59fccb91b74ec95266f4c91d450020f885568fce785"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/browser/runner.cjs",
+      "bytes": 17867,
+      "sha256": "53c9eb4a8933789c2aacfaef86d06aaa780867a6e162255c7f8fe245ad11a18b",
+      "gitNormalizedSha256": "53c9eb4a8933789c2aacfaef86d06aaa780867a6e162255c7f8fe245ad11a18b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/book-progress-first.json",
+      "bytes": 746,
+      "sha256": "7017b51e4fa5b7fb8a4802a24f7b9472f176a07e661960b4df1e96cad466b791",
+      "gitNormalizedSha256": "7017b51e4fa5b7fb8a4802a24f7b9472f176a07e661960b4df1e96cad466b791"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/browser-visual-review.json",
+      "bytes": 332,
+      "sha256": "2a725cfc32bd58ba2bb501551e6d1ed869885d75c4c4b11a3ff885f7e191cc44",
+      "gitNormalizedSha256": "2a725cfc32bd58ba2bb501551e6d1ed869885d75c4c4b11a3ff885f7e191cc44"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/content-worklist-first.json.gz",
+      "bytes": 124956,
+      "sha256": "dda12e686c35b84cdf89d26aabb97d7efade52e0632bd428d1340b3e00a8d38d",
+      "gitNormalizedSha256": "2ebb1ff2893fa5b5e3181966830d704f1f8f51469cb950f7dbfa6de8ab1c9bee"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/protection-final.json",
+      "bytes": 294,
+      "sha256": "0da259595d2219d500bca3fdd24a33df3d069ff97983caa5f434864abb1c3f12",
+      "gitNormalizedSha256": "0da259595d2219d500bca3fdd24a33df3d069ff97983caa5f434864abb1c3f12"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/source-visual-whole-book.json",
+      "bytes": 45517,
+      "sha256": "b1cc622518aab093bc357d6d17dee73874b5185cb35526b091da361d0054421d",
+      "gitNormalizedSha256": "b1cc622518aab093bc357d6d17dee73874b5185cb35526b091da361d0054421d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/static-first-inputs.json.gz",
+      "bytes": 104885,
+      "sha256": "7959ff77f91b6ec7ad0083d3837216a0cca67933ca2e926c704bbbf6388f0162",
+      "gitNormalizedSha256": "4e36e0d2a9edfcca78503b80a7aa3a5ede3a27f2c41cc20c72a9de3f0508f667"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/static-first.json",
+      "bytes": 5246,
+      "sha256": "bce2706e5259444ba2fe4f61d7f36a194ebd79d0d71c42d3e246d938fe016db8",
+      "gitNormalizedSha256": "bce2706e5259444ba2fe4f61d7f36a194ebd79d0d71c42d3e246d938fe016db8"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-garden-five-time-components-and-reading-v1.json",
+      "bytes": 2266,
+      "sha256": "0b5563a20cd970ce073dac602f5ae6ae2d1f3c4c547101a736ffd2d7f34b480d",
+      "gitNormalizedSha256": "0b5563a20cd970ce073dac602f5ae6ae2d1f3c4c547101a736ffd2d7f34b480d"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+      "bytes": 2195,
+      "sha256": "0eaa6c1d6c0d8382172042425374ef303a02dd845a8f530c7a36f49198f0a95f",
+      "gitNormalizedSha256": "0eaa6c1d6c0d8382172042425374ef303a02dd845a8f530c7a36f49198f0a95f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+      "bytes": 2221,
+      "sha256": "346bccde3dd82b2acdf0bf05c2c376f1b50b4208401512da2af6a47dcd5ff034",
+      "gitNormalizedSha256": "346bccde3dd82b2acdf0bf05c2c376f1b50b4208401512da2af6a47dcd5ff034"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+      "bytes": 2227,
+      "sha256": "dfba1167dee5c189bd9951d9368182b16c6e7166bd0f86d459c32253902b5dc6",
+      "gitNormalizedSha256": "dfba1167dee5c189bd9951d9368182b16c6e7166bd0f86d459c32253902b5dc6"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-size-and-number-literacy-v1.json",
+      "bytes": 2211,
+      "sha256": "e134fe09d1956ab6ed868f70ebebaaba4c2c9c73d286d7ec1ba920e699ce9974",
+      "gitNormalizedSha256": "e134fe09d1956ab6ed868f70ebebaaba4c2c9c73d286d7ec1ba920e699ce9974"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/chinese-g1-a692a990-sun-moon-character-components-v1.json",
+      "bytes": 2221,
+      "sha256": "1c519b74b1ada54fe89de6f2c92b837c3445f3047656c849af052cd72887d836",
+      "gitNormalizedSha256": "1c519b74b1ada54fe89de6f2c92b837c3445f3047656c849af052cd72887d836"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/http-first/summary.json",
+      "bytes": 863,
+      "sha256": "d05218b960e990203898c26a8aa2b5a03a5310b70f2b264909da0fa67ffad217",
+      "gitNormalizedSha256": "d05218b960e990203898c26a8aa2b5a03a5310b70f2b264909da0fa67ffad217"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/manifest.json",
+      "bytes": 9080,
+      "sha256": "098ef25810ec2c301a7166cfc1762ec0ed268700ddb0a9c63193ab62095d7849",
+      "gitNormalizedSha256": "098ef25810ec2c301a7166cfc1762ec0ed268700ddb0a9c63193ab62095d7849"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/receipt.json",
+      "bytes": 23214,
+      "sha256": "83416a69b5c68452ea8fdd83708749f5ed2641ff732d25dd3e093b9285620987",
+      "gitNormalizedSha256": "83416a69b5c68452ea8fdd83708749f5ed2641ff732d25dd3e093b9285620987"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/sources.json.gz",
+      "bytes": 145342,
+      "sha256": "9aaa0d1924b89f842ba2608c1106a02517ee483ac38f0cd07acc163a74ad7090",
+      "gitNormalizedSha256": "ad783870018234e02a041370dc3d583d94da29819591d10b97b12de85711eecc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/archive.cjs",
+      "bytes": 6336,
+      "sha256": "bdab96e425304e9b237151ec4cf8cca6e334632c2301c1aa1cbb6f146d9902fd",
+      "gitNormalizedSha256": "bdab96e425304e9b237151ec4cf8cca6e334632c2301c1aa1cbb6f146d9902fd"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/book-progress.cjs",
+      "bytes": 3376,
+      "sha256": "e2cdf4e063290767d365e7575c9bb50ac96e1ef01af853c2400d8db75d9e1ff1",
+      "gitNormalizedSha256": "e2cdf4e063290767d365e7575c9bb50ac96e1ef01af853c2400d8db75d9e1ff1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/browser-run.cjs",
+      "bytes": 17867,
+      "sha256": "53c9eb4a8933789c2aacfaef86d06aaa780867a6e162255c7f8fe245ad11a18b",
+      "gitNormalizedSha256": "53c9eb4a8933789c2aacfaef86d06aaa780867a6e162255c7f8fe245ad11a18b"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/prepare.cjs",
+      "bytes": 3703,
+      "sha256": "77709662a10d7df6b43815385c33c62545787be249826ea5b2e777a3e6d8afbc",
+      "gitNormalizedSha256": "77709662a10d7df6b43815385c33c62545787be249826ea5b2e777a3e6d8afbc"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/run-http.cjs",
+      "bytes": 1907,
+      "sha256": "c583bfe1f3ea0ccba259752ec1941858ba97af11bdb1429b7b7b175e1f203146",
+      "gitNormalizedSha256": "c583bfe1f3ea0ccba259752ec1941858ba97af11bdb1429b7b7b175e1f203146"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/update-plans.cjs",
+      "bytes": 2260,
+      "sha256": "5b1955c54bbc96c7c4a549aa218665769b1382f975dc4e5f054b0f43df8e6fe3",
+      "gitNormalizedSha256": "5b1955c54bbc96c7c4a549aa218665769b1382f975dc4e5f054b0f43df8e6fe3"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/visual-sheets.py",
+      "bytes": 1469,
+      "sha256": "7ed654e3ecac3c2abaf12420b5b1d61a7f1b62536038097da0227229069ec81f",
+      "gitNormalizedSha256": "7ed654e3ecac3c2abaf12420b5b1d61a7f1b62536038097da0227229069ec81f"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/checks/staging-scan.json",
+      "bytes": 218,
+      "sha256": "52a775e8ef11e70071a60e1417beaa987a6789bb854dfe51e50c16002ac7f6d1",
+      "gitNormalizedSha256": "52a775e8ef11e70071a60e1417beaa987a6789bb854dfe51e50c16002ac7f6d1"
+    },
+    {
+      "path": "doc/evidence/2026-11-03/second-literacy-conditions-components-and-omitted-ending/tools/stage.cjs",
+      "bytes": 4366,
+      "sha256": "53d4ba70f0066c1e0291a177060808f697832ebca8329e9dce952853fabc2c41",
+      "gitNormalizedSha256": "53d4ba70f0066c1e0291a177060808f697832ebca8329e9dce952853fabc2c41"
+    }
+  ]
+}

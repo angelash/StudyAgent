@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-03T00:17:03.597Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+  "subject": "chinese",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 35,
+    "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+  },
+  "drafts": [
+    {
+      "file": "chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+      "sha256": "0e5457d6be9deecdf397f19b2b1e28e131302b7d3ea9c4a290f8555579156ff4",
+      "physicalPages": [
+        79,
+        80
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 5,
+      "preflightPublishable": false,
+      "gapCount": 65,
+      "linkedDraftMaterialReferences": 35,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 35,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-raising-flag-language-reading-v1.json",
+    "sha256": "be29f4297ce90f9e46f8b1f67ce06805e8b69d77b6aba839d87927816696c693",
+    "groups": 5,
+    "questions": 35,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

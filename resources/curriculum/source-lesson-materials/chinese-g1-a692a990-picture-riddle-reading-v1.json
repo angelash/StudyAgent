@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "picture-riddle-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+      "sha256": "d443f0b8b6f066fd19f97fcdae4496c774d9bd0613c4f8eb97c56a5f5ae4c857",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry1",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 72,
+        "pageEnd": 72,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-riddle",
+      "structure": "g1-picture-four-clues-and-medium",
+      "familyProposal": "a692a990-g1-picture-four-clues-and-medium",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "四句线索有依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图画媒介条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "现实声音动作不混",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "联系画中水不自行发声、花鸟形象保留等当前条件，两条解释有诗句依据，不只报标题。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件四句为什么共同指向一幅画？任选两条线索解释。",
+          "answer": "联系画中水不自行发声、花鸟形象保留等当前条件，两条解释有诗句依据，不只报标题。",
+          "analysis": "联系画中水不自行发声、花鸟形象保留等当前条件，两条解释有诗句依据，不只报标题。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "画中的鸟不因人走近而飞走，能推出真实鸟都不怕人吗？",
+          "answer": "不能，静图形象与现实鸟活动不同，结论限当前画的条件。",
+          "analysis": "不能，静图形象与现实鸟活动不同，结论限当前画的条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创材料给真实流水录音，能直接套本件水无声吗？",
+          "answer": "不能，当前有真实声源材料，应实际听核，不能把画中条件套现实声音。",
+          "analysis": "不能，当前有真实声源材料，应实际听核，不能把画中条件套现实声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只看到标题画还没读四句，能说明已经分析全部线索吗？",
+          "answer": "不能，只能说知道题名，完整线索分析仍需读当前四句。",
+          "analysis": "不能，只能说知道题名，完整线索分析仍需读当前四句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "画面花保持在纸上，就证明真实花永远不凋落吗？",
+          "answer": "不能，画的形象保留与真实植物变化不同，材料身份分别核。",
+          "analysis": "不能，画的形象保留与真实植物变化不同，材料身份分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "若图片旁另放鸟鸣录音，声音来自纸上鸟自己吗？",
+          "answer": "不是，实际来自独立录制素材，图像与声音来源分清，是否播放另核。",
+          "analysis": "不是，实际来自独立录制素材，图像与声音来源分清，是否播放另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-clues-and-medium-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人用自己的话概述四类线索，再说明结论的媒介条件。",
+          "answer": "山色水声花鸟有当前依据，画条件清楚，不推广所有现场或所有数字媒介。",
+          "analysis": "山色水声花鸟有当前依据，画条件清楚，不推广所有现场或所有数字媒介。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-contrasts",
+      "structure": "g1-picture-paired-words-current-objects",
+      "familyProposal": "a692a990-g1-picture-paired-words-current-objects",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前对比词准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "对象参照与条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不脱离语境一概判断",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "远近联系看听的距离条件，有无联系当前色声等具体对象，不能只背词不说明。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件有哪些成对对比词？选远近和有无说明各接什么条件。",
+          "answer": "远近联系看听的距离条件，有无联系当前色声等具体对象，不能只背词不说明。",
+          "analysis": "远近联系看听的距离条件，有无联系当前色声等具体对象，不能只背词不说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "去和来在本诗分别联系什么变化对象？",
+          "answer": "春去联系季节，人来联系人的到来，对象不同，不能混成同一实际过程。",
+          "analysis": "春去联系季节，人来联系人的到来，对象不同，不能混成同一实际过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料只说两幅画离观察者分别一米和三米，哪幅较近？",
+          "answer": "一米那幅较近，按当前同一观察者的距离比较，不沿用诗中版面位置。",
+          "analysis": "一米那幅较近，按当前同一观察者的距离比较，不沿用诗中版面位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有比较位置或距离，就能唯一断定哪个是远吗？",
+          "answer": "不能，需当前参照和条件，缺信息时不凭熟悉词猜。",
+          "analysis": "不能，需当前参照和条件，缺信息时不凭熟悉词猜。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "看见水字能直接说明本人已听到水声吗？",
+          "answer": "不能，文字与听觉不同，需要真实声音与本人回应，词语关系不代听辨。",
+          "analysis": "不能，文字与听觉不同，需要真实声音与本人回应，词语关系不代听辨。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把春去理解成人走近，怎样回当前句子区分？",
+          "answer": "分别核季节过去与人的到来，当前对象和动词关系分开。",
+          "analysis": "分别核季节过去与人的到来，当前对象和动词关系分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-paired-words-current-objects-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从本件选一组词，再给明确原创对象说明关系与适用范围。",
+          "answer": "对比有当前对象参照，原创例子与诗中条件分别说明，不推广成任何场景同一结论。",
+          "analysis": "对比有当前对象参照，原创例子与诗中条件分别说明，不推广成任何场景同一结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-recognition",
+      "structure": "g1-picture-ten-characters-and-hai",
+      "familyProposal": "a692a990-g1-picture-ten-characters-and-hai",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读十字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "还的当前语境读法清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助识写范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十字实际声音对应，本件还读hái，帮助和未读范围如实，文字规则不代发音。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读远有色近听无声去还来十字，把还放回还在读。",
+          "answer": "十字实际声音对应，本件还读hái，帮助和未读范围如实，文字规则不代发音。",
+          "analysis": "十字实际声音对应，本件还读hái，帮助和未读范围如实，文字规则不代发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较还在与归还的还。",
+          "answer": "前者hái、后者huán，具体语境和本人声音对应，不无条件只套一音。",
+          "analysis": "前者hái、后者huán，具体语境和本人声音对应，不无条件只套一音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给来声远还有听去无近色，本人看清逐项读。",
+          "answer": "当前字形与读音对应，还需明确所练本件语境，不背旧顺序代辨认。",
+          "analysis": "当前字形与读音对应，还需明确所练本件语境，不背旧顺序代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出八字，怎样如实说明另外两字的状态？",
+          "answer": "保留真实已读与卡住项，未覆盖待练，不用完整熟诗或参考声补齐。",
+          "analysis": "保留真实已读与卡住项，未覆盖待练，不用完整熟诗或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只连对远近有无，就能说已实际读十字吗？",
+          "answer": "不能，关系选择不代本人真实声音，识读仍需逐项覆盖。",
+          "analysis": "不能，关系选择不代本人真实声音，识读仍需逐项覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "识读十字会自动变为本课全部必写吗？",
+          "answer": "不会，必写水去来不四字另核，识读与本人手写目标分开。",
+          "analysis": "不会，必写水去来不四字另核，识读与本人手写目标分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-ten-characters-and-hai-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十字和一个当前词语，说实际帮助及覆盖。",
+          "answer": "声音词义和帮助如实，未写不登记为本人写过。",
+          "analysis": "声音词义和帮助如实，未写不登记为本人写过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-writing",
+      "structure": "g1-picture-shui-qu-lai-bu-own-writing",
+      "familyProposal": "a692a990-g1-picture-shui-qu-lai-bu-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形结构可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字真实覆盖，完整结构格位对应，不以键入或范字图代本人作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写水去来不，上传格中原稿。",
+          "answer": "四字真实覆盖，完整结构格位对应，不以键入或范字图代本人作品。",
+          "analysis": "四字真实覆盖，完整结构格位对应，不以键入或范字图代本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看水字完整范形，再本人写并说明一处实际笔画位置。",
+          "answer": "说明接当前原稿，笔顺先后另看真实过程，所用帮助如实。",
+          "analysis": "说明接当前原稿，笔顺先后另看真实过程，所用帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给不来水去，本人依次写并留原稿。",
+          "answer": "字形与当前顺序对应，不沿用旧四字位置补作品。",
+          "analysis": "字形与当前顺序对应，不沿用旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写水去，如何如实说明来不两字还待手写？",
+          "answer": "只核实际两字，其他待写，不用范例补为本人已经完成。",
+          "analysis": "只核实际两字，其他待写，不用范例补为本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若来字结构写漏一处，怎样留原稿再订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "上传四字静态图能独证全部笔顺先后吗？",
+          "answer": "不能，成品核字形，真实过程核先后，范形帮助与原写后改分开。",
+          "analysis": "不能，成品核字形，真实过程核先后，范形帮助与原写后改分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-shui-qu-lai-bu-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处想核的结构说明实际帮助。",
+          "answer": "说明有当前作品依据，不编错误或进步，覆盖范围真实。",
+          "analysis": "说明有当前作品依据，不编错误或进步，覆盖范围真实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-reading-recall",
+      "structure": "g1-picture-four-lines-real-reading-recall",
+      "familyProposal": "a692a990-g1-picture-four-lines-real-reading-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "完整四句版本清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背真实可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示和范围分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前完整原篇与本人声音对应，读和背分开，帮助与未覆盖如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读正文所列画的完整四句，再尝试背一部分并说明是否看文。",
+          "answer": "当前完整原篇与本人声音对应，读和背分开，帮助与未覆盖如实。",
+          "analysis": "当前完整原篇与本人声音对应，读和背分开，帮助与未覆盖如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读后两句，说明还的语境读法。",
+          "answer": "还在读hái，原声与本人声音分开，不用参考声补本人完成。",
+          "analysis": "还在读hái，原声与本人声音分开，不用参考声补本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上原篇后本人尝试背前两句，录下真实过程。",
+          "answer": "按实际看文与否核背诵，当前范围和提示清楚，不用概述代原句。",
+          "analysis": "按实际看文与否核背诵，当前范围和提示清楚，不用概述代原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "已经猜到画，就能记录完整四句本人已背吗？",
+          "answer": "不能，猜谜结果与原篇背诵不同，需本人原声实际覆盖。",
+          "analysis": "不能，猜谜结果与原篇背诵不同，需本人原声实际覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "中途成人提示一词后接上，怎样保留本次条件？",
+          "answer": "原尝试、提示和接读分别留，不倒作为首次完全独立。",
+          "analysis": "原尝试、提示和接读分别留，不倒作为首次完全独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读当前想练的一句，对比前后真实声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编学习效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编学习效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-four-lines-real-reading-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明读过背过及待练范围，再实际读一小部分。",
+          "answer": "本人声音与范围一致，已学原诗不当未见迁移或长期保持已证。",
+          "analysis": "本人声音与范围一致，已学原诗不当未见迁移或长期保持已证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "picture-riddle-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-picture-new-evidence",
+      "structure": "g1-picture-new-medium-current-evidence",
+      "familyProposal": "a692a990-g1-picture-new-medium-current-evidence",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "判断接新材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "图声动作来源清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "静图与实际过程分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不能，只能说明见到水的图像，真实听声还需实际声源和本人回应。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡是一张瀑布静图，没有配音；能说已听过真实瀑布声吗？",
+          "answer": "不能，只能说明见到水的图像，真实听声还需实际声源和本人回应。",
+          "analysis": "不能，只能说明见到水的图像，真实听声还需实际声源和本人回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "同张图另有已播放鸟鸣录音，当前声音来源怎样说明？",
+          "answer": "声音来自独立录音材料，图像与声源分开，不能说纸上鸟自己发声。",
+          "analysis": "声音来自独立录音材料，图像与声源分开，不能说纸上鸟自己发声。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料明确是动画且花形在改变，可以套静图一直不变吗？",
+          "answer": "不能，媒介和当前变化条件不同，按实际新材料观察，不沿用旧静图结论。",
+          "analysis": "不能，媒介和当前变化条件不同，按实际新材料观察，不沿用旧静图结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只见一帧花图，就能证明实际花经过春夏秋冬都没变吗？",
+          "answer": "不能，静态单帧不代连续观察，需要实际时间过程证据。",
+          "analysis": "不能，静态单帧不代连续观察，需要实际时间过程证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实鸟的照片没动，就能说明现实鸟永远不会飞吗？",
+          "answer": "不能，照片记录瞬间与真实动物活动不同，不能由单图推全部过程。",
+          "analysis": "不能，照片记录瞬间与真实动物活动不同，不能由单图推全部过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "题目没有提供声音或播放状态时，怎样说明听觉信息？",
+          "answer": "如实说尚缺实际声源或状态，不凭图形编已经听见。",
+          "analysis": "如实说尚缺实际声源或状态，不凭图形编已经听见。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-picture-riddle-reading-g1-picture-new-medium-current-evidence-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两种明确原创媒介比较看见听见与实际过程，各说依据。",
+          "answer": "结论有当前材料，图像、配音、动画和现场分别说明，不相互替代。",
+          "analysis": "结论有当前材料，图像、配音、动画和现场分别说明，不相互替代。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

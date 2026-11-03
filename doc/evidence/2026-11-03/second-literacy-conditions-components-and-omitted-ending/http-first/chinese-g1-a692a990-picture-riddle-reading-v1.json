@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-03T00:15:11.912Z",
+  "passed": true,
+  "storage": "sqlite",
+  "scope": "All selected exact-source packets validated before runtime and administrator creation; real isolated HTTP and independent cold read. No teacher approval, release or learner evidence.",
+  "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+  "subject": "chinese",
+  "prewriteValidation": {
+    "passed": true,
+    "selectedDrafts": 1,
+    "questionCount": 42,
+    "exactOriginalSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+    "proofFingerprint": "6d964648bac6b97a94689eb0b030ee93a6518423c7974e681b03ecfed11b9a8e"
+  },
+  "drafts": [
+    {
+      "file": "chinese-g1-a692a990-picture-riddle-reading-v1.json",
+      "sha256": "d443f0b8b6f066fd19f97fcdae4496c774d9bd0613c4f8eb97c56a5f5ae4c857",
+      "physicalPages": [
+        72
+      ],
+      "fullSourceTextKeptPrivate": true,
+      "targets": 6,
+      "preflightPublishable": false,
+      "gapCount": 78,
+      "linkedDraftMaterialReferences": 42,
+      "gapCodes": [
+        "target_not_published",
+        "material_changed_or_ineligible",
+        "material_family_coverage",
+        "retention_stock_gap"
+      ],
+      "fullOriginalContentReadBack": true,
+      "originalCommandReplayed": true,
+      "incompletePublicationRejected": true
+    }
+  ],
+  "coldRead": {
+    "drafts": 1,
+    "wholeContentAndSourceFingerprintsPreserved": true,
+    "draftQuestions": 42,
+    "allQuestionTextModesRubricsSourcesAndMappingsPreserved": true,
+    "exactSourceNamesAndMetadataPreserved": true,
+    "visualQuestionDocuments": 0,
+    "wholeVisualDocumentsPreserved": true,
+    "staleVisualDocumentVersionRejected": false,
+    "publications": 0,
+    "adoptions": 0,
+    "learnerResponses": 0
+  },
+  "materials": {
+    "file": "resources/curriculum/source-lesson-materials/chinese-g1-a692a990-picture-riddle-reading-v1.json",
+    "sha256": "c9c40f2b0bacf6a2a8dff719304b2591cf20e278ce5b3175f1c283bcb44be492",
+    "groups": 6,
+    "questions": 42,
+    "scoringAnchorsAreAuthoredExamplesNotStudentEvidence": true,
+    "teacherReviewed": false,
+    "independentFamiliesApproved": 0,
+    "fullyStockedRetentionIntervals": 0
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-schoolbag-tools-and-organization-v1.json",
+      "sha256": "789975729741690d118c59be58fae3c298b1aa0c5506e2c19a7ec1caaa3a16fe",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry3",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 75,
+        "pageEnd": 76,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-tool-words",
+      "structure": "g1-bag-six-tool-phrases-and-meaning",
+      "familyProposal": "a692a990-g1-bag-six-tool-phrases-and-meaning",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读六完整词",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前声音与所指用途相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助与实际操作拥有分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六词实际声音对应，转笔刀转zhuàn、尺子后音节轻声，解释接当前对象。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读橡皮尺子作业本笔袋铅笔转笔刀，再解释一个当前用途。",
+          "answer": "六词实际声音对应，转笔刀转zhuàn、尺子后音节轻声，解释接当前对象。",
+          "analysis": "六词实际声音对应，转笔刀转zhuàn、尺子后音节轻声，解释接当前对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读转笔刀与尺子，说明所用帮助。",
+          "answer": "当前完整词语音与本人声音可核，不用字母规则说明替真实发音。",
+          "analysis": "当前完整词语音与本人声音可核，不用字母规则说明替真实发音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序先给笔袋再给橡皮作业本，本人按当前词语读。",
+          "answer": "按新文字逐项认读，不背旧六词顺序，卡住和帮助如实。",
+          "analysis": "按新文字逐项认读，不背旧六词顺序，卡住和帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只认出一个笔字，就能说铅笔和笔袋都已独立认读吗？",
+          "answer": "不能，单字与完整不同词分别核，需本人实际声音覆盖当前词语。",
+          "analysis": "不能，单字与完整不同词分别核，需本人实际声音覆盖当前词语。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读会转笔刀就必须当场拆开或购买工具吗？",
+          "answer": "不需要，本次核名称与用途，实际操作和采购另看真实条件，不由读词代做。",
+          "analysis": "不需要，本次核名称与用途，实际操作和采购另看真实条件，不由读词代做。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次本人只读清四词，另外两项怎样如实说明？",
+          "answer": "保留真实已读与未读，未覆盖待帮助后练，不用参考声补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待帮助后练，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-six-tool-phrases-and-meaning-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读六词，说一个用途及哪些词得到示范帮助。",
+          "answer": "读音意义和范围真实，读词不证明本人拥有或已经使用全部物品。",
+          "analysis": "读音意义和范围真实，读词不证明本人拥有或已经使用全部物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-recognition",
+      "structure": "g1-bag-eleven-characters-current-reading",
+      "familyProposal": "a692a990-g1-bag-eleven-characters-current-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前字词声音意义对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "识写和帮助范围如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字实际声音覆盖，词语与字形对应，帮助和未读范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读书包尺作业本笔刀课早校十一字，再联系一个当前词。",
+          "answer": "十一字实际声音覆盖，词语与字形对应，帮助和未读范围如实。",
+          "analysis": "十一字实际声音覆盖，词语与字形对应，帮助和未读范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再按校笔本早作刀书课包业尺的新顺序认读。",
+          "answer": "看当前字形逐项读，不背旧序列，卡住如实。",
+          "analysis": "看当前字形逐项读，不背旧序列，卡住如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "给定新卡片作业本与学校，本人读词后分别指出本和校。",
+          "answer": "词语与单字都按当前材料实际读，不能用熟词顺背代逐字。",
+          "analysis": "词语与单字都按当前材料实际读，不能用熟词顺背代逐字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出九字，怎样报告另外两字实际识读状态？",
+          "answer": "保留真实已读与卡住项，未覆盖待练，不用完整熟篇补齐。",
+          "analysis": "保留真实已读与卡住项，未覆盖待练，不用完整熟篇补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "认出课字就说明本人刚才真实参加过一节课吗？",
+          "answer": "不能，字词识读与真实活动不同，经历不能由词语登记。",
+          "analysis": "不能，字词识读与真实活动不同，经历不能由词语登记。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字都自动变本课必写吗？本人认读后说明当前写字范围。",
+          "answer": "不自动，必写早书刀尺本五字，识读和本人手写分别核。",
+          "analysis": "不自动，必写早书刀尺本五字，识读和本人手写分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-eleven-characters-current-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字与一词，说明实际帮助和未读范围。",
+          "answer": "当前声音词义与过程真实，未写不补为已经手写。",
+          "analysis": "当前声音词义与过程真实，未写不补为已经手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-writing",
+      "structure": "g1-bag-zao-shu-dao-chi-ben-own-writing",
+      "familyProposal": "a692a990-g1-bag-zao-shu-dao-chi-ben-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形结构对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实过程提示与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写早书刀尺本，上传格中原稿。",
+          "answer": "五字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+          "analysis": "五字本人实际写，完整结构格位对应，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看刀与尺完整范形，再本人各写并指出当前区别。",
+          "answer": "说明接本人原稿和范形，笔顺先后另依真实过程，帮助如实。",
+          "analysis": "说明接本人原稿和范形，笔顺先后另依真实过程，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给本尺书早刀，本人依次写上传。",
+          "answer": "当前顺序与字形对应，不沿用旧五字位置补作品。",
+          "analysis": "当前顺序与字形对应，不沿用旧五字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写早书，怎样如实说明刀尺本仍待本人手写？",
+          "answer": "只核实际两字，其余三字待写，不用范例补本人已经完成。",
+          "analysis": "只核实际两字，其余三字待写，不用范例补本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若本写成木，怎样保留原稿再本人订正？",
+          "answer": "保留原写，回本件完整本字范形后重写，后改不覆盖首次。",
+          "analysis": "保留原写，回本件完整本字范形后重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "五字静态原稿能独证全程笔顺和没有帮助吗？",
+          "answer": "不能，成品核字形，真实过程及提示条件另核，不从成品推全部独立。",
+          "analysis": "不能，成品核字形，真实过程及提示条件另核，不从成品推全部独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-zao-shu-dao-chi-ben-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写五字，选一处结构说明实际帮助和想核之处。",
+          "answer": "说明接当前真实作品，不编错误或进步，实际覆盖如实。",
+          "analysis": "说明接当前真实作品，不编错误或进步，实际覆盖如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-reading",
+      "structure": "g1-bag-real-reading-and-literary-speaker",
+      "familyProposal": "a692a990-g1-bag-real-reading-and-literary-speaker",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人完整朗读真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "概述接本件当前范围",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色物品作息与本人事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原篇与本人声音清楚，概述接实际已读，文学我不直接当本人拥有。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件完整原篇朗读，再用自己的话说一处书包物品描写。",
+          "answer": "原篇与本人声音清楚，概述接实际已读，文学我不直接当本人拥有。",
+          "analysis": "原篇与本人声音清楚，概述接实际已读，文学我不直接当本人拥有。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读一部分并说明当前提示。",
+          "answer": "参考声与本人声音分开，实际读到和帮助如实，不用成人代读补本人。",
+          "analysis": "参考声与本人声音分开，实际读到和帮助如实，不用成人代读补本人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "读篇有角色起早的描写，就能填写本人每天到校和作息吗？",
+          "answer": "不能，文学角色与学生真实资料不同，不能由原篇替填事实。",
+          "analysis": "不能，文学角色与学生真实资料不同，不能由原篇替填事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读第一页几个文具词，可以说已完整朗读本件吗？",
+          "answer": "不能，词语与完整读篇范围不同，实际未读部分待读。",
+          "analysis": "不能，词语与完整读篇范围不同，实际未读部分待读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件要求朗读，就能说原书同时强制要求背诵吗？",
+          "answer": "不能，本页朗读任务按实际来源核，不把候选练习扩为原书未列必背。",
+          "analysis": "不能，本页朗读任务按实际来源核，不把候选练习扩为原书未列必背。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读一处当前想练的词句，比较前后实际声音。",
+          "answer": "比较有真实原音，未明显变化如实，不要求编错误或效果。",
+          "analysis": "比较有真实原音，未明显变化如实，不要求编错误或效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-reading-and-literary-speaker-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明已读和待练范围，再概述一项作品活动与真实经历的区别。",
+          "answer": "范围、声音与来源对应，不由阅读登记本人实际收放或到校完成。",
+          "analysis": "范围、声音与来源对应，不由阅读登记本人实际收放或到校完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-own-list",
+      "structure": "g1-bag-confirmed-or-fictional-tool-list",
+      "familyProposal": "a692a990-g1-bag-confirmed-or-fictional-tool-list",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人清楚表达清单",
+          "weight": 0.4
+        },
+        {
+          "criterion": "可确认范围与用途对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色拥有和未知数量分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "名称用途对应当前对象，真实自述与角色分开，不强制公开本人全部物品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人选择愿意分享且能确认的一项文具说名称用途，也可用明确角色卡。",
+          "answer": "名称用途对应当前对象，真实自述与角色分开，不强制公开本人全部物品。",
+          "analysis": "名称用途对应当前对象，真实自述与角色分开，不强制公开本人全部物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色卡给一支铅笔一本作业本一个笔袋，本人按卡说清单。",
+          "answer": "数量名称按当前明示条件，不补角色还有全部六文具或写成本人拥有。",
+          "analysis": "数量名称按当前明示条件，不补角色还有全部六文具或写成本人拥有。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色只有画纸蜡笔盒和图画书，本人按新清单说一项用途。",
+          "answer": "按当前新对象表达，不沿用旧铅笔作业本清单，角色身份清楚。",
+          "analysis": "按当前新对象表达，不沿用旧铅笔作业本清单，角色身份清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有打开或确认全部书包，就能报所有物品精确数吗？",
+          "answer": "不能，只说实际可确认范围，未看或未数部分保持未知。",
+          "analysis": "不能，只说实际可确认范围，未看或未数部分保持未知。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "某种文具当前没有，就能直接判断本人能力或家庭条件吗？",
+          "answer": "不能，当前清单不足以推出个人能力或家庭情况，不用材料作标签。",
+          "analysis": "不能，当前清单不足以推出个人能力或家庭情况，不用材料作标签。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提醒物品名后本人补充清单，怎样留原说法？",
+          "answer": "初次、帮助与新表达分别留，后改不倒作独立原答，实际对象不编。",
+          "analysis": "初次、帮助与新表达分别留，后改不倒作独立原答，实际对象不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-confirmed-or-fictional-tool-list-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再说一份明确清单，说明真实或角色、数量来源和未核范围。",
+          "answer": "信息主体与依据清楚，建议或愿望不代真实购买或已经拥有。",
+          "analysis": "信息主体与依据清楚，建议或愿望不代真实购买或已经拥有。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "schoolbag-tools-and-organization",
+      "atomId": "source:chinese:g1:a692a990:g1-bag-organization",
+      "structure": "g1-bag-real-organization-result-and-process",
+      "familyProposal": "a692a990-g1-bag-real-organization-result-and-process",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "当前结果与本人实际步骤对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助和可参与范围真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "静图愿望不代全程独立",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "结果能核摆放，真实动作与所用帮助另说明，未做步骤不由照片补为全部独立。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人用合适可确认材料实际练一次收放，上传当前结果并说明做过哪一步。",
+          "answer": "结果能核摆放，真实动作与所用帮助另说明，未做步骤不由照片补为全部独立。",
+          "analysis": "结果能核摆放，真实动作与所用帮助另说明，未做步骤不由照片补为全部独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先选当前需要的纸笔或本子，实际摆放后说明为何便于取用。",
+          "answer": "理由接当前对象和真实结果，准备、整理与使用不同过程分开。",
+          "analysis": "理由接当前对象和真实结果，准备、整理与使用不同过程分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换一组明确材料实际练整理，上传本人完成部分的当前结果。",
+          "answer": "按新对象和真实步骤核，不沿用旧照片或角色示意作本人新过程。",
+          "analysis": "按新对象和真实步骤核，不沿用旧照片或角色示意作本人新过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只说我会整理还没有动手，应该怎样报告当前状态？",
+          "answer": "说已表达能力或计划，实际整理仍待发生，不用愿望登记完成。",
+          "analysis": "说已表达能力或计划，实际整理仍待发生，不用愿望登记完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "成人帮收了一部分，本人只做另一部分，怎样留真实范围？",
+          "answer": "本人、成人步骤和当前结果分别说明，不把帮助完成倒作全部独立。",
+          "analysis": "本人、成人步骤和当前结果分别说明，不把帮助完成倒作全部独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一张整齐照片能独自证明谁整理、怎样整理和全程无帮助吗？",
+          "answer": "不能，静图可看结果，实际过程和帮助仍需真实依据，不能由成品补动作。",
+          "analysis": "不能，静图可看结果，实际过程和帮助仍需真实依据，不能由成品补动作。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-schoolbag-tools-and-organization-g1-bag-real-organization-result-and-process-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人上传一项真实整理结果，再说实际步骤、帮助与还未做的范围。",
+          "answer": "结果与过程说明一致，按本人实际条件参与，不由局部推全部物品已整理完成。",
+          "analysis": "结果与过程说明一致，按本人实际条件参与，不由局部推全部物品已整理完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    }
+  ]
+}

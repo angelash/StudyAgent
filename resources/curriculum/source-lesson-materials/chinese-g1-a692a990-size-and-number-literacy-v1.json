@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "size-and-number-literacy",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-size-and-number-literacy-v1.json",
+      "sha256": "6ca2fe6edaccb90f11836d8d27fe8276daf1a5151180ef048446eb6a0fc3f693",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter5:entry2",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 73,
+        "pageEnd": 74,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-dimensions",
+      "structure": "g1-quantity-size-vs-cardinality",
+      "familyProposal": "a692a990-g1-quantity-size-vs-cardinality",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "比较对象维度明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前结论符合材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "个体大小不代集合数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "甲球个体较大，乙盒球较多；大小与数量两个维度分别依当前条件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创甲盒一只大球、乙盒三只小球，分别说个体大小和球的多少。",
+          "answer": "甲球个体较大，乙盒球较多；大小与数量两个维度分别依当前条件。",
+          "analysis": "甲球个体较大，乙盒球较多；大小与数量两个维度分别依当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本件黄牛与猫的一组主要比较什么？为什么不只凭大判更多？",
+          "answer": "主要比较个体大小，数量要看当前成员，体形较大不能代集合更多。",
+          "analysis": "主要比较个体大小，数量要看当前成员，体形较大不能代集合更多。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新清单甲两颗大枣、乙五颗小枣，哪边数量多且哪种个体大？",
+          "answer": "乙数量多、甲枣个体大，按当前两与五和尺寸条件，不沿用旧对象。",
+          "analysis": "乙数量多、甲枣个体大，按当前两与五和尺寸条件，不沿用旧对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只写一堆杏子没给准确数，能唯一报十颗吗？",
+          "answer": "不能，堆表示集合而非固定十颗，需要当前完整材料或明示数量。",
+          "analysis": "不能，堆表示集合而非固定十颗，需要当前完整材料或明示数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只知道一个苹果较大，就能确认它所在一组比一群枣多吗？",
+          "answer": "不能，个体大小不能决定两个集合数量，当前还缺完整个数。",
+          "analysis": "不能，个体大小不能决定两个集合数量，当前还缺完整个数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "题目只问哪个多但没说比数量还是其他量，怎样继续？",
+          "answer": "先明确比较对象与维度，再根据当前材料回答，信息不足不编唯一结论。",
+          "analysis": "先明确比较对象与维度，再根据当前材料回答，信息不足不编唯一结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-size-vs-cardinality-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用当前一组明确原创条件分别说大小和多少，说明两结论怎样同时成立。",
+          "answer": "对象、维度和数量对应，体形与成员数分开，不从一项代另一项。",
+          "analysis": "对象、维度和数量对应，体形与成员数分开，不从一项代另一项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-classifiers",
+      "structure": "g1-quantity-current-classifier-phrases",
+      "familyProposal": "a692a990-g1-quantity-current-classifier-phrases",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读完整搭配",
+          "weight": 0.4
+        },
+        {
+          "criterion": "对象与量词对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "集合不补精确个数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六组当前完整声音和对象对应，群堆为集合，不凭词补固定数量。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读一头牛、一只猫、一群鸭子、一颗枣、一个桃、一堆杏子。",
+          "answer": "六组当前完整声音和对象对应，群堆为集合，不凭词补固定数量。",
+          "analysis": "六组当前完整声音和对象对应，群堆为集合，不凭词补固定数量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读一只猫与只有一只的不同只语境。",
+          "answer": "量词zhī、只有中zhǐ分别核，当前完整词句与本人声音对应，帮助如实。",
+          "analysis": "量词zhī、只有中zhǐ分别核，当前完整词句与本人声音对应，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序先给枣再给鸭子，本人按本件组成量词短语读出。",
+          "answer": "一颗枣、一群鸭子，按当前对象更新，不背旧六项顺序。",
+          "analysis": "一颗枣、一群鸭子，按当前对象更新，不背旧六项顺序。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "一群只有一个群字，就能当只有一个成员吗？本人读后说明。",
+          "answer": "不能，群是集合量词，群数与成员数不同，精确个数还需当前材料。",
+          "analysis": "不能，群是集合量词，群数与成员数不同，精确个数还需当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "一堆杏子可以不问材料就一律补成十颗吗？",
+          "answer": "不能，堆没有固定个数，当前只核量词对象，计数另需完整依据。",
+          "analysis": "不能，堆没有固定个数，当前只核量词对象，计数另需完整依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "读出一头牛就能记录本人真实养着牛吗？",
+          "answer": "不能，当前词语练习与真实拥有经历分开，不由材料填本人事实。",
+          "analysis": "不能，当前词语练习与真实拥有经历分开，不由材料填本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-classifier-phrases-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读六搭配，说明哪些指单个、哪些指集合及实际帮助。",
+          "answer": "头只颗个当前用于单个，群堆为集合，声音和解释分别核，帮助如实。",
+          "analysis": "头只颗个当前用于单个，群堆为集合，声音和解释分别核，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-recognition",
+      "structure": "g1-quantity-twelve-characters-and-zhi",
+      "familyProposal": "a692a990-g1-quantity-twelve-characters-and-zhi",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十二字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前只读法准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "词语识写帮助范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十二字实际覆盖，只量词读zhī，其他语境另核，帮助和未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读多少黄牛只猫边鸭苹果杏桃十二字，再把只放回量词语境。",
+          "answer": "十二字实际覆盖，只量词读zhī，其他语境另核，帮助和未读如实。",
+          "analysis": "十二字实际覆盖，只量词读zhī，其他语境另核，帮助和未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较一只猫与只有的只。",
+          "answer": "前者zhī、后者zhǐ，具体语境和本人声音对应，不只报文字规则。",
+          "analysis": "前者zhī、后者zhǐ，具体语境和本人声音对应，不只报文字规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给桃果鸭多杏少牛猫黄边苹只，本人逐项认读。",
+          "answer": "按当前字形和明确语境读，不背旧序列，卡住和帮助如实。",
+          "analysis": "按当前字形和明确语境读，不背旧序列，卡住和帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出十字，怎样报告另外两字的识读状态？",
+          "answer": "保留真实已读与未读，未覆盖待练，不用熟悉完整韵文补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待练，不用熟悉完整韵文补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "苹果整词读顺了，能不核单字就说苹和果都已独立认出吗？",
+          "answer": "不能，完整熟词与打乱后的逐字识读分别核，需实际声音覆盖。",
+          "analysis": "不能，完整熟词与打乱后的逐字识读分别核，需实际声音覆盖。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本课十二识字自动都成为本人必写任务吗？",
+          "answer": "不是，必写小少牛果鸟五字另核，识读与手写目标分开。",
+          "analysis": "不是，必写小少牛果鸟五字另核，识读与手写目标分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-twelve-characters-and-zhi-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再认十二字与一个当前词，说实际帮助与未读范围。",
+          "answer": "声音词义过程真实，未手写不补为已经写过。",
+          "analysis": "声音词义过程真实，未手写不补为已经写过。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-writing",
+      "structure": "g1-quantity-five-characters-own-writing",
+      "familyProposal": "a692a990-g1-quantity-five-characters-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整字形区别可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程范形帮助和后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字本人实际覆盖，字形格位对应，不以键入或教材范字图代原稿。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写小少牛果鸟，上传格中原稿。",
+          "answer": "五字本人实际覆盖，字形格位对应，不以键入或教材范字图代原稿。",
+          "analysis": "五字本人实际覆盖，字形格位对应，不以键入或教材范字图代原稿。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看小与少的完整区别，再本人各写并指出一处当前差别。",
+          "answer": "比较接范形和本人作品，真实笔顺先后另看过程，帮助如实。",
+          "analysis": "比较接范形和本人作品，真实笔顺先后另看过程，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给鸟果牛少小，本人依次写并留原稿。",
+          "answer": "当前顺序与字形对应，不沿用旧五字位置补作品。",
+          "analysis": "当前顺序与字形对应，不沿用旧五字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写小少牛，怎样如实说明果鸟两字仍待本人写？",
+          "answer": "只核实际三字，另外两字待写，不用范例补为已经完成。",
+          "analysis": "只核实际三字，另外两字待写，不用范例补为已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若鸟字写漏一处，怎样保留原稿再本人订正？",
+          "answer": "保留原写，回完整范形后重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "五字静态作品能独证全部笔顺先后吗？",
+          "answer": "不能，成品核字形，过程核先后，所用范形和帮助分别说明。",
+          "analysis": "不能，成品核字形，过程核先后，所用范形和帮助分别说明。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-five-characters-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写五字，选一处结构说明想核的地方和实际帮助。",
+          "answer": "依据当前真实作品，不编错误或进步，覆盖范围如实。",
+          "analysis": "依据当前真实作品，不编错误或进步，覆盖范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-reading-recall",
+      "structure": "g1-quantity-four-groups-real-reading-recall",
+      "familyProposal": "a692a990-g1-quantity-four-groups-real-reading-recall",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "两页四组完整版本",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背与词语音准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文帮助及覆盖如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "黄牛猫、鸭鸟、苹果枣、杏桃四组实际覆盖，读背与提示分别核，原篇仅回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件两页四组完整朗读，再按真实范围尝试背诵。",
+          "answer": "黄牛猫、鸭鸟、苹果枣、杏桃四组实际覆盖，读背与提示分别核，原篇仅回原件。",
+          "analysis": "黄牛猫、鸭鸟、苹果枣、杏桃四组实际覆盖，读背与提示分别核，原篇仅回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读最后杏子桃一组并说是否看文。",
+          "answer": "当前最后组没有因换页漏掉，量词和一的语境读法按本件核，帮助如实。",
+          "analysis": "当前最后组没有因换页漏掉，量词和一的语境读法按本件核，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上本件后本人尝试背第一组，录下真实过程。",
+          "answer": "按实际是否看文核，当前范围与提示清楚，概述不代原篇背诵。",
+          "analysis": "按实际是否看文核，当前范围与提示清楚，概述不代原篇背诵。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读第一页三组，就能记完整四组已本人读完吗？",
+          "answer": "不能，第四组仍待读，不能用熟悉量词或参考声补齐。",
+          "analysis": "不能，第四组仍待读，不能用熟悉量词或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "成人提示量词后才接出，怎样保留本次条件？",
+          "answer": "原尝试、提示和接读分别留，不倒作为首次完全独立。",
+          "analysis": "原尝试、提示和接读分别留，不倒作为首次完全独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读当前想练的一组，对比前后实际声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-four-groups-real-reading-recall-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明读过背过与待练范围，再实际读一小组。",
+          "answer": "声音与覆盖一致，已学原篇不自动证明未见迁移或长期保持。",
+          "analysis": "声音与覆盖一致，已学原篇不自动证明未见迁移或长期保持。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "size-and-number-literacy",
+      "atomId": "source:chinese:g1:a692a990:g1-quantity-new-material",
+      "structure": "g1-quantity-current-symbols-and-explicit-counts",
+      "familyProposal": "a692a990-g1-quantity-current-symbols-and-explicit-counts",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前完整材料明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "代表关系数量正确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "未给图或集合词不猜数",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四颗枣，按当前四个符号且每符号一颗，不说已真实看过教材原图或本人物品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创规定每●代表一颗枣，给● ● ● ●，共有几颗，依据是什么？",
+          "answer": "四颗枣，按当前四个符号且每符号一颗，不说已真实看过教材原图或本人物品。",
+          "analysis": "四颗枣，按当前四个符号且每符号一颗，不说已真实看过教材原图或本人物品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "新清单甲两颗大枣、乙五颗小枣，分别说数量与个体大小。",
+          "answer": "乙五颗数量多，甲枣个体大，当前两个维度分开，不沿用旧四符号数。",
+          "analysis": "乙五颗数量多，甲枣个体大，当前两个维度分开，不沿用旧四符号数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "改为每●代表两颗枣，给三个●，应说几颗？",
+          "answer": "六颗，先按当前代表关系合计，不能把符号数三直接当对象数。",
+          "analysis": "六颗，先按当前代表关系合计，不能把符号数三直接当对象数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "题干只说请数教材原图但没有给图，能凭记忆报唯一准确数吗？",
+          "answer": "不能，需当前完整图或明示条件，不能依未提供材料编数。",
+          "analysis": "不能，需当前完整图或明示条件，不能依未提供材料编数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只给一群鸭子四个字，没有图或数字，能确定到底几只吗？",
+          "answer": "不能，群不规定固定数，当前还缺完整计数依据。",
+          "analysis": "不能，群不规定固定数，当前还缺完整计数依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "图示只给数量不说明符号代表什么，能唯一选颗只头吗？",
+          "answer": "不能，先明确对象与每符号含义，缺条件不凭样子猜量词。",
+          "analysis": "不能，先明确对象与每符号含义，缺条件不凭样子猜量词。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-size-and-number-literacy-g1-quantity-current-symbols-and-explicit-counts-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "任选一份明确原创清单，说明对象、数量、代表关系和适用范围。",
+          "answer": "结论与当前材料相符，文字符号条件不代本人真实拥有或购买。",
+          "analysis": "结论与当前材料相符，文字符号条件不代本人真实拥有或购买。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
