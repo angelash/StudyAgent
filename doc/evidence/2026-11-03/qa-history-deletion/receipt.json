@@ -1,0 +1,82 @@
+{
+  "at": "2026-11-03T10:42:58+08:00",
+  "action": "User-authorized permanent deletion of the 167 previously archived QA histories",
+  "completed": true,
+  "historical_roots_deleted": 167,
+  "ordinary_files_deleted": 628768,
+  "logical_bytes_deleted": 111647398076,
+  "E_logical_bytes_deleted": 110629407952,
+  "F_logical_bytes_deleted": 1017990124,
+  "junctions_removed_without_following": 24417,
+  "all_planned_F_and_E_targets_absent": true,
+  "E_archive_base_absent": true,
+  "protected_files": [
+    {
+      "path": ".env",
+      "unchanged": true
+    },
+    {
+      "path": "apps/web/.next/BUILD_ID",
+      "unchanged": true
+    },
+    {
+      "path": "apps/api/dist/apps/api/src/main.js",
+      "unchanged": true
+    },
+    {
+      "path": "node_modules/typescript/lib/typescript.js",
+      "unchanged": true
+    },
+    {
+      "path": "node_modules/next/dist/server/next-server.js",
+      "unchanged": true
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "unchanged": true
+    }
+  ],
+  "retained_active_roots": [
+    {
+      "name": "p187",
+      "present": true
+    },
+    {
+      "name": "postgres",
+      "present": true
+    },
+    {
+      "name": "b4pg",
+      "present": true
+    },
+    {
+      "name": "block-four-content-source-first",
+      "present": true
+    },
+    {
+      "name": "block-four-math-figures-first",
+      "present": true
+    },
+    {
+      "name": "workspace-teaching-package-first-20261101",
+      "present": true
+    }
+  ],
+  "health": [
+    {
+      "service": "api",
+      "port": 4217,
+      "path": "/api/ready",
+      "status": 200
+    },
+    {
+      "service": "web",
+      "port": 3217,
+      "path": "/",
+      "status": 200
+    }
+  ],
+  "scope_note": "Only the previously archived 167 QA histories and their corresponding F roots were deleted. Current/new QA, business data, shared dependencies and prior compact audit manifests remain.",
+  "local_evidence": "G:/StorageAudits/2026-11-03-StudyAgent-QA-delete/",
+  "no_history_content_backup_created": true
+}
