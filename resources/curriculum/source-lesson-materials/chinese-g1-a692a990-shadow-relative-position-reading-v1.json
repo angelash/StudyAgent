@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "shadow-relative-position-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-shadow-relative-position-reading-v1.json",
+      "sha256": "4dbef8297fca2bdf41e39e86544bf9ea5eded75f9f99bf7b7ee03b213d50bba8",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry1",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 85,
+        "pageEnd": 86,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-image",
+      "structure": "g1-shadow-literary-following-and-conditions",
+      "familyProposal": "a692a990-g1-shadow-literary-following-and-conditions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "解释有当前描写",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文学与真实身份分明",
+          "weight": 0.4
+        },
+        {
+          "criterion": "影子条件和观察范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可联系较暗形象、跟随或陪伴，依据当前文学描写，不断言影子真是动物或本人真实养狗。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件为什么把影子联系到小黑狗或好朋友？用自己的话说一处依据。",
+          "answer": "可联系较暗形象、跟随或陪伴，依据当前文学描写，不断言影子真是动物或本人真实养狗。",
+          "analysis": "可联系较暗形象、跟随或陪伴，依据当前文学描写，不断言影子真是动物或本人真实养狗。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "常常陪着的说法能改成任何时候永远都有同样影子吗？",
+          "answer": "不能，真实影子还看光照遮挡和可见条件，常常不是无条件任何时候。",
+          "analysis": "不能，真实影子还看光照遮挡和可见条件，常常不是无条件任何时候。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创只有一张影子图，能说已经连续观察了一整天影长吗？",
+          "answer": "不能，单幅静图不代实际时间过程，完整变化需真实连续材料。",
+          "analysis": "不能，单幅静图不代实际时间过程，完整变化需真实连续材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "诗里好朋友就能写学生本人已认识一个真实新同伴吗？",
+          "answer": "不能，文学对象与本人交友经历不同，不能由参考例子补事实。",
+          "analysis": "不能，文学对象与本人交友经历不同，不能由参考例子补事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "没有当前光源或可见条件时，可以凭诗句说任何地方必有清楚影子吗？",
+          "answer": "不能，需当前光照和观察条件，不把文学概括当无条件物理结论。",
+          "analysis": "不能，需当前光照和观察条件，不把文学概括当无条件物理结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只知道标题未读跟随段，可以说已解释本件全部联想吗？",
+          "answer": "不能，回实际已读描写找依据，未读部分不能用熟悉参考补齐。",
+          "analysis": "不能，回实际已读描写找依据，未读部分不能用熟悉参考补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-literary-following-and-conditions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本件一处相似或陪伴表达，说线索与一项仍未知的现实信息。",
+          "answer": "解释有当前文字，真实动物、个人经历或连续光照记录未给就不编。",
+          "analysis": "解释有当前文字，真实动物、个人经历或连续光照记录未给就不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-directions",
+      "structure": "g1-shadow-current-person-facing-and-reference",
+      "familyProposal": "a692a990-g1-shadow-current-person-facing-and-reference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "主体和朝向明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前相对关系准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "版面与身体左右分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "小乙在小甲后面，依当前同向排列和换参照，不把旧主体的前直接沿用。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创两角色同朝黑板，小甲在小乙前面，换以小甲为参照，小乙在哪？",
+          "answer": "小乙在小甲后面，依当前同向排列和换参照，不把旧主体的前直接沿用。",
+          "analysis": "小乙在小甲后面，依当前同向排列和换参照，不把旧主体的前直接沿用。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "以小乙为主体且小丙在他后面，能说小乙在小丙前面吗？",
+          "answer": "在当前同向明确排列下可以，关系换主体重新核，结论限给定条件。",
+          "analysis": "在当前同向明确排列下可以，关系换主体重新核，结论限给定条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡两角色面对面且各自左手有标记，可以都按纸面左边判身体左吗？",
+          "answer": "不可以，需各自朝向和左右标记，观察者页边不代两个角色的身体左。",
+          "analysis": "不可以，需各自朝向和左右标记，观察者页边不代两个角色的身体左。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "题目只说在左边却没说以谁为参照，怎样继续回答？",
+          "answer": "先补主体、朝向或当前左右标记，缺条件时不凭熟悉词猜唯一结论。",
+          "analysis": "先补主体、朝向或当前左右标记，缺条件时不凭熟悉词猜唯一结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "版面里物品画在右侧，就能无条件当本人身体右侧吗？",
+          "answer": "不能，图与本人朝向、视角和参照可能不同，先核当前条件。",
+          "analysis": "不能，图与本人朝向、视角和参照可能不同，先核当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "角色转了身但物品没动，原来前后关系能不看新朝向原样套吗？",
+          "answer": "不能，前后与当前主体朝向有关，转身后要重新按新条件判断。",
+          "analysis": "不能，前后与当前主体朝向有关，转身后要重新按新条件判断。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-current-person-facing-and-reference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "自选一份明确角色图说，说一组前后或左右并说明主体朝向。",
+          "answer": "对象、朝向、参照和关系对应，结论限当前材料，不编本人真实座位信息。",
+          "analysis": "对象、朝向、参照和关系对应，结论限当前材料，不编本人真实座位信息。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-recognition",
+      "structure": "g1-shadow-eleven-characters-and-pengyou",
+      "familyProposal": "a692a990-g1-shadow-eleven-characters-and-pengyou",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "单字词语读音条件明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助识写范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字实际声音覆盖，友单读yǒu、朋友后音节当前轻声，帮助与未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读影前后黑狗左右它好朋友十一字，再读朋友一词。",
+          "answer": "十一字实际声音覆盖，友单读yǒu、朋友后音节当前轻声，帮助与未读如实。",
+          "analysis": "十一字实际声音覆盖，友单读yǒu、朋友后音节当前轻声，帮助与未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较友单字与朋友完整词。",
+          "answer": "按当前两种语境核本人声音，不把单字第三声无条件套词中后音节。",
+          "analysis": "按当前两种语境核本人声音，不把单字第三声无条件套词中后音节。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给友黑右影好前狗它后朋左，本人看清认读。",
+          "answer": "按当前字形逐项读，明确好在好朋友的语境，不能背旧顺序代辨认。",
+          "analysis": "按当前字形逐项读，明确好在好朋友的语境，不能背旧顺序代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出九字，怎样如实说明另外两字？",
+          "answer": "保留真实已读与未读，未覆盖待练，不用熟悉原篇或参考声补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待练，不用熟悉原篇或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "认得狗字就能说明本人真实养过小狗吗？",
+          "answer": "不能，字词识读与真实个人经历不同，不由教材词语填本人事实。",
+          "analysis": "不能，字词识读与真实个人经历不同，不由教材词语填本人事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字会自动全成为本课本人必写吗？",
+          "answer": "不会，必写在后我好四字另核，识读和手写范围分开。",
+          "analysis": "不会，必写在后我好四字另核，识读和手写范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-eleven-characters-and-pengyou-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字与一个当前词，说明实际帮助和未读范围。",
+          "answer": "声音词义与过程真实，未写不补为本人已经手写。",
+          "analysis": "声音词义与过程真实，未写不补为本人已经手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-writing",
+      "structure": "g1-shadow-zai-hou-wo-hao-own-writing",
+      "familyProposal": "a692a990-g1-shadow-zai-hou-wo-hao-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形结构对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写在后我好，上传格中原稿。",
+          "answer": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+          "analysis": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看我与好完整结构，再本人各写并说一处当前特点。",
+          "answer": "说明接本人原稿与范形，实际笔顺过程和帮助另核。",
+          "analysis": "说明接本人原稿与范形，实际笔顺过程和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给好我在后，本人依次写上传。",
+          "answer": "字形与当前顺序对应，不沿用旧四字位置补作品。",
+          "analysis": "字形与当前顺序对应，不沿用旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写在后，怎样如实说明我好两字仍待本人写？",
+          "answer": "只核实际两字，另外两字待写，不用范例补齐本人作品。",
+          "analysis": "只核实际两字，另外两字待写，不用范例补齐本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若我字漏写一处，怎样留原稿再本人订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "四字静态图能独证全部笔顺和全程无帮助吗？",
+          "answer": "不能，成品核字形，先后和提示条件依真实过程，不从静图补全部独立性。",
+          "analysis": "不能，成品核字形，先后和提示条件依真实过程，不从静图补全部独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-zai-hou-wo-hao-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处结构说明实际帮助和想核之处。",
+          "answer": "说明有当前真实作品依据，不编错误或进步，实际范围如实。",
+          "analysis": "说明有当前真实作品依据，不编错误或进步，实际范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-reading",
+      "structure": "g1-shadow-two-parts-real-reading",
+      "familyProposal": "a692a990-g1-shadow-two-parts-real-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人完整两部分朗读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前词语与概述有依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原声帮助和来源任务分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前两部分和本人声音可核，概述有实际已读线索，现代全文回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件两部分完整朗读，再概述一处位置或跟随画面。",
+          "answer": "当前两部分和本人声音可核，概述有实际已读线索，现代全文回原件。",
+          "analysis": "当前两部分和本人声音可核，概述有实际已读线索，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读朋友等当前词句，说明得到的帮助。",
+          "answer": "原声与本人声音分开，词中轻声按本件核，提示和未读如实。",
+          "analysis": "原声与本人声音分开，词中轻声按本件核，提示和未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给当前前后左右四词，本人实际读后回本件一部分朗读。",
+          "answer": "当前字词和原篇声音分别核，不把关系选择当已经朗读完整两部分。",
+          "analysis": "当前字词和原篇声音分别核，不把关系选择当已经朗读完整两部分。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读第一部分，就能记录本件两部分都本人读完吗？",
+          "answer": "不能，只核实际范围，另一部分待读，不由参考声或概述补齐。",
+          "analysis": "不能，只核实际范围，另一部分待读，不由参考声或概述补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件只要求朗读，可以把背诵说成原书强制任务吗？",
+          "answer": "不可以，任务依当前来源核，不把候选延伸变原书未列必背。",
+          "analysis": "不可以，任务依当前来源核，不把候选延伸变原书未列必背。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读当前想练的一处，比较前后真实声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编学习效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编学习效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-two-parts-real-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明已读和待练范围，再解释常常与任何时候永远的区别。",
+          "answer": "声音范围与本件词义对应，不能把局部读熟推全篇背诵或无条件物理结论。",
+          "analysis": "声音范围与本件词义对应，不能把局部读熟推全篇背诵或无条件物理结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "shadow-relative-position-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-shadow-speaking",
+      "structure": "g1-shadow-confirmed-or-fictional-position-expression",
+      "familyProposal": "a692a990-g1-shadow-confirmed-or-fictional-position-expression",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人完整表达位置",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前主体参照可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与真实同伴资料分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "主体、朝向和参照清楚，真实自述与角色分开，不强制披露真实同伴姓名。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按愿意分享且能确认的当前位置说一句前后关系，也可用明确角色卡。",
+          "answer": "主体、朝向和参照清楚，真实自述与角色分开，不强制披露真实同伴姓名。",
+          "analysis": "主体、朝向和参照清楚，真实自述与角色分开，不强制披露真实同伴姓名。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创角色同朝黑板且小甲在前，小乙在后，本人分别换主体说两句。",
+          "answer": "两句关系随当前主体对应，不把角色位置写为学生实际座位。",
+          "analysis": "两句关系随当前主体对应，不把角色位置写为学生实际座位。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡角色转身且左右手标明，本人按新条件说一项物品位置。",
+          "answer": "依据当前朝向标记，不沿用旧主体或纸面左右，帮助如实。",
+          "analysis": "依据当前朝向标记，不沿用旧主体或纸面左右，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有真实观察或朝向条件，怎样如实说明当前位置？",
+          "answer": "说尚缺观察或参照，可用明确角色练习，不凭熟悉例句编本人位置。",
+          "analysis": "说尚缺观察或参照，可用明确角色练习，不凭熟悉例句编本人位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只计划稍后观察，就能记录本人已经观察四个方向了吗？",
+          "answer": "不能，计划和实际完成不同，已做范围按真实过程核。",
+          "analysis": "不能，计划和实际完成不同，已做范围按真实过程核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提示参照后本人改说位置，怎样保留原答？",
+          "answer": "原尝试、帮助与新表达分别留，不把后改倒作独立首次。",
+          "analysis": "原尝试、帮助与新表达分别留，不把后改倒作独立首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-shadow-relative-position-reading-g1-shadow-confirmed-or-fictional-position-expression-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再说一组明确位置关系，说明真实或角色、主体与帮助。",
+          "answer": "信息来源和范围清楚，未观察或不愿分享部分不补成事实。",
+          "analysis": "信息来源和范围清楚，未观察或不愿分享部分不补成事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

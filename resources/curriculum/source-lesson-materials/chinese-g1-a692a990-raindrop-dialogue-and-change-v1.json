@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-raindrop-dialogue-and-change-v1.json",
+      "sha256": "471ffeff01a9cbae4e86256b67a4c4efab3710800ee5e12bd587db516491a653",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry4",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 92,
+        "pageEnd": 93,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-dialogue",
+      "structure": "g1-rain-current-speakers-and-destinations",
+      "familyProposal": "a692a990-g1-rain-current-speakers-and-destinations",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "说话听话角色准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前去处顺序对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟人与真实事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "大先问小，小去有花草处，大去无花草处，按当前对话与原篇角色核，不对调。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件谁先问谁去哪里，小雨点与大雨点分别去怎样的地方？",
+          "answer": "大先问小，小去有花草处，大去无花草处，按当前对话与原篇角色核，不对调。",
+          "analysis": "大先问小，小去有花草处，大去无花草处，按当前对话与原篇角色核，不对调。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "小雨点答完后问你呢，此时你指哪位，继续问什么？",
+          "answer": "指当时听话的大雨点，承接去哪里的同类问题，不换成无关内容。",
+          "analysis": "指当时听话的大雨点，承接去哪里的同类问题，不换成无关内容。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创甲问乙想读什么、乙答科普后问你呢，当前该谁回应什么？",
+          "answer": "甲回应自己想读的书，按新角色和问题，不沿用雨点旧去处。",
+          "analysis": "甲回应自己想读的书，按新角色和问题，不沿用雨点旧去处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只记有花草和无花草两词，就能说明已区分两角色吗？",
+          "answer": "不能，还需把当前话语与角色对应，不能凭熟词互换说话人。",
+          "analysis": "不能，还需把当前话语与角色对应，不能凭熟词互换说话人。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "雨点在作品里说话，就能证明现实雨滴有人的计划吗？",
+          "answer": "不能，是拟人叙事，文学角色意愿不作真实自然物语言或计划证据。",
+          "analysis": "不能，是拟人叙事，文学角色意愿不作真实自然物语言或计划证据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读第一段，能记录两位完整问答都已本人读过吗？",
+          "answer": "不能，实际范围与熟悉答案不同，未读对话待读，不补造本人完成。",
+          "analysis": "不能，实际范围与熟悉答案不同，未读对话待读，不补造本人完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-current-speakers-and-destinations-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "按本件概述问答顺序与两去处，再说明依据和仍未知的现实信息。",
+          "answer": "角色话语和地点有当前原篇依据，真实地点日期或学生安排未知不编。",
+          "analysis": "角色话语和地点有当前原篇依据，真实地点日期或学生安排未知不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-change",
+      "structure": "g1-rain-before-after-and-more-conditions",
+      "familyProposal": "a692a990-g1-rain-before-after-and-more-conditions",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "原来有无清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "后来措辞与起始对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文学与现实因果范围分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "原有处更红更绿，原无处后来开花长草，起始和变化分别依当前文字。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件两处原来有无花草不同，后来分别怎样写？",
+          "answer": "原有处更红更绿，原无处后来开花长草，起始和变化分别依当前文字。",
+          "analysis": "原有处更红更绿，原无处后来开花长草，起始和变化分别依当前文字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "更红的更能直接解释成原来完全没有花吗？",
+          "answer": "不能，更联系原有基础上的进一步变化，不能省掉当前起始条件。",
+          "analysis": "不能，更联系原有基础上的进一步变化，不能省掉当前起始条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料明确叶片原来三片后来五片，应说增加还是从完全没有开始？",
+          "answer": "是从三到五增加，有原有基础，不能说原来完全没有，按新数字条件核。",
+          "analysis": "是从三到五增加，有原有基础，不能说原来完全没有，按新数字条件核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件文学写雨后生机，就能说所有地方一次雨后必立刻开花吗？",
+          "answer": "不能，现实还需植株或种子、土壤、光照温度等条件，作品不代完整因果实验。",
+          "analysis": "不能，现实还需植株或种子、土壤、光照温度等条件，作品不代完整因果实验。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "不久一词能不问材料直接换成精确五分钟吗？",
+          "answer": "不能，当前没给精确时间，文学叙事不能凭熟悉经验补分钟。",
+          "analysis": "不能，当前没给精确时间，文学叙事不能凭熟悉经验补分钟。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只见一幅花草图就能证实本人连续观察过前后变化吗？",
+          "answer": "不能，静态图不代真实前后过程，作品与本人实际观察范围分开。",
+          "analysis": "不能，静态图不代真实前后过程，作品与本人实际观察范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-before-after-and-more-conditions-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "用两句话概述本件起始与后来，另说一项现实还需核的条件。",
+          "answer": "原来有无与更或出现对应，现实生长时间和其他条件如实，不以文学代全部验证。",
+          "analysis": "原来有无与更或出现对应，现实生长时间和其他条件如实，不以文学代全部验证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-recognition",
+      "structure": "g1-rain-twelve-characters-shu-zhang-geng",
+      "familyProposal": "a692a990-g1-rain-twelve-characters-shu-zhang-geng",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十二字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前多音词语准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助识写范围分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前数shǔ、长zhǎng、更gèng与完整词语对应，实际帮助和未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读数彩半空问到方没更绿出长十二字，再读数不清长出更红。",
+          "answer": "当前数shǔ、长zhǎng、更gèng与完整词语对应，实际帮助和未读如实。",
+          "analysis": "当前数shǔ、长zhǎng、更gèng与完整词语对应，实际帮助和未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较长出与尾巴长的长。",
+          "answer": "前者zhǎng、后者cháng，当前语境与本人声音对应，不只报文字规则。",
+          "analysis": "前者zhǎng、后者cháng，当前语境与本人声音对应，不只报文字规则。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给绿问长空彩到更方出数半没，本人按当前词语语境认读。",
+          "answer": "逐项看字实际读，数长更等条件明确，不背旧序列代辨认。",
+          "analysis": "逐项看字实际读，数长更等条件明确，不背旧序列代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只读清十字，怎样如实报告另外两字？",
+          "answer": "保留真实已读和未读，待帮助后练，不用熟篇或参考声补齐。",
+          "analysis": "保留真实已读和未读，待帮助后练，不用熟篇或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "方单字与地方后音节能不问语境无条件同样标声调吗？",
+          "answer": "不能，当前单字与词中读法分别核，听准确示范后本人读，不能机械套。",
+          "analysis": "不能，当前单字与词中读法分别核，听准确示范后本人读，不能机械套。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十二识字会自动都成为本课本人必写吗？",
+          "answer": "不会，必写问有半从你五字另核，识读与手写范围分开。",
+          "analysis": "不会，必写问有半从你五字另核，识读与手写范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-twelve-characters-shu-zhang-geng-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十二字和一词，说明实际帮助和未读范围。",
+          "answer": "声音词义与过程真实，未写不补为已经本人手写。",
+          "analysis": "声音词义与过程真实，未写不补为已经本人手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-writing",
+      "structure": "g1-rain-wen-you-ban-cong-ni-own-writing",
+      "familyProposal": "a692a990-g1-rain-wen-you-ban-cong-ni-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖五字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形内外左右准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五字本人实际写，内外左右等结构格位对应，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写问有半从你，上传格中原稿。",
+          "answer": "五字本人实际写，内外左右等结构格位对应，不以键入或范字图代作品。",
+          "analysis": "五字本人实际写，内外左右等结构格位对应，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看问的内外与从的两个人形，再本人写并说一处当前安排。",
+          "answer": "说明接完整范形与真实原稿，笔顺先后和所用帮助另核。",
+          "analysis": "说明接完整范形与真实原稿，笔顺先后和所用帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给你从半有问，本人依次写上传。",
+          "answer": "当前顺序与字形对应，不沿用旧五字位置补作品。",
+          "analysis": "当前顺序与字形对应，不沿用旧五字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写问有半，怎样说明从你两字仍待本人写？",
+          "answer": "只核实际三字，其余待写，不用范例补本人已经完成。",
+          "analysis": "只核实际三字，其余待写，不用范例补本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若问漏了内里的口，怎样留原稿再本人订正？",
+          "answer": "保留原写，回完整问字范形后重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整问字范形后重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "五字静态作品能独证全部笔顺和没有提示吗？",
+          "answer": "不能，成品核字形，真实先后和帮助另看过程，不从静图补独立性。",
+          "analysis": "不能，成品核字形，真实先后和帮助另看过程，不从静图补独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-wen-you-ban-cong-ni-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写五字，选一处结构说明实际帮助与想核之处。",
+          "answer": "依据当前真实原稿，不编错误或进步，覆盖范围如实。",
+          "analysis": "依据当前真实原稿，不编错误或进步，覆盖范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-role-reading",
+      "structure": "g1-rain-five-paragraph-role-reading-and-pauses",
+      "familyProposal": "a692a990-g1-rain-five-paragraph-role-reading-and-pauses",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人完整当前朗读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色五段和完整词组准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "折行提示与真实参与分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "五段当前范围、旁白与两角色声音可核，不编未参与者，本件原文回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件五自然段分角色朗读，可明确单人分角色并说明实际帮助。",
+          "answer": "五段当前范围、旁白与两角色声音可核，不编未参与者，本件原文回原件。",
+          "analysis": "五段当前范围、旁白与两角色声音可核，不编未参与者，本件原文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创长句“过了一会儿，窗边的小花挺起了花茎，叶片上的水珠慢慢滑落。”本人按意思读。",
+          "answer": "逗号与完整词组帮助停顿，不硬拆花茎水珠，不按屏幕折行作唯一断点，原声实际可核。",
+          "analysis": "逗号与完整词组帮助停顿，不硬拆花茎水珠，不按屏幕折行作唯一断点，原声实际可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "换原创句“午后，小禾收好画纸，把彩笔放进盒子。”本人按当前完整意思试读。",
+          "answer": "按新逗号和词组核真实声音，不沿用旧句相同停顿位置或字数。",
+          "analysis": "按新逗号和词组核真实声音，不沿用旧句相同停顿位置或字数。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "手机把一个词拆到两显示行，就必须在词中断开吗？本人读当前句后说明。",
+          "answer": "不必须，读按完整词语句意和标点，显示折行不自动成为实际停顿依据。",
+          "analysis": "不必须，读按完整词语句意和标点，显示折行不自动成为实际停顿依据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件要求角色朗读，可以把必背写成原书强制任务吗？",
+          "answer": "不能，任务依当前来源核，不把候选延伸变未列原书背诵要求。",
+          "analysis": "不能，任务依当前来源核，不把候选延伸变未列原书背诵要求。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提醒一处停顿后本人重读，怎样保留本次条件？",
+          "answer": "原尝试、提醒和新读分别留，不倒作首次独立，真实声音范围清楚。",
+          "analysis": "原尝试、提醒和新读分别留，不倒作首次独立，真实声音范围清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-five-paragraph-role-reading-and-pauses-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明实际读过五段哪些部分和当前角色，再读一处想练长句。",
+          "answer": "声音、角色与范围一致，部分成功不推整篇或所有新句都已熟练。",
+          "analysis": "声音、角色与范围一致，部分成功不推整篇或所有新句都已熟练。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "raindrop-dialogue-and-change",
+      "atomId": "source:chinese:g1:a692a990:g1-rain-new-dialogue",
+      "structure": "g1-rain-new-you-response-and-current-question",
+      "familyProposal": "a692a990-g1-rain-new-you-response-and-current-question",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "新说话听话人明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "你呢承接当前问题",
+          "weight": 0.4
+        },
+        {
+          "criterion": "旧内容与真实安排不套入",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "你指甲，承接想读什么的问题，由甲回应自己想读的书，不沿用雨点去处。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "新原创甲问乙想读什么，乙答故事书再问你呢，此时你指谁，应回应哪类内容？",
+          "answer": "你指甲，承接想读什么的问题，由甲回应自己想读的书，不沿用雨点去处。",
+          "analysis": "你指甲，承接想读什么的问题，由甲回应自己想读的书，不沿用雨点去处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "另例小岚问小禾去哪，小禾答图书角后问你呢，下一句由谁怎样接？",
+          "answer": "由小岚按当前去处问题回答，角色和地点依新材料，不能把说话人对调。",
+          "analysis": "由小岚按当前去处问题回答，角色和地点依新材料，不能把说话人对调。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新对话问题改为喜欢哪种颜色，回答后的你呢还一定是在问去处吗？",
+          "answer": "不是，承接当前颜色偏好问题，先核前述内容，不凭熟悉短句猜旧问题。",
+          "analysis": "不是，承接当前颜色偏好问题，先核前述内容，不凭熟悉短句猜旧问题。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有你呢两字而无前文，能唯一判断问读书还是去处吗？",
+          "answer": "不能，缺当前前文和说听角色，需补条件，不能编唯一话题。",
+          "analysis": "不能，缺当前前文和说听角色，需补条件，不能编唯一话题。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色说想去某处，就能建立学生本人真实日历或已去记录吗？",
+          "answer": "不能，明确原创对话与学生真实安排不同，意愿不等实际出行或完成。",
+          "analysis": "不能，明确原创对话与学生真实安排不同，意愿不等实际出行或完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把当前你指错后，怎样据说话听话人重新解释？",
+          "answer": "保留原答，回当前是谁说给谁听及前述问题核，后改不倒作初答。",
+          "analysis": "保留原答，回当前是谁说给谁听及前述问题核，后改不倒作初答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-raindrop-dialogue-and-change-g1-rain-new-you-response-and-current-question-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "给一份完整明确新对话，指出说话人听话人和你呢承接的问题。",
+          "answer": "角色话题与当前材料对应，缺信息如实，不机械套原篇或编同伴实际回应。",
+          "analysis": "角色话题与当前材料对应，缺信息如实，不机械套原篇或编同伴实际回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

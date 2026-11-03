@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-tails-questions-and-comparisons-v1.json",
+      "sha256": "4559902ae94504db96e277660dbb999016721c26924b8cdd6730ee3aad1d4e67",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry2",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 87,
+        "pageEnd": 88,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-matching",
+      "structure": "g1-tails-six-current-question-answer-pairs",
+      "familyProposal": "a692a990-g1-tails-six-current-question-answer-pairs",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前问题特点清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "六对象对应准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "不只顺背旧答案",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "兔子对应短、公鸡对应弯，依据当前问题与作品，不照背猴子长代全部。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件问谁尾巴短、谁尾巴弯，分别应找哪两个当前对象？",
+          "answer": "兔子对应短、公鸡对应弯，依据当前问题与作品，不照背猴子长代全部。",
+          "analysis": "兔子对应短、公鸡对应弯，依据当前问题与作品，不照背猴子长代全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本件像伞和扁分别联系哪个动物，怎样回原篇核？",
+          "answer": "松鼠联系像伞、鸭子联系扁，按本件具体问答，不凭熟悉动物任意换。",
+          "analysis": "松鼠联系像伞、鸭子联系扁，按本件具体问答，不凭熟悉动物任意换。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创纸条甲长乙短，问谁纸条短，应怎样回答？",
+          "answer": "乙纸条短，按新材料与当前特点，不套原篇兔子或旧长句。",
+          "analysis": "乙纸条短，按新材料与当前特点，不套原篇兔子或旧长句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "题问长但只答某对象最好看，回应当前问题了吗？",
+          "answer": "没有，评价维度不同，先找当前长度问题和材料对象再回答。",
+          "analysis": "没有，评价维度不同，先找当前长度问题和材料对象再回答。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只读第一页，能确定已本人读完第二页公鸡鸭孔雀回答吗？",
+          "answer": "不能，材料阅读范围与知道熟悉答案不同，实际未读部分待读。",
+          "analysis": "不能，材料阅读范围与知道熟悉答案不同，实际未读部分待读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "把孔雀换成自己喜欢的兔子还说是原篇最好看回答，怎样区分？",
+          "answer": "原篇回答孔雀，个人偏好可另说兔子，两任务来源不同不能冒充原文。",
+          "analysis": "原篇回答孔雀，个人偏好可另说兔子，两任务来源不同不能冒充原文。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-six-current-question-answer-pairs-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "从六组任选两个问题回答，说明当前特点、对象和依据。",
+          "answer": "对应有本件明确材料，不只背动物清单或用一条熟答替全部。",
+          "analysis": "对应有本件明确材料，不只背动物清单或用一条熟答替全部。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-comparison",
+      "structure": "g1-tails-length-shape-metaphor-and-preference",
+      "familyProposal": "a692a990-g1-tails-length-shape-metaphor-and-preference",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "比较评价维度明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前线索范围清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "比喻审美不代普遍事实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "不是，分别涉及长度、形状、比喻和审美评价，先明确当前问题条件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件长短、弯扁、像伞、最好看是在比较同一个维度吗？",
+          "answer": "不是，分别涉及长度、形状、比喻和审美评价，先明确当前问题条件。",
+          "analysis": "不是，分别涉及长度、形状、比喻和审美评价，先明确当前问题条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "松鼠尾巴像伞，可以怎样解释相似，又不能说成什么？",
+          "answer": "可联系展开形态的联想，不能说尾巴就是真实防雨工具。",
+          "analysis": "可联系展开形态的联想，不能说尾巴就是真实防雨工具。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "原创两个玩具尾饰一个长一个扁，能据这两个不同维度唯一说谁更长吗？",
+          "answer": "不能，扁是形状信息，另一项长度未给，需同一维度完整条件。",
+          "analysis": "不能，扁是形状信息，另一项长度未给，需同一维度完整条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件图没有厘米标尺，能凭熟悉动物编精确尾长吗？",
+          "answer": "不能，当前没有精确测量，图文特点不代真实厘米数据。",
+          "analysis": "不能，当前没有精确测量，图文特点不代真实厘米数据。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件说孔雀最好看，就能判每个人喜欢别的动物都错误吗？",
+          "answer": "不能，原篇评价复述与个人审美不同，个人可不同且说明理由。",
+          "analysis": "不能，原篇评价复述与个人审美不同，个人可不同且说明理由。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本件选猴子长兔子短，就能规定所有物种个体尾长都同样吗？",
+          "answer": "不能，当前作品例子不作所有物种个体普遍测量或分类。",
+          "analysis": "不能，当前作品例子不作所有物种个体普遍测量或分类。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-length-shape-metaphor-and-preference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两种特点说明依据，另说个人评价与材料事实如何分开。",
+          "answer": "维度和当前线索清楚，不把比喻、精确测量、作品评价和个人偏好混作一项。",
+          "analysis": "维度和当前线索清楚，不把比喻、精确测量、作品评价和个人偏好混作一项。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-recognition",
+      "structure": "g1-tails-eleven-characters-ba-and-chang",
+      "familyProposal": "a692a990-g1-tails-eleven-characters-ba-and-chang",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人认读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "巴与长当前语境准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助识写范围真实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字实际声音覆盖，巴单读bā、尾巴后音节当前轻声，长本件cháng，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读比尾巴谁长短把伞兔最公十一字，再读尾巴一词。",
+          "answer": "十一字实际声音覆盖，巴单读bā、尾巴后音节当前轻声，长本件cháng，帮助如实。",
+          "analysis": "十一字实际声音覆盖，巴单读bā、尾巴后音节当前轻声，长本件cháng，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人比较巴单字、尾巴完整词与长度的长。",
+          "answer": "具体语境与本人声音对应，不把单字声调或其他长读音无条件套来。",
+          "analysis": "具体语境与本人声音对应，不把单字声调或其他长读音无条件套来。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给公兔伞比最谁把短尾长巴，本人逐项实际认读。",
+          "answer": "看当前字形与明确长度语境读，不顺背旧序列，卡住和帮助如实。",
+          "analysis": "看当前字形与明确长度语境读，不顺背旧序列，卡住和帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只认出九字，如何如实报告另外两字？",
+          "answer": "保留真实已读与未读，未覆盖待练，不用熟篇或参考声补齐。",
+          "analysis": "保留真实已读与未读，未覆盖待练，不用熟篇或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "把成长的长读法套进尾巴长，怎样回当前语境重读？",
+          "answer": "本课说长度读cháng，保留原尝试，听准确示范后本人重读，后改不覆盖首次。",
+          "analysis": "本课说长度读cháng，保留原尝试，听准确示范后本人重读，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字都会自动成为本课本人必写吗？",
+          "answer": "不会，必写长比巴把四字另核，识读与手写范围分开。",
+          "analysis": "不会，必写长比巴把四字另核，识读与手写范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-eleven-characters-ba-and-chang-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字与一个当前词，说实际帮助和未读范围。",
+          "answer": "声音词义和过程真实，未写不补为本人已手写。",
+          "analysis": "声音词义和过程真实，未写不补为本人已手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-writing",
+      "structure": "g1-tails-chang-bi-ba-ba-own-writing",
+      "familyProposal": "a692a990-g1-tails-chang-bi-ba-ba-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形部件区别清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写长比巴把，上传格中原稿。",
+          "answer": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。",
+          "analysis": "四字本人实际写，完整结构格位对应，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看巴与把完整范形，再本人各写说明相同部件和不同完整字。",
+          "answer": "说明接原稿与当前位置形体，不能只拼贴熟字图，实际笔顺另核。",
+          "analysis": "说明接原稿与当前位置形体，不能只拼贴熟字图，实际笔顺另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给把巴比长，本人依次写并留原稿。",
+          "answer": "当前顺序与完整字形对应，不沿用旧四字位置补作品。",
+          "analysis": "当前顺序与完整字形对应，不沿用旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写长比，怎样说明巴把两字仍待本人写？",
+          "answer": "只核实际两字，其余待写，不用范例补齐本人已经完成。",
+          "analysis": "只核实际两字，其余待写，不用范例补齐本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把漏掉左边部件，怎样保留原稿再本人订正？",
+          "answer": "保留原写，回完整把字范形后重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整把字范形后重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "四字静态原稿能独证全部笔顺与没有帮助吗？",
+          "answer": "不能，成品看字形，实际先后和提示另看过程，不从静图补全部独立性。",
+          "analysis": "不能，成品看字形，实际先后和提示另看过程，不从静图补全部独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-chang-bi-ba-ba-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处部件结构说明实际帮助和想核之处。",
+          "answer": "说明有当前真实作品依据，不编错误或进步，覆盖如实。",
+          "analysis": "说明有当前真实作品依据，不编错误或进步，覆盖如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-reading-recall",
+      "structure": "g1-tails-two-pages-six-pairs-real-reading",
+      "familyProposal": "a692a990-g1-tails-two-pages-six-pairs-real-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "两页完整六组版本",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人读背与当前词音可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "看文提示和覆盖如实",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "六组问与答实际覆盖，本人原声和尾巴等词音当前准确，读背与提示分开。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件两页六组完整朗读，再按真实范围尝试背诵。",
+          "answer": "六组问与答实际覆盖，本人原声和尾巴等词音当前准确，读背与提示分开。",
+          "analysis": "六组问与答实际覆盖，本人原声和尾巴等词音当前准确，读背与提示分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读第二页公鸡鸭孔雀的回答，说明帮助。",
+          "answer": "不因换页漏后三回答，原声与本人声音分开，当前覆盖和提示如实。",
+          "analysis": "不因换页漏后三回答，原声与本人声音分开，当前覆盖和提示如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "合上原篇后本人尝试背前面一组问答，录真实过程。",
+          "answer": "按实际是否看文核背诵，问答范围与提示清楚，概述不代原句。",
+          "analysis": "按实际是否看文核背诵，问答范围与提示清楚，概述不代原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只会说兔子短，就能记录整篇六组都背完吗？",
+          "answer": "不能，只核当前真实范围，其余待练，不由一个熟答补整篇。",
+          "analysis": "不能，只核当前真实范围，其余待练，不由一个熟答补整篇。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "成人给动物名提示后才接出，怎样保留条件？",
+          "answer": "原尝试、提示和接读分别留，不倒作为首次完全独立。",
+          "analysis": "原尝试、提示和接读分别留，不倒作为首次完全独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人重读当前想练的一组，比较前后真实声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编学习效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编学习效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-two-pages-six-pairs-real-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明实际读过背过及待练范围，再读一组当前问答。",
+          "answer": "声音与范围一致，原篇读熟不自动当未见迁移或长期保持已证。",
+          "analysis": "声音与范围一致，原篇读熟不自动当未见迁移或长期保持已证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "tails-questions-and-comparisons",
+      "atomId": "source:chinese:g1:a692a990:g1-tails-own-questions",
+      "structure": "g1-tails-given-features-and-voluntary-preference",
+      "familyProposal": "a692a990-g1-tails-given-features-and-voluntary-preference",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人提问回应完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前新条件对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原篇偏好角色与真实原话分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "问题与当前长短对象对应，不套原篇动物，完整本人声音可核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡甲纸条长乙纸条短，本人提一个特点问题并按卡回答。",
+          "answer": "问题与当前长短对象对应，不套原篇动物，完整本人声音可核。",
+          "analysis": "问题与当前长短对象对应，不套原篇动物，完整本人声音可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "新卡丙玩具尾饰弯丁尾饰扁，本人换问题并回应当前特点。",
+          "answer": "按新对象形状问答，不沿用旧长短结论，角色和实际物品身份清楚。",
+          "analysis": "按新对象形状问答，不沿用旧长短结论，角色和实际物品身份清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人自愿说最喜欢一个动物的外形并给理由，再分清原篇孔雀回答。",
+          "answer": "个人偏好允许不同，理由接愿意表达的特点，不能把个人答案冒充原篇。",
+          "analysis": "个人偏好允许不同，理由接愿意表达的特点，不能把个人答案冒充原篇。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有真实同伴参与，只单人分角色问答，怎样说明？",
+          "answer": "如实标单人角色练习，不编另一名真实参与者或同伴意见。",
+          "analysis": "如实标单人角色练习，不编另一名真实参与者或同伴意见。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "真实同伴偏好不同，需要把对方改成同意孔雀才算完成吗？",
+          "answer": "不需要，保留实际原话与回应，作品信息和个人审美不同，不强改偏好。",
+          "analysis": "不需要，保留实际原话与回应，作品信息和个人审美不同，不强改偏好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人建议后本人修改问句，怎样保留原说法？",
+          "answer": "初次、帮助与新表达分别留，后改不倒作首次独立，问题仍接当前材料。",
+          "analysis": "初次、帮助与新表达分别留，后改不倒作首次独立，问题仍接当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-tails-questions-and-comparisons-g1-tails-given-features-and-voluntary-preference-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人用新明确特点问答一轮，说明对象、条件、帮助和真实或角色身份。",
+          "answer": "本轮声音与材料对应，不用熟悉原篇问答替新材料理解或伪造同伴回应。",
+          "analysis": "本轮声音与材料对应，不用熟悉原篇问答替新材料理解或伪造同伴回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

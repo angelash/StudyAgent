@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-garden-six-structure-direction-and-moon-v1.json",
+      "sha256": "8df574f7ee75526bf94c0a879a312e09a4eff35fa58d707ce575156dd573fdd8",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry6",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 95,
+        "pageEnd": 97,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-parts",
+      "structure": "g1-garden6-current-two-part-position-classification",
+      "familyProposal": "a692a990-g1-garden6-current-two-part-position-classification",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "当前完整字形位置准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "花清与八字任务对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "部件线索不代普遍字源",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "明的日月在左右，星可看当前上下两部分；同有日不等整体位置相同，回完整字形。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件按可分上下或左右两部分任务，明与星分别怎样观察？",
+          "answer": "明的日月在左右，星可看当前上下两部分；同有日不等整体位置相同，回完整字形。",
+          "analysis": "明的日月在左右，星可看当前上下两部分；同有日不等整体位置相同，回完整字形。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本件把叶把地与只尘等分别放哪类当前位置，怎样核？",
+          "answer": "叶把地看左右，只尘看上下，按当前完整字形与花清示例核，不只认一个部件。",
+          "analysis": "叶把地看左右，只尘看上下，按当前完整字形与花清示例核，不只认一个部件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新卡给两个含土字形但完整安排不同，能只凭土就归同一位置类吗？",
+          "answer": "不能，应看当前完整形体和题目怎样分两部分，部件相同不代整体相同。",
+          "analysis": "不能，应看当前完整形体和题目怎样分两部分，部件相同不代整体相同。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件按两部分连线就能证明所有字唯一历史字源吗？",
+          "answer": "不能，现代形体观察与历史演变不同，字源需可靠资料另核。",
+          "analysis": "不能，现代形体观察与历史演变不同，字源需可靠资料另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只看图中左边篮子就把所有左侧字归左右结构，合理吗？",
+          "answer": "不合理，分类看字内当前部分位置，不看字卡在页面哪侧。",
+          "analysis": "不合理，分类看字内当前部分位置，不看字卡在页面哪侧。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提示后改正一字分类，怎样保留原判断？",
+          "answer": "原答、帮助与新判断分别留，不把后改倒作首次独立。",
+          "analysis": "原答、帮助与新判断分别留，不把后改倒作首次独立。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-current-two-part-position-classification-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选本件两字说明当前分部分依据与一个不能据此推出的事实。",
+          "answer": "位置有完整形体依据，任务范围清楚，不推任意字义字源或本人已经手写。",
+          "analysis": "位置有完整形体依据，任务范围清楚，不推任意字义字源或本人已经手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-direction",
+      "structure": "g1-garden6-facing-east-and-new-direction",
+      "familyProposal": "a692a990-g1-garden6-facing-east-and-new-direction",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读背与方位表达真实",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前朝向前提明确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "简化儿歌与现实太阳条件分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前前东后西左北右南，本人原声与说明分别核，朝东前提不能省，真实太阳定位另核。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回原件读方位韵文，再说明明确面向东时前后左右各对应哪方。",
+          "answer": "当前前东后西左北右南，本人原声与说明分别核，朝东前提不能省，真实太阳定位另核。",
+          "analysis": "当前前东后西左北右南，本人原声与说明分别核，朝东前提不能省，真实太阳定位另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人按真实范围尝试背该韵文，说明是否看文。",
+          "answer": "原件范围与本人声音对应，提示和看文如实，背诵不代实际现场测方向。",
+          "analysis": "原件范围与本人声音对应，提示和看文如实，背诵不代实际现场测方向。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色明确面向西，本人说明前后左右四方应怎样更新。",
+          "answer": "前西后东左南右北，按新朝向重新核，不沿用旧朝东左右。",
+          "analysis": "前西后东左南右北，按新朝向重新核，不沿用旧朝东左右。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有朝向或方向标记，就能无条件说左北右南吗？",
+          "answer": "不能，缺当前主体朝向，需补条件，不机械套简化儿歌。",
+          "analysis": "不能，缺当前主体朝向，需补条件，不机械套简化儿歌。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "教材早晨太阳示意能直接代任何地点季节时间的精确方向吗？",
+          "answer": "不能，现实太阳方位需当前地点季节时间等条件，简化教学参照不代精确测量。",
+          "analysis": "不能，现实太阳方位需当前地点季节时间等条件，简化教学参照不代精确测量。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提示开头后本人接背，怎样保留原尝试和帮助？",
+          "answer": "原音、提示与接背分别留，不倒作为首次完全独立或实际测向完成。",
+          "analysis": "原音、提示与接背分别留，不倒作为首次完全独立或实际测向完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-facing-east-and-new-direction-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人换一张明确朝向卡说明四方，再报告实际读背和帮助范围。",
+          "answer": "当前方位与朝向对应，真实声音和范围清楚，角色不填本人实际地点。",
+          "analysis": "当前方位与朝向对应，真实声音和范围清楚，角色不填本人实际地点。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-signs",
+      "structure": "g1-garden6-given-public-sign-reading",
+      "familyProposal": "a692a990-g1-garden6-given-public-sign-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读当前标牌文字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "所指与材料相符",
+          "weight": 0.4
+        },
+        {
+          "criterion": "角色与真实住址到访分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "实际声音与当前文字对应，解释接给定图文，不当本人真实到访或住址。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读本件人民路电影院卫生院小卖部报刊亭五标牌，选一项解释所指。",
+          "answer": "实际声音与当前文字对应，解释接给定图文，不当本人真实到访或住址。",
+          "analysis": "实际声音与当前文字对应，解释接给定图文，不当本人真实到访或住址。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人从五牌选两项读并说明得到的帮助。",
+          "answer": "当前两项声音真实，提示与未读范围如实，不用参考声补齐。",
+          "analysis": "当前两项声音真实，提示与未读范围如实，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色标牌改为图书馆，本人按新文字读并解释，不能照背电影院。",
+          "answer": "按当前新标牌实际认读，角色身份清楚，不沿用旧地名或写真实去处。",
+          "analysis": "按当前新标牌实际认读，角色身份清楚，不沿用旧地名或写真实去处。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "看到人民路示例，就能填写学生住址为人民路吗？",
+          "answer": "不能，教材路牌是当前材料，不代个人资料，真实住址不由示例推定。",
+          "analysis": "不能，教材路牌是当前材料，不代个人资料，真实住址不由示例推定。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "读卫生院一词就自动生成真实就诊行动，合理吗？",
+          "answer": "不合理，词语识读与实际外部行动不同，当前学习不创建真实安排。",
+          "analysis": "不合理，词语识读与实际外部行动不同，当前学习不创建真实安排。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本次只认出一牌，能说所有牌上字都独立读懂吗？",
+          "answer": "不能，按真实当前范围说明，未覆盖待练，不由熟悉地点类别补齐。",
+          "analysis": "不能，按真实当前范围说明，未覆盖待练，不由熟悉地点类别补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-given-public-sign-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读当前五牌，说明实际已读、帮助与角色或真实来源。",
+          "answer": "声音范围和材料对应，不要求披露本人常去地点或编出行经历。",
+          "analysis": "声音范围和材料对应，不要求披露本人常去地点或编出行经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-moon",
+      "structure": "g1-garden6-gulangyuexing-complete-selected-four-lines",
+      "familyProposal": "a692a990-g1-garden6-gulangyuexing-complete-selected-four-lines",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人读当前完整节选",
+          "weight": 0.4
+        },
+        {
+          "criterion": "盘镜联想有原句依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "节选整首与现实器物分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四句实际覆盖，可联系圆亮等当前形象，节选不当全首，帮助与读到范围如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人读正文古朗月行节选四句，再解释白玉盘与月亮的一处联系。",
+          "answer": "四句实际覆盖，可联系圆亮等当前形象，节选不当全首，帮助与读到范围如实。",
+          "analysis": "四句实际覆盖，可联系圆亮等当前形象，节选不当全首，帮助与读到范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读后两句，说明瑶台镜属于怎样的联想。",
+          "answer": "当前声音真实，盘镜为文学想象，不当月亮真是人造镜或已核真实瑶台地理。",
+          "analysis": "当前声音真实，盘镜为文学想象，不当月亮真是人造镜或已核真实瑶台地理。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创句把路灯光比作小星点，本人说与当前月亮联想方法有何相似。",
+          "answer": "都可借形象相似表达，原创与本件四句不同，不能冒充李白原句。",
+          "analysis": "都可借形象相似表达，原创与本件四句不同，不能冒充李白原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "当前给了四句，就能说完整古朗月行只包含四句吗？",
+          "answer": "不能，题目明确节选，当前四句只是选定范围，完整原诗范围另核。",
+          "analysis": "不能，题目明确节选，当前四句只是选定范围，完整原诗范围另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "白玉盘比喻能直接测出月亮材料或精确大小吗？",
+          "answer": "不能，文学相似不代真实材料和测量，未知科学数据不编。",
+          "analysis": "不能，文学相似不代真实材料和测量，未知科学数据不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读前两句，能记录节选四句都已本人读完吗？",
+          "answer": "不能，前两句按真实原音核，后两句待读，不用参考声补齐。",
+          "analysis": "不能，前两句按真实原音核，后两句待读，不用参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-gulangyuexing-complete-selected-four-lines-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再读完整四句，说明当前理解、实际帮助与未完成范围。",
+          "answer": "原声和解释分别核，完整节选不升级全首提供或未见长期效果已证。",
+          "analysis": "原声和解释分别核，完整节选不升级全首提供或未见长期效果已证。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-animal-reading",
+      "structure": "g1-garden6-who-flies-current-shapes-and-reading",
+      "familyProposal": "a692a990-g1-garden6-who-flies-current-shapes-and-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "概述接实际共读",
+          "weight": 0.4
+        },
+        {
+          "criterion": "鸟马鱼当前动作对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "文学代表与普遍现实能力分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前鸟飞马跑鱼游与实际读到范围对应，帮助如实，不把代表形象推所有动物个体同样。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "成人帮助读本件谁会飞后，本人说鸟马鱼分别联系哪种动作。",
+          "answer": "当前鸟飞马跑鱼游与实际读到范围对应，帮助如实，不把代表形象推所有动物个体同样。",
+          "analysis": "当前鸟飞马跑鱼游与实际读到范围对应，帮助如实，不把代表形象推所有动物个体同样。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "实际共读后本人说一组谁会怎样问答，解释动作描写来自哪份材料。",
+          "answer": "问答接本件文字，不当真实动物录音或本人现场观察，来源清楚。",
+          "analysis": "问答接本件文字，不当真实动物录音或本人现场观察，来源清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡写玩具球会滚，本人能直接用鸟会飞当当前答案吗？",
+          "answer": "不能，要按新对象动作回应，旧儿歌熟句不代新材料理解。",
+          "analysis": "不能，要按新对象动作回应，旧儿歌熟句不代新材料理解。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本件用鸟飞形象，就能说所有鸟种和每只鸟一定都能飞吗？",
+          "answer": "不能，代表描写不作所有物种个体的普遍能力结论，现实具体条件另核。",
+          "analysis": "不能，代表描写不作所有物种个体的普遍能力结论，现实具体条件另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "只看动物图没共读，怎样报告当前阅读进度？",
+          "answer": "说已看图，实际完整共读仍待发生，不用熟悉儿歌补本人已经读完。",
+          "analysis": "说已看图，实际完整共读仍待发生，不用熟悉儿歌补本人已经读完。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "马跑的诗意描写就规定每次奔跑都必须鸣叫或四脚一直腾空吗？",
+          "answer": "不能，当前文学画面不代所有真实运动过程，不能把描写当无条件定义。",
+          "analysis": "不能，当前文学画面不代所有真实运动过程，不能把描写当无条件定义。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-who-flies-current-shapes-and-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再概述一组已读问答，说真实原声、成人帮助和待练范围。",
+          "answer": "内容范围与实际过程一致，文字与真实动物声音活动分开，不编共读完成。",
+          "analysis": "内容范围与实际过程一致，文字与真实动物声音活动分开，不编共读完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "garden-six-structure-direction-and-moon",
+      "atomId": "source:chinese:g1:a692a990:g1-garden6-new-questions",
+      "structure": "g1-garden6-new-object-action-question-answer",
+      "familyProposal": "a692a990-g1-garden6-new-object-action-question-answer",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人提问回应完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "新对象动作条件对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "真实原话帮助与角色分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "问答接当前球或纸船动作，不照背鸟马鱼，完整本人声音和角色身份清楚。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创卡明确球会滚动、纸船在给定水面漂，本人按卡提一个谁会怎样问题并答。",
+          "answer": "问答接当前球或纸船动作，不照背鸟马鱼，完整本人声音和角色身份清楚。",
+          "analysis": "问答接当前球或纸船动作，不照背鸟马鱼，完整本人声音和角色身份清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "新卡玩具车会滚动，纸风车在给定风中转，本人换问题并回应。",
+          "answer": "当前对象动作与条件相符，不省风等前提，不沿用旧纸船漂答案。",
+          "analysis": "当前对象动作与条件相符，不省风等前提，不沿用旧纸船漂答案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "真实参与者或明确角色提当前动作问题，本人听完回应实际内容。",
+          "answer": "原话与本人回应对应，真实和单人角色分开，不编未参与者声音。",
+          "analysis": "原话与本人回应对应，真实和单人角色分开，不编未参与者声音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没给物品动作条件，就能凭熟悉形状断言唯一会怎样吗？",
+          "answer": "不能，需当前材料和必要条件，不用旧儿歌或愿望补确定事实。",
+          "analysis": "不能，需当前材料和必要条件，不用旧儿歌或愿望补确定事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "单人分角色问答能写两名真实同伴已经交流吗？",
+          "answer": "不能，只能说明角色练习，真实双方参与仍待发生，未有原话不编。",
+          "analysis": "不能，只能说明角色练习，真实双方参与仍待发生，未有原话不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人建议后本人修改问句，怎样保留第一次说法？",
+          "answer": "初次、帮助和新表达分别留，后改不倒作独立原答，仍按当前材料。",
+          "analysis": "初次、帮助和新表达分别留，后改不倒作独立原答，仍按当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-garden-six-structure-direction-and-moon-g1-garden6-new-object-action-question-answer-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人用完整新材料问答一轮，说明对象条件、实际帮助与来源。",
+          "answer": "本轮声音和条件对应，角色与真实过程如实，不把熟悉原篇顺背代新材料迁移。",
+          "analysis": "本轮声音和条件对应，角色与真实过程如实，不把熟悉原篇顺背代新材料迁移。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

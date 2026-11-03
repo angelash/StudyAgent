@@ -1,0 +1,628 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-frog-poem-punctuation-reading-v1.json",
+      "sha256": "7c7271c0f05563726d2693979dc7fbb0368d86adf6f37525efe4034e8c4336dc",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry3",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 89,
+        "pageEnd": 91,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-helpers",
+      "structure": "g1-frog-three-helper-symbol-correspondences",
+      "familyProposal": "a692a990-g1-frog-three-helper-symbol-correspondences",
+      "familyIndependenceReviewed": false,
+      "mode": "short_answer",
+      "rubric": [
+        {
+          "criterion": "三组对象对应准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "联想有当前形态依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "拟人与现实身份分清",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "依次逗号句号省略号，形态联想接当前带尾、圆形或成串，不能当现实物体真成文字。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本件小蝌蚪水泡泡一串水珠分别联系哪种标点？说明一处相似依据。",
+          "answer": "依次逗号句号省略号，形态联想接当前带尾、圆形或成串，不能当现实物体真成文字。",
+          "analysis": "依次逗号句号省略号，形态联想接当前带尾、圆形或成串，不能当现实物体真成文字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "本件为什么把小蝌蚪联系到逗号，而不是只因它会游动？",
+          "answer": "联系当前带尾形态的文学联想，游动是角色活动，不单凭会动就等逗号。",
+          "analysis": "联系当前带尾形态的文学联想，游动是角色活动，不单凭会动就等逗号。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新原创卡只给一列小石子，可以怎样作有依据联想而不冒充本件帮手？",
+          "answer": "可说像一串珠子等并解释成列特点，标明原创新对象，不说作者本件原帮手就是石子。",
+          "analysis": "可说像一串珠子等并解释成列特点，标明原创新对象，不说作者本件原帮手就是石子。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "青蛙说写诗，就能断言现实青蛙会读写人类文字吗？",
+          "answer": "不能，当前是拟人化文学表达，不能由作品说话推现实能力。",
+          "analysis": "不能，当前是拟人化文学表达，不能由作品说话推现实能力。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "水珠成串就能规定现实总有六颗且真是省略号吗？",
+          "answer": "不能，形态联想与实际水珠数和文字身份不同，数目需当前材料。",
+          "analysis": "不能，形态联想与实际水珠数和文字身份不同，数目需当前材料。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只读蝌蚪一部分，能记录泡泡水珠三位都已本人读过吗？",
+          "answer": "不能，只核实际范围，后面部分待读，不用参考表补本人已经读到。",
+          "analysis": "不能，只核实际范围，后面部分待读，不用参考表补本人已经读到。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-helper-symbol-correspondences-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "选两位本件帮手说明对应与依据，再说文字和现实的区别。",
+          "answer": "对象符号和当前形态联想准确，实际自然物不当人类文字，未核声音或能力不补。",
+          "analysis": "对象符号和当前形态联想准确，实际自然物不当人类文字，未核声音或能力不补。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-punctuation",
+      "structure": "g1-frog-original-lines-punctuation-marking",
+      "familyProposal": "a692a990-g1-frog-original-lines-punctuation-marking",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿含完整当前材料",
+          "weight": 0.4
+        },
+        {
+          "criterion": "指定符号位置准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "口头答案与真实圈画分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "第一行逗号句号、第二行逗号分别圈，末尾省略号另认，不把参考计数当本人已圈。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创材料“滴答，滴答。\n呼呼，呼呼……”，本人原样写后圈逗号和句号，上传原稿。",
+          "answer": "第一行逗号句号、第二行逗号分别圈，末尾省略号另认，不把参考计数当本人已圈。",
+          "analysis": "第一行逗号句号、第二行逗号分别圈，末尾省略号另认，不把参考计数当本人已圈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "原创单行“咚咚，门开了。”本人按原样写并圈当前逗号句号。",
+          "answer": "当前逗号在咚咚后、句号在行末，完整原稿由本人实际处理，不沿用旧两行位置。",
+          "analysis": "当前逗号在咚咚后、句号在行末，完整原稿由本人实际处理，不沿用旧两行位置。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新材料“小云来了，小雨也来了……”本人圈逗号，另指出省略号。",
+          "answer": "逗号与末尾省略号分清，本材料没有句号就不补圈一个，依据当前完整文字。",
+          "analysis": "逗号与末尾省略号分清，本材料没有句号就不补圈一个，依据当前完整文字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "目前只口头说出标点还没有动笔，怎样说明本次圈画状态？",
+          "answer": "口头辨认可另核，真实圈画待发生，不用参考图片或计数补为本人作品。",
+          "analysis": "口头辨认可另核，真实圈画待发生，不用参考图片或计数补为本人作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若把末尾省略号误圈作句号，怎样留原稿再订正？",
+          "answer": "保留原圈，比较完整符号后本人新标说明，后改不覆盖首次。",
+          "analysis": "保留原圈，比较完整符号后本人新标说明，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "一张只截到前半句的图，能独证整段所有指定符号都已处理吗？",
+          "answer": "不能，核当前实际可见范围，缺失后半材料和圈画保持待核，不凭熟悉例子补齐。",
+          "analysis": "不能，核当前实际可见范围，缺失后半材料和圈画保持待核，不凭熟悉例子补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-original-lines-punctuation-marking-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选择当前给定完整短句重新圈指定符号，说明帮助与未完成范围。",
+          "answer": "完整材料、真实原稿和符号位置对应，字母o与句号分开，所用帮助如实。",
+          "analysis": "完整材料、真实原稿和符号位置对应，字母o与句号分开，所用帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-recognition",
+      "structure": "g1-frog-eleven-characters-current-dang-gei",
+      "familyProposal": "a692a990-g1-frog-eleven-characters-current-dang-gei",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人识读十一字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前当给词语读法准确",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助识写范围清楚",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "十一字实际声音对应，当充当读dāng、给你读gěi，当前帮助和未读如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人认读写诗点要过给当串们以成十一字，再读给你当个等当前形式。",
+          "answer": "十一字实际声音对应，当充当读dāng、给你读gěi，当前帮助和未读如实。",
+          "analysis": "十一字实际声音对应，当充当读dāng、给你读gěi，当前帮助和未读如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读诗歌诗人以前以后，选一词解释。",
+          "answer": "完整当前词语声音意义对应，不用词表熟读代逐字独立识字。",
+          "analysis": "完整当前词语声音意义对应，不用词表熟读代逐字独立识字。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给成点当写以过诗串给要们，本人按当前语境实际认读。",
+          "answer": "看字逐项读，当给们回明确本件词语条件，不背旧序列代辨认。",
+          "analysis": "看字逐项读，当给们回明确本件词语条件，不背旧序列代辨认。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本次本人只读清九字，怎样如实说明另两字？",
+          "answer": "保留真实已读和未读，待帮助后练，不用熟篇或参考声补齐。",
+          "analysis": "保留真实已读和未读，待帮助后练，不用熟篇或参考声补齐。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件当读dāng，就能说所有当字语境都同音吗？",
+          "answer": "不能，当前充当语境核dāng，其他词语另核，不从一课推唯一无条件读音。",
+          "analysis": "不能，当前充当语境核dāng，其他词语另核，不从一课推唯一无条件读音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "十一识字会自动全变成本课本人必写吗？",
+          "answer": "不会，必写下个雨们四字另核，识读和手写范围分开。",
+          "analysis": "不会，必写下个雨们四字另核，识读和手写范围分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-eleven-characters-current-dang-gei-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人重认十一字和一词，说明实际帮助及未读范围。",
+          "answer": "当前声音词义和过程真实，未写不补为已本人手写。",
+          "analysis": "当前声音词义和过程真实，未写不补为已本人手写。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-writing",
+      "structure": "g1-frog-xia-ge-yu-men-own-writing",
+      "familyProposal": "a692a990-g1-frog-xia-ge-yu-men-own-writing",
+      "familyIndependenceReviewed": false,
+      "mode": "image_upload",
+      "rubric": [
+        {
+          "criterion": "本人原稿覆盖四字",
+          "weight": 0.4
+        },
+        {
+          "criterion": "完整范形点画结构对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "过程帮助与后改分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "四字实际覆盖，雨内部点画、们左右结构等按完整范形核，不以键入或范字图代作品。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按本件完整范形写下个雨们，上传格中原稿。",
+          "answer": "四字实际覆盖，雨内部点画、们左右结构等按完整范形核，不以键入或范字图代作品。",
+          "analysis": "四字实际覆盖，雨内部点画、们左右结构等按完整范形核，不以键入或范字图代作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先看雨与们完整范形，再本人各写并说明一处当前结构。",
+          "answer": "说明接本人原稿，点画位置与左右安排准确，真实笔顺和帮助另核。",
+          "analysis": "说明接本人原稿，点画位置与左右安排准确，真实笔顺和帮助另核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新顺序给们雨个下，本人依次写上传。",
+          "answer": "当前顺序和字形对应，不沿用旧四字位置补作品。",
+          "analysis": "当前顺序和字形对应，不沿用旧四字位置补作品。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "本人目前只写下个，怎样说明雨们两字仍待本人写？",
+          "answer": "只核实际两字，其余待写，不用参考图补本人已经完成。",
+          "analysis": "只核实际两字，其余待写，不用参考图补本人已经完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "若雨内部点画漏写，怎样留原稿再本人订正？",
+          "answer": "保留原写，回完整范形后本人重写，后改不覆盖首次。",
+          "analysis": "保留原写，回完整范形后本人重写，后改不覆盖首次。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "四字成品图能独证全部笔顺和没有提示吗？",
+          "answer": "不能，成品核字形，真实过程和帮助另核，不从静图补全部独立性。",
+          "analysis": "不能，成品核字形，真实过程和帮助另核，不从静图补全部独立性。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-xia-ge-yu-men-own-writing-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人再次写四字，选一处结构说明实际帮助和想核之处。",
+          "answer": "依据当前真实原稿，不编错误或进步，覆盖范围如实。",
+          "analysis": "依据当前真实原稿，不编错误或进步，覆盖范围如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 240
+        }
+      ]
+    },
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-reading",
+      "structure": "g1-frog-three-pages-real-reading",
+      "familyProposal": "a692a990-g1-frog-three-pages-real-reading",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "三页完整当前版本",
+          "weight": 0.4
+        },
+        {
+          "criterion": "本人原声与概述可核",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助范围与原书任务分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "当前原篇与本人声音清楚，不漏水珠和成诗部分，概述接实际已读，现代全文回原件。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人回本件三页完整朗读，再用自己的话说一位帮手做了什么。",
+          "answer": "当前原篇与本人声音清楚，不漏水珠和成诗部分，概述接实际已读，现代全文回原件。",
+          "analysis": "当前原篇与本人声音清楚，不漏水珠和成诗部分，概述接实际已读，现代全文回原件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "先听准确示范，再本人读一部分并说明所用帮助。",
+          "answer": "参考声不代本人声音，实际范围与提示分别留，文字蛙声不当真实动物录音。",
+          "analysis": "参考声不代本人声音，实际范围与提示分别留，文字蛙声不当真实动物录音。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "本人从已读成诗部分找一处逗号或句号，读时说明当前停顿。",
+          "answer": "符号位置与本人真实声音分别核，指形不代实际朗读，原篇范围清楚。",
+          "analysis": "符号位置与本人真实声音分别核，指形不代实际朗读，原篇范围清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只读第一页，就能记录水珠与青蛙成诗也已本人读完吗？",
+          "answer": "不能，后续范围待读，不用参考表或熟悉故事补真实阅读完成。",
+          "analysis": "不能，后续范围待读，不用参考表或熟悉故事补真实阅读完成。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本件只要求朗读，可以把必背写成原书明确要求吗？",
+          "answer": "不能，任务按当前来源核，不把候选延伸变未列原书强制背诵。",
+          "analysis": "不能，任务按当前来源核，不把候选延伸变未列原书强制背诵。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人再读当前想练的一处，比较前后实际声音。",
+          "answer": "比较有原音，未明显变化如实，不要求造错或编效果。",
+          "analysis": "比较有原音，未明显变化如实，不要求造错或编效果。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-three-pages-real-reading-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人说明已读、仅看图和待练范围，再实际读一小部分。",
+          "answer": "声音与范围一致，帮助如实，局部圈画或概述不代完整三页朗读。",
+          "analysis": "声音与范围一致，帮助如实，局部圈画或概述不代完整三页朗读。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "frog-poem-punctuation-reading",
+      "atomId": "source:chinese:g1:a692a990:g1-frog-imagination",
+      "structure": "g1-frog-new-shape-based-literary-expression",
+      "familyProposal": "a692a990-g1-frog-new-shape-based-literary-expression",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人原创表达完整",
+          "weight": 0.4
+        },
+        {
+          "criterion": "相似或拟人有当前依据",
+          "weight": 0.4
+        },
+        {
+          "criterion": "原创作者原话和现实身份分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "可像一串珠子等，成列圆形与当前对象对应，原创不冒充本件水珠原句。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "原创题给一列圆小石子，本人说一句有形态依据的联想并解释。",
+          "answer": "可像一串珠子等，成列圆形与当前对象对应，原创不冒充本件水珠原句。",
+          "analysis": "可像一串珠子等，成列圆形与当前对象对应，原创不冒充本件水珠原句。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "给定小纸旗在风中摆动，本人用拟人或比喻说一句并解释。",
+          "answer": "表达接当前摆动形态，物体拟人不当真会人类说话，合理不同表达可接受。",
+          "analysis": "表达接当前摆动形态，物体拟人不当真会人类说话，合理不同表达可接受。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新对象给弯曲枝条，本人换一个有依据联想，不能照套圆泡泡句号。",
+          "answer": "按当前弯曲特点原创，不机械套旧圆形依据，身份和帮助如实。",
+          "analysis": "按当前弯曲特点原创，不机械套旧圆形依据，身份和帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有给对象形态就坚持一个唯一比喻，怎样补条件？",
+          "answer": "先明确当前对象与特点，缺条件不编唯一结论，不以熟句代观察。",
+          "analysis": "先明确当前对象与特点，缺条件不编唯一结论，不以熟句代观察。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人说石子像珠子，就能登记真实石子已经变成珠子吗？",
+          "answer": "不能，文学相似与材料身份不同，原创表达不代现实变形事实。",
+          "analysis": "不能，文学相似与材料身份不同，原创表达不代现实变形事实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人建议后本人改一句联想，怎样保留原说法？",
+          "answer": "初次、帮助与新表达分别留，后改不倒作独立首次，依据接当前对象。",
+          "analysis": "初次、帮助与新表达分别留，后改不倒作独立首次，依据接当前对象。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-frog-poem-punctuation-reading-g1-frog-new-shape-based-literary-expression-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人用新明确对象说一句联想，再说明依据、原创身份和实际帮助。",
+          "answer": "声音和当前形态依据对应，不把原创设想冒充作者原话或本人未做经历。",
+          "analysis": "声音和当前形态依据对应，不把原创设想冒充作者原话或本人未做经历。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}

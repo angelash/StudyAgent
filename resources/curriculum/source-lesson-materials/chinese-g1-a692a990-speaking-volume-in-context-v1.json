@@ -1,0 +1,428 @@
+{
+  "format": "source-following-original-materials-v1",
+  "status": "editorial_candidate",
+  "sourceLessons": [
+    {
+      "lesson": "speaking-volume-in-context",
+      "path": "resources/curriculum/source-lessons/chinese-g1-a692a990-speaking-volume-in-context-v1.json",
+      "sha256": "e47ed3c95617342936fe90a065c1328fd944a6bee9df22a7e8f1325d14228c06",
+      "source": {
+        "bookId": "archive-book:chinese-g1-upper-a692a990d41b6291",
+        "lessonId": "archive-book:chinese-g1-upper-a692a990d41b6291:chapter6:entry5",
+        "sourceSha256": "a692a990d41b6291b6c33078b6739c9c7d2c07ad70a949e39f031fd05c6ac8a5",
+        "pageStart": 94,
+        "pageEnd": 94,
+        "publicationYear": null,
+        "curriculumStandardYear": null
+      }
+    }
+  ],
+  "teacherReviewed": false,
+  "targetAlignmentReviewed": false,
+  "scoringReviewed": false,
+  "familyIndependenceReviewed": false,
+  "automaticPublication": false,
+  "reservePolicy": "每目标三项即时与四项拟议1/3/7/14日原创候选，阅读、实际发音、背诵、手写和同伴交流分别核。已见原篇与帮助不作未见迁移，目标、评分、独立题族和充分未见保持库存均待教师审阅，不自动发布。",
+  "groups": [
+    {
+      "lesson": "speaking-volume-in-context",
+      "atomId": "source:chinese:g1:a692a990:g1-volume-context",
+      "structure": "g1-volume-audience-distance-and-environment",
+      "familyProposal": "a692a990-g1-volume-audience-distance-and-environment",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人说明当前条件",
+          "weight": 0.4
+        },
+        {
+          "criterion": "音量选择有具体理由",
+          "weight": 0.4
+        },
+        {
+          "criterion": "大小声不一律或代能力",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "听众距离和环境不同，以能接收且顾及周围为依据，不是所有场景越响越好。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人比较安静阅览角近处一人和较远一组听众，说明声音为何可不同。",
+          "answer": "听众距离和环境不同，以能接收且顾及周围为依据，不是所有场景越响越好。",
+          "analysis": "听众距离和环境不同，以能接收且顾及周围为依据，不是所有场景越响越好。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "当前老师在近处且周围需要安静，本人怎样选声音并说清报告内容？",
+          "answer": "选择老师可接收的合适声音，内容完整，不把向老师说话一概当必须喊。",
+          "analysis": "选择老师可接收的合适声音，内容完整，不把向老师说话一概当必须喊。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新条件所有听众近距离围坐，本人解释为何不直接套远距离讲述的音量。",
+          "answer": "按新距离环境重新判断，对方能听清即可，不机械沿用旧大声。",
+          "analysis": "按新距离环境重新判断，对方能听清即可，不机械沿用旧大声。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "把音调变尖就等于声音一定变大且更清楚吗？",
+          "answer": "不等于，音高和音量不同，清楚还需完整内容语速与实际接收。",
+          "analysis": "不等于，音高和音量不同，清楚还需完整内容语速与实际接收。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对方没听清就能不问内容一直喊得更响吗？",
+          "answer": "不能，先确认哪里不清，可能需补信息重说或调整，不只无限放大。",
+          "analysis": "不能，先确认哪里不清，可能需补信息重说或调整，不只无限放大。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "只有方法说明没实际开口，能说已完成当前真实表达吗？",
+          "answer": "不能，方法理解与本人实际表达分开，真实说话待发生。",
+          "analysis": "不能，方法理解与本人实际表达分开，真实说话待发生。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-audience-distance-and-environment-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选一个明确角色场景说明听众、距离、环境与选择理由。",
+          "answer": "条件和理由对应，角色与本人事实分开，不能据大小声给个人能力标签。",
+          "analysis": "条件和理由对应，角色与本人事实分开，不能据大小声给个人能力标签。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "speaking-volume-in-context",
+      "atomId": "source:chinese:g1:a692a990:g1-volume-speaking",
+      "structure": "g1-volume-real-voice-and-complete-message",
+      "familyProposal": "a692a990-g1-volume-real-voice-and-complete-message",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人真实完整表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "当前场景音量语速合适",
+          "weight": 0.4
+        },
+        {
+          "criterion": "帮助设备与音高条件分明",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "请求完整且当前对方可接收的合适小声，角色与真实场景分开，帮助如实。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "本人按明确角色在安静阅览角问座位，实际说一句完整询问并留声音。",
+          "answer": "请求完整且当前对方可接收的合适小声，角色与真实场景分开，帮助如实。",
+          "analysis": "请求完整且当前对方可接收的合适小声，角色与真实场景分开，帮助如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "换向较远一组讲述的角色，本人实际说一句清楚开头并说明调整。",
+          "answer": "按新听众条件调整音量语速，不只变尖或无限喊响，真实原声可核。",
+          "analysis": "按新听众条件调整音量语速，不只变尖或无限喊响，真实原声可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新角色给捡到文具需说明情况，本人用合适声音说完整当前报告。",
+          "answer": "内容接给定角色事件，不把角色捡物登记成本人真实经历，实际声音与帮助分开。",
+          "analysis": "内容接给定角色事件，不把角色捡物登记成本人真实经历，实际声音与帮助分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "录音回放小能单独证明本人现场精确声压或能力不足吗？",
+          "answer": "不能，设备增益和距离影响回放，要看真实条件与接收，不能仅凭一次响度下结论。",
+          "analysis": "不能，设备增益和距离影响回放，要看真实条件与接收，不能仅凭一次响度下结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "本人只说很响但话里缺请求，怎样回当前目标完善？",
+          "answer": "补当前需要表达的完整内容，音量不代信息完整，保留原音与新表达。",
+          "analysis": "补当前需要表达的完整内容，音量不代信息完整，保留原音与新表达。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人提醒慢些后本人重说，怎样保留本次帮助条件？",
+          "answer": "原尝试、提醒与新声音分别留，不倒作为首次已经独立清楚。",
+          "analysis": "原尝试、提醒与新声音分别留，不倒作为首次已经独立清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-real-voice-and-complete-message-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人换明确场景再说一句，报告实际听众、帮助与自己做过范围。",
+          "answer": "声音、内容和当前条件对应，未参与者不编回应，角色练习如实。",
+          "analysis": "声音、内容和当前条件对应，未参与者不编回应，角色练习如实。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "speaking-volume-in-context",
+      "atomId": "source:chinese:g1:a692a990:g1-volume-listening",
+      "structure": "g1-volume-current-feedback-and-adjustment",
+      "familyProposal": "a692a990-g1-volume-current-feedback-and-adjustment",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "原话反馈与本人调整对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "实际参与或角色身份清楚",
+          "weight": 0.4
+        },
+        {
+          "criterion": "内容音量和帮助分别核",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "回应接当前反馈，补清末词或重说，真实与角色身份分明，不编未发生听众回应。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "真实参与者或明确角色说最后一个词没听清，本人确认后重说当前完整话。",
+          "answer": "回应接当前反馈，补清末词或重说，真实与角色身份分明，不编未发生听众回应。",
+          "analysis": "回应接当前反馈，补清末词或重说，真实与角色身份分明，不编未发生听众回应。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "对方表示内容缺捡到物品名称，本人应只更响还是补信息？实际回应。",
+          "answer": "应补清当前物品和事情，音量不代缺失内容，原尝试与新表达分开。",
+          "analysis": "应补清当前物品和事情，音量不代缺失内容，原尝试与新表达分开。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新反馈说说得太快，本人按当前条件调整一句并留声音。",
+          "answer": "依据当前语速反馈重说，不沿用旧音量方案，真实声音和帮助可核。",
+          "analysis": "依据当前语速反馈重说，不沿用旧音量方案，真实声音和帮助可核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "只有单人录音没有听众参与，可以写老师已经听清并表扬吗？",
+          "answer": "不可以，只标角色或单人练习，真实老师回应未发生不编。",
+          "analysis": "不可以，只标角色或单人练习，真实老师回应未发生不编。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "对方听觉或环境条件变了，可以不确认就认定原方法永远合适吗？",
+          "answer": "不能，按当前真实接收条件确认与调整，不以旧一次通过推所有情境。",
+          "analysis": "不能，按当前真实接收条件确认与调整，不以旧一次通过推所有情境。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "本人没听清反馈，可以怎样礼貌继续并保留条件？",
+          "answer": "请对方重说或确认，保留当前未听清与重复，不凭期待编反馈。",
+          "analysis": "请对方重说或确认，保留当前未听清与重复，不凭期待编反馈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-current-feedback-and-adjustment-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人回顾一轮原话反馈与重说，说明改了什么和实际帮助。",
+          "answer": "说明有真实原音和当前回应，角色与实际参与分开，不造进步或未发生表扬。",
+          "analysis": "说明有真实原音和当前回应，角色与实际参与分开，不造进步或未发生表扬。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    },
+    {
+      "lesson": "speaking-volume-in-context",
+      "atomId": "source:chinese:g1:a692a990:g1-volume-transfer",
+      "structure": "g1-volume-new-context-explanation-and-expression",
+      "familyProposal": "a692a990-g1-volume-new-context-explanation-and-expression",
+      "familyIndependenceReviewed": false,
+      "mode": "audio_record",
+      "rubric": [
+        {
+          "criterion": "本人按新条件说明再表达",
+          "weight": 0.4
+        },
+        {
+          "criterion": "听众距离环境对应",
+          "weight": 0.4
+        },
+        {
+          "criterion": "旧方案角色与事实分开",
+          "weight": 0.2
+        }
+      ],
+      "goldAnchors": {
+        "acceptedExample": "按新听众和环境可接收且不过分打扰，邀请完整，不直接套远距离大声方案。",
+        "insufficientExample": "看起来是这样，没有核对当前对象。",
+        "insufficientReason": "缺当前对象与过程依据；参考、他人帮助和本人实际表现未区分。",
+        "alternativeAnswers": "按目标核对实际过程，合理不同方法可接受；不自动批准题族、评分或保持库存。"
+      },
+      "exercises": [
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-1",
+          "purpose": "understanding",
+          "dimension": "understanding",
+          "proposedIntervalDays": null,
+          "stem": "新原创情境是近距离安静小组，本人说明音量选择后实际说一句邀请。",
+          "answer": "按新听众和环境可接收且不过分打扰，邀请完整，不直接套远距离大声方案。",
+          "analysis": "按新听众和环境可接收且不过分打扰，邀请完整，不直接套远距离大声方案。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-2",
+          "purpose": "procedure",
+          "dimension": "procedure",
+          "proposedIntervalDays": null,
+          "stem": "另给较远听众且一人请求重说，本人说明怎样确认并实际表达。",
+          "answer": "按当前反馈重说或调整，不能只有方法说明或虚构实际回应，角色身份清楚。",
+          "analysis": "按当前反馈重说或调整，不能只有方法说明或虚构实际回应，角色身份清楚。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-3",
+          "purpose": "transfer",
+          "dimension": "transfer",
+          "proposedIntervalDays": null,
+          "stem": "新场景只缺一句话关键内容，本人补一句而不是只加大声音。",
+          "answer": "按当前缺信息条件完善内容，音量与完整意思分别核。",
+          "analysis": "按当前缺信息条件完善内容，音量与完整意思分别核。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-4",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 1,
+          "stem": "没有给听众和距离，就能指定唯一现场分贝数吗？",
+          "answer": "不能，当前条件不足且设备回放不代声压测量，不编精确数或能力结论。",
+          "analysis": "不能，当前条件不足且设备回放不代声压测量，不编精确数或能力结论。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-5",
+          "purpose": "retention",
+          "dimension": "procedure",
+          "proposedIntervalDays": 3,
+          "stem": "角色卡说捡到物品，可以写成本人今天真实捡物报告完成吗？",
+          "answer": "不能，角色表达与个人事实分开，真实报告需实际发生过程。",
+          "analysis": "不能，角色表达与个人事实分开，真实报告需实际发生过程。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-6",
+          "purpose": "retention",
+          "dimension": "transfer",
+          "proposedIntervalDays": 7,
+          "stem": "成人建议后本人改表达，怎样保留第一次与后改？",
+          "answer": "初次、帮助和新表达分别留，后改不倒作独立原答，依据当前条件。",
+          "analysis": "初次、帮助和新表达分别留，后改不倒作独立原答，依据当前条件。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        },
+        {
+          "id": "chinese-g1-a692a990-speaking-volume-in-context-g1-volume-new-context-explanation-and-expression-7",
+          "purpose": "retention",
+          "dimension": "understanding",
+          "proposedIntervalDays": 14,
+          "stem": "本人选两种明确新场景各说一句，并比较所核条件与实际帮助。",
+          "answer": "当前听众环境和声音内容对应，不以同一大小声模板代所有情境或编听众反馈。",
+          "analysis": "当前听众环境和声音内容对应，不以同一大小声模板代所有情境或编听众反馈。 仅作候选人工核对参考；真实原答、过程、帮助及曝光另存，不据此自动认定独立掌握或保持。",
+          "expectedSeconds": 180
+        }
+      ]
+    }
+  ]
+}
