@@ -4,7 +4,7 @@
 
 验证源码副本使用 `scripts/qa/snapshot-source.py` 的受控清单；禁止递归复制整个主目录或旧 `data/qa/`。测试输入精确列明，任务完成后保留证据并收尾历史快照，详见[QA 存储规则](scripts/qa/README.md)。
 
-剩余工作按[五块执行计划](doc/product/190-mainline-and-five-block-delivery.md)推进，每块完成后自测、检查并本地提交，再继续下一块。既有 R0～R8、72 项需求和 WS01～WS12 保留为追溯编号，不再作为额外开发批次。
+剩余工作按[五块执行计划](doc/product/190-mainline-and-five-block-delivery.md)推进，每块完成后自测、检查、提交推送并自动发布，再继续下一块。每项完整修改默认完成这一交付流程，无需再次请求发布或推送许可，详见[自动发布与推送规则](.cursor/rules/automatic-delivery.mdc)。既有 R0～R8、72 项需求和 WS01～WS12 保留为追溯编号，不再作为额外开发批次。
 
 修改课程、教材、课堂或考核前，阅读并遵守：
 
