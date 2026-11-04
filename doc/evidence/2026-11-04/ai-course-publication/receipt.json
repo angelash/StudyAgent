@@ -1,0 +1,102 @@
+{
+  "at": "2026-11-04T11:42:41.093Z",
+  "passed": true,
+  "applicationRevision": "9f53e037d8677bf3c0d155dfb6bed98ece93e385",
+  "featureCommits": [
+    "01e9ae33",
+    "18acbe72"
+  ],
+  "publicUrl": "https://study-agent.iepose.cn",
+  "buildId": "AJImfEEbTXxWy4s3hTMyh",
+  "webPort": 3217,
+  "apiPort": 4217,
+  "schema": {
+    "before": 37,
+    "after": 38
+  },
+  "revisionBefore": 199,
+  "revisionAfter": 203,
+  "originalRecords": 89876,
+  "missingOrChangedOriginalRecords": 0,
+  "addedRecordsByCollection": {
+    "events": 1,
+    "privacyRequests": 1
+  },
+  "environmentByteIdentical": true,
+  "frozenInputsUnchanged": true,
+  "sourceInputsMatched": 2920,
+  "publicLoginCookiesAndMobileVerified": true,
+  "publicHomeSubmitUsesNewAIEndpoint": true,
+  "publicRealModelGeneration": false,
+  "isolatedRealModelEvidence": "../model-course-crafting/liveModel.json",
+  "manualBuilderIsExplicitAdvancedEntry": true,
+  "generatedAccountsRemoved": 1,
+  "providerCalls": 0,
+  "courseGenerationCreated": false,
+  "pm2Saved": true,
+  "stableObservations": 3,
+  "observationSpanMs": 66056,
+  "mainPushed": true,
+  "remoteApplicationRevision": "9f53e037d8677bf3c0d155dfb6bed98ece93e385",
+  "publicationEvidenceDelivery": "Committed and pushed after this application verification; does not alter deployed application inputs.",
+  "privateRollback": "output/releases/2026-11-04-9f53e037",
+  "backup": {
+    "at": "2026-11-04T11:37:06.734Z",
+    "database": {
+      "schema": 37,
+      "revision": 199,
+      "originalRecords": 89876,
+      "verifiedFiles": 1,
+      "referencedFiles": 0,
+      "assetsIncluded": false
+    },
+    "runtime": [
+      {
+        "path": "apps/web/.next",
+        "files": 715,
+        "bytes": 424309666
+      },
+      {
+        "path": "apps/api/dist",
+        "files": 608,
+        "bytes": 6372043
+      },
+      {
+        "path": "packages/contracts/dist",
+        "files": 2,
+        "bytes": 741321
+      },
+      {
+        "path": "packages/config/dist",
+        "files": 2,
+        "bytes": 5998
+      }
+    ],
+    "configuration": {
+      "beforeSha256": "29e29dccf9afaf5bbeb1b07c9047860fc95fb67c776767d69b14d613e7504037",
+      "afterSha256": "29e29dccf9afaf5bbeb1b07c9047860fc95fb67c776767d69b14d613e7504037",
+      "changedKeys": []
+    },
+    "independentDeletionLedger": {
+      "deletions": 5,
+      "sha256": "2b8ebf7e970bd0918c3d9c38d6b90a55bfafad6940ca83534d13a237e6728f10"
+    },
+    "oldWebBuildId": "82ipCOFHwA7Ub7Th8AqtY",
+    "runtimeManifestSha256": "96855a43ede8542d728bd38d3e76e456b8e1362f8a00c878b5fa30c1de9b30fe",
+    "privateDirectory": "output/releases/2026-11-04-9f53e037",
+    "assets": "Referenced mutable inventory was empty. Shared static source assets and external textbooks retained in place, not a full independent asset backup."
+  },
+  "limits": [
+    "Public smoke verifies deployed wiring/authentication/navigation; archived isolated GPT-6.1 Sol result covers actual research/questions/blueprint/detail generation.",
+    "No formal learner evidence or bulk content generated. Existing content/teacher/device/print/new-computer and long-term acceptance remains frozen.",
+    "Rollback must preserve then-current database and deletion ledger; old37 reader cannot directly open38 or discard post-release actions."
+  ],
+  "evidence": [
+    "build.json",
+    "rehearsal.json",
+    "start-and-migration.json",
+    "public-smoke.json",
+    "stability.json",
+    "final-invariants.json"
+  ]
+}

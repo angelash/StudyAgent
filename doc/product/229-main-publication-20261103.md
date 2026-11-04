@@ -1,6 +1,8 @@
 # 229 主干业务版本正式发布
 
-日期：2026-11-03。用户明确授权“发布”。当前业务应用已发布到 https://study-agent.iepose.cn ，应用源码为 `0acfaee2b2977d547ba2a1883e8c3b639118f8c4`，Web buildId 为 `82ipCOFHwA7Ub7Th8AqtY`。本次未执行 Git 推送；后续发布文档提交不改变这份应用构建。
+后续状态：2026-11-04已发布课程生成修复，当前版本和自动交付规范见[231](231-automatic-delivery-and-ai-course-publication.md)。以下保留2026-11-03发布时的历史记录。
+
+日期：2026-11-03。用户明确授权“发布”。该业务应用当时发布到 https://study-agent.iepose.cn ，应用源码为 `0acfaee2b2977d547ba2a1883e8c3b639118f8c4`，Web buildId 为 `82ipCOFHwA7Ub7Th8AqtY`。该次未执行 Git 推送；后续发布文档提交不改变那份应用构建。
 
 ## 发布结果
 

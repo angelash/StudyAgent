@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-04T11:40:33.547Z",
+  "passed": true,
+  "applicationRevision": "9f53e037d8677bf3c0d155dfb6bed98ece93e385",
+  "buildId": "AJImfEEbTXxWy4s3hTMyh",
+  "fromSchema": 37,
+  "toSchema": 38,
+  "revision": 199,
+  "originalRecords": 89876,
+  "allOriginalRecordIdsPositionsAndRawHashesPreserved": true,
+  "services": [
+    {
+      "name": "study-agent-web",
+      "pid": 83544,
+      "status": "online",
+      "restarts": 3,
+      "seed": "false"
+    },
+    {
+      "name": "study-agent-health",
+      "pid": 38608,
+      "status": "online",
+      "restarts": 1,
+      "seed": "false"
+    },
+    {
+      "name": "study-agent-api",
+      "pid": 4228,
+      "status": "online",
+      "restarts": 0,
+      "seed": "false"
+    }
+  ],
+  "http": [
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/parent/login",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/api/ready",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3217",
+      "route": "/api/learning/course-craft",
+      "status": 401
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/parent/login",
+      "status": 200
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/api/ready",
+      "status": 200
+    },
+    {
+      "origin": "https://study-agent.iepose.cn",
+      "route": "/api/learning/course-craft",
+      "status": 401
+    }
+  ],
+  "sameExistingPorts": true,
+  "contentAutoSeedingDisabled": true
+}

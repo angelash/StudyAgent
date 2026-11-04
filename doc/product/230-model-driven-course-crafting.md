@@ -1,5 +1,7 @@
 # 230 主题驱动的模型课程生成
 
+2026-11-04 发布状态更新：本轮修复已提交推送并发布，公网buildId `AJImfEEbTXxWy4s3hTMyh`，正式库37→38保持89,876条原记录。首页发送已采用AI接口，人工蓝图为独立高级入口。规范、验证与备份见[231](231-automatic-delivery-and-ai-course-publication.md)；下文为实现和本地交付时的原始记录。
+
 2026-11-04 用户指出首页发送仅打开人工课程蓝图，与 HyperKnow 原站行为不符，并要求核对其现有申请后复刻工作原理和处理流程。本轮只实现用户主动发起的生成能力，既有教材、题库候选及批量内容生产继续冻结。
 
 ## 已核实的差异
@@ -42,7 +44,7 @@ schema38增加本人请求唯一约束和最低读取标记；新记录进入学
 
 [交付回执](../evidence/2026-11-04/model-course-crafting/receipt.json)、[各批API结果](../evidence/2026-11-04/model-course-crafting/api-results.json)、[原站观察边界](../evidence/2026-11-04/model-course-crafting/reference-observation.json)和[完整回归后的输入差异](../evidence/2026-11-04/model-course-crafting/changes-after-full-snapshot.json)保留上述事实。原始日志、trace、私有对话及验证库保留本机 `data/qa/craft38/` 和 `data/qa/craft38-final/`；受控源码清单约110MB/份，不含正式库、旧QA或依赖副本。新增PostgreSQL15458只用于本轮测试，完成后停止，没有注册系统服务。
 
-本轮只在main本地提交，没有Git推送、正式迁移或发布。正式Web仍为229记录的buildId `82ipCOFHwA7Ub7Th8AqtY`；用户需发布本次修复后，公网发送才会采用新流程。教材/题库批量生产与旧外部验收继续冻结。
+第3块本地交付时只在main提交，尚未Git推送、正式迁移或发布，当时正式Web为229记录的buildId `82ipCOFHwA7Ub7Th8AqtY`。此后用户授权自动交付，本次修复已按231发布；教材/题库批量生产与旧外部验收继续冻结。
 
 最后手机工具区按两行布局调整、生成后定位当前会话后，最新生产构建 `JTjALhSim6lNbC_prKdve` 的桌面/390px手机2/0再次通过，三份合成截图已查看。第1块计划提交为 `0a26defa`，第2块生成链路提交为 `01e9ae33`；最后界面与证据另作第3块本地提交。本次三块代码开发及相称自测完成。
 
