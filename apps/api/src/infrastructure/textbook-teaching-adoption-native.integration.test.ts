@@ -1,3 +1,4 @@
+const {SCHEMA_VERSION:latestSchemaVersion,READY_STATE:latestReadyState}=require('../../../../scripts/operations/database-reader-guard.cjs');
 import { randomUUID } from 'node:crypto';
 import { mkdirSync, mkdtempSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -85,6 +86,6 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' fifth textbook a
   it('refuses a missing legacy33 adoption index without silently changing the current database', async () => {
     const f = await setup('obsolete', false); await f.database.close(); await sql(f.url, 'DROP INDEX textbook_teaching_adopted_lesson'); const before = await native(f.url), cold = new DomainDatabase(f.url);
     try { await expect(cold.open()).rejects.toThrow('textbook_teaching_schema33_candidate_incomplete'); } finally { await cold.close(); }
-    expect(teachingHash(await native(f.url))).toBe(teachingHash(before)); expect(Number((await sql(f.url, 'SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(37);
+    expect(teachingHash(await native(f.url))).toBe(teachingHash(before)); expect(Number((await sql(f.url, 'SELECT MAX(version) version FROM schema_migrations'))[0].version)).toBe(latestSchemaVersion);
   });
 });

@@ -6,7 +6,8 @@ export const SOURCE_COURSE_PIPELINE='source-course-v2';
 const text=(max:number)=>z.string().trim().min(1).max(max);
 const targetSchema=z.object({title:text(100),objective:text(350),focus:text(500),sourceKeys:z.array(text(100)).min(1).max(10)}).strict();
 export const courseOutlineSchema=z.object({title:text(180),overview:text(700),scopeNote:text(700),uncoveredSourceKeys:z.array(text(100)).max(10),lessons:z.array(targetSchema).min(1).max(6)}).strict();
-export type CourseOutline=z.infer<typeof courseOutlineSchema>;
+const craftUnitSchema=z.object({title:text(100),objective:text(350),lessonIndices:z.array(z.number().int().min(0).max(59)).min(1).max(60)}).strict();
+export type CourseOutline=z.infer<typeof courseOutlineSchema>&{units?:Array<z.infer<typeof craftUnitSchema>>};
 export type SourceCourseGenerationState={version:typeof SOURCE_COURSE_PIPELINE;input:SourceCourseInput;inputCapture:'creation'|'worker-start';inputFingerprint:string;
   stage:SourceCourseGenerationView['stage'];outline:CourseOutline|null;outlineAt?:string;outlineFingerprint?:string;modelId:string|null;modelName:string|null;
   lessons:Array<{initial:SourceCourseLessonContent;final:SourceCourseLessonContent;draftedAt?:string;draftFingerprint?:string;review:SourceCourseLessonReview|null}>;
@@ -31,13 +32,16 @@ export const courseReviewJsonSchema=object({decision:{type:'string',enum:['pass'
 function ordered(value:unknown):unknown {return Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered((value as Record<string,unknown>)[key])])):value;}
 /** PostgreSQL JSONB may reorder object keys; identities depend on values and array order. */
 export const generationDigest=(value:unknown)=>sourceDigest(ordered(value));
-export function generationFingerprint(row:SourceCourseRecord,input:SourceCourseInput){return generationDigest({version:SOURCE_COURSE_PIPELINE,input,audience:row.audience,targetGoals:row.targetGoals,sources:row.sources});}
+export function generationFingerprint(row:SourceCourseRecord,input:SourceCourseInput){return generationDigest({version:SOURCE_COURSE_PIPELINE,input,audience:row.audience,targetGoals:row.targetGoals,sources:row.sources,...(row.craft?{craft:{...row.craft,authorization:undefined,outlineConfirmed:undefined}}:{})});}
 export function newCourseGeneration(row:SourceCourseRecord,capture:'creation'|'worker-start'):SourceCourseGenerationState {
   const now=new Date().toISOString(),input=structuredClone(row.input);
   return{version:SOURCE_COURSE_PIPELINE,input,inputCapture:capture,inputFingerprint:generationFingerprint(row,input),stage:'planning',outline:null,modelId:null,modelName:null,lessons:[],candidateFingerprint:null,createdAt:now,updatedAt:now};
 }
+export function outlineSchemaFor(row:SourceCourseRecord){return row.craft?courseOutlineSchema.extend({lessons:z.array(targetSchema).min(1).max(row.craft.maxLessons),units:z.array(craftUnitSchema).min(1).max(12)}):courseOutlineSchema;}
+export function outlineJsonFor(row:SourceCourseRecord){return row.craft?z.toJSONSchema(outlineSchemaFor(row)):courseOutlineJsonSchema;}
 export function checkCourseOutline(raw:unknown,row:SourceCourseRecord){
-  const result=courseOutlineSchema.parse(raw),known=new Set(row.sources.map(source=>source.key)),used=new Set(result.lessons.flatMap(lesson=>lesson.sourceKeys));
+  const result=outlineSchemaFor(row).parse(raw) as CourseOutline,known=new Set(row.sources.map(source=>source.key)),used=new Set(result.lessons.flatMap(lesson=>lesson.sourceKeys));
+  if(row.craft){const indices=result.units?.flatMap(unit=>unit.lessonIndices)??[];if(indices.length!==result.lessons.length||new Set(indices).size!==result.lessons.length||indices.some(index=>index>=result.lessons.length))throw Error('课程单元必须恰好覆盖全部课时，每课归属一个单元');}
   if(new Set(result.lessons.map(lesson=>lesson.title)).size!==result.lessons.length)throw new Error('规划的课时标题不能重复');
   if(result.lessons.some(lesson=>new Set(lesson.sourceKeys).size!==lesson.sourceKeys.length)||new Set(result.uncoveredSourceKeys).size!==result.uncoveredSourceKeys.length)throw new Error('来源键重复');
   if([...used,...result.uncoveredSourceKeys].some(key=>!known.has(key))||result.uncoveredSourceKeys.some(key=>used.has(key)))throw new Error('规划的来源分配不符合所选原页');

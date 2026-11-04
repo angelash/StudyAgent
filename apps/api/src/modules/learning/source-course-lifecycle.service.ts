@@ -39,8 +39,8 @@ export class SourceCourseLifecycleService {
   private verifyOriginal(row:SourceCourseRecord){
     if(!row.result)throw new ConflictException('课程尚无可修订的教学稿');
     try{
-      checkGeneratedCourse(row.result,courseCitationSources(row),row.compilation?24:6);
-      if(row.originalResult)checkGeneratedCourse(row.originalResult,courseCitationSources(row),row.compilation?24:6);
+      checkGeneratedCourse(row.result,courseCitationSources(row),row.craft?.maxLessons??(row.compilation?24:6));
+      if(row.originalResult)checkGeneratedCourse(row.originalResult,courseCitationSources(row),row.craft?.maxLessons??(row.compilation?24:6));
       if(row.compilation){const chunks=verifyCompilation(row);
         for(const lessonId of row.lessonIds??[]){const target=row.compilation.outline?.lessons.find(lesson=>lesson.id===lessonId);if(!target)throw new Error('missing original target');
           const assigned=target.sourceKeys.map(key=>{const chunk=chunks.find(part=>part.key===key);if(!chunk)throw new Error('missing chunk');return chunk;}),input={target,input:row.compilation.input,sources:assigned.map(chunk=>[chunk.key,chunk.sha256])},parse=(raw:unknown)=>checkLongLesson(raw,row,target,assigned);

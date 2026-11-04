@@ -1,3 +1,5 @@
+import { craftAuthority } from './course-craft.service';
+import { outlineJsonFor } from './source-course-pipeline';
 import { ConflictException, Injectable, Logger, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import type { TaskFence, TaskRow } from '../../infrastructure/task-repository';
@@ -26,7 +28,7 @@ export class SourceCourseWorkerService implements OnApplicationBootstrap,OnModul
     for(let attempt=0;attempt<4;attempt++)try{return await this.store.transaction(()=>{
       const row=this.store.find('sourceCourses',{id:String(task.payload.courseId??'')}),owner=this.store.find('users',{id:task.ownerUserId,status:'active'});
       if(!row||!owner||row.ownerUserId!==task.ownerUserId||row.taskId!==task.id||!['queued','generating'].includes(row.status))throw new Error('course_no_longer_available');
-      assertSourceCourseAccess(owner,row,this.students);change(row);
+      assertSourceCourseAccess(owner,row,this.students);if(row.craft){const run=this.store.find('courseCraftRuns',{id:row.craft.runId,ownerUserId:row.ownerUserId});if(!run)throw Error('course_no_longer_available');craftAuthority(this.store,this.students,{...run,authorization:row.craft.authorization});}change(row);
       row.updatedAt=new Date().toISOString();row.generation!.updatedAt=row.updatedAt;
       Object.assign(progress,{stage:row.generation!.stage,plannedLessons:row.generation!.outline?.lessons.length??null,draftedLessons:row.generation!.lessons.length,reviewedLessons:row.generation!.lessons.filter(lesson=>lesson.review).length});
       Object.assign(result,{courseId:row.id,lessons:row.result?.lessons.length??0});return structuredClone(row);
@@ -63,12 +65,13 @@ export class SourceCourseWorkerService implements OnApplicationBootstrap,OnModul
         const selected=this.catalog.resolve(row.generation.modelId??row.generation.input.modelId);row.generation.modelId=selected.id;row.generation.modelName??=selected.label;
         if(row.status==='queued')row.revision++;row.status='generating';});
       if(!snapshot.generation!.outline){
-        const response=await this.chat.structured(this.request(snapshot,abort.signal,'先规划1至6节短课。每课写明确目标、重点和来源键。每个选中来源必须编入至少一课，或者在uncoveredSourceKeys中列出并用scopeNote解释缺口。scopeNote只描述知识范围和未涵盖内容，尽量100至250字符，不重复模型、编写或审核流程。只规划路线，不返回完整讲稿或答案。',
-          {stage:'outline',instruction:'生成供后续逐课编写的课程路线。'}),courseOutlineJsonSchema,value=>checkCourseOutline(value,snapshot));
+        const response=await this.chat.structured(this.request(snapshot,abort.signal,(snapshot.craft?`按用户所选规模规划课程，轻量12至20节、标准30至50节、系统50至60节；简单主题可减少并在scopeNote说明理由。最多${snapshot.craft.maxLessons}节，按依赖递进，基础熟练项可略讲。units写单元标题、目标和从0开始的lessonIndices，每课恰好归属一个单元。`:'先规划1至6节短课。')+'每课写明确目标、重点和来源键。每个选中来源必须编入至少一课，或者在uncoveredSourceKeys中列出并用scopeNote解释缺口。scopeNote只描述知识范围和未涵盖内容，尽量100至250字符，不重复模型、编写或审核流程。只规划路线，不返回完整讲稿或答案。',
+          {stage:'outline',instruction:'生成供后续逐课编写的课程路线。'}),outlineJsonFor(snapshot),value=>checkCourseOutline(value,snapshot));
         if(response.modelId!==snapshot.generation!.modelId)throw new Error('course_model_changed');
         const{modelId:_modelId,modelName,...outline}=response;
         snapshot=await this.persist(task,row=>{row.generation!.outline=structuredClone(outline);row.generation!.outlineAt=new Date().toISOString();row.generation!.outlineFingerprint=generationDigest(outline);row.generation!.modelName=modelName;row.modelName=modelName;row.generation!.stage='writing';});
       }
+      if(snapshot.craft&&!snapshot.craft.outlineConfirmed){await this.persist(task,row=>{row.status='queued';},true);return true;}
       const total=snapshot.generation!.outline!.lessons.length;
       for(let index=0;index<total;index++){
         if(!snapshot.generation!.lessons[index]){
@@ -93,7 +96,7 @@ export class SourceCourseWorkerService implements OnApplicationBootstrap,OnModul
       stage='integrating';
       await this.persist(task,row=>{this.validateCheckpoint(row);const state=row.generation!,outline=state.outline!;
         if(state.lessons.length!==total||state.lessons.some(lesson=>!lesson.review))throw new Error('course_checkpoint_incomplete');
-        const result=checkGeneratedCourse({title:outline.title,overview:outline.overview,lessons:state.lessons.map(lesson=>lesson.final)},row.sources);
+        const result=checkGeneratedCourse({title:outline.title,overview:outline.overview,lessons:state.lessons.map(lesson=>lesson.final)},row.sources,row.craft?.maxLessons??6);
         row.result=structuredClone(result);row.originalResult={title:outline.title,overview:outline.overview,lessons:state.lessons.map(lesson=>structuredClone(lesson.initial))};
         row.fingerprint=sourceDigest({input:row.input,sources:row.sources,result});state.candidateFingerprint=row.fingerprint;state.stage='completed';
         row.modelName=state.modelName;row.status='ready';row.revision++;

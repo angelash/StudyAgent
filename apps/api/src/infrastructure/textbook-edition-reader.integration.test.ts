@@ -1,3 +1,4 @@
+const {SCHEMA_VERSION:latestSchemaVersion,READY_STATE:latestReadyState}=require('../../../../scripts/operations/database-reader-guard.cjs');
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
@@ -57,7 +58,7 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' previous compile
   it('refuses the new exact-edition protocol before changing any native state or SQLite bytes', async () => {
     const Reader = oldReader(), url = await location(), current = new DomainDatabase(url); await current.open();
     try { await current.commit(await current.read(), { notebookEntries: [{ id: 'qa-new-edition-reader', content: 'Generated minimum-reader marker probe only.' }] }); } finally { await current.close(); }
-    const before = await native(url), bytes = configured ? null : sha(readFileSync(url)); expect(before.guard[0].state).toBe('ready-schema37-math-figures-v1');
+    const before = await native(url), bytes = configured ? null : sha(readFileSync(url)); expect(before.guard[0].state).toBe(latestReadyState);
     const old = new Reader(url); try { await expect(old.open()).rejects.toThrow(/restoration is incomplete|minimum_reader_guard_mismatch/); } finally { await old.close(); }
     expect(teachingHash(await native(url))).toBe(teachingHash(before)); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
     const cold = new DomainDatabase(url); await cold.open(); await cold.close(); expect(await native(url)).toEqual(before);

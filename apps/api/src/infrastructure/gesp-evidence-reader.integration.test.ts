@@ -1,3 +1,4 @@
+const {SCHEMA_VERSION:latestSchemaVersion,READY_STATE:latestReadyState}=require('../../../../scripts/operations/database-reader-guard.cjs');
 import 'reflect-metadata';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
@@ -59,8 +60,8 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' GESP first-respo
     await old.open(); try { await old.commit(await old.read(), { gespProbeSubmissions: [original] }); } finally { await old.close(); }
     const CurrentReader = currentReader(), current = new CurrentReader(url); await current.open(); try { expect((await current.read()).state.gespProbeSubmissions).toEqual([original]); } finally { await current.close(); }
     const before = await native(url), bytes = configured ? null : sha(readFileSync(url));
-    expect(before.guard[0].state).toBe('ready-schema37-math-figures-v1');
-    expect(before.migrations.at(-1).version).toBe(37);
+    expect(before.guard[0].state).toBe(latestReadyState);
+    expect(before.migrations.at(-1).version).toBe(latestSchemaVersion);
     const incompatible = new Reader(url); try { await expect(incompatible.open()).rejects.toThrow(/restoration is incomplete|unsupported_database_schema|minimum_reader_guard_mismatch/); } finally { await incompatible.close(); }
     expect(await native(url)).toEqual(before); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
     const cold = new CurrentReader(url); await cold.open(); try { expect((await cold.read()).state.gespProbeSubmissions).toEqual([original]); } finally { await cold.close(); }
@@ -81,6 +82,6 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' GESP first-respo
     const legacy = new Reader(url); await legacy.open(); await legacy.close();
     await execute('DROP TRIGGER reject_gesp36' + (configured ? ' ON study_restore_guard' : ''));
     const recovered = new CurrentReader(url); await recovered.open(); await recovered.close();
-    expect((await native(url)).guard[0].state).toBe('ready-schema37-math-figures-v1');
+    expect((await native(url)).guard[0].state).toBe(latestReadyState);
   });
 });

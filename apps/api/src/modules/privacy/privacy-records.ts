@@ -1,3 +1,4 @@
+import { courseCraftPublic } from '../learning/course-craft-record';
 import { teachingAssignmentView,type TeachingAssignmentRecord } from '../learning/assistant-teaching-assignment-record';
 import { createHash } from 'node:crypto';
 import type { PrivacyCounts, PrivacyReceipt, DiagnosticSession } from '@study-agent/contracts';
@@ -44,7 +45,7 @@ export function studentRecords(store: InMemoryStoreService, studentId: string): 
   for (const name of ['bindings', 'subjectEnrollments', 'learningScopes', 'studentLearningAccess', 'studentLearningCodes', 'studentAccessRevisions',
     'studentProgressProposals', 'studentInvitations', 'teacherAssignments', 'diagnosticSessions', 'diagnosticBlueprints', 'controlledContrastPreviews', 'diagnosticResponses', 'diagnosticHypotheses',
     'retentionExposureEvents','diagnosticPlans', 'guidanceModelSuggestions', 'reviewTasks', 'practiceSessions', 'assistantPracticeAssignments', 'assistantPracticeAssignmentWithdrawals', 'assistantPracticeGroupStarts', 'paperPracticeSessions', 'paperPracticeCommands', 'mistakeNotebookEntries', 'assessments', 'assessmentResults', 'studyPlans', 'missions', 'evidenceFeedback', 'studentMedia',
-    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','sourceCourses','sourceCourseStages','sourceCourseChecks',
+    'gespLearningScopes', 'gespLearningScopeRevisions', 'gespCodeSubmissions', 'gespProbeSubmissions', 'gespHintEvents', 'gespGuidancePlans', 'gespReviewTasks', 'classroomSessions', 'classroomTurns', 'whiteboardQuestionTurns', 'whiteboardQuestionVisuals', 'classroomCodeDrafts', 'classroomVisuals', 'courseProjects','studioSourceMaterials','studioMaterialUploads','studioOriginalRepairs','courseCraftRuns','sourceCourses','sourceCourseStages','sourceCourseChecks',
     'projectAssetUploads','projectAssets','studioCourses','studioActivities','studioStudyPlans','studioLearningPacks','studioWhiteboards','studioTopicWhiteboardDrafts','studioTopicWhiteboards','studioTopicWhiteboardVisuals','studioConnectors','studioScheduleEvents','guidanceCalendarArrangements','studioCalendarCommands']) {
     add(result, store, name, row => row.studentId === studentId);
   }
@@ -119,6 +120,7 @@ export function accountRecords(store: InMemoryStoreService, actorId: string, pri
   add(result, store, 'sourceCourses', row => row.ownerUserId === actorId && (!row.studentId || !['active','archived'].includes(row.status) || ['draft','discarded'].includes(row.versioning?.state)));
   const sourceCourseIds=ids(result,'sourceCourses');add(result,store,'sourceCourseStages',row=>sourceCourseIds.has(row.courseId));
   add(result,store,'sourceCourseChecks',row=>sourceCourseIds.has(row.courseId)||row.ownerUserId===actorId&&(!row.studentId||!['published','superseded','withdrawn'].includes(row.status)));
+  add(result,store,'courseCraftRuns',row=>row.ownerUserId===actorId);
   add(result,store,'studioTopicWhiteboardDrafts',row=>row.ownerUserId===actorId);
   add(result,store,'studioTopicWhiteboards',row=>row.ownerUserId===actorId&&(!row.studentId||row.privateToCreator||row.sourceProtocol==='assistant-topic-whiteboard-v1'
     ||rows(store,'studioTopicWhiteboardDrafts').some(draft=>draft.id===row.sourceDraftId&&draft.prepared?.version==='assistant-topic-whiteboard-v1')));
@@ -307,8 +309,9 @@ export function portableRecords(selected: Selection, actorId: string): Record<st
     else if(name==='studioSourceMaterials')result[name]=records.map(row=>studioMaterialView(row as any));
     else if(name==='studioOriginalRepairs')result[name]=records.map(({id,materialId,uploadId,status,revision,createdAt,updatedAt,completedAt,receipt})=>({id,materialId,uploadId,status,revision,createdAt,updatedAt,completedAt,receipt}));
     else if(name==='studioConnectors')result[name]=records.map(({encryptedFeedUrl:_feed,requestKey:_key,requestHash:_hash,...row})=>row);
+    else if(name==='courseCraftRuns')result[name]=records.filter(row=>row.ownerUserId===actorId).map(row=>courseCraftPublic(row as any));
     else if(name==='sourceCourses')result[name]=records.filter(row=>allowedCourses.has(row.id))
-      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,...row})=>({...row,...(row.versioning?{versioning:sourceCourseVersioningView(row as any,actorId,publishedCourses)}:{}),generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
+      .map(({requests:_requests,result:_result,originalResult:_original,edits:_edits,generation:_generation,compilation:_compilation,craft:_craft,...row})=>({...row,...(row.versioning?{versioning:sourceCourseVersioningView(row as any,actorId,publishedCourses)}:{}),generation:generationView({...row,result:_result,generation:_generation} as any),...(_compilation?{compilation:compilationView({...row,result:_result,compilation:_compilation} as any,actorId)}:{}),lessons:_result?.lessons.map((_:unknown,index:number)=>sourceCourseLesson({...row,result:_result,compilation:_compilation} as any,index))??[]}));
     else if(name==='sourceCourseStages')result[name]=records.filter(row=>allowedCourses.has(row.courseId)).map(({id,courseId,kind,key,createdAt,modelId,modelName,copiedFrom})=>({id,courseId,kind,key,createdAt,modelId,modelName,...(copiedFrom?{copiedFrom}:{})}));
     else if(name==='sourceCourseChecks')result[name]=records.filter(row=>allowedCourses.has(row.courseId)&&['published','superseded','withdrawn'].includes(row.status)).map(row=>({id:row.id,courseId:row.courseId,courseFingerprint:row.courseFingerprint,revision:row.revision,status:row.status,publishedAt:row.publishedAt,withdrawnAt:row.withdrawnAt,title:row.content?.title??null,targets:(row.prepared?.targets??[]).map(({lessonId,title,objective}:Row)=>({lessonId,title,objective}))}));
     else if(name==='studioTopicWhiteboardVisuals'||name==='whiteboardQuestionVisuals')result[name]=[];

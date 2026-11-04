@@ -311,6 +311,10 @@ export class PrivacyService {
         ['queued','running','retry_wait','cancel_requested'].includes(task.state))
         await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
     }
+    for(const run of selection.courseCraftRuns??[]){
+      const task=await this.store.tasks.get(String(run.taskId));
+      if(task?.kind==='learning.course-craft.prepare'&&task.ownerUserId===run.ownerUserId&&['queued','running','retry_wait','cancel_requested'].includes(task.state))await this.store.controlTask({id:task.id,action:'cancel',expectedVersion:task.version,actorId:actor.id});
+    }
     for(const draft of selection.studioTopicWhiteboardDrafts??[]){
       const task=await this.store.tasks.get(String(draft.taskId));
       if(task?.kind==='studio.topic-whiteboard.generate'&&task.ownerUserId===draft.ownerUserId&&task.payload.draftId===draft.id&&

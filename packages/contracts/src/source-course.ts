@@ -44,7 +44,7 @@ export type SourceCourseView = SourceCourseSummary & { revision: number; input: 
   task: { id: string; state: string; version: number; generation: number; errorCode: string | null } | null;
   confirmedAt: string | null };
 
-export type SourceCourseAuthoring = { courseId: string; revision: number; content: SourceCourseContent; originalContent: SourceCourseContent; contentReview: 'pending';
+export type SourceCourseAuthoring = { maximumLessons?: number; courseId: string; revision: number; content: SourceCourseContent; originalContent: SourceCourseContent; contentReview: 'pending';
   lessonId?:string;
   sources?:CourseSourceSnapshot[];
   generationInput: SourceCourseInput | null; generationReviews: Array<{ lessonIndex: number; lessonTitle: string; review: SourceCourseLessonReview }>; reviewCurrent: boolean };

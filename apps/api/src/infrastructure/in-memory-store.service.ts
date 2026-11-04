@@ -1,3 +1,4 @@
+import type { CourseCraftRecord } from '../modules/learning/course-craft-record';
 import type { GuidanceIntentRecord } from '../modules/learning/assistant-guidance-record';
 import type {PaperImageUploadRecord,PaperCaptureCommandRecord,PaperCaptureFileAsset,PaperCaptureGroupRecord,PaperCaptureDerivationRecord} from '../modules/learning/paper-capture-record';
 import type {PaperCapturePageRecord} from '../modules/learning/paper-capture-page';
@@ -514,6 +515,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   projectAssetUploads: ProjectUploadRecord[] = [];
   projectAssets: ProjectAssetRecord[] = [];
   sourceCourses: SourceCourseRecord[] = [];
+  courseCraftRuns: CourseCraftRecord[] = [];
   sourceCourseChecks: SourceCourseCheckRecord[] = [];
   sourceCourseCheckPublications: SourceCourseCheckPublication[] = [];
   studioTopicWhiteboardDrafts: TopicWhiteboardDraftRecord[] = [];
@@ -661,6 +663,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     this.projectAssetUploads = [];
     this.projectAssets = [];
     this.sourceCourses = [];
+    this.courseCraftRuns = [];
     this.sourceCourseChecks = [];
     this.studioTopicWhiteboardDrafts = [];
     this.studioTopicWhiteboards = [];

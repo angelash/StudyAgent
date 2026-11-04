@@ -1,3 +1,4 @@
+const {SCHEMA_VERSION:latestSchemaVersion,READY_STATE:latestReadyState}=require('../../../../scripts/operations/database-reader-guard.cjs');
 import { createHash, randomUUID } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -66,7 +67,7 @@ describe(driver + ' actual32 to33 reader and complete teaching native transactio
   afterAll(async () => { await pool?.end(); });
   it('executes the sealed actual32, migrates atomically with every old row preserved, then refuses33 in the same actual32', async () => {
     const url = await original('migration'), before = await snapshot(url); expect(await schema(url)).toBe(32);
-    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await schema(url)).toBe(37); expect(teachingHash(await snapshot(url))).toBe(teachingHash(before));
+    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await schema(url)).toBe(latestSchemaVersion); expect(teachingHash(await snapshot(url))).toBe(teachingHash(before));
     const originalBytes = configured ? null : digest(readFileSync(url)), old = new Reader32(url); await expect(old.open()).rejects.toThrow(/schema|restoration/i);
     expect(teachingHash(await snapshot(url))).toBe(teachingHash(before)); if (originalBytes) expect(digest(readFileSync(url))).toBe(originalBytes);
     expect(() => oldGuard.assertReady('ready-schema33', Array.from({ length: 33 }, (_, index) => index + 1))).toThrow('unsupported_database_schema');
@@ -84,7 +85,7 @@ describe(driver + ' actual32 to33 reader and complete teaching native transactio
     await expect(new DomainDatabase(url).open()).rejects.toThrow('injected_teaching33_failure'); expect(await schema(url)).toBe(32); expect(teachingHash(await snapshot(url))).toBe(teachingHash(before));
     const indexes = configured ? await sql(url, "SELECT indexname name FROM pg_indexes WHERE schemaname=current_schema() AND indexname LIKE 'textbook_teaching_%'") : await sql(url, "SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'textbook_teaching_%'"); expect(indexes).toEqual([]);
     const old = new Reader32(url); await old.open(); await old.close(); await sql(url, 'DROP TRIGGER reject_teaching33' + (configured ? ' ON study_restore_guard' : ''));
-    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await schema(url)).toBe(37);
+    const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await schema(url)).toBe(latestSchemaVersion);
   });
   it('rejects future38 with both native state and SQLite bytes preserved', async () => {
     const url = await original('future'), current = new DomainDatabase(url); await current.open(); await current.close();

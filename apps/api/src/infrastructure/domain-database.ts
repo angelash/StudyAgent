@@ -309,6 +309,7 @@ export class DomainDatabase {
     await this.migrateConstraints(36, [], `UPDATE study_restore_guard SET state='ready-schema36-gesp-retention-feedback-v1',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema35-gesp-first-group-v2';`);
     // Older content readers cannot retain the new mathematical figures.
     await this.migrateConstraints(37, [], `UPDATE study_restore_guard SET state='ready-schema37-math-figures-v1',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema36-gesp-retention-feedback-v1';`);
+    await this.migrateConstraints(38, [{ name: 'course_craft_owner_request', collection: 'courseCraftRuns', fields: ['ownerUserId','requestKey'] }], `UPDATE study_restore_guard SET state='ready-schema38-course-craft-v1',updated_at='${new Date().toISOString()}' WHERE id=1 AND state='ready-schema37-math-figures-v1';`);
     this.limits = new RateLimitRepository(this.tasks, this.sqlite, this.postgres, this.now);
   }
 
@@ -317,18 +318,18 @@ export class DomainDatabase {
     if (this.sqlite) {
       const table = this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='study_restore_guard'").get();
       if (table) state = (this.sqlite.prepare('SELECT state FROM study_restore_guard WHERE id=1').get() as { state?: string } | undefined)?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1', 'ready-schema34-gesp-first-response-v1', 'ready-schema35-gesp-first-group-v2', 'ready-schema36-gesp-retention-feedback-v1', 'ready-schema37-math-figures-v1'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1', 'ready-schema34-gesp-first-response-v1', 'ready-schema35-gesp-first-group-v2', 'ready-schema36-gesp-retention-feedback-v1', 'ready-schema37-math-figures-v1', 'ready-schema38-course-craft-v1'].includes(state)) throw new Error('Database restoration is incomplete');
       if (this.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'").get())
         version = Number((this.sqlite.prepare('SELECT MAX(version) version FROM schema_migrations').get() as { version?: number }).version ?? 0);
     } else {
       if ((await this.postgres!.query("SELECT to_regclass('study_restore_guard') AS name")).rows[0].name)
         state = (await this.postgres!.query('SELECT state FROM study_restore_guard WHERE id=1')).rows[0]?.state ?? 'missing';
-      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1', 'ready-schema34-gesp-first-response-v1', 'ready-schema35-gesp-first-group-v2', 'ready-schema36-gesp-retention-feedback-v1', 'ready-schema37-math-figures-v1'].includes(state)) throw new Error('Database restoration is incomplete');
+      if (state !== undefined && !['ready', 'ready-schema23', 'ready-schema24', 'ready-schema25', 'ready-schema26', 'ready-schema27', 'ready-schema28', 'ready-schema29', 'ready-schema30', 'ready-schema31', 'ready-schema32', 'ready-schema33-exact-edition-v1', 'ready-schema34-gesp-first-response-v1', 'ready-schema35-gesp-first-group-v2', 'ready-schema36-gesp-retention-feedback-v1', 'ready-schema37-math-figures-v1', 'ready-schema38-course-craft-v1'].includes(state)) throw new Error('Database restoration is incomplete');
       if ((await this.postgres!.query("SELECT to_regclass('schema_migrations') AS name")).rows[0].name)
         version = Number((await this.postgres!.query('SELECT MAX(version) version FROM schema_migrations')).rows[0]?.version ?? 0);
     }
-    if (version > 37) throw new Error('unsupported_database_schema');
-    const expected = version === 37 ? 'ready-schema37-math-figures-v1' : version === 36 ? 'ready-schema36-gesp-retention-feedback-v1' : version === 35 ? 'ready-schema35-gesp-first-group-v2' : version === 34 ? 'ready-schema34-gesp-first-response-v1' : version === 33 ? 'ready-schema33-exact-edition-v1' : version === 32 ? 'ready-schema32' : version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
+    if (version > 38) throw new Error('unsupported_database_schema');
+    const expected = version === 38 ? 'ready-schema38-course-craft-v1' : version === 37 ? 'ready-schema37-math-figures-v1' : version === 36 ? 'ready-schema36-gesp-retention-feedback-v1' : version === 35 ? 'ready-schema35-gesp-first-group-v2' : version === 34 ? 'ready-schema34-gesp-first-response-v1' : version === 33 ? 'ready-schema33-exact-edition-v1' : version === 32 ? 'ready-schema32' : version === 31 ? 'ready-schema31' : version === 30 ? 'ready-schema30' : version === 29 ? 'ready-schema29' : version === 28 ? 'ready-schema28' : version === 27 ? 'ready-schema27' : version === 26 ? 'ready-schema26' : version === 25 ? 'ready-schema25' : version === 24 ? 'ready-schema24' : version === 23 ? 'ready-schema23' : 'ready';
     if (state !== undefined && state !== expected || version >= 23 && state !== expected) throw new Error('minimum_reader_guard_mismatch');
   }
 

@@ -126,7 +126,7 @@ export class SourceCourseService {
   private finish(row:SourceCourseRecord,command:{requestKey:string},kind:string){const{requestKey,...body}=command;row.requests.push({key:requestKey,hash:sourceDigest(body),kind});row.revision++;row.updatedAt=new Date().toISOString();}
   async edit(user:InMemoryUserAccount,courseId:string,input:unknown){
     const row=this.record(user,courseId,true),command=validate(z.object({expectedRevision:revision,requestKey:key,title:z.string().trim().min(1).max(180),goal:z.string().trim().min(5).max(1000),
-      lessons:z.array(z.object({id, title:z.string().trim().min(1).max(100),objective:z.string().trim().min(1).max(350)}).strict()).min(1).max(row.compilation?24:6)}).strict(),input);
+      lessons:z.array(z.object({id, title:z.string().trim().min(1).max(100),objective:z.string().trim().min(1).max(350)}).strict()).min(1).max(row.craft?.maxLessons??(row.compilation?24:6))}).strict(),input);
     if(!this.replay(row,command,'edit')){if(row.status!=='ready'||!row.result)throw new ConflictException('只有等待审阅的候选可以修改，已确认内容请重新生成新版本');
       const ids=row.result.lessons.map((_,index)=>sourceCourseLesson(row,index)!.id);if(new Set(command.lessons.map(item=>item.id)).size!==command.lessons.length||command.lessons.some(item=>!ids.includes(item.id)))throw new BadRequestException('课时标识与当前候选不一致');
       row.result={...row.result,title:command.title,lessons:command.lessons.map(edit=>({...row.result!.lessons[ids.indexOf(edit.id)],title:edit.title,objective:edit.objective}))};
@@ -140,7 +140,7 @@ export class SourceCourseService {
     if(row.status!=='ready'||!row.result)throw new ConflictException('只有等待审阅的候选可以打开完整教学稿');
     if(row.compilation)return this.lessonAuthoring(user,courseId,row.lessonIds![0]);
     row.authoringExposedAt??=new Date().toISOString();
-    return{courseId:row.id,revision:row.revision,content:structuredClone(row.result),originalContent:structuredClone(row.originalResult??row.result),contentReview:'pending',generationInput:structuredClone(row.generation?.input??null),generationReviews:row.generation?.lessons.flatMap((lesson,index)=>lesson.review?[{lessonIndex:index,lessonTitle:row.generation!.outline!.lessons[index].title,review:structuredClone(lesson.review)}]:[])??[],reviewCurrent:generationView(row)?.reviewCurrent??false};
+    return{...(row.craft?{maximumLessons:row.craft.maxLessons}:{}),courseId:row.id,revision:row.revision,content:structuredClone(row.result),originalContent:structuredClone(row.originalResult??row.result),contentReview:'pending',generationInput:structuredClone(row.generation?.input??null),generationReviews:row.generation?.lessons.flatMap((lesson,index)=>lesson.review?[{lessonIndex:index,lessonTitle:row.generation!.outline!.lessons[index].title,review:structuredClone(lesson.review)}]:[])??[],reviewCurrent:generationView(row)?.reviewCurrent??false};
   }
   lessonAuthoring(user:InMemoryUserAccount,courseId:string,lessonId:string):SourceCourseAuthoring {
     if(user.role==='student')throw new ForbiddenException('完整教学稿请由成人创建者打开');
@@ -175,11 +175,11 @@ export class SourceCourseService {
   async editContent(user:InMemoryUserAccount,courseId:string,input:unknown){
     if(user.role==='student')throw new ForbiddenException('完整教学稿请由成人创建者修订');
     const row=this.record(user,courseId,true);if(row.compilation)throw new BadRequestException('长课程请按稳定课时打开并保存教学稿，完整原稿仍保留。');
-    const command=validate(z.object({expectedRevision:revision,requestKey:key,content:sourceCourseContentSchema}).strict(),input);
+    const command=validate(z.object({expectedRevision:revision,requestKey:key,content:row.craft?sourceCourseContentSchema.extend({lessons:z.array(sourceCourseLessonContentSchema).min(1).max(row.craft.maxLessons)}):sourceCourseContentSchema}).strict(),input);
     if(!this.replay(row,command,'content-edit')){
       if(row.status!=='ready'||!row.result)throw new ConflictException('只有等待审阅的候选可以修改完整内容；已确认课程需另建候选');
       if(this.sourceStatus(row)!=='current')throw new ConflictException('来源资料已变化，请重新选页生成，当前编辑稿可先导出保留');
-      let content;try{content=checkGeneratedCourse(command.content,courseCitationSources(row),row.compilation?24:6);}catch(error){throw new BadRequestException(error instanceof Error?error.message:'课程内容未通过核对');}
+      let content;try{content=checkGeneratedCourse(command.content,courseCitationSources(row),row.craft?.maxLessons??(row.compilation?24:6));}catch(error){throw new BadRequestException(error instanceof Error?error.message:'课程内容未通过核对');}
       row.authoringExposedAt??=new Date().toISOString();row.result=structuredClone(content);row.input.title=content.title;
       row.edits.push({at:new Date().toISOString(),changes:{kind:'content-edit',content:structuredClone(content)}});
       row.fingerprint=sourceDigest({input:row.input,sources:row.sources,result:row.result});this.finish(row,command,'content-edit');

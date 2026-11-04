@@ -1,3 +1,6 @@
+import { z } from 'zod';
+import { sourceCourseLessonContentSchema, type CourseCraftAnswer, type CourseCraftQuestion, type CourseCraftSource } from '@study-agent/contracts';
+import type { TopicWhiteboardAuthorization } from './topic-whiteboard-record';
 import { createHash } from 'node:crypto';
 import { sourceCourseContentSchema as generatedCourseSchema, compiledSourceCourseContentSchema, type SourceCourseContent, type SourceCourseVersioning } from '@study-agent/contracts';
 import type { ClassroomLesson, ClassroomStep, CourseSourceSnapshot, SourceCourseInput, StudioSubject } from '@study-agent/contracts';
@@ -17,6 +20,7 @@ export type SourceCourseRecord = { id: string; ownerUserId: string; studentId: s
   input: SourceCourseInput; sources: CourseSourceSnapshot[]; revision: number;
   generation?: SourceCourseGenerationState;
   compilation?: CompilationState;
+  craft?: {runId:string;maxLessons:number;outlineConfirmed?:boolean;adjustments?:string[];authorization:TopicWhiteboardAuthorization;prompt:string;questions:CourseCraftQuestion[];answers:CourseCraftAnswer['answers'];scale:CourseCraftAnswer['scale'];sources:CourseCraftSource[]};
   lessonIds?: string[];
   versioning?: SourceCourseVersioning;
   status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string | null;
@@ -33,10 +37,11 @@ export function sourceCourseVersioningView(row:Pick<SourceCourseRecord,'ownerUse
 }
 export const sourceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function sourceCourseModelContext(row:SourceCourseRecord){return JSON.stringify({goal:row.input.goal,title:row.input.title,language:row.input.language,minutesPerSession:row.input.minutesPerSession,
+  ...(row.craft?{topic:row.craft.prompt,preferences:{questions:row.craft.questions,answers:row.craft.answers,scale:row.craft.scale,maxLessons:row.craft.maxLessons,adjustments:row.craft.adjustments??[]},sourceNotice:"网络检索摘要，不是完整教材正文。按主题指定年级，不改变学习档案。"}:{}),
   audience:row.audience,targetGoals:row.targetGoals,sources:row.sources.map(source=>({sourceKey:source.key,title:source.title,page:source.page,text:source.text}))});}
 const normalized = (value: string) => value.replace(/\s+/gu,' ').trim();
-export function checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[],maximum:6|24=6): GeneratedSourceCourse {
-  const result=(maximum===24?compiledSourceCourseContentSchema:generatedCourseSchema).parse(raw), byKey=new Map(sources.map(source=>[source.key,source]));
+export function checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[],maximum:number=6): GeneratedSourceCourse {
+  const result=(maximum!=6&&maximum!=24?generatedCourseSchema.extend({lessons:z.array(sourceCourseLessonContentSchema).min(1).max(maximum)}):maximum===24?compiledSourceCourseContentSchema:generatedCourseSchema).parse(raw), byKey=new Map(sources.map(source=>[source.key,source]));
   if (new Set(result.lessons.map(lesson=>lesson.title)).size!==result.lessons.length) throw new Error('课程包含重复课时标题');
   for (const lesson of result.lessons) {
     for(const citation of lesson.citations){const source=byKey.get(citation.sourceKey);

@@ -1,3 +1,4 @@
+const {SCHEMA_VERSION:latestSchemaVersion,READY_STATE:latestReadyState}=require('../../../../scripts/operations/database-reader-guard.cjs');
 import 'reflect-metadata';
 import { createHash, randomUUID } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
@@ -58,8 +59,8 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' mathematical con
   });
   it('migrates36 to37 without changing old facts and refuses the actual36 before native or byte writes', async () => {
     const { Reader, url } = await legacy(), before = await native(url), current = new DomainDatabase(url); await current.open(); await current.close();
-    const after = await native(url); expect(after.guard[0].state).toBe('ready-schema37-math-figures-v1'); expect(Number(after.migrations.at(-1).version)).toBe(37);
-    for (const name of ['records', 'meta', 'tasks', 'history']) expect(after[name]).toEqual(before[name]); expect(after.migrations.slice(0, -1)).toEqual(before.migrations);
+    const after = await native(url); expect(after.guard[0].state).toBe(latestReadyState); expect(Number(after.migrations.at(-1).version)).toBe(latestSchemaVersion);
+    for (const name of ['records', 'meta', 'tasks', 'history']) expect(after[name]).toEqual(before[name]); expect(after.migrations.filter((migration:any)=>Number(migration.version)<=36)).toEqual(before.migrations);
     const bytes = configured ? null : sha(readFileSync(url)), old = new Reader(url);
     try { await expect(old.open()).rejects.toThrow(/restoration is incomplete|unsupported_database_schema|minimum_reader_guard_mismatch/); } finally { await old.close(); }
     expect(await native(url)).toEqual(after); if (bytes) expect(sha(readFileSync(url))).toBe(bytes);
@@ -75,7 +76,7 @@ describe('actual ' + (configured ? 'PostgreSQL' : 'SQLite') + ' mathematical con
     expect(await native(url)).toEqual(before); const original = new Reader(url); await original.open(); await original.close(); expect(await native(url)).toEqual(before);
     if (configured) await sql(url, 'DROP TRIGGER reject_math37 ON study_restore_guard');
     else { const db = new DatabaseSync(url); try { db.exec('DROP TRIGGER reject_math37'); } finally { db.close(); } }
-    const recovered = new DomainDatabase(url); await recovered.open(); await recovered.close(); expect((await native(url)).guard[0].state).toBe('ready-schema37-math-figures-v1');
+    const recovered = new DomainDatabase(url); await recovered.open(); await recovered.close(); expect((await native(url)).guard[0].state).toBe(latestReadyState);
   });
   it('retains full mathematical teaching originals and exact save commands across independent current cold reads', async () => {
     const f = teachingFixture(), url = await location(), at = new Date().toISOString(), actorId = 'qa:math:teacher', authorization = { role: 'teacher' as const, accountVersion: 1, sessionId: 'qa:math:session' };
