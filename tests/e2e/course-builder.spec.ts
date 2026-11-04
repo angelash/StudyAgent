@@ -17,7 +17,7 @@ async function fixture(page: Page) {
   await scope(); await page.goto('/parent/login'); await page.getByLabel('登录账号').fill(principal); await page.getByLabel('密码').fill(credential);
   await page.getByRole('button', { name: '登录，查看学习记录 →' }).click(); await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await page.goto('/studio?' + new URLSearchParams({ view: 'courses', student: studentId, subject: 'math' }));
-  await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(studentId); await page.locator('.ws-page-title>button').click();
+  await expect(page.getByLabel('学习对象', { exact: true })).toHaveValue(studentId); await page.locator('.ws-page-title>button').click(); await page.getByRole('button', { name: '高级课程蓝图', exact: true }).click();
   await expect(page.getByRole('dialog', { name: '课程蓝图' })).toBeVisible(); await expect(page.getByRole('checkbox')).toHaveCount(2);
   return { studentId, scope, courses };
 }
@@ -41,7 +41,7 @@ test('blueprint supports goal selection, review, edit and cancellation without c
   await page.getByRole('button', { name: '取消', exact: true }).click(); await expect(dialog).toHaveCount(0); expect(await courses()).toHaveLength(0);
   let release!: () => void, arrived!: () => void; const held = new Promise<void>(resolve => arrived = resolve), finish = new Promise<void>(resolve => release = resolve);
   await page.route('**/api/learning/studio/courses/preview', async route => { const response = await route.fetch(); arrived(); await finish; await route.fulfill({ response }).catch(() => {}); });
-  await page.locator('.ws-page-title>button').click(); await page.getByRole('button', { name: '预览课程蓝图', exact: true }).click(); await held;
+  await page.getByRole('button', { name: '高级课程蓝图', exact: true }).click(); await page.getByRole('button', { name: '预览课程蓝图', exact: true }).click(); await held;
   await page.keyboard.press('Escape'); await expect(dialog).toHaveCount(0); release(); expect(await courses()).toHaveLength(0);
 });
 

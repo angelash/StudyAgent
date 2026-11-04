@@ -163,7 +163,7 @@ test('chemistry: a chemical course request cannot reuse mathematics and old subj
     currentAtomId: 'foundation:math:multiplytwo', minutesPerSession: 15, progressMode: 'knowledge', selectedLessonIds: [] }) });
   expect(scope.status).toBe(200);
   await page.goto('/studio?' + new URLSearchParams({ student: primaryId, subject: 'math', view: 'home' }));
-  await page.locator('.sa-composer textarea').fill('广东初三化学上学期'); await page.locator('.sa-composer').getByRole('button', { name: '创建课程', exact: true }).click();
+  await page.locator('.sa-composer textarea').fill('广东初三化学上学期'); await page.locator('.sa-composer').getByRole('button', { name: '高级课程蓝图', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: '课程蓝图', exact: true });
   await expect(dialog).toContainText('课程名称要求化学，当前选择的是数学范围');
   await expect(dialog.getByRole('button', { name: '预览课程蓝图', exact: true })).toBeDisabled();

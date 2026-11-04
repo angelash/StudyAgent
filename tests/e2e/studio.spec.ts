@@ -65,7 +65,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await expect(page.getByRole('button', { name: 'Craft Courses' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Instant Assistance' })).toBeVisible();
   if (!process.env.CI) await page.screenshot({ path: browserEvidence('studio') + '/studio-home-polished.png', fullPage: true });
-  await page.getByRole('button', { name: '生成第一门课程' }).click();
+  await page.getByRole('button', { name: '高级课程蓝图', exact: true }).click();
   await page.getByLabel('课程名称', {exact:true}).fill('分数关系与证据');
   await page.getByRole('button', { name: '预览课程蓝图' }).click();
   await expect(page.getByText('Unit 1:', { exact: false }).first()).toBeVisible();

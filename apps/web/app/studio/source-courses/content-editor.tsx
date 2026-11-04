@@ -1,7 +1,8 @@
 'use client';
 import * as React from 'react';
+import { z } from 'zod';
 import { OriginalManuscript } from './original-manuscript';
-import { sourceCourseContentSchema, type CourseSourceSnapshot, type SourceCourseContent, type SourceCourseLessonContent, type SourceCourseAuthoring } from '@study-agent/contracts';
+import { sourceCourseContentSchema, sourceCourseLessonContentSchema, type CourseSourceSnapshot, type SourceCourseContent, type SourceCourseLessonContent, type SourceCourseAuthoring } from '@study-agent/contracts';
 
 type Section = 'teaching' | 'example' | 'questions' | 'citations';
 const sections: Array<[Section, string]> = [['teaching', '讲解与板书'], ['example', '例子与误区'], ['questions', '练习与答案'], ['citations', '来源引用']];
@@ -25,7 +26,7 @@ export function SourceCourseContentEditor({courseId,revision,content,sources,bus
   function navigateTabs(event:React.KeyboardEvent){if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const current=sections.findIndex(([key])=>key===section),index=event.key==='Home'?0:event.key==='End'?sections.length-1:(current+(event.key==='ArrowRight'?1:-1)+sections.length)%sections.length;const next=sections[index][0];setSection(next);document.getElementById('editor-tab-'+next)?.focus();}
   function update(value:Partial<SourceCourseLessonContent>){onChange({...content,lessons:content.lessons.map((item,index)=>index===lessonIndex?{...item,...value}:item)});setIssue('');}
   function question(index:number,value:Partial<SourceCourseLessonContent['questions'][number]>) { update({questions:lesson.questions.map((item,qi)=>qi===index?{...item,...value}:item)}); }
-  async function submit(event:React.FormEvent){event.preventDefault();const parsed=sourceCourseContentSchema.safeParse(content);if(!parsed.success){
+  async function submit(event:React.FormEvent){event.preventDefault();const parsed=(generationInfo?.maximumLessons?sourceCourseContentSchema.extend({lessons:z.array(sourceCourseLessonContentSchema).min(1).max(generationInfo.maximumLessons)}):sourceCourseContentSchema).safeParse(content);if(!parsed.success){
     const first=parsed.error.issues[0],path=first.path;setIssue(describe(path)+'：请核对必填内容、长度与条数。');
     if(path[0]==='lessons'&&typeof path[1]==='number'){setLessonIndex(path[1]);setSection(path[2]==='questions'?'questions':path[2]==='citations'?'citations':['example','misconception'].includes(String(path[2]))?'example':'teaching');}
     requestAnimationFrame(()=>{let name=path.join('.');while(name){const element=document.getElementsByName(name)[0];if(element instanceof HTMLElement){element.focus();element.scrollIntoView({block:'center'});break;}name=name.split('.').slice(0,-1).join('.');}});return;

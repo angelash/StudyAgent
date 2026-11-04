@@ -1,0 +1,98 @@
+{
+  "at": "2026-11-04T10:15:45.087Z",
+  "task": "Model-driven home course crafting following user-authorized HyperKnow request observation",
+  "planCommit": "0a26defa",
+  "backendCommit": "01e9ae33",
+  "delivery": "local main only; no push or deployment",
+  "flow": [
+    "prompt and selected model",
+    "actual search snippets",
+    "model questions with skip/defaults",
+    "model-generated grouped blueprint",
+    "optional natural-language blueprint revision",
+    "explicit confirmation",
+    "durable per-lesson writing and model review",
+    "existing source course and classroom"
+  ],
+  "validation": {
+    "fullApi": {
+      "files": 334,
+      "passed": 3121,
+      "failed": 2,
+      "conditionallySkipped": 131,
+      "unchangedSnapshot": true
+    },
+    "fullFailuresRecheck": {
+      "passed": 14,
+      "failed": 0,
+      "notes": [
+        "Future schema fixture now uses current schema + 1",
+        "Unchanged durability test passes independently in about45s, compared to65s in contended batch"
+      ]
+    },
+    "finalSqlite": {
+      "passed": 49,
+      "failed": 0
+    },
+    "finalPostgres": {
+      "passed": 31,
+      "failed": 0
+    },
+    "finalBrowser": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "retried": 0,
+      "buildId": "IRVNEzTrMNUmDPOtmehEB",
+      "contains": [
+        "instant-assistance to craft navigation",
+        "desktop topic/questions/blueprint/detail/result flow",
+        "390px mobile flow and refresh",
+        "three original advanced blueprint cases"
+      ]
+    },
+    "legacyAndNewBrowser": {
+      "passed": 5,
+      "failed": 0
+    },
+    "typecheck": "API including tests and Web production build passed",
+    "nativeMigration": "37 to38 on SQLite and PostgreSQL; original domain/meta/tasks/history unchanged; actual retained37 reader refuses38; SQLite injected38 rollback verified",
+    "liveModel": {
+      "modelId": "gpt-6.1-sol",
+      "sources": 8,
+      "questions": 2,
+      "units": 1,
+      "lessons": 1,
+      "explicitBlueprintConfirmation": true,
+      "modelReviewCompleted": true
+    },
+    "visualInspection": "final synthetic desktop, blueprint and390px mobile screenshots inspected",
+    "formalRuntimePreserved": "Original compiled API reader SHA and Web build match; local and public ready return200",
+    "sourceInputs": {
+      "files": 2920,
+      "mainMatchesFinalValidationSnapshot": true
+    }
+  },
+  "limitations": [
+    "Full API first run is not a single all-green result; followups are recorded separately",
+    "Search results are excerpts, not verified full textbook pages",
+    "Original website observed through generated blueprint; final detail confirmation timed out and was not executed",
+    "Original backend source, prompts and exact internal tool implementation not obtained",
+    "Model review is not teacher or real learner acceptance"
+  ],
+  "scope": {
+    "mainOnly": true,
+    "branchesCreated": 0,
+    "worktreesCreated": 0,
+    "formalDatabaseUsedForTests": false,
+    "formalGenerationCalls": false,
+    "bulkTeachingAndQuestionProductionResumed": false,
+    "publishedBuildUnchanged": "82ipCOFHwA7Ub7Th8AqtY",
+    "ownedQaPostgres15458Stopped": true,
+    "ownedQaPortsReleased": [
+      15458,
+      3318,
+      4318
+    ]
+  }
+}

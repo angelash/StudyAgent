@@ -1,0 +1,2796 @@
+{
+  "full": {
+    "total": 3254,
+    "passed": 3121,
+    "failed": 2,
+    "pending": 131,
+    "success": false,
+    "durationMs": 1439735.8388671875,
+    "files": [
+      {
+        "file": "app.integration.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "durability.integration.test.ts",
+        "status": "failed",
+        "passed": 0,
+        "failed": 1,
+        "pending": 0,
+        "failures": [
+          {
+            "name": "restores session, student, immutable assessment and practice draft; failed requests leave no partial mutations",
+            "reason": "65-second first run exceeded default test timeout; unchanged test passes in isolated run at 45 seconds."
+          }
+        ]
+      },
+      {
+        "file": "product-safety.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "common/http-body.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "common/stream-verified-file.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "common/terminate-child-process.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "common/validation.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/admin-navigation.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/assistant-note-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/assistant-note-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/assistant-practice-workspace.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/assistant-whiteboard-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/assistant-whiteboard-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/backup.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/controlled-workspace-copy.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/domain-database.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/gesp-evidence-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/gesp-workspace.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/materials-navigation.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/math-figures-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/operations.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/paper-practice-migration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/postgres-restore-import.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 9,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/postgres-restore-resume.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 19,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 6,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/rate-limit.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/restore-context.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/restored-materials.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema25-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema26-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema27-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema28-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 5,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema29-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 5,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema30-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 5,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema31-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 5,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/schema32-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/scoped-transactions.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/snapshot-isolation.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/source-course-check-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/source-course-check-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/source-material-backup.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/sqlite-restore-resume.integration.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/studio-atomic-marker.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/studio-file-coordination.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/studio-original-repair.test.ts",
+        "status": "passed",
+        "passed": 41,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/task-repository.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/teaching-tool-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-edition-reader.integration.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-teaching-adoption-native.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-teaching-course-history-native.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-teaching-early33-readers.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-teaching-native.integration.test.ts",
+        "status": "failed",
+        "passed": 12,
+        "failed": 1,
+        "pending": 0,
+        "failures": [
+          {
+            "name": "rejects future38 with both native state and SQLite bytes preserved",
+            "reason": "Historical future-schema fixture hard-coded 38, now current."
+          }
+        ]
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 2,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 2,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-visual-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 2,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-visual-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/topic-whiteboard-visual-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/whiteboard-question-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/whiteboard-question-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/whiteboard-question-visual-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/workspace-exit-guard.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/workspace-navigation.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-artifact.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-chemistry-tutorial.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-chemistry.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-controlled-figure.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-course-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-course.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-lecture-content-migration.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-lecture-context.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-lecture-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-lecture.integration.test.ts",
+        "status": "passed",
+        "passed": 17,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-note.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-source-references.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-teaching-content.test.ts",
+        "status": "passed",
+        "passed": 22,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-teaching-provider-context.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-turn-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/assistant-turn.integration.test.ts",
+        "status": "passed",
+        "passed": 22,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/classroom-image.service.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/classroom-reply-board.test.ts",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/codex-pdf-structure.service.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/codex-search.service.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/evidence-coach.integration.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/openai-compatibility.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/speech.service.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/teaching-output-caller.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/teaching-output-policy.test.ts",
+        "status": "passed",
+        "passed": 60,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/teaching-tool-protocol.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/teaching-tool.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/xiaojiu-chat.service.test.ts",
+        "status": "passed",
+        "passed": 18,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/xiaojiu-model-qualification.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/xiaojiu-models.service.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/ai/xiaojiu-text-transport.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/content/open-resource-registry.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp-feedback-boundary.integration.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp-learning-loop.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp-learning-loop.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp-student.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp-teaching-candidates.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/gesp.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/isolated-runner.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/gesp/student-curriculum.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/adaptive-routing.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/adaptive-routing.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/answer-draft-postgres-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/answer-draft.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/answer-protocol.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/atomic-components.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/atomic-components.test.ts",
+        "status": "passed",
+        "passed": 19,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-arithmetic-probes.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-grade1-probes.test.ts",
+        "status": "passed",
+        "passed": 20,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-grade2-probes.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-grade3-probes.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-grade4-probes.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-grade5-grade6-probes.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-chinese-oral-grade1-probes.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-data-probes.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-english-foundation-probes.test.ts",
+        "status": "passed",
+        "passed": 18,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-english-grade1-grade2-probes.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-english-grade3-grade6-probes.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-english-lexical-probes.test.ts",
+        "status": "passed",
+        "passed": 20,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-factor-multiple-probes.test.ts",
+        "status": "passed",
+        "passed": 26,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-fourth-grade-geometry-statistics-probes.test.ts",
+        "status": "passed",
+        "passed": 27,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-fourth-grade-number-probes.test.ts",
+        "status": "passed",
+        "passed": 29,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-geometry-probes.test.ts",
+        "status": "passed",
+        "passed": 22,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-math-grade5-grade6-probes.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-math-probes.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-number-probes.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-relation-release.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-remainder-decimal-probes.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-second-grade-probes.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-spatial-probes.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-third-grade-probes.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/authored-unit-probes.test.ts",
+        "status": "passed",
+        "passed": 19,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/average-atomic.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/average-atomic.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/chemistry-curriculum.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/classroom-retention-history.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/classroom-retention-origin.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/classroom-retention-record.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/controlled-contexts.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/controlled-contrast-materials.test.ts",
+        "status": "passed",
+        "passed": 41,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/controlled-contrast.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/controlled-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/core-curriculum.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/curriculum-package.integration.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/diagnostics.integration.test.ts",
+        "status": "passed",
+        "passed": 28,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/family-identity.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/family-identity.test.ts",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/guidance-model-record.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/guidance-model-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/guidance-model.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/learning-source-citation.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/measurement-compatibility.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/measurement-versioning.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/measurement.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/paper-exposure.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-anchor.test.ts",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-course-history.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-evidence-projection.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-integrity.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-legacy-classroom.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-native.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-review-gate.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention-source.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/retention.integration.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/scoring.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-feature-probes.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-first-probes.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-followup-probes.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-followup.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-production-probes.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-reading-probes.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/source-chinese-scene-probes.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/teaching-editor-client.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/teaching-editor-copy.test.ts",
+        "status": "passed",
+        "passed": 27,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/teaching-editor-state.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/teaching-practice-navigation.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-edition-conformity.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-edition-registry.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-extraction-identity.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-lesson-source.integration.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-registry-document.test.ts",
+        "status": "passed",
+        "passed": 18,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-scope-inventory.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-scope-inventory.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-source-candidates.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-teaching-adoption-native.test.ts",
+        "status": "passed",
+        "passed": 17,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-teaching-adoption.test.ts",
+        "status": "passed",
+        "passed": 18,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-teaching-practice.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-teaching.integration.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/textbook-teaching.test.ts",
+        "status": "passed",
+        "passed": 30,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/verification-blueprint.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/verification-blueprint.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/verification-materials.integration.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/diagnostics/verification-materials.test.ts",
+        "status": "passed",
+        "passed": 13,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/library.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/measurement-content.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-business.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 15,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-cleanup.integration.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-document-source.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-generation-cleanup.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-native.test.ts",
+        "status": "passed",
+        "passed": 37,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-record.test.ts",
+        "status": "passed",
+        "passed": 28,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-render.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-tex.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-tex.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-export-workspace-collection.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-library-browser-copy.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-library-browser-http.integration.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-library-persistence.test.ts",
+        "status": "passed",
+        "passed": 13,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-library-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 3,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-library-privacy.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-practice-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-practice.integration.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-selection-business.integration.test.ts",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-selection-record.test.ts",
+        "status": "passed",
+        "passed": 35,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-selection-source.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/paper-student-source-access.integration.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/library/verified-library-media.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/activity-navigation.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/adult-classroom-models.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-guidance.integration.test.ts",
+        "status": "passed",
+        "passed": 35,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-practice-artifact.integration.test.ts",
+        "status": "passed",
+        "passed": 38,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-practice-bank-selection.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-practice-content.test.ts",
+        "status": "passed",
+        "passed": 46,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-practice-preflight.integration.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-practice-withdrawal.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-teaching-self.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-teaching-sharing.integration.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-teaching.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-whiteboard-content.test.ts",
+        "status": "passed",
+        "passed": 17,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-whiteboard-lifecycle.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/assistant-whiteboard.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/chemistry-course-correction.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/chemistry-tutorial.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/chemistry.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-audio-client.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-choice-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 1,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-choice.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-code.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-math.test.ts",
+        "status": "passed",
+        "passed": 20,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-practice-content.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-presentation.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-presentation.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-turn.integration.test.ts",
+        "status": "passed",
+        "passed": 17,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-unit-checks.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-visual-context.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-visual-storage.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-visual.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom-voice-preview.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/classroom.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-builder-copy.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-craft-research.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-craft.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-journey.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-project.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-upgrade-copy.test.ts",
+        "status": "passed",
+        "passed": 22,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/guidance-calendar-ics.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/guidance-calendar-preview.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/guidance-calendar-record.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/guidance-calendar-time.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/ics-calendar.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/learning-home.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/learning-home.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/notebook.integration.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-attribution.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-browser-copy.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-copy.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-derived-pdf.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-file-observation.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-files.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-group.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-image.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-page.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-repair-browser-copy.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-repair-files.test.ts",
+        "status": "passed",
+        "passed": 25,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/paper-capture-storage.integration.test.ts",
+        "status": "passed",
+        "passed": 86,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/project-file-postgres-recovery.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 2,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/project-file.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/project-teaching.integration.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-check-content.test.ts",
+        "status": "passed",
+        "passed": 18,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-check.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-chunks.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-compilation.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-lifecycle.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-project.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-project.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-course.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-material-integrity.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-material-maintenance.integration.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-material-upload.integration.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-original-repair.integration.test.ts",
+        "status": "passed",
+        "passed": 15,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-pdf-structure.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio-whiteboard.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/studio.integration.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/textbook-teaching-course-history.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/textbook-teaching-course-upgrade.integration.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/textbook-teaching-course.integration.test.ts",
+        "status": "passed",
+        "passed": 25,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/textbook-teaching-course.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard-access.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard-content.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard-visual-context.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard-visual-files.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard-visual.integration.test.ts",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/topic-whiteboard.integration.test.ts",
+        "status": "passed",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-formula.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-postgres.integration.test.ts",
+        "status": "passed",
+        "passed": 0,
+        "failed": 0,
+        "pending": 4,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-context.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-notes.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-teaching-versions.test.ts",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-teaching.test.ts",
+        "status": "passed",
+        "passed": 7,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-visual-context.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question-visual.integration.test.ts",
+        "status": "passed",
+        "passed": 13,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-question.integration.test.ts",
+        "status": "passed",
+        "passed": 21,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-speech.test.ts",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-table.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/whiteboard-webm.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/workspace-overview.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/operations/operations-capabilities.integration.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/operations/operations-capabilities.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/privacy/privacy.durability.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/privacy/privacy.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/processing/external-handwriting.test.ts",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/processing/processing.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/processing/retired-local-explain.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/question-workspace/question-import.utils.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/reviews/reviews.integration.test.ts",
+        "status": "passed",
+        "passed": 10,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/students/student-access.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/student-media/media-normalization.test.ts",
+        "status": "passed",
+        "passed": 3,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/student-media/student-media.durability.integration.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/student-media/student-media.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      }
+    ]
+  },
+  "fullFailuresRecheck": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "pending": 0,
+    "success": true,
+    "durationMs": 73638.96459960938,
+    "files": [
+      {
+        "file": "durability.integration.test.ts",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "infrastructure/textbook-teaching-native.integration.test.ts",
+        "status": "passed",
+        "passed": 13,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      }
+    ]
+  },
+  "sqlite": {
+    "total": 49,
+    "passed": 49,
+    "failed": 0,
+    "pending": 0,
+    "success": true,
+    "durationMs": 79502.0537109375,
+    "files": [
+      {
+        "file": "modules/learning/course-craft-research.test.ts",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/course-craft.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course-lifecycle.integration.test.ts",
+        "status": "passed",
+        "passed": 11,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/privacy/privacy.integration.test.ts",
+        "status": "passed",
+        "passed": 5,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      }
+    ]
+  },
+  "postgres": {
+    "total": 31,
+    "passed": 31,
+    "failed": 0,
+    "pending": 0,
+    "success": true,
+    "durationMs": 50754.715576171875,
+    "files": [
+      {
+        "file": "modules/learning/course-craft.integration.test.ts",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      },
+      {
+        "file": "modules/learning/source-course.integration.test.ts",
+        "status": "passed",
+        "passed": 23,
+        "failed": 0,
+        "pending": 0,
+        "failures": []
+      }
+    ]
+  }
+}

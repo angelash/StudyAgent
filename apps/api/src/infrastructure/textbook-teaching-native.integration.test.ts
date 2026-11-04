@@ -87,9 +87,9 @@ describe(driver + ' actual32 to33 reader and complete teaching native transactio
     const old = new Reader32(url); await old.open(); await old.close(); await sql(url, 'DROP TRIGGER reject_teaching33' + (configured ? ' ON study_restore_guard' : ''));
     const current = new DomainDatabase(url); await current.open(); await current.close(); expect(await schema(url)).toBe(latestSchemaVersion);
   });
-  it('rejects future38 with both native state and SQLite bytes preserved', async () => {
+  it('rejects the next future schema with both native state and SQLite bytes preserved', async () => {
     const url = await original('future'), current = new DomainDatabase(url); await current.open(); await current.close();
-    await sql(url, 'INSERT INTO schema_migrations(version,applied_at) VALUES(38,?)', [new Date().toISOString()]); const before = await snapshot(url), bytes = configured ? null : digest(readFileSync(url));
+    await sql(url, 'INSERT INTO schema_migrations(version,applied_at) VALUES(?,?)', [latestSchemaVersion+1,new Date().toISOString()]); const before = await snapshot(url), bytes = configured ? null : digest(readFileSync(url));
     await expect(new DomainDatabase(url).open()).rejects.toThrow('unsupported_database_schema'); expect(teachingHash(await snapshot(url))).toBe(teachingHash(before)); if (bytes) expect(digest(readFileSync(url))).toBe(bytes);
   });
   it('persists full originals and independently cold-opens saved/publication history without learner writes', async () => {

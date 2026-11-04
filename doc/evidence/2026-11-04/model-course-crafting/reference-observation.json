@@ -1,0 +1,33 @@
+{
+  "status": "observed-through-model-generated-blueprint",
+  "initialSearchGroups": 2,
+  "sourcesPerGroup": 8,
+  "questionRoundsObserved": 2,
+  "observedTools": [
+    "search course outline",
+    "ask learning background and preferences",
+    "read teaching references",
+    "construct and expand unit hierarchy",
+    "present course blueprint"
+  ],
+  "blueprint": {
+    "units": 7,
+    "sessions": 18,
+    "contains": [
+      "lectures",
+      "project stages",
+      "unit checks",
+      "depth tags"
+    ]
+  },
+  "confirmationChoices": [
+    "adjust blueprint",
+    "accept and generate details"
+  ],
+  "finalDetailsConfirmation": "timed-out; action not executed",
+  "limitations": [
+    "Private backend and prompts not obtained",
+    "Full original course completion not observed",
+    "No original curriculum text copied into application"
+  ]
+}
