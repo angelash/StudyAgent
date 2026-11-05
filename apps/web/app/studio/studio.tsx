@@ -7,7 +7,7 @@ import type { ChemistryCatalog, ClassroomCatalog, StudioCourse, StudioOverview, 
 import { apiRequest, ApiRequestError } from '../../lib/api';
 import { useSessionUser } from '../../lib/session-user';
 import { TeachingGuide } from '../../components/teaching-guide';
-import { WhiteboardPlayer, WhiteboardScenePreview } from './whiteboard-player';
+import dynamic from 'next/dynamic';
 import { IntegrationCalendar } from './integration-calendar';
 import { MaterialsWorkspace } from './materials-workspace';
 import { copyMaterialsState } from '../../lib/materials-navigation';
@@ -29,6 +29,11 @@ import { workspaceHref } from '../../lib/workspace-navigation';
 import { WorkspaceNextAction } from '../../components/workspace-next-action';
 import { teachingPracticeHref } from '../../lib/teaching-practice-navigation';
 import { requestControlledCopyExit } from '../../components/controlled-copy-exit';
+
+// The whiteboard player pulls in MathJax and its font data (well over 1 MB). It only
+// opens from user actions here, so it loads on demand instead of with /studio.
+const WhiteboardPlayer = dynamic(() => import('./whiteboard-player').then(module => module.WhiteboardPlayer), { ssr: false });
+const WhiteboardScenePreview = dynamic(() => import('./whiteboard-player').then(module => module.WhiteboardScenePreview), { ssr: false });
 
 type View = 'home' | 'courses' | 'feed' | 'calendar' | 'materials' | 'history';
 type Mode = 'craft' | 'instant';

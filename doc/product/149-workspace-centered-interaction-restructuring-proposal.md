@@ -296,7 +296,7 @@ StudyAgent
 - [工作台基础样式](../../apps/web/app/studio/workspace.css)
 - [侧栏覆盖样式](../../apps/web/app/studio/reference-navigation.css)
 - [工作台弹窗与焦点处理](../../apps/web/app/studio/workspace-dialog.tsx)
-- [现有主要下一步](../../apps/web/app/learn/screen.tsx)
+- [现有主要下一步](../../apps/web/app/studio/studio.tsx)（原 `app/learn/screen.tsx` 兼容导出已于 2026-11-05 删除）
 - [现有首页动作与身份投影](../../apps/api/src/modules/learning/learning-home.service.ts)
 - [家长页面](../../apps/web/app/parent/dashboard/studio.tsx)
 - [诊断、报告及计划](../../apps/web/app/student/assessment/studio.tsx)
