@@ -22,7 +22,7 @@
 
 Node.js 24.13+（24系列）、npm 11、Python 3.10+。先执行 `npm ci`、`npm run build`。业务存储迁移随应用启动执行；Prisma早期脚手架已归档，不需要生成客户端。现有 `.env` 中的 AI 配置可继续使用，未启用AI时确定性评测不应受阻（降级功能随 M07 验收）。
 
-默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（当前版本8）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。
+默认本地模式自动建立 `data/study-agent.sqlite3`（SQLite WAL、完整同步写、事务与唯一约束）。配置 `STUDY_DATA_DIR` 可改变业务数据目录。`STUDY_STORAGE=postgres` 时读取 `DATABASE_URL`，自动应用已登记存储迁移（2026-11-05 为版本38，以 `apps/api/src/infrastructure/domain-database.ts` 中最大的 `migrateConstraints` 版本为准）；需要运行中的 PostgreSQL。内存模式仅供隔离测试，生产模式拒绝它。服务启动完成后，请求或 `store.transaction()` 之外的持久数据访问会记录告警并计入运维接口的 `outsideContextAccesses`；设置 `STUDY_STORE_STRICT_CONTEXT=true` 时直接报错。
 
 兼容注入名 `InMemoryStoreService` 目前仍由旧模块引用，运行时已使用请求隔离的数据库事务；`domain_records` 为具有唯一约束、版本和稳定顺序的领域文档表。原始全量题库使用独立索引库，不能塞入该兼容接口。并发写基线冲突返回409，调用方应重读后重试，不能盲目覆盖。
 

@@ -32,7 +32,7 @@ import type { AssistantCourseSnapshot } from '../modules/ai/assistant-course-con
 import type { AssistantNoteRecord } from '../modules/ai/assistant-note-record';
 import type { AssistantSourceReference } from '@study-agent/contracts';
 import type { GuidanceModelSuggestionRecord } from '../modules/diagnostics/guidance-model-record';
-import { Injectable, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit, OnApplicationBootstrap, OnModuleDestroy } from '@nestjs/common';
 import type { ClassroomSessionRecord } from '../modules/learning/classroom.service';
 import type { CourseProjectRecord } from '../modules/learning/course-project.service';
 import type { SourceCourseRecord } from '../modules/learning/source-course-content';
@@ -210,7 +210,10 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   private baseline: StateSnapshot = { revision: 0, state: {} };
   private database?: DomainDatabase;
   private memoryQueue?: DomainDatabase;
-  private readonly workspaceCounters = { collectionsCloned: 0, recordsCloned: 0 };
+  private readonly workspaceCounters = { collectionsCloned: 0, recordsCloned: 0, outsideContextAccesses: 0 };
+  private readonly logger = new Logger('InMemoryStoreService');
+  private readonly outsideContextSites = new Set<string>();
+  private bootstrapped = false;
 
   constructor() {
     // Kept as the injection token for existing modules; production data is transactional and durable.
@@ -226,9 +229,26 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
         set: (items: unknown[]) => {
           const context = this.contexts.getStore();
           if (context) { this.recordRead(key); context.state[key] = items; context.touched.add(key); context.copied.add(key); }
-          else this.root[key] = items;
+          else { this.outsideContext('assign', key); this.root[key] = items; }
         } });
     }
+  }
+
+  /**
+   * After bootstrap, durable records are only current and persisted inside a request
+   * or transaction workspace. Outside it the startup copy is read and writes are lost.
+   * Default: count and warn once per site. STUDY_STORE_STRICT_CONTEXT=true fails fast.
+   */
+  private outsideContext(operation: string, collection: string) {
+    if (!this.database || !this.bootstrapped) return;
+    this.workspaceCounters.outsideContextAccesses++;
+    const message = `Store ${operation} on "${collection}" ran outside a request or transaction workspace; it sees startup data and is not persisted`;
+    if (process.env.STUDY_STORE_STRICT_CONTEXT === 'true') throw new Error(message);
+    const site = `${operation}:${collection}`;
+    if (this.outsideContextSites.has(site) || this.outsideContextSites.size >= 200) return;
+    this.outsideContextSites.add(site);
+    const caller = new Error().stack?.split('\n').slice(3, 7).join('\n') ?? '';
+    this.logger.warn(`${message}. Wrap it in store.transaction(); set STUDY_STORE_STRICT_CONTEXT=true to fail fast.\n${caller}`);
   }
 
   private recordRead(collection: string, where?: DomainSelector) {
@@ -243,7 +263,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
 
   private mutableCollection(collection: string, allRecords: boolean): unknown[] {
     const context = this.contexts.getStore();
-    if (!context) return this.root[collection] ??= [];
+    if (!context) { this.outsideContext('access', collection); return this.root[collection] ??= []; }
     if (allRecords && !context.touched.has(collection)) {
       context.state[collection] = structuredClone(context.state[collection] ?? []);
       context.touched.add(collection); context.copied.add(collection);
@@ -259,6 +279,7 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   select<K extends StoreCollection>(collection: K, where: DomainSelector): Array<StoreRecord<K>> {
     validateSelector(where); this.recordRead(collection, where);
     const context = this.contexts.getStore(), predicate = compileSelector(where);
+    if (!context) this.outsideContext('select', collection);
     let rows = (context ? context.state[collection] : this.root[collection]) ?? [];
     const dirty = context?.dirty.get(collection) ?? new Set<number>(); context?.dirty.set(collection, dirty);
     const candidates = context && !context.touched.has(collection) && !context.unindexed.has(collection) ? indexedPositions(context.indexBases[collection] ?? [], where) : undefined;
@@ -277,7 +298,9 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
   /** Immutable analysis view. Edits must use find/select so dependencies and local copies remain explicit. */
   inspect<K extends StoreCollection>(collection: K): ReadonlyArray<StoreRecord<K>> {
     this.recordRead(collection);
-    const context = this.contexts.getStore(), rows = (context ? context.state[collection] : this.root[collection]) ?? [];
+    const context = this.contexts.getStore();
+    if (!context) this.outsideContext('inspect', collection);
+    const rows = (context ? context.state[collection] : this.root[collection]) ?? [];
     if (Object.isFrozen(rows)) return rows as Array<StoreRecord<K>>;
     const copy = rows.map(row => {
       if (Object.isFrozen(row)) return row;
@@ -316,15 +339,21 @@ export class InMemoryStoreService implements OnModuleInit, OnApplicationBootstra
     if (!location) throw new Error('DATABASE_URL is required for PostgreSQL storage');
     this.database = new DomainDatabase(location);
     await this.database.open();
-    this.baseline = await this.database.read();
+    // The frozen database cache is an immutable "before" snapshot for the bootstrap
+    // commit; only the startup workspace (root) needs a mutable copy for seeding.
+    this.baseline = await this.database.readImmutable();
     for (const [key, rows] of Object.entries(this.baseline.state)) this.root[key] = structuredClone(rows);
   }
 
   async onApplicationBootstrap() {
     if (this.database) {
       const revision = await this.database.commit(this.baseline, this.root);
-      this.baseline = { revision, state: structuredClone(this.root) };
+      // Requests read the database snapshot cache, so no further full copy is kept here.
+      this.baseline = { revision, state: {} };
+      // In strict mode nothing may read the startup workspace any more; release it.
+      if (process.env.STUDY_STORE_STRICT_CONTEXT === 'true') for (const key of Object.keys(this.root)) this.root[key] = [];
     }
+    this.bootstrapped = true;
   }
 
   async requestContext<T>(fn: () => T): Promise<T> {
