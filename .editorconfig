@@ -1,0 +1,12 @@
+root = true
+
+# Line endings stay governed by .gitattributes and core.autocrlf; several archived
+# files are byte-checksummed, so editors must not rewrite EOLs or trailing spaces.
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+[*.md]
+max_line_length = off

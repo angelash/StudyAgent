@@ -55,6 +55,8 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run lint
+      - name: Code health ratchet (direct store collection access, over-long lines)
+        run: npm run qa:health
       - name: Local documentation links
         run: npm run qa:docs
       - name: Read-only private material inventory and reference integrity
@@ -116,9 +118,13 @@ jobs:
 
   browser:
     runs-on: ubuntu-24.04
-    # The466 original journeys alone take about42 minutes on a fresh runner.
-    # Leave time for dependency preparation, production build and evidence upload.
-    timeout-minutes: 60
+    # The 466 original journeys took about 42 minutes on one runner. Four Playwright
+    # shards run in parallel; each still builds its own isolated production Web copy.
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -149,13 +155,13 @@ jobs:
         env:
           PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: '60000'
         run: npx playwright install --with-deps chromium
-      - name: Browser product journey at phone, tablet and desktop widths
-        run: npm run test:e2e
+      - name: Browser product journey at phone, tablet and desktop widths (shard ${{ matrix.shard }}/4)
+        run: npm run test:e2e -- --shard ${{ matrix.shard }}/4
       - name: Preserve browser reports and original traces
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: browser-verification-evidence
+          name: browser-verification-evidence-${{ matrix.shard }}
           retention-days: 14
           path: |
             test-results/browser-product-acceptance/

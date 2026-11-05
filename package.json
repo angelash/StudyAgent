@@ -22,6 +22,8 @@
     "test:e2e": "node scripts/qa/run-browser-acceptance.cjs",
     "lint": "npm run lint --workspace @study-agent/api && npm run lint --workspace @study-agent/web",
     "qa:docs": "node scripts/qa/verify-doc-links.cjs",
+    "qa:health": "node scripts/qa/check-code-health.cjs",
+    "release:check-ci": "node scripts/operations/check-ci-status.cjs",
     "materials:audit": "node scripts/operations/material-audit.cjs"
   },
   "engines": {

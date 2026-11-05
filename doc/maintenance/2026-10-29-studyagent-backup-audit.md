@@ -81,17 +81,17 @@ F: 已导入教材是应用资料入口所需的受控副本；H: 是完整来�
 
 核查过程不是原子文件系统快照。Windows Python 3.10 的 DirEntry.stat() 不提供可靠文件 ID，首次硬链接记账试算已标为 invalid-identities；正式结果改用 os.stat 的非零文件 ID 并逐件回读。I: 回读过程保留断点前缀并续读，合并后的结果按路径、预期大小和预期 SHA-256 去重核对，没有把首轮部分覆盖写成完整通过。当前业务库曾另外做 immutable 观察，该观察不含 WAL，已单独标识；本报告版本结论使用含 WAL 的只读事务。
 
-- [主目录扫描摘要](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/summary-main.json)；[I: 扫描摘要](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/summary-backups.json)；[E: 演练扫描摘要](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/summary-restore.json)。
-- [备份路径／字节与六个附加文件](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/backup-file-set-check.json)；[备份清单 SHA-256](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/backup-manifests.json)。
-- [六个附加文件的实际读取与 SHA-256](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/backup-extra-files-readback.json)。
-- [I: 完整回读与主目录对比摘要](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/backup-readback-summary.json)；[E: 396135 个资产回读摘要](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/restore-assets-readback-summary.json)。
-- [本地重复组与 QA 缓存路径](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/local-duplicates-summary.json)；[相同数据库文件组](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/duplicate-database-groups.json)。
-- [只读列出的精确清理候选与保留项](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/cleanup-candidates.json)。
-- [三份业务库的有效版本](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/database-schema-checks.json)；[教材源库、相同 PDF 与整书／分片拼接](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/chinatextbook-current-state.json)；[两个分片的换行转换证据](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/chinatextbook-working-bytes-check.json)。
-- [物理磁盘与进程](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/environment-before.json)；[E: 与 C: 磁盘归属](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/extra-disks.json)。
+- 主目录扫描摘要（本机私有 `data/maintenance/2026-10-29-backup-audit/summary-main.json`，不入库）；I: 扫描摘要（本机私有 `data/maintenance/2026-10-29-backup-audit/summary-backups.json`，不入库）；E: 演练扫描摘要（本机私有 `data/maintenance/2026-10-29-backup-audit/summary-restore.json`，不入库）。
+- 备份路径／字节与六个附加文件（本机私有 `data/maintenance/2026-10-29-backup-audit/backup-file-set-check.json`，不入库）；备份清单 SHA-256（本机私有 `data/maintenance/2026-10-29-backup-audit/backup-manifests.json`，不入库）。
+- 六个附加文件的实际读取与 SHA-256（本机私有 `data/maintenance/2026-10-29-backup-audit/backup-extra-files-readback.json`，不入库）。
+- I: 完整回读与主目录对比摘要（本机私有 `data/maintenance/2026-10-29-backup-audit/backup-readback-summary.json`，不入库）；E: 396135 个资产回读摘要（本机私有 `data/maintenance/2026-10-29-backup-audit/restore-assets-readback-summary.json`，不入库）。
+- 本地重复组与 QA 缓存路径（本机私有 `data/maintenance/2026-10-29-backup-audit/local-duplicates-summary.json`，不入库）；相同数据库文件组（本机私有 `data/maintenance/2026-10-29-backup-audit/duplicate-database-groups.json`，不入库）。
+- 只读列出的精确清理候选与保留项（本机私有 `data/maintenance/2026-10-29-backup-audit/cleanup-candidates.json`，不入库）。
+- 三份业务库的有效版本（本机私有 `data/maintenance/2026-10-29-backup-audit/database-schema-checks.json`，不入库）；教材源库、相同 PDF 与整书／分片拼接（本机私有 `data/maintenance/2026-10-29-backup-audit/chinatextbook-current-state.json`，不入库）；两个分片的换行转换证据（本机私有 `data/maintenance/2026-10-29-backup-audit/chinatextbook-working-bytes-check.json`，不入库）。
+- 物理磁盘与进程（本机私有 `data/maintenance/2026-10-29-backup-audit/environment-before.json`，不入库）；E: 与 C: 磁盘归属（本机私有 `data/maintenance/2026-10-29-backup-audit/extra-disks.json`，不入库）。
 
-本轮 JSONL 明细已无损压缩为 .jsonl.gz，压缩后逐件解压流 SHA-256 与原文本一致。仅转换本轮生成的核查文本，未复制或删除用户原始材料。见 [文本明细压缩与解压回读收据](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/evidence-compression-receipt.json)。可用 Python gzip.open(path, "rt", encoding="utf-8") 流式检查。
+本轮 JSONL 明细已无损压缩为 .jsonl.gz，压缩后逐件解压流 SHA-256 与原文本一致。仅转换本轮生成的核查文本，未复制或删除用户原始材料。见 文本明细压缩与解压回读收据（本机私有 `data/maintenance/2026-10-29-backup-audit/evidence-compression-receipt.json`，不入库）。可用 Python gzip.open(path, "rt", encoding="utf-8") 流式检查。
 
-结束状态、原有配置哈希、Git main/worktree 和 HTTP 检查见 [结束核对收据](F:/workspace/github/StudyAgent/data/maintenance/2026-10-29-backup-audit/final-checks.json)。
+结束状态、原有配置哈希、Git main/worktree 和 HTTP 检查见 结束核对收据（本机私有 `data/maintenance/2026-10-29-backup-audit/final-checks.json`，不入库）。
 
 用户在该核查完成后又授权了资产归类和仓库重复旧副本清理。后续已经执行的分类、删除、H: 路径修复和两个教材分片修复见 [后续整理报告](2026-10-29-asset-organization.md)；本报告中的“未删除”“尚未改写”等表述描述的是本次只读核查结束时的状态。
