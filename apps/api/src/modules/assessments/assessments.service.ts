@@ -82,9 +82,9 @@ export class AssessmentsService {
     }
 
     const graded = await this.gradeQuestion(question, validation.normalizedAnswer, command.elapsedMs);
-    const existing = this.store.assessmentAnswers.find(
-      (item) => item.sessionId === sessionId && item.questionId === question.id,
-    );
+    // Selector reads keep the commit dependency on this one answer instead of the
+    // whole collection, so concurrent answers by other learners do not conflict.
+    const existing = this.store.find('assessmentAnswers', { sessionId, questionId: question.id });
 
     if (existing) {
       existing.answer = validation.normalizedAnswer;
@@ -260,7 +260,9 @@ export class AssessmentsService {
       question,
       answer,
     });
-    const correct = Boolean(aiResult.structuredResult.correct ?? false);
+    // Only a literal boolean true counts. Strings such as "false" or "true" from a
+    // loosely formatted model reply must never be treated as a correct answer.
+    const correct = aiResult.structuredResult.correct === true;
     return {
       correct,
       score: correct ? 1 : 0,

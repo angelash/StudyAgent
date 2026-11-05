@@ -255,9 +255,11 @@ export class MissionsService {
       question,
       answer,
     });
+    // Only a literal boolean true counts; loosely formatted model output is not trusted.
+    const correct = ai.structuredResult.correct === true;
     return {
-      correct: Boolean(ai.structuredResult.correct ?? false),
-      score: Boolean(ai.structuredResult.correct ?? false) ? 1 : 0,
+      correct,
+      score: correct ? 1 : 0,
       analysis: ai.summary,
     };
   }

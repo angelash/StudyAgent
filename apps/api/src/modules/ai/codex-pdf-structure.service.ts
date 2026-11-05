@@ -1,13 +1,15 @@
 import { Injectable, ServiceUnavailableException } from '@nestjs/common';
 import { loadApiEnv } from '@study-agent/config';
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import readline from 'node:readline';
 import { z } from 'zod';
 import { resolveCodexInvocation } from './codex-command';
+import { codexIsolationArgs } from './codex-isolation';
 import { XiaojiuModelsService } from './xiaojiu-models.service';
+import { codexSystemEnvironment, textProviderConfiguration } from './xiaojiu-text-transport';
 
 export type PdfStructurePageInput = {
   pageNumber: number;
@@ -82,16 +84,30 @@ export class CodexPdfStructureService {
     modelId?: string;
   }): Promise<PdfStructureModelResult> {
     const directory = mkdtempSync(resolve(tmpdir(), 'study-agent-pdf-structure-'));
+    // Uploaded pages are untrusted input. The CLI runs in an empty directory with an
+    // allowlisted environment and every tool disabled, never in the repository root.
+    const workDirectory = resolve(directory, 'empty-work');
+    mkdirSync(workDirectory);
     const schemaPath = resolve(directory, 'output.schema.json');
     const configPath = resolve(directory, 'model-catalog.json');
     writeFileSync(schemaPath, JSON.stringify(outputSchema, null, 2));
     const args = [
       'exec', '--ephemeral', '--json', '--sandbox', 'read-only', '--skip-git-repo-check',
-      '--color', 'never', '-C', process.cwd(),
+      '--color', 'never', '-C', workDirectory,
     ];
     const model = this.models.resolve(input.modelId ?? this.env.CODEX_PDF_MODEL);
     args.push('-m', model.id);
     try {
+      let environment: NodeJS.ProcessEnv;
+      try {
+        const connection = textProviderConfiguration(undefined, { requireResponses: false });
+        environment = connection.environment;
+        for (const setting of connection.disabledMcp) args.push('-c', setting);
+      } catch {
+        // Unrecognized provider settings still never expose the API's full environment.
+        environment = codexSystemEnvironment(['OPENAI_API_KEY', 'CODEX_API_KEY']);
+      }
+      args.push(...codexIsolationArgs());
       const configured = this.models.writeCompatibleCatalog(configPath);
       if (configured) args.push('-c', configured);
       const reviewPages = input.pages.filter(page => ['ocr', 'hybrid'].includes(page.method) ||
@@ -104,7 +120,7 @@ export class CodexPdfStructureService {
         try {
           const finalMessage = await this.run(args, this.buildPrompt({
             materialTitle: input.materialTitle, pages: reviewPages, strictRetry: attempt > 0,
-          }));
+          }), workDirectory, environment);
           const checked = resultSchema.safeParse(this.parseJson(finalMessage));
           if (checked.success) return checked.data;
           lastError = checked.error;
@@ -119,10 +135,10 @@ export class CodexPdfStructureService {
     }
   }
 
-  private run(args: string[], prompt: string) {
+  private run(args: string[], prompt: string, workDirectory: string, environment: NodeJS.ProcessEnv) {
     return new Promise<string>((resolvePromise, reject) => {
       const invocation = resolveCodexInvocation(this.env.CODEX_COMMAND);
-      const child = spawn(invocation.command, args, { cwd: process.cwd(), env: process.env,
+      const child = spawn(invocation.command, args, { cwd: workDirectory, env: environment,
         windowsHide: true, shell: invocation.shell });
       const errors: string[] = [];
       let finalMessage = '';

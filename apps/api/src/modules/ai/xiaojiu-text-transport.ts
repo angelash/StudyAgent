@@ -9,8 +9,16 @@ const maxRequestBytes = 1024 * 1024, maxResponseBytes = 4 * 1024 * 1024;
 const systemEnvironment = ['PATH', 'Path', 'SystemRoot', 'WINDIR', 'COMSPEC', 'ComSpec', 'PATHEXT', 'TEMP', 'TMP',
   'APPDATA', 'LOCALAPPDATA', 'USERPROFILE', 'HOMEDRIVE', 'HOMEPATH', 'HOME', 'LANG', 'LC_ALL', 'SSL_CERT_FILE', 'SSL_CERT_DIR', 'NODE_EXTRA_CA_CERTS'];
 
+/** Non-secret process settings a Codex child needs; never the API's own credentials or database settings. */
+export function codexSystemEnvironment(extraNames: readonly string[] = []): NodeJS.ProcessEnv {
+  const environment: NodeJS.ProcessEnv = {};
+  for (const name of [...systemEnvironment, ...extraNames]) if (process.env[name] !== undefined) environment[name] = process.env[name];
+  environment.CODEX_HOME = codexHomeDirectory();
+  return environment;
+}
+
 /** Read only simple connection settings; the installed CLI remains the configuration/authentication owner. */
-export function textProviderConfiguration(configPath = resolve(codexHomeDirectory(), 'config.toml')) {
+export function textProviderConfiguration(configPath = resolve(codexHomeDirectory(), 'config.toml'), options: { requireResponses?: boolean } = {}) {
   const text = existsSync(configPath) ? readFileSync(configPath, 'utf8') : '';
   const tables = new Map<string, Map<string, string>>(); let table = '', multiline: string | null = null;
   tables.set('', new Map());
@@ -44,7 +52,7 @@ export function textProviderConfiguration(configPath = resolve(codexHomeDirector
   if (!['http:', 'https:'].includes(upstream.protocol) || upstream.username || upstream.password || upstream.search || upstream.hash)
     throw new ServiceUnavailableException('小九文本provider地址格式不支持');
   const wire = string(settings?.get('wire_api'));
-  if (wire && wire !== 'responses') throw new ServiceUnavailableException('纯文本任务要求原provider支持Responses');
+  if ((options.requireResponses ?? true) && wire && wire !== 'responses') throw new ServiceUnavailableException('纯文本任务要求原provider支持Responses');
   const credentials = new Set<string>();
   const key = string(settings?.get('env_key')); if (key) credentials.add(key);
   if (provider === 'openai') { credentials.add('OPENAI_API_KEY'); credentials.add('CODEX_API_KEY'); }

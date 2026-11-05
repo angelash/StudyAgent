@@ -3,6 +3,7 @@ import { RetentionService } from '../diagnostics/retention.service';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
+import { inspectTeachingOutput } from '../ai/teaching-output-policy';
 import { freezeSpeechTrack } from './classroom-presentation';
 import { classroomTurnKind, turnAuthority } from './classroom-turn.service';
 
@@ -60,6 +61,13 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
           '不替学生选择选项，不泄露或推断标准答案。题目只用于引导思路。不声称已掌握、已发现深层问题或已完成测量。板书提炼要点。不要HTML、脚本或工具调用。',
         context: snapshot.context, history: snapshot.history, message: snapshot.message });
       if (abort.signal.aborted) throw new Error('turn_stopped');
+      // Learner-facing replies pass the same teaching output policy as assistant replies;
+      // a withheld reply is never stored and the turn fails for an explicit retry.
+      const inspection = inspectTeachingOutput([response.reply, response.board ? JSON.stringify(response.board) : ''].join('\n'));
+      if (!inspection.allowed) {
+        this.logger.warn(`Classroom reply withheld by teaching output policy ${inspection.version}: ${inspection.reason}`);
+        throw new Error('turn_policy_withheld');
+      }
       await this.store.transaction(() => {
         const turn = this.store.find('classroomTurns', { id, taskId: task.id, ownerUserId: task.ownerUserId });
         if (!turn || turn.status !== 'running' || turn.inputHash !== snapshot.inputHash) throw new Error('turn_unavailable');

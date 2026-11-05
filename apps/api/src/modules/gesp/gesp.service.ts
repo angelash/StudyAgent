@@ -15,6 +15,7 @@ import { InMemoryStoreService, type InMemoryUserAccount } from '../../infrastruc
 import { StudentsService } from '../students/students.service';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
 import { validate } from '../../common/validation';
+import { gespCodeRunnerEnabled, gespRunnerEnvironment } from './gesp-runner-policy';
 
 type IndexedQuestion = GespQuestion & { textPath: string; textSha256: string; answer: string | null;
   answerBasis: string | null; answerReviewStatus: string; referenceMaterialPresent: boolean; hiddenTestDataStatus: 'not_collected' };
@@ -301,6 +302,7 @@ export class GespService implements OnModuleDestroy {
         (previous.hintEventId ?? undefined) !== command.hintEventId) throw new ConflictException('同一提交请求键不能改变知识点、源代码、复测任务或提示引用');
       return this.publicSubmission(previous);
     }
+    if (!gespCodeRunnerEnabled()) throw new ServiceUnavailableException('C++ 代码运行暂未在当前环境开放，请联系管理员');
     const scope = this.store.find('gespLearningScopes', { studentId: command.studentId, status: 'active' });
     if (!scope || !scope.atomIds.includes(command.atomId)) throw new ForbiddenException('该知识点不在家长已确认的GESP学习范围内');
     const task = this.studentData().tasks.find(row => row.atomId === command.atomId); if (!task) throw new NotFoundException('该知识点尚无已发布试点题');
@@ -536,7 +538,7 @@ export class GespService implements OnModuleDestroy {
     const script = resolve(workspaceRoot(), 'scripts/gesp/run_submission.cjs');
     return new Promise<any>((resolvePromise, reject) => {
       const stdout: Buffer[] = [], stderr: Buffer[] = [];
-      const child = spawn(process.execPath, [script], { cwd: workspaceRoot(), windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] }), timer = setTimeout(() => child.kill(), 60_000);
+      const child = spawn(process.execPath, [script], { cwd: workspaceRoot(), env: gespRunnerEnvironment(), windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] }), timer = setTimeout(() => child.kill(), 60_000);
       child.stdout.on('data', chunk => stdout.push(chunk)); child.stderr.on('data', chunk => stderr.push(chunk));
       child.on('error', error => { clearTimeout(timer); reject(new ServiceUnavailableException(`GESP运行器不可用：${error.message}`)); });
       child.on('close', () => { clearTimeout(timer); try { resolvePromise(JSON.parse(Buffer.concat(stdout).toString('utf8'))); }

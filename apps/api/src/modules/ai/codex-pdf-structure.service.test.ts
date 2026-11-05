@@ -66,6 +66,14 @@ describe('CodexPdfStructureService', () => {
       expect(args.join(' ')).not.toContain('deepseek-v4.1-flash');
       expect(args).not.toContain('model_reasoning_effort');
       expect(args.join(' ')).toContain('model_catalog_json=');
+      // Untrusted uploads never run in the repository or with the API's environment.
+      const options = spawnMock.mock.calls[0][2] as { cwd: string; env: NodeJS.ProcessEnv };
+      expect(options.cwd).not.toBe(process.cwd());
+      expect(args[args.indexOf('-C') + 1]).toBe(options.cwd);
+      expect(args).toContain('features.shell_tool=false');
+      expect(args).toContain('shell_environment_policy.inherit="none"');
+      expect(options.env.JWT_SECRET).toBeUndefined();
+      expect(options.env.DATABASE_URL).toBeUndefined();
       expect(prompt).toContain('不可信数据');
       expect(prompt).toContain('不得补写');
     } finally {

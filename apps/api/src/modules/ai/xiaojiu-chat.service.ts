@@ -9,6 +9,7 @@ import { resolve } from 'node:path';
 import readline from 'node:readline';
 import { z } from 'zod';
 import { resolveCodexInvocation } from './codex-command';
+import { codexIsolationArgs } from './codex-isolation';
 import { XiaojiuModelsService } from './xiaojiu-models.service';
 import { startTextTransport, textProviderConfiguration } from './xiaojiu-text-transport';
 import { terminateChildProcess } from '../../common/terminate-child-process';
@@ -117,12 +118,7 @@ export class XiaojiuChatService {
       const catalogOverride = this.models.writeCompatibleCatalog(catalogPath, { textOnly: true });
       if (catalogOverride) args.push('-c', catalogOverride);
       args.push('-c', 'model_providers.' + connection.provider + '.base_url=' + JSON.stringify(transport.baseUrl),
-        '-c', 'developer_instructions=""', '-c', 'web_search="disabled"', '-c', 'tools.view_image=false',
-        '-c', 'shell_environment_policy.inherit="none"');
-      for (const feature of ['shell_tool', 'shell_snapshot', 'apps', 'plugins', 'remote_plugin', 'hooks', 'memories',
-        'browser_use', 'browser_use_external', 'browser_use_full_cdp_access', 'in_app_browser', 'computer_use',
-        'image_generation', 'multi_agent', 'goals', 'code_mode_host', 'skill_mcp_dependency_install', 'tool_suggest'])
-        args.push('-c', 'features.' + feature + '=false');
+        '-c', 'developer_instructions=""', ...codexIsolationArgs());
       for (const setting of connection.disabledMcp) args.push('-c', setting);
       args.push('--output-schema', schemaPath, '-');
       const prompt = this.prompt(input, custom, schema);

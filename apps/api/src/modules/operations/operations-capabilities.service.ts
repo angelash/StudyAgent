@@ -12,6 +12,7 @@ import { resolveCodexInvocation } from '../ai/codex-command';
 import { ClassroomImageService } from '../ai/classroom-image.service';
 import { SpeechService } from '../ai/speech.service';
 import { XiaojiuModelsService } from '../ai/xiaojiu-models.service';
+import { gespCodeRunnerEnabled } from '../gesp/gesp-runner-policy';
 import { PaperExportRuntimeService } from '../library/paper-export-runtime.service';
 
 /** Runs fixed local diagnostics only. Output and exceptions never reach the client. */
@@ -97,6 +98,8 @@ export class OperationsCapabilitiesService {
         return row('image', '课堂参考图', capability.available ? 'configured' : 'unavailable', capability.available ? '技能依赖和本地代理检查通过；本次未生成图片。' : '生图技能、依赖或本地代理尚未就绪，文字课堂可以继续。', capability.available ? null : '核对集成生图技能目录，运行 scripts/operations/setup-imagegen.cjs 并确认小九已登录。');
       },
       async () => {
+        if (!gespCodeRunnerEnabled()) return row('cpp', 'C++ 隔离执行', 'unavailable', '已按配置关闭学生代码运行（STUDY_GESP_CODE_RUNNER）；生产环境默认关闭。',
+          '在独立隔离主机完成加固沙箱后，再设置 STUDY_GESP_CODE_RUNNER=enabled。');
         const output = await capabilityCommand(process.execPath, [resolve(root, 'scripts/gesp/run_submission.cjs'), '--capabilities'], 15000);
         let available = false;
         try { const value = JSON.parse(output || 'null'); available = value?.protocol === 'gesp-runner-capabilities-v1' && value.available === true && value.namespaces === true; } catch { /* Never forward native process errors. */ }
