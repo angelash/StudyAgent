@@ -23,8 +23,8 @@ test('workspace shell: one existing-style sidebar keeps the object across tasks 
   await expect(sidebar.getByRole('link',{name:'账号与设置',exact:true}).locator('.button-label')).toBeVisible();
   await expect(page.getByLabel('学习对象')).toHaveValue(children[1].id);
   await page.screenshot({path:test.info().outputPath('workspace-home-desktop.png'),fullPage:true});
-  await sidebar.getByRole('link',{name:'学习任务',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/tasks\\?.*studentId='+children[1].id));await expect(page.getByRole('heading',{name:'学习任务',exact:true})).toBeVisible();await expect(sidebar).toHaveCount(1);
-  await sidebar.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByRole('heading',{name:'学习报告',exact:true})).toBeVisible();await expect(page.getByLabel('报告学习档案')).toHaveValue(children[1].id);await expect(page.getByLabel('报告学科')).toHaveValue('english');
+  await page.getByRole('navigation',{name:'今天要做的事',exact:true}).getByRole('link',{name:'学习任务',exact:true}).click();await expect(page).toHaveURL(new RegExp('/studio/tasks\\?.*studentId='+children[1].id));await expect(page.getByRole('heading',{name:'学习任务',exact:true})).toBeVisible();await expect(sidebar).toHaveCount(1);
+  await sidebar.getByRole('link',{name:'学习档案',exact:true}).click();await page.getByRole('navigation',{name:children[1].nickname+'的学习记录',exact:true}).getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByRole('heading',{name:'学习报告',exact:true})).toBeVisible();await expect(page.getByLabel('报告学习档案')).toHaveValue(children[1].id);await expect(page.getByLabel('报告学科')).toHaveValue('english');
   await page.screenshot({path:test.info().outputPath('workspace-reports-desktop.png'),fullPage:true});
   await sidebar.getByRole('link',{name:'学习档案',exact:true}).click();await expect(page.getByRole('heading',{name:'学习档案',exact:true})).toBeVisible();await expect(page.getByRole('heading',{name:children[0].nickname,exact:true})).toBeVisible();
   await page.screenshot({path:test.info().outputPath('workspace-profiles-desktop.png'),fullPage:true});
@@ -47,10 +47,12 @@ test('workspace shell: a learning-code student stays bound to their own profile 
   const code=await command('/students/'+child.id+'/learning-access/codes',{expectedVersion:access.version,requestKey:crypto.randomUUID()});
   await page.goto('/student/login');await page.getByLabel('一次性学习码').fill(code.code);await page.getByRole('button',{name:'进入我的学习 →',exact:true}).click();await expect(page).toHaveURL(/\/studio(?:\?|$)/);
   await expect(page.getByLabel('学习对象')).toBeDisabled();await expect(page.getByLabel('学习对象')).toHaveValue(child.id);await expect(page.getByLabel('学习对象').locator('option')).toHaveCount(1);
-  const sidebar=page.getByLabel('学习工作台导航',{exact:true});await expect(sidebar.getByRole('link',{name:'学习档案',exact:true})).toHaveCount(0);await expect(sidebar.getByRole('link',{name:'教研与管理',exact:true})).toHaveCount(0);
-  await sidebar.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByLabel('报告学习档案')).toBeDisabled();await expect(page.getByLabel('报告学习档案')).toHaveValue(child.id);
-  await page.goto('/studio?courseScope=adult');await expect(page.locator('main').getByRole('alert')).toContainText('学生学习身份不能进入成人独立学习');await expect(sidebar.getByRole('link',{name:'学习报告',exact:true})).toHaveAttribute('href',new RegExp('studentId='+child.id));
-  await sidebar.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByLabel('报告学习档案')).toHaveValue(child.id);
+  const sidebar=page.getByLabel('学习工作台导航',{exact:true});await expect(sidebar.getByRole('link',{name:'教研与管理',exact:true})).toHaveCount(0);
+  await sidebar.getByRole('link',{name:'学习档案',exact:true}).click();await expect(page.getByRole('heading',{name:child.nickname,exact:true})).toBeVisible();
+  await expect(page.getByRole('heading',{name:children[1].nickname,exact:true})).toHaveCount(0);await expect(page.getByRole('link',{name:'授权与学习码',exact:true})).toHaveCount(0);
+  await page.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByLabel('报告学习档案')).toBeDisabled();await expect(page.getByLabel('报告学习档案')).toHaveValue(child.id);
+  await page.goto('/studio?courseScope=adult');await expect(page.locator('main').getByRole('alert')).toContainText('学生学习身份不能进入成人独立学习');await expect(sidebar.getByRole('link',{name:'学习档案',exact:true})).toHaveAttribute('href',new RegExp('studentId='+child.id));
+  await sidebar.getByRole('link',{name:'学习档案',exact:true}).click();await page.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByLabel('报告学习档案')).toHaveValue(child.id);
 });
 
 test('workspace shell: completed reports and the old family URL preserve original records without writes',async({page})=>{
@@ -85,8 +87,8 @@ test('workspace shell: parent self learning reads independent data instead of a 
   const {children}=await family(page);await page.goto('/studio?student='+children[1].id+'&subject=english');await expect(page.getByLabel('学习对象')).toHaveValue(children[1].id);
   const response=page.waitForResponse(reply=>reply.url().includes('/learning/studio/overview?')&&new URL(reply.url()).searchParams.get('audience')==='independent');
   await page.getByLabel('学习对象').selectOption('self');const data=(await(await response).json()).data;expect(data.selected).toBeNull();expect(data.feed).toEqual([]);expect(data.materials).toEqual([]);expect(data.integrations.events).toEqual([]);
-  const sidebar=page.getByLabel('学习工作台导航',{exact:true});await expect(sidebar.getByRole('link',{name:'知识诊断',exact:true})).toHaveCount(0);await expect(sidebar.getByRole('link',{name:'学习报告',exact:true})).toHaveCount(0);
-  await sidebar.getByRole('link',{name:'学习任务',exact:true}).click();await expect(page).toHaveURL(/audience=independent/);await expect(page.getByRole('heading',{name:'我的学习任务',exact:true})).toBeVisible();await expect(page.locator('main')).not.toContainText(children[1].nickname);
+  const sidebar=page.getByLabel('学习工作台导航',{exact:true});await expect(page.getByRole('navigation',{name:'今天要做的事',exact:true}).getByRole('link',{name:'诊断与报告',exact:true})).toHaveCount(0);
+  await page.getByRole('navigation',{name:'今天要做的事',exact:true}).getByRole('link',{name:'学习任务',exact:true}).click();await expect(page).toHaveURL(/audience=independent/);await expect(page.getByRole('heading',{name:'我的学习任务',exact:true})).toBeVisible();await expect(page.locator('main')).not.toContainText(children[1].nickname);
 });
 
 test('workspace shell: contradictory old object aliases stop before reading a diagnostic or starting work',async({page})=>{
@@ -108,8 +110,8 @@ test('workspace shell: mobile navigation and compact preference work across lega
   await family(page);await page.goto('/studio');const sidebar=page.getByLabel('学习工作台导航',{exact:true});
   await sidebar.getByRole('button',{name:'收起学习导航',exact:true}).click();await expect(sidebar).toHaveCSS('width','60px');await sidebar.getByRole('button',{name:'展开学习导航',exact:true}).click();
   for(const width of [768,390,320]){
-    await page.setViewportSize({width,height:900});await page.getByRole('button',{name:'打开学习导航',exact:true}).click();const drawer=page.getByRole('dialog',{name:'学习工作台导航',exact:true});await expect(drawer).toBeVisible();await drawer.getByRole('link',{name:'学习报告',exact:true}).click();await expect(page.getByRole('heading',{name:'学习报告',exact:true})).toBeVisible();await expect(drawer).toHaveCount(0);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    await page.setViewportSize({width,height:900});await page.getByRole('button',{name:'打开学习导航',exact:true}).click();const drawer=page.getByRole('dialog',{name:'学习工作台导航',exact:true});await expect(drawer).toBeVisible();await drawer.getByRole('button',{name:'历史',exact:true}).click();await expect(page.getByRole('heading',{name:'学习历史',exact:true})).toBeVisible();await expect(drawer).toHaveCount(0);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
     await page.getByRole('button',{name:'打开学习导航',exact:true}).click();await page.keyboard.press('Escape');await expect(drawer).toHaveCount(0);await expect(page.getByRole('button',{name:'打开学习导航',exact:true})).toBeFocused();
-    if(width===390)await page.screenshot({path:test.info().outputPath('workspace-reports-phone.png'),fullPage:true});
+    if(width===390)await page.screenshot({path:test.info().outputPath('workspace-history-phone.png'),fullPage:true});
   }
 });

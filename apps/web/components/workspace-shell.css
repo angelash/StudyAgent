@@ -5,7 +5,10 @@ body[data-study-navigation] .learning-studio { padding-left:var(--workspace-side
 body[data-study-navigation] .learning-studio :is(button,input,select,textarea) { font-family:inherit; }
 body[data-study-navigation] .learning-studio :is(.studio-main,.daily-main,.privacy-main,.admin-workbench,.library-body) { min-width:0; }
 .ws-navigation-group { display:flex;flex-direction:column;gap:2px;width:100%; }
-.ws-navigation-group-label { margin:10px 12px 2px;color:#939dab;font:11px "Satoshi-Regular",MiSans,sans-serif; }
+.workspace-home-shortcuts,.workspace-profile-links { display:flex;gap:8px;flex-wrap:wrap; }
+.workspace-home-shortcuts { margin:0 0 18px; }
+.workspace-profile-minor { display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--study-muted); }
+.workspace-home-shortcuts a { border:1px solid var(--study-line);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--study-accent);background:#fff; }
 .ws-reference-navigation .sidebar-version-footer { display:flex;flex-direction:column;align-items:stretch;border-top:1px solid #e9ecf1;padding:8px 12px;gap:2px; }
 .ws-reference-navigation .sidebar-version-footer>a { display:flex;align-items:center;gap:14px;min-height:33px;padding:7px 12px;border-radius:8px;color:#535960;font:13px "Satoshi-Medium",MiSans,sans-serif; }
 .ws-reference-navigation .sidebar-version-footer>a.active { background:var(--sidebar-active-bg);color:var(--sidebar-active-color); }
@@ -13,7 +16,7 @@ body[data-study-navigation] .learning-studio :is(.studio-main,.daily-main,.priva
 .ws-reference-navigation:not(.compact) .sidebar-version-footer .button-label { display:inline;opacity:1;visibility:visible;white-space:nowrap;transform:none;color:inherit; }
 .ws-reference-navigation .sidebar-version-footer>a>svg { flex:none; }
 .ws-reference-navigation .sidebar-version-footer .study-account { justify-content:flex-start;padding:5px 12px;font-size:12px; }
-.ws-reference-navigation.compact .ws-navigation-group-label,.ws-reference-navigation.compact .sidebar-version-footer .button-label { display:none; }
+.ws-reference-navigation.compact .sidebar-version-footer .button-label { display:none; }
 .ws-reference-navigation.compact .sidebar-version-footer { padding:8px 4px; }
 .ws-reference-navigation.sidebar.compact .sidebar-version-footer { display:flex; }
 .ws-reference-navigation.compact .sidebar-version-footer>a { justify-content:center;padding:8px 0; }

@@ -108,8 +108,8 @@ test('continuation: phone touch opens the existing drawer, follows a task link a
     await tab.goto('/studio?'+new URLSearchParams({ student: f.child.id, subject: 'math' }));
     const trigger = tab.getByRole('button', { name: '打开学习导航', exact: true }); await trigger.tap();
     const drawer = tab.getByRole('dialog', { name: '学习工作台导航', exact: true }); await expect(drawer).toBeVisible();
-    await drawer.getByRole('link', { name: '学习任务', exact: true }).tap(); await expect(drawer).toHaveCount(0);
-    await expect(tab.getByRole('heading', { name: '学习任务', level: 1 })).toBeVisible(); expect(new URL(tab.url()).searchParams.get('studentId')).toBe(f.child.id);
+    await drawer.getByRole('button', { name: '历史', exact: true }).tap(); await expect(drawer).toHaveCount(0);
+    await expect(tab.getByRole('heading', { name: '学习历史', level: 1 })).toBeVisible(); expect(new URL(tab.url()).searchParams.get('student')).toBe(f.child.id);
     await trigger.tap(); await expect(drawer).toBeVisible(); await tab.locator('.ws-reference-backdrop').tap({ position: { x: 360, y: 300 } }); await expect(drawer).toHaveCount(0);
     expect(await tab.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   } finally { await context.close(); }

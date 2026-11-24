@@ -57,7 +57,7 @@ test('parent selection, navigation, refresh, history and invalid profile recover
   await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的语文');
   await page.goBack(); await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的英语');
   await page.goForward(); await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的语文');
-  await page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: '学习任务', exact: true }).click();
+  await page.getByRole('navigation', { name: '今天要做的事', exact: true }).getByRole('link', { name: '学习任务', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(`studentId=${profiles[1].id}.*subject=chinese|subject=chinese.*studentId=${profiles[1].id}`));
   await page.getByLabel('学习工作台导航', {exact:true}).getByRole('link', { name: '首页', exact: true }).click();
   await expect(page.locator('.workspace-home-context strong')).toHaveText('首页孩子2的语文');

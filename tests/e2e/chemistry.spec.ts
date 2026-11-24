@@ -29,7 +29,8 @@ async function open(page: Page) {
 async function enroll(page: Page) {
   await open(page); await page.getByRole('button', { name: '添加课程并开始学习', exact: true }).click();
   await expect(page.getByRole('button', { name: '添加课程并开始学习', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeEnabled();
+  await page.getByRole('tab', { name: '摸底', exact: true }).click(); await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeEnabled();
+  await page.getByRole('tab', { name: '单元', exact: true }).click();
 }
 async function screenshot(page: Page, label: string) {
   const directory = 'data/qa/browser-evidence/chemistry-' + (process.env.E2E_EVIDENCE_RUN ?? 'local'); mkdirSync(directory, { recursive: true });
@@ -51,11 +52,11 @@ test('chemistry: normal course cards, seven-unit outline and native classroom pr
   await page.getByLabel('课程类型').selectOption('primary'); await expect(page.locator('.ws-course-ticket')).toHaveCount(1);
   await page.getByLabel('搜索课程').fill('九上化学'); await open(page);
   await expect(page.getByRole('navigation', { name: '课程单元' }).getByRole('button')).toHaveCount(7);
-  await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeDisabled();
-  await expect(page.locator('.cl-learn')).toHaveCount(0);
+  await page.getByRole('tab', { name: '摸底', exact: true }).click(); await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeDisabled();
+  await page.getByRole('tab', { name: '单元', exact: true }).click(); await expect(page.locator('.cl-learn')).toHaveCount(0);
   await page.getByRole('button', { name: '添加课程并开始学习', exact: true }).click();
-  await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeEnabled();
-  await expect(page.getByRole('button', { name: '开始独立考核', exact: true })).toBeDisabled();
+  await page.getByRole('tab', { name: '摸底', exact: true }).click(); await expect(page.getByRole('button', { name: '开始课前诊断', exact: true })).toBeEnabled();
+  await page.getByRole('tab', { name: '单元', exact: true }).click(); await expect(page.getByRole('button', { name: '开始独立考核', exact: true })).toBeDisabled();
   for (const width of [1440, 768, 390]) {
     await page.setViewportSize({ width, height: 960 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
@@ -65,7 +66,7 @@ test('chemistry: normal course cards, seven-unit outline and native classroom pr
   await page.getByRole('navigation', { name: '课程单元' }).getByRole('button').last().click();
   await expect(page.locator('.cl-unit-heading')).toContainText('燃料、能源与环境');
   await expect(page.locator('.cl-microlessons')).toContainText('氢能源的反应与定量验证');
-  await page.getByRole('tab', { name: '考核', exact: true }).click();
+  await page.getByRole('tab', { name: '验证', exact: true }).click();
   await expect(page.getByRole('heading', { name: '期中与期末考核', exact: true })).toBeVisible();
   await screenshot(page, 'checks-1440');
   await page.getByRole('tab', { name: '资料', exact: true }).click();
@@ -93,7 +94,7 @@ test('chemistry: normal course cards, seven-unit outline and native classroom pr
 
 test('chemistry: course assessments unlock independent checks and preserve first answers after reopening', async ({ page }) => {
   const { studentId, library, call } = await fixture(page); await enroll(page);
-  await page.getByRole('button', { name: '开始课前诊断', exact: true }).click();
+  await page.getByRole('tab', { name: '摸底', exact: true }).click(); await page.getByRole('button', { name: '开始课前诊断', exact: true }).click();
   await expect(page).toHaveURL(/\/student\/assessment\?.*session=/);
   const baselineId = new URL(page.url()).searchParams.get('session')!;
   const baseline = await call('/diagnostics/sessions/' + baselineId); expect(baseline.items.length).toBe(8);
@@ -104,14 +105,14 @@ test('chemistry: course assessments unlock independent checks and preserve first
   }
   await expect(page.getByRole('heading', { name: '从知识点看清下一步。', exact: true })).toBeVisible();
   const original = await call('/diagnostics/sessions/' + baselineId + '/report'); expect(original.answeredCount).toBe(8);
-  await page.goto(library); await open(page); await page.getByRole('tab', { name: '考核', exact: true }).click();
+  await page.goto(library); await open(page); await page.getByRole('tab', { name: '验证', exact: true }).click();
   await expect(page.locator('[data-checkpoint="u1:unit"]').getByRole('button')).toBeEnabled();
   await page.locator('[data-checkpoint="u1:unit"]').getByRole('button').click();
   await expect(page).toHaveURL(/\/student\/assessment\?.*session=/);
   const independentId = new URL(page.url()).searchParams.get('session')!;
   const independent = await call('/diagnostics/sessions/' + independentId), exposed = new Set(baseline.items.map((item: any) => item.questionId));
   expect(independent.items.every((item: any) => !exposed.has(item.questionId))).toBe(true);
-  await page.goto(library); await open(page); await page.getByRole('tab', { name: '考核', exact: true }).click(); await page.reload();
+  await page.goto(library); await open(page); await page.getByRole('tab', { name: '验证', exact: true }).click(); await page.reload();
   await expect(page.locator('[data-checkpoint="u1:unit"]').getByRole('link', { name: '继续作答', exact: true })).toHaveAttribute('href', new RegExp(independentId));
   const check = (await call('/chemistry/catalog?studentId=' + studentId)).checkpoints.find((check: any) => check.id === 'u1:unit');
   expect(check).toMatchObject({ status: 'in_progress', lastSessionId: independentId });

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useSessionUser } from '../../lib/session-user';
 import { learningContextIssue, readLearningContext, type LearningContext } from '../../lib/learning-context';
 import { WorkspaceShellContext } from '../../lib/workspace-shell-context';
-import { workspaceEntries, workspaceArea, workspaceHref, type WorkspaceNavigation, type WorkspaceArea } from '../../lib/workspace-navigation';
+import { workspaceEntries, workspaceArea, workspaceHighlight, workspaceHref, type WorkspaceNavigation, type WorkspaceArea } from '../../lib/workspace-navigation';
 import { SessionControl } from '../../components/session-control';
 import './workspace.css';
 import { WorkspaceDialog } from './workspace-dialog';
@@ -73,9 +73,8 @@ export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context
   }, [narrow, mobile]);
   function toggle() { if(layout==='focus'){setFocusExpanded(value=>!value);return;}const value = !storedCollapsed; setStoredCollapsed(value); try { localStorage.setItem('studyagent.navigation.compact.' + (user?.id ?? 'guest'), String(value)); } catch { /* Persistence is optional. */ } }
   const expanded = narrow || !collapsed, resume = recent?.[0], rootId = React.useId();
-  const current = workspaceArea(pathname, typeof window === 'undefined' ? '' : window.location.search, active === 'feed' ? 'home' : active);
-  const independent = !trackContext&&user?.role !== 'student' && selectedContext?.audience === 'self';
-  const entries = workspaceEntries.filter(entry => !independent || !['assessment', 'reports'].includes(entry.id));
+  const current = workspaceHighlight(workspaceArea(pathname, typeof window === 'undefined' ? '' : window.location.search, active === 'feed' ? 'home' : active));
+  const entries = workspaceEntries;
   function afterNavigate() { setMobile(false); }
   function request(href: string, proceed: () => void) { afterNavigate();if(onRequestNavigate)onRequestNavigate(href,proceed);else proceed(); }
   function follow(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
@@ -92,9 +91,8 @@ export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context
           aria-expanded={expanded} onClick={narrow ? afterNavigate : toggle}><StudioSymbol path={narrow ? 'M6 6l12 12M18 6 6 18' : collapsed ? 'm9 6 6 6-6 6' : 'm15 6-6 6 6 6'} size={16}/></button>
       </header>
       <div className="sidebar-body">{contextState!=='ready'&&expanded&&<p className="ws-navigation-context-state" role="status">{contextState==='pending'?'正在核对原活动的学习范围…':'当前活动的学科无法确认。请从课程重新选择范围。'}</p>}{trackContext&&expanded&&<p className="ws-navigation-context-state">GESP C++{trackContext.level?' · 认证'+trackContext.level+'级':''}</p>}<nav className="nav-icons-group" aria-label="工作台主要入口">
-        {['学习', '学习观察', '资料与记录'].map(group => <div key={group} className="ws-navigation-group">
-          {expanded && <p className="ws-navigation-group-label">{group === '学习观察' && independent ? '时间安排' : group}</p>}
-          {entries.filter(entry => entry.group === group).map(entry => {
+        <div className="ws-navigation-group">
+          {entries.map(entry => {
             const className = 'nav-item' + (expanded ? ' expanded' : '') + (current === entry.id ? ' active' : '');
             const content = <><StudioSymbol path={entry.path}/><span className="button-label">{entry.label}</span></>;
             // The accessible name is the visible Chinese label, so screen readers announce what learners see.
@@ -105,7 +103,7 @@ export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context
               <Link key={entry.id} className={className} href={entry.id==='home'?homeHref:workspaceHref(entry.id, selectedContext,trackContext)} title={!expanded ? entry.label : undefined} aria-label={label}
                 aria-current={current === entry.id ? 'page' : undefined} onClick={event=>follow(event,entry.id==='home'?homeHref:workspaceHref(entry.id,selectedContext,trackContext))}>{content}</Link>;
           })}
-        </div>)}
+        </div>
       </nav>
       {onCreate && expanded && <button type="button" className="ws-reference-create" onClick={() => {
         const target = narrow ? trigger.current : document.activeElement as HTMLElement | null;
@@ -122,7 +120,7 @@ export function WorkspaceSidebar({ active, recent, onNavigate, onCreate, context
       </section></div>}
       </div><footer className="sidebar-version-footer">
         {([
-          ...(['parent', 'admin'].includes(user?.role ?? '') ? [['profiles', '学习档案', 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-4M16 3a4 4 0 0 1 0 8']] : []),
+          ...(user ? [['profiles', '学习档案', 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-4M16 3a4 4 0 0 1 0 8']] : []),
           ...(['teacher', 'admin'].includes(user?.role ?? '') ? [['admin', '教研与管理', 'M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6']] : []),
           ['settings', '账号与设置', 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4'],
         ] as Array<[WorkspaceArea, string, string]>).map(([id, label, path]) => <Link key={id} href={workspaceHref(id, selectedContext,trackContext)} className={current === id ? 'active' : undefined}

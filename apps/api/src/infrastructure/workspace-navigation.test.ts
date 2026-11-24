@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { learningContextIssue, readLearningContext, saveLearningContext } from '../../../web/lib/learning-context';
-import { legacyWorkspaceHref, workspaceArea, workspaceHref, workspaceLoginDestination } from '../../../web/lib/workspace-navigation';
+import { legacyWorkspaceHref, workspaceArea, workspaceEntries, workspaceHighlight, workspaceHref, workspaceLoginDestination } from '../../../web/lib/workspace-navigation';
 
 describe('workspace learning object and legacy navigation boundaries',()=>{
   afterEach(()=>vi.unstubAllGlobals());
@@ -36,5 +36,18 @@ describe('workspace learning object and legacy navigation boundaries',()=>{
     expect(workspaceArea('/student/assessment','?view=plan')).toBe('tasks');
     expect(workspaceArea('/student/assessment','?session=old','reports')).toBe('reports');
     expect(workspaceArea('/admin/imports','')).toBe('admin');
+  });
+  it('shows five primary entries and keeps the folded areas reachable as deep links',()=>{
+    expect(workspaceEntries.map(entry=>entry.label)).toEqual(['首页','课程','资料','日历','历史']);
+    expect(workspaceEntries.every(entry=>entry.view)).toBe(true);
+    expect(workspaceHighlight('tasks')).toBe('home');
+    expect(workspaceHighlight('assessment')).toBe('profiles');
+    expect(workspaceHighlight('reports')).toBe('profiles');
+    expect(workspaceHighlight('whiteboards')).toBe('history');
+    expect(workspaceHighlight('calendar')).toBe('calendar');
+    expect(workspaceArea('/studio','?view=tasks')).toBe('home');
+    expect(workspaceArea('/studio/reports','')).toBe('reports');
+    expect(workspaceHref('reports',{studentId:'child-a',subject:'math'})).toBe('/studio/reports?studentId=child-a&subject=math');
+    expect(workspaceHref('whiteboards',{subject:'math',audience:'self'})).toBe('/studio/whiteboards?audience=independent');
   });
 });

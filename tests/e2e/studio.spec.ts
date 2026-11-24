@@ -27,7 +27,7 @@ function writeTextPdf() {
   return { path, cleanup: () => rmSync(directory, { recursive: true, force: true }) };
 }
 
-async function selectWorkspaceView(page: import('@playwright/test').Page, name: '首页' | '课程' | '学习动态' | '资料') {
+async function selectWorkspaceView(page: import('@playwright/test').Page, name: '首页' | '课程' | '日历' | '资料') {
   if ((page.viewportSize()?.width ?? 1280) <= 1000) await page.getByRole('button', { name: '打开学习导航', exact: true }).click();
   await page.getByRole('button', { name, exact: true }).click();
 }
@@ -105,7 +105,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   expect((await subtitleDownload).suggestedFilename()).toMatch(/\.srt$/);
   await page.getByRole('button', { name: '关闭白板' }).click();
 
-  await selectWorkspaceView(page, '学习动态');
+  await selectWorkspaceView(page, '日历');
   await page.getByRole('button', { name: '＋ 新建学习安排' }).click();
   await page.getByLabel('任务名称').fill('分数复习安排');
   await page.getByLabel('完成标准').fill('独立完成 5 道新题并说出关键步骤');
@@ -170,7 +170,7 @@ test('a parent can build and reopen an evidence-backed learning studio course', 
   await page.getByRole('tab', { name: '个性化学案' }).click();
   await expect(page.locator('.sa-pack-layout')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-  await selectWorkspaceView(page, '学习动态');
+  await selectWorkspaceView(page, '日历');
   await page.locator('.ws-calendar-management > summary').click();
   await expect(page.locator('.sa-plan-card')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);

@@ -1,0 +1,11 @@
+/* 232 §4.2: 摸底 and 验证 tab summaries inside a course. */
+.cl-loop-panel { display: grid; gap: 12px; }
+.cl-loop-panel h2 { margin: 0; font-size: 17px; }
+.cl-loop-panel > p { margin: 0; color: var(--study-muted); line-height: 1.75; font-size: 13px; }
+.cl-loop-counts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0; padding: 0; }
+.cl-loop-counts li { display: grid; gap: 2px; min-width: 84px; padding: 10px 12px; border: 1px solid var(--study-line); border-radius: 10px; background: #fff; }
+.cl-loop-counts b { font-size: 20px; font-weight: 500; color: var(--study-ink); }
+.cl-loop-counts span { font-size: 12px; color: var(--study-muted); }
+.cl-loop-counts li[data-status="secure"] b { color: var(--study-accent); }
+.cl-loop-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.cl-loop-panel > .cl-course-action, .cl-loop-links .cl-course-action { width: max-content; text-decoration: none; }

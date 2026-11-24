@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { syntheticFamilyHeaders } from './synthetic-family';
 
 const api = 'http://localhost:' + (process.env.E2E_API_PORT ?? '4107') + '/api';
-const entries = ['首页', '课程', '学习任务', '知识诊断', '学习报告', '学习动态', '历史', '资料', 'AI白板'];
+const entries = ['首页', '课程', '资料', '日历', '历史'];
 
 async function parent(page: Page) {
   const headers = await syntheticFamilyHeaders(page), nonce = crypto.randomUUID(), principal = 'keyboard-parent-' + nonce + '@local.test', credential = 'Keyboard-QA-' + nonce;
@@ -28,8 +28,8 @@ test('keyboard: every sidebar entry is reached by Tab with a visible focus ring,
   for (let step = 0; step < 90 && reached.size < entries.length + 2; step++) { await page.keyboard.press('Tab'); const state = await focused(page); if (state.inSidebar && [...entries, '学习档案', '账号与设置'].includes(state.label)) reached.set(state.label, state); }
   expect([...reached.keys()].sort()).toEqual([...entries, '学习档案', '账号与设置'].sort());
   for (const [label, state] of reached) { expect(state.ring, label + ' shows a focus ring').toBe(true); if (state.visibleText !== null) expect(state.visibleText, label + ' is named as shown').toBe(label); }
-  await page.getByRole('navigation', { name: '工作台主要入口' }).getByRole('link', { name: '学习报告', exact: true }).focus(); await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/\/studio\/reports\?/); await expect(page.getByRole('heading', { name: '学习报告', level: 1 })).toBeVisible();
+  await page.getByRole('navigation', { name: '工作台主要入口' }).getByRole('link', { name: '历史', exact: true }).focus(); await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/studio\?.*view=history/); await expect(page.getByRole('heading', { name: '学习历史', level: 1 })).toBeVisible();
 });
 
 test('keyboard: the phone drawer opens from the keyboard, keeps Tab inside and returns focus on Escape', async ({ page }) => {

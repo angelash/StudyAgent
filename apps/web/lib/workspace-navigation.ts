@@ -16,18 +16,18 @@ export type WorkspaceNavigation = {
   onNavigate?: (view: StudioView) => void;
   onCreate?: (returnFocus?: HTMLElement | null) => void;
 };
-type Entry = { id: WorkspaceArea; label: string; english: string; group: string; path: string; view?: StudioView };
+type Entry = { id: WorkspaceArea; label: string; english: string; path: string; view?: StudioView };
+// 232 §4.1: five primary entries. Tasks, assessment, reports and whiteboards keep their routes as deep links;
+// they are reached from home, from each course and from the cross-course learning record.
 export const workspaceEntries: readonly Entry[] = [
-  { id: 'home', label: '首页', english: 'Home', group: '学习', view: 'home', path: 'M3 10 12 3l9 7M5 9v12h14V9M9 21v-7h6v7' },
-  { id: 'courses', label: '课程', english: 'Courses', group: '学习', view: 'courses', path: 'm2 8 10-5 10 5-10 5Zm4 3v6q6 5 12 0v-6M22 8v9' },
-  { id: 'tasks', label: '学习任务', english: 'Learning tasks', group: '学习', path: 'M9 6h12M9 12h12M9 18h12M3 6l1 1 2-3M3 12l1 1 2-3M3 18l1 1 2-3' },
-  { id: 'assessment', label: '知识诊断', english: 'Knowledge assessment', group: '学习观察', path: 'M9 4H5v17h14V4h-4M9 3h6v4H9ZM8 13l3 3 5-6' },
-  { id: 'reports', label: '学习报告', english: 'Learning reports', group: '学习观察', path: 'M4 3v18h17M8 16v-4M13 16V8M18 16V5' },
-  { id: 'calendar', label: '学习动态', english: 'Calendar', group: '学习观察', view: 'calendar', path: 'M4 5h16v16H4ZM4 10h16M8 3v4M16 3v4M8 14h3M8 17h7' },
-  { id: 'history', label: '历史', english: 'History', group: '资料与记录', view: 'history', path: 'M4 7a9 9 0 1 1-1 9M4 3v5h5M12 7v6l4 2' },
-  { id: 'materials', label: '资料', english: 'Materials', group: '资料与记录', view: 'materials', path: 'M4 3h11l5 5v13H4ZM15 3v6h5M8 13h8M8 17h6' },
-  { id: 'whiteboards', label: 'AI白板', english: 'AI Whiteboards', group: '资料与记录', path: 'M4 4h16v13H4ZM8 21l4-4 4 4M8 8h8M8 12h5' },
+  { id: 'home', label: '首页', english: 'Home', view: 'home', path: 'M3 10 12 3l9 7M5 9v12h14V9M9 21v-7h6v7' },
+  { id: 'courses', label: '课程', english: 'Courses', view: 'courses', path: 'm2 8 10-5 10 5-10 5Zm4 3v6q6 5 12 0v-6M22 8v9' },
+  { id: 'materials', label: '资料', english: 'Materials', view: 'materials', path: 'M4 3h11l5 5v13H4ZM15 3v6h5M8 13h8M8 17h6' },
+  { id: 'calendar', label: '日历', english: 'Calendar', view: 'calendar', path: 'M4 5h16v16H4ZM4 10h16M8 3v4M16 3v4M8 14h3M8 17h7' },
+  { id: 'history', label: '历史', english: 'History', view: 'history', path: 'M4 7a9 9 0 1 1-1 9M4 3v5h5M12 7v6l4 2' },
 ];
+/** Areas without their own sidebar entry, and the entry that stays highlighted while one is open. */
+export const workspaceAreaParent: Partial<Record<WorkspaceArea, WorkspaceArea>> = { tasks: 'home', assessment: 'profiles', reports: 'profiles', whiteboards: 'history' };
 const destinations: Partial<Record<WorkspaceArea, string>> = {
   tasks: '/studio/tasks', assessment: '/studio/assessment', reports: '/studio/reports',
   whiteboards: '/studio/whiteboards', profiles: '/studio/profiles', settings: '/studio/settings', admin: '/admin/curriculum',
@@ -70,6 +70,8 @@ export function workspaceArea(pathname: string, search: string, fallback: Worksp
   }
   return fallback;
 }
+/** The sidebar item to highlight for an area: its own entry, or the entry that now hosts it. */
+export function workspaceHighlight(area: WorkspaceArea): WorkspaceArea { return workspaceAreaParent[area] ?? area; }
 
 /** Explicit compatibility fields, including both aliases so ambiguities stay visible. */
 export function legacyWorkspaceHref(area: 'home' | 'reports', source: Record<string, string | string[] | undefined>) {
