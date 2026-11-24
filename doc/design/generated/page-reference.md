@@ -96,7 +96,7 @@ Next.js App Router 静态提取。页面存在不意味着所有身份都可进�
 
 类型：页面。实现：[apps/web/app/parent/access/page.tsx](../../../apps/web/app/parent/access/page.tsx)。
 
-- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learning`、`../../../components/study-nav`、`../../../lib/learning-context`、`../../../lib/session-user`、`../../../components/student-learning-access`、`../../student/assessment/studio.css`、`./access.css`
+- 直接引用：`../../../components/login-link`、`react`、`next/link`、`@study-agent/contracts`、`../../../lib/api`、`../../../lib/learners`、`../../../lib/learning`、`../../../components/study-nav`、`../../../lib/learning-context`、`../../../lib/session-user`、`../../../components/student-learning-access`、`../../student/assessment/studio.css`、`./access.css`
 
 ## /parent/dashboard
 

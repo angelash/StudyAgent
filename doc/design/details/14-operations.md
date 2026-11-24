@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：运维、管理员、教研。
+源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -86,10 +86,10 @@
 **服务方法**：
 
 - `ProcessingController.requireTask`；[apps/api/src/modules/processing/processing.controller.ts:83](../../../apps/api/src/modules/processing/processing.controller.ts#L83)。
-- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:376](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L376)。
+- `InMemoryStoreService.controlTask`；[apps/api/src/infrastructure/in-memory-store.service.ts:406](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L406)。
 - `DomainEventBusService.publish`；[apps/api/src/infrastructure/domain-event-bus.service.ts:10](../../../apps/api/src/infrastructure/domain-event-bus.service.ts#L10)。
 - `ProcessingController.requireHandwritingProcessor`；[apps/api/src/modules/processing/processing.controller.ts:84](../../../apps/api/src/modules/processing/processing.controller.ts#L84)。
-- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:274](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L274)。
+- `InMemoryStoreService.find`；[apps/api/src/infrastructure/in-memory-store.service.ts:296](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L296)。
 
 ## OPS-04 导入文件分块与处理产物
 
@@ -163,15 +163,15 @@
 - `GET /api/health` → `HealthController.health`；[apps/api/src/infrastructure/health.controller.ts:7](../../../apps/api/src/infrastructure/health.controller.ts#L7)。
 - `GET /api/ready` → `HealthController.ready`；[apps/api/src/infrastructure/health.controller.ts:8](../../../apps/api/src/infrastructure/health.controller.ts#L8)。
 - `GET /api/admin/operations` → `OperationsController.overview`；[apps/api/src/infrastructure/operations.controller.ts:14](../../../apps/api/src/infrastructure/operations.controller.ts#L14)。
-- `GET /api/admin/operations/capabilities` → `OperationsCapabilitiesController.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:126](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L126)。
+- `GET /api/admin/operations/capabilities` → `OperationsCapabilitiesController.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:129](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L129)。
 - `GET /api/admin/analytics/overview` → `ProgressController.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.controller.ts:55](../../../apps/api/src/modules/progress/progress.controller.ts#L55)。
 - `GET /api/admin/analytics/ai-quality` → `ProgressController.getAiQualityOverview`；[apps/api/src/modules/progress/progress.controller.ts:60](../../../apps/api/src/modules/progress/progress.controller.ts#L60)。
 
 **服务方法**：
 
-- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:258](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L258)。
+- `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:279](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L279)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
-- `OperationsCapabilitiesService.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:51](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L51)。
+- `OperationsCapabilitiesService.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:52](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L52)。
 - `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
 - `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。
 

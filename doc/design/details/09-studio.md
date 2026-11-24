@@ -1,6 +1,6 @@
 # 09 学习工作台、实时课堂、白板、学案与日历 — 详细设计
 
-源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：家长、学生与授权教师；成人课程需成人身份。
+源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。角色：家长、学生与授权教师；成人课程需成人身份。
 
 产品入口：`/studio`、`/studio/tasks`、`/studio/assessment`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/studio/classroom`、`/studio/projects`、`/studio/source-courses`、`/studio/whiteboards`。
 
@@ -47,6 +47,44 @@
 - [tests/e2e/course-library.spec.ts](../../../tests/e2e/course-library.spec.ts)
 - [tests/e2e/course-builder.spec.ts](../../../tests/e2e/course-builder.spec.ts)
 - [tests/e2e/workspace.spec.ts](../../../tests/e2e/workspace.spec.ts)
+
+## STUDIO-42 主题驱动的AI课程生成与读取摸底结果
+
+**输入**：学习主题、所选模型、可选学习档案与学科、追问回答、课程规模、蓝图调整说明。
+
+**处理与实现**：持久任务先联网检索摘要再生成一至三项追问；回答后建资料课程并规划蓝图，学习档案与学科齐备时把稳固、不稳固、学习中的知识点名称（未知不列）放入蓝图上下文；学习者确认蓝图后逐课编写与复核；输出写入前经统一教学输出检查。
+
+**输出**：课程生成记录、蓝图与参考的正式测量摘要、资料课程。
+
+**状态与持久化**：`courseCraftRuns`、`sourceCourses`、`studioSourceMaterials`
+
+**权限、失败与边界**：检索摘要不是完整教材；课程内容待核查，按课程目标给出的结果只是「估计」，不写正式测量证据；最多五轮蓝图调整。
+
+**关联接口**：
+
+- `GET /api/learning/course-craft` → `CourseCraftController.list`；[apps/api/src/modules/learning/course-craft.controller.ts:8](../../../apps/api/src/modules/learning/course-craft.controller.ts#L8)。
+- `POST /api/learning/course-craft` → `CourseCraftController.start`；[apps/api/src/modules/learning/course-craft.controller.ts:9](../../../apps/api/src/modules/learning/course-craft.controller.ts#L9)。
+- `GET /api/learning/course-craft/:id` → `CourseCraftController.get`；[apps/api/src/modules/learning/course-craft.controller.ts:10](../../../apps/api/src/modules/learning/course-craft.controller.ts#L10)。
+- `POST /api/learning/course-craft/:id/answers` → `CourseCraftController.answer`；[apps/api/src/modules/learning/course-craft.controller.ts:11](../../../apps/api/src/modules/learning/course-craft.controller.ts#L11)。
+- `POST /api/learning/course-craft/:id/outline-revision` → `CourseCraftController.revise`；[apps/api/src/modules/learning/course-craft.controller.ts:12](../../../apps/api/src/modules/learning/course-craft.controller.ts#L12)。
+- `POST /api/learning/course-craft/:id/outline` → `CourseCraftController.outline`；[apps/api/src/modules/learning/course-craft.controller.ts:13](../../../apps/api/src/modules/learning/course-craft.controller.ts#L13)。
+- `POST /api/learning/course-craft/:id/cancel` → `CourseCraftController.cancel`；[apps/api/src/modules/learning/course-craft.controller.ts:14](../../../apps/api/src/modules/learning/course-craft.controller.ts#L14)。
+- `POST /api/learning/course-craft/:id/retry` → `CourseCraftController.retry`；[apps/api/src/modules/learning/course-craft.controller.ts:15](../../../apps/api/src/modules/learning/course-craft.controller.ts#L15)。
+
+**服务方法**：
+
+- `CourseCraftService.list`；[apps/api/src/modules/learning/course-craft.service.ts:32](../../../apps/api/src/modules/learning/course-craft.service.ts#L32)。
+- `CourseCraftService.start`；[apps/api/src/modules/learning/course-craft.service.ts:34](../../../apps/api/src/modules/learning/course-craft.service.ts#L34)。
+- `CourseCraftService.get`；[apps/api/src/modules/learning/course-craft.service.ts:33](../../../apps/api/src/modules/learning/course-craft.service.ts#L33)。
+- `CourseCraftService.answer`；[apps/api/src/modules/learning/course-craft.service.ts:43](../../../apps/api/src/modules/learning/course-craft.service.ts#L43)。
+- `CourseCraftService.reviseOutline`；[apps/api/src/modules/learning/course-craft.service.ts:63](../../../apps/api/src/modules/learning/course-craft.service.ts#L63)。
+- `CourseCraftService.confirmOutline`；[apps/api/src/modules/learning/course-craft.service.ts:73](../../../apps/api/src/modules/learning/course-craft.service.ts#L73)。
+- `CourseCraftService.control`；[apps/api/src/modules/learning/course-craft.service.ts:82](../../../apps/api/src/modules/learning/course-craft.service.ts#L82)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/learning/course-craft-worker.service.ts](../../../apps/api/src/modules/learning/course-craft-worker.service.ts)
+- [apps/api/src/modules/learning/course-craft-diagnosis.ts](../../../apps/api/src/modules/learning/course-craft-diagnosis.ts)
 
 ## STUDIO-39 专注活动导航、完整离开副本与管理区域
 
@@ -253,7 +291,7 @@
 
 **服务方法**：
 
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:40](../../../apps/api/src/modules/learning/classroom.service.ts#L40)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:42](../../../apps/api/src/modules/learning/classroom.service.ts#L42)。
 
 ## STUDIO-04 课堂会话、冻结双语字幕与旧断点升级
 
@@ -277,11 +315,11 @@
 
 **服务方法**：
 
-- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:119](../../../apps/api/src/modules/learning/classroom.service.ts#L119)。
-- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:109](../../../apps/api/src/modules/learning/classroom.service.ts#L109)。
-- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:179](../../../apps/api/src/modules/learning/classroom.service.ts#L179)。
-- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:350](../../../apps/api/src/modules/learning/classroom.service.ts#L350)。
-- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:207](../../../apps/api/src/modules/learning/classroom.service.ts#L207)。
+- `ClassroomService.open`；[apps/api/src/modules/learning/classroom.service.ts:121](../../../apps/api/src/modules/learning/classroom.service.ts#L121)。
+- `ClassroomService.get`；[apps/api/src/modules/learning/classroom.service.ts:111](../../../apps/api/src/modules/learning/classroom.service.ts#L111)。
+- `ClassroomService.progress`；[apps/api/src/modules/learning/classroom.service.ts:181](../../../apps/api/src/modules/learning/classroom.service.ts#L181)。
+- `ClassroomService.narration`；[apps/api/src/modules/learning/classroom.service.ts:354](../../../apps/api/src/modules/learning/classroom.service.ts#L354)。
+- `ClassroomService.upgradePresentation`；[apps/api/src/modules/learning/classroom.service.ts:209](../../../apps/api/src/modules/learning/classroom.service.ts#L209)。
 
 **补充实现文件**：
 
@@ -317,11 +355,11 @@
 
 **服务方法**：
 
-- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:304](../../../apps/api/src/modules/learning/classroom.service.ts#L304)。
-- `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:65](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L65)。
-- `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:69](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L69)。
-- `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:71](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L71)。
-- `ClassroomTurnService.control`；[apps/api/src/modules/learning/classroom-turn.service.ts:128](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L128)。
+- `ClassroomService.ask`；[apps/api/src/modules/learning/classroom.service.ts:306](../../../apps/api/src/modules/learning/classroom.service.ts#L306)。
+- `ClassroomTurnService.list`；[apps/api/src/modules/learning/classroom-turn.service.ts:67](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L67)。
+- `ClassroomTurnService.get`；[apps/api/src/modules/learning/classroom-turn.service.ts:71](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L71)。
+- `ClassroomTurnService.create`；[apps/api/src/modules/learning/classroom-turn.service.ts:73](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L73)。
+- `ClassroomTurnService.control`；[apps/api/src/modules/learning/classroom-turn.service.ts:130](../../../apps/api/src/modules/learning/classroom-turn.service.ts#L130)。
 
 **补充实现文件**：
 
@@ -362,8 +400,8 @@
 
 **服务方法**：
 
-- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:226](../../../apps/api/src/modules/learning/classroom.service.ts#L226)。
-- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:277](../../../apps/api/src/modules/learning/classroom.service.ts#L277)。
+- `ClassroomService.answer`；[apps/api/src/modules/learning/classroom.service.ts:228](../../../apps/api/src/modules/learning/classroom.service.ts#L228)。
+- `ClassroomService.hint`；[apps/api/src/modules/learning/classroom.service.ts:279](../../../apps/api/src/modules/learning/classroom.service.ts#L279)。
 
 **补充实现文件**：
 
@@ -897,7 +935,7 @@
 
 - `CourseProjectService.catalog`；[apps/api/src/modules/learning/course-project.service.ts:69](../../../apps/api/src/modules/learning/course-project.service.ts#L69)。
 - `CourseProjectService.open`；[apps/api/src/modules/learning/course-project.service.ts:83](../../../apps/api/src/modules/learning/course-project.service.ts#L83)。
-- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:40](../../../apps/api/src/modules/learning/classroom.service.ts#L40)。
+- `ClassroomService.catalog`；[apps/api/src/modules/learning/classroom.service.ts:42](../../../apps/api/src/modules/learning/classroom.service.ts#L42)。
 - `SourceCourseService.get`；[apps/api/src/modules/learning/source-course.service.ts:87](../../../apps/api/src/modules/learning/source-course.service.ts#L87)。
 
 **补充实现文件**：
@@ -955,7 +993,7 @@
 - `SourceCourseCheckService.edit`；[apps/api/src/modules/learning/source-course-check.service.ts:116](../../../apps/api/src/modules/learning/source-course-check.service.ts#L116)。
 - `SourceCourseCheckService.publish`；[apps/api/src/modules/learning/source-course-check.service.ts:125](../../../apps/api/src/modules/learning/source-course-check.service.ts#L125)。
 - `SourceCourseCheckService.withdraw`；[apps/api/src/modules/learning/source-course-check.service.ts:137](../../../apps/api/src/modules/learning/source-course-check.service.ts#L137)。
-- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:110](../../../apps/api/src/modules/learning/classroom.service.ts#L110)。
+- `ClassroomService.source`；[apps/api/src/modules/learning/classroom.service.ts:112](../../../apps/api/src/modules/learning/classroom.service.ts#L112)。
 
 **补充实现文件**：
 

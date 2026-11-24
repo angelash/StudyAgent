@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "54a1b173df739c87092a7cae5d79fa587489f1fb",
+  "sourceRevision": "54218795102c9c15f8fae84925ac83f4f9768ed4",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
-    "features": 148,
-    "activeNormalApiRoutes": 589,
-    "coveredApiRoutes": 589
+    "features": 149,
+    "activeNormalApiRoutes": 599,
+    "coveredApiRoutes": 599
   },
   "areas": [
     {
@@ -37,7 +37,7 @@
       "features": [
         {
           "id": "AUTH-01",
-          "title": "家长注册",
+          "title": "家长注册与邀请制",
           "area": "identity",
           "status": "current-implementation-with-stated-limits",
           "actors": "家长、学生、管理员、授权教师",
@@ -47,20 +47,28 @@
             "/parent/access",
             "/admin/accounts"
           ],
-          "inputs": "账号 principal、credential",
-          "implementation": "验证输入和账号唯一性；使用哈希保存凭据；创建家长账号与带有效期会话；响应设置登录Cookie。",
-          "outputs": "家长身份、当前会话",
+          "inputs": "账号 principal、credential；邀请制下另需邀请码",
+          "implementation": "按 STUDY_REGISTRATION 决定开放、邀请或关闭（生产默认邀请制）；邀请码与 STUDY_INVITE_CODES 定长比较；验证输入和账号唯一性；使用哈希保存凭据；创建家长账号与带有效期会话；响应设置登录Cookie。公开接口告诉登录页是否显示邀请码。",
+          "outputs": "家长身份、当前会话、注册方式",
           "collections": [
             "users",
             "sessions"
           ],
-          "limits": "普通注册不能指定管理员角色，账号名称不决定权限。",
+          "limits": "普通注册不能指定管理员角色，账号名称不决定权限；未配置邀请码时生产环境无人可注册。",
           "endpoints": [
             {
               "verb": "POST",
               "path": "/api/auth/register",
               "controller": "AuthController",
               "method": "register",
+              "file": "apps/api/src/modules/auth/auth.controller.ts",
+              "line": 18
+            },
+            {
+              "verb": "GET",
+              "path": "/api/auth/registration",
+              "controller": "AuthController",
+              "method": "registration",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
               "line": 15
             }
@@ -69,15 +77,21 @@
             {
               "name": "AuthService.register",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 22
+              "line": 23
             },
             {
               "name": "AuthController.setCookie",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
               "line": 10
+            },
+            {
+              "name": "AuthService.registration",
+              "file": "apps/api/src/modules/auth/auth.service.ts",
+              "line": 42
             }
           ],
           "sourceFiles": [
+            "apps/api/src/modules/auth/registration-policy.ts",
             "apps/api/src/modules/auth/auth.service.ts",
             "apps/api/src/modules/auth/auth.controller.ts"
           ],
@@ -113,7 +127,7 @@
               "controller": "AuthController",
               "method": "login",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
-              "line": 22
+              "line": 25
             },
             {
               "verb": "GET",
@@ -121,7 +135,7 @@
               "controller": "AuthController",
               "method": "me",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
-              "line": 45
+              "line": 48
             },
             {
               "verb": "POST",
@@ -129,14 +143,14 @@
               "controller": "AuthController",
               "method": "logout",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
-              "line": 38
+              "line": 41
             }
           ],
           "implementations": [
             {
               "name": "AuthService.login",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 38
+              "line": 44
             },
             {
               "name": "AuthController.setCookie",
@@ -146,7 +160,7 @@
             {
               "name": "AuthService.logout",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 50
+              "line": 56
             }
           ],
           "sourceFiles": [
@@ -195,7 +209,7 @@
               "controller": "AuthController",
               "method": "learningCode",
               "file": "apps/api/src/modules/auth/auth.controller.ts",
-              "line": 33
+              "line": 36
             },
             {
               "verb": "GET",
@@ -234,7 +248,7 @@
             {
               "name": "AuthService.redeemLearningCode",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 61
+              "line": 67
             },
             {
               "name": "AuthController.setCookie",
@@ -311,12 +325,20 @@
               "line": 38
             },
             {
+              "verb": "POST",
+              "path": "/api/students/:studentId/settings",
+              "controller": "StudentsController",
+              "method": "updateSettings",
+              "file": "apps/api/src/modules/students/students.controller.ts",
+              "line": 43
+            },
+            {
               "verb": "GET",
               "path": "/api/parents/:parentId/students",
               "controller": "StudentsController",
               "method": "listChildren",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 62
+              "line": 67
             },
             {
               "verb": "GET",
@@ -331,17 +353,22 @@
             {
               "name": "StudentsService.createStudent",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 33
+              "line": 34
             },
             {
               "name": "StudentsService.getProfile",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 134
+              "line": 139
+            },
+            {
+              "name": "StudentsService.updateSettings",
+              "file": "apps/api/src/modules/students/students.service.ts",
+              "line": 135
             },
             {
               "name": "StudentsService.listChildren",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 149
+              "line": 154
             },
             {
               "name": "LearningService.studentProfiles",
@@ -385,7 +412,7 @@
               "controller": "StudentsController",
               "method": "createInvitation",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 56
+              "line": 61
             },
             {
               "verb": "POST",
@@ -393,19 +420,19 @@
               "controller": "StudentsController",
               "method": "bindStudent",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 43
+              "line": 48
             }
           ],
           "implementations": [
             {
               "name": "StudentsService.createInvitation",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 94
+              "line": 95
             },
             {
               "name": "StudentsService.bindStudent",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 106
+              "line": 107
             }
           ],
           "sourceFiles": [
@@ -443,7 +470,7 @@
               "controller": "StudentsController",
               "method": "reviewers",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 71
+              "line": 76
             },
             {
               "verb": "POST",
@@ -451,7 +478,7 @@
               "controller": "StudentsController",
               "method": "grantReviewer",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 76
+              "line": 81
             },
             {
               "verb": "POST",
@@ -459,24 +486,24 @@
               "controller": "StudentsController",
               "method": "revokeReviewer",
               "file": "apps/api/src/modules/students/students.controller.ts",
-              "line": 81
+              "line": 86
             }
           ],
           "implementations": [
             {
               "name": "StudentsService.reviewerAssignments",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 168
+              "line": 173
             },
             {
               "name": "StudentsService.grantReviewer",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 176
+              "line": 181
             },
             {
               "name": "StudentsService.revokeReviewer",
               "file": "apps/api/src/modules/students/students.service.ts",
-              "line": 190
+              "line": 195
             }
           ],
           "sourceFiles": [
@@ -529,12 +556,12 @@
             {
               "name": "AuthService.listAccounts",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 78
+              "line": 84
             },
             {
               "name": "AuthService.updateAccount",
               "file": "apps/api/src/modules/auth/auth.service.ts",
-              "line": 87
+              "line": 93
             }
           ],
           "sourceFiles": [
@@ -6747,7 +6774,7 @@
             {
               "name": "ClassroomService.voicePreview",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 342
+              "line": 346
             }
           ],
           "sourceFiles": [
@@ -7531,6 +7558,165 @@
       ],
       "features": [
         {
+          "id": "STUDIO-42",
+          "title": "主题驱动的AI课程生成与读取摸底结果",
+          "area": "studio",
+          "status": "current-implementation-with-stated-limits",
+          "actors": "家长、学生与授权教师；成人课程需成人身份",
+          "pages": [
+            "/studio",
+            "/studio/tasks",
+            "/studio/assessment",
+            "/studio/reports",
+            "/studio/profiles",
+            "/studio/settings",
+            "/studio/classroom",
+            "/studio/projects",
+            "/studio/source-courses",
+            "/studio/whiteboards"
+          ],
+          "inputs": "学习主题、所选模型、可选学习档案与学科、追问回答、课程规模、蓝图调整说明",
+          "implementation": "持久任务先联网检索摘要再生成一至三项追问；回答后建资料课程并规划蓝图，学习档案与学科齐备时把稳固、不稳固、学习中的知识点名称（未知不列）放入蓝图上下文；学习者确认蓝图后逐课编写与复核；输出写入前经统一教学输出检查。",
+          "outputs": "课程生成记录、蓝图与参考的正式测量摘要、资料课程",
+          "collections": [
+            "courseCraftRuns",
+            "sourceCourses",
+            "studioSourceMaterials"
+          ],
+          "limits": "检索摘要不是完整教材；课程内容待核查，按课程目标给出的结果只是「估计」，不写正式测量证据；最多五轮蓝图调整。",
+          "endpoints": [
+            {
+              "verb": "GET",
+              "path": "/api/learning/course-craft",
+              "controller": "CourseCraftController",
+              "method": "list",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 8
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft",
+              "controller": "CourseCraftController",
+              "method": "start",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 9
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/course-craft/:id",
+              "controller": "CourseCraftController",
+              "method": "get",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 10
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft/:id/answers",
+              "controller": "CourseCraftController",
+              "method": "answer",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 11
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft/:id/outline-revision",
+              "controller": "CourseCraftController",
+              "method": "revise",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 12
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft/:id/outline",
+              "controller": "CourseCraftController",
+              "method": "outline",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft/:id/cancel",
+              "controller": "CourseCraftController",
+              "method": "cancel",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 14
+            },
+            {
+              "verb": "POST",
+              "path": "/api/learning/course-craft/:id/retry",
+              "controller": "CourseCraftController",
+              "method": "retry",
+              "file": "apps/api/src/modules/learning/course-craft.controller.ts",
+              "line": 15
+            }
+          ],
+          "implementations": [
+            {
+              "name": "CourseCraftService.list",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 32
+            },
+            {
+              "name": "CourseCraftService.start",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 34
+            },
+            {
+              "name": "CourseCraftService.get",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 33
+            },
+            {
+              "name": "CourseCraftService.answer",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 43
+            },
+            {
+              "name": "CourseCraftService.reviseOutline",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 63
+            },
+            {
+              "name": "CourseCraftService.confirmOutline",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 73
+            },
+            {
+              "name": "CourseCraftService.control",
+              "file": "apps/api/src/modules/learning/course-craft.service.ts",
+              "line": 82
+            }
+          ],
+          "sourceFiles": [
+            "apps/api/src/modules/learning/course-craft.service.ts",
+            "apps/api/src/modules/learning/course-craft-worker.service.ts",
+            "apps/api/src/modules/learning/course-craft-diagnosis.ts"
+          ],
+          "tests": [
+            "apps/api/src/modules/learning/whiteboard-speech.test.ts",
+            "apps/api/src/modules/learning/whiteboard-webm.test.ts",
+            "apps/api/src/modules/learning/whiteboard-postgres.integration.test.ts",
+            "tests/e2e/whiteboard-media.spec.ts",
+            "apps/api/src/modules/learning/studio-course.test.ts",
+            "apps/api/src/modules/learning/studio.integration.test.ts",
+            "apps/api/src/modules/learning/classroom.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-unit-checks.test.ts",
+            "apps/api/src/modules/learning/classroom-practice-content.test.ts",
+            "apps/api/src/modules/learning/classroom-choice.integration.test.ts",
+            "apps/api/src/modules/learning/classroom-choice-recovery.integration.test.ts",
+            "tests/e2e/classroom-choice.spec.ts",
+            "apps/api/src/modules/learning/course-project.integration.test.ts",
+            "tests/e2e/course-project.spec.ts",
+            "tests/e2e/studio.spec.ts",
+            "tests/e2e/classroom.spec.ts",
+            "tests/e2e/classroom-review.spec.ts",
+            "tests/e2e/classroom-practice.spec.ts",
+            "tests/e2e/course-library.spec.ts",
+            "tests/e2e/course-builder.spec.ts",
+            "tests/e2e/workspace.spec.ts"
+          ]
+        },
+        {
           "id": "STUDIO-39",
           "title": "专注活动导航、完整离开副本与管理区域",
           "area": "studio",
@@ -8081,7 +8267,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 40
+              "line": 42
             }
           ],
           "sourceFiles": [
@@ -8182,27 +8368,27 @@
             {
               "name": "ClassroomService.open",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 119
+              "line": 121
             },
             {
               "name": "ClassroomService.get",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 109
+              "line": 111
             },
             {
               "name": "ClassroomService.progress",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 179
+              "line": 181
             },
             {
               "name": "ClassroomService.narration",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 350
+              "line": 354
             },
             {
               "name": "ClassroomService.upgradePresentation",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 207
+              "line": 209
             }
           ],
           "sourceFiles": [
@@ -8320,27 +8506,27 @@
             {
               "name": "ClassroomService.ask",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 304
+              "line": 306
             },
             {
               "name": "ClassroomTurnService.list",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 65
+              "line": 67
             },
             {
               "name": "ClassroomTurnService.get",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 69
+              "line": 71
             },
             {
               "name": "ClassroomTurnService.create",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 71
+              "line": 73
             },
             {
               "name": "ClassroomTurnService.control",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 128
+              "line": 130
             }
           ],
           "sourceFiles": [
@@ -8435,12 +8621,12 @@
             {
               "name": "ClassroomService.answer",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 226
+              "line": 228
             },
             {
               "name": "ClassroomService.hint",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 277
+              "line": 279
             }
           ],
           "sourceFiles": [
@@ -10156,7 +10342,7 @@
             {
               "name": "ClassroomService.catalog",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 40
+              "line": 42
             },
             {
               "name": "SourceCourseService.get",
@@ -10387,7 +10573,7 @@
             {
               "name": "ClassroomService.source",
               "file": "apps/api/src/modules/learning/classroom.service.ts",
-              "line": 110
+              "line": 112
             }
           ],
           "sourceFiles": [
@@ -13298,27 +13484,27 @@
             {
               "name": "GespService.overview",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 76
+              "line": 77
             },
             {
               "name": "GespService.atoms",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 547
+              "line": 549
             },
             {
               "name": "GespService.search",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 552
+              "line": 554
             },
             {
               "name": "GespService.detail",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 585
+              "line": 587
             },
             {
               "name": "GespService.document",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 604
+              "line": 606
             }
           ],
           "sourceFiles": [
@@ -13372,12 +13558,12 @@
             {
               "name": "GespService.setStudentScope",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 146
+              "line": 147
             },
             {
               "name": "GespService.studentWorkspace",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 168
+              "line": 169
             }
           ],
           "sourceFiles": [
@@ -13422,7 +13608,7 @@
             {
               "name": "GespService.submitProbe",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 269
+              "line": 270
             }
           ],
           "sourceFiles": [
@@ -13467,7 +13653,7 @@
             {
               "name": "GespService.submitCode",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 295
+              "line": 296
             }
           ],
           "sourceFiles": [
@@ -13514,7 +13700,7 @@
             {
               "name": "GespService.requestHint",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 187
+              "line": 188
             }
           ],
           "sourceFiles": [
@@ -13569,12 +13755,12 @@
             {
               "name": "GespService.createGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 210
+              "line": 211
             },
             {
               "name": "GespService.decideGuidancePlan",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 253
+              "line": 254
             }
           ],
           "sourceFiles": [
@@ -13644,22 +13830,22 @@
             {
               "name": "GespService.studentContentReview",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 89
+              "line": 90
             },
             {
               "name": "GespService.reviewStudentTask",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 118
+              "line": 119
             },
             {
               "name": "GespService.studentTaskReviewHistory",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 139
+              "line": 140
             },
             {
               "name": "GespService.teachingCandidates",
               "file": "apps/api/src/modules/gesp/gesp.service.ts",
-              "line": 101
+              "line": 102
             }
           ],
           "sourceFiles": [
@@ -14465,7 +14651,7 @@
             {
               "name": "InMemoryStoreService.controlTask",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 376
+              "line": 406
             },
             {
               "name": "DomainEventBusService.publish",
@@ -14480,7 +14666,7 @@
             {
               "name": "InMemoryStoreService.find",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 274
+              "line": 296
             }
           ],
           "sourceFiles": [
@@ -14734,7 +14920,7 @@
               "controller": "OperationsCapabilitiesController",
               "method": "check",
               "file": "apps/api/src/modules/operations/operations-capabilities.service.ts",
-              "line": 126
+              "line": 129
             },
             {
               "verb": "GET",
@@ -14757,7 +14943,7 @@
             {
               "name": "InMemoryStoreService.select",
               "file": "apps/api/src/infrastructure/in-memory-store.service.ts",
-              "line": 258
+              "line": 279
             },
             {
               "name": "RuntimeMetricsService.snapshot",
@@ -14767,7 +14953,7 @@
             {
               "name": "OperationsCapabilitiesService.check",
               "file": "apps/api/src/modules/operations/operations-capabilities.service.ts",
-              "line": 51
+              "line": 52
             },
             {
               "name": "ProgressService.getAnalyticsOverview",

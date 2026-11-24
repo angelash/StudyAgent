@@ -1,6 +1,6 @@
 # 01 身份、家庭与学习权限 — 详细设计
 
-源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。角色：家长、学生、管理员、授权教师。
+源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。角色：家长、学生、管理员、授权教师。
 
 产品入口：`/parent/login`、`/student/login`、`/parent/access`、`/admin/accounts`。
 
@@ -24,26 +24,32 @@
 - [apps/api/src/modules/students/student-access.integration.test.ts](../../../apps/api/src/modules/students/student-access.integration.test.ts)
 - [apps/api/src/product-safety.integration.test.ts](../../../apps/api/src/product-safety.integration.test.ts)
 
-## AUTH-01 家长注册
+## AUTH-01 家长注册与邀请制
 
-**输入**：账号 principal、credential。
+**输入**：账号 principal、credential；邀请制下另需邀请码。
 
-**处理与实现**：验证输入和账号唯一性；使用哈希保存凭据；创建家长账号与带有效期会话；响应设置登录Cookie。
+**处理与实现**：按 STUDY_REGISTRATION 决定开放、邀请或关闭（生产默认邀请制）；邀请码与 STUDY_INVITE_CODES 定长比较；验证输入和账号唯一性；使用哈希保存凭据；创建家长账号与带有效期会话；响应设置登录Cookie。公开接口告诉登录页是否显示邀请码。
 
-**输出**：家长身份、当前会话。
+**输出**：家长身份、当前会话、注册方式。
 
 **状态与持久化**：`users`、`sessions`
 
-**权限、失败与边界**：普通注册不能指定管理员角色，账号名称不决定权限。
+**权限、失败与边界**：普通注册不能指定管理员角色，账号名称不决定权限；未配置邀请码时生产环境无人可注册。
 
 **关联接口**：
 
-- `POST /api/auth/register` → `AuthController.register`；[apps/api/src/modules/auth/auth.controller.ts:15](../../../apps/api/src/modules/auth/auth.controller.ts#L15)。
+- `POST /api/auth/register` → `AuthController.register`；[apps/api/src/modules/auth/auth.controller.ts:18](../../../apps/api/src/modules/auth/auth.controller.ts#L18)。
+- `GET /api/auth/registration` → `AuthController.registration`；[apps/api/src/modules/auth/auth.controller.ts:15](../../../apps/api/src/modules/auth/auth.controller.ts#L15)。
 
 **服务方法**：
 
-- `AuthService.register`；[apps/api/src/modules/auth/auth.service.ts:22](../../../apps/api/src/modules/auth/auth.service.ts#L22)。
+- `AuthService.register`；[apps/api/src/modules/auth/auth.service.ts:23](../../../apps/api/src/modules/auth/auth.service.ts#L23)。
 - `AuthController.setCookie`；[apps/api/src/modules/auth/auth.controller.ts:10](../../../apps/api/src/modules/auth/auth.controller.ts#L10)。
+- `AuthService.registration`；[apps/api/src/modules/auth/auth.service.ts:42](../../../apps/api/src/modules/auth/auth.service.ts#L42)。
+
+**补充实现文件**：
+
+- [apps/api/src/modules/auth/registration-policy.ts](../../../apps/api/src/modules/auth/registration-policy.ts)
 
 ## AUTH-02 登录、会话检查与退出
 
@@ -59,15 +65,15 @@
 
 **关联接口**：
 
-- `POST /api/auth/login` → `AuthController.login`；[apps/api/src/modules/auth/auth.controller.ts:22](../../../apps/api/src/modules/auth/auth.controller.ts#L22)。
-- `GET /api/auth/me` → `AuthController.me`；[apps/api/src/modules/auth/auth.controller.ts:45](../../../apps/api/src/modules/auth/auth.controller.ts#L45)。
-- `POST /api/auth/logout` → `AuthController.logout`；[apps/api/src/modules/auth/auth.controller.ts:38](../../../apps/api/src/modules/auth/auth.controller.ts#L38)。
+- `POST /api/auth/login` → `AuthController.login`；[apps/api/src/modules/auth/auth.controller.ts:25](../../../apps/api/src/modules/auth/auth.controller.ts#L25)。
+- `GET /api/auth/me` → `AuthController.me`；[apps/api/src/modules/auth/auth.controller.ts:48](../../../apps/api/src/modules/auth/auth.controller.ts#L48)。
+- `POST /api/auth/logout` → `AuthController.logout`；[apps/api/src/modules/auth/auth.controller.ts:41](../../../apps/api/src/modules/auth/auth.controller.ts#L41)。
 
 **服务方法**：
 
-- `AuthService.login`；[apps/api/src/modules/auth/auth.service.ts:38](../../../apps/api/src/modules/auth/auth.service.ts#L38)。
+- `AuthService.login`；[apps/api/src/modules/auth/auth.service.ts:44](../../../apps/api/src/modules/auth/auth.service.ts#L44)。
 - `AuthController.setCookie`；[apps/api/src/modules/auth/auth.controller.ts:10](../../../apps/api/src/modules/auth/auth.controller.ts#L10)。
-- `AuthService.logout`；[apps/api/src/modules/auth/auth.service.ts:50](../../../apps/api/src/modules/auth/auth.service.ts#L50)。
+- `AuthService.logout`；[apps/api/src/modules/auth/auth.service.ts:56](../../../apps/api/src/modules/auth/auth.service.ts#L56)。
 
 **补充实现文件**：
 
@@ -93,7 +99,7 @@
 
 **关联接口**：
 
-- `POST /api/auth/learning-code` → `AuthController.learningCode`；[apps/api/src/modules/auth/auth.controller.ts:33](../../../apps/api/src/modules/auth/auth.controller.ts#L33)。
+- `POST /api/auth/learning-code` → `AuthController.learningCode`；[apps/api/src/modules/auth/auth.controller.ts:36](../../../apps/api/src/modules/auth/auth.controller.ts#L36)。
 - `GET /api/students/:studentId/learning-access` → `StudentsController.learningIdentity`；[apps/api/src/modules/students/students.controller.ts:11](../../../apps/api/src/modules/students/students.controller.ts#L11)。
 - `POST /api/students/:studentId/learning-access` → `StudentsController.updateLearningIdentity`；[apps/api/src/modules/students/students.controller.ts:13](../../../apps/api/src/modules/students/students.controller.ts#L13)。
 - `POST /api/students/:studentId/learning-access/codes` → `StudentsController.issueLearningCode`；[apps/api/src/modules/students/students.controller.ts:15](../../../apps/api/src/modules/students/students.controller.ts#L15)。
@@ -101,7 +107,7 @@
 
 **服务方法**：
 
-- `AuthService.redeemLearningCode`；[apps/api/src/modules/auth/auth.service.ts:61](../../../apps/api/src/modules/auth/auth.service.ts#L61)。
+- `AuthService.redeemLearningCode`；[apps/api/src/modules/auth/auth.service.ts:67](../../../apps/api/src/modules/auth/auth.service.ts#L67)。
 - `AuthController.setCookie`；[apps/api/src/modules/auth/auth.controller.ts:10](../../../apps/api/src/modules/auth/auth.controller.ts#L10)。
 - `StudentAccessService.get`；[apps/api/src/modules/students/student-access.service.ts:16](../../../apps/api/src/modules/students/student-access.service.ts#L16)。
 - `StudentAccessService.set`；[apps/api/src/modules/students/student-access.service.ts:28](../../../apps/api/src/modules/students/student-access.service.ts#L28)。
@@ -124,14 +130,16 @@
 
 - `POST /api/students` → `StudentsController.createStudent`；[apps/api/src/modules/students/students.controller.ts:20](../../../apps/api/src/modules/students/students.controller.ts#L20)。
 - `GET /api/students/:studentId/profile` → `StudentsController.getProfile`；[apps/api/src/modules/students/students.controller.ts:38](../../../apps/api/src/modules/students/students.controller.ts#L38)。
-- `GET /api/parents/:parentId/students` → `StudentsController.listChildren`；[apps/api/src/modules/students/students.controller.ts:62](../../../apps/api/src/modules/students/students.controller.ts#L62)。
+- `POST /api/students/:studentId/settings` → `StudentsController.updateSettings`；[apps/api/src/modules/students/students.controller.ts:43](../../../apps/api/src/modules/students/students.controller.ts#L43)。
+- `GET /api/parents/:parentId/students` → `StudentsController.listChildren`；[apps/api/src/modules/students/students.controller.ts:67](../../../apps/api/src/modules/students/students.controller.ts#L67)。
 - `GET /api/learning/students` → `LearningController.students`；[apps/api/src/modules/learning/learning.controller.ts:19](../../../apps/api/src/modules/learning/learning.controller.ts#L19)。
 
 **服务方法**：
 
-- `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:33](../../../apps/api/src/modules/students/students.service.ts#L33)。
-- `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:134](../../../apps/api/src/modules/students/students.service.ts#L134)。
-- `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:149](../../../apps/api/src/modules/students/students.service.ts#L149)。
+- `StudentsService.createStudent`；[apps/api/src/modules/students/students.service.ts:34](../../../apps/api/src/modules/students/students.service.ts#L34)。
+- `StudentsService.getProfile`；[apps/api/src/modules/students/students.service.ts:139](../../../apps/api/src/modules/students/students.service.ts#L139)。
+- `StudentsService.updateSettings`；[apps/api/src/modules/students/students.service.ts:135](../../../apps/api/src/modules/students/students.service.ts#L135)。
+- `StudentsService.listChildren`；[apps/api/src/modules/students/students.service.ts:154](../../../apps/api/src/modules/students/students.service.ts#L154)。
 - `LearningService.studentProfiles`；[apps/api/src/modules/learning/learning.service.ts:71](../../../apps/api/src/modules/learning/learning.service.ts#L71)。
 
 ## AUTH-05 邀请与共同监护绑定
@@ -148,13 +156,13 @@
 
 **关联接口**：
 
-- `POST /api/students/:studentId/invitations` → `StudentsController.createInvitation`；[apps/api/src/modules/students/students.controller.ts:56](../../../apps/api/src/modules/students/students.controller.ts#L56)。
-- `POST /api/parents/:parentId/bindings` → `StudentsController.bindStudent`；[apps/api/src/modules/students/students.controller.ts:43](../../../apps/api/src/modules/students/students.controller.ts#L43)。
+- `POST /api/students/:studentId/invitations` → `StudentsController.createInvitation`；[apps/api/src/modules/students/students.controller.ts:61](../../../apps/api/src/modules/students/students.controller.ts#L61)。
+- `POST /api/parents/:parentId/bindings` → `StudentsController.bindStudent`；[apps/api/src/modules/students/students.controller.ts:48](../../../apps/api/src/modules/students/students.controller.ts#L48)。
 
 **服务方法**：
 
-- `StudentsService.createInvitation`；[apps/api/src/modules/students/students.service.ts:94](../../../apps/api/src/modules/students/students.service.ts#L94)。
-- `StudentsService.bindStudent`；[apps/api/src/modules/students/students.service.ts:106](../../../apps/api/src/modules/students/students.service.ts#L106)。
+- `StudentsService.createInvitation`；[apps/api/src/modules/students/students.service.ts:95](../../../apps/api/src/modules/students/students.service.ts#L95)。
+- `StudentsService.bindStudent`；[apps/api/src/modules/students/students.service.ts:107](../../../apps/api/src/modules/students/students.service.ts#L107)。
 
 ## AUTH-06 教师复核授权及撤销
 
@@ -170,15 +178,15 @@
 
 **关联接口**：
 
-- `GET /api/students/:studentId/reviewers` → `StudentsController.reviewers`；[apps/api/src/modules/students/students.controller.ts:71](../../../apps/api/src/modules/students/students.controller.ts#L71)。
-- `POST /api/students/:studentId/reviewers` → `StudentsController.grantReviewer`；[apps/api/src/modules/students/students.controller.ts:76](../../../apps/api/src/modules/students/students.controller.ts#L76)。
-- `POST /api/students/:studentId/reviewers/:assignmentId/revoke` → `StudentsController.revokeReviewer`；[apps/api/src/modules/students/students.controller.ts:81](../../../apps/api/src/modules/students/students.controller.ts#L81)。
+- `GET /api/students/:studentId/reviewers` → `StudentsController.reviewers`；[apps/api/src/modules/students/students.controller.ts:76](../../../apps/api/src/modules/students/students.controller.ts#L76)。
+- `POST /api/students/:studentId/reviewers` → `StudentsController.grantReviewer`；[apps/api/src/modules/students/students.controller.ts:81](../../../apps/api/src/modules/students/students.controller.ts#L81)。
+- `POST /api/students/:studentId/reviewers/:assignmentId/revoke` → `StudentsController.revokeReviewer`；[apps/api/src/modules/students/students.controller.ts:86](../../../apps/api/src/modules/students/students.controller.ts#L86)。
 
 **服务方法**：
 
-- `StudentsService.reviewerAssignments`；[apps/api/src/modules/students/students.service.ts:168](../../../apps/api/src/modules/students/students.service.ts#L168)。
-- `StudentsService.grantReviewer`；[apps/api/src/modules/students/students.service.ts:176](../../../apps/api/src/modules/students/students.service.ts#L176)。
-- `StudentsService.revokeReviewer`；[apps/api/src/modules/students/students.service.ts:190](../../../apps/api/src/modules/students/students.service.ts#L190)。
+- `StudentsService.reviewerAssignments`；[apps/api/src/modules/students/students.service.ts:173](../../../apps/api/src/modules/students/students.service.ts#L173)。
+- `StudentsService.grantReviewer`；[apps/api/src/modules/students/students.service.ts:181](../../../apps/api/src/modules/students/students.service.ts#L181)。
+- `StudentsService.revokeReviewer`；[apps/api/src/modules/students/students.service.ts:195](../../../apps/api/src/modules/students/students.service.ts#L195)。
 
 ## AUTH-07 管理员账号与角色维护
 
@@ -199,5 +207,5 @@
 
 **服务方法**：
 
-- `AuthService.listAccounts`；[apps/api/src/modules/auth/auth.service.ts:78](../../../apps/api/src/modules/auth/auth.service.ts#L78)。
-- `AuthService.updateAccount`；[apps/api/src/modules/auth/auth.service.ts:87](../../../apps/api/src/modules/auth/auth.service.ts#L87)。
+- `AuthService.listAccounts`；[apps/api/src/modules/auth/auth.service.ts:84](../../../apps/api/src/modules/auth/auth.service.ts#L84)。
+- `AuthService.updateAccount`；[apps/api/src/modules/auth/auth.service.ts:93](../../../apps/api/src/modules/auth/auth.service.ts#L93)。

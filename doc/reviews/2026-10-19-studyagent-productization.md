@@ -53,12 +53,12 @@
 - R01：[auth.service.ts](../../apps/api/src/modules/auth/auth.service.ts)，第 32 行；会话有效性见 [auth.guard.ts](../../apps/api/src/common/auth.guard.ts)。
 - R02：[students.service.ts](../../apps/api/src/modules/students/students.service.ts)，第 85 行起；[students.controller.ts](../../apps/api/src/modules/students/students.controller.ts) 的绑定入口。
 - R03：[content.controller.ts](../../apps/api/src/modules/content/content.controller.ts) 与 [content.service.ts](../../apps/api/src/modules/content/content.service.ts)，第 237 行起；[question-workspace.controller.ts](../../apps/api/src/modules/question-workspace/question-workspace.controller.ts)，第 145 行起。
-- R04/R12：[ai.controller.ts](../../apps/api/src/modules/ai/ai.controller.ts)、[ai.service.ts](../../apps/api/src/modules/ai/ai.service.ts)，第 187 行起；[codex-search.service.ts](../../apps/api/src/modules/ai/codex-search.service.ts)。
-- R05：[missions.service.ts](../../apps/api/src/modules/missions/missions.service.ts)，第 193 行起。
+- R04/R12：[ai.controller.ts](../../apps/api/src/modules/ai/ai.controller.ts)、[ai.service.ts](../../apps/api/src/modules/ai/ai.service.ts)，第 187 行起；[codex-search.service.ts](https://github.com/angelash/StudyAgent/blob/54218795102c9c15f8fae84925ac83f4f9768ed4/apps/api/src/modules/ai/codex-search.service.ts)。
+- R05：[missions.service.ts](https://github.com/angelash/StudyAgent/blob/54218795102c9c15f8fae84925ac83f4f9768ed4/apps/api/src/modules/missions/missions.service.ts)，第 193 行起。
 - R06：[question-workspace.service.ts](../../apps/api/src/modules/question-workspace/question-workspace.service.ts)，第 200 行起；客观题目前仍主要比较规范化字符串。
 - R07：[in-memory-store.service.ts](../../apps/api/src/infrastructure/in-memory-store.service.ts)、[domain-event-bus.service.ts](../../apps/api/src/infrastructure/domain-event-bus.service.ts)、[schema.prisma](../../resources/legacy/prisma/schema.prisma)（2026-10-20已归档；本评审仍描述当时基线）。
 - R08：[question-coverage.service.ts](../../apps/api/src/modules/content/question-coverage.service.ts)，第 416、449 行及来源生成部分。
-- R09：[assessments.service.ts](../../apps/api/src/modules/assessments/assessments.service.ts)，第 30 行；[missions.service.ts](../../apps/api/src/modules/missions/missions.service.ts)，第 55 行。
+- R09：[assessments.service.ts](https://github.com/angelash/StudyAgent/blob/54218795102c9c15f8fae84925ac83f4f9768ed4/apps/api/src/modules/assessments/assessments.service.ts)，第 30 行；[missions.service.ts](https://github.com/angelash/StudyAgent/blob/54218795102c9c15f8fae84925ac83f4f9768ed4/apps/api/src/modules/missions/missions.service.ts)，第 55 行。
 - R10/R11：[question-renderer.tsx](../../apps/web/components/question-renderer.tsx)、[question-import.service.ts](../../apps/api/src/modules/question-workspace/question-import.service.ts)。
 - R13：[content.service.ts](../../apps/api/src/modules/content/content.service.ts)，第 237 行；当前 [内容后台](../../apps/web/app/admin/content/page.tsx)，第 349、1128 行。
 

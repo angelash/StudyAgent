@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`54a1b173df739c87092a7cae5d79fa587489f1fb`。共 610 个 HTTP 路由声明，当前 AppModule 可达 589 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。共 607 个 HTTP 路由声明，当前 AppModule 可达 599 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -342,53 +342,6 @@
 - 方法装饰器：`[]`
 - 调用：`this.tools.control`
 
-## AssessmentsController — 历史代码，未被AppModule接入
-
-### POST /api/assessments/start
-
-实现：[apps/api/src/modules/assessments/assessments.controller.ts:10](../../../apps/api/src/modules/assessments/assessments.controller.ts#L10)，方法 `start`。
-
-- 签名：`start(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject: 'math' | 'chinese' | 'english' | 'chemistry'; assessmentType: 'initial' | 'unit' | 'stage' | 'micro' | 'retry'; })`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.assessmentsService.start`
-
-### POST /api/assessments/:sessionId/answers
-
-实现：[apps/api/src/modules/assessments/assessments.controller.ts:23](../../../apps/api/src/modules/assessments/assessments.controller.ts#L23)，方法 `submitAnswer`。
-
-- 签名：`submitAnswer(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string, @Body() body: { itemId: string; answer: unknown; elapsedMs: number; })`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.assessmentsService.submitAnswer`
-
-### POST /api/assessments/:sessionId/complete
-
-实现：[apps/api/src/modules/assessments/assessments.controller.ts:37](../../../apps/api/src/modules/assessments/assessments.controller.ts#L37)，方法 `complete`。
-
-- 签名：`complete(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.assessmentsService.complete`
-
-### GET /api/assessments/:sessionId/progress
-
-实现：[apps/api/src/modules/assessments/assessments.controller.ts:42](../../../apps/api/src/modules/assessments/assessments.controller.ts#L42)，方法 `progress`。
-
-- 签名：`progress(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.assessmentsService.getProgress`
-
-### GET /api/assessments/:sessionId/result
-
-实现：[apps/api/src/modules/assessments/assessments.controller.ts:47](../../../apps/api/src/modules/assessments/assessments.controller.ts#L47)，方法 `result`。
-
-- 签名：`result(@Req() req: AuthenticatedRequest, @Param('sessionId') sessionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.assessmentsService.getResult`
-
 ## AccountsController — 当前接入
 
 ### GET /api/admin/accounts
@@ -411,9 +364,18 @@
 
 ## AuthController — 当前接入
 
+### GET /api/auth/registration
+
+实现：[apps/api/src/modules/auth/auth.controller.ts:15](../../../apps/api/src/modules/auth/auth.controller.ts#L15)，方法 `registration`。
+
+- 签名：`registration()`
+- 控制器装饰器：`[]`
+- 方法装饰器：`[]`
+- 调用：`this.authService.registration`
+
 ### POST /api/auth/register
 
-实现：[apps/api/src/modules/auth/auth.controller.ts:15](../../../apps/api/src/modules/auth/auth.controller.ts#L15)，方法 `register`。
+实现：[apps/api/src/modules/auth/auth.controller.ts:18](../../../apps/api/src/modules/auth/auth.controller.ts#L18)，方法 `register`。
 
 - 签名：`register(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response)`
 - 控制器装饰器：`[]`
@@ -422,7 +384,7 @@
 
 ### POST /api/auth/login
 
-实现：[apps/api/src/modules/auth/auth.controller.ts:22](../../../apps/api/src/modules/auth/auth.controller.ts#L22)，方法 `login`。
+实现：[apps/api/src/modules/auth/auth.controller.ts:25](../../../apps/api/src/modules/auth/auth.controller.ts#L25)，方法 `login`。
 
 - 签名：`login(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response)`
 - 控制器装饰器：`[]`
@@ -431,7 +393,7 @@
 
 ### POST /api/auth/learning-code
 
-实现：[apps/api/src/modules/auth/auth.controller.ts:33](../../../apps/api/src/modules/auth/auth.controller.ts#L33)，方法 `learningCode`。
+实现：[apps/api/src/modules/auth/auth.controller.ts:36](../../../apps/api/src/modules/auth/auth.controller.ts#L36)，方法 `learningCode`。
 
 - 签名：`learningCode(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response)`
 - 控制器装饰器：`[]`
@@ -440,7 +402,7 @@
 
 ### POST /api/auth/logout
 
-实现：[apps/api/src/modules/auth/auth.controller.ts:38](../../../apps/api/src/modules/auth/auth.controller.ts#L38)，方法 `logout`。
+实现：[apps/api/src/modules/auth/auth.controller.ts:41](../../../apps/api/src/modules/auth/auth.controller.ts#L41)，方法 `logout`。
 
 - 签名：`logout(@Req() req: AuthenticatedRequest, @Res({ passthrough: true }) res: Response)`
 - 控制器装饰器：`[]`
@@ -449,7 +411,7 @@
 
 ### GET /api/auth/me
 
-实现：[apps/api/src/modules/auth/auth.controller.ts:45](../../../apps/api/src/modules/auth/auth.controller.ts#L45)，方法 `me`。
+实现：[apps/api/src/modules/auth/auth.controller.ts:48](../../../apps/api/src/modules/auth/auth.controller.ts#L48)，方法 `me`。
 
 - 签名：`me(@Req() req: AuthenticatedRequest)`
 - 控制器装饰器：`[]`
@@ -2285,6 +2247,80 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.classroom.voicePreview`
+
+## CourseCraftController — 当前接入
+
+### GET /api/learning/course-craft
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:8](../../../apps/api/src/modules/learning/course-craft.controller.ts#L8)，方法 `list`。
+
+- 签名：`list(@Req() req:AuthenticatedRequest)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.list`
+
+### POST /api/learning/course-craft
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:9](../../../apps/api/src/modules/learning/course-craft.controller.ts#L9)，方法 `start`。
+
+- 签名：`start(@Req() req:AuthenticatedRequest, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.start`
+
+### GET /api/learning/course-craft/:id
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:10](../../../apps/api/src/modules/learning/course-craft.controller.ts#L10)，方法 `get`。
+
+- 签名：`get(@Req() req:AuthenticatedRequest, @Param('id') id:string)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.get`
+
+### POST /api/learning/course-craft/:id/answers
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:11](../../../apps/api/src/modules/learning/course-craft.controller.ts#L11)，方法 `answer`。
+
+- 签名：`answer(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.answer`
+
+### POST /api/learning/course-craft/:id/outline-revision
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:12](../../../apps/api/src/modules/learning/course-craft.controller.ts#L12)，方法 `revise`。
+
+- 签名：`revise(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.reviseOutline`
+
+### POST /api/learning/course-craft/:id/outline
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:13](../../../apps/api/src/modules/learning/course-craft.controller.ts#L13)，方法 `outline`。
+
+- 签名：`outline(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.confirmOutline`
+
+### POST /api/learning/course-craft/:id/cancel
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:14](../../../apps/api/src/modules/learning/course-craft.controller.ts#L14)，方法 `cancel`。
+
+- 签名：`cancel(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.control`
+
+### POST /api/learning/course-craft/:id/retry
+
+实现：[apps/api/src/modules/learning/course-craft.controller.ts:15](../../../apps/api/src/modules/learning/course-craft.controller.ts#L15)，方法 `retry`。
+
+- 签名：`retry(@Req() req:AuthenticatedRequest, @Param('id') id:string, @Body() body:unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.craft.control`
 
 ## CourseProjectController — 当前接入
 
@@ -4894,92 +4930,16 @@
 - 方法装饰器：`[]`
 - 调用：`this.selection.readResult`
 
-## MissionsController — 历史代码，未被AppModule接入
-
-### GET /api/missions/today
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:10](../../../apps/api/src/modules/missions/missions.controller.ts#L10)，方法 `getTodayMission`。
-
-- 签名：`getTodayMission(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.getTodayMission`
-
-### POST /api/missions/:missionId/start
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:19](../../../apps/api/src/modules/missions/missions.controller.ts#L19)，方法 `startMission`。
-
-- 签名：`startMission(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.startMission`
-
-### POST /api/missions/:missionId/answers
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:24](../../../apps/api/src/modules/missions/missions.controller.ts#L24)，方法 `submitAnswer`。
-
-- 签名：`submitAnswer(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string, @Body() body: { itemId: string; answer: unknown; elapsedMs: number; usedHintLevel?: number; })`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.submitAnswer`
-
-### POST /api/missions/:missionId/hints
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:39](../../../apps/api/src/modules/missions/missions.controller.ts#L39)，方法 `requestHint`。
-
-- 签名：`requestHint(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string, @Body() body: { itemId: string })`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.requestHint`
-
-### POST /api/missions/:missionId/complete
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:48](../../../apps/api/src/modules/missions/missions.controller.ts#L48)，方法 `completeMission`。
-
-- 签名：`completeMission(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.completeMission`
-
-### GET /api/missions/:missionId/result
-
-实现：[apps/api/src/modules/missions/missions.controller.ts:53](../../../apps/api/src/modules/missions/missions.controller.ts#L53)，方法 `getMissionResult`。
-
-- 签名：`getMissionResult(@Req() req: AuthenticatedRequest, @Param('missionId') missionId: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.missionsService.getMissionResult`
-
 ## OperationsCapabilitiesController — 当前接入
 
 ### GET /api/admin/operations/capabilities
 
-实现：[apps/api/src/modules/operations/operations-capabilities.service.ts:126](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L126)，方法 `check`。
+实现：[apps/api/src/modules/operations/operations-capabilities.service.ts:129](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L129)，方法 `check`。
 
 - 签名：`check(@Req() req: AuthenticatedRequest)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.capabilities.check`
-
-## PlansController — 历史代码，未被AppModule接入
-
-### GET /api/plans/weekly
-
-实现：[apps/api/src/modules/plans/plans.controller.ts:10](../../../apps/api/src/modules/plans/plans.controller.ts#L10)，方法 `getWeeklyPlan`。
-
-- 签名：`getWeeklyPlan(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.plansService.getWeeklyPlan`
-
-### POST /api/plans/weekly/generate
-
-实现：[apps/api/src/modules/plans/plans.controller.ts:20](../../../apps/api/src/modules/plans/plans.controller.ts#L20)，方法 `generateWeeklyPlan`。
-
-- 签名：`generateWeeklyPlan(@Req() req: AuthenticatedRequest, @Body() body: { studentId: string; subject?: 'math' | 'chinese' | 'english' | 'chemistry'; weekStartDate?: string; availableMinutesPerDay?: number; })`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.plansService.generateWeeklyPlan`
 
 ## PrivacyController — 当前接入
 
@@ -5582,9 +5542,18 @@
 - 方法装饰器：`[]`
 - 调用：`this.studentsService.getProfile`
 
+### POST /api/students/:studentId/settings
+
+实现：[apps/api/src/modules/students/students.controller.ts:43](../../../apps/api/src/modules/students/students.controller.ts#L43)，方法 `updateSettings`。
+
+- 签名：`updateSettings(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: unknown)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.studentsService.updateSettings`
+
 ### POST /api/parents/:parentId/bindings
 
-实现：[apps/api/src/modules/students/students.controller.ts:43](../../../apps/api/src/modules/students/students.controller.ts#L43)，方法 `bindStudent`。
+实现：[apps/api/src/modules/students/students.controller.ts:48](../../../apps/api/src/modules/students/students.controller.ts#L48)，方法 `bindStudent`。
 
 - 签名：`bindStudent(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Body() body: { studentId: string; inviteToken?: string })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5593,7 +5562,7 @@
 
 ### POST /api/students/:studentId/invitations
 
-实现：[apps/api/src/modules/students/students.controller.ts:56](../../../apps/api/src/modules/students/students.controller.ts#L56)，方法 `createInvitation`。
+实现：[apps/api/src/modules/students/students.controller.ts:61](../../../apps/api/src/modules/students/students.controller.ts#L61)，方法 `createInvitation`。
 
 - 签名：`createInvitation(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: { recipientPrincipal: string })`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5602,7 +5571,7 @@
 
 ### GET /api/parents/:parentId/students
 
-实现：[apps/api/src/modules/students/students.controller.ts:62](../../../apps/api/src/modules/students/students.controller.ts#L62)，方法 `listChildren`。
+实现：[apps/api/src/modules/students/students.controller.ts:67](../../../apps/api/src/modules/students/students.controller.ts#L67)，方法 `listChildren`。
 
 - 签名：`listChildren(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5611,7 +5580,7 @@
 
 ### GET /api/students/:studentId/reviewers
 
-实现：[apps/api/src/modules/students/students.controller.ts:71](../../../apps/api/src/modules/students/students.controller.ts#L71)，方法 `reviewers`。
+实现：[apps/api/src/modules/students/students.controller.ts:76](../../../apps/api/src/modules/students/students.controller.ts#L76)，方法 `reviewers`。
 
 - 签名：`reviewers(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5620,7 +5589,7 @@
 
 ### POST /api/students/:studentId/reviewers
 
-实现：[apps/api/src/modules/students/students.controller.ts:76](../../../apps/api/src/modules/students/students.controller.ts#L76)，方法 `grantReviewer`。
+实现：[apps/api/src/modules/students/students.controller.ts:81](../../../apps/api/src/modules/students/students.controller.ts#L81)，方法 `grantReviewer`。
 
 - 签名：`grantReviewer(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: unknown)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5629,7 +5598,7 @@
 
 ### POST /api/students/:studentId/reviewers/:assignmentId/revoke
 
-实现：[apps/api/src/modules/students/students.controller.ts:81](../../../apps/api/src/modules/students/students.controller.ts#L81)，方法 `revokeReviewer`。
+实现：[apps/api/src/modules/students/students.controller.ts:86](../../../apps/api/src/modules/students/students.controller.ts#L86)，方法 `revokeReviewer`。
 
 - 签名：`revokeReviewer(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Param('assignmentId') assignmentId: string)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
