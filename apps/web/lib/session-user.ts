@@ -1,6 +1,7 @@
 'use client';
 import { useSyncExternalStore } from 'react';
 import { ApiRequestError, apiRequest } from './api';
+import { resetSharedResources } from './shared-resource';
 export type SessionUser = { id: string; role: string; displayName: string; principal: string; studentId?: string };
 type SessionSnapshot = {
   status: 'initial' | 'checking' | 'authenticated' | 'anonymous' | 'unavailable';
@@ -20,6 +21,7 @@ export function refreshSessionUser() {
   controller = request;
   // Re-confirmation unloads private workspaces. Never restore cached identity.
   snapshot = { status: 'checking', user: undefined };
+  resetSharedResources();
   pending = (async () => {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {

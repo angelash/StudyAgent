@@ -5,6 +5,7 @@ import { RetentionReadinessSummary } from '../../../components/retention-evidenc
 import Link from 'next/link';
 import type { AnswerDraftState, DiagnosticStart, QuestionRenderPayload, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { Child, DailyLearning, Practice, PracticeFeedback, readableAnswer, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
@@ -52,7 +53,7 @@ function DailyWorkspace({studentMode}:{studentMode:boolean}) {
     (async () => {
       try {
         const issue=learningContextIssue(window.location.search);if(issue)throw new Error(issue);
-        const list = await send<Child[]>('/learning/students');
+        const list = await loadLearners();
         if (!alive) return; setLoggedIn(true); setChildren(list);
         const params = new URLSearchParams(window.location.search),requested=params.get('studentId')??params.get('student'), selected = list.find((item) => item.id === requested) ?? (!requested?list[0]:undefined);
         if(requested&&!selected)throw new Error('所选学习档案不可访问，请重新选择。');

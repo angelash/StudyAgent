@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import type { Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { useSessionUser, type SessionUser } from '../../../lib/session-user';
 import { learningContextIssue, readLearningContext, saveLearningContext, type LearningContext } from '../../../lib/learning-context';
 import { subjectNames } from '../../../lib/learning';
@@ -39,7 +40,7 @@ function ActorReports({ identity }: { identity: SessionUser }) {
       setError('链接中的学习档案不一致，请重新选择可用档案。'); setLoading(false); return () => controller.abort();
     }
     if (!(requested.subject in subjectNames)) { setError('这门学科不可用，请从工作台重新选择。'); setLoading(false); return () => controller.abort(); }
-    apiRequest<Child[]>('/learning/students', { signal: controller.signal }).then(async list => {
+    loadLearners(controller.signal).then(async list => {
       if (version !== generation.current || controller.signal.aborted) return;
       setChildren(list);
       const child = requested.studentId ? list.find(item => item.id === requested.studentId) : list[0];

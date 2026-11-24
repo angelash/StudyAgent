@@ -1,6 +1,6 @@
 /* Shared host adapts former observation pages to the existing workspace surface. */
-body[data-study-navigation] { --workspace-sidebar:240px; --workspace-ink:#172031; --workspace-muted:#7d8799; --workspace-line:#e9ecf1; --workspace-blue:#4c6696; }
-body[data-study-navigation=compact] { --workspace-sidebar:60px; }
+body[data-study-navigation] { --workspace-sidebar:var(--study-sidebar); --workspace-ink:var(--study-ink); --workspace-muted:var(--study-muted); --workspace-line:var(--study-line); --workspace-blue:var(--study-accent); }
+body[data-study-navigation=compact] { --workspace-sidebar:var(--study-sidebar-compact); }
 body[data-study-navigation] .learning-studio { padding-left:var(--workspace-sidebar);background:#fafafa;color:var(--workspace-ink);font-family:"Satoshi-Regular",MiSans,sans-serif; }
 body[data-study-navigation] .learning-studio :is(button,input,select,textarea) { font-family:inherit; }
 body[data-study-navigation] .learning-studio :is(.studio-main,.daily-main,.privacy-main,.admin-workbench,.library-body) { min-width:0; }
@@ -69,7 +69,7 @@ body[data-study-navigation] .workspace-button { background:#fff;color:#4c6696;fo
 .workspace-entry h1 { font-size:28px;font-weight:500;margin:0; }
 .workspace-entry p { color:#7d8799;line-height:1.8; }
 .workspace-entry>a { text-decoration:none;color:#4c6696; }
-body[data-study-navigation] .learning-studio { --ink:#172031;--muted:#7d8799;--paper:#fafafa;--line:#e9ecf1;--accent:#4c6696; }
+body[data-study-navigation] .learning-studio { --ink:var(--study-ink);--muted:var(--study-muted);--paper:var(--study-paper);--line:var(--study-line);--accent:var(--study-accent); }
 body[data-study-navigation] .learning-studio :is(.studio-rail,.daily-rail,.family-rail,.privacy-intro) { position:static; }
 body[data-study-navigation] .learning-studio :is(.studio-rail,.daily-rail,.family-rail,.privacy-intro)>:is(h1,p,.studio-eyebrow,.family-support,.privacy-note) { display:none; }
 body[data-study-navigation] .learning-studio :is(.studio-layout,.daily-layout,.family-layout,.privacy-layout) { display:block;max-width:1200px;padding:30px 38px 60px;margin:auto; }

@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { topicWhiteboardInputSchema, topicWhiteboardCreateSchema, topicWhiteboardConfirmSchema, topicWhiteboardControlSchema,
   type TopicWhiteboardDraftView, type StudioTopicWhiteboard, type StudioSubject, type StudioOverview } from '@study-agent/contracts';
 import { ApiRequestError, apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker, useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
 import { StudioNavigation } from '../studio-navigation';
@@ -64,7 +65,7 @@ function TopicWorkspace({ identity }: { identity: NonNullable<ReturnType<typeof 
   }, []);
   React.useEffect(() => {
     const controller = new AbortController();
-    void apiRequest<StudioOverview['children']>('/learning/students', { signal: controller.signal }).then(value=>{if(!controller.signal.aborted)setProfiles(value);})
+    void loadLearners(controller.signal).then(value=>{if(!controller.signal.aborted)setProfiles(value);})
       .catch(error => { if (!controller.signal.aborted) setError(error.message); }); return () => controller.abort();
   }, []);
   React.useEffect(() => {

@@ -1,3 +1,17 @@
+/* Design tokens: the one palette and sizing for the workspace shell. Scoped variables elsewhere point here. */
+:root {
+  --study-ink: #172031;
+  --study-muted: #7d8799;
+  --study-line: #e9ecf1;
+  --study-paper: #fafafa;
+  --study-accent: #4c6696;
+  --study-selected: #e8f0fa;
+  --study-sidebar: 240px;
+  --study-sidebar-compact: 60px;
+  --study-font: "Satoshi-Regular", MiSans, sans-serif;
+  --study-font-medium: "Satoshi-Medium", MiSans, sans-serif;
+}
+
 html,
 body {
   margin: 0;

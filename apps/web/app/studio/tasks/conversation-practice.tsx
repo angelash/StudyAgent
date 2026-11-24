@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { answerInputConfiguration,type AnswerDraftReceipt,type AnswerDraftState,type StudentAnswerPayload } from '@study-agent/contracts';
 import { apiRequest,ApiRequestError } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { refreshSessionUser,type SessionUser } from '../../../lib/session-user';
 import { readableAnswer,subjectNames,type Child } from '../../../lib/learning';
 import { learnerCopySchema,startCopySchema,readPracticeLocation,practiceWorkspaceHref,type PracticeLocation,type PracticeAssignmentSummary,type PracticeAssignment,type LearnerActivity,type LearnerQuestion,type LearnerFeedback,type LearnerCopy,type LearnerPending,type StartCopy } from '../../../lib/assistant-practice-workspace';
@@ -24,7 +25,7 @@ export function ConversationPracticeWorkspace({user}:{user:SessionUser}){
 }
 function PracticeScope({user,location}:{user:SessionUser;location:PracticeLocation}){
  const [children,setChildren]=React.useState<Child[]|null>(null),[error,setError]=React.useState(''),[retry,setRetry]=React.useState(0);
- React.useEffect(()=>{const request=new AbortController();void apiRequest<Child[]>('/learning/students',{signal:request.signal}).then(rows=>{if(!request.signal.aborted)setChildren(rows);}).catch(reason=>{if(!request.signal.aborted){setError(reason.message);if(reason instanceof ApiRequestError&&[401,403].includes(reason.status))void refreshSessionUser();}});return()=>request.abort();},[retry]);
+ React.useEffect(()=>{const request=new AbortController();void loadLearners(request.signal).then(rows=>{if(!request.signal.aborted)setChildren(rows);}).catch(reason=>{if(!request.signal.aborted){setError(reason.message);if(reason instanceof ApiRequestError&&[401,403].includes(reason.status))void refreshSessionUser();}});return()=>request.abort();},[retry]);
  const allowed=children?.some(child=>child.id===location.studentId);
  if(!children||!allowed)return <main className="learning-studio"><StudioNavigation active="tasks" contextState={!children?'pending':'unavailable'}/><section className="cp-workspace"><h1>对话练习</h1><p role={error||children&&location.studentId?'alert':'status'}>{error||(!children?'正在核对实际学习档案…':location.studentId?'此档案当前不可访问，请重新选择。':'先选择要查看的学习档案。')}</p>{children?.map(child=><p key={child.id}><Link className="workspace-button" href={practiceWorkspaceHref({...location,studentId:child.id,assignmentId:'',practiceId:'',questionId:''})}>{child.nickname}</Link></p>)}<button className="workspace-button" onClick={()=>{setError('');setRetry(value=>value+1);}}>重新读取档案</button></section></main>;
  if(location.practiceId)return <PracticeActivity user={user} location={location}/>;

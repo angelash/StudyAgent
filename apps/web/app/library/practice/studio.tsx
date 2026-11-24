@@ -35,7 +35,7 @@ function AuthorizedPractice({ user }: { user: SessionUser }) {
 function NewPaperPractice({ user }: { user: SessionUser }) {
   const returnTo = typeof window === 'undefined' ? null : materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'));
   const back = (href: string) => withMaterialsReturn(href, returnTo);
-  const { call, alive } = usePaperPracticeApi();
+  const { call, learners, alive } = usePaperPracticeApi();
   const [children, setChildren] = React.useState<Array<{ id: string; nickname: string }>>([]), [studentId, setStudentId] = React.useState(''), [ready, setReady] = React.useState(false);
   const [selection, setSelection] = React.useState<PaperPracticeSelection[]>([]), [preview, setPreview] = React.useState<PaperPracticePreview | null>(null), [history, setHistory] = React.useState<History[]>([]);
   const [origin, setOrigin] = React.useState<PaperPracticeOrigin | null>(null);
@@ -52,7 +52,7 @@ function NewPaperPractice({ user }: { user: SessionUser }) {
   }
   React.useEffect(() => {
     let current = true; const controller = new AbortController(); setReady(false); setPreview(null); setHistory([]);
-    void call<Array<{ id: string; nickname: string }>>('/learning/students', undefined, controller.signal).then(rows => {
+    void learners(controller.signal).then(rows => {
       if (!current) return; setChildren(rows);
       const params = new URLSearchParams(window.location.search), requested = params.get('studentId');
       const originSession = params.get('originSession'), originItem = params.get('originItem');

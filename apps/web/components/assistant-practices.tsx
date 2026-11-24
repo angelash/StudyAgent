@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { assistantPracticePreflightSchema,assistantReviewedPracticeCreateSchema,type AssistantHistoryMessage,type AssistantPracticePreflight,type AssistantReviewedPracticePage,type KnowledgeAtom,type LearningScope,type Subject } from '@study-agent/contracts';
 import { apiRequest,ApiRequestError } from '../lib/api';
+import { loadLearners } from '../lib/learners';
 import { refreshSessionUser } from '../lib/session-user';
 import { useWorkspaceExitGuard } from '../lib/use-workspace-exit-guard';
 import { usePracticeLocalCopy } from '../lib/use-practice-local-copy';
@@ -36,7 +37,7 @@ function ReviewedPracticesPanel(props:Props){
  React.useEffect(()=>()=>{alive.current=false;request.current?.abort();},[]);
  const close=()=>{if(busy){local.setNotice('原操作正在核对，请稍后再关闭。');return;}local.request(props.onClose);};
  useWorkspaceExitGuard(props.ownerId,true,{request:(_href,proceed)=>{if(busy){local.setNotice('原操作正在核对，请稍后再离开。');return;}local.request(proceed);},isInternal:(next,current)=>{try{const a=new URL(next,current),b=new URL(current);return a.origin===b.origin&&a.pathname===b.pathname&&a.search===b.search;}catch{return false;}}});
- React.useEffect(()=>{const operation=new AbortController();void apiRequest<Child[]>('/learning/students',{signal:operation.signal}).then(rows=>{if(!operation.signal.aborted)setChildren(rows);}).catch(reason=>{if(!operation.signal.aborted)setError(reason.message);});return()=>operation.abort();},[]);
+ React.useEffect(()=>{const operation=new AbortController();void loadLearners(operation.signal).then(rows=>{if(!operation.signal.aborted)setChildren(rows);}).catch(reason=>{if(!operation.signal.aborted)setError(reason.message);});return()=>operation.abort();},[]);
  React.useEffect(()=>{
   const studentId=copy?.form.studentId,subject=copy?.form.subject;setScopeReady(false);setScope(null);setAtoms([]);if(!studentId||!subject||!children.some(child=>child.id===studentId))return;const operation=new AbortController();
   void apiRequest<LearningScope|null>('/students/'+encodeURIComponent(studentId)+'/learning-scope?subject='+subject,{signal:operation.signal}).then(async value=>{if(operation.signal.aborted)return;if(value&&(value.studentId!==studentId||value.subject!==subject))throw Error('确认范围与当前档案或学科不一致。');const rows=value?await apiRequest<KnowledgeAtom[]>('/diagnostics/curriculum?'+new URLSearchParams({subject,grade:String(value.grade),term:value.term}),{signal:operation.signal}):[];if(!operation.signal.aborted){setScope(value);setAtoms(rows.filter(atom=>value?.learnedAtomIds.includes(atom.id)));setScopeReady(true);}}).catch(reason=>{if(!operation.signal.aborted)setError(reason.message);});return()=>operation.abort();

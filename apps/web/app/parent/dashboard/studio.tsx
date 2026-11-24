@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import type { Subject } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { FamilyOverview, LearningMemory, masteryNames, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
 import { useSessionUser } from '../../../lib/session-user';
@@ -33,7 +34,7 @@ function FamilyStudioWorkspace({identity}:{identity:ReturnType<typeof useSession
     const issue=learningContextIssue(window.location.search);if(issue){setError(issue);setLoading(false);return()=>{alive=false;};}
     if (readLearningContext(identity.id, window.location.search).audience === 'self') { setError('知识与周记录按孩子档案保存，请先选择学习对象。');setLoading(false);return()=>{alive=false;}; }
     // Guardians read the family overview; a learner reads only the own knowledge view.
-    (identity.role === 'student' ? apiRequest<Array<{ id: string }>>('/learning/students').then(list => { if (!list[0]) throw new Error('当前学习档案不可用，请由家长重新开启。'); return apiRequest<FamilyOverview>('/learning/students/' + encodeURIComponent(list[0].id) + '/knowledge'); }) : apiRequest<FamilyOverview>('/learning/overview')).then((value) => { if (alive) { const selected = readLearningContext(identity.id, window.location.search), requested = selected.studentId;if(requested&&!value.children.some(child=>child.id===requested))throw new Error('所选学习档案不可访问，请重新选择。');setOverview(value);setSubject(selected.subject);setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
+    (identity.role === 'student' ? loadLearners().then(list => { if (!list[0]) throw new Error('当前学习档案不可用，请由家长重新开启。'); return apiRequest<FamilyOverview>('/learning/students/' + encodeURIComponent(list[0].id) + '/knowledge'); }) : apiRequest<FamilyOverview>('/learning/overview')).then((value) => { if (alive) { const selected = readLearningContext(identity.id, window.location.search), requested = selected.studentId;if(requested&&!value.children.some(child=>child.id===requested))throw new Error('所选学习档案不可访问，请重新选择。');setOverview(value);setSubject(selected.subject);setStudentId(value.children.find((child) => child.id === requested)?.id ?? value.children[0]?.id ?? ''); } })
       .catch((caught) => { if (alive) setError(caught.message); }).finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, []);

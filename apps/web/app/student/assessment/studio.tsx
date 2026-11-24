@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import type { AnswerDraftState, GuidancePlanView, DiagnosticHypothesis, DiagnosticReport, KnowledgeAtom, LearningScope,
   AssessmentBlueprint, DiagnosticBlueprintView, DiagnosticRoutingDecision, DiagnosticStart, DiagnosticSession, TextbookTeachingPracticeOrigin, QuestionRenderPayload, ReviewTask, StudentAnswerPayload, Subject } from '@study-agent/contracts';
 import { apiRequest, ApiRequestError, getAuthToken } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { QuestionRenderer, createEmptyAnswerPayload } from '../../../components/question-renderer';
 import { useAnswerDraft, recoverPendingAnswerSubmission } from '../../../lib/answer-draft';
 import { AnswerDraftStatus } from '../../../components/answer-draft-status';
@@ -167,7 +168,7 @@ function AssessmentWorkspace({identity,reportOnly}:{identity:ReturnType<typeof u
       try {
         const issue=learningContextIssue(window.location.search);if(issue)throw new Error(issue);
         if (identity && readLearningContext(identity.id, window.location.search).audience === 'self') throw new Error('知识诊断与儿童报告需要选择孩子档案，请返回工作台选择学习对象。');
-        const list = await request<Child[]>('/learning/students');
+        const list = await loadLearners();
         if (!alive) return;
         setLoggedIn(true); setChildren(list);
         const params = new URLSearchParams(window.location.search), requested = params.get('studentId')??params.get('student');

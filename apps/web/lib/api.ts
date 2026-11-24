@@ -8,6 +8,15 @@ const webEnv = loadWebEnv({
 
 export const apiBaseUrl = webEnv.NEXT_PUBLIC_API_BASE_URL;
 let sessionToken: string | null = null;
+const changeListeners = new Set<() => void>();
+
+// Shared read caches listen here: any write or sign-in change makes earlier reads stale.
+export function onApiChange(listener: () => void) {
+  changeListeners.add(listener);
+  return () => { changeListeners.delete(listener); };
+}
+
+function announceChange() { for (const listener of changeListeners) listener(); }
 
 export function getAuthToken() {
   if (typeof window === 'undefined') {
@@ -21,6 +30,7 @@ export function setAuthToken(token: string) {
     return;
   }
   sessionToken = token;
+  announceChange();
   window.localStorage.removeItem('study_agent_token');
 }
 
@@ -49,6 +59,7 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
   // the token received at login so cross-origin API deployments do not depend
   // solely on SameSite cookies.
   const bearer = token === undefined ? getAuthToken() : token;
+  const writes = !['GET', 'HEAD'].includes((options.method ?? 'GET').toUpperCase());
   const response = await fetch(`${apiBaseUrl}/api${path}`, {
     ...options,
     credentials: 'include',
@@ -60,7 +71,7 @@ export async function apiRequest<T>(path: string, options: RequestInit = {}, tok
   }).catch((error: Error) => {
     if (error.name === 'AbortError') throw error;
     throw new Error('暂时无法连接学习服务，请检查网络后重试。已保存的数据会保留。');
-  });
+  }).finally(() => { if (writes) announceChange(); });
 
   let payload:
     | {

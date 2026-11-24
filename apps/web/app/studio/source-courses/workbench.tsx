@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { CourseSourceSnapshot, SourceCoursePreflight, SourceCoverage, SourceCourseAuthoring, SourceCourseContent, SourceCourseSummary, SourceCourseView, StudioSourceMaterial, StudioSubject } from '@study-agent/contracts';
 import { apiBaseUrl, apiRequest, getAuthToken } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { useSessionUser } from '../../../lib/session-user';
 import { XiaojiuModelPicker,useXiaojiuModels } from '../../../components/xiaojiu-model-picker';
 import { StudioNavigation } from '../studio-navigation';
@@ -82,7 +83,7 @@ function SourceCourseWorkspace({identity}:{identity:ReturnType<typeof useSession
         const issue=learningContextIssue(window.location.search);if(issue)throw new Error(issue);
         const independent=params.get('courseScope')==='adult'||params.get('audience')==='independent';
         if(independent&&identity.role==='student')throw new Error('学生学习身份不能进入成人独立资料，请返回自己的学习资料。');
-        const [available,course]=await Promise.all([apiRequest<Array<{id:string;nickname:string;grade:number}>>('/learning/students',{signal:controller.signal}),params.get('course')?apiRequest<SourceCourseView>('/learning/source-courses/'+encodeURIComponent(params.get('course')!),{signal:controller.signal}):Promise.resolve(null)]);
+        const [available,course]=await Promise.all([loadLearners(controller.signal),params.get('course')?apiRequest<SourceCourseView>('/learning/source-courses/'+encodeURIComponent(params.get('course')!),{signal:controller.signal}):Promise.resolve(null)]);
         if(version!==generation.current||controller.signal.aborted)return;
         const requested=params.get('studentId')??params.get('student'),selected=requested??course?.studentId??(identity.role==='student'?available[0]?.id??'':'');
         const requestedSubject=params.get('subject'),nextSubject=(requestedSubject??course?.subject??'math') as StudioSubject;

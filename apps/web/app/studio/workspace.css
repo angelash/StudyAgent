@@ -1,10 +1,10 @@
 /* Shared learning workspace: course library, outline and calendar. */
 .ws-app,.ws-classroom-shell {
-  --ws-ink: #172031;
-  --ws-muted: #7d8799;
-  --ws-line: #e9ecf1;
+  --ws-ink: var(--study-ink);
+  --ws-muted: var(--study-muted);
+  --ws-line: var(--study-line);
   --ws-blue: #4e6da2;
-  --ws-selected: #e8f0fa;
+  --ws-selected: var(--study-selected);
   color: var(--ws-ink);
   font-family: "Microsoft YaHei UI","PingFang SC",sans-serif;
   background: #fafafa;

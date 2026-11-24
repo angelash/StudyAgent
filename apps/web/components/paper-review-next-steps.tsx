@@ -7,7 +7,7 @@ import { clearPaperRecovery, downloadPaperRecovery, firstPaperCopy, paperStorage
 
 type Pending = { format: 'paper-review-verification-v1'; ownerId: string; sessionId: string; itemId: string; body: ReturnType<typeof paperReviewVerificationSchema.parse> };
 export function PaperReviewNextSteps({ user, row, item, ready }: { user: SessionUser; row: PaperPracticeSessionView; item: PaperPracticeItemView; ready: boolean }) {
-  const { call, alive } = usePaperPracticeApi(), [options, setOptions] = React.useState<PaperReviewNextOptions | null>(null), [error, setError] = React.useState(''), [notice, setNotice] = React.useState('');
+  const { call, learners, alive } = usePaperPracticeApi(), [options, setOptions] = React.useState<PaperReviewNextOptions | null>(null), [error, setError] = React.useState(''), [notice, setNotice] = React.useState('');
   const [children, setChildren] = React.useState<Array<{ id: string; nickname: string }>>([]), [studentId, setStudentId] = React.useState(row.studentId ?? '');
   const [atomId, setAtomId] = React.useState(''), [scope, setScope] = React.useState<LearningScope | null>(null), [scopeReady, setScopeReady] = React.useState(false), [confirmed, setConfirmed] = React.useState(false);
   const [pending, setPending] = React.useState<Pending | null>(null), [preview, setPreview] = React.useState<DiagnosticBlueprintView | null>(null);
@@ -38,7 +38,7 @@ export function PaperReviewNextSteps({ user, row, item, ready }: { user: Session
   }, [base, row.version, call, reload]);
   React.useEffect(() => {
     let current = true; const controller = new AbortController();
-    void call<Array<{ id: string; nickname: string }>>('/learning/students', undefined, controller.signal).then(value => { if (current) setChildren(value); }).catch(caught => { if (current) setError(paperPracticeFailure(caught)); });
+    void learners(controller.signal).then(value => { if (current) setChildren(value); }).catch(caught => { if (current) setError(paperPracticeFailure(caught)); });
     return () => { current = false; controller.abort(); };
   }, [call]);
   React.useEffect(() => {

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { apiRequest,ApiRequestError } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import type { SessionUser } from '../../../lib/session-user';
 import { refreshSessionUser } from '../../../lib/session-user';
 import { GespWorkspaceNavigation } from '../../../components/gesp-workspace-navigation';
@@ -27,7 +28,7 @@ export function GespParentWorkbench({user}:{user:SessionUser}){
   React.useEffect(()=>{const read=()=>{try{setLocation(readGespLocation(window.location.search));setLocationError('');}catch(reason){setLocation(null);setLocationError(reason instanceof Error?reason.message:'认证范围链接无效。');}};read();window.addEventListener('popstate',read);return()=>window.removeEventListener('popstate',read);},[]);
   React.useEffect(()=>{
     if(!location||locationError)return;const request=new AbortController();
-    void apiRequest<Child[]>('/learning/students',{signal:request.signal}).then(rows=>{
+    void loadLearners(request.signal).then(rows=>{
       if(request.signal.aborted)return;setProfiles(rows);
       if(!location.studentId&&rows.length){const next={...location,studentId:rows[0].id};window.history.replaceState(window.history.state,'',gespLocationHref('manage',next));setLocation(next);}
     }).catch(reason=>{if(!request.signal.aborted){setError(reason instanceof Error?reason.message:'无法读取授权档案。');if(reason instanceof ApiRequestError&&[401,403].includes(reason.status)){setProfiles(null);setWorkspace(null);void refreshSessionUser();}}});

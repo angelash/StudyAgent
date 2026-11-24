@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { useSessionUser, type SessionUser } from '../../../lib/session-user';
 import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
 import { workspaceHref } from '../../../lib/workspace-navigation';
@@ -25,7 +26,7 @@ function ActorProfiles({ identity }: { identity: SessionUser }) {
     if (!canManage) { setLoading(false); return () => controller.abort(); }
     const issue = learningContextIssue('?' + searchKey);
     if (issue) { setError(issue); setLoading(false); return () => controller.abort(); }
-    apiRequest<Profile[]>('/learning/students', { signal: controller.signal })
+    loadLearners(controller.signal)
       .then(value => { if (!controller.signal.aborted) setProfiles(value); })
       .catch(caught => { if (!controller.signal.aborted) setError((caught as Error).message); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });

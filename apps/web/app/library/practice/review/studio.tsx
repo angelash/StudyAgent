@@ -30,14 +30,14 @@ function AuthorizedReview({ user }: { user: SessionUser }) {
 function ReviewList({ user }: { user: SessionUser }) {
   const returnTo = typeof window === 'undefined' ? null : materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'));
   const back = (href: string) => withMaterialsReturn(href, returnTo);
-  const { call, alive } = usePaperPracticeApi();
+  const { call, learners, alive } = usePaperPracticeApi();
   const [children, setChildren] = React.useState<Array<{ id: string; nickname: string }>>([]), [query, setQuery] = React.useState<Query | null>(null), [editing, setEditing] = React.useState<Query | null>(null);
   const [list, setList] = React.useState<PaperReviewList | null>(null), [error, setError] = React.useState(''), [busy, setBusy] = React.useState(false), [reload, setReload] = React.useState(0);
   const [month, setMonth] = React.useState(() => { const date = new Date(); return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0'); });
   const [events, setEvents] = React.useState<PaperReviewCalendarEvent[]>([]), [calendarError, setCalendarError] = React.useState(''), [calendarBusy, setCalendarBusy] = React.useState(false);
   React.useEffect(() => {
     let current = true; const controller = new AbortController();
-    void call<Array<{ id: string; nickname: string }>>('/learning/students', undefined, controller.signal).then(rows => {
+    void learners(controller.signal).then(rows => {
       if (!current) return; setChildren(rows); const params = new URLSearchParams(window.location.search), selected = params.get('studentId') ?? '';
       if (selected && !rows.some(row => row.id === selected)) throw new Error('原链接中的孩子目前不可读取，请重新选择。');
       const requested = params.get('filter') ?? 'needs_review', page = Number(params.get('page') ?? '1');

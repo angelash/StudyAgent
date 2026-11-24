@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { EvidenceFeedback, TeacherStudentAssignment } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
+import { loadLearners } from '../../../lib/learners';
 import { Child, subjectNames } from '../../../lib/learning';
 import { StudyNav } from '../../../components/study-nav';
 import { learningContextIssue } from '../../../lib/learning-context';
@@ -22,7 +23,7 @@ export default function FamilyAccess() {
   const [assignments, setAssignments] = React.useState<Assignment[]>([]), [feedback, setFeedback] = React.useState<EvidenceFeedback[]>([]), [feedbackTotal, setFeedbackTotal] = React.useState(0), [page, setPage] = React.useState(1);
   const [principal, setPrincipal] = React.useState(''), [recipient, setRecipient] = React.useState(''), [invitation, setInvitation] = React.useState<{ code: string; expiresAt: string; recipient: string } | null>(null), [inviteCode, setInviteCode] = React.useState('');
   const [busy, setBusy] = React.useState(false), [loading, setLoading] = React.useState(true), [error, setError] = React.useState(''), [notice, setNotice] = React.useState(''), [revision, setRevision] = React.useState(0);
-  React.useEffect(() => { let alive = true; Promise.all([send<Child[]>('/learning/students'), send<{ id: string }>('/auth/me')])
+  React.useEffect(() => { let alive = true; Promise.all([loadLearners(), send<{ id: string }>('/auth/me')])
     .then(([list, user]) => { if (!alive) return; setChildren(list); setUserId(user.id);
       // An explicit profile is never replaced by another child: conflicts and inaccessible ids stay visible.
       const params = new URLSearchParams(window.location.search), issue = learningContextIssue(window.location.search), requested = params.get('studentId') ?? params.get('student');
