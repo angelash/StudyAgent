@@ -1,6 +1,6 @@
 # StudyAgent 产品建设档案
 
-当前入口为[150工作台整合与剩余全部开发](150-integrated-delivery-plan-and-work-ledger.md)：[149工作台方案](149-workspace-centered-interaction-restructuring-proposal.md)已采用，先提交计划，再从统一工作台推进所有余项。原72项及新增WS12项分别跟踪；以下日期与当时状态保留历史，不代替最新账本。
+当前入口为[232 HyperKnow 外壳与教学闭环整体重设计](232-hyperknow-shell-and-teaching-loop-redesign.md)（2026-11-24 起的唯一基线，以下内容保留为历史）。此前入口为[150工作台整合与剩余全部开发](150-integrated-delivery-plan-and-work-ledger.md)：[149工作台方案](149-workspace-centered-interaction-restructuring-proposal.md)已采用，先提交计划，再从统一工作台推进所有余项。原72项及新增WS12项分别跟踪；以下日期与当时状态保留历史，不代替最新账本。
 
 2026-10-30：[152工作台基础批次](152-workspace-foundation-delivery-checkpoint.md)记录统一外壳、规范入口、档案/报告与独立对象边界；R1余项和R2至R8仍按150持续推进。
 

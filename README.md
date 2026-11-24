@@ -1,6 +1,6 @@
 # StudyAgent
 
-当前开发按[工作台整合与剩余全部开发计划](doc/product/150-integrated-delivery-plan-and-work-ledger.md)推进：[工作台交互整改](doc/product/149-workspace-centered-interaction-restructuring-proposal.md)已纳入计划，先本地提交计划，再统一工作台、接练习/原因指导/日历复测及其余完整范围。原72项与新增12项分开验收；下方日期交付与旧版本说明保留历史。
+当前唯一的产品与实施基线是[HyperKnow 外壳与教学闭环整体重设计](doc/product/232-hyperknow-shell-and-teaching-loop-redesign.md)（2026-11-24），以下各段保留为历史。此前开发按[工作台整合与剩余全部开发计划](doc/product/150-integrated-delivery-plan-and-work-ledger.md)推进：[工作台交互整改](doc/product/149-workspace-centered-interaction-restructuring-proposal.md)已纳入计划，先本地提交计划，再统一工作台、接练习/原因指导/日历复测及其余完整范围。原72项与新增12项分开验收；下方日期交付与旧版本说明保留历史。
 
 新增[广州人教版九上化学教学验证链](doc/product/142-guangzhou-chemistry-teaching-validation.md)，在“我的课程”选择化学即可看到课程卡片（`/studio?view=courses&subject=chemistry`）：七个单元、28个原创教学目标、2016道规则题，配套课前诊断、单元与学期考核，复用课堂、报告、指导、补练与1/3/7/14日复测。家长在课程内为九年级档案添加课程；旧 `/chemistry` 链接转入现有课程页面。实际交付与使用边界见该文档。
 
