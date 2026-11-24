@@ -171,6 +171,7 @@ jobs:
           retention-days: 14
           path: |
             test-results/browser-product-acceptance/
+            data/qa/source-course-browser-*/browser-output/
             data/qa/source-course-full-browser.json
 
   postgres:

@@ -165,7 +165,8 @@ async function main() {
   const plan = await call('POST', `/diagnostics/students/${studentId}/plans`, { baselineSessionId: baseline.id, minutesPerDay: 10, useAi: false });
   await call('PATCH', `/diagnostics/plans/${plan.id}`, { expectedRevision: plan.revision, status: 'active' });
   const review = (await call('GET', `/diagnostics/plans/${plan.id}/reviews`))[0];
-  await store.transaction(() => { store.find('reviewTasks', { id: review.id }).dueAt = new Date(Date.now() - 1000).toISOString(); });
+  // Since the 10-30 retention gate the earliest boundary (activation + interval) must also have passed, not only dueAt.
+  await store.transaction(() => { const task = store.find('reviewTasks', { id: review.id }), past = new Date(Date.now() - 1000).toISOString(); task.dueAt = past; task.earliestDueAt = past; });
   const retestCommand = { studentId, subject: 'math', intent: 'retest', reviewTaskId: review.id };
   const first = await begin((await preview(retestCommand)).id);
   await state(first.id, 'abort', 1, 'qa-abort-delayed-review');
