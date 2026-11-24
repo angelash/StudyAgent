@@ -352,17 +352,28 @@ export class DomainDatabase {
       } catch (error) { this.sqlite.exec('ROLLBACK'); throw error; }
       return;
     }
-    const client = await this.postgres!.connect();
-    try {
-      await client.query(validate ? 'BEGIN ISOLATION LEVEL REPEATABLE READ' : 'BEGIN');
-      await client.query('SELECT pg_advisory_xact_lock(73199402)');
-      if (validate) await validate(async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
-      if (!(await client.query('SELECT version FROM schema_migrations WHERE version=$1', [version])).rowCount) {
-        await client.query(indexes(true) + ';' + extraSql);
-        await client.query('INSERT INTO schema_migrations(version) VALUES($1)', [version]);
-      }
-      await client.query('COMMIT');
-    } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
+    // Two pools opening the same database at once can collide on the catalog (40001 under REPEATABLE READ, or a
+    // concurrent CREATE INDEX). The advisory lock orders them; a whole-transaction retry lets the later one see the
+    // committed migration and skip it.
+    for (let attempt = 0; ; attempt++) {
+      const client = await this.postgres!.connect();
+      try {
+        await client.query(validate ? 'BEGIN ISOLATION LEVEL REPEATABLE READ' : 'BEGIN');
+        await client.query('SELECT pg_advisory_xact_lock(73199402)');
+        if (validate) await validate(async (sql, args = []) => { let parameter = 0; return (await client.query(sql.replace(/\?/g, () => '$' + ++parameter), args)).rows; });
+        if (!(await client.query('SELECT version FROM schema_migrations WHERE version=$1', [version])).rowCount) {
+          await client.query(indexes(true) + ';' + extraSql);
+          await client.query('INSERT INTO schema_migrations(version) VALUES($1)', [version]);
+        }
+        await client.query('COMMIT');
+        return;
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        const code = (error as { code?: string }).code;
+        if (attempt >= 4 || !['40001', '40P01', '23505', '42P07'].includes(code ?? '')) throw error;
+        await new Promise(resolve => setTimeout(resolve, 50 * (attempt + 1)));
+      } finally { client.release(); }
+    }
   }
 
   async read(): Promise<StateSnapshot> {

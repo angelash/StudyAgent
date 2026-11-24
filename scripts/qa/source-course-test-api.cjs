@@ -14,6 +14,12 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
   const repairWorker=app.get(require('../../apps/api/dist/apps/api/src/modules/learning/studio-original-repair-worker.service.js').StudioOriginalRepairWorkerService),pausedRepairs=new Set();
   repairWorker.afterPhase=async phase=>{if(phase!=='candidate_published')return;const pending=await pdfStore.requestContext(()=>pdfStore.inspect('studioOriginalRepairs').find(row=>row.status==='restoring'&&!pausedRepairs.has(row.materialId)&&pdfStore.find('studioSourceMaterials',{id:row.materialId})?.filename.includes('[pause-repair-once]')));if(pending){pausedRepairs.add(pending.materialId);await new Promise(resolve=>setTimeout(resolve,8000));}};
   const provider=app.get(XiaojiuChatService),original=provider.structured.bind(provider),attempts=new Map();
+  // Course crafting needs a connected model and web search. Like the teaching fixture, only the crafting service sees an
+  // enabled model, so ordinary assistant paths keep their "model not connected" behaviour.
+  const craftProvider=Object.create(provider);Object.defineProperty(craftProvider,'enabled',{configurable:true,get:()=>true});
+  app.get(require('../../apps/api/dist/apps/api/src/modules/learning/course-craft.service.js').CourseCraftService).chat=craftProvider;
+  app.get(require('../../apps/api/dist/apps/api/src/modules/learning/course-craft-research.service.js').CourseCraftResearchService).search=async()=>[{title:'合成课堂记录来源',url:'https://example.org/anonymous-learning',kind:'search_excerpt',retrievedAt:new Date().toISOString(),
+    content:'匿名阅览室观察：两个周末排队，两个工作日有空位。尚未记录晚间，也不知道当天是否有活动。只记录人数和开放时段，不收集个人姓名。'}];
   const originalReply=provider.reply.bind(provider),turnAttempts=new Map();
   const ordinaryReply=require('./assistant-turn-fixture.cjs').installAssistantTurnFixture(app);
   require('./assistant-practice-fixture.cjs').installAssistantPracticeFixture(app);
@@ -48,6 +54,11 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
     const topic=await topicReply(input,check);if(topic)return topic;
     const sourceCheck=await sourceCheckReply(input,check);if(sourceCheck)return sourceCheck;
     const guidance=await guidanceReply(input,check);if(guidance)return guidance;
+    // Course crafting (230): the first stage carries only the topic and search excerpts, no source-course goal.
+    const craftContext=(()=>{try{return JSON.parse(input.context);}catch{return null;}})();
+    if(custom&&craftContext&&typeof craftContext.prompt==='string'&&Array.isArray(craftContext.sources)&&!craftContext.goal)return{...check({title:'从观察到解释',overview:'比较匿名观察中的条件、事实与解释，设计后续验证。',
+      questions:[{id:'background',title:'你已学过哪些方法？',kind:'multiple',options:[{id:'record',label:'记录事实'},{id:'compare',label:'比较条件'}]},{id:'goal',title:'希望怎样学习？',kind:'single',options:[{id:'example',label:'从例子开始'},{id:'concept',label:'先理解概念'}]}]}),
+      modelId:input.modelId,modelName:'Browser fixture · not a real model'};
     if(!custom)return original(input,schema,check,custom);
     const context=JSON.parse(input.context),stage=JSON.parse(input.message),count=(attempts.get(context.goal)??0)+1;attempts.set(context.goal,count);
     const key=context.goal+'|'+stage.stage+'|'+stage.lessonIndex,stageCount=(attempts.get(key)??0)+1;attempts.set(key,stageCount);
@@ -58,7 +69,9 @@ const{sourceCourseLongFixture}=require('./source-course-fixture.cjs');
       const abort=()=>{clearTimeout(timer);reject(new Error('fixture cancelled'));},timer=setTimeout(()=>{input.signal?.removeEventListener('abort',abort);resolve();},reviewPause?12000:20000);
       if(input.signal?.aborted)abort();else input.signal?.addEventListener('abort',abort,{once:true});
     });
-    return{...check(sourceCourseLongFixture(context,input.message)),modelId:input.modelId,modelName:'Browser fixture · not a real model'};
+    const crafted=sourceCourseLongFixture(context,input.message);
+    if(stage.stage==='outline'&&context.topic&&Array.isArray(crafted.lessons))crafted.units=[{title:'观察与比较',objective:'区分事实与解释',lessonIndices:crafted.lessons.map((_,index)=>index)}];
+    return{...check(crafted),modelId:input.modelId,modelName:'Browser fixture · not a real model'};
   };
   const {ClassroomImageService}=require('../../apps/api/dist/apps/api/src/modules/ai/classroom-image.service.js'),sharp=require('sharp'),fs=require('node:fs'),imageService=app.get(ClassroomImageService),imageAttempts=new Map();
   imageService.capabilities=async()=>({available:true,modelId:'gpt-image-2',reason:'ready',message:'Browser image fixture, not a real provider'});
