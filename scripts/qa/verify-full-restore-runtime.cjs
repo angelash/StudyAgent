@@ -54,7 +54,7 @@ function compareLegacy() {
     return [collection, { originalCount: baseline.facts[collection].length, preserved: true, originalIdAndBodySha256: aggregate }];
   }));
 }
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_ASSET_ROOT: assets,
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_ASSET_ROOT: assets,
   STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'true', XIAOJIU_CHAT_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');

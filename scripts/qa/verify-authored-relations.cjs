@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.j
 const output = path.resolve(process.argv[2] ?? 'data/qa/authored-relations-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 assert(['sqlite', 'postgres'].includes(driver));
 const releaseKey = process.argv[4] ?? 'mixed'; assert(['mixed', 'atomic', 'average'].includes(releaseKey));
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const fromApi = file => require(path.join(root, 'apps/api/dist/apps/api/src', file));
 const { AppModule } = fromApi('app.module.js'), { InMemoryStoreService } = fromApi('infrastructure/in-memory-store.service.js');

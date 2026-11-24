@@ -12,6 +12,9 @@ export class AuthController {
       secure: process.env.NODE_ENV === 'production', path: '/api', expires: new Date(result.expiresAt) });
   }
 
+  @Get('registration')
+  registration() { return this.authService.registration(); }
+
   @Post('register')
   async register(@Body() body: unknown, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const result = await this.authService.register(body, req.ip);

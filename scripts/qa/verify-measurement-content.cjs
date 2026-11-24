@@ -13,7 +13,7 @@ const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.j
 const output = path.resolve(process.argv[2] ?? 'data/qa/measurement-content-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 const realSource = process.argv[4] === 'real';
 assert(['sqlite', 'postgres'].includes(driver));
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
   STUDY_WORKER_ENABLED: 'false', STUDY_SEED_FOUNDATION: 'false', STUDY_ASSET_ROOT: realSource ? path.join(root, 'data/assets') : path.join(directory, 'assets') });
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');

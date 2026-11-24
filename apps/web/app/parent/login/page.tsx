@@ -13,11 +13,19 @@ export default function ParentLoginPage() {
   React.useEffect(() => setReady(true), []);
   const [principal, setPrincipal] = React.useState(''), [credential, setCredential] = React.useState('');
   const [registering, setRegistering] = React.useState(false), [busy, setBusy] = React.useState(false), [error, setError] = React.useState('');
+  const [invite, setInvite] = React.useState(''), [registration, setRegistration] = React.useState<{ mode: 'open' | 'invite' | 'closed'; inviteRequired: boolean } | null>(null);
+  React.useEffect(() => {
+    const controller = new AbortController();
+    apiRequest<{ mode: 'open' | 'invite' | 'closed'; inviteRequired: boolean }>('/auth/registration', { signal: controller.signal })
+      .then(setRegistration).catch(() => { if (!controller.signal.aborted) setRegistration({ mode: 'open', inviteRequired: false }); });
+    return () => controller.abort();
+  }, []);
+  const canRegister = registration?.mode !== 'closed';
   async function submit(event: React.FormEvent) {
     event.preventDefault(); setError(''); setBusy(true);
     try {
       const result = await apiRequest<{ token: string; user: SessionUser }>(registering ? '/auth/register' : '/auth/login', {
-        method: 'POST', body: JSON.stringify({ principal, credential }),
+        method: 'POST', body: JSON.stringify(registering && registration?.inviteRequired ? { principal, credential, invite } : { principal, credential }),
       });
       setAuthToken(result.token); setCurrentUser(result.user); await refreshSessionUser();
       router.push(workspaceLoginDestination(new URLSearchParams(window.location.search).get('returnTo'), result.user.role));
@@ -25,7 +33,9 @@ export default function ParentLoginPage() {
   }
   return <main className="learning-login"><aside><Link href="/" className="login-brand"><span>学</span>StudyAgent</Link><div><span className="login-eyebrow">FAMILY / 每一步，都看得见</span><h1>先看见孩子，<br /><em>怎样学会。</em></h1><p>从一个具体知识点开始，找到卡住的一步，再通过新题和时间，看看是否真的留下来。</p></div><LoginSwitchLink kind="student" className="login-other">孩子自己来学习？使用学习码进入 ↗</LoginSwitchLink></aside>
     <section aria-busy={busy}><span className="login-eyebrow">家长与教师入口</span><h2>{registering ? '从一份学习档案开始。' : '继续孩子的学习旅程。'}</h2><p>{registering ? '创建家长账号，确认孩子的年级和实际学习进度。' : '登录后查看孩子的知识证据、指导计划和复测记录。'}</p>
-      <form onSubmit={submit}><label>登录账号<input required minLength={3} maxLength={254} autoComplete="username" value={principal} disabled={!ready || busy} onChange={e => setPrincipal(e.target.value)} placeholder="账号或邮箱" /></label><label>密码<input type="password" required minLength={10} maxLength={128} autoComplete={registering ? 'new-password' : 'current-password'} value={credential} disabled={!ready || busy} onChange={e => setCredential(e.target.value)} placeholder="至少 10 个字符" /></label>{error && <p className="login-error" role="alert">{error}</p>}<button className="login-primary" disabled={!ready || busy}>{busy ? '正在处理…' : registering ? '创建家长账号 →' : '登录，查看学习记录 →'}</button></form>
-      <button className="login-switch" disabled={!ready || busy} onClick={() => { setRegistering(!registering); setError(''); }}>{registering ? '已有账号，去登录' : '首次使用，创建家长账号'}</button><p className="login-footnote">教师与教研权限由管理员配置。孩子使用家长生成的一次性学习码。</p>
+      <form onSubmit={submit}><label>登录账号<input required minLength={3} maxLength={254} autoComplete="username" value={principal} disabled={!ready || busy} onChange={e => setPrincipal(e.target.value)} placeholder="账号或邮箱" /></label><label>密码<input type="password" required minLength={10} maxLength={128} autoComplete={registering ? 'new-password' : 'current-password'} value={credential} disabled={!ready || busy} onChange={e => setCredential(e.target.value)} placeholder="至少 10 个字符" /></label>
+        {registering && registration?.inviteRequired && <label>邀请码<input required maxLength={128} autoComplete="off" value={invite} disabled={!ready || busy} onChange={e => setInvite(e.target.value)} placeholder="由管理员提供" /></label>}
+        {error && <p className="login-error" role="alert">{error}</p>}<button className="login-primary" disabled={!ready || busy}>{busy ? '正在处理…' : registering ? '创建家长账号 →' : '登录，查看学习记录 →'}</button></form>
+      {canRegister && <button className="login-switch" disabled={!ready || busy} onClick={() => { setRegistering(!registering); setError(''); }}>{registering ? '已有账号，去登录' : '首次使用，创建家长账号'}</button>}<p className="login-footnote">教师与教研权限由管理员配置。孩子使用家长生成的一次性学习码。</p>
     </section></main>;
 }

@@ -3,7 +3,8 @@ import { hash, compare } from 'bcryptjs';
 import { createHash, randomBytes } from 'crypto';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
-import { credentialsSchema, validate } from '../../common/validation';
+import { credentialsSchema, registrationSchema, validate } from '../../common/validation';
+import { registrationMode, registrationRefusal } from './registration-policy';
 import { z } from 'zod';
 import { RateLimitService } from '../../infrastructure/rate-limit.service';
 
@@ -20,8 +21,10 @@ export class AuthService {
   private rateLimit(key: string) { return this.limits.assert(`auth:${key}`, 30, 15 * 60_000); }
 
   async register(input: unknown, address = 'local') {
-    const command = validate(credentialsSchema, input);
+    const command = validate(registrationSchema, input);
     await this.rateLimit(`register:${address}`);
+    const refusal = registrationRefusal(command.invite);
+    if (refusal) throw new ForbiddenException(refusal);
     if (Boolean(this.store.find('users', { principal: command.principal }))) {
       throw new ConflictException('无法创建该账号，请登录或更换账号');
     }
@@ -34,6 +37,9 @@ export class AuthService {
     this.eventBus.publish('auth.registered', { userId: user.id, role: user.role });
     return this.createSession(user);
   }
+
+  /** Public: lets the sign-in page show or hide registration and the invite field. */
+  registration() { const mode = registrationMode(); return { mode, inviteRequired: mode === 'invite' }; }
 
   async login(input: unknown, address = 'local') {
     const command = validate(credentialsSchema, input);

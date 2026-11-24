@@ -13,7 +13,7 @@ const directory = path.join(temporary, 'state'), registryPath = path.join(tempor
 const output = path.resolve(process.argv[2] ?? 'data/qa/textbook-chapters-runtime.json');
 const driver = process.argv[3] ?? 'sqlite';
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
   STUDY_TEXTBOOK_REGISTRY: registryPath, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');

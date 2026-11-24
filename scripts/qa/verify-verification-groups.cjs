@@ -15,7 +15,7 @@ const driver = process.argv[3] ?? 'sqlite';
 const verifyContentUpgrade = process.argv[4] === 'content-upgrade';
 const pointFilter = process.argv[5];
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false',
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false',
   // The full curriculum journey exceeds the aggregate loopback quota; per-user production quotas remain active.
   STUDY_RATE_LIMIT_IP_PER_MINUTE: '100000' });
 delete process.env.OPENAI_API_KEY;

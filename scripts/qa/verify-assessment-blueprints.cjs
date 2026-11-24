@@ -15,7 +15,7 @@ const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-blueprint-runtime
 const output = path.resolve(process.argv[2] ?? 'data/qa/assessment-blueprint-runtime.json');
 const driver = process.argv[3] ?? 'sqlite';
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY;
 const { AppModule } = require('../../apps/api/dist/apps/api/src/app.module.js');
 const { InMemoryStoreService } = require('../../apps/api/dist/apps/api/src/infrastructure/in-memory-store.service.js');

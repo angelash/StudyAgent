@@ -7,7 +7,7 @@ const { Pool } = require('pg'), { NestFactory } = require('@nestjs/core');
 const root = path.resolve(__dirname, '../..'), directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-material-coverage-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/material-coverage-runtime.json'), driver = process.argv[3] ?? 'sqlite';
 assert(['sqlite', 'postgres'].includes(driver));
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory, STUDY_WORKER_ENABLED: 'false' });
 delete process.env.OPENAI_API_KEY; delete process.env.STUDY_SEED_FOUNDATION;
 const from = file => require(path.join(root, 'apps/api/dist/apps/api/src', file));
 const { AppModule } = from('app.module.js'), { InMemoryStoreService } = from('infrastructure/in-memory-store.service.js');

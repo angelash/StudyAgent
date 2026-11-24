@@ -13,7 +13,7 @@ const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'study-gesp-loop-'));
 const output = path.resolve(process.argv[2] ?? 'data/qa/gesp-learning-loop.json');
 const driver = process.argv[3] ?? 'sqlite';
 if (!['sqlite', 'postgres'].includes(driver)) throw new Error('Expected sqlite or postgres');
-Object.assign(process.env, { NODE_ENV: 'production', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
+Object.assign(process.env, { NODE_ENV: 'production', STUDY_REGISTRATION: 'open', STUDY_STORAGE: 'sqlite', STUDY_DATA_DIR: directory,
   STUDY_WORKER_ENABLED: 'false', STUDY_RATE_LIMIT_IP_PER_MINUTE: '10000',
   // Production defaults keep student C++ execution off; this isolated QA run opts in explicitly.
   STUDY_GESP_CODE_RUNNER: 'enabled' });
