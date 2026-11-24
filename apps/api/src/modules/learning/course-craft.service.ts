@@ -11,6 +11,8 @@ import { generationDigest, newCourseGeneration } from './source-course-pipeline'
 import { sourceDigest, type SourceCourseRecord } from './source-course-content';
 import { materialVersion } from './source-course-selection';
 import { craftTaskKind, courseCraftPublic, type CourseCraftRecord } from './course-craft-record';
+import { DiagnosticsService } from '../diagnostics/diagnostics.service';
+import { readCraftDiagnosis, learnerResults } from './course-craft-diagnosis';
 
 export function craftAuthority(store:InMemoryStoreService,students:StudentsService,row:CourseCraftRecord) {
   const user=store.find('users',{id:row.ownerUserId,status:'active',role:row.authorization.role}),session=store.find('sessions',{userId:row.ownerUserId,tokenHash:row.authorization.sessionTokenHash});
@@ -20,11 +22,12 @@ export function craftAuthority(store:InMemoryStoreService,students:StudentsServi
 }
 @Injectable()
 export class CourseCraftService {
-  constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService,private readonly chat:XiaojiuChatService,private readonly models:XiaojiuModelsService){}
+  constructor(private readonly store:InMemoryStoreService,private readonly students:StudentsService,private readonly chat:XiaojiuChatService,private readonly models:XiaojiuModelsService,private readonly diagnostics:DiagnosticsService){}
   private record(user:InMemoryUserAccount,id:string){const row=this.store.find('courseCraftRuns',{id,ownerUserId:user.id});if(!row)throw new NotFoundException('这次课程生成不存在或无法访问');if(row.studentId)this.students.assertCanAccessStudent(user,row.studentId);return row;}
   private async view(row:CourseCraftRecord):Promise<CourseCraftView>{const result=courseCraftPublic(row),task=await this.store.tasks.get(row.taskId);
     if(!['building','completed','cancelled'].includes(row.status)&&task&&['failed','cancelled'].includes(task.state)) {result.status=task.state==='failed'?'failed':'cancelled';result.error=task.state==='failed'?'这次生成未完成，已保存来源和进度。可以重试。':null;}
-    if(row.courseId){const course=this.store.find('sourceCourses',{id:row.courseId,ownerUserId:row.ownerUserId});if(course){const work=course.taskId?await this.store.tasks.get(course.taskId):null;result.status=['ready','active','archived'].includes(course.status)?'completed':course.status==='cancelled'||work?.state==='cancelled'?'cancelled':work?.state==='failed'?'failed':'building';if(course.craft&&!course.craft.outlineConfirmed&&course.generation?.outline&&result.status!=='cancelled'&&result.status!=='failed'){result.status='awaiting_blueprint';result.blueprint={...course.generation.outline,fingerprint:generationDigest(course.generation.outline),lessons:course.generation.outline.lessons.map(({title,objective})=>({title,objective}))};}if(result.status==='failed')result.error='课程编写暂未完成，已写课时保留。可以从断点重试。';}}
+    if(row.courseId){const course=this.store.find('sourceCourses',{id:row.courseId,ownerUserId:row.ownerUserId});if(course){const work=course.taskId?await this.store.tasks.get(course.taskId):null;result.status=['ready','active','archived'].includes(course.status)?'completed':course.status==='cancelled'||work?.state==='cancelled'?'cancelled':work?.state==='failed'?'failed':'building';if(course.craft&&!course.craft.outlineConfirmed&&course.generation?.outline&&result.status!=='cancelled'&&result.status!=='failed'){result.status='awaiting_blueprint';result.blueprint={...course.generation.outline,fingerprint:generationDigest(course.generation.outline),lessons:course.generation.outline.lessons.map(({title,objective})=>({title,objective})),
+        ...learnerResults(course.craft.diagnosis)};}if(result.status==='failed')result.error='课程编写暂未完成，已写课时保留。可以从断点重试。';}}
     return result;}
   async list(user:InMemoryUserAccount){return Promise.all(this.store.select('courseCraftRuns',{ownerUserId:user.id}).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).slice(0,30).map(row=>this.view(row)));}
   async get(user:InMemoryUserAccount,id:string){return this.view(this.record(user,id));}
@@ -50,7 +53,9 @@ export class CourseCraftService {
       const course:SourceCourseRecord={id:this.store.nextId('source_course'),ownerUserId:user.id,studentId:row.studentId,subject:row.subject,audience:'按用户主题指定的学习者；档案年级与课程年级分开',targetGoals:[],
         input:{title:(row.title??row.prompt).slice(0,180),goal,language:'zh-CN',minutesPerSession:minutes,modelId:row.modelId,targetAtomIds:[]},
         sources:row.sources.map((source,index)=>({key:'src-1-'+(index+1),materialId,page:index+1,title:source.title+'（检索摘要）',kind:'text',text:source.content,blocks:[],sha256:material.sha256,version,fingerprint:sourceDigest(pages[index]),structureReviewRequired:false})),
-        craft:{runId:row.id,maxLessons,authorization:structuredClone(row.authorization),prompt:row.prompt,answers:structuredClone(command.answers),questions:structuredClone(row.questions),scale:command.scale,sources:structuredClone(row.sources)},
+        craft:{runId:row.id,maxLessons,authorization:structuredClone(row.authorization),prompt:row.prompt,answers:structuredClone(command.answers),
+          questions:structuredClone(row.questions),scale:command.scale,sources:structuredClone(row.sources),
+          diagnosis:readCraftDiagnosis(this.diagnostics,user,row.studentId,row.subject)},
         revision:0,status:'queued',taskId:this.store.nextId('task'),result:null,originalResult:null,edits:[],fingerprint:null,modelName:row.modelName,confirmedAt:null,createdAt:now,updatedAt:now,requests:[]};
       course.generation=newCourseGeneration(course,'creation');this.store.append('sourceCourses',course);await this.store.enqueueTask({id:course.taskId!,kind:'learning.source-course.generate',ownerUserId:user.id,requestKey:'craft-course:'+row.id,payloadHash:sourceDigest({courseId:course.id}),payload:{courseId:course.id},createdAt:now,maxAttempts:2});
       row.courseId=course.id;row.status='building';row.revision++;row.updatedAt=now;row.commands.push({key:command.requestKey,hash,kind:'answer'});return this.view(row);

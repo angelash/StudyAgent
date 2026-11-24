@@ -1,5 +1,13 @@
-import { classroomPracticeSummary,type ClassroomLesson,type ClassroomSession,type CourseProject,type CourseProjectDefinition,type CourseLessonActivity,type CourseProjectActivity } from '@study-agent/contracts';
+import { classroomPracticeSummary,objectiveEstimate,type ClassroomLesson,type ClassroomSession,type CourseProject } from '@study-agent/contracts';
+import type { CourseProjectDefinition,CourseLessonActivity,CourseProjectActivity,SourceCourseJourney } from '@study-agent/contracts';
 import { classroomFingerprint,classroomTeachingFingerprint } from './classroom-curriculum';
+
+/** Lesson activity plus the estimate tier per lesson objective, from the same first answers. */
+export function sourceJourney(lessons:ClassroomLesson[],sessions:ClassroomSession[],projects:CourseProjectActivity[],unitCheck:SourceCourseJourney['unitCheck']):SourceCourseJourney{
+  const activities=lessons.map(lesson=>lessonActivity(lesson,sessions));
+  const objectives=lessons.map((lesson,index)=>objectiveEstimate(lesson.id,lesson.objective,activities[index].practice.summary));
+  return{lessons:activities,projects,unitCheck,objectives};
+}
 
 /** Pure read projection. The caller must supply only authorized owner records. */
 export function lessonActivity(lesson:ClassroomLesson,sessions:ClassroomSession[],kind:CourseLessonActivity['kind']='lecture'):CourseLessonActivity{

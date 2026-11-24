@@ -88,6 +88,18 @@ describe('source-backed courses, real durable tasks and frozen classroom evidenc
     current=await call('get',base+'/'+draft.id);expect(current.lessons).toEqual([]);expect(current.task.state).toBe('cancelled');
     current=await call('post',base+'/'+draft.id+'/retry',{expectedRevision:current.revision,expectedTaskVersion:current.task.version,requestKey:randomUUID()});expect(current.task.generation).toBe(2);const retryModel=model();await worker.runNext();retryModel.mockRestore();expect((await call('get',base+'/'+draft.id)).status).toBe('ready');
   });
+  it('shows per-objective estimates from a learner first answers and writes nothing to formal measurement',async()=>{
+    const {row}=await ready(true),active=await confirm(row),before=await store.requestContext(()=>store.select('diagnosticResponses',{studentId}).length);
+    const fresh=await call('get',base+'/'+active.id,undefined,learner);expect(fresh.formalMeasurementEligible).toBe(false);
+    expect(fresh.journey.objectives).toHaveLength(fresh.lessons.length);expect(fresh.journey.objectives.every((item:any)=>item.tier==='estimate'&&item.status==='not_attempted')).toBe(true);
+    const lesson=fresh.lessons[0],session=await call('post','/learning/classroom/sessions',{sourceCourseId:active.id,lessonId:lesson.id},learner);
+    for(const question of session.lesson.questions)await call('post','/learning/classroom/sessions/'+session.id+'/answers',{questionId:question.id,selectedIndex:0,hintUsed:false,requestKey:randomUUID()},learner);
+    const after=await call('get',base+'/'+active.id,undefined,learner),estimate=after.journey.objectives[0];
+    expect(estimate).toMatchObject({lessonId:lesson.id,objective:lesson.objective,tier:'estimate',answered:session.lesson.questions.length,total:session.lesson.questions.length});
+    expect(estimate.status).toBe(session.lesson.questions.length<3?'insufficient':estimate.ratio>=0.75?'likely_met':'needs_practice');
+    expect(estimate).not.toHaveProperty('mastery');expect(after.journey.objectives.slice(1).every((item:any)=>item.status==='not_attempted')).toBe(true);
+    await store.requestContext(()=>expect(store.select('diagnosticResponses',{studentId}).length).toBe(before));
+  });
   it('lets a child learn a parent-confirmed course and denies publishing after guardian access is revoked',async()=>{
     const {row}=await ready(true);await call('get',base+'/'+row.id,undefined,learner,403);const active=await confirm(row);
     const childView=await call('get',base+'/'+active.id,undefined,learner);expect(childView.permissions.manage).toBe(false);

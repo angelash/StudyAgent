@@ -759,6 +759,7 @@ export * from './paper-review';
 export * from './assistant-turn';
 export * from './project-teaching';
 export * from './course-journey';
+export * from './objective-estimate';
 export * from './source-course-check';
 export * from './whiteboard-speech';
 export * from './topic-whiteboard';

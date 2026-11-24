@@ -1,0 +1,12 @@
+/* 232 §3.3 estimate tier on the AI course page. Visually separate from formal measurement. */
+.sc-objective-estimates { grid-column: 1 / -1; border: 1px dashed var(--study-line); border-radius: 14px; background: #fbfcfd; padding: 22px; margin: 0 0 24px; color: var(--study-ink); }
+.sc-objective-estimates header small { color: var(--study-muted); letter-spacing: .06em; font-size: 11px; }
+.sc-objective-estimates header h3 { margin: 4px 0 6px; font-size: 16px; }
+.sc-objective-estimates header p { margin: 0 0 14px; color: var(--study-muted); font-size: 13px; line-height: 1.7; }
+.sc-objective-estimates ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sc-objective-estimates li { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; border-top: 1px solid var(--study-line); padding-top: 8px; }
+.sc-objective-estimates li > div { display: grid; gap: 2px; min-width: 0; }
+.sc-objective-estimates li > div span, .sc-objective-estimates li small { color: var(--study-muted); font-size: 12px; overflow-wrap: anywhere; }
+.sc-objective-estimates li strong { font-size: 13px; font-weight: 500; color: var(--study-accent); }
+.sc-objective-estimates li[data-status="not_attempted"] strong, .sc-objective-estimates li[data-status="insufficient"] strong { color: var(--study-muted); }
+.sc-objective-estimates li small { grid-column: 1 / -1; }

@@ -6,6 +6,7 @@ import { sourceCourseContentSchema as generatedCourseSchema, compiledSourceCours
 import type { ClassroomLesson, ClassroomStep, CourseSourceSnapshot, SourceCourseInput, StudioSubject } from '@study-agent/contracts';
 import type { SourceCourseGenerationState } from './source-course-pipeline';
 import type { CompilationState } from './source-course-compilation';
+import type { CraftDiagnosisSummary } from './course-craft-diagnosis';
 import { compileSourceChunks,chunkSource } from './source-course-chunks';
 
 export { sourceCourseLessonContentSchema as generatedLessonSchema, sourceCourseContentSchema as generatedCourseSchema } from '@study-agent/contracts';
@@ -20,7 +21,9 @@ export type SourceCourseRecord = { id: string; ownerUserId: string; studentId: s
   input: SourceCourseInput; sources: CourseSourceSnapshot[]; revision: number;
   generation?: SourceCourseGenerationState;
   compilation?: CompilationState;
-  craft?: {runId:string;maxLessons:number;outlineConfirmed?:boolean;adjustments?:string[];authorization:TopicWhiteboardAuthorization;prompt:string;questions:CourseCraftQuestion[];answers:CourseCraftAnswer['answers'];scale:CourseCraftAnswer['scale'];sources:CourseCraftSource[]};
+  craft?: {runId:string;maxLessons:number;outlineConfirmed?:boolean;adjustments?:string[];authorization:TopicWhiteboardAuthorization;prompt:string;questions:CourseCraftQuestion[];answers:CourseCraftAnswer['answers'];scale:CourseCraftAnswer['scale'];sources:CourseCraftSource[];
+    /** Set only on courses created after 232 block 5; absent on older ones so their checkpoints stay valid. */
+    diagnosis?:CraftDiagnosisSummary|null};
   lessonIds?: string[];
   versioning?: SourceCourseVersioning;
   status: 'queued' | 'generating' | 'ready' | 'failed' | 'cancelled' | 'active' | 'archived'; taskId: string | null;
@@ -37,7 +40,8 @@ export function sourceCourseVersioningView(row:Pick<SourceCourseRecord,'ownerUse
 }
 export const sourceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export function sourceCourseModelContext(row:SourceCourseRecord){return JSON.stringify({goal:row.input.goal,title:row.input.title,language:row.input.language,minutesPerSession:row.input.minutesPerSession,
-  ...(row.craft?{topic:row.craft.prompt,preferences:{questions:row.craft.questions,answers:row.craft.answers,scale:row.craft.scale,maxLessons:row.craft.maxLessons,adjustments:row.craft.adjustments??[]},sourceNotice:"网络检索摘要，不是完整教材正文。按主题指定年级，不改变学习档案。"}:{}),
+  ...(row.craft?{topic:row.craft.prompt,preferences:{questions:row.craft.questions,answers:row.craft.answers,scale:row.craft.scale,maxLessons:row.craft.maxLessons,adjustments:row.craft.adjustments??[]},sourceNotice:"网络检索摘要，不是完整教材正文。按主题指定年级，不改变学习档案。",
+    ...(row.craft.diagnosis?{learnerResults:row.craft.diagnosis}:{})}:{}),
   audience:row.audience,targetGoals:row.targetGoals,sources:row.sources.map(source=>({sourceKey:source.key,title:source.title,page:source.page,text:source.text}))});}
 const normalized = (value: string) => value.replace(/\s+/gu,' ').trim();
 export function checkGeneratedCourse(raw: unknown, sources: CourseSourceSnapshot[],maximum:number=6): GeneratedSourceCourse {

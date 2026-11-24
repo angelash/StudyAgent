@@ -20,5 +20,7 @@ export type CourseCraftView = { id: string; prompt: string; modelId: string; mod
   subject: string | null; revision: number; status: 'queued'|'researching'|'questioning'|'awaiting_answers'|'awaiting_blueprint'|'building'|'completed'|'failed'|'cancelled';
   title: string | null; overview: string | null; sources: CourseCraftSource[]; questions: CourseCraftQuestion[];
   answers: CourseCraftAnswer['answers'] | null; scale: CourseCraftAnswer['scale'] | null;
-  blueprint?: { fingerprint:string; title:string; overview:string; scopeNote:string; units?:Array<{title:string;objective:string;lessonIndices:number[]}>; lessons:Array<{title:string;objective:string}> };
+  blueprint?: { fingerprint:string; title:string; overview:string; scopeNote:string; units?:Array<{title:string;objective:string;lessonIndices:number[]}>; lessons:Array<{title:string;objective:string}>;
+    /** Formal results the blueprint was planned from: atom names by status only. Absent when nothing was measured. */
+    learnerResults?: { measuredAt:string; secure:string[]; fragile:string[]; learning:string[]; notice:string } };
   courseId: string | null; error: string | null; createdAt: string; updatedAt: string };

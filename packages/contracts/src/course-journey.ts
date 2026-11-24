@@ -1,4 +1,5 @@
 import type { ClassroomPracticeSummary } from './classroom';
+import type { ObjectiveEstimate } from './objective-estimate';
 export type CourseLessonActivity={lessonId:string;kind:'lecture'|'unit_check';
   reading:{state:'not_started'|'reading'|'read';sessionId:string|null;cursor:number;sentenceCursor:number;resuming:boolean;contentCurrent:boolean};
   practice:{state:'not_started'|'in_progress'|'answered';sessionId:string|null;summary:ClassroomPracticeSummary}};
@@ -8,4 +9,6 @@ export type SourceCourseUnitCheckActivity={current:{checkId:string;definitionFin
   targets:Array<{lessonId:string;title:string;objective:string}>;questionCount:number;activity:CourseLessonActivity;
   contentReview:'pending';formalMeasurementEligible:false}|null;
   archived:Array<{checkId:string;definitionFingerprint:string;sessionId:string;lessonId:string;title:string;summary:ClassroomPracticeSummary;updatedAt:string}>};
-export type SourceCourseJourney={lessons:CourseLessonActivity[];projects:CourseProjectActivity[];unitCheck:'not_configured'|SourceCourseUnitCheckActivity};
+export type SourceCourseJourney={lessons:CourseLessonActivity[];projects:CourseProjectActivity[];unitCheck:'not_configured'|SourceCourseUnitCheckActivity;
+  /** Estimate tier only (232 §3.3); never formal mastery. */
+  objectives?:ObjectiveEstimate[]};

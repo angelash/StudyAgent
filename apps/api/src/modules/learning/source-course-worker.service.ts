@@ -65,7 +65,7 @@ export class SourceCourseWorkerService implements OnApplicationBootstrap,OnModul
         const selected=this.catalog.resolve(row.generation.modelId??row.generation.input.modelId);row.generation.modelId=selected.id;row.generation.modelName??=selected.label;
         if(row.status==='queued')row.revision++;row.status='generating';});
       if(!snapshot.generation!.outline){
-        const response=await this.chat.structured(this.request(snapshot,abort.signal,(snapshot.craft?`按用户所选规模规划课程，轻量12至20节、标准30至50节、系统50至60节；简单主题可减少并在scopeNote说明理由。最多${snapshot.craft.maxLessons}节，按依赖递进，基础熟练项可略讲。units写单元标题、目标和从0开始的lessonIndices，每课恰好归属一个单元。`:'先规划1至6节短课。')+'每课写明确目标、重点和来源键。每个选中来源必须编入至少一课，或者在uncoveredSourceKeys中列出并用scopeNote解释缺口。scopeNote只描述知识范围和未涵盖内容，尽量100至250字符，不重复模型、编写或审核流程。只规划路线，不返回完整讲稿或答案。',
+        const response=await this.chat.structured(this.request(snapshot,abort.signal,(snapshot.craft?`按用户所选规模规划课程，轻量12至20节、标准30至50节、系统50至60节；简单主题可减少并在scopeNote说明理由。最多${snapshot.craft.maxLessons}节，按依赖递进，基础熟练项可略讲。units写单元标题、目标和从0开始的lessonIndices，每课恰好归属一个单元。${snapshot.craft.diagnosis?'上下文learnerResults是学习者已审核知识点的正式测量：稳固的可略讲或合并，不稳固和学习中的安排复习与前置；未列出的知识点没有证据，不得当作薄弱，也不得在课程中给学习者下结论。':''}`:'先规划1至6节短课。')+'每课写明确目标、重点和来源键。每个选中来源必须编入至少一课，或者在uncoveredSourceKeys中列出并用scopeNote解释缺口。scopeNote只描述知识范围和未涵盖内容，尽量100至250字符，不重复模型、编写或审核流程。只规划路线，不返回完整讲稿或答案。',
           {stage:'outline',instruction:'生成供后续逐课编写的课程路线。'}),outlineJsonFor(snapshot),value=>checkCourseOutline(value,snapshot));
         if(response.modelId!==snapshot.generation!.modelId)throw new Error('course_model_changed');
         const{modelId:_modelId,modelName,...outline}=response;
