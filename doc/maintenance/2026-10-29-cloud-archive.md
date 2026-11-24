@@ -1,6 +1,6 @@
 # 教材试卷云备份与研究资料归位
 
-状态：云端上传与分层回读完成；I/E 旧副本和临时 staging 已删除。最终回执见 [执行记录](../../data/maintenance/2026-10-29-cloud-archive/README.md) 中的 `local-retirement-receipt.json`、`relocation-source-retirement.json` 和 `cloud-staging-retirement.json`。
+状态：云端上传与分层回读完成；I/E 旧副本和临时 staging 已删除。最终回执见 执行记录 `data/maintenance/2026-10-29-cloud-archive/README.md`（本机私有，不入库） 中的 `local-retirement-receipt.json`、`relocation-source-retirement.json` 和 `cloud-staging-retirement.json`。
 
 本轮按用户要求，将已保存的教材、试卷、题图、GESP、教学参考、教育应用教材及恢复索引备份到百度网盘 `/StudyAgent资料备份/2026-10-29/`。使用账号级百度网盘技能的 `BaiduPCS-Go v4.0.2` 接口，未使用网页或桌面操作。
 

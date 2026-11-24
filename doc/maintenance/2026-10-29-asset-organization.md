@@ -77,7 +77,7 @@ I: 的价值是 **Kingston 独立物理硬盘上的恢复副本**，并非主体
 - 编译后 API 在隔离 HTTP 验证中返回 **410**，没有创建任务；首轮测试夹具事务使用错误与后续修正分别留存，没有覆盖失败记录。
 - 原 32,542 个归并对象中：**5,196 个由 Git 保存、37 个保留本地、27,309 个旧 QA 对象按授权删除**。不可恢复的对象明确标记为 `deleted` 并绑定删除收据；工具不会再把它们宣称为可恢复。原始来源清单继续保留。
 
-当前目录入口：[data/README.md](../../data/README.md)、[assets/README.md](../../data/assets/README.md)、[归并分类入口](../../data/maintenance/2026-10-29-consolidation/objects/CATALOG.md)。本轮证据位于 `data/maintenance/2026-10-29-authorized-cleanup/`，主要文件为 `delete-plan.json`、`deletion-receipt.jsonl`、`verification.json`、`textbook-*-final.json`、`recovery-point-verification.json`、`independent-backup-after.json` 和 `backup-overlap-summary.json`。全量当前目录扫描保存于 I: 当前恢复点的 `verification/`。
+当前目录入口：[data/README.md](../../data/README.md)、[assets/README.md](../../data/assets/README.md)、归并分类入口 `data/maintenance/2026-10-29-consolidation/objects/CATALOG.md`（本机私有，不入库）。本轮证据位于 `data/maintenance/2026-10-29-authorized-cleanup/`，主要文件为 `delete-plan.json`、`deletion-receipt.jsonl`、`verification.json`、`textbook-*-final.json`、`recovery-point-verification.json`、`independent-backup-after.json` 和 `backup-overlap-summary.json`。全量当前目录扫描保存于 I: 当前恢复点的 `verification/`。
 
 ## 自动审批拦截的辅助清理
 

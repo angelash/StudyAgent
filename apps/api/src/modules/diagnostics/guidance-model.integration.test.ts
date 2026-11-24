@@ -38,7 +38,7 @@ describe('durable parent guidance suggestions and immutable rule actions',()=>{
     baseline=await call('post','/diagnostics/sessions',{studentId,subject:'math',intent:'baseline',targetAtomIds:[atom],includePrerequisites:false,maxItems:4});
     for(const item of baseline.items)await call('post','/diagnostics/sessions/'+baseline.id+'/responses',{itemId:item.id,disposition:'skip',elapsedMs:100});
     await call('post','/diagnostics/sessions/'+baseline.id+'/complete',{});
-  },60000);
+  },180000); // Seeds the full foundation on PostgreSQL; CI runners vary about twofold.
   afterAll(async()=>{releaseModel?.();await app?.close();vi.restoreAllMocks();if(pg){if(!/^study_qa_guidance_[a-f0-9]{32}$/.test(schema??''))throw Error('Unsafe guidance schema');await pg.query('DROP SCHEMA \"'+schema+'\" CASCADE');await pg.end();}for(const[name,value]of Object.entries(prior)){if(value===undefined)delete process.env[name];else process.env[name]=value;}
     if(!resolve(directory).startsWith(resolve(tmpdir())+sep))throw Error('Unsafe guidance QA directory');rmSync(directory,{recursive:true,force:true});});
   const prefix=(id:string)=>'/diagnostics/plans/'+id+'/model-suggestions';
