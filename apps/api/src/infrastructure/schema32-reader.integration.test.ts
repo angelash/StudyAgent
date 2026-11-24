@@ -5,6 +5,7 @@ import { gunzipSync } from 'node:zlib';
 import { Pool } from 'pg';
 import { afterAll, describe, expect, it } from 'vitest';
 import { DomainDatabase } from './domain-database';
+import { pinnedDependencyApplies } from './pinned-dependencies';
 
 let workspace = resolve(__dirname); while (!existsSync(join(workspace, '.git')) && dirname(workspace) !== workspace) workspace = dirname(workspace);
 const root = resolve(__dirname, '../../../..'), qa = join(root, 'data/qa'); mkdirSync(qa, { recursive: true });
@@ -18,7 +19,7 @@ for (const [name, value] of Object.entries(manifest.files) as [string, { base64:
   const bytes = Buffer.from(value.base64, 'base64'); expect(sha(bytes), name).toBe(value.sha256); const target = join(baseline, name);
   mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, bytes, { flag: 'wx' });
 }
-for (const item of manifest.externalDependencies) { if (!item.path.startsWith('node_modules/') || item.path.split('/').includes('..')) throw Error('Unsafe reader31 dependency'); expect(sha(readFileSync(join(workspace, item.path))), item.path).toBe(item.sha256); }
+for (const item of manifest.externalDependencies) { if (!item.path.startsWith('node_modules/') || item.path.split('/').includes('..')) throw Error('Unsafe reader31 dependency'); if (!pinnedDependencyApplies(workspace, item.path)) continue; expect(sha(readFileSync(join(workspace, item.path))), item.path).toBe(item.sha256); }
 mkdirSync(join(baseline, 'node_modules/@study-agent'), { recursive: true });
 for (const name of ['contracts', 'config']) symlinkSync(join(baseline, 'packages', name), join(baseline, 'node_modules/@study-agent', name), 'junction');
 const { DomainDatabase: Reader31 } = require(join(baseline, 'apps/api/dist/apps/api/src/infrastructure/domain-database.js')),

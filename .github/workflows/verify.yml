@@ -155,6 +155,12 @@ jobs:
         env:
           PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: '60000'
         run: npx playwright install --with-deps chromium
+      # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor, so the GESP C++ sandbox
+      # (unshare --user --map-root-user) cannot start. Allow them on this disposable runner only.
+      - name: Allow user namespaces for the GESP runner sandbox
+        run: |
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+          unshare --user --map-root-user --mount --pid --fork --net --uts --ipc true && echo "user namespaces available"
       - name: Browser product journey at phone, tablet and desktop widths (shard ${{ matrix.shard }}/4)
         run: npm run test:e2e -- --shard ${{ matrix.shard }}/4
       - name: Preserve browser reports and original traces

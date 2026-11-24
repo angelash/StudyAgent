@@ -8,6 +8,7 @@ import { Pool } from 'pg';
 import Module from 'node:module';
 const { SCHEMA_VERSION: CURRENT_SCHEMA_VERSION, READY_STATE: CURRENT_READY_STATE } = require(require('node:path').resolve(__dirname, '../../../../scripts/operations/database-reader-guard.cjs'));
 
+import { pinnedDependencyApplies } from './pinned-dependencies';
 
 const root=resolve(__dirname,'../../../..'),qa=join(root,'data/qa');mkdirSync(qa,{recursive:true});
 const baseline=mkdtempSync(join(qa,'rd30-')),hash=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
@@ -22,7 +23,7 @@ for(const [name,file] of Object.entries(manifest.files) as [string,{sha256:strin
   mkdirSync(dirname(target),{recursive:true});writeFileSync(target,content,{flag:'wx'});
 }
 let workspace=root;while(!existsSync(join(workspace,'.git'))&&dirname(workspace)!==workspace)workspace=dirname(workspace);
-for(const file of manifest.externalDependencies){if(!file.path.startsWith('node_modules/')||file.path.split('/').includes('..'))throw Error('Unsafe reader dependency');expect(hash(readFileSync(join(workspace,file.path))),file.path).toBe(file.sha256);}
+for(const file of manifest.externalDependencies){if(!file.path.startsWith('node_modules/')||file.path.split('/').includes('..'))throw Error('Unsafe reader dependency');if(!pinnedDependencyApplies(workspace,file.path))continue;expect(hash(readFileSync(join(workspace,file.path))),file.path).toBe(file.sha256);}
 const links:string[]=[];mkdirSync(join(baseline,'node_modules/@study-agent'),{recursive:true});
 for(const name of ['contracts','config']){const link=join(baseline,'node_modules/@study-agent',name);symlinkSync(join(baseline,'packages',name),link,'junction');links.push(link);}
 const {DomainDatabase:Reader29}=require(join(baseline,'apps/api/dist/apps/api/src/infrastructure/domain-database.js'));

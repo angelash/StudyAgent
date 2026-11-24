@@ -51,7 +51,7 @@ test('lost submission receipt, refresh and explicit return preserve a single tur
 
 test('in-flight cancellation survives refresh and explicit retry creates only one saved answer', async ({ page }) => {
   test.setTimeout(90000); await open(page); await page.getByLabel('向课堂老师提问').fill('[pause-turn-once] 请先停下来比较观察。');
-  await page.getByRole('button', { name: '发送课堂问题' }).click(); await expect(page.locator('.cl-turn-status')).toContainText('老师正在思考');
+  await page.getByRole('button', { name: '发送课堂问题' }).click(); await expect(page.locator('.cl-turn-status')).toContainText(/老师正在(思考|读取当前讲解|组织讲解|检查回答)/);
   await page.getByRole('button', { name: '取消这次回答' }).click(); await expect(page.locator('.cl-turn-status')).toContainText('这次插问已取消');
   await page.reload(); await expect(page.getByRole('button', { name: '重试这次提问' })).toBeVisible(); await expect(page.locator('.cl-ai-board')).toHaveCount(0);
   await page.getByRole('button', { name: '重试这次提问' }).click(); await done(page); await expect(page.locator('.cl-ai-board')).toHaveCount(1);

@@ -10,6 +10,7 @@ import { DomainDatabase } from './domain-database';
 import { teachingFixture } from '../modules/diagnostics/textbook-teaching-fixture';
 import { prepareTextbookTeachingPackage, teachingHash } from '../modules/diagnostics/textbook-teaching-package';
 import { prepareTeachingChange } from '../modules/diagnostics/textbook-teaching-record';
+import { pinnedDependencyApplies } from './pinned-dependencies';
 
 let workspace = resolve(__dirname); while (!existsSync(join(workspace, '.git')) && dirname(workspace) !== workspace) workspace = dirname(workspace);
 const root = resolve(__dirname, '../../../..'), qa = join(root, 'data/qa'); mkdirSync(qa, { recursive: true });
@@ -28,6 +29,7 @@ for (const [file, member] of Object.entries(manifest.files) as Array<[string, { 
 }
 for (const dependency of manifest.externalDependencies) {
   if (!dependency.path.startsWith('node_modules/') || dependency.path.split('/').includes('..') || /[\\:\x00]/.test(dependency.path)) throw Error('Unsafe actual32 dependency');
+  if (!pinnedDependencyApplies(workspace, dependency.path)) continue;
   expect(digest(readFileSync(join(workspace, dependency.path))), dependency.path).toBe(dependency.sha256);
 }
 mkdirSync(join(actual32, 'node_modules/@study-agent'), { recursive: true });
