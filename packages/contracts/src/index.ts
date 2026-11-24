@@ -60,6 +60,8 @@ export const studentProfileSchema = z.object({
     chemistry: z.string().optional(),
   }),
   preferredSessionMinutes: z.number().int().positive(),
+  /** 232 §4.3. Absent means minor; only an explicit false relaxes the stricter AI output checks. */
+  minor: z.boolean().optional(),
 });
 
 export type StudentProfile = z.infer<typeof studentProfileSchema>;

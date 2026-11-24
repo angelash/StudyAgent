@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { classroomTurnIntents, type ClassroomSessionView, type ClassroomTurnCommand, type ClassroomTurnIntent, type ClassroomTurnView } from '@study-agent/contracts';
+import { classroomTurnIntents, classroomTurnStageLabels, type ClassroomSessionView, type ClassroomTurnCommand, type ClassroomTurnIntent, type ClassroomTurnView } from '@study-agent/contracts';
 import { apiRequest } from '../../../lib/api';
 
 const active = (turn: ClassroomTurnView | null) => Boolean(turn && ['queued', 'running', 'cancelling'].includes(turn.status));
@@ -80,7 +80,9 @@ export function ClassroomTurnStatus({ state, onReturn, onEdit }: { state: Return
     {uncertain && <section><b>找回刚才的提问</b><p>{uncertain.message}</p><small>网络回执可能丢失，找回时会沿用同一次提问。</small><div>
       <button type="button" disabled={working} onClick={() => void state.send(uncertain)}>找回这次提问</button>
       <button type="button" disabled={working} onClick={() => { onEdit(uncertain); state.discard(); }}>保留文字，修改提问</button></div></section>}
-    {turn && <section data-status={turn.status}><b>{labels[turn.status]}</b><p>{turn.message}</p><small>{turn.modelName} · {turn.position.stepTitle} · 第 {turn.position.sentenceCursor + 1} 句</small>
+    {turn && <section data-status={turn.status}>
+      <b>{turn.status === 'running' && turn.stage ? '老师正在' + classroomTurnStageLabels[turn.stage] : labels[turn.status]}</b>
+      <p>{turn.message}</p><small>{turn.modelName} · {turn.position.stepTitle} · 第 {turn.position.sentenceCursor + 1} 句</small>
       <div>{state.active && turn.status !== 'cancelling' && <button type="button" disabled={working} onClick={() => void state.control('cancel')}>取消这次回答</button>}
         {['failed', 'cancelled'].includes(turn.status) && <button type="button" disabled={working || state.active} onClick={() => void state.control('retry')}>重试这次提问</button>}
         {turn.status === 'completed' && <button type="button" disabled={working} onClick={() => onReturn(turn)}>回到原句继续</button>}</div>

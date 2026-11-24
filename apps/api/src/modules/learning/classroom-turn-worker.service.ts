@@ -3,7 +3,8 @@ import { RetentionService } from '../diagnostics/retention.service';
 import { InMemoryStoreService } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
-import { inspectTeachingOutput } from '../ai/teaching-output-policy';
+import { guardTeachingOutput } from '../ai/teaching-output-guard';
+import { learnerAudience } from '../ai/learner-audience';
 import { freezeSpeechTrack } from './classroom-presentation';
 import { classroomTurnKind, turnAuthority } from './classroom-turn.service';
 
@@ -55,17 +56,21 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
         turnAuthority(this.store, this.students, turn);
         turn.status = 'running'; turn.revision++; turn.updatedAt = new Date().toISOString();
         return structuredClone(turn);
-      }, { ...fence, mode: 'checkpoint', progress: { stage: 'replying' } });
+      }, { ...fence, mode: 'checkpoint', progress: { stage: 'reading' } });
+      // 232 §5.1: visible steps on the existing task progress field; no new stored records.
+      await this.store.tasks.heartbeat(task.id, task.leaseToken!, { stage: 'explaining' });
       const response = await this.chat.reply({ modelId: snapshot.modelId, signal: abort.signal, classroomBoard: true, classroomPresentation: true,
         system: '你是课堂陪伴老师。仅根据提供的已展示讲解解释概念。' + teachingModes[snapshot.intent] +
           '不替学生选择选项，不泄露或推断标准答案。题目只用于引导思路。不声称已掌握、已发现深层问题或已完成测量。板书提炼要点。不要HTML、脚本或工具调用。',
         context: snapshot.context, history: snapshot.history, message: snapshot.message });
       if (abort.signal.aborted) throw new Error('turn_stopped');
-      // Learner-facing replies pass the same teaching output policy as assistant replies;
+      await this.store.tasks.heartbeat(task.id, task.leaseToken!, { stage: 'checking' });
+      // Learner-facing replies pass the same teaching output checks as assistant replies, stricter for a minor profile;
       // a withheld reply is never stored and the turn fails for an explicit retry.
-      const inspection = inspectTeachingOutput([response.reply, response.board ? JSON.stringify(response.board) : ''].join('\n'));
+      const audience = await this.store.requestContext(() => learnerAudience(this.store, snapshot.studentId));
+      const inspection = guardTeachingOutput({ reply: response.reply, board: response.board ?? null }, audience);
       if (!inspection.allowed) {
-        this.logger.warn(`Classroom reply withheld by teaching output policy ${inspection.version}: ${inspection.reason}`);
+        this.logger.warn(`Classroom reply withheld by teaching output guard ${inspection.version}: ${inspection.reason}`);
         throw new Error('turn_policy_withheld');
       }
       await this.store.transaction(() => {

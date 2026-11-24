@@ -9,6 +9,8 @@ import { whiteboardQuestionTaskKind } from './whiteboard-question-record';
 import { parseWhiteboardQuestionTeaching, whiteboardAnswerFingerprint, whiteboardQuestionTeachingSchema } from './whiteboard-question-teaching';
 import { verifySpeechTrack } from './classroom-presentation';
 import { classroomBoardProgress } from '@study-agent/contracts';
+import { assertTeachingOutput } from '../ai/teaching-output-guard';
+import { learnerAudience } from '../ai/learner-audience';
 
 const intents = {
   question: '先明确当前疑问，再用原句和已讲内容解释，最后提出一个可核查的小步骤。',
@@ -86,6 +88,7 @@ export class WhiteboardQuestionWorkerService implements OnApplicationBootstrap, 
         const checked = parseWhiteboardQuestionReply(turn.prepared, { reply: response.reply, anchors: response.anchors.map(anchor => anchor.id) });
         verifySpeechTrack(checked.reply, response.speech, 'speech-v2');
         if (classroomBoardProgress(response.board, response.speech).mode !== 'verified') throw Error('whiteboard_question_board_changed');
+        assertTeachingOutput({ reply: checked.reply, board: response.board }, learnerAudience(this.store, turn.studentId), 'whiteboard_question_output_withheld');
         const now = new Date().toISOString();
         turn.reply = { text: checked.reply, anchors: checked.anchors, modelId: response.modelId, modelName: response.modelName, createdAt: now,
           board: structuredClone(response.board), speech: structuredClone(response.speech) };

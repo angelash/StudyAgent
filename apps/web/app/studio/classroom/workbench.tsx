@@ -475,15 +475,16 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
       if (last && value.status !== 'completed') setAward(true);
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
-  async function ask(event: React.FormEvent) {
-    event.preventDefault(); if (!question.trim() || busy || !turns.loaded) return;
+  async function ask(event: React.FormEvent) { event.preventDefault(); await askQuestion(question); }
+  async function askQuestion(text: string) {
+    if (!text.trim() || busy || !turns.loaded) return;
     pause(); following.current = true; setBusy(true); setNotice('');
     try {
       await revisionQueue.current;
       if (row.current.revealed <= row.current.cursor) await save({ revealed: row.current.cursor + 1 });
       const latest = row.current, step = latest.lesson.steps[latest.cursor], unit = classroomStepUnits(latest, step)[latest.sentenceCursor ?? 0];
       const previous = turns.uncertain;
-      const command = { message: question.trim(), modelId, intent, ...(standalonePractice && questionItem ? { questionId: questionItem.id } : {}),
+      const command = { message: text.trim(), modelId, intent, ...(standalonePractice && questionItem ? { questionId: questionItem.id } : {}),
         contentFingerprint: latest.contentFingerprint, stepId: step.id, sentenceCursor: latest.sentenceCursor ?? 0,
         presentationVersion: latest.presentation!.version, unitId: unit.id };
       const same = previous && Object.entries(command).every(([key,value]) => previous[key as keyof typeof previous] === value) && previous.questionId === command.questionId;
@@ -520,16 +521,19 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
         method: 'POST', body: JSON.stringify({ questionId, level, requestKey: crypto.randomUUID() }) }));
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
-  function microphone() {
+  // 232 §5.2 voice barge-in: speaking stops narration at once; the recogniser stays alive and the spoken question is sent
+  // without another click. Browser recognition only; when it is unavailable the text box is the fallback.
+  function microphone(sendWhenDone = true) {
     if (listening) { recognition.current?.stop(); return; }
     pause();
     const host = window as unknown as { SpeechRecognition?: new () => SpeechRecognitionSession; webkitSpeechRecognition?: new () => SpeechRecognitionSession };
     const Constructor = host.SpeechRecognition ?? host.webkitSpeechRecognition;
     if (!Constructor) { setNotice('当前浏览器不支持语音转写，请直接输入问题。'); return; }
     const listener = new Constructor(); recognition.current = listener; listener.lang = 'zh-CN'; listener.interimResults = false; listener.continuous = false;
-    listener.onresult = event => { setQuestion(Array.from(event.results).map(result => result[0].transcript).join('')); setListening(false); };
+    listener.onresult = event => { const spoken = Array.from(event.results).map(result => result[0].transcript).join(''); setQuestion(spoken); setListening(false);
+      if (sendWhenDone && spoken.trim()) void askQuestion(spoken); };
     listener.onerror = event => { setListening(false); setNotice('语音输入未完成：' + event.error + '。可继续使用文字输入。'); };
-    listener.onend = () => setListening(false); listener.start(); setListening(true);
+    listener.onend = () => setListening(false); listener.start(); setListening(true); setNotice('正在听你提问，讲解已暂停。');
   }
   async function exportNotes(format: 'auto'|'markdown' = 'auto') {
     const source = ['# ' + lesson.title, '\n' + lesson.objective, ...lesson.steps.slice(0, session.revealed).map(step => '\n## ' + step.title + '\n\n' + step.blocks.filter(block => block.kind !== 'heading').map(block => block.items?.map(point => '- ' + point).join('\n') ?? (block.table ? [block.table.headers.join(' | '), ...block.table.rows.map(cells => cells.join(' | '))].join('\n') : block.image ? '![' + block.image.alt + '](' + block.image.src + ')' : block.math ? block.text + '\n\n' + classroomMathMarkdown(block.math) : block.experiment ? [block.text + '（模型演示）', block.experiment.prediction.question, block.experiment.observation, block.experiment.explanation, block.experiment.limitation].join('\n\n') : block.text)).join('\n\n')),
@@ -640,7 +644,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
           <span>{session.cursor + 1} / {lesson.steps.length}</span><button onClick={() => void advance()} disabled={busy}>下一步 ›</button>{session.status === 'completed' && nextLesson && <button onClick={() => onNext(nextLesson.id)}>下一课 →</button>}</div>
         <ClassroomTurnStatus state={turns} onReturn={turn=>void returnToTurn(turn)} onEdit={command=>{setQuestion(command.message);setIntent(command.intent);setModelId(command.modelId);}}/>
         <form className="cl-input" onSubmit={event => void ask(event)}><ClassroomIntentPicker value={intent} disabled={busy} onChange={(value,prompt)=>{pause();setIntent(value);if(prompt)setQuestion(prompt);}}/><div className="cl-compose-row"><textarea aria-label="向课堂老师提问" value={question} placeholder="Ask a question…" maxLength={2000} onChange={event => { if (playing) setPlaying(false); setQuestion(event.target.value); }}/>
-          <button data-classroom-tour="microphone" type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={microphone} data-listening={listening}>♩</button>
+          <button data-classroom-tour="microphone" type="button" title="语音转写" aria-label={listening ? '停止语音输入' : '语音提问'} onClick={() => microphone(true)} data-listening={listening}>♩</button>
           <button data-classroom-tour="playback" type="button" aria-label={playing ? '暂停讲解' : '继续讲解'} disabled={busy} onClick={() => { const resume = !playing; pause(); setTab('history'); setPlaying(resume); }}>{playing ? 'Ⅱ' : '▷'}</button>
           {question.trim() ? <button type="submit" aria-label="发送课堂问题" disabled={busy||!turns.loaded||Boolean(turns.uncertain)}>↑</button> : <button type="button" aria-label="停止课堂讲解" onClick={pause}>■</button>}</div>
           <XiaojiuModelPicker error={modelCatalogError} onRetry={reloadModelCatalog} catalog={catalog} value={modelId} onChange={setModelId} compact disabled={busy}/></form>

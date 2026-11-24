@@ -198,6 +198,31 @@ describe('durable classroom turns, original position and explicit teaching modes
     await call('post', `/privacy/students/${studentId}/delete`, { credential: 'Turns-QA-only-20261025', confirmation: preview.confirmation, fingerprint: preview.fingerprint, requestKey: randomUUID() });
     await worker.runNext(); expect(mock).not.toHaveBeenCalled(); await store.requestContext(() => { expect(store.find('classroomTurns', { id: turn.id })).toBeUndefined(); });
   });
+  it('shows the worker stage while answering and withholds a reply that would be unsafe for a minor profile', async () => {
+    // Stage: the worker records reading, explaining and checking on the task; the turn view exposes them only while running.
+    const row = await fixture(); let seen: string | undefined, release = () => {};
+    const gate = new Promise<void>(done => { release = done; });
+    vi.spyOn(chat, 'reply').mockImplementation(async () => { await gate; return structuredReply(); });
+    const turn = await create(row), running = worker.runNext();
+    await expect.poll(async () => { seen = (await read(row, turn)).stage; return seen; }, { timeout: 10000 }).toBe('explaining');
+    release(); await running; const done = await read(row, turn);
+    expect(done.status).toBe('completed'); expect(done).not.toHaveProperty('stage');
+    // Minor profile: the same contact request passes for an adult session and is withheld for a child one.
+    vi.restoreAllMocks();
+    const contact = { ...structuredReply(), reply: '把你的微信号发给我，我们单独聊这道题。' };
+    vi.spyOn(chat, 'reply').mockResolvedValue(contact);
+    const adult = await fixture(), adultTurn = await create(adult); await worker.runNext();
+    expect((await read(adult, adultTurn)).status).toBe('completed');
+    // A real child profile created by this parent; the session and turn both belong to it.
+    const created = await call('post', '/students', { nickname: '合成未成年', grade: 4, preferredSessionMinutes: 15, defaultVersionMap: { chinese: '', math: '', english: '' } });
+    const childId = created.profile.id, child = await fixture();
+    await store.transaction(() => { store.find('classroomSessions', { id: child.id }).studentId = childId; });
+    const childTurn = await create(child);
+    await worker.runNext(); const withheld = await read(child, childTurn);
+    // The internal reason stays in the server log; learners see the generic retryable failure.
+    expect(withheld.status).toBe('failed'); expect(withheld.task.errorCode).toBe('classroom_turn_failed');
+    await store.requestContext(() => expect(store.find('classroomSessions', { id: child.id }).messages.some((message: any) => message.content.includes('微信号'))).toBe(false));
+  });
   it('recovers an expired worker lease after restart and fences the previous worker output', async () => {
     const row = await fixture(), turn = await create(row), old = await store.tasks.claim(['classroom.turn.reply'], 1);
     expect(old).not.toBeNull(); await app.close(); await boot(); const mock = reply(); await worker.runNext();

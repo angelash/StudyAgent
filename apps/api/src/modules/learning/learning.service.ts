@@ -70,7 +70,7 @@ export class LearningService {
 
   studentProfiles(user: InMemoryUserAccount) {
     return this.store.students.filter((child) => user.role === 'admin' || (user.role === 'student' && child.userId === user.id) || Boolean(this.store.find('bindings', { parentUserId: user.id, studentId: child.id, status: 'active' })))
-      .map(({ id, nickname, grade }) => ({ id, nickname, grade }));
+      .map(({ id, nickname, grade, minor }) => ({ id, nickname, grade, minor: minor !== false }));
   }
 
   studioOverview(user: InMemoryUserAccount, studentId: string | undefined, subject: Subject,catalog=false, courseId?: string, independent=false): StudioOverview {

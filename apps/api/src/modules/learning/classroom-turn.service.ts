@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { ClassroomTurnView } from '@study-agent/contracts';
+import { classroomTurnStages, type ClassroomTurnStage, type ClassroomTurnView } from '@study-agent/contracts';
 import { validate } from '../../common/validation';
 import { InMemoryStoreService, type InMemoryUserAccount, type InMemoryAuthSession } from '../../infrastructure/in-memory-store.service';
 import { StudentsService } from '../students/students.service';
@@ -57,9 +57,11 @@ export class ClassroomTurnService {
   async view(turn: ClassroomTurnRecord, provisional?: ClassroomTurnView['task']): Promise<ClassroomTurnView> {
     const task = provisional ?? await this.store.tasks.get(turn.taskId);
     const status = turn.status === 'completed' ? 'completed' : task?.state === 'failed' ? 'failed' : task?.state === 'cancelled' ? 'cancelled' : task?.state === 'cancel_requested' ? 'cancelling' : turn.status;
+    const progress = provisional ? undefined : (task as { progress?: Record<string, unknown> } | null)?.progress?.stage;
+    const stage = status === 'running' && classroomTurnStages.includes(progress as ClassroomTurnStage) ? progress as ClassroomTurnStage : undefined;
     const { id, sessionId, requestKey, message, intent, modelId, modelName, questionId, position, revision, createdAt, updatedAt, userMessageId, assistantMessageId } = turn;
     return { id, sessionId, requestKey, message, intent, modelId, modelName, ...(questionId ? { questionId } : {}), position: structuredClone(position),
-      revision, createdAt, updatedAt, userMessageId, assistantMessageId, status,
+      revision, createdAt, updatedAt, userMessageId, assistantMessageId, status, ...(stage ? { stage } : {}),
       task: task ? { state: task.state, version: task.version, generation: task.generation, errorCode: task.errorCode } : null };
   }
   async list(user: InMemoryUserAccount, sessionId: string) {

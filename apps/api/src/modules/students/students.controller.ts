@@ -40,6 +40,11 @@ export class StudentsController {
     return this.studentsService.getProfile(req.user, studentId);
   }
 
+  @Post('students/:studentId/settings')
+  updateSettings(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Body() body: unknown) {
+    return this.studentsService.updateSettings(req.user, studentId, body);
+  }
+
   @Post('parents/:parentId/bindings')
   bindStudent(
     @Req() req: AuthenticatedRequest,

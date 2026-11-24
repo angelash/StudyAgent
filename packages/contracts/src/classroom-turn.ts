@@ -14,5 +14,10 @@ export type ClassroomTurnView = { id: string; sessionId: string; requestKey: str
   intent: ClassroomTurnIntent; modelId: string; modelName: string; questionId?: string;
   position: ClassroomTurnPosition & { cursor: number; stepTitle: string; sentenceText: string };
   status: 'queued' | 'running' | 'completed' | 'failed' | 'cancelled' | 'cancelling';
+  /** 232 §5.1: the worker's current step while running, so the learner sees progress instead of a blank wait. */
+  stage?: ClassroomTurnStage;
   revision: number; createdAt: string; updatedAt: string; userMessageId?: string; assistantMessageId?: string;
   task: { state: string; generation: number; version: number; errorCode: string | null } | null };
+export const classroomTurnStages = ['reading', 'explaining', 'checking'] as const;
+export type ClassroomTurnStage = typeof classroomTurnStages[number];
+export const classroomTurnStageLabels: Record<ClassroomTurnStage, string> = { reading: '读取当前讲解', explaining: '组织讲解', checking: '检查回答' };

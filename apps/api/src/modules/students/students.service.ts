@@ -2,6 +2,7 @@ import { BadRequestException, ForbiddenException, Injectable, NotFoundException 
 import { randomBytes } from 'crypto';
 import { z } from 'zod';
 import { validate } from '../../common/validation';
+import { updateLearnerSettings } from './learner-settings';
 import { hashToken } from '../auth/auth.service';
 import { StudentProfile, SubjectEnrollment } from '@study-agent/contracts';
 import { DomainEventBusService } from '../../infrastructure/domain-event-bus.service';
@@ -129,6 +130,10 @@ export class StudentsService {
     };
     this.store.append('bindings', binding);
     return binding;
+  }
+
+  updateSettings(requestUser: InMemoryUserAccount, studentId: string, input: unknown) {
+    return updateLearnerSettings(this.store, requestUser, studentId, input, (user, id) => this.assertCanAccessStudent(user, id));
   }
 
   getProfile(requestUser: InMemoryUserAccount, studentId: string) {

@@ -22,6 +22,8 @@ import type { ClassroomRetentionDisplay,ClassroomLegacyGap } from '../diagnostic
 import { RetentionService } from '../diagnostics/retention.service';
 import { retainedCourseLesson,currentLessonForHistoricalSource } from './studio-course-history-lookup';
 import { assertAdoptedTeachingLesson } from '../diagnostics/textbook-teaching-adoption';
+import { guardTeachingOutput } from '../ai/teaching-output-guard';
+import { learnerAudience } from '../ai/learner-audience';
 
 export type ClassroomSessionRecord = ClassroomSession & {
   retentionDisplays?:ClassroomRetentionDisplay[];
@@ -326,6 +328,8 @@ export class ClassroomService {
         projectDraft: row.projectDraft.slice(0, 10000) }),
       history: row.messages.map(message => ({ role: message.role, content: message.content })), message: command.message });
     if (signal?.aborted) throw new BadRequestException('课堂插问已停止');
+    if (!guardTeachingOutput({ reply: response.reply, board: response.board ?? null }, learnerAudience(this.store, row.studentId)).allowed)
+      throw new BadRequestException('这次回答没有通过教学内容检查，未保存。请换个问法再试。');
     const now = new Date().toISOString();
     const board = response.board;
     this.retention.prepareClassroom(row,now);
