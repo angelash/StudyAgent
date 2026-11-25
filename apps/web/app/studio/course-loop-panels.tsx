@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { MasteryEstimate, StudioCourse } from '@study-agent/contracts';
 import { apiRequest } from '../../lib/api';
 import { workspaceHref } from '../../lib/workspace-navigation';
+import { CourseBaselineRecords, CourseVerificationRecords } from './course-loop-records';
 import './course-assessments.css';
 import './course-loop-panels.css';
 
@@ -35,6 +36,7 @@ export function CourseBaselinePanel({ course, children }: { course: StudioCourse
     {error ? <p role="alert">{error}</p> : !rows ? <p role="status">正在读取这门课的测量结果…</p> :
       <ul className="cl-loop-counts">{(['secure', 'fragile', 'learning', 'insufficient', 'unknown'] as const).map(status => <li key={status} data-status={status}><b>{counts[status] ?? 0}</b><span>{statusNames[status]}</span></li>)}</ul>}
     {children}
+    <CourseBaselineRecords course={course} />
     <Link className="cl-course-action" href={workspaceHref('assessment', context)}>打开知识诊断 →</Link>
   </section>;
 }
@@ -49,6 +51,7 @@ export function CourseVerificationPanel({ course, children }: { course: StudioCo
     {error ? <p role="alert">{error}</p> : !rows ? <p role="status">正在读取这门课的测量结果…</p> :
       <ul className="cl-loop-counts"><li><b>{measured.length}</b><span>已有正式证据</span></li><li><b>{transferred}</b><span>迁移已核对</span></li><li><b>{retained}</b><span>延迟复测已核对</span></li></ul>}
     {children}
+    <CourseVerificationRecords course={course} />
     <nav className="cl-loop-links" aria-label="验证入口">
       <Link className="cl-course-action" href={workspaceHref('reports', context)}>查看学习报告 →</Link>
       <Link className="cl-course-action" href={workspaceHref('tasks', context)}>补练与到期复测 →</Link>
