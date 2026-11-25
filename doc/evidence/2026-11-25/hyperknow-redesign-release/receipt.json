@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-25T01:22:00.000Z",
+  "release": "232 HyperKnow shell and teaching loop redesign",
+  "applicationRevision": "ef97b831de670471d7aa4a6e35eedf98ad93772a",
+  "ci": { "revision": "ef97b831de670471d7aa4a6e35eedf98ad93772a", "run": 45431693684, "conclusion": "success",
+    "note": "6fc21445 (same application code; ef97b831 only adds a doc note) passed all six jobs and npm run release:check-ci reported it publishable." },
+  "userConfirmation": "2026-11-25 the user answered 'Yes, release it' to releasing the redesign, including invite-only registration, the learner minor field and the wider AI output checks; chose to generate one invite code and to disable the leftover smoke account themselves.",
+  "previous": { "applicationRevision": "9f53e037d8677bf3c0d155dfb6bed98ece93e385", "webBuildId": "AJImfEEbTXxWy4s3hTMyh" },
+  "current": { "webBuildId": "3fMSnQeijz5vzAyOyE6f7", "ports": { "web": 3217, "api": 4217 }, "origin": "https://study-agent.iepose.cn" },
+  "build": { "source": "data/qa/release-ef97b831/source (scripts/qa/snapshot-source.py, 3225 files at ef97b831)", "dependencies": "npm ci from the unchanged lock file",
+    "installedFiles": 1235, "installedIdenticalToRehearsedBuild": true },
+  "database": { "schemaBefore": 38, "schemaAfter": 38, "migration": false, "revisionBefore": 203, "originalRecords": 89878,
+    "missingOrChangedOriginalRecords": 0, "addedRecords": { "users": 1, "sessions": 1, "events": 2 },
+    "addedNote": "One synthetic smoke-test sign-in; the user will disable it at /admin/accounts." },
+  "configuration": { "changedKeys": ["STUDY_INVITE_CODES"], "otherKeysUnchanged": true, "note": "One random invite code added; value kept only in .env and the private release folder." },
+  "downtime": { "stoppedAt": "2026-11-25T01:12:51Z", "readyAt": "2026-11-25T01:15:18Z" },
+  "checks": {
+    "rehearsal": "rehearsal.json: new API on a database copy, readiness 200, invite mode, no invite 403, invite 201, original records unchanged",
+    "local": "readiness 200, sign-in 200, registration mode invite, register without invite 403, anonymous course-craft and settings 401",
+    "public": "public-smoke.json: 14 of 18 checks passed",
+    "stability": "three public readiness and sign-in samples over one minute all 200; API, web and health PIDs and restart counts unchanged"
+  },
+  "publicSmokeFailures": [
+    { "check": "sidebar has the five new entries / 学习档案 stays in the footer", "finding": "Screenshot home-1440.png shows exactly 首页, 课程, 资料, 日历, 历史 and 学习档案 in the footer; the scripted locator was wrong, not the page." },
+    { "check": "synthetic account deleted through its own privacy endpoint", "finding": "Returned 400: account deletion needs the confirmation name and fingerprint from the deletion preview, which the script did not send. The account stays active with no learner data; the user will disable it." }
+  ],
+  "backups": { "privateDirectory": "output/releases/2026-11-25-ef97b831",
+    "contents": ["database-stopped.private (consistent SQLite backup taken with services stopped, revision 203)", "rehearsal-copy.private", "runtime-before (previous apps/api/dist, apps/web/.next, packages/*/dist; 1316 files)", "env-before.private", "pm2-before.private.json", "invite-code.private.txt"] },
+  "rollback": "Stop the three study-agent services, restore the four folders from output/releases/2026-11-25-ef97b831/runtime-before, remove STUDY_INVITE_CODES from .env (or set STUDY_REGISTRATION=open), and restart. No schema change, so the database does not need restoring; the minor field is optional and the old build ignores it."
+}

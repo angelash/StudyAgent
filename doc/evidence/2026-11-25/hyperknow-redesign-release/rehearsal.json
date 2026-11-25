@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-25T01:09:54.303Z",
+  "passed": true,
+  "port": 4317,
+  "readiness": 200,
+  "registrationMode": {
+    "mode": "invite",
+    "inviteRequired": true
+  },
+  "registerWithoutInvite": 403,
+  "registerWithInvite": 201,
+  "learnersList": 200,
+  "anonymousCraft": 401,
+  "anonymousSettings": 401,
+  "schemaBefore": 38,
+  "schemaAfter": 38,
+  "revisionBefore": 203,
+  "revisionAfter": 204,
+  "originalRecords": 89878,
+  "missingOriginal": 0,
+  "changedOriginal": 0,
+  "addedByCollection": {
+    "events": 2,
+    "sessions": 1,
+    "users": 1
+  }
+}

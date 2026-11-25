@@ -1,0 +1,81 @@
+{
+  "at": "2026-11-25T01:16:55.680Z",
+  "origin": "https://study-agent.iepose.cn",
+  "buildId": "3fMSnQeijz5vzAyOyE6f7",
+  "passed": false,
+  "checks": [
+    {
+      "name": "sign-in page serves the new build",
+      "ok": true
+    },
+    {
+      "name": "registration shows an invite field",
+      "ok": true
+    },
+    {
+      "name": "a wrong invite is refused in the real form",
+      "ok": true
+    },
+    {
+      "name": "the configured invite creates the account",
+      "ok": true
+    },
+    {
+      "name": "session cookie is Secure, HttpOnly and SameSite=Strict",
+      "ok": true
+    },
+    {
+      "name": "sidebar has the five new entries",
+      "ok": false
+    },
+    {
+      "name": "学习档案 stays in the sidebar footer",
+      "ok": false
+    },
+    {
+      "name": "home shows the AI course topic box",
+      "ok": true
+    },
+    {
+      "name": "history view opens and links to AI白板",
+      "ok": true
+    },
+    {
+      "name": "learning record page opens",
+      "ok": true
+    },
+    {
+      "name": "phone drawer opens and closes with Escape",
+      "ok": true
+    },
+    {
+      "name": "phone layout has no horizontal overflow",
+      "ok": true
+    },
+    {
+      "name": "learner list reads for the new account",
+      "ok": true
+    },
+    {
+      "name": "ordinary account cannot read operations",
+      "ok": true
+    },
+    {
+      "name": "synthetic account deleted through its own privacy endpoint",
+      "ok": false,
+      "detail": "400"
+    },
+    {
+      "name": "the deleted account session no longer works",
+      "ok": false
+    },
+    {
+      "name": "no browser errors",
+      "ok": true
+    },
+    {
+      "name": "no cross-origin API calls",
+      "ok": true
+    }
+  ]
+}
