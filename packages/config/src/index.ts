@@ -10,6 +10,9 @@ export const apiEnvSchema = z.object({
   OPENAI_MODEL: z.string().default('gpt-4.1-mini'),
   OPENAI_TTS_MODEL: z.string().default('tts-1'),
   OPENAI_TTS_VOICE: z.string().default('alloy'),
+  /** 232 §5.2 server speech recognition: off unless a transcription model on the OpenAI-compatible provider is named. */
+  STUDY_TRANSCRIBE_MODEL: z.string().trim().optional().transform(value => value || undefined),
+  STUDY_TRANSCRIBE_BASE_URL: z.union([z.literal(''), z.string().url()]).optional().transform(value => value || undefined),
   MINIMAX_API_KEY: z.string().optional(),
   MINIMAX_TTS_BASE_URL: z.string().url().default('https://api.minimaxi.com/v1/t2a_v2'),
   MINIMAX_TTS_MODEL: z.string().default('speech-2.8-turbo'),

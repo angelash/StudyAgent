@@ -331,6 +331,9 @@ export type StudioSpeechCapabilities = {
   preview?: { version: string; text: string; model: string | null };
   defaultVoice: string | null;
 };
+/** 232 §5.2 server speech recognition for spoken questions; the recording is never stored. */
+export type SpeechTranscriptionStatus = { enabled: boolean; maxBytes: number; maxSeconds: number };
+export type SpeechTranscription = { text: string };
 
 export type StudioOverview = {
   generatedAt: string;

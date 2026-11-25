@@ -35,6 +35,7 @@ import { usePracticeDraft } from './practice-draft';
 import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 import { FrozenCheckSource } from './check-source';
 import { CoursePanels, restoreCoursePanel, type CoursePanel } from './course-panels';
+import { useServerTranscription } from './voice-transcription';
 import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
 import { ClassroomRetentionDisplay } from './retention-display';
 import './course-panels.css';
@@ -233,6 +234,7 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
   const [projectDraft, setProjectDraft] = React.useState(initial.projectDraft), [projectSaved, setProjectSaved] = React.useState(false);
   const [hinted, setHinted] = React.useState<string[]>(initial.hintedQuestionIds ?? []), [questionIndex, setQuestionIndex] = React.useState(() => classroomPracticeSummary(initial.lesson.questions, initial.answers).nextQuestionIndex);
   const [audioState, setAudioState] = React.useState(''), [listening, setListening] = React.useState(false);
+  const serverVoice = useServerTranscription();
   const [narrationFailed, setNarrationFailed] = React.useState(false);
   const [readingReply, setReadingReply] = React.useState(''), [award, setAward] = React.useState(false);
   const [replySubtitle, setReplySubtitle] = React.useState('');
@@ -524,10 +526,17 @@ function ClassroomSession({ initial, initialTab, assistance = false, unit, onClo
     } catch (error) { setNotice((error as Error).message); } finally { setBusy(false); }
   }
   // 232 §5.2 voice barge-in: speaking stops narration at once; the recogniser stays alive and the spoken question is sent
-  // without another click. Browser recognition only; when it is unavailable the text box is the fallback.
+  // without another click. When the server recogniser is enabled it records one question (click again to finish) and
+  // sends it once; otherwise browser recognition; when neither is available the text box is the fallback.
   function microphone(sendWhenDone = true) {
-    if (listening) { recognition.current?.stop(); return; }
+    if (listening) { serverVoice.stop(); recognition.current?.stop(); return; }
     pause();
+    if (serverVoice.available) {
+      setListening(true); setNotice('正在录音提问，讲解已暂停。再点一次麦克风结束（最长 ' + serverVoice.maxSeconds + ' 秒）；录音只用于转成文字，不保存。');
+      void serverVoice.start({ onText: spoken => { setQuestion(spoken); if (sendWhenDone) void askQuestion(spoken); },
+        onError: message => setNotice(message + ' 可继续使用文字输入。'), onEnd: () => setListening(false) });
+      return;
+    }
     const host = window as unknown as { SpeechRecognition?: new () => SpeechRecognitionSession; webkitSpeechRecognition?: new () => SpeechRecognitionSession };
     const Constructor = host.SpeechRecognition ?? host.webkitSpeechRecognition;
     if (!Constructor) { setNotice('当前浏览器不支持语音转写，请直接输入问题。'); return; }
