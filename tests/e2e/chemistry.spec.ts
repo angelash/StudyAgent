@@ -114,6 +114,11 @@ test('chemistry: course assessments unlock independent checks and preserve first
   expect(independent.items.every((item: any) => !exposed.has(item.questionId))).toBe(true);
   await page.goto(library); await open(page); await page.getByRole('tab', { name: '验证', exact: true }).click(); await page.reload();
   await expect(page.locator('[data-checkpoint="u1:unit"]').getByRole('link', { name: '继续作答', exact: true })).toHaveAttribute('href', new RegExp(independentId));
+  const checks = page.getByRole('region', { name: '本课核查与复测记录', exact: true });
+  await expect(checks.getByRole('link', { name: '继续作答 →', exact: true })).toHaveAttribute('href', new RegExp('/studio/assessment\\?.*session=' + independentId));
+  await page.getByRole('tab', { name: '摸底', exact: true }).click();
+  const baselines = page.getByRole('region', { name: '本课摸底记录', exact: true }); await expect(baselines.locator('li')).toHaveCount(1);
+  await expect(baselines.getByRole('link', { name: '查看报告 →', exact: true })).toHaveAttribute('href', new RegExp('/studio/reports\\?.*session=' + baselineId));
   const check = (await call('/chemistry/catalog?studentId=' + studentId)).checkpoints.find((check: any) => check.id === 'u1:unit');
   expect(check).toMatchObject({ status: 'in_progress', lastSessionId: independentId });
   expect((await call('/diagnostics/sessions/' + baselineId + '/report')).evidence).toEqual(original.evidence);
