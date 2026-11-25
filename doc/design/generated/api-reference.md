@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`2e9267c721eca87dfc026617d9232e18194bb701`。共 608 个 HTTP 路由声明，当前 AppModule 可达 597 个正常路由、11 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`ab9f9d66ae4d57a023e3d016d77028c23ec3e35e`。共 610 个 HTTP 路由声明，当前 AppModule 可达 599 个正常路由、11 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -341,6 +341,26 @@
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.tools.control`
+
+## TranscriptionController — 当前接入
+
+### GET /api/ai/speech/transcriptions/status
+
+实现：[apps/api/src/modules/ai/transcription.controller.ts:13](../../../apps/api/src/modules/ai/transcription.controller.ts#L13)，方法 `status`。
+
+- 签名：`status()`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：`this.transcription.status`
+
+### POST /api/ai/speech/transcriptions
+
+实现：[apps/api/src/modules/ai/transcription.controller.ts:14](../../../apps/api/src/modules/ai/transcription.controller.ts#L14)，方法 `transcribe`。
+
+- 签名：`transcribe(@Req() req: AuthenticatedRequest, @UploadedFile() file: Express.Multer.File | undefined)`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[{"name":"UseInterceptors","args":["FileInterceptor('audio', { storage: memoryStorage(), limits: { fileSize: TRANSCRIPTION_MAX_BYTES, files: 1 } })"]}]`
+- 调用：`this.limits.assert`、`this.transcription.transcribe`
 
 ## AccountsController — 当前接入
 

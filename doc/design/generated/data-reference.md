@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`2e9267c721eca87dfc026617d9232e18194bb701`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`ab9f9d66ae4d57a023e3d016d77028c23ec3e35e`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -363,8 +363,8 @@
 - `ClassroomTurnIntent`：[packages/contracts/src/classroom-turn.ts:8](../../../packages/contracts/src/classroom-turn.ts#L8)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `ClassroomTurnPosition`：[packages/contracts/src/classroom-turn.ts:9](../../../packages/contracts/src/classroom-turn.ts#L9)；字段：`contentFingerprint`、`stepId`、`sentenceCursor`、`presentationVersion`、`unitId`。
 - `ClassroomTurnCommand`：[packages/contracts/src/classroom-turn.ts:11](../../../packages/contracts/src/classroom-turn.ts#L11)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `ClassroomTurnView`：[packages/contracts/src/classroom-turn.ts:13](../../../packages/contracts/src/classroom-turn.ts#L13)；字段：`id`、`sessionId`、`requestKey`、`message`、`intent`、`modelId`、`modelName`、`questionId?`、`position`、`status`、`stage?`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
-- `ClassroomTurnStage`：[packages/contracts/src/classroom-turn.ts:22](../../../packages/contracts/src/classroom-turn.ts#L22)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
+- `ClassroomTurnView`：[packages/contracts/src/classroom-turn.ts:13](../../../packages/contracts/src/classroom-turn.ts#L13)；字段：`id`、`sessionId`、`requestKey`、`message`、`intent`、`modelId`、`modelName`、`questionId?`、`position`、`status`、`stage?`、`draft?`、`revision`、`createdAt`、`updatedAt`、`userMessageId?`、`assistantMessageId?`、`task`。
+- `ClassroomTurnStage`：[packages/contracts/src/classroom-turn.ts:24](../../../packages/contracts/src/classroom-turn.ts#L24)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 
 ### packages/contracts/src/classroom-visual.ts
 
@@ -834,7 +834,7 @@
 - `SourceCourseInput`：[packages/contracts/src/source-course.ts:31](../../../packages/contracts/src/source-course.ts#L31)；字段：`title`、`goal`、`language`、`minutesPerSession`、`modelId`、`targetAtomIds`。
 - `SourceCourseSummary`：[packages/contracts/src/source-course.ts:33](../../../packages/contracts/src/source-course.ts#L33)；字段：`id`、`studentId`、`subject`、`title`、`goal`、`versioning?`、`status`、`lessonCount`、`viewed`、`lastLessonId`、`lastSessionId?`、`nextLessonId?`、`nextLessonTitle?`、`lastStudied`、`createdAt`、`updatedAt`。
 - `SourceCourseView`：[packages/contracts/src/source-course.ts:36](../../../packages/contracts/src/source-course.ts#L36)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
-- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:47](../../../packages/contracts/src/source-course.ts#L47)；字段：`maximumLessons?`、`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
+- `SourceCourseAuthoring`：[packages/contracts/src/source-course.ts:49](../../../packages/contracts/src/source-course.ts#L49)；字段：`maximumLessons?`、`courseId`、`revision`、`content`、`originalContent`、`contentReview`、`lessonId?`、`sources?`、`generationInput`、`generationReviews`、`reviewCurrent`。
 
 ### packages/contracts/src/student-access.ts
 
@@ -911,7 +911,9 @@
 - `StudioIntegrationOverview`：[packages/contracts/src/studio.ts:320](../../../packages/contracts/src/studio.ts#L320)；字段：`connectors`、`events`。
 - `StudioSpeechVoice`：[packages/contracts/src/studio.ts:325](../../../packages/contracts/src/studio.ts#L325)；字段：`id`、`label`、`description?`、`language?`、`classroomPreset?`。
 - `StudioSpeechCapabilities`：[packages/contracts/src/studio.ts:327](../../../packages/contracts/src/studio.ts#L327)；字段：`available`、`provider`、`voices`、`preview?`、`defaultVoice`。
-- `StudioOverview`：[packages/contracts/src/studio.ts:335](../../../packages/contracts/src/studio.ts#L335)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
+- `SpeechTranscriptionStatus`：[packages/contracts/src/studio.ts:335](../../../packages/contracts/src/studio.ts#L335)；字段：`enabled`、`maxBytes`、`maxSeconds`。
+- `SpeechTranscription`：[packages/contracts/src/studio.ts:336](../../../packages/contracts/src/studio.ts#L336)；字段：`text`。
+- `StudioOverview`：[packages/contracts/src/studio.ts:338](../../../packages/contracts/src/studio.ts#L338)；字段：`generatedAt`、`day`、`narrationAvailable`、`speech`、`children`、`selected`、`courses`、`feed`、`activities`、`plans`、`materials`、`studyPacks`、`whiteboards`、`integrations`。
 
 ### packages/contracts/src/textbook-teaching.ts
 

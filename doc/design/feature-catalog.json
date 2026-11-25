@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "2e9267c721eca87dfc026617d9232e18194bb701",
+  "sourceRevision": "ab9f9d66ae4d57a023e3d016d77028c23ec3e35e",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 149,
-    "activeNormalApiRoutes": 597,
-    "coveredApiRoutes": 597
+    "activeNormalApiRoutes": 599,
+    "coveredApiRoutes": 599
   },
   "areas": [
     {
@@ -8458,6 +8458,22 @@
               "method": "retry",
               "file": "apps/api/src/modules/learning/classroom-turn.controller.ts",
               "line": 13
+            },
+            {
+              "verb": "GET",
+              "path": "/api/ai/speech/transcriptions/status",
+              "controller": "TranscriptionController",
+              "method": "status",
+              "file": "apps/api/src/modules/ai/transcription.controller.ts",
+              "line": 13
+            },
+            {
+              "verb": "POST",
+              "path": "/api/ai/speech/transcriptions",
+              "controller": "TranscriptionController",
+              "method": "transcribe",
+              "file": "apps/api/src/modules/ai/transcription.controller.ts",
+              "line": 14
             }
           ],
           "implementations": [
@@ -8469,22 +8485,37 @@
             {
               "name": "ClassroomTurnService.list",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 67
+              "line": 70
             },
             {
               "name": "ClassroomTurnService.get",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 71
+              "line": 74
             },
             {
               "name": "ClassroomTurnService.create",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 73
+              "line": 76
             },
             {
               "name": "ClassroomTurnService.control",
               "file": "apps/api/src/modules/learning/classroom-turn.service.ts",
-              "line": 130
+              "line": 133
+            },
+            {
+              "name": "TranscriptionService.status",
+              "file": "apps/api/src/modules/ai/transcription.service.ts",
+              "line": 44
+            },
+            {
+              "name": "RateLimitService.assert",
+              "file": "apps/api/src/infrastructure/rate-limit.service.ts",
+              "line": 11
+            },
+            {
+              "name": "TranscriptionService.transcribe",
+              "file": "apps/api/src/modules/ai/transcription.service.ts",
+              "line": 47
             }
           ],
           "sourceFiles": [
@@ -8506,7 +8537,9 @@
             "apps/web/app/studio/classroom/reply-reading.ts",
             "tests/e2e/classroom-boards.spec.ts",
             "scripts/qa/verify-classroom-board-live.cjs",
-            "apps/api/src/modules/learning/classroom.service.ts"
+            "apps/api/src/modules/learning/classroom.service.ts",
+            "apps/api/src/modules/ai/transcription.service.ts",
+            "apps/api/src/infrastructure/rate-limit.service.ts"
           ],
           "tests": [
             "apps/api/src/modules/learning/whiteboard-speech.test.ts",
@@ -10313,12 +10346,12 @@
             {
               "name": "SourceCourseService.get",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 87
+              "line": 89
             },
             {
               "name": "SourceCourseService.estimates",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 89
+              "line": 91
             }
           ],
           "sourceFiles": [
@@ -10722,52 +10755,52 @@
             {
               "name": "SourceCourseService.materials",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 31
+              "line": 32
             },
             {
               "name": "SourceCourseService.addText",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 39
+              "line": 40
             },
             {
               "name": "SourceCourseService.list",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 101
+              "line": 103
             },
             {
               "name": "SourceCourseService.create",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 111
+              "line": 113
             },
             {
               "name": "SourceCourseService.get",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 87
+              "line": 89
             },
             {
               "name": "SourceCourseService.edit",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 138
+              "line": 140
             },
             {
               "name": "SourceCourseService.authoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 148
+              "line": 150
             },
             {
               "name": "SourceCourseService.editContent",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 186
+              "line": 188
             },
             {
               "name": "SourceCourseService.confirm",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 200
+              "line": 202
             },
             {
               "name": "SourceCourseService.control",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 207
+              "line": 209
             }
           ],
           "sourceFiles": [
@@ -10894,32 +10927,32 @@
             {
               "name": "SourceCourseService.preflight",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 110
+              "line": 112
             },
             {
               "name": "SourceCourseService.addTextFile",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 52
+              "line": 53
             },
             {
               "name": "SourceCourseService.progress",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 99
+              "line": 101
             },
             {
               "name": "SourceCourseService.source",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 100
+              "line": 102
             },
             {
               "name": "SourceCourseService.lessonAuthoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 156
+              "line": 158
             },
             {
               "name": "SourceCourseService.editLesson",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 175
+              "line": 177
             }
           ],
           "sourceFiles": [
