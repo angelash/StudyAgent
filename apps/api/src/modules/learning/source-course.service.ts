@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, ForbiddenException, Injectable,
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import { sourceCourseContentSchema, sourceCourseLessonContentSchema, compiledSourceCourseContentSchema, type SourceCourseAuthoring } from '@study-agent/contracts';
-import type { CourseSourceSnapshot, SourceCourseSummary, SourceCourseView, StudioSourceMaterial,SourceCourseLessonContent } from '@study-agent/contracts';
+import type { CourseSourceSnapshot, SourceCourseSummary, SourceCourseView, StudioSourceMaterial,SourceCourseLessonContent,SourceCourseEstimateSummary } from '@study-agent/contracts';
 import { InMemoryStoreService, InMemoryUserAccount } from '../../infrastructure/in-memory-store.service';
 import { validate } from '../../common/validation';
 import { StudentsService } from '../students/students.service';
@@ -85,6 +85,17 @@ export class SourceCourseService {
       confirmedAt:row.confirmedAt,createdAt:row.createdAt,updatedAt:row.updatedAt};
   }
   async get(user:InMemoryUserAccount,courseId:string){return this.view(this.record(user,courseId),undefined,user.id);}
+  /** 232 §3.3: estimate tier across a learner's AI and source courses, for the learning record page. Never formal mastery. */
+  async estimates(user:InMemoryUserAccount,input:unknown):Promise<SourceCourseEstimateSummary[]>{
+    const query=validate(z.object({studentId:id.optional(),subject:z.enum(['math','chinese','english','chemistry']).optional()}).strict(),input);
+    const rows=(await this.list(user,query)).filter(row=>row.status==='active'||row.status==='archived');
+    const output:SourceCourseEstimateSummary[]=[];
+    for(const row of rows){const view=await this.get(user,row.id),objectives=view.journey?.objectives??[];
+      output.push({courseId:row.id,title:view.title,subject:view.subject,studentId:view.studentId,objectives:objectives.length,
+        likelyMet:objectives.filter(item=>item.status==='likely_met').length,needsPractice:objectives.filter(item=>item.status==='needs_practice').length,
+        insufficient:objectives.filter(item=>item.status==='insufficient').length,notAttempted:objectives.filter(item=>item.status==='not_attempted').length});}
+    return output;
+  }
   async progress(user:InMemoryUserAccount,courseId:string){return this.view(this.record(user,courseId),undefined,user.id,true);}
   source(user:InMemoryUserAccount,courseId:string,sourceKey:string){const row=this.record(user,courseId),source=row.sources.find(source=>source.key===sourceKey)??courseCitationSources(row).find(source=>source.key===sourceKey);if(!source)throw new NotFoundException('原文范围不存在');return structuredClone(source);}
   async list(user:InMemoryUserAccount,input:unknown):Promise<SourceCourseSummary[]>{

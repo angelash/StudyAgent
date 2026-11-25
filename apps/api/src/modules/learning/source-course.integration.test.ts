@@ -99,6 +99,10 @@ describe('source-backed courses, real durable tasks and frozen classroom evidenc
     expect(estimate.status).toBe(session.lesson.questions.length<3?'insufficient':estimate.ratio>=0.75?'likely_met':'needs_practice');
     expect(estimate).not.toHaveProperty('mastery');expect(after.journey.objectives.slice(1).every((item:any)=>item.status==='not_attempted')).toBe(true);
     await store.requestContext(()=>expect(store.select('diagnosticResponses',{studentId}).length).toBe(before));
+    const summary=(await call('get',base+'/estimates?studentId='+studentId,undefined,learner)).find((row:any)=>row.courseId===active.id);
+    expect(summary).toMatchObject({courseId:active.id,studentId,objectives:after.journey.objectives.length,notAttempted:after.journey.objectives.length-1});
+    expect(summary.likelyMet+summary.needsPractice+summary.insufficient).toBe(1);expect(summary).not.toHaveProperty('mastery');
+    await call('get',base+'/estimates?studentId='+studentId,undefined,other,403);
   });
   it('lets a child learn a parent-confirmed course and denies publishing after guardian access is revoked',async()=>{
     const {row}=await ready(true);await call('get',base+'/'+row.id,undefined,learner,403);const active=await confirm(row);

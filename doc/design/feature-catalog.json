@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "d69257d61551bbc957720976f5581e308745b450",
+  "sourceRevision": "2e9267c721eca87dfc026617d9232e18194bb701",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 149,
-    "activeNormalApiRoutes": 596,
-    "coveredApiRoutes": 596
+    "activeNormalApiRoutes": 597,
+    "coveredApiRoutes": 597
   },
   "areas": [
     {
@@ -10283,7 +10283,15 @@
               "controller": "SourceCourseController",
               "method": "get",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 27
+              "line": 28
+            },
+            {
+              "verb": "GET",
+              "path": "/api/learning/source-courses/estimates",
+              "controller": "SourceCourseController",
+              "method": "estimates",
+              "file": "apps/api/src/modules/learning/source-course.controller.ts",
+              "line": 25
             }
           ],
           "implementations": [
@@ -10306,6 +10314,11 @@
               "name": "SourceCourseService.get",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
               "line": 87
+            },
+            {
+              "name": "SourceCourseService.estimates",
+              "file": "apps/api/src/modules/learning/source-course.service.ts",
+              "line": 89
             }
           ],
           "sourceFiles": [
@@ -10646,7 +10659,7 @@
               "controller": "SourceCourseController",
               "method": "get",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 27
+              "line": 28
             },
             {
               "verb": "PATCH",
@@ -10654,7 +10667,7 @@
               "controller": "SourceCourseController",
               "method": "edit",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 32
+              "line": 33
             },
             {
               "verb": "POST",
@@ -10662,7 +10675,7 @@
               "controller": "SourceCourseController",
               "method": "authoring",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 28
+              "line": 29
             },
             {
               "verb": "PATCH",
@@ -10670,7 +10683,7 @@
               "controller": "SourceCourseController",
               "method": "content",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 31
+              "line": 32
             },
             {
               "verb": "POST",
@@ -10678,7 +10691,7 @@
               "controller": "SourceCourseController",
               "method": "confirm",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 33
+              "line": 34
             },
             {
               "verb": "POST",
@@ -10686,7 +10699,7 @@
               "controller": "SourceCourseController",
               "method": "cancel",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 34
+              "line": 35
             },
             {
               "verb": "POST",
@@ -10694,7 +10707,7 @@
               "controller": "SourceCourseController",
               "method": "retry",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 35
+              "line": 36
             },
             {
               "verb": "POST",
@@ -10702,7 +10715,7 @@
               "controller": "SourceCourseController",
               "method": "archive",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 36
+              "line": 37
             }
           ],
           "implementations": [
@@ -10719,12 +10732,12 @@
             {
               "name": "SourceCourseService.list",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 90
+              "line": 101
             },
             {
               "name": "SourceCourseService.create",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 100
+              "line": 111
             },
             {
               "name": "SourceCourseService.get",
@@ -10734,27 +10747,27 @@
             {
               "name": "SourceCourseService.edit",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 127
+              "line": 138
             },
             {
               "name": "SourceCourseService.authoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 137
+              "line": 148
             },
             {
               "name": "SourceCourseService.editContent",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 175
+              "line": 186
             },
             {
               "name": "SourceCourseService.confirm",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 189
+              "line": 200
             },
             {
               "name": "SourceCourseService.control",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 196
+              "line": 207
             }
           ],
           "sourceFiles": [
@@ -10850,7 +10863,7 @@
               "controller": "SourceCourseController",
               "method": "progress",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 25
+              "line": 26
             },
             {
               "verb": "GET",
@@ -10858,7 +10871,7 @@
               "controller": "SourceCourseController",
               "method": "source",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 26
+              "line": 27
             },
             {
               "verb": "POST",
@@ -10866,7 +10879,7 @@
               "controller": "SourceCourseController",
               "method": "lessonAuthoring",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 29
+              "line": 30
             },
             {
               "verb": "PATCH",
@@ -10874,14 +10887,14 @@
               "controller": "SourceCourseController",
               "method": "lessonContent",
               "file": "apps/api/src/modules/learning/source-course.controller.ts",
-              "line": 30
+              "line": 31
             }
           ],
           "implementations": [
             {
               "name": "SourceCourseService.preflight",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 99
+              "line": 110
             },
             {
               "name": "SourceCourseService.addTextFile",
@@ -10891,22 +10904,22 @@
             {
               "name": "SourceCourseService.progress",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 88
+              "line": 99
             },
             {
               "name": "SourceCourseService.source",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 89
+              "line": 100
             },
             {
               "name": "SourceCourseService.lessonAuthoring",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 145
+              "line": 156
             },
             {
               "name": "SourceCourseService.editLesson",
               "file": "apps/api/src/modules/learning/source-course.service.ts",
-              "line": 164
+              "line": 175
             }
           ],
           "sourceFiles": [

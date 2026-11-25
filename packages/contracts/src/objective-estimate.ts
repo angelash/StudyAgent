@@ -8,6 +8,10 @@ export type ObjectiveEstimateStatus = 'not_attempted' | 'insufficient' | 'needs_
 export type ObjectiveEstimate = { lessonId: string; objective: string; tier: 'estimate'; status: ObjectiveEstimateStatus;
   answered: number; independentCorrect: number; assisted: number; total: number; ratio: number | null };
 
+/** Per-course totals for the learning record page; still the estimate tier. */
+export type SourceCourseEstimateSummary = { courseId: string; title: string; subject: string | null; studentId: string | null;
+  objectives: number; likelyMet: number; needsPractice: number; insufficient: number; notAttempted: number };
+
 export const OBJECTIVE_ESTIMATE_MIN_ANSWERS = 3;
 const HINT_CREDIT = 0.5;
 const LIKELY_MET = 0.75;

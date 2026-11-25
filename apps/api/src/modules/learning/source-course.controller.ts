@@ -22,6 +22,7 @@ export class SourceCourseController {
   @Get() list(@Req()req:AuthenticatedRequest,@Query()query:unknown){return this.courses.list(req.user,query);}
   @Post() create(@Req()req:AuthenticatedRequest,@Body()body:unknown){return this.courses.create(req.user,body);}
   @Post('preflight') preflight(@Req()req:AuthenticatedRequest,@Body()body:unknown){return this.courses.preflight(req.user,body);}
+  @Get('estimates') estimates(@Req()req:AuthenticatedRequest,@Query()query:unknown){return this.courses.estimates(req.user,query);}
   @Get(':id/progress') progress(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.courses.progress(req.user,id);}
   @Get(':id/sources/:key') source(@Req()req:AuthenticatedRequest,@Param('id')id:string,@Param('key')key:string){return this.courses.source(req.user,id,key);}
   @Get(':id') get(@Req()req:AuthenticatedRequest,@Param('id')id:string){return this.courses.get(req.user,id);}

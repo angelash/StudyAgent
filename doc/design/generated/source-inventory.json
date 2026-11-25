@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "d69257d61551bbc957720976f5581e308745b450",
+  "sourceRevision": "2e9267c721eca87dfc026617d9232e18194bb701",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
-    "declaredHttpRoutes": 607,
-    "activeHttpRoutes": 607,
-    "activeBusinessHttpRoutes": 596,
+    "declaredHttpRoutes": 608,
+    "activeHttpRoutes": 608,
+    "activeBusinessHttpRoutes": 597,
     "retiredHttpRoutes": 11,
     "activeModules": 21,
     "activeControllers": 69,
     "apiClasses": 224,
     "apiFunctions": 954,
     "domainCollections": 143,
-    "contractTypes": 613,
+    "contractTypes": 614,
     "webPages": 36,
     "webRouteHandlers": 1,
     "apiTestFiles": 342,
@@ -14495,11 +14495,48 @@
     },
     {
       "verb": "GET",
+      "path": "/api/learning/source-courses/estimates",
+      "controller": "SourceCourseController",
+      "method": "estimates",
+      "file": "apps/api/src/modules/learning/source-course.controller.ts",
+      "line": 25,
+      "signature": "estimates(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [
+        {
+          "name": "courses",
+          "type": "SourceCourseService"
+        },
+        {
+          "name": "uploads",
+          "type": "StudioMaterialUploadService"
+        },
+        {
+          "name": "integrity",
+          "type": "StudioMaterialIntegrityService"
+        }
+      ],
+      "calls": [
+        "this.courses.estimates"
+      ],
+      "active": true,
+      "retired": false
+    },
+    {
+      "verb": "GET",
       "path": "/api/learning/source-courses/:id/progress",
       "controller": "SourceCourseController",
       "method": "progress",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 25,
+      "line": 26,
       "signature": "progress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -14536,7 +14573,7 @@
       "controller": "SourceCourseController",
       "method": "source",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 26,
+      "line": 27,
       "signature": "source(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('key')key:string)",
       "classDecorators": [
         {
@@ -14573,7 +14610,7 @@
       "controller": "SourceCourseController",
       "method": "get",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 27,
+      "line": 28,
       "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -14610,7 +14647,7 @@
       "controller": "SourceCourseController",
       "method": "authoring",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 28,
+      "line": 29,
       "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
       "classDecorators": [
         {
@@ -14647,7 +14684,7 @@
       "controller": "SourceCourseController",
       "method": "lessonAuthoring",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 29,
+      "line": 30,
       "signature": "lessonAuthoring(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string)",
       "classDecorators": [
         {
@@ -14684,7 +14721,7 @@
       "controller": "SourceCourseController",
       "method": "lessonContent",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 30,
+      "line": 31,
       "signature": "lessonContent(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14721,7 +14758,7 @@
       "controller": "SourceCourseController",
       "method": "content",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 31,
+      "line": 32,
       "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14758,7 +14795,7 @@
       "controller": "SourceCourseController",
       "method": "edit",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 32,
+      "line": 33,
       "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14795,7 +14832,7 @@
       "controller": "SourceCourseController",
       "method": "confirm",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 33,
+      "line": 34,
       "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14832,7 +14869,7 @@
       "controller": "SourceCourseController",
       "method": "cancel",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 34,
+      "line": 35,
       "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14869,7 +14906,7 @@
       "controller": "SourceCourseController",
       "method": "retry",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 35,
+      "line": 36,
       "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -14906,7 +14943,7 @@
       "controller": "SourceCourseController",
       "method": "archive",
       "file": "apps/api/src/modules/learning/source-course.controller.ts",
-      "line": 36,
+      "line": 37,
       "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
       "classDecorators": [
         {
@@ -43070,8 +43107,25 @@
           ]
         },
         {
-          "name": "progress",
+          "name": "estimates",
           "line": 25,
+          "signature": "estimates(@Req()req:AuthenticatedRequest, @Query()query:unknown)",
+          "access": "public",
+          "decorators": [
+            {
+              "name": "Get",
+              "args": [
+                "'estimates'"
+              ]
+            }
+          ],
+          "calls": [
+            "this.courses.estimates"
+          ]
+        },
+        {
+          "name": "progress",
+          "line": 26,
           "signature": "progress(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -43088,7 +43142,7 @@
         },
         {
           "name": "source",
-          "line": 26,
+          "line": 27,
           "signature": "source(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('key')key:string)",
           "access": "public",
           "decorators": [
@@ -43105,7 +43159,7 @@
         },
         {
           "name": "get",
-          "line": 27,
+          "line": 28,
           "signature": "get(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -43122,7 +43176,7 @@
         },
         {
           "name": "authoring",
-          "line": 28,
+          "line": 29,
           "signature": "authoring(@Req()req:AuthenticatedRequest, @Param('id')id:string)",
           "access": "public",
           "decorators": [
@@ -43139,7 +43193,7 @@
         },
         {
           "name": "lessonAuthoring",
-          "line": 29,
+          "line": 30,
           "signature": "lessonAuthoring(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string)",
           "access": "public",
           "decorators": [
@@ -43156,7 +43210,7 @@
         },
         {
           "name": "lessonContent",
-          "line": 30,
+          "line": 31,
           "signature": "lessonContent(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Param('lessonId')lessonId:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43173,7 +43227,7 @@
         },
         {
           "name": "content",
-          "line": 31,
+          "line": 32,
           "signature": "content(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43190,7 +43244,7 @@
         },
         {
           "name": "edit",
-          "line": 32,
+          "line": 33,
           "signature": "edit(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43207,7 +43261,7 @@
         },
         {
           "name": "confirm",
-          "line": 33,
+          "line": 34,
           "signature": "confirm(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43224,7 +43278,7 @@
         },
         {
           "name": "cancel",
-          "line": 34,
+          "line": 35,
           "signature": "cancel(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43241,7 +43295,7 @@
         },
         {
           "name": "retry",
-          "line": 35,
+          "line": 36,
           "signature": "retry(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43258,7 +43312,7 @@
         },
         {
           "name": "archive",
-          "line": 36,
+          "line": 37,
           "signature": "archive(@Req()req:AuthenticatedRequest, @Param('id')id:string, @Body()body:unknown)",
           "access": "public",
           "decorators": [
@@ -43379,8 +43433,19 @@
           ]
         },
         {
+          "name": "estimates",
+          "line": 89,
+          "signature": "estimates(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseEstimateSummary[]>",
+          "access": "public",
+          "decorators": [],
+          "calls": [
+            "this.list",
+            "this.get"
+          ]
+        },
+        {
           "name": "progress",
-          "line": 88,
+          "line": 99,
           "signature": "progress(user:InMemoryUserAccount, courseId:string)",
           "access": "public",
           "decorators": [],
@@ -43391,7 +43456,7 @@
         },
         {
           "name": "source",
-          "line": 89,
+          "line": 100,
           "signature": "source(user:InMemoryUserAccount, courseId:string, sourceKey:string)",
           "access": "public",
           "decorators": [],
@@ -43401,7 +43466,7 @@
         },
         {
           "name": "list",
-          "line": 90,
+          "line": 101,
           "signature": "list(user:InMemoryUserAccount, input:unknown): Promise<SourceCourseSummary[]>",
           "access": "public",
           "decorators": [],
@@ -43413,7 +43478,7 @@
         },
         {
           "name": "preflight",
-          "line": 99,
+          "line": 110,
           "signature": "preflight(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43421,7 +43486,7 @@
         },
         {
           "name": "create",
-          "line": 100,
+          "line": 111,
           "signature": "create(user:InMemoryUserAccount, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43435,7 +43500,7 @@
         },
         {
           "name": "replay",
-          "line": 121,
+          "line": 132,
           "signature": "replay(row:SourceCourseRecord, command:{expectedRevision:number;requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -43443,7 +43508,7 @@
         },
         {
           "name": "finish",
-          "line": 126,
+          "line": 137,
           "signature": "finish(row:SourceCourseRecord, command:{requestKey:string}, kind:string)",
           "access": "private",
           "decorators": [],
@@ -43451,7 +43516,7 @@
         },
         {
           "name": "edit",
-          "line": 127,
+          "line": 138,
           "signature": "edit(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43464,7 +43529,7 @@
         },
         {
           "name": "authoring",
-          "line": 137,
+          "line": 148,
           "signature": "authoring(user:InMemoryUserAccount, courseId:string): SourceCourseAuthoring",
           "access": "public",
           "decorators": [],
@@ -43475,7 +43540,7 @@
         },
         {
           "name": "lessonAuthoring",
-          "line": 145,
+          "line": 156,
           "signature": "lessonAuthoring(user:InMemoryUserAccount, courseId:string, lessonId:string): SourceCourseAuthoring",
           "access": "public",
           "decorators": [],
@@ -43486,7 +43551,7 @@
         },
         {
           "name": "editLesson",
-          "line": 164,
+          "line": 175,
           "signature": "editLesson(user:InMemoryUserAccount, courseId:string, lessonId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43500,7 +43565,7 @@
         },
         {
           "name": "editContent",
-          "line": 175,
+          "line": 186,
           "signature": "editContent(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43514,7 +43579,7 @@
         },
         {
           "name": "confirm",
-          "line": 189,
+          "line": 200,
           "signature": "confirm(user:InMemoryUserAccount, courseId:string, input:unknown)",
           "access": "public",
           "decorators": [],
@@ -43528,7 +43593,7 @@
         },
         {
           "name": "control",
-          "line": 196,
+          "line": 207,
           "signature": "control(user:InMemoryUserAccount, courseId:string, action:'cancel'|'retry'|'archive', input:unknown)",
           "access": "public",
           "decorators": [],
@@ -72008,6 +72073,59 @@
           "name": "ratio",
           "optional": false,
           "type": "number | null"
+        }
+      ]
+    },
+    {
+      "name": "SourceCourseEstimateSummary",
+      "file": "packages/contracts/src/objective-estimate.ts",
+      "line": 12,
+      "kind": "TypeAliasDeclaration",
+      "fields": [
+        {
+          "name": "courseId",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "subject",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "studentId",
+          "optional": false,
+          "type": "string | null"
+        },
+        {
+          "name": "objectives",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "likelyMet",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "needsPractice",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "insufficient",
+          "optional": false,
+          "type": "number"
+        },
+        {
+          "name": "notAttempted",
+          "optional": false,
+          "type": "number"
         }
       ]
     },

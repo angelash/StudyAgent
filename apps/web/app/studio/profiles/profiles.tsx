@@ -9,6 +9,7 @@ import { useSessionUser, type SessionUser } from '../../../lib/session-user';
 import { learningContextIssue, readLearningContext } from '../../../lib/learning-context';
 import { workspaceHref } from '../../../lib/workspace-navigation';
 import { StudioNavigation } from '../studio-navigation';
+import { LearnerCourseEstimates } from './course-estimates';
 
 type Profile = { id: string; nickname: string; grade: number; minor?: boolean };
 export function ProfilesWorkspace() {
@@ -61,7 +62,8 @@ function ActorProfiles({ identity }: { identity: SessionUser }) {
           <nav className="workspace-profile-links" aria-label={item.nickname + '的学习记录'}>
             {records.map(([area, label]) => <Link key={area} className="workspace-button" href={workspaceHref(area, { studentId: item.id, subject: context.subject })}>{label}</Link>)}
             {canManage && <Link className="workspace-button" href={'/parent/access?' + new URLSearchParams({ studentId: item.id })}>授权与学习码</Link>}
-          </nav></article>)}
+          </nav>
+          <LearnerCourseEstimates studentId={item.id} /></article>)}
         {canManage &&
         <section className="workspace-profile-create"><h2>添加学习档案</h2><form onSubmit={createProfile}><div className="workspace-page-controls"><label>孩子昵称<input required maxLength={50} value={nickname} disabled={busy} onChange={event => setNickname(event.target.value)} /></label><label>当前年级<select value={grade} disabled={busy} onChange={event => setGrade(Number(event.target.value))}>{[1,2,3,4,5,6,7,8,9].map(value => <option key={value} value={value}>{value}年级</option>)}</select></label><button className="workspace-button" disabled={busy || !nickname.trim()}>{busy ? '正在保存…' : '保存档案'}</button></div></form></section>}
       </>}

@@ -1,6 +1,6 @@
 # 领域集合与契约索引
 
-源码基线：`d69257d61551bbc957720976f5581e308745b450`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
+源码基线：`2e9267c721eca87dfc026617d9232e18194bb701`。这些是领域文档集合，并不代表每个集合对应一张独立 SQL 表。
 
 ## 领域集合
 
@@ -627,6 +627,7 @@
 
 - `ObjectiveEstimateStatus`：[packages/contracts/src/objective-estimate.ts:7](../../../packages/contracts/src/objective-estimate.ts#L7)；别名、联合类型或 Zod 推导类型，具体约束查看源码。
 - `ObjectiveEstimate`：[packages/contracts/src/objective-estimate.ts:8](../../../packages/contracts/src/objective-estimate.ts#L8)；字段：`lessonId`、`objective`、`tier`、`status`、`answered`、`independentCorrect`、`assisted`、`total`、`ratio`。
+- `SourceCourseEstimateSummary`：[packages/contracts/src/objective-estimate.ts:12](../../../packages/contracts/src/objective-estimate.ts#L12)；字段：`courseId`、`title`、`subject`、`studentId`、`objectives`、`likelyMet`、`needsPractice`、`insufficient`、`notAttempted`。
 
 ### packages/contracts/src/operations.ts
 
