@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-25T06:35:15.842Z",
+  "passed": true,
+  "port": 4317,
+  "readiness": 200,
+  "registrationMode": {
+    "mode": "invite",
+    "inviteRequired": true
+  },
+  "registerWithInvite": 201,
+  "learnersList": 200,
+  "transcriptionStatus": {
+    "status": 200,
+    "enabled": false
+  },
+  "transcriptionAnonymous": 401,
+  "transcribeWhenOff": 503,
+  "retiredHeatmap": 410,
+  "estimatesForeign": 403,
+  "anonymousCraft": 401,
+  "schemaBefore": 38,
+  "schemaAfter": 38,
+  "revisionBefore": 204,
+  "revisionAfter": 205,
+  "originalRecords": 89882,
+  "missingOriginal": 0,
+  "changedOriginal": 0,
+  "addedByCollection": {
+    "events": 2,
+    "sessions": 1,
+    "users": 1
+  }
+}

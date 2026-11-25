@@ -1,0 +1,64 @@
+{
+  "at": "2026-11-25T10:04:53.509Z",
+  "release": "232 follow-ups 1-7 (course tabs, live answer drafts, optional server speech recognition, retired history reports, course estimates)",
+  "applicationRevision": "5c80697a6a960981e09dc6df0f5460e3ae54c59a",
+  "ci": {
+    "revision": "5c80697a6a960981e09dc6df0f5460e3ae54c59a",
+    "run": 45560628970,
+    "conclusion": "success",
+    "gate": "npm run release:check-ci: CI green, this exact commit may be published"
+  },
+  "userConfirmation": "2026-11-25 the user answered \"Yes, release it\" to releasing 5c80697a, including live answer drafts (AI safety), the server speech recognition endpoint (off by default) and the per-course estimate summary with its access rule.",
+  "previous": {
+    "applicationRevision": "ef97b831de670471d7aa4a6e35eedf98ad93772a",
+    "webBuildId": "3fMSnQeijz5vzAyOyE6f7"
+  },
+  "current": {
+    "webBuildId": "GkWPw2XRW1xbHNQrqKQHE",
+    "ports": {
+      "web": 3217,
+      "api": 4217
+    },
+    "origin": "https://study-agent.iepose.cn"
+  },
+  "build": {
+    "source": "data/qa/release-5c80697a/source (scripts/qa/snapshot-source.py, 3237 files at 5c80697a)",
+    "dependencies": "npm ci; package-lock.json and package manifests unchanged since ef97b831",
+    "installedFolders": [
+      "apps/api/dist",
+      "apps/web/.next",
+      "packages/contracts/dist",
+      "packages/config/dist"
+    ],
+    "liveBeforeMatchedPreviousRelease": true
+  },
+  "database": {
+    "schemaBefore": 38,
+    "schemaAfter": 38,
+    "migration": false,
+    "rehearsalOriginalRecords": 89882,
+    "rehearsalMissingOrChanged": 0,
+    "backupWhileStopped": "output/releases/2026-11-25-5c80697a/database-stopped.private (local, private)"
+  },
+  "configuration": {
+    "changedKeys": [],
+    "note": "No .env change. Server speech recognition stays off until STUDY_TRANSCRIBE_MODEL is set; provider support for /audio/transcriptions is unverified."
+  },
+  "downtime": {
+    "stoppedAt": "2026-11-25T10:00:23Z",
+    "readyAt": "2026-11-25T10:02:25Z"
+  },
+  "checks": {
+    "rehearsal": "rehearsal.json: new API on a database copy, readiness 200, speech recognition status 200 enabled false, anonymous 401, use while off 503, retired history route 410, foreign learner estimates 403, schema 38, original records unchanged",
+    "local": "readiness 200; registration mode invite; anonymous speech status, course-craft, estimates and retired history route 401",
+    "public": "same API checks 200/401 through the public origin; /, /studio, /studio/source-courses, /studio/classroom, /parent/login 200; pages reference the new buildId and its build manifest is served",
+    "stability": "three public readiness samples over one minute all 200; API, web and health PIDs unchanged after restart; no new entries in the API error log",
+    "notRun": "No signed-in production smoke this time (to avoid another synthetic account); signed-in behaviour was covered by the rehearsal and CI browser jobs."
+  },
+  "rollback": [
+    "pm2 stop study-agent-health study-agent-web study-agent-api",
+    "restore apps/api/dist, apps/web/.next, packages/contracts/dist and packages/config/dist from output/releases/2026-11-25-5c80697a/runtime-before (buildId 3fMSnQeijz5vzAyOyE6f7)",
+    "pm2 restart ecosystem.config.cjs --only study-agent-api,study-agent-web,study-agent-health --update-env; pm2 save",
+    "No data rollback needed: no schema change and no new stored collections."
+  ]
+}
