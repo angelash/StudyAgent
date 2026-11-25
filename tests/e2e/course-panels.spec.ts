@@ -21,13 +21,16 @@ async function enter(page: Page, width = 1280) {
 for (const width of [390, 768, 1280, 1440]) test(`course panels: references and all activities preserve the unit outline, complete titles and keyboard focus at ${width}`, async ({ page }) => {
   await enter(page, width);
   const first = page.locator('.cl-lecture').first(); await expect(first.getByRole('button').first()).toHaveAttribute('aria-expanded', 'true');
-  const units = page.getByRole('tab', { name: '单元', exact: true }); await units.focus(); await page.keyboard.press('ArrowRight');
+  const units = page.getByRole('tab', { name: '单元', exact: true }); await units.focus(); await page.keyboard.press('Home');
   await expect(page.getByRole('tab', { name: '资料', exact: true })).toBeFocused();
   await expect(page.getByRole('tabpanel', { name: '资料', exact: true })).toContainText('延伸阅读');
   await expect(page.locator('.cl-lecture')).toHaveCount(5); await expect(first.getByRole('button').first()).toHaveAttribute('aria-expanded', 'true');
-  await page.keyboard.press('End'); await expect(page.getByRole('tab', { name: '练习', exact: true })).toBeFocused();
-  const practices = page.getByRole('tabpanel', { name: '练习', exact: true }); await expect(practices.locator('.cl-panel-activity')).toHaveCount(70);
-  await expect(practices).toContainText('单元 5 · Unit Check');
+  await page.keyboard.press('End'); await expect(page.getByRole('tab', { name: '验证', exact: true })).toBeFocused();
+  const checks = page.getByRole('tabpanel', { name: '验证', exact: true }); await expect(checks.locator('.cl-panel-activity')).toHaveCount(5);
+  await expect(checks).toContainText('单元 5 · Unit Check');
+  await page.keyboard.press('ArrowLeft'); await expect(page.getByRole('tab', { name: '练习', exact: true })).toBeFocused();
+  const practices = page.getByRole('tabpanel', { name: '练习', exact: true }); await expect(practices.locator('.cl-panel-activity')).toHaveCount(65);
+  await expect(practices).not.toContainText('Unit Check');
   await expect(page.locator('.cl-lecture')).toHaveCount(5);
   const titleBoxes = await page.locator('.cl-microlessons .ws-micro-title').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().width));
   for (const titleWidth of titleBoxes) expect(titleWidth, 'micro-lesson titles must retain readable inline space').toBeGreaterThanOrEqual(120);
@@ -66,13 +69,13 @@ test('course panels: the actual cross-unit project returns to the same course pa
 });
 test('course panels: the actual cross-unit check keeps its unit, original session and unanswered return after refresh', async ({ page }) => {
   const { read } = await enter(page), catalog = await read('/learning/classroom/catalog'), unit = catalog.course.units[3];
-  await page.getByRole('tab', { name: '练习', exact: true }).click();
-  const entry = () => page.getByRole('tabpanel', { name: '练习', exact: true }).getByRole('button').filter({ hasText: unit.title + '综合核查' });
+  await page.getByRole('tab', { name: '验证', exact: true }).click();
+  const entry = () => page.getByRole('tabpanel', { name: '验证', exact: true }).getByRole('button').filter({ hasText: unit.title + '综合核查' });
   await entry().click(); await expect(page.getByRole('button', { name: 'Check →', exact: true })).toBeVisible();
   const original = new URL(page.url()).searchParams.get('session')!, row = await read('/learning/classroom/sessions/' + original);
   expect(row.lessonId).toBe('unit-exam:' + unit.id); expect(row.answers).toHaveLength(0);
   await page.getByRole('button', { name: '关闭独立练习', exact: true }).click(); await page.getByRole('button', { name: '保存并离开', exact: true }).click();
-  await expect(page.getByRole('tab', { name: '练习', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tab', { name: '验证', exact: true })).toHaveAttribute('aria-selected', 'true');
   expect(new URL(page.url()).searchParams.get('unit')).toBe('3'); await page.reload(); await entry().click();
   await expect(page.getByRole('button', { name: '第1题', exact: true })).toHaveAttribute('aria-current', 'step');
   expect(new URL(page.url()).searchParams.get('session')).toBe(original); expect((await read('/learning/classroom/sessions/' + original)).answers).toEqual([]);

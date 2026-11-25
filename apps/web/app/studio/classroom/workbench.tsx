@@ -34,7 +34,7 @@ import { useVoicePreview } from './voice-preview';
 import { usePracticeDraft } from './practice-draft';
 import { CourseLessonStatus,CourseProjectStatus } from '../course-activity';
 import { FrozenCheckSource } from './check-source';
-import { CoursePanels } from './course-panels';
+import { CoursePanels, restoreCoursePanel, type CoursePanel } from './course-panels';
 import { ActivityWorkspaceNavigation } from '../../../components/activity-workspace-navigation';
 import { ClassroomRetentionDisplay } from './retention-display';
 import './course-panels.css';
@@ -55,7 +55,7 @@ export function ClassroomWorkbench() {
 function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUser>}){
   const [catalog, setCatalog] = React.useState<ClassroomCatalog | null>(null), [unitIndex, setUnitIndex] = React.useState(0);
   const [session, setSession] = React.useState<ClassroomSessionView | null>(null), [error, setError] = React.useState('');
-  const [loading, setLoading] = React.useState(false), [panel, setPanel] = React.useState<'units' | 'materials' | 'practices'>('units');
+  const [loading, setLoading] = React.useState(false), [panel, setPanel] = React.useState<CoursePanel>('units');
   const [initialTab, setInitialTab] = React.useState<'history' | 'practice' | 'project'>('history');
   const [expanded, setExpanded] = React.useState<string[]>([]);
   const [libraryHref, setLibraryHref] = React.useState('/studio?view=courses');
@@ -124,7 +124,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
       setLibraryHref(courseLibraryHref(window.location.search));
       const params = new URLSearchParams(window.location.search), id = params.get('lesson');
       const requestedUnit = Number(params.get('unit') ?? 0); if (requestedUnit >= 0 && requestedUnit < 5) setUnitIndex(requestedUnit);
-      setPanel(params.get('panel') === 'materials' || params.get('panel') === 'practices' ? params.get('panel') as 'materials' | 'practices' : 'units');
+      setPanel(restoreCoursePanel(params.get('panel')));
       if (id || params.get('session')) void open(id ?? '', params.get('tab') === 'practice' ? 'practice' : params.get('tab') === 'project' ? 'project' : 'history', params.get('studioCourseId') ?? undefined, 'none', params.get('help') === '1', params.get('session') ?? undefined, false,params.get('sourceCourseId')??undefined,params.get('sourceCheckId')??undefined);
       else { loadController.current?.abort(); setLoading(false); setSession(null); void refresh(); }
     };
@@ -136,7 +136,9 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
   function close() {
     setSession(null);
     const actualSubject=session?.navigationContext?.audience==='student'?session.navigationContext.subject:undefined;
-    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(session?.studentId?{studentId:session.studentId,...(actualSubject?{subject:actualSubject}:{})}:{})}));window.location.assign(withMaterialsReturn('/studio/source-courses?'+params,materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'))));return;}
+    // 232 §4.2: back to the AI course tab the learner came from; a unit check returns to 验证.
+    const sourcePanel=new URLSearchParams(window.location.search).get('returnPanel')??(session?.sourceCheckId?'checks':null);
+    if(sourceCourse.current){const params=copyCourseFilters(window.location.search,new URLSearchParams({course:sourceCourse.current,...(sourcePanel?{panel:sourcePanel}:{}),...(session?.studentId?{studentId:session.studentId,...(actualSubject?{subject:actualSubject}:{})}:{})}));window.location.assign(withMaterialsReturn('/studio/source-courses?'+params,materialsReturn(new URLSearchParams(window.location.search).get('materialsReturn'))));return;}
     if (studio.current) {
       const params=new URLSearchParams(window.location.search), query=copyCourseFilters(window.location.search,new URLSearchParams({view:'courses',course:studio.current}));
       if(session?.studentId)query.set('student',session.studentId);if(actualSubject)query.set('subject',actualSubject);
@@ -146,7 +148,7 @@ function ClassroomWorkspace({identity}:{identity:ReturnType<typeof useSessionUse
     }
     const unit = catalog?.course.units.findIndex(item => item.lectures.some(lecture => lecture.lessons.some(lesson => lesson.id === session?.lessonId)) || session?.lessonId === 'unit-exam:' + item.id) ?? unitIndex;
     const selectedUnit = unit >= 0 ? unit : unitIndex; setUnitIndex(selectedUnit);
-    const query=new URLSearchParams(window.location.search);for(const key of ['lesson','session','tab','help'])query.delete(key);query.set('unit',String(selectedUnit));const returnPanel=query.get('panel')==='materials'?'materials':query.get('panel')==='practices'?'practices':'units';setPanel(returnPanel);query.set('panel',returnPanel);
+    const query=new URLSearchParams(window.location.search);for(const key of ['lesson','session','tab','help'])query.delete(key);query.set('unit',String(selectedUnit));const returnPanel=restoreCoursePanel(query.get('panel'));setPanel(returnPanel);query.set('panel',returnPanel);
     window.history.replaceState(null, '', '/studio/classroom?' + query); void refresh();
   }
   if (identity === undefined) return <div className="cl-loading" role="status">正在打开教学课堂…</div>;

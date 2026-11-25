@@ -1,0 +1,31 @@
+/* 232 §4.2: the five course tabs on AI and source courses, matching the textbook course tab bar. */
+.sc-course-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 1px solid var(--sc-line); }
+.sc-shell .sc-course-tabs button { font-size: 13px; padding: 6px 12px; border: 0; background: transparent; color: var(--sc-muted); border-radius: 9px; }
+.sc-shell .sc-course-tabs button[aria-selected="true"] { background: #eff0f4; color: var(--sc-ink); }
+.sc-course-panel { min-width: 0; }
+.sc-course-panel:focus-visible { outline: 3px solid #a8bddc; outline-offset: 4px; }
+.sc-loop-panel { display: grid; gap: 16px; margin: 0 0 24px; padding: 24px; border: 1px solid var(--sc-line); border-radius: 12px; background: #fff; }
+.sc-loop-panel > header small { font-size: 10px; letter-spacing: .14em; }
+.sc-loop-panel h2 { margin: 4px 0 0; font-size: 19px; font-weight: 500; }
+.sc-loop-panel > header p, .sc-loop-block p { margin: 6px 0 0; color: var(--sc-muted); font-size: 13px; line-height: 1.8; }
+.sc-loop-block { display: grid; gap: 4px; padding-top: 14px; border-top: 1px solid var(--sc-line); overflow-wrap: anywhere; }
+.sc-loop-block h3 { margin: 0; font-size: 15px; font-weight: 500; }
+.sc-loop-block p b { color: var(--sc-ink); font-weight: 500; }
+.sc-loop-empty { margin: 0; color: var(--sc-muted); font-size: 13px; }
+.sc-loop-counts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; }
+.sc-loop-counts li { display: grid; gap: 2px; min-width: 96px; padding: 10px 12px; border: 1px dashed var(--sc-line); border-radius: 10px; background: #fbfcfd; }
+.sc-loop-counts b { font-size: 20px; font-weight: 500; }
+.sc-loop-counts span { font-size: 12px; color: var(--sc-muted); }
+.sc-loop-link { width: max-content; max-width: 100%; }
+.sc-loop-practices { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sc-loop-practices li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; align-items: center; padding: 12px 14px; border: 1px solid var(--sc-line); border-radius: 10px; }
+.sc-loop-practices li > div { display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.sc-loop-practices li > div small { font-size: 10px; letter-spacing: .12em; }
+.sc-loop-practices li > div span { color: var(--sc-muted); font-size: 12px; }
+.sc-loop-practices li > a { white-space: nowrap; }
+.sc-loop-practices li > :not(div):not(a) { grid-column: 1 / -1; }
+.sc-loop-panel .sc-course-project { margin: 0; }
+@media (max-width: 700px) {
+  .sc-loop-panel { padding: 16px; }
+  .sc-loop-practices li { grid-template-columns: minmax(0, 1fr); }
+}

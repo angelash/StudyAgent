@@ -49,10 +49,14 @@ describe('model course crafting with real SQLite transactions and source-course 
     expect(profile).toHaveBeenCalledWith(expect.objectContaining({id:parent.user.id}),studentId,'math');
     const results=contexts[0].context.learnerResults;expect(results).toMatchObject({subject:'math',secure:['乘法'],fragile:['分数加法'],learning:[]});
     expect(JSON.stringify(results)).not.toMatch(/比例|private-evidence|0\.5/);expect(contexts[0].system).toContain('learnerResults');
-    const blueprint=(await call('get',base+'/'+measured.id)).blueprint;expect(blueprint.learnerResults).toMatchObject({secure:['乘法'],fragile:['分数加法']});
+    const measuredRun=await call('get',base+'/'+measured.id),blueprint=measuredRun.blueprint;expect(blueprint.learnerResults).toMatchObject({secure:['乘法'],fragile:['分数加法']});
+    // 232 §4.2 摸底 tab: the course page shows the same starting point to its owner.
+    expect((await call('get','/learning/source-courses/'+measuredRun.courseId)).plannedFrom).toMatchObject({secure:['乘法'],fragile:['分数加法'],learning:[]});
     profile.mockReturnValueOnce({estimates:[estimate('比例','unknown')]});
     const empty=await prepared('另一个主题',{studentId,subject:'math'});await call('post',base+'/'+empty.id+'/answers',answer(empty));await sourceWorker.runNext();
-    expect(contexts[1].context).not.toHaveProperty('learnerResults');expect(contexts[1].system).not.toContain('learnerResults');expect((await call('get',base+'/'+empty.id)).blueprint).not.toHaveProperty('learnerResults');
+    expect(contexts[1].context).not.toHaveProperty('learnerResults');expect(contexts[1].system).not.toContain('learnerResults');
+    const emptyRun=await call('get',base+'/'+empty.id);expect(emptyRun.blueprint).not.toHaveProperty('learnerResults');
+    expect(await call('get','/learning/source-courses/'+emptyRun.courseId)).not.toHaveProperty('plannedFrom');
     const adult=await prepared('没有档案的自由主题');const before=profile.mock.calls.length;await call('post',base+'/'+adult.id+'/answers',answer(adult));expect(profile.mock.calls.length).toBe(before);
     }finally{profile.mockRestore();(chat.structured as any).mockImplementation(original);}
   });

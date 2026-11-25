@@ -3,9 +3,11 @@ import * as React from 'react';
 import Link from 'next/link';
 import type { ClassroomCatalog } from '@study-agent/contracts';
 
-export type CoursePanel = 'units' | 'materials' | 'practices';
-const panels: CoursePanel[] = ['units', 'materials', 'practices'];
-const titles = ['单元', '资料', '练习'];
+// 232 §4.2: the same five tabs as every other course, in loop order. Unit checks moved from 练习 to 验证.
+export type CoursePanel = 'materials' | 'baseline' | 'units' | 'practices' | 'checks';
+const panels: CoursePanel[] = ['materials', 'baseline', 'units', 'practices', 'checks'];
+const titles = ['资料', '摸底', '单元', '练习', '验证'];
+export function restoreCoursePanel(value: string | null): CoursePanel { return panels.find(panel => panel === value) ?? 'units'; }
 
 /** These panels navigate existing activities. They never create learning evidence. */
 export function CoursePanels({ catalog, panel, unitIndex, busy, onPanel, onUnit, onPractice, projectHref }: {
@@ -59,8 +61,16 @@ export function CoursePanels({ catalog, panel, unitIndex, busy, onPanel, onUnit,
           <img src="/reference/hyperknow/components/courseTypeIcon/clipboard-text.svg" alt=""/>
           <span><b>{unit.project.title}</b><small>单元 {index + 1} · Project</small></span>
         </Link>
-        {practice({ id: 'unit-exam:' + unit.id, title: unit.title + '综合核查' }, index, 'Unit Check')}
       </React.Fragment>)}</div>
+    </div>
+    <div id={id + '-panel-baseline'} role="tabpanel" aria-labelledby={id + '-tab-baseline'} hidden={panel !== 'baseline'} tabIndex={0}>
+      <p className="cl-panel-empty">这门成人课程不连接学习档案，没有开课前短测。</p>
+      <p className="cl-panel-note">直接从第一单元开始即可。随堂题的首次作答会原样保留，作为学习过程记录，不算作正式掌握。</p>
+    </div>
+    <div id={id + '-panel-checks'} role="tabpanel" aria-labelledby={id + '-tab-checks'} hidden={panel !== 'checks'} tabIndex={0}>
+      <p className="cl-panel-note">每个单元一组综合核查，独立作答，首次作答原样保留。</p>
+      <div className="cl-panel-activities">{units.map((unit, index) =>
+        practice({ id: 'unit-exam:' + unit.id, title: unit.title + '综合核查' }, index, 'Unit Check'))}</div>
     </div>
   </div>;
 }

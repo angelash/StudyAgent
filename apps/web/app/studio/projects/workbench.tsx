@@ -84,6 +84,7 @@ function ProjectWorkspace({identity}:{identity:NonNullable<ReturnType<typeof use
   const backUnit = params.get('returnUnit') ?? (studioCourseId ? definition?.unitId : String(Math.max(0, catalog?.definitions.findIndex(item => item.unitId === definition?.unitId) ?? 0)));
   if (backUnit) backParams.set('unit', backUnit); if (params.get('returnPanel')) backParams.set('panel', params.get('returnPanel')!);
   const sourceBack=copyCourseFilters(query,new URLSearchParams(sourceCourseId?{course:sourceCourseId}:{}));
+  if(sourceCourseId&&params.get('returnPanel'))sourceBack.set('panel',params.get('returnPanel')!);
   const materialBack=materialsReturn(params.get('materialsReturn'));
   const backHref = sourceCourseId?withMaterialsReturn('/studio/source-courses?'+sourceBack,materialBack):studioCourseId ? '/studio?' + backParams : '/studio/classroom?' + backParams;
 

@@ -35,6 +35,8 @@ export type SourceCourseSummary = { id: string; studentId: string | null; subjec
   lessonCount: number; viewed: number; lastLessonId: string | null; lastSessionId?: string | null; nextLessonId?: string | null; nextLessonTitle?: string | null; lastStudied: string | null; createdAt: string; updatedAt: string };
 export type SourceCourseView = SourceCourseSummary & { revision: number; input: SourceCourseInput; sources: CourseSourceSnapshot[];
   journey?:SourceCourseJourney;
+  /** 232 §4.2 摸底: formal results the blueprint was planned from (names by status). Owner only; absent when none. */
+  plannedFrom?: { measuredAt: string; secure: string[]; fragile: string[]; learning: string[]; notice: string };
   compilation?: SourceCompilationView;
   permissions: { manage: boolean }; overview: string | null;
   generation: SourceCourseGenerationView | null;
