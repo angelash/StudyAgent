@@ -78,14 +78,36 @@ export function textProviderConfiguration(configPath = resolve(codexHomeDirector
     disabledMcp: [...disabledMcp].map(name => 'mcp_servers.' + name + '.enabled=false') };
 }
 
-async function boundedBody(stream: AsyncIterable<Uint8Array>, maximum: number) {
+async function boundedBody(stream: AsyncIterable<Uint8Array>, maximum: number, onChunk?: (chunk: Uint8Array) => void) {
   const chunks: Buffer[] = []; let size = 0;
   for await (const chunk of stream) {
     size += chunk.length;
     if (size > maximum) throw Error('text_transport_size_limit');
-    chunks.push(Buffer.from(chunk));
+    chunks.push(Buffer.from(chunk)); onChunk?.(chunk);
   }
   return Buffer.concat(chunks);
+}
+
+/**
+ * 232 §5 step two: watches a provider event stream for output text deltas while it is still buffered for the CLI.
+ * Purely observational: the forwarded bytes are unchanged and still verified as a whole; observer errors are ignored.
+ */
+export function outputTextObserver(onText: (text: string) => void) {
+  const decoder = new TextDecoder(); let pending = '', text = '';
+  return (chunk: Uint8Array) => {
+    pending += decoder.decode(chunk, { stream: true });
+    const blocks = pending.split(/\r?\n\r?\n/); pending = blocks.pop() ?? '';
+    let changed = false;
+    for (const block of blocks) {
+      const data = block.split(/\r?\n/).filter(line => line.startsWith('data:')).map(line => line.slice(5).trimStart()).join('\n');
+      if (!data || data === '[DONE]') continue;
+      try {
+        const event = JSON.parse(data) as { type?: unknown; delta?: unknown };
+        if (event.type === 'response.output_text.delta' && typeof event.delta === 'string') { text += event.delta; changed = true; }
+      } catch { /* The whole body is verified after it completes; a partial view only skips what it cannot read. */ }
+    }
+    if (changed) try { onText(text); } catch { /* An observer cannot change the model response. */ }
+  };
 }
 
 function verifyEvent(value: unknown) {
@@ -136,7 +158,7 @@ export function verifyTextResponse(bytes: Buffer) {
 }
 
 /** Only the original configured provider receives credentials. No tool event is released to the CLI. */
-export async function startTextTransport(options: { upstream: string; modelId: string; timeoutMs: number; signal?: AbortSignal }) {
+export async function startTextTransport(options: { upstream: string; modelId: string; timeoutMs: number; signal?: AbortSignal; onText?: (text: string) => void }) {
   const route = '/' + randomBytes(24).toString('hex') + '/responses', controllers = new Set<AbortController>();
   const server = createServer(async (request: IncomingMessage, response) => {
     if (request.method !== 'POST' || request.url !== route) { response.writeHead(404).end(); return; }
@@ -159,7 +181,9 @@ export async function startTextTransport(options: { upstream: string; modelId: s
       headers.set('Content-Type', 'application/json'); headers.set('Accept', 'text/event-stream');
       const upstream = await fetch(options.upstream, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal, redirect: 'error' });
       if (!upstream.body) throw Error('text_transport_empty_response');
-      const bytes = await boundedBody(upstream.body as unknown as AsyncIterable<Uint8Array>, maxResponseBytes);
+      const streamed = upstream.ok && upstream.headers.get('content-type')?.includes('text/event-stream');
+      const observe = options.onText && streamed ? outputTextObserver(options.onText) : undefined;
+      const bytes = await boundedBody(upstream.body as unknown as AsyncIterable<Uint8Array>, maxResponseBytes, observe);
       let safeBytes: Buffer = bytes;
       if (upstream.ok) {
         if (!upstream.headers.get('content-type')?.includes('text/event-stream')) throw Error('text_transport_expected_events');

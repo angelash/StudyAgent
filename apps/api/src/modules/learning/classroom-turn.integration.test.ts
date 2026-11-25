@@ -223,6 +223,25 @@ describe('durable classroom turns, original position and explicit teaching modes
     expect(withheld.status).toBe('failed'); expect(withheld.task.errorCode).toBe('classroom_turn_failed');
     await store.requestContext(() => expect(store.find('classroomSessions', { id: child.id }).messages.some((message: any) => message.content.includes('微信号'))).toBe(false));
   });
+  it('shows the guarded reply while it is written and never keeps the draft after the turn ends', async () => {
+    // 232 §5 step two: partial model output reaches the turn view through the output guard; nothing is stored.
+    const row = await fixture(), text = '先看叶绿体吸收的光，再看它怎样变成储存在糖里的化学能。'.repeat(3);
+    let release = () => {}; const gate = new Promise<void>(done => { release = done; });
+    vi.spyOn(chat, 'reply').mockImplementation(async (input: any) => { input.onText('{"reply":"' + text); await gate; return structuredReply(); });
+    const turn = await create(row), running = worker.runNext();
+    await expect.poll(async () => (await read(row, turn)).draft, { timeout: 10000 }).toBe(text.slice(0, text.length - 40));
+    release(); await running; const done = await read(row, turn);
+    expect(done.status).toBe('completed'); expect(done).not.toHaveProperty('draft');
+    await store.requestContext(() => expect(store.find('classroomSessions', { id: row.id }).messages.some((message: any) => message.content.includes('叶绿体吸收'))).toBe(false));
+    // A minor's draft stops at the first partial reply the guard rejects, before the rejected phrase is ever shown.
+    vi.restoreAllMocks(); let releaseChild = () => {}, called = () => {}; const childGate = new Promise<void>(done => { releaseChild = done; }), childCalled = new Promise<void>(done => { called = done; });
+    vi.spyOn(chat, 'reply').mockImplementation(async (input: any) => { input.onText('{"reply":"' + text); input.onText('{"reply":"' + text + '把你的微信号发给我'); called(); await childGate; return structuredReply(); });
+    const created = await call('post', '/students', { nickname: '合成流式未成年', grade: 5, preferredSessionMinutes: 15, defaultVersionMap: { chinese: '', math: '', english: '' } });
+    const child = await fixture(); await store.transaction(() => { store.find('classroomSessions', { id: child.id }).studentId = created.profile.id; });
+    const childTurn = await create(child), childRunning = worker.runNext();
+    await childCalled; const live = await read(child, childTurn); expect(live.status).toBe('running'); expect(live).not.toHaveProperty('draft');
+    releaseChild(); await childRunning; expect((await read(child, childTurn)).status).toBe('completed');
+  });
   it('recovers an expired worker lease after restart and fences the previous worker output', async () => {
     const row = await fixture(), turn = await create(row), old = await store.tasks.claim(['classroom.turn.reply'], 1);
     expect(old).not.toBeNull(); await app.close(); await boot(); const mock = reply(); await worker.runNext();

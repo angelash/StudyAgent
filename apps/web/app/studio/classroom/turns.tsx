@@ -41,7 +41,8 @@ export function useClassroomTurns({ session, onSession, onNotice }: { session: C
         if (value) await receive(value, controller.signal);
         setLoaded(true);
       } catch (error) { if (!controller.signal.aborted) latest.current.onNotice((error as Error).message); }
-      if (!controller.signal.aborted) timer = setTimeout(() => void refresh(), active(current.current) ? 1200 : 5000);
+      // A running answer is read twice a second so its draft keeps pace with the model; otherwise the original cadence.
+      if (!controller.signal.aborted) timer = setTimeout(() => void refresh(), current.current?.status === 'running' ? 500 : active(current.current) ? 1200 : 5000);
     }
     void refresh();
     return () => { controller.abort(); if (timer) clearTimeout(timer); };
@@ -72,6 +73,24 @@ export function ClassroomIntentPicker({ value, disabled, onChange }: { value: Cl
     type="button" disabled={disabled} aria-pressed={value === item.id} onClick={() => onChange(item.id, item.prompt)}>{item.label}</button>)}</div>;
 }
 
+/**
+ * 232 §5 step two: the server sends the part of the reply that has passed the output guard; this reveals it word by word
+ * between reads. It is a draft: the saved answer appears in the conversation once the whole output is checked.
+ */
+function DraftReply({ text }: { text: string }) {
+  const [shown, setShown] = React.useState('');
+  React.useEffect(() => {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { setShown(text); return; }
+    const timer = setInterval(() => setShown(current => {
+      if (!text.startsWith(current)) return '';
+      if (current.length >= text.length) return current;
+      return text.slice(0, current.length + Math.max(1, Math.ceil((text.length - current.length) / 12)));
+    }), 40);
+    return () => clearInterval(timer);
+  }, [text]);
+  return <div className="cl-turn-draft"><p aria-live="off">{shown}</p><small>回答生成中，整段检查通过后保存到对话里。</small></div>;
+}
+
 export function ClassroomTurnStatus({ state, onReturn, onEdit }: { state: ReturnType<typeof useClassroomTurns>; onReturn: (turn: ClassroomTurnView) => void;
   onEdit: (command: ClassroomTurnCommand) => void }) {
   const { turn, uncertain, working } = state;
@@ -83,6 +102,7 @@ export function ClassroomTurnStatus({ state, onReturn, onEdit }: { state: Return
     {turn && <section data-status={turn.status}>
       <b>{turn.status === 'running' && turn.stage ? '老师正在' + classroomTurnStageLabels[turn.stage] : labels[turn.status]}</b>
       <p>{turn.message}</p><small>{turn.modelName} · {turn.position.stepTitle} · 第 {turn.position.sentenceCursor + 1} 句</small>
+      {turn.status === 'running' && turn.draft && <DraftReply text={turn.draft}/>}
       <div>{state.active && turn.status !== 'cancelling' && <button type="button" disabled={working} onClick={() => void state.control('cancel')}>取消这次回答</button>}
         {['failed', 'cancelled'].includes(turn.status) && <button type="button" disabled={working || state.active} onClick={() => void state.control('retry')}>重试这次提问</button>}
         {turn.status === 'completed' && <button type="button" disabled={working} onClick={() => onReturn(turn)}>回到原句继续</button>}</div>

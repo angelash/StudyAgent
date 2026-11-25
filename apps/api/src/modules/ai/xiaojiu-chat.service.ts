@@ -53,6 +53,8 @@ export type XiaojiuChatRequest = {
   history: Array<{ role: 'user' | 'assistant'; content: string }>;
   message: string;
   signal?: AbortSignal;
+  /** Read-only view of the model's raw output text as it streams (one provider request at a time). Never changes the result. */
+  onText?: (raw: string) => void;
   classroomBoard?: boolean;
   classroomPresentation?: boolean;
   courseSources?: boolean;
@@ -114,7 +116,7 @@ export class XiaojiuChatService {
       if (input.signal?.aborted) throw new ServiceUnavailableException('本次对话已取消');
       const connection = textProviderConfiguration();
       transport = await startTextTransport({ upstream: connection.upstream, modelId: model.id,
-        timeoutMs: this.env.XIAOJIU_CHAT_TIMEOUT_MS, signal: input.signal });
+        timeoutMs: this.env.XIAOJIU_CHAT_TIMEOUT_MS, signal: input.signal, onText: input.onText });
       const catalogOverride = this.models.writeCompatibleCatalog(catalogPath, { textOnly: true });
       if (catalogOverride) args.push('-c', catalogOverride);
       args.push('-c', 'model_providers.' + connection.provider + '.base_url=' + JSON.stringify(transport.baseUrl),

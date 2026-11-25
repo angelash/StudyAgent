@@ -7,6 +7,7 @@ import { guardTeachingOutput } from '../ai/teaching-output-guard';
 import { learnerAudience } from '../ai/learner-audience';
 import { freezeSpeechTrack } from './classroom-presentation';
 import { classroomTurnKind, turnAuthority } from './classroom-turn.service';
+import { ClassroomTurnDrafts } from './classroom-turn-drafts';
 
 const teachingModes = {
   question: '回答当前疑问，先明确困惑，再给一个可验证的小步骤。',
@@ -23,7 +24,8 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
   private abort?: AbortController;
   private stopping = false;
   private readonly logger = new Logger(ClassroomTurnWorkerService.name);
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly chat: XiaojiuChatService,private readonly retention:RetentionService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly chat: XiaojiuChatService,private readonly retention:RetentionService,
+    private readonly drafts: ClassroomTurnDrafts) {}
   onApplicationBootstrap() {
     if (process.env.STUDY_WORKER_ENABLED === 'false' || !this.store.persistence.durable) return;
     this.timer = setInterval(() => void this.runNext().catch(() => this.logger.warn('Classroom turn retained')), 1000);
@@ -59,7 +61,10 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
       }, { ...fence, mode: 'checkpoint', progress: { stage: 'reading' } });
       // 232 §5.1: visible steps on the existing task progress field; no new stored records.
       await this.store.tasks.heartbeat(task.id, task.leaseToken!, { stage: 'explaining' });
+      const audience = await this.store.requestContext(() => learnerAudience(this.store, snapshot.studentId));
+      // 232 §5 step two: the reply shows while it is written, through the same guard (see classroom-turn-drafts).
       const response = await this.chat.reply({ modelId: snapshot.modelId, signal: abort.signal, classroomBoard: true, classroomPresentation: true,
+        onText: raw => this.drafts.update(id, raw, audience),
         system: '你是课堂陪伴老师。仅根据提供的已展示讲解解释概念。' + teachingModes[snapshot.intent] +
           '不替学生选择选项，不泄露或推断标准答案。题目只用于引导思路。不声称已掌握、已发现深层问题或已完成测量。板书提炼要点。不要HTML、脚本或工具调用。',
         context: snapshot.context, history: snapshot.history, message: snapshot.message });
@@ -67,7 +72,6 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
       await this.store.tasks.heartbeat(task.id, task.leaseToken!, { stage: 'checking' });
       // Learner-facing replies pass the same teaching output checks as assistant replies, stricter for a minor profile;
       // a withheld reply is never stored and the turn fails for an explicit retry.
-      const audience = await this.store.requestContext(() => learnerAudience(this.store, snapshot.studentId));
       const inspection = guardTeachingOutput({ reply: response.reply, board: response.board ?? null }, audience);
       if (!inspection.allowed) {
         this.logger.warn(`Classroom reply withheld by teaching output guard ${inspection.version}: ${inspection.reason}`);
@@ -91,7 +95,7 @@ export class ClassroomTurnWorkerService implements OnApplicationBootstrap, OnMod
     } catch {
       // Provider failure needs an explicit retry. Shutdown/expired lease may be recovered by the durable queue.
       await this.store.tasks.fail(task.id, task.leaseToken!, abort.signal.aborted ? 'classroom_turn_stopped' : 'classroom_turn_failed', this.stopping).catch(() => {});
-    } finally { clearInterval(heartbeat); if (this.abort === abort) this.abort = undefined; }
+    } finally { clearInterval(heartbeat); this.drafts.clear(id); if (this.abort === abort) this.abort = undefined; }
     return true;
   }
 }

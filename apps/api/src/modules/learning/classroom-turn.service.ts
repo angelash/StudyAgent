@@ -1,3 +1,4 @@
+import { ClassroomTurnDrafts } from './classroom-turn-drafts';
 import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
@@ -46,7 +47,8 @@ export function turnAuthority(store: InMemoryStoreService, students: StudentsSer
 
 @Injectable()
 export class ClassroomTurnService {
-  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly models: XiaojiuModelsService,private readonly retention:RetentionService) {}
+  constructor(private readonly store: InMemoryStoreService, private readonly students: StudentsService, private readonly models: XiaojiuModelsService,private readonly retention:RetentionService,
+    private readonly drafts: ClassroomTurnDrafts) {}
 
   private record(user: InMemoryUserAccount, sessionId: string, id: string) {
     visualSession(this.store, this.students, user, sessionId);
@@ -59,9 +61,10 @@ export class ClassroomTurnService {
     const status = turn.status === 'completed' ? 'completed' : task?.state === 'failed' ? 'failed' : task?.state === 'cancelled' ? 'cancelled' : task?.state === 'cancel_requested' ? 'cancelling' : turn.status;
     const progress = provisional ? undefined : (task as { progress?: Record<string, unknown> } | null)?.progress?.stage;
     const stage = status === 'running' && classroomTurnStages.includes(progress as ClassroomTurnStage) ? progress as ClassroomTurnStage : undefined;
+    const draft = status === 'running' ? this.drafts.get(turn.id) : undefined;
     const { id, sessionId, requestKey, message, intent, modelId, modelName, questionId, position, revision, createdAt, updatedAt, userMessageId, assistantMessageId } = turn;
     return { id, sessionId, requestKey, message, intent, modelId, modelName, ...(questionId ? { questionId } : {}), position: structuredClone(position),
-      revision, createdAt, updatedAt, userMessageId, assistantMessageId, status, ...(stage ? { stage } : {}),
+      revision, createdAt, updatedAt, userMessageId, assistantMessageId, status, ...(stage ? { stage } : {}), ...(draft ? { draft } : {}),
       task: task ? { state: task.state, version: task.version, generation: task.generation, errorCode: task.errorCode } : null };
   }
   async list(user: InMemoryUserAccount, sessionId: string) {

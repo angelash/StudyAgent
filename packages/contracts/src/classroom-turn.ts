@@ -16,6 +16,8 @@ export type ClassroomTurnView = { id: string; sessionId: string; requestKey: str
   status: 'queued' | 'running' | 'completed' | 'failed' | 'cancelled' | 'cancelling';
   /** 232 §5.1: the worker's current step while running, so the learner sees progress instead of a blank wait. */
   stage?: ClassroomTurnStage;
+  /** 232 §5 step two: the spoken reply so far while running; it passed the output guard and is not saved until complete. */
+  draft?: string;
   revision: number; createdAt: string; updatedAt: string; userMessageId?: string; assistantMessageId?: string;
   task: { state: string; generation: number; version: number; errorCode: string | null } | null };
 export const classroomTurnStages = ['reading', 'explaining', 'checking'] as const;
