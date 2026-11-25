@@ -5,6 +5,7 @@ import { XiaojiuChatService } from './xiaojiu-chat.service';
 import { TeachingToolService } from './teaching-tool.service';
 import { teachingToolKinds } from './teaching-tool-record';
 import { teachingAnalysisJsonSchema, teachingHintJsonSchema, validateTeachingAnalysis, validateTeachingHint, teachingHintWarnings } from './teaching-tool-protocol';
+import { assertTeachingOutput } from './teaching-output-guard';
 
 @Injectable()
 export class TeachingToolWorkerService implements OnApplicationBootstrap, OnModuleDestroy {
@@ -60,7 +61,7 @@ export class TeachingToolWorkerService implements OnApplicationBootstrap, OnModu
       await this.store.transaction(() => {
         const row = this.store.find('teachingToolRuns', { id, taskId: task.id, ownerUserId: task.ownerUserId });
         if (!row || row.status !== 'validating' || row.inputHash !== snapshot.inputHash) throw new ConflictException(); this.tools.authority(row); this.tools.assertFrozen(row);
-        row.result = result; row.status = 'completed'; row.revision++; row.updatedAt = new Date().toISOString();
+        assertTeachingOutput(result, 'adult', 'teaching_output_withheld'); row.result = result; row.status = 'completed'; row.revision++; row.updatedAt = new Date().toISOString();
       }, { ...fence, result: { runId: id } });
     } catch (error) {
       const contextChanged = authorityLost || error instanceof ForbiddenException || error instanceof ConflictException || error instanceof NotFoundException;

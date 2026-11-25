@@ -3,6 +3,8 @@ import { InMemoryStoreService } from '../../infrastructure/in-memory-store.servi
 import { XiaojiuChatService } from '../ai/xiaojiu-chat.service';
 import { GuidanceModelService } from './guidance-model.service';
 import { guidanceModelKind, guidanceTextJsonSchema, validateGuidanceText } from './guidance-model-record';
+import { assertTeachingOutput } from '../ai/teaching-output-guard';
+import { learnerAudience } from '../ai/learner-audience';
 
 @Injectable()
 export class GuidanceModelWorkerService implements OnApplicationBootstrap,OnModuleDestroy {
@@ -41,7 +43,7 @@ export class GuidanceModelWorkerService implements OnApplicationBootstrap,OnModu
       await this.store.transaction(()=>{
         const row=this.store.find('guidanceModelSuggestions',{id,taskId:task.id,ownerUserId:task.ownerUserId});
         if(!row||row.status!=='validating'||row.inputHash!==snapshot.inputHash)throw new ConflictException();
-        this.suggestions.authority(row);row.result=result;row.status='completed';row.revision++;row.updatedAt=new Date().toISOString();
+        this.suggestions.authority(row);assertTeachingOutput(result,learnerAudience(this.store,row.studentId),'guidance_output_withheld');row.result=result;row.status='completed';row.revision++;row.updatedAt=new Date().toISOString();
       },{...fence,result:{suggestionId:id}});
     } catch(error) {
       const changed=authorityLost||error instanceof ForbiddenException||error instanceof ConflictException||error instanceof NotFoundException;

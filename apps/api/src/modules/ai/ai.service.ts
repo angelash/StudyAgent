@@ -44,7 +44,9 @@ import { codexHomeDirectory, XiaojiuModelsService } from './xiaojiu-models.servi
 import { modelConnectionFingerprint, readModelQualification } from './xiaojiu-model-qualification';
 import { textProviderConfiguration } from './xiaojiu-text-transport';
 import { workspaceRoot } from '../../infrastructure/workspace-paths';
-import { inspectTeachingOutput, TEACHING_OUTPUT_POLICY_VERSION } from './teaching-output-policy';
+import { TEACHING_OUTPUT_POLICY_VERSION } from './teaching-output-policy';
+import { guardTeachingOutput } from './teaching-output-guard';
+import { learnerAudience } from './learner-audience';
 
 type AnalyzeAssessmentCommand = {
   question: Question;
@@ -618,7 +620,7 @@ export class AiService {
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
         if (result.evidenceIds.some(id => !context.evidenceIds.includes(id)) || reveals ||
-            !inspectTeachingOutput(result.reply).allowed)
+            !guardTeachingOutput({ reply: result.reply }, learnerAudience(this.store, session.studentId)).allowed)
           throw new ServiceUnavailableException('所选模型返回了不符合证据边界的回答，请重试或切换模型');
         reply = result.reply;
         citations = result.evidenceIds;
@@ -643,7 +645,7 @@ export class AiService {
         const result = teaching ? base.extend({ sourceKeys: z.array(z.string().min(1).max(100)).max(50).optional() }).parse(raw) : base.parse(raw);
         const reveals = session.userRole === 'student' && withheldAnswer !== undefined &&
           ['string', 'number'].includes(typeof withheldAnswer) && result.reply.includes(String(withheldAnswer));
-        if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || !inspectTeachingOutput(result.reply).allowed) throw new Error('Unsupported output');
+        if (result.evidenceIds.some((id) => !context.evidenceIds.includes(id)) || reveals || !guardTeachingOutput({ reply: result.reply }, learnerAudience(this.store, session.studentId)).allowed) throw new Error('Unsupported output');
         reply = result.reply; citations = result.evidenceIds; source = 'openai';
         sourceReferences = trustedAssistantSources(session, teaching, 'sourceKeys' in result ? result.sourceKeys : undefined);
         selectedModelId = prepared.modelId; selectedModelName = prepared.modelName;
@@ -753,7 +755,7 @@ export class AiService {
       const value = result.data;
       if (value.activities.length !== plan.actions.length || new Set(value.activities.map((item) => item.actionId)).size !== plan.actions.length ||
         value.activities.some((item) => !plan.actions.some((action) => action.id === item.actionId) || item.evidenceIds.some((id) => !plan.evidenceIds.includes(id))) ||
-        !inspectTeachingOutput(value.summary).allowed || value.activities.some(item => !inspectTeachingOutput(item.activity).allowed)) return { status: 'rejected' };
+        !guardTeachingOutput({ summary: value.summary, activities: value.activities.map(item => item.activity) }, learnerAudience(this.store, plan.studentId)).allowed) return { status: 'rejected' };
       this.recordInsight('assistant', plan.id, plan.studentId, value.summary, { summary: value.summary,
         structuredResult: { scene: 'diagnostic_guidance', model: this.env.OPENAI_MODEL, promptVersion: 'guidance-v1', outputPolicyVersion: TEACHING_OUTPUT_POLICY_VERSION, evidenceIds: plan.evidenceIds },
         confidenceLevel: 'medium', reviewRequired: true, source: 'openai' });
