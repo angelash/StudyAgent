@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "54218795102c9c15f8fae84925ac83f4f9768ed4",
+  "sourceRevision": "d69257d61551bbc957720976f5581e308745b450",
   "scope": "Feature-level explanations verified against active source routes. Test links are associated evidence locations, not a claim of assertion completeness.",
   "counts": {
     "areas": 14,
     "features": 149,
-    "activeNormalApiRoutes": 599,
-    "coveredApiRoutes": 599
+    "activeNormalApiRoutes": 596,
+    "coveredApiRoutes": 596
   },
   "areas": [
     {
@@ -4415,7 +4415,7 @@
         },
         {
           "id": "LEARN-06",
-          "title": "旧入口迁移与历史只读",
+          "title": "旧入口迁移与管理员知识地图",
           "area": "learning",
           "status": "historical-read-only-and-redirect",
           "actors": "学生、家长、授权教师",
@@ -4430,72 +4430,30 @@
             "/parent/dashboard",
             "/student/today"
           ],
-          "inputs": "旧URL或管理员历史查询",
-          "implementation": "旧student/mission重定向今日学习，student/knowledge重定向家庭页；旧写接口被410拦截；管理员历史接口读取早期记录。",
-          "outputs": "明确迁移入口和历史只读报告",
+          "inputs": "旧URL或管理员知识地图查询",
+          "implementation": "旧student/mission重定向今日学习，student/knowledge重定向家庭页；旧写接口与只读旧集合的管理员历史统计（热力图、周报、家长提醒）返回410；管理员知识地图按教材列出知识点，掌握情况取当前正式测量，未测到的保持未知。",
+          "outputs": "明确迁移入口与按正式测量的知识地图",
           "collections": [
-            "assessments",
-            "assessmentAnswers",
-            "assessmentResults",
-            "studyPlans",
-            "missions",
-            "missionAnswers"
+            "knowledgePoints",
+            "knowledgeAtoms",
+            "diagnosticResponses"
           ],
-          "limits": "Assessments/Missions/Plans旧模块没有被AppModule接入，不属于当前主评测实现。",
+          "limits": "旧 assessments/missions/plans 模块已于232删除；教材知识点只有与已测原子知识点同ID时才显示测量结果。",
           "endpoints": [
-            {
-              "verb": "GET",
-              "path": "/api/admin/history/mastery-heatmap",
-              "controller": "ProgressController",
-              "method": "getMasteryHeatmap",
-              "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 10
-            },
             {
               "verb": "GET",
               "path": "/api/admin/history/students/:studentId/knowledge-map",
               "controller": "ProgressController",
               "method": "getStudentKnowledgeMap",
               "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 20
-            },
-            {
-              "verb": "GET",
-              "path": "/api/admin/history/reports/weekly",
-              "controller": "ProgressController",
-              "method": "getWeeklyReport",
-              "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 30
-            },
-            {
-              "verb": "GET",
-              "path": "/api/admin/history/parents/:parentId/alerts",
-              "controller": "ProgressController",
-              "method": "getParentAlerts",
-              "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 41
+              "line": 10
             }
           ],
           "implementations": [
             {
-              "name": "ProgressService.getMasteryHeatmap",
-              "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 76
-            },
-            {
               "name": "ProgressService.getStudentKnowledgeMap",
               "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 85
-            },
-            {
-              "name": "ProgressService.getWeeklyReport",
-              "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 193
-            },
-            {
-              "name": "ProgressService.getParentAlerts",
-              "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 270
+              "line": 63
             }
           ],
           "sourceFiles": [
@@ -6141,7 +6099,7 @@
             {
               "name": "AiService.modelCatalog",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 84
+              "line": 86
             }
           ],
           "sourceFiles": [
@@ -6270,27 +6228,27 @@
             {
               "name": "AiService.lectureDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 306
+              "line": 308
             },
             {
               "name": "AiService.openDurableAssistantSession",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 285
+              "line": 287
             },
             {
               "name": "AiService.assertSessionOwner",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 426
+              "line": 428
             },
             {
               "name": "AiService.chat",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 557
+              "line": 559
             },
             {
               "name": "AiService.listMessages",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 684
+              "line": 686
             },
             {
               "name": "AssistantTurnService.context",
@@ -6464,12 +6422,12 @@
             {
               "name": "AiService.courseDescriptor",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 324
+              "line": 326
             },
             {
               "name": "AiService.sourcePreview",
               "file": "apps/api/src/modules/ai/ai.service.ts",
-              "line": 397
+              "line": 399
             }
           ],
           "sourceFiles": [
@@ -14928,7 +14886,7 @@
               "controller": "ProgressController",
               "method": "getAnalyticsOverview",
               "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 55
+              "line": 20
             },
             {
               "verb": "GET",
@@ -14936,7 +14894,7 @@
               "controller": "ProgressController",
               "method": "getAiQualityOverview",
               "file": "apps/api/src/modules/progress/progress.controller.ts",
-              "line": 60
+              "line": 25
             }
           ],
           "implementations": [
@@ -14958,12 +14916,12 @@
             {
               "name": "ProgressService.getAnalyticsOverview",
               "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 285
+              "line": 171
             },
             {
               "name": "ProgressService.getAiQualityOverview",
               "file": "apps/api/src/modules/progress/progress.service.ts",
-              "line": 303
+              "line": 189
             }
           ],
           "sourceFiles": [

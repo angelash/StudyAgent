@@ -1,6 +1,6 @@
 # 06 工作台首页、学习任务、报告与学习记忆 — 详细设计
 
-源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。角色：学生、家长、授权教师。
+源码基线：`d69257d61551bbc957720976f5581e308745b450`。角色：学生、家长、授权教师。
 
 产品入口：`/`、`/studio`、`/studio/tasks`、`/studio/reports`、`/studio/profiles`、`/studio/settings`、`/learn`、`/parent/dashboard`、`/student/today`。
 
@@ -473,28 +473,22 @@
 - `NotebookService.redo`；[apps/api/src/modules/learning/notebook.service.ts:154](../../../apps/api/src/modules/learning/notebook.service.ts#L154)。
 - `NotebookService.verification`；[apps/api/src/modules/learning/notebook.service.ts:175](../../../apps/api/src/modules/learning/notebook.service.ts#L175)。
 
-## LEARN-06 旧入口迁移与历史只读
+## LEARN-06 旧入口迁移与管理员知识地图
 
-**输入**：旧URL或管理员历史查询。
+**输入**：旧URL或管理员知识地图查询。
 
-**处理与实现**：旧student/mission重定向今日学习，student/knowledge重定向家庭页；旧写接口被410拦截；管理员历史接口读取早期记录。
+**处理与实现**：旧student/mission重定向今日学习，student/knowledge重定向家庭页；旧写接口与只读旧集合的管理员历史统计（热力图、周报、家长提醒）返回410；管理员知识地图按教材列出知识点，掌握情况取当前正式测量，未测到的保持未知。
 
-**输出**：明确迁移入口和历史只读报告。
+**输出**：明确迁移入口与按正式测量的知识地图。
 
-**状态与持久化**：`assessments`、`assessmentAnswers`、`assessmentResults`、`studyPlans`、`missions`、`missionAnswers`
+**状态与持久化**：`knowledgePoints`、`knowledgeAtoms`、`diagnosticResponses`
 
-**权限、失败与边界**：Assessments/Missions/Plans旧模块没有被AppModule接入，不属于当前主评测实现。
+**权限、失败与边界**：旧 assessments/missions/plans 模块已于232删除；教材知识点只有与已测原子知识点同ID时才显示测量结果。
 
 **关联接口**：
 
-- `GET /api/admin/history/mastery-heatmap` → `ProgressController.getMasteryHeatmap`；[apps/api/src/modules/progress/progress.controller.ts:10](../../../apps/api/src/modules/progress/progress.controller.ts#L10)。
-- `GET /api/admin/history/students/:studentId/knowledge-map` → `ProgressController.getStudentKnowledgeMap`；[apps/api/src/modules/progress/progress.controller.ts:20](../../../apps/api/src/modules/progress/progress.controller.ts#L20)。
-- `GET /api/admin/history/reports/weekly` → `ProgressController.getWeeklyReport`；[apps/api/src/modules/progress/progress.controller.ts:30](../../../apps/api/src/modules/progress/progress.controller.ts#L30)。
-- `GET /api/admin/history/parents/:parentId/alerts` → `ProgressController.getParentAlerts`；[apps/api/src/modules/progress/progress.controller.ts:41](../../../apps/api/src/modules/progress/progress.controller.ts#L41)。
+- `GET /api/admin/history/students/:studentId/knowledge-map` → `ProgressController.getStudentKnowledgeMap`；[apps/api/src/modules/progress/progress.controller.ts:10](../../../apps/api/src/modules/progress/progress.controller.ts#L10)。
 
 **服务方法**：
 
-- `ProgressService.getMasteryHeatmap`；[apps/api/src/modules/progress/progress.service.ts:76](../../../apps/api/src/modules/progress/progress.service.ts#L76)。
-- `ProgressService.getStudentKnowledgeMap`；[apps/api/src/modules/progress/progress.service.ts:85](../../../apps/api/src/modules/progress/progress.service.ts#L85)。
-- `ProgressService.getWeeklyReport`；[apps/api/src/modules/progress/progress.service.ts:193](../../../apps/api/src/modules/progress/progress.service.ts#L193)。
-- `ProgressService.getParentAlerts`；[apps/api/src/modules/progress/progress.service.ts:270](../../../apps/api/src/modules/progress/progress.service.ts#L270)。
+- `ProgressService.getStudentKnowledgeMap`；[apps/api/src/modules/progress/progress.service.ts:63](../../../apps/api/src/modules/progress/progress.service.ts#L63)。

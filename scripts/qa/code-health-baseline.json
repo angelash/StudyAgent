@@ -2,7 +2,7 @@
   "format": "code-health-baseline-v1",
   "longLineThreshold": 240,
   "totals": {
-    "directStoreAccess": 160,
+    "directStoreAccess": 146,
     "longLines": 6755
   },
   "directStoreAccess": {
@@ -27,7 +27,7 @@
     "apps/api/src/modules/library/library.service.ts": 3,
     "apps/api/src/modules/privacy/privacy-records.ts": 11,
     "apps/api/src/modules/privacy/privacy.service.ts": 7,
-    "apps/api/src/modules/progress/progress.service.ts": 24,
+    "apps/api/src/modules/progress/progress.service.ts": 10,
     "apps/api/src/modules/question-workspace/question-import.service.ts": 3,
     "apps/api/src/modules/reviews/reviews.service.ts": 4,
     "apps/api/src/modules/student-media/student-media.service.ts": 3,

@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "sourceRevision": "54218795102c9c15f8fae84925ac83f4f9768ed4",
+  "sourceRevision": "d69257d61551bbc957720976f5581e308745b450",
   "scope": "Static source inventory; route presence does not prove feature completion or runtime permission.",
   "counts": {
     "declaredHttpRoutes": 607,
     "activeHttpRoutes": 607,
-    "activeBusinessHttpRoutes": 599,
-    "retiredHttpRoutes": 8,
+    "activeBusinessHttpRoutes": 596,
+    "retiredHttpRoutes": 11,
     "activeModules": 21,
     "activeControllers": 69,
     "apiClasses": 224,
-    "apiFunctions": 951,
+    "apiFunctions": 954,
     "domainCollections": 143,
     "contractTypes": 613,
     "webPages": 36,
     "webRouteHandlers": 1,
-    "apiTestFiles": 341,
+    "apiTestFiles": 342,
     "browserTestFiles": 70
   },
   "modules": [
@@ -482,7 +482,8 @@
       "file": "apps/api/src/modules/progress/progress.module.ts",
       "imports": [
         "StudentsModule",
-        "ContentModule"
+        "ContentModule",
+        "DiagnosticsModule"
       ],
       "controllers": [
         "ProgressController"
@@ -13541,6 +13542,72 @@
       "retired": true
     },
     {
+      "verb": "ALL",
+      "path": "/api/admin/history/mastery-heatmap",
+      "controller": "RetiredLearningController",
+      "method": "retired",
+      "file": "apps/api/src/modules/learning/retired-learning.controller.ts",
+      "line": 8,
+      "signature": "retired()",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [],
+      "calls": [],
+      "active": true,
+      "retired": true
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/admin/history/reports/weekly",
+      "controller": "RetiredLearningController",
+      "method": "retired",
+      "file": "apps/api/src/modules/learning/retired-learning.controller.ts",
+      "line": 8,
+      "signature": "retired()",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [],
+      "calls": [],
+      "active": true,
+      "retired": true
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/admin/history/parents/:parentId/alerts",
+      "controller": "RetiredLearningController",
+      "method": "retired",
+      "file": "apps/api/src/modules/learning/retired-learning.controller.ts",
+      "line": 8,
+      "signature": "retired()",
+      "classDecorators": [
+        {
+          "name": "UseGuards",
+          "args": [
+            "AuthGuard"
+          ]
+        }
+      ],
+      "decorators": [],
+      "dependencies": [],
+      "calls": [],
+      "active": true,
+      "retired": true
+    },
+    {
       "verb": "GET",
       "path": "/api/learning/source-courses/:courseId/checks",
       "controller": "SourceCourseCheckController",
@@ -19322,40 +19389,11 @@
     },
     {
       "verb": "GET",
-      "path": "/api/admin/history/mastery-heatmap",
-      "controller": "ProgressController",
-      "method": "getMasteryHeatmap",
-      "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 10,
-      "signature": "getMasteryHeatmap(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
-      "classDecorators": [
-        {
-          "name": "UseGuards",
-          "args": [
-            "AuthGuard"
-          ]
-        }
-      ],
-      "decorators": [],
-      "dependencies": [
-        {
-          "name": "progressService",
-          "type": "ProgressService"
-        }
-      ],
-      "calls": [
-        "this.progressService.getMasteryHeatmap"
-      ],
-      "active": true,
-      "retired": false
-    },
-    {
-      "verb": "GET",
       "path": "/api/admin/history/students/:studentId/knowledge-map",
       "controller": "ProgressController",
       "method": "getStudentKnowledgeMap",
       "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 20,
+      "line": 10,
       "signature": "getStudentKnowledgeMap(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
       "classDecorators": [
         {
@@ -19380,69 +19418,11 @@
     },
     {
       "verb": "GET",
-      "path": "/api/admin/history/reports/weekly",
-      "controller": "ProgressController",
-      "method": "getWeeklyReport",
-      "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 30,
-      "signature": "getWeeklyReport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)",
-      "classDecorators": [
-        {
-          "name": "UseGuards",
-          "args": [
-            "AuthGuard"
-          ]
-        }
-      ],
-      "decorators": [],
-      "dependencies": [
-        {
-          "name": "progressService",
-          "type": "ProgressService"
-        }
-      ],
-      "calls": [
-        "this.progressService.getWeeklyReport"
-      ],
-      "active": true,
-      "retired": false
-    },
-    {
-      "verb": "GET",
-      "path": "/api/admin/history/parents/:parentId/alerts",
-      "controller": "ProgressController",
-      "method": "getParentAlerts",
-      "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 41,
-      "signature": "getParentAlerts(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
-      "classDecorators": [
-        {
-          "name": "UseGuards",
-          "args": [
-            "AuthGuard"
-          ]
-        }
-      ],
-      "decorators": [],
-      "dependencies": [
-        {
-          "name": "progressService",
-          "type": "ProgressService"
-        }
-      ],
-      "calls": [
-        "this.progressService.getParentAlerts"
-      ],
-      "active": true,
-      "retired": false
-    },
-    {
-      "verb": "GET",
       "path": "/api/admin/analytics/overview",
       "controller": "ProgressController",
       "method": "getAnalyticsOverview",
       "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 55,
+      "line": 20,
       "signature": "getAnalyticsOverview(@Req() req: AuthenticatedRequest)",
       "classDecorators": [
         {
@@ -19471,7 +19451,7 @@
       "controller": "ProgressController",
       "method": "getAiQualityOverview",
       "file": "apps/api/src/modules/progress/progress.controller.ts",
-      "line": 60,
+      "line": 25,
       "signature": "getAiQualityOverview(@Req() req: AuthenticatedRequest)",
       "classDecorators": [
         {
@@ -22423,7 +22403,7 @@
     {
       "name": "AiService",
       "file": "apps/api/src/modules/ai/ai.service.ts",
-      "line": 63,
+      "line": 65,
       "decorators": [
         {
           "name": "Injectable",
@@ -22459,7 +22439,7 @@
       "methods": [
         {
           "name": "modelCatalog",
-          "line": 84,
+          "line": 86,
           "signature": "modelCatalog()",
           "access": "public",
           "decorators": [],
@@ -22469,7 +22449,7 @@
         },
         {
           "name": "assistantModelAvailable",
-          "line": 92,
+          "line": 94,
           "signature": "assistantModelAvailable()",
           "access": "public",
           "decorators": [],
@@ -22477,7 +22457,7 @@
         },
         {
           "name": "analyzeAssessment",
-          "line": 94,
+          "line": 96,
           "signature": "analyzeAssessment(command: AnalyzeAssessmentCommand): Promise<AIAnalysisResponse>",
           "access": "public",
           "decorators": [],
@@ -22491,7 +22471,7 @@
         },
         {
           "name": "generateHint",
-          "line": 145,
+          "line": 147,
           "signature": "generateHint(command: GenerateHintCommand)",
           "access": "public",
           "decorators": [],
@@ -22502,7 +22482,7 @@
         },
         {
           "name": "openAssistantSession",
-          "line": 199,
+          "line": 201,
           "signature": "openAssistantSession(command: { userRole: 'student' | 'parent'; studentId: string | null; subject?: Subject | null; pageContext: AssistantSession['pageContext']; contextRefType?: string | null; contextRefId?: string | null; contextItemId?: string | null; contextSelection?: AssistantTeachingSelection; }, user: InMemoryUserAccount): AssistantSession",
           "access": "public",
           "decorators": [],
@@ -22518,7 +22498,7 @@
         },
         {
           "name": "openDurableAssistantSession",
-          "line": 285,
+          "line": 287,
           "signature": "openDurableAssistantSession(command: Parameters<AiService['openAssistantSession']>[0], user: InMemoryUserAccount, authSession?: InMemoryAuthSession): Promise<AssistantSession>",
           "access": "public",
           "decorators": [],
@@ -22530,7 +22510,7 @@
         },
         {
           "name": "publicAssistantSession",
-          "line": 300,
+          "line": 302,
           "signature": "publicAssistantSession(session: AssistantSession): AssistantSession",
           "access": "private",
           "decorators": [],
@@ -22538,7 +22518,7 @@
         },
         {
           "name": "lectureDescriptor",
-          "line": 306,
+          "line": 308,
           "signature": "lectureDescriptor(user: InMemoryUserAccount, input: unknown): AssistantLectureDescriptor",
           "access": "public",
           "decorators": [],
@@ -22549,7 +22529,7 @@
         },
         {
           "name": "courseDescriptor",
-          "line": 324,
+          "line": 326,
           "signature": "courseDescriptor(user: InMemoryUserAccount, input: unknown): AssistantCourseDescriptor",
           "access": "public",
           "decorators": [],
@@ -22560,7 +22540,7 @@
         },
         {
           "name": "courseSnapshot",
-          "line": 354,
+          "line": 356,
           "signature": "courseSnapshot(session: AssistantSession, requireCurrent: boolean)",
           "access": "private",
           "decorators": [],
@@ -22571,7 +22551,7 @@
         },
         {
           "name": "assistantCourseSummary",
-          "line": 381,
+          "line": 383,
           "signature": "assistantCourseSummary(session: AssistantSession, requireCurrent = false)",
           "access": "public",
           "decorators": [],
@@ -22581,7 +22561,7 @@
         },
         {
           "name": "assistantArtifactTeachingScope",
-          "line": 388,
+          "line": 390,
           "signature": "assistantArtifactTeachingScope(session: AssistantSession): import('@study-agent/contracts').AssistantArtifactTeachingScope | undefined",
           "access": "public",
           "decorators": [],
@@ -22592,7 +22572,7 @@
         },
         {
           "name": "sourcePreview",
-          "line": 397,
+          "line": 399,
           "signature": "sourcePreview(user: InMemoryUserAccount, sessionId: string, sourceKey: string)",
           "access": "public",
           "decorators": [],
@@ -22604,7 +22584,7 @@
         },
         {
           "name": "lectureSnapshot",
-          "line": 404,
+          "line": 406,
           "signature": "lectureSnapshot(session: AssistantSession, requireCurrent: boolean)",
           "access": "private",
           "decorators": [],
@@ -22612,7 +22592,7 @@
         },
         {
           "name": "assistantLectureSummary",
-          "line": 414,
+          "line": 416,
           "signature": "assistantLectureSummary(session: AssistantSession, requireCurrent = false)",
           "access": "public",
           "decorators": [],
@@ -22622,7 +22602,7 @@
         },
         {
           "name": "independentStudioContext",
-          "line": 419,
+          "line": 421,
           "signature": "independentStudioContext(session: AssistantSession)",
           "access": "private",
           "decorators": [],
@@ -22630,7 +22610,7 @@
         },
         {
           "name": "assertSessionOwner",
-          "line": 426,
+          "line": 428,
           "signature": "assertSessionOwner(sessionId: string, user: InMemoryUserAccount, requireCurrentContext = true)",
           "access": "public",
           "decorators": [],
@@ -22642,7 +22622,7 @@
         },
         {
           "name": "resolveQuestionContext",
-          "line": 435,
+          "line": 437,
           "signature": "resolveQuestionContext(session: AssistantSession)",
           "access": "private",
           "decorators": [],
@@ -22659,7 +22639,7 @@
         },
         {
           "name": "assistantContext",
-          "line": 479,
+          "line": 481,
           "signature": "assistantContext(session: AssistantSession, requireCurrentLecture = true)",
           "access": "private",
           "decorators": [],
@@ -22678,7 +22658,7 @@
         },
         {
           "name": "recordAssistance",
-          "line": 539,
+          "line": 541,
           "signature": "recordAssistance(context: ReturnType<AiService['assistantContext']>, messageId: string, studentId: string | null)",
           "access": "private",
           "decorators": [],
@@ -22691,7 +22671,7 @@
         },
         {
           "name": "chat",
-          "line": 557,
+          "line": 559,
           "signature": "chat(command: AssistantChatCommand): Promise<AssistantLegacyResult>",
           "access": "public",
           "decorators": [],
@@ -22701,7 +22681,7 @@
         },
         {
           "name": "assistantSnapshot",
-          "line": 561,
+          "line": 563,
           "signature": "assistantSnapshot(session: AssistantSession, requireCurrentLecture = true)",
           "access": "public",
           "decorators": [],
@@ -22712,7 +22692,7 @@
         },
         {
           "name": "prepareAssistant",
-          "line": 574,
+          "line": 576,
           "signature": "prepareAssistant(sessionId: string, message: string, requestedModelId?: string): AssistantPreparation",
           "access": "public",
           "decorators": [],
@@ -22726,7 +22706,7 @@
         },
         {
           "name": "renderAssistant",
-          "line": 592,
+          "line": 594,
           "signature": "renderAssistant(prepared: AssistantPreparation, signal?: AbortSignal): Promise<AssistantReply>",
           "access": "public",
           "decorators": [],
@@ -22738,7 +22718,7 @@
         },
         {
           "name": "publishAssistant",
-          "line": 660,
+          "line": 662,
           "signature": "publishAssistant(prepared: AssistantPreparation, result: AssistantReply, requestKey: string)",
           "access": "public",
           "decorators": [],
@@ -22751,7 +22731,7 @@
         },
         {
           "name": "listMessages",
-          "line": 684,
+          "line": 686,
           "signature": "listMessages(sessionId: string)",
           "access": "public",
           "decorators": [],
@@ -22761,7 +22741,7 @@
         },
         {
           "name": "structureImportRecord",
-          "line": 688,
+          "line": 690,
           "signature": "structureImportRecord(command: StructureImportRecordCommand): Promise<QuestionImportAiSuggestion>",
           "access": "public",
           "decorators": [],
@@ -22774,7 +22754,7 @@
         },
         {
           "name": "enrichDiagnosticPlan",
-          "line": 737,
+          "line": 739,
           "signature": "enrichDiagnosticPlan(plan: DiagnosticGuidancePlan, context: unknown): Promise<{\r\n    status: 'available' | 'unavailable' | 'rejected';\r\n    value?: { summary: string; activities: Array<{ actionId: string; activity: string; evidenceIds: string[] }> };\r\n  }>",
           "access": "public",
           "decorators": [],
@@ -22785,7 +22765,7 @@
         },
         {
           "name": "requireClient",
-          "line": 764,
+          "line": 766,
           "signature": "requireClient(scene: string)",
           "access": "private",
           "decorators": [],
@@ -22793,7 +22773,7 @@
         },
         {
           "name": "parseAnalysisResponse",
-          "line": 772,
+          "line": 774,
           "signature": "parseAnalysisResponse(rawValue: string): Omit<AIAnalysisResponse, 'source'>",
           "access": "private",
           "decorators": [],
@@ -22803,7 +22783,7 @@
         },
         {
           "name": "parseQuestionImportSuggestion",
-          "line": 788,
+          "line": 790,
           "signature": "parseQuestionImportSuggestion(rawValue: string): QuestionImportAiSuggestion",
           "access": "private",
           "decorators": [],
@@ -22814,7 +22794,7 @@
         },
         {
           "name": "extractStructuredContent",
-          "line": 808,
+          "line": 810,
           "signature": "extractStructuredContent(content: string)",
           "access": "private",
           "decorators": [],
@@ -22822,7 +22802,7 @@
         },
         {
           "name": "wrapAiError",
-          "line": 818,
+          "line": 820,
           "signature": "wrapAiError(scene: string, error: unknown)",
           "access": "private",
           "decorators": [],
@@ -22830,7 +22810,7 @@
         },
         {
           "name": "getSubjectLabel",
-          "line": 830,
+          "line": 832,
           "signature": "getSubjectLabel(subject: Subject | null | undefined)",
           "access": "private",
           "decorators": [],
@@ -22838,7 +22818,7 @@
         },
         {
           "name": "isQuestionAnswerMode",
-          "line": 845,
+          "line": 847,
           "signature": "isQuestionAnswerMode(value: unknown): value is QuestionImportAiSuggestion['suggestedAnswerMode']",
           "access": "private",
           "decorators": [],
@@ -22846,7 +22826,7 @@
         },
         {
           "name": "recordInsight",
-          "line": 867,
+          "line": 869,
           "signature": "recordInsight(sourceType: AIInsightRecord['sourceType'], sourceId: string, studentId: string | null, summary: string, payload: AIAnalysisResponse)",
           "access": "private",
           "decorators": [],
@@ -24039,7 +24019,7 @@
     {
       "name": "TeachingToolWorkerService",
       "file": "apps/api/src/modules/ai/teaching-tool-worker.service.ts",
-      "line": 9,
+      "line": 10,
       "decorators": [
         {
           "name": "Injectable",
@@ -24063,7 +24043,7 @@
       "methods": [
         {
           "name": "onApplicationBootstrap",
-          "line": 14,
+          "line": 15,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -24075,7 +24055,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 18,
+          "line": 19,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -24083,7 +24063,7 @@
         },
         {
           "name": "runNext",
-          "line": 19,
+          "line": 20,
           "signature": "runNext(): Promise<boolean>",
           "access": "public",
           "decorators": [],
@@ -24093,7 +24073,7 @@
         },
         {
           "name": "execute",
-          "line": 23,
+          "line": 24,
           "signature": "execute()",
           "access": "private",
           "decorators": [],
@@ -28643,7 +28623,7 @@
     {
       "name": "GuidanceModelWorkerService",
       "file": "apps/api/src/modules/diagnostics/guidance-model-worker.service.ts",
-      "line": 7,
+      "line": 9,
       "decorators": [
         {
           "name": "Injectable",
@@ -28667,7 +28647,7 @@
       "methods": [
         {
           "name": "onApplicationBootstrap",
-          "line": 12,
+          "line": 14,
           "signature": "onApplicationBootstrap()",
           "access": "public",
           "decorators": [],
@@ -28679,7 +28659,7 @@
         },
         {
           "name": "onModuleDestroy",
-          "line": 16,
+          "line": 18,
           "signature": "onModuleDestroy()",
           "access": "public",
           "decorators": [],
@@ -28687,7 +28667,7 @@
         },
         {
           "name": "runNext",
-          "line": 17,
+          "line": 19,
           "signature": "runNext()",
           "access": "public",
           "decorators": [],
@@ -28697,7 +28677,7 @@
         },
         {
           "name": "execute",
-          "line": 18,
+          "line": 20,
           "signature": "execute()",
           "access": "private",
           "decorators": [],
@@ -41834,7 +41814,7 @@
             {
               "name": "All",
               "args": [
-                "['assessments/*path', 'missions/*path', 'plans/weekly', 'plans/weekly/generate',\r\n    'progress/mastery-heatmap', 'reports/weekly', 'parents/:parentId/alerts', 'students/:studentId/knowledge-map']"
+                "['assessments/*path', 'missions/*path', 'plans/weekly', 'plans/weekly/generate',\r\n    'progress/mastery-heatmap', 'reports/weekly', 'parents/:parentId/alerts', 'students/:studentId/knowledge-map',\r\n    // Prototype statistics over the retired assessment and mission collections (empty in production since 232).\r\n    'admin/history/mastery-heatmap', 'admin/history/reports/weekly', 'admin/history/parents/:parentId/alerts']"
               ]
             }
           ],
@@ -51452,25 +51432,8 @@
       ],
       "methods": [
         {
-          "name": "getMasteryHeatmap",
-          "line": 10,
-          "signature": "getMasteryHeatmap(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
-          "access": "public",
-          "decorators": [
-            {
-              "name": "Get",
-              "args": [
-                "'admin/history/mastery-heatmap'"
-              ]
-            }
-          ],
-          "calls": [
-            "this.progressService.getMasteryHeatmap"
-          ]
-        },
-        {
           "name": "getStudentKnowledgeMap",
-          "line": 20,
+          "line": 10,
           "signature": "getStudentKnowledgeMap(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
           "access": "public",
           "decorators": [
@@ -51486,42 +51449,8 @@
           ]
         },
         {
-          "name": "getWeeklyReport",
-          "line": 30,
-          "signature": "getWeeklyReport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)",
-          "access": "public",
-          "decorators": [
-            {
-              "name": "Get",
-              "args": [
-                "'admin/history/reports/weekly'"
-              ]
-            }
-          ],
-          "calls": [
-            "this.progressService.getWeeklyReport"
-          ]
-        },
-        {
-          "name": "getParentAlerts",
-          "line": 41,
-          "signature": "getParentAlerts(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')",
-          "access": "public",
-          "decorators": [
-            {
-              "name": "Get",
-              "args": [
-                "'admin/history/parents/:parentId/alerts'"
-              ]
-            }
-          ],
-          "calls": [
-            "this.progressService.getParentAlerts"
-          ]
-        },
-        {
           "name": "getAnalyticsOverview",
-          "line": 55,
+          "line": 20,
           "signature": "getAnalyticsOverview(@Req() req: AuthenticatedRequest)",
           "access": "public",
           "decorators": [
@@ -51538,7 +51467,7 @@
         },
         {
           "name": "getAiQualityOverview",
-          "line": 60,
+          "line": 25,
           "signature": "getAiQualityOverview(@Req() req: AuthenticatedRequest)",
           "access": "public",
           "decorators": [
@@ -51558,12 +51487,12 @@
     {
       "name": "ProgressModule",
       "file": "apps/api/src/modules/progress/progress.module.ts",
-      "line": 7,
+      "line": 8,
       "decorators": [
         {
           "name": "Module",
           "args": [
-            "{\r\n  imports: [StudentsModule, ContentModule],\r\n  controllers: [ProgressController],\r\n  providers: [ProgressService],\r\n}"
+            "{\r\n  imports: [StudentsModule, ContentModule, DiagnosticsModule],\r\n  controllers: [ProgressController],\r\n  providers: [ProgressService],\r\n}"
           ]
         }
       ],
@@ -51573,7 +51502,7 @@
     {
       "name": "ProgressService",
       "file": "apps/api/src/modules/progress/progress.service.ts",
-      "line": 68,
+      "line": 54,
       "decorators": [
         {
           "name": "Injectable",
@@ -51592,23 +51521,16 @@
         {
           "name": "contentService",
           "type": "ContentService"
+        },
+        {
+          "name": "diagnostics",
+          "type": "DiagnosticsService"
         }
       ],
       "methods": [
         {
-          "name": "getMasteryHeatmap",
-          "line": 76,
-          "signature": "getMasteryHeatmap(requestUser: InMemoryUserAccount, studentId: string, subject: Subject): MasteryHeatmapView",
-          "access": "public",
-          "decorators": [],
-          "calls": [
-            "this.studentsService.assertCanAccessStudent",
-            "this.buildMasteryHeatmap"
-          ]
-        },
-        {
           "name": "getStudentKnowledgeMap",
-          "line": 85,
+          "line": 63,
           "signature": "getStudentKnowledgeMap(requestUser: InMemoryUserAccount, studentId: string, subject: Subject)",
           "access": "public",
           "decorators": [],
@@ -51624,41 +51546,8 @@
           ]
         },
         {
-          "name": "getWeeklyReport",
-          "line": 193,
-          "signature": "getWeeklyReport(requestUser: InMemoryUserAccount, studentId: string, subject: Subject, weekStartDate?: string): WeeklyReport",
-          "access": "public",
-          "decorators": [],
-          "calls": [
-            "this.studentsService.assertCanAccessStudent",
-            "this.resolveWeekWindow",
-            "this.buildMasteryHeatmap",
-            "this.detectRiskSignals",
-            "this.store.assessments.filter",
-            "this.isWithinWindow",
-            "this.store.assessmentAnswers.filter",
-            "this.store.missions.filter",
-            "this.store.missionAnswers.filter",
-            "this.pickWeeklyPoint",
-            "this.buildParentSummary"
-          ]
-        },
-        {
-          "name": "getParentAlerts",
-          "line": 270,
-          "signature": "getParentAlerts(requestUser: InMemoryUserAccount, parentId: string, studentId: string, subject: Subject): RiskSignal[]",
-          "access": "public",
-          "decorators": [],
-          "calls": [
-            "this.studentsService.assertCanAccessStudent",
-            "this.buildMasteryHeatmap",
-            "this.detectRiskSignals",
-            "this.resolveWeekWindow"
-          ]
-        },
-        {
           "name": "getAnalyticsOverview",
-          "line": 285,
+          "line": 171,
           "signature": "getAnalyticsOverview(requestUser: InMemoryUserAccount): AnalyticsOverview",
           "access": "public",
           "decorators": [],
@@ -51668,7 +51557,7 @@
         },
         {
           "name": "getAiQualityOverview",
-          "line": 303,
+          "line": 189,
           "signature": "getAiQualityOverview(requestUser: InMemoryUserAccount): AIQualityOverview",
           "access": "public",
           "decorators": [],
@@ -51680,43 +51569,19 @@
         },
         {
           "name": "buildMasteryHeatmap",
-          "line": 349,
-          "signature": "buildMasteryHeatmap(studentId: string, subject: Subject): MasteryHeatmapView",
+          "line": 235,
+          "signature": "buildMasteryHeatmap(requestUser: InMemoryUserAccount, studentId: string, subject: Subject): MasteryHeatmapView",
           "access": "private",
           "decorators": [],
           "calls": [
-            "this.buildMasterySnapshots",
+            "this.diagnostics.profile",
+            "this.contentService.listKnowledgePoints",
             "this.statusSeverity"
           ]
         },
         {
-          "name": "buildMasterySnapshots",
-          "line": 372,
-          "signature": "buildMasterySnapshots(studentId: string, subject: Subject): StudentMasterySnapshot[]",
-          "access": "private",
-          "decorators": [],
-          "calls": [
-            "this.contentService.listKnowledgePoints",
-            "this.store.assessmentResults.find",
-            "this.buildMissionStats",
-            "this.resolveMasteryStatus",
-            "this.store.find"
-          ]
-        },
-        {
-          "name": "buildMissionStats",
-          "line": 427,
-          "signature": "buildMissionStats(studentId: string, subject: Subject)",
-          "access": "private",
-          "decorators": [],
-          "calls": [
-            "this.store.questions.map",
-            "this.store.missionAnswers.filter"
-          ]
-        },
-        {
           "name": "resolveLearningMapVolume",
-          "line": 460,
+          "line": 243,
           "signature": "resolveLearningMapVolume(subject: Subject, grade: number, preferredVolumeId: string | null)",
           "access": "private",
           "decorators": [],
@@ -51724,7 +51589,7 @@
         },
         {
           "name": "collectVolumeQuestions",
-          "line": 480,
+          "line": 263,
           "signature": "collectVolumeQuestions(volumeId: string, subject: Subject, knowledgePointIdSet: Set<string>, sourceByQuestionId: Map<string, QuestionSourceRecord>)",
           "access": "private",
           "decorators": [],
@@ -51735,108 +51600,15 @@
         },
         {
           "name": "ensureQuestionKnowledgeBindings",
-          "line": 502,
+          "line": 285,
           "signature": "ensureQuestionKnowledgeBindings(subject: Subject, knowledgePoints: Array<{ id: string; name: string }>, knowledgePointIdSet: Set<string>, questions: Question[], sourceByQuestionId: Map<string, QuestionSourceRecord>)",
           "access": "private",
           "decorators": [],
           "calls": []
         },
         {
-          "name": "detectRiskSignals",
-          "line": 529,
-          "signature": "detectRiskSignals(studentId: string, subject: Subject, weekWindow: WeekWindow, snapshots: StudentMasterySnapshot[]): RiskSignal[]",
-          "access": "private",
-          "decorators": [],
-          "calls": [
-            "this.isWithinWindow",
-            "this.store.missions.some",
-            "this.store.nextId",
-            "this.store.questions.map",
-            "this.store.missionAnswers.filter",
-            "this.buildAssessmentTrend",
-            "this.deduplicateRiskSignals"
-          ]
-        },
-        {
-          "name": "buildAssessmentTrend",
-          "line": 638,
-          "signature": "buildAssessmentTrend(studentId: string, subject: Subject)",
-          "access": "private",
-          "decorators": [],
-          "calls": [
-            "this.store.find"
-          ]
-        },
-        {
-          "name": "deduplicateRiskSignals",
-          "line": 666,
-          "signature": "deduplicateRiskSignals(risks: RiskSignal[])",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "resolveMasteryStatus",
-          "line": 678,
-          "signature": "resolveMasteryStatus(input: { masteryScore: number; confidenceScore: number; missionStat?: KnowledgeMissionStats; hasAssessment: boolean; }): StudentMasterySnapshot['status']",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "resolveWeekWindow",
-          "line": 708,
-          "signature": "resolveWeekWindow(weekStartDate?: string): WeekWindow",
-          "access": "private",
-          "decorators": [],
-          "calls": [
-            "this.startOfWeek",
-            "this.formatDateKey"
-          ]
-        },
-        {
-          "name": "startOfWeek",
-          "line": 725,
-          "signature": "startOfWeek(date: Date)",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "isWithinWindow",
-          "line": 733,
-          "signature": "isWithinWindow(value: string, weekWindow: WeekWindow)",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "formatDateKey",
-          "line": 738,
-          "signature": "formatDateKey(date: Date)",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "buildParentSummary",
-          "line": 745,
-          "signature": "buildParentSummary(risks: RiskSignal[], focusKnowledgePoints: WeeklyReport['focusKnowledgePoints'], correctRate: number, missionCount: number)",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
-          "name": "pickWeeklyPoint",
-          "line": 771,
-          "signature": "pickWeeklyPoint(snapshot: StudentMasterySnapshot)",
-          "access": "private",
-          "decorators": [],
-          "calls": []
-        },
-        {
           "name": "statusSeverity",
-          "line": 780,
+          "line": 312,
           "signature": "statusSeverity(status: StudentMasterySnapshot['status'])",
           "access": "private",
           "decorators": [],
@@ -51844,7 +51616,7 @@
         },
         {
           "name": "getSearchResultCount",
-          "line": 796,
+          "line": 328,
           "signature": "getSearchResultCount(insight: (typeof this.store.aiInsights)[number])",
           "access": "private",
           "decorators": [],
@@ -54295,6 +54067,12 @@
       "signature": "assembleImmutableFile(input:{size:number;sha256:string;chunks:Array<{path:string;sha256:string;size:number}>;target:string;validHeader:(header:Buffer)=>boolean})"
     },
     {
+      "file": "apps/api/src/infrastructure/pinned-dependencies.ts",
+      "name": "pinnedDependencyApplies",
+      "line": 10,
+      "signature": "pinnedDependencyApplies(workspace: string, path: string)"
+    },
+    {
       "file": "apps/api/src/infrastructure/request-rate.middleware.ts",
       "name": "requestIpLimit",
       "line": 5,
@@ -54814,7 +54592,7 @@
       "file": "apps/api/src/modules/ai/learner-audience.ts",
       "name": "learnerAudience",
       "line": 9,
-      "signature": "learnerAudience(store: InMemoryStoreService, studentId: string | null | undefined): TeachingOutputAudience"
+      "signature": "learnerAudience(store: InMemoryStoreService | undefined, studentId: string | null | undefined): TeachingOutputAudience"
     },
     {
       "file": "apps/api/src/modules/ai/neutral-voice-samples.ts",
@@ -59711,6 +59489,18 @@
       "name": "assertImportAdmin",
       "line": 17,
       "signature": "assertImportAdmin(user: InMemoryUserAccount)"
+    },
+    {
+      "file": "apps/api/src/modules/progress/formal-snapshots.ts",
+      "name": "snapshotFromEstimate",
+      "line": 12,
+      "signature": "snapshotFromEstimate(studentId: string, subject: StudentMasterySnapshot['subject'], point: { id: string; name: string }, estimate: MasteryEstimate | undefined): StudentMasterySnapshot"
+    },
+    {
+      "file": "apps/api/src/modules/progress/formal-snapshots.ts",
+      "name": "heatmapSummary",
+      "line": 24,
+      "signature": "heatmapSummary(snapshots: StudentMasterySnapshot[])"
     },
     {
       "file": "apps/api/src/modules/question-workspace/question-import.utils.ts",
@@ -80189,6 +79979,7 @@
     "apps/api/src/modules/processing/external-handwriting.test.ts",
     "apps/api/src/modules/processing/processing.integration.test.ts",
     "apps/api/src/modules/processing/retired-local-explain.test.ts",
+    "apps/api/src/modules/progress/formal-snapshots.test.ts",
     "apps/api/src/modules/question-workspace/question-import.utils.test.ts",
     "apps/api/src/modules/reviews/reviews.integration.test.ts",
     "apps/api/src/modules/student-media/media-normalization.test.ts",

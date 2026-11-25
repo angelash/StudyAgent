@@ -1,6 +1,6 @@
 # 14 持久化、后台处理、监控、部署与质量 — 详细设计
 
-源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。角色：运维、管理员、教研。
+源码基线：`d69257d61551bbc957720976f5581e308745b450`。角色：运维、管理员、教研。
 
 产品入口：`/admin/imports`、`/admin/analytics`。
 
@@ -164,16 +164,16 @@
 - `GET /api/ready` → `HealthController.ready`；[apps/api/src/infrastructure/health.controller.ts:8](../../../apps/api/src/infrastructure/health.controller.ts#L8)。
 - `GET /api/admin/operations` → `OperationsController.overview`；[apps/api/src/infrastructure/operations.controller.ts:14](../../../apps/api/src/infrastructure/operations.controller.ts#L14)。
 - `GET /api/admin/operations/capabilities` → `OperationsCapabilitiesController.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:129](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L129)。
-- `GET /api/admin/analytics/overview` → `ProgressController.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.controller.ts:55](../../../apps/api/src/modules/progress/progress.controller.ts#L55)。
-- `GET /api/admin/analytics/ai-quality` → `ProgressController.getAiQualityOverview`；[apps/api/src/modules/progress/progress.controller.ts:60](../../../apps/api/src/modules/progress/progress.controller.ts#L60)。
+- `GET /api/admin/analytics/overview` → `ProgressController.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.controller.ts:20](../../../apps/api/src/modules/progress/progress.controller.ts#L20)。
+- `GET /api/admin/analytics/ai-quality` → `ProgressController.getAiQualityOverview`；[apps/api/src/modules/progress/progress.controller.ts:25](../../../apps/api/src/modules/progress/progress.controller.ts#L25)。
 
 **服务方法**：
 
 - `InMemoryStoreService.select`；[apps/api/src/infrastructure/in-memory-store.service.ts:279](../../../apps/api/src/infrastructure/in-memory-store.service.ts#L279)。
 - `RuntimeMetricsService.snapshot`；[apps/api/src/infrastructure/runtime-metrics.service.ts:27](../../../apps/api/src/infrastructure/runtime-metrics.service.ts#L27)。
 - `OperationsCapabilitiesService.check`；[apps/api/src/modules/operations/operations-capabilities.service.ts:52](../../../apps/api/src/modules/operations/operations-capabilities.service.ts#L52)。
-- `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:285](../../../apps/api/src/modules/progress/progress.service.ts#L285)。
-- `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:303](../../../apps/api/src/modules/progress/progress.service.ts#L303)。
+- `ProgressService.getAnalyticsOverview`；[apps/api/src/modules/progress/progress.service.ts:171](../../../apps/api/src/modules/progress/progress.service.ts#L171)。
+- `ProgressService.getAiQualityOverview`；[apps/api/src/modules/progress/progress.service.ts:189](../../../apps/api/src/modules/progress/progress.service.ts#L189)。
 
 **补充实现文件**：
 

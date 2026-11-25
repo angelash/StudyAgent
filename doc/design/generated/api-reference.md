@@ -1,6 +1,6 @@
 # HTTP 接口实现索引
 
-源码基线：`54218795102c9c15f8fae84925ac83f4f9768ed4`。共 607 个 HTTP 路由声明，当前 AppModule 可达 599 个正常路由、8 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
+源码基线：`d69257d61551bbc957720976f5581e308745b450`。共 607 个 HTTP 路由声明，当前 AppModule 可达 596 个正常路由、11 个返回410的旧协议拦截路由；正常路由包含健康和运维接口。
 
 本表从 Nest 装饰器与处理方法自动提取。参数签名不是完整请求 Schema；权限以身份 Guard 与服务层的学生/监护/内容审核断言共同决定。StreamableFile、Cookie、重定向等响应不应被当成普通 JSON。具体业务与校验见对应领域详细设计。
 
@@ -3474,6 +3474,33 @@
 - 方法装饰器：`[]`
 - 调用：无 this 服务调用；直接处理或静态函数。
 
+### ALL /api/admin/history/mastery-heatmap
+
+实现：[apps/api/src/modules/learning/retired-learning.controller.ts:8](../../../apps/api/src/modules/learning/retired-learning.controller.ts#L8)，方法 `retired`。
+
+- 签名：`retired()`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：无 this 服务调用；直接处理或静态函数。
+
+### ALL /api/admin/history/reports/weekly
+
+实现：[apps/api/src/modules/learning/retired-learning.controller.ts:8](../../../apps/api/src/modules/learning/retired-learning.controller.ts#L8)，方法 `retired`。
+
+- 签名：`retired()`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：无 this 服务调用；直接处理或静态函数。
+
+### ALL /api/admin/history/parents/:parentId/alerts
+
+实现：[apps/api/src/modules/learning/retired-learning.controller.ts:8](../../../apps/api/src/modules/learning/retired-learning.controller.ts#L8)，方法 `retired`。
+
+- 签名：`retired()`
+- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
+- 方法装饰器：`[]`
+- 调用：无 this 服务调用；直接处理或静态函数。
+
 ## SourceCourseCheckController — 当前接入
 
 ### GET /api/learning/source-courses/:courseId/checks
@@ -5183,45 +5210,18 @@
 
 ## ProgressController — 当前接入
 
-### GET /api/admin/history/mastery-heatmap
-
-实现：[apps/api/src/modules/progress/progress.controller.ts:10](../../../apps/api/src/modules/progress/progress.controller.ts#L10)，方法 `getMasteryHeatmap`。
-
-- 签名：`getMasteryHeatmap(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.progressService.getMasteryHeatmap`
-
 ### GET /api/admin/history/students/:studentId/knowledge-map
 
-实现：[apps/api/src/modules/progress/progress.controller.ts:20](../../../apps/api/src/modules/progress/progress.controller.ts#L20)，方法 `getStudentKnowledgeMap`。
+实现：[apps/api/src/modules/progress/progress.controller.ts:10](../../../apps/api/src/modules/progress/progress.controller.ts#L10)，方法 `getStudentKnowledgeMap`。
 
 - 签名：`getStudentKnowledgeMap(@Req() req: AuthenticatedRequest, @Param('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
 - 方法装饰器：`[]`
 - 调用：`this.progressService.getStudentKnowledgeMap`
 
-### GET /api/admin/history/reports/weekly
-
-实现：[apps/api/src/modules/progress/progress.controller.ts:30](../../../apps/api/src/modules/progress/progress.controller.ts#L30)，方法 `getWeeklyReport`。
-
-- 签名：`getWeeklyReport(@Req() req: AuthenticatedRequest, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry', @Query('weekStartDate') weekStartDate?: string)`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.progressService.getWeeklyReport`
-
-### GET /api/admin/history/parents/:parentId/alerts
-
-实现：[apps/api/src/modules/progress/progress.controller.ts:41](../../../apps/api/src/modules/progress/progress.controller.ts#L41)，方法 `getParentAlerts`。
-
-- 签名：`getParentAlerts(@Req() req: AuthenticatedRequest, @Param('parentId') parentId: string, @Query('studentId') studentId: string, @Query('subject') subject?: 'math' | 'chinese' | 'english' | 'chemistry')`
-- 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
-- 方法装饰器：`[]`
-- 调用：`this.progressService.getParentAlerts`
-
 ### GET /api/admin/analytics/overview
 
-实现：[apps/api/src/modules/progress/progress.controller.ts:55](../../../apps/api/src/modules/progress/progress.controller.ts#L55)，方法 `getAnalyticsOverview`。
+实现：[apps/api/src/modules/progress/progress.controller.ts:20](../../../apps/api/src/modules/progress/progress.controller.ts#L20)，方法 `getAnalyticsOverview`。
 
 - 签名：`getAnalyticsOverview(@Req() req: AuthenticatedRequest)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`
@@ -5230,7 +5230,7 @@
 
 ### GET /api/admin/analytics/ai-quality
 
-实现：[apps/api/src/modules/progress/progress.controller.ts:60](../../../apps/api/src/modules/progress/progress.controller.ts#L60)，方法 `getAiQualityOverview`。
+实现：[apps/api/src/modules/progress/progress.controller.ts:25](../../../apps/api/src/modules/progress/progress.controller.ts#L25)，方法 `getAiQualityOverview`。
 
 - 签名：`getAiQualityOverview(@Req() req: AuthenticatedRequest)`
 - 控制器装饰器：`[{"name":"UseGuards","args":["AuthGuard"]}]`

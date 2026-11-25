@@ -1,7 +1,7 @@
 {
-  "sourceRevision": "54218795102c9c15f8fae84925ac83f4f9768ed4",
-  "activeNormalApiRoutes": 599,
-  "coveredApiRoutes": 599,
+  "sourceRevision": "d69257d61551bbc957720976f5581e308745b450",
+  "activeNormalApiRoutes": 596,
+  "coveredApiRoutes": 596,
   "uncoveredApiRoutes": [],
   "features": 149,
   "areas": 14,
@@ -40,6 +40,18 @@
     {
       "verb": "ALL",
       "path": "/api/students/:studentId/knowledge-map"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/admin/history/mastery-heatmap"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/admin/history/reports/weekly"
+    },
+    {
+      "verb": "ALL",
+      "path": "/api/admin/history/parents/:parentId/alerts"
     }
   ],
   "sourceInventory": "generated/source-inventory.json",
