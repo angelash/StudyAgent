@@ -33,7 +33,8 @@ describe('server speech recognition (232 §5.2)', () => {
 
   it('hides provider errors behind a stable message and rejects an empty transcript', async () => {
     const failing = vi.fn<TranscriptionClient['create']>().mockRejectedValue(new Error('upstream said: key sk-private is invalid'));
-    const error = await transcribeRecording({ create: failing }, 'model', recording()).catch(caught => caught as Error);
+    const error = await transcribeRecording({ create: failing }, 'model', recording()).then(() => null, (caught: Error) => caught);
+    if (!error) throw new Error('expected the provider failure to be reported');
     expect(error).toMatchObject({ status: 503 }); expect(error.message).not.toContain('sk-private');
     const silent = vi.fn<TranscriptionClient['create']>().mockResolvedValue({ text: '   ' });
     await expect(transcribeRecording({ create: silent }, 'model', recording())).rejects.toMatchObject({ status: 400 });
